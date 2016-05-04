@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys,time
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,20 +15,7 @@ from selenium.common.exceptions import TimeoutException
 class API:
 
     def __init__(self):
-        pass
-
-    '''
-    ***********************************************************************************
-        click methods
-    ***********************************************************************************
-    '''
-
-    def clickViewByResourceID(self, driver="default", resource_id="default"):
-        driver.find_element_by_id(resource_id).click()
-
-    def clickTextViewByAndroid(self, driver="default", text="default"):
-        web_element = self.getTextViewByAndroid(driver=driver, text=text)
-        web_element.click()
+        pass;
 
     '''
     ***********************************************************************************
@@ -37,73 +24,132 @@ class API:
     '''
 
     '''
-        used by android api
+        usage: by android api
         parameters:
-            view_text : 已知view的text,根据已知view text获取view
-            viewClassName : 预查找的兄弟节点的class name
+            driver: appium driver
+            logger: logging
+            resource id : view resource id
+        return : view of the sepecified resource id
+
+    '''
+    def get_view_by_resourceID(self, driver, logger, resource_id="default"):
+        return driver.find_element_by_id(resource_id);
+
+    '''
+        usage: by android api
+        parameters:
+            driver: appium driver
+            logger: logging
+            selector : android selector string
+        return : view of the sepecified selector
+    '''
+    def get_view_by_uiautomator_android(self, driver, logger , selector="default"):
+        return driver.find_element_by_android_uiautomator(selector);
+
+    '''
+        usage : by android api
+        parameters:
+            driver : appium driver
+            logger : logging
+            text : 已知view的text,根据已知view text获取view
+            viewClassName : 预查找的兄弟节点的class name,view class name在父节点具有唯一性
         应用场景 : 某些多tab ui,点击tab后,tab对应的view状态属性不变,而且增加兄弟view的方式来标识状态.
     '''
-
-    def getBrotherViewByClassNameByAndroid(self, driver="default", view_text="default", viewClassName="default"):
+    def get_brother_by_class_name_android(self, driver , logger,text="default", viewClassName="default"):
         selector = 'new UiSelector().text("%s").fromParent(new UiSelector().className("%s"))' % (
-        view_text, viewClassName)
-        return driver.find_element_by_android_uiautomator(selector)
-
-
-    def getViewByResourceID(self, driver="default", resource_id="default"):
-        return driver.find_element_by_id(resource_id)
-
-    def getTextViewByAndroid(self,driver="default",text="default"):
-        return driver.find_element_by_android_uiautomator('new UiSelector().text("'+text+'")')
+            text, viewClassName);
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector=selector);
 
     '''
-        used by android api
+        usage: by android api
         parameters:
+            driver: appium driver
+            logger: logging
+            resource id : view resource id
+        return : view of the sepecified text
+
+    '''
+    def get_view_text_equal_android(self, driver , logger, text="default"):
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = 'new UiSelector().text("' + text + '")');
+
+    '''
+        usage : by android api
+        parameters:
+            driver : appium driver
+            logger : logging
             textContains : 查找的view包含的字段部分
+        return : view of the sepecified text
     '''
-    def getViewTextContainsByAndroid(self,driver="default",textContains="default"):
-        selector='new UiSelector().textContains("%s")' % (textContains)
-        return driver.find_element_by_android_uiautomator(selector)
+    def get_view_text_contains_android(self, driver, logger , textContains="default"):
+        selector = 'new UiSelector().textContains("%s")' % (textContains);
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
 
     '''
         used by android api
         parameters:
+            driver : appium driver
+            logger : logging
             textStartsWith : 查找的view包含的字段头部分
+        return : view of the sepecified text
     '''
-    def getViewTextStartsWithByAndroid(self,driver="default",textStartsWith="default"):
-        selector='new UiSelector().textContains("%s")' % (textStartsWith)
-        return driver.find_element_by_android_uiautomator(selector)
+    def get_view_text_starts_with_android(self, driver , logger , textStartsWith="default"):
+        selector = 'new UiSelector().textStartWith("%s")' % (textStartsWith);
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
+
+    '''
+        used by android api
+            driver: appium driver
+            logger: logging
+            parameters:
+                textMatches : 通过正则表达式的方式查找view e.g. textMatches="^Add.*"
+            return : view of the sepecified text
+    '''
+
+    def get_view_text_matches_android(self, driver , logger , textMatches="default"):
+        selector = 'new UiSelector().textContains("%s")' % (textMatches);
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
 
     '''
         used by android api
         parameters:
-            textMatches : 通过正则表达式的方式查找view e.g. textMatches="^Add.*"
-    '''
-
-    def getViewTextMatchesByAndroid(self, driver="default", textMatches="default"):
-        selector = 'new UiSelector().textContains("%s")' % (textMatches)
-        return driver.find_element_by_android_uiautomator(selector)
-
-    '''
-        used by android api
-        parameters:
+            driver: appium driver
+            logger: logging
             textMatches : 通过正则表达式的方式查找view e.g. className="android.widget.ImageView"
+        return : view of the class name (the only one)
     '''
 
-    def getViewByClassNameByAndroid(self, driver="default", className="default"):
-        selector = 'new UiSelector().className("%s")' % (className)
-        return driver.find_element_by_android_uiautomator(selector)
+    def get_view_by_class_name_android(self, driver , logger , className="default"):
+        selector = 'new UiSelector().className("%s")' % (className);
+        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
 
     '''
         usage : 显式等待方法
         parameters:
+            driver: appium driver
+            logger: logging
             resource_id : 查找view的resource id
-            seconds : 等待的最大市场,单位秒
+            seconds : 等待的最大市场,单位秒,默认十秒
         应用场景 : 查找的view展现时间受网络状态影响,显式等待时间设置后,会最大等待seconds秒,如果小于seconds view出现,直接进行下一流程,如果等于seconds未出现,raise TimeoutException
     '''
-    def findViewByResourceIDUntil(self,driver="default",resource_id="default",seconds="10"):
-        wdw = WebDriverWait(driver=driver,timeout=seconds)
-        return wdw.until(EC.presence_of_element_located((By.ID,resource_id)))
+
+    def find_view_by_resourceID_Until_android(self, driver , logger , resource_id="default", seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(EC.presence_of_element_located((By.ID, resource_id)));
+
+    '''
+    ***********************************************************************************
+        click methods
+    ***********************************************************************************
+    '''
+
+    def click_view_by_resourceID_android(self, driver, logger , resource_id):
+        self.get_view_by_resourceID(driver = driver , logger = logger , resource_id = resource_id).click();
+
+    def click_view_by_text_android(self, driver , logger , text="default"):
+        web_element = self.get_view_text_equal_android(driver=driver, logger = logger , text=text);
+        web_element.click();
+
+
 
     '''
     ***********************************************************************************
@@ -115,23 +161,23 @@ class API:
         用法和findViewByResourceIDUntil,增加结果申明判断.
     '''
 
-    def assertViewByResourceIDUntil(self, test_case="default", driver="default", resource_id="default", seconds="500"):
+    def assert_view_by_resourceID_Until_android(self, testcase, driver , logger , resource_id="default", seconds=10):
         try:
-            test_case.assertIsNotNone(
-                self.findViewByResourceIDUntil(driver=driver, resource_id=resource_id, seconds=seconds),
+            testcase.assertIsNotNone(
+                self.find_view_by_resourceID_Until_android(driver=driver, logger = logger , resource_id=resource_id, seconds=seconds),
                 "resource id none")
-        except NoSuchElementException, e:
-            test_case.assertTrue(False, "resource id %s none" % (resource_id))
-        except TimeoutException, e:
-            test_case.assertTrue(False,
+        except NoSuchElementException as e:
+            testcase.assertTrue(False, "resource id %s none" % (resource_id))
+        except TimeoutException as e:
+            testcase.assertTrue(False,
                                  "get resource id %s timeout until %s seconds" % (resource_id, seconds))
 
-    def assertViewByResourceID(self, test_case="default", driver="default", resource_id="default"):
+    def assert_view_by_resourceID_android(self, testcase, logger , driver, resource_id="default"):
         try:
-            test_case.assertIsNotNone(self.getViewByResourceID(driver, resource_id),
-                                      "resource id %s none" % (resource_id))
-        except NoSuchElementException, e:
-            test_case.assertIsNotNone(None,
+            testcase.assertIsNotNone(self.get_view_by_resourceID(driver = driver, logger = logger , resource_id=resource_id),
+                                      "resource id %s not none" % (resource_id))
+        except NoSuchElementException as e:
+            testcase.assertIsNotNone(None,
                                       "resource id %s none" % (resource_id))
 
     '''
@@ -140,7 +186,7 @@ class API:
     ***********************************************************************************
     '''
 
-    def waitBySeconds(self,seconds=1):
+    def wait_by_seconds(self,seconds=1):
         time.sleep(seconds)
 
 

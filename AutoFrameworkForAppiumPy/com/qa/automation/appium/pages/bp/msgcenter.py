@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os,sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 
@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from time import sleep
 import unittest
 from configs.driver_configs import *
-from msgcenter_configs import *
+from pages.bp.msgcenter_configs import *
 from api.api import *
 from pages.common.super_page import *
 
@@ -22,9 +22,9 @@ from appium import webdriver
 '''
 class MessageCenter(SuperPage):
 
-    def __init__(self,driver):
+    def __init__(self,driver,logger):
         # SuperPage.__init__(self,driver)
-        super(MessageCenter, self).__init__(driver)
+        super(MessageCenter, self).__init__(driver,logger)
 
     """
         验证消息中心textview resource id是否存在

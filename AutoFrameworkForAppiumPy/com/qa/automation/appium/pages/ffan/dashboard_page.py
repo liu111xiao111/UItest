@@ -29,7 +29,9 @@ class DashboardPage(SuperPage):
         super(DashboardPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
 
     def validSelf(self):
-        API().assert_view_by_resourceID_android(testcase = self.testcase , driver = self.driver,logger = self.logger , resource_id = SafariActivityConfigs.resource_id__iv_logo__iv);
+        self.logger.d("SafariActivityConfigs.resource_id__iv_logo__iv : %s",SafariActivityConfigs.resource_id__iv_logo__iv);
+        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
+                                                resource_id = SafariActivityConfigs.resource_id__iv_logo__iv,seconds=18);
 
 
 if __name__ == '__main__':

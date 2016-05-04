@@ -2,23 +2,34 @@
 # -*- coding: utf-8 -*-
 
 import sys,os
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from driver.android_driver import *
-from pages.safari_activity import *
+from pages.ffan.dashboard_page import *
+from configs.driver_configs import *
+from driver.appium_driver import *
 
-class LoginCases(AndroidDriver):
+import unittest
+
+class LoginCases(unittest.TestCase):
+
+    def tearDown(self):
+        self.driver.quit()
+
+    def setUp(self):
+        self.logger = Logger()
+        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
+                                   platform_name=platformName_andr, platform_version=platformVersion,
+                                   device_name=deviceName_andr, driver_url=driver_url
+                                   ).getDriver()
+
 
     def test_demo(self):
-        safariActivity = SafariActivity(self.driver);
-        safariActivity.clickOnTitleProfileIV();
-
+        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+        dashboardPage.validSelf();
 
 if __name__ == "__main__":
-    # print os.path.dirname(__file__);
-    # print os.path.dirname(os.path.dirname(__file__));
     suite = unittest.TestLoader().loadTestsFromTestCase(LoginCases)
     unittest.TextTestRunner(verbosity=2).run(suite)

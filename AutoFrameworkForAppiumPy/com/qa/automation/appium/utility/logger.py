@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys,time
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# importlib.setdefaultencoding('utf8')
 
 import logging
 
@@ -22,8 +22,8 @@ class Logger:
         logger.addHandler(console_handler)
         self.logger = logger
 
-    def d(self,msg="msg"):
-        self.logger.debug(msg)
+    def d(self,msg="msg",*args):
+        self.logger.debug(msg,*args)
 
     def i(self,msg="msg"):
         self.logger.info(msg)
@@ -33,3 +33,8 @@ class Logger:
 
     def e(self,msg="msg"):
         self.logger.error(msg)
+
+
+if __name__ == "__main__":
+    logger = Logger();
+    logger.d("hello");
