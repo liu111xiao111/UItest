@@ -1,4 +1,3 @@
-#! /Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # -*- coding: utf-8 -*-
 
 import os,sys
@@ -18,7 +17,7 @@ class SuperPage(object):
         self.logger = logger
 
     def waitBySeconds(self,seconds=1):
-        API().waitBySeconds(seconds)
+        API().wait_by_seconds(seconds);
 
 if __name__ == '__main__':
     pass

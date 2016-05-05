@@ -1,4 +1,3 @@
-#! /Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # -*- coding: utf-8 -*-
 
 import sys,time
@@ -135,6 +134,11 @@ class API:
     def find_view_by_resourceID_Until_android(self, driver , logger , resource_id="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.ID, resource_id)));
+
+
+    def find_view_by_text_Until_android(self, driver , logger , text="default", seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(EC.text_to_be_present_in_element((By.ID, resource_id),));
 
     '''
     ***********************************************************************************

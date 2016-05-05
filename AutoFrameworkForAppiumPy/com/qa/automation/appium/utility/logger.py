@@ -1,4 +1,3 @@
-#! /Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # -*- coding: utf-8 -*-
 
 import sys,time

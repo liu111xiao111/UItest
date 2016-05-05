@@ -1,4 +1,3 @@
-#! /Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # -*- coding: utf-8 -*-
 
 import sys,os
@@ -25,11 +24,15 @@ class LoginCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-
-    def test_demo(self):
+    def test_case(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
         dashboardPage.validSelf();
+        dashboardPage.clickOnMy();
+        dashboardPage.waitBySeconds(seconds=10);
+
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(LoginCases)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    # suite = unittest.TestLoader().loadTestsFromTestCase(LoginCases)
+    # print("testcase number is "+suite.countTestCases());
+    # unittest.TextTestRunner(verbosity=2).run(suite)
+    pass;

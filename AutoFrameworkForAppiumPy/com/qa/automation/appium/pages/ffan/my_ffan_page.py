@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from time import sleep
 import unittest
 from configs.driver_configs import *
-from pages.ffan.dashboard_page_configs import *
+from pages.ffan.myffan_page_configs import *
 from api.api import *
 from common.super_page import *
 
@@ -22,7 +22,7 @@ PATH = lambda p: os.path.abspath(
 
 #
 #   进入应用的首页,是进入其他页面的入口
-class DashboardPage(SuperPage):
+class MyFfanPage(SuperPage):
 
     def __init__(self,testcase,driver,logger):
         super(DashboardPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
@@ -34,8 +34,7 @@ class DashboardPage(SuperPage):
         API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
                                                 resource_id = DashboardPageConfigs.resource_id__iv_logo__iv,seconds=18);
 
-    def clickOnMy(self):
-        API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=DashboardPageConfigs.text_mine);
+
 
 
 if __name__ == '__main__':
