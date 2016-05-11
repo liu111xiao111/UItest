@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 from com.qa.automation.appium.pages.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.ffan.my_ffan_page import *;
+from com.qa.automation.appium.pages.ffan.login_page import *;
 from com.qa.automation.appium.configs.driver_configs import *;
 from com.qa.automation.appium.driver.appium_driver import *;
 from com.qa.automation.appium.utility.logger import Logger;
@@ -26,11 +27,23 @@ class MyFfanCases(unittest.TestCase):
                                    ).getDriver()
 
     def test_login(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
-        dashboardPage.validSelf();
-        dashboardPage.clickOnMy();
-        myFfanPage = MyFfanPage(testcase=self,driver=self.driver,logger=self.logger);
-        myFfanPage.validSelf();
+        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(testcase=self,driver=self.driver,logger=self.logger)
+        myFfanPage.validSelf()
+        myFfanPage.clickOnLogin()
+        loginPage = LoginPage(testcase=self,driver=self.driver,logger=self.logger)
+        loginPage.validSelf()
+        loginPage.waitBySeconds(seconds=2)
+        loginPage.switchToNormalLogin()
+        loginPage.inputUserName();
+        loginPage.waitBySeconds(seconds=1)
+        loginPage.inputPassWord()
+        loginPage.waitBySeconds(seconds=1)
+        loginPage.clickOnLoginBtn();
+
+
         dashboardPage.waitBySeconds(seconds=10);
 
 
