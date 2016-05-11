@@ -30,7 +30,8 @@ class LoginCases(unittest.TestCase):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnMy();
-        myFfanPage = MyFfanPage(testcase=self)
+        myFfanPage = MyFfanPage(testcase=self,driver=self.driver,logger=self.logger);
+        myFfanPage.validSelf();
         dashboardPage.waitBySeconds(seconds=10);
 
 
