@@ -2,14 +2,12 @@
 
 import os, sys
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from time import sleep
 import unittest
-from configs.driver_configs import *
-from pages.ffan.myffan_page_configs import *
-from api.api import *
-from common.super_page import *
+from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.pages.common.super_page import *
+from com.qa.automation.appium.pages.ffan.login_page_configs import *
 
 from appium import webdriver
 
@@ -31,21 +29,21 @@ class LoginPage(SuperPage):
 
     def validSelf(self):
         API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=login_page_configs.resource_id_login_button,
+                                                      resource_id=LoginPageConfigs.resource_id_login_button,
                                                       seconds=10);
 
     def switchToNormalLogin(self):
         API().click_view_by_text_android(driver=self.driver, logger=self.logger,
-                                         text=login_page_configs.text_normal_login);
+                                         text=LoginPageConfigs.text_normal_login);
 
     def inputUserName(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               text=login_page_configs.resource_id_user_name, username
+                                               text=LoginPageConfigs.resource_id_user_name, username=LoginPageConfigs.account_name
                                                );
 
     def inputPassWord(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               text=login_page_configs.resource_id_pass_word, password
+                                               text=LoginPageConfigs.resource_id_pass_word, passwd=LoginPageConfigs.account_passwd
                                                );
 
 
