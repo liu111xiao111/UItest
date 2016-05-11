@@ -4,8 +4,6 @@ import sys,os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-print("path contains %s" % (sys.path));
-
 from com.qa.automation.appium.pages.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.ffan.my_ffan_page import *;
 from com.qa.automation.appium.configs.driver_configs import *;

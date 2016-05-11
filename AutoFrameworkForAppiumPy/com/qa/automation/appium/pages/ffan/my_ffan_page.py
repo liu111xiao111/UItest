@@ -20,7 +20,7 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-#
+
 #   进入应用的首页,是进入其他页面的入口
 class MyFfanPage(SuperPage):
 
@@ -36,6 +36,8 @@ class MyFfanPage(SuperPage):
                                           text=MyFfanPageConfigs.text_my_ffan);
 
 
+    def clickOnLogin(self):
+        API().click_view_by_resourceID_android(driver = self.driver,logger=self.logger,resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
 
 
 if __name__ == '__main__':
