@@ -13,6 +13,7 @@ from com.qa.automation.appium.driver.appium_driver import *;
 from com.qa.automation.appium.utility.logger import Logger;
 
 import unittest
+import HTMLTestRunner
 
 class LoginCases(unittest.TestCase):
 
