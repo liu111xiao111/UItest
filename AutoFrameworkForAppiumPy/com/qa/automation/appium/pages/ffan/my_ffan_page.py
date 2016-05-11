@@ -40,5 +40,8 @@ class MyFfanPage(SuperPage):
         API().click_view_by_resourceID_android(driver = self.driver,logger=self.logger,resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
 
 
+    def validLoginStatus(self):
+        API().assert_view_by_resourceID_android(testcase=self.testcase,logger=self.logger,driver=self.driver,resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)
+
 if __name__ == '__main__':
     pass;

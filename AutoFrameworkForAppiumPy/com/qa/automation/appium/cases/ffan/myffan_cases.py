@@ -42,8 +42,8 @@ class MyFfanCases(unittest.TestCase):
         loginPage.inputPassWord()
         loginPage.waitBySeconds(seconds=1)
         loginPage.clickOnLoginBtn();
-
-
+        loginPage.waitBySeconds(seconds=3)
+        myFfanPage.validLoginStatus()
         dashboardPage.waitBySeconds(seconds=10);
 
 

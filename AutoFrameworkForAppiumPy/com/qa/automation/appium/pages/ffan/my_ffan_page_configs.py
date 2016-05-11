@@ -14,6 +14,8 @@ class MyFfanPageConfigs():
     #设置relativelayout
     resource_id_my_settings_rl = "my_settings";
 
+    resource_id_txt_user_nick_name_tv = "txt_user_nick_name";
+
 
 
     # text指明类型为text label
