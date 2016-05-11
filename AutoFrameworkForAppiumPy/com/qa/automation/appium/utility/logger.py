@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import sys,time
-# reload(sys)
-# importlib.setdefaultencoding('utf8')
 
 import logging
 

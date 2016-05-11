@@ -3,11 +3,11 @@
 import os,sys
 # reload(sys)
 # sys.setdefaultencoding('utf8')
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+#sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 import unittest
-from api.api import *
-from utility.logger import *
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.utility.logger import *
 
 class SuperPage(object):
 

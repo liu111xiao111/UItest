@@ -162,6 +162,18 @@ class API:
     '''
 
     '''
+        用法和findViewByText,增加结果申明判断.
+    '''
+
+    def assert_view_by_text_android(self, testcase, driver, logger, text="default"):
+        try:
+            testcase.assertIsNotNone(
+                self.get_view_text_equal_android(driver=driver, logger=logger, text=text),
+                "resource id none")
+        except NoSuchElementException as e:
+            testcase.assertTrue(False, "text %s none" % (text))
+
+    '''
         用法和findViewByResourceIDUntil,增加结果申明判断.
     '''
 

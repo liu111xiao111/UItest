@@ -2,16 +2,16 @@
 
 import os,sys
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 
 from time import sleep
 import unittest
-from configs.driver_configs import *
-from pages.ffan.myffan_page_configs import *
-from api.api import *
-from common.super_page import *
+from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.pages.ffan.my_ffan_page_configs import *
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.pages.common.super_page import *
 
 from appium import webdriver
 
@@ -25,14 +25,15 @@ PATH = lambda p: os.path.abspath(
 class MyFfanPage(SuperPage):
 
     def __init__(self,testcase,driver,logger):
-        super(DashboardPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(MyFfanPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
 
     '''
         usage : 进入到应用首页,检查ffan logo
     '''
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
-                                                resource_id = DashboardPageConfigs.resource_id__iv_logo__iv,seconds=18);
+        API().assert_view_by_text_android(testcase = self.testcase , driver = self.driver,
+                                          logger = self.logger ,
+                                          text=MyFfanPageConfigs.text_my_ffan);
 
 
 

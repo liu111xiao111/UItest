@@ -4,9 +4,9 @@ import sys,os
 # reload(sys)
 # sys.setdefaultencoding('utf8')
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+#sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from cases.ffan.login_cases import *
+from com.qa.automation.appium.cases.ffan.login_cases import *
 
 import unittest
 

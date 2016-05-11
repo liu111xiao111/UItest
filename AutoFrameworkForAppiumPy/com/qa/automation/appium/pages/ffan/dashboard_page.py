@@ -2,16 +2,14 @@
 
 import os,sys
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-
+#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
-from configs.driver_configs import *
-from pages.ffan.dashboard_page_configs import *
-from api.api import *
-from common.super_page import *
+from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.pages.ffan.dashboard_page_configs import *
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.pages.common.super_page import *
 
 from appium import webdriver
 
