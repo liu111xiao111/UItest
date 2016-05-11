@@ -9,3 +9,6 @@
 *.bz2
 *.db
 *.sqlite
+*.html
+__pycache__/
+*.xml
