@@ -25,7 +25,7 @@ class MyFfanCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-    def test_case(self):
+    def test_login(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnMy();
