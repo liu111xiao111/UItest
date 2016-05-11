@@ -205,6 +205,18 @@ class API:
     def wait_by_seconds(self,seconds=1):
         time.sleep(seconds)
 
+    '''
+        ***********************************************************************************
+            input methods
+        ***********************************************************************************
+        '''
+
+    '''
+        用法根据resource_id 定位输入框，并输入String内容.
+    '''
+    def input_view_by_resourceID_android(self, driver, logger, resource_id, string):
+        self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id).input(string);
+
 
 
 
