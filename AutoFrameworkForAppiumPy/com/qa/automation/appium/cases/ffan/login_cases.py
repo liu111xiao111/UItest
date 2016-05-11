@@ -40,3 +40,10 @@ if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(LoginCases)
     #print("testcase number is "+suite.countTestCases());
     unittest.TextTestRunner(verbosity=2).run(suite)
+    now = time.strftime('%Y_%m_%d_%H_%M_%S')
+    reportpath = os.getcwd()
+    filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
+    fp = open(filename, 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
+                                           description='Result for test')
+    runner.run(suite)
