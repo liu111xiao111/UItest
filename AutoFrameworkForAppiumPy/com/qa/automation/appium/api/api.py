@@ -215,7 +215,8 @@ class API:
         用法根据resource_id 定位输入框，并输入String内容.
     '''
     def input_view_by_resourceID_android(self, driver, logger, resource_id, string):
-        self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id).input(string);
+        input_field = self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id)
+        input_field.send_keys(string)
 
 
 
