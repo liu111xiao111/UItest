@@ -150,6 +150,7 @@ class API:
         self.get_view_by_resourceID(driver = driver , logger = logger , resource_id = resource_id).click();
 
     def click_view_by_text_android(self, driver , logger , text="default"):
+        logger.d("click text is ======== %s",text)
         web_element = self.get_view_text_equal_android(driver=driver, logger = logger , text=text);
         web_element.click();
 
@@ -201,6 +202,10 @@ class API:
         common methods
     ***********************************************************************************
     '''
+
+    def scroll_to_text(self, driver , logger , text):
+        el = driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
+                                                        'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
 
     def wait_by_seconds(self,seconds=1):
         time.sleep(seconds)

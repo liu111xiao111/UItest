@@ -22,10 +22,13 @@ if not os.path.exists(reportpath):
     os.makedirs(reportpath)
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(MyFfanCases)
+# suite = unittest.TestLoader().loadTestsFromTestCase(MyFfanCases)
+suite = unittest.TestSuite()
+# suite.addTest(MyFfanCases("test_login"))
+suite.addTest(MyFfanCases("test_logout_myffan"))
 now = time.strftime('%H_%M_%S')
 
-filename = reportpath + 'feifan_automation_test_report_' + now + '.html'
+filename = reportpath + 'feifan_automation_test_report.html'
 fp = open(filename, 'wb')
 runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                        description='Result for test')

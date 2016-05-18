@@ -23,7 +23,9 @@ class MyFfanPageConfigs():
     text_register = "注册";
     text_login = "登录";
     text_welcome_2_ffan = "欢迎来到飞凡";
+    text_my_favorite = "我的喜欢";
     text_member_card_bag = "会员卡包";
+    text_settins = "设置";
 
     def __init__(self):
         pass;

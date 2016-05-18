@@ -43,5 +43,10 @@ class MyFfanPage(SuperPage):
     def validLoginStatus(self):
         API().assert_view_by_resourceID_android(testcase=self.testcase,logger=self.logger,driver=self.driver,resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)
 
+    def clickOnSettings(self):
+        API().scroll_fromText_toText(driver=self.driver,logger=self.logger,fromText=MyFfanPageConfigs.text_my_favorite,toText=MyFfanPageConfigs.text_settins)
+        API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=MyFfanPageConfigs.text_settins)
+
+
 if __name__ == '__main__':
     pass;

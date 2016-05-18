@@ -44,7 +44,17 @@ class MyFfanCases(unittest.TestCase):
         loginPage.clickOnLoginBtn();
         loginPage.waitBySeconds(seconds=3)
         myFfanPage.validLoginStatus()
-        dashboardPage.waitBySeconds(seconds=10);
+        dashboardPage.waitBySeconds(seconds=2);
+
+    def test_logout_myffan(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
+        myFfanPage.validSelf()
+        myFfanPage.waitBySeconds(seconds=2)
+        myFfanPage.clickOnSettings()
+        myFfanPage.waitBySeconds(seconds=2)
 
 
 if __name__ == "__main__":
