@@ -41,7 +41,7 @@ class MyFfanPage(SuperPage):
 
 
     def validLoginStatus(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase,logger=self.logger,driver=self.driver,resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv,seconds=30)
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase,logger=self.logger,driver=self.driver,resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv,seconds=90)
 
     def clickOnSettings(self):
         API().scroll_to_text(driver=self.driver,logger=self.logger,text=MyFfanPageConfigs.text_settins)
