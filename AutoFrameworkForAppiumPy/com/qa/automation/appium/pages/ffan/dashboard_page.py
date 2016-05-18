@@ -36,5 +36,8 @@ class DashboardPage(SuperPage):
         API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=DashboardPageConfigs.text_mine);
 
 
+    def clickOnSmartLife(self):
+        API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=DashboardPageConfigs.text_huishenghuo);
+
 if __name__ == '__main__':
     pass;
