@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 from com.qa.automation.appium.pages.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.ffan.my_ffan_page import *;
+from com.qa.automation.appium.pages.ffan.settings_page import *;
 from com.qa.automation.appium.pages.ffan.login_page import *;
 from com.qa.automation.appium.configs.driver_configs import *;
 from com.qa.automation.appium.driver.appium_driver import *;
@@ -54,6 +55,9 @@ class MyFfanCases(unittest.TestCase):
         myFfanPage.validSelf()
         myFfanPage.waitBySeconds(seconds=2)
         myFfanPage.clickOnSettings()
+        settingPage = SettingsPage(testcase=self,driver=self.driver,logger=self.logger)
+        settingPage.validSelf()
+        settingPage.clickOnQuitAccountBtn()
         myFfanPage.waitBySeconds(seconds=2)
 
 
