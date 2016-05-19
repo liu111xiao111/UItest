@@ -6,6 +6,7 @@ import sys,os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
+from com.qa.automation.appium.cases.ffan.myffan_cases import MyFfanCases
 from com.qa.automation.appium.cases.ffan.love_shopping_cases import LoveShoppingCases
 
 import unittest
@@ -23,6 +24,8 @@ if not os.path.exists(reportpath):
 
 # suite = unittest.TestLoader().loadTestsFromTestCase(MyFfanCases)
 suite = unittest.TestSuite()
+suite.addTest(MyFfanCases("test_login"))
+suite.addTest(MyFfanCases("test_logout"))
 suite.addTest(LoveShoppingCases("test_shopping_mall"))
 suite.addTest(LoveShoppingCases("test_film"))
 suite.addTest(LoveShoppingCases("test_food"))
