@@ -7,7 +7,7 @@ import unittest
 from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.api.api import *
 from com.qa.automation.appium.pages.common.super_page import *
-from com.qa.automation.appium.pages.ffan.login_page_configs import *
+from com.qa.automation.appium.pages.ffan.settings_page_configs import *
 
 from appium import webdriver
 
@@ -23,28 +23,22 @@ class SettingsPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(SettingsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-
     def validSelf(self):
         API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=LoginPageConfigs.resource_id_login_button,
+                                                      resource_id=SettingsPageConfigs.resource_id_setting_account_management_rl,
                                                       seconds=10);
 
-    def switchToNormalLogin(self):
-        API().click_view_by_text_android(driver=self.driver, logger=self.logger,
-                                         text=LoginPageConfigs.text_normal_login);
+    #点击退出当前账号button
+    def clickOnQuitAccountBtn(self,confirmQuit=True):
+        API().click_view_by_resourceID_android(driver=self.driver, logger=self.logger,
+                                               resource_id=SettingsPageConfigs.resource_id_setting_btn_logout_rl);
+        if confirmQuit:
+            API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=SettingsPageConfigs.text_confirm_btn)
+        else:
+            API().click_view_by_text_android(driver=self.driver, logger=self.logger,
+                                             text=SettingsPageConfigs.text_cancel_btn)
 
-    def inputUserName(self):
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_user_name, string=LoginPageConfigs.account_name
-                                               );
 
-    def inputPassWord(self):
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_pass_word, string=LoginPageConfigs.account_passwd
-                                               );
-
-    def clickOnLoginBtn(self):
-        API().click_view_by_resourceID_android(driver=self.driver,logger=self.logger,resource_id=LoginPageConfigs.resource_id_login_button)
 
 
 if __name__ == '__main__':

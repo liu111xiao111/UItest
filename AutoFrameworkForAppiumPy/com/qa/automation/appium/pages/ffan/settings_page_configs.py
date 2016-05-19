@@ -5,22 +5,33 @@ import os,sys
 
 class SettingsPageConfigs():
 
-    # 普通登录手机号码输入框
-    resource_id_common_title_view_layout_title = "common_title_view_layout_title";
+    # 账号管理relativelayout
+    resource_id_setting_account_management_rl = "setting_account_management";
 
-    # 普通登录密码输入框
-    resource_id_pass_word = "com.wanda.app.wanhui:id/widget_input";
+    # 消息设置relativelayout
+    resource_id_setting_push_notification_rl = "setting_push_notification";
 
-    # 登录按钮
-    resource_id_login_button = "com.wanda.app.wanhui:id/btn_login";
+    # 清理缓存relativelayout
+    resource_id_setting_clear_cache_rl = "setting_clear_cache";
 
-    # text指明类型为text label,后面是文字的拼音
-    text_quick_login = "快捷登录";
-    text_normal_login = "普通登录";
-    text_forget_password = "忘记密码?"
+    # 检测更新relativelayout
+    resource_id_setting_check_update_rl = "setting_check_update";
 
-    account_name = "13601138742"
-    account_passwd = "9875321mgw"
+    # 客服电话relativelayout
+    resource_id_setting_customer_service_rl = "setting_customer_service";
+
+    # 关于飞凡relativelayout
+    resource_id_setting_about_rl = "setting_about";
+
+    # 推荐给小伙伴relativelayout
+    resource_id_setting_share_to_friend_rl = "setting_share_to_friend";
+
+    # 退出当前账号textview
+    resource_id_setting_btn_logout_rl = "setting_btn_logout";
+
+    text_confirm_btn = "确认";
+
+    text_cancel_btn = "取消";
 
     def __init__(self):
         pass;
