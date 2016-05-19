@@ -7,6 +7,7 @@ sys.path.append(os.path.dirname(
 
 from com.qa.automation.appium.pages.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.ffan.love_shopping_page import *;
+from com.qa.automation.appium.pages.ffan.shopping_center_page import *;
 from com.qa.automation.appium.driver.appium_driver import *;
 from com.qa.automation.appium.utility.logger import Logger;
 
@@ -30,6 +31,8 @@ class LoveShoppingCases(unittest.TestCase):
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnShoppingMall();
+        shoppingCenterPage = ShoppingCenterPage(testcase=self, driver=self.driver, logger=self.logger);
+        shoppingCenterPage.validSelf();
 
     def test_film(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);

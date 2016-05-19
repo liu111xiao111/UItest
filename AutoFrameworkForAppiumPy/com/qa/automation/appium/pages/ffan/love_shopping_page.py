@@ -18,7 +18,7 @@ PATH = lambda p: os.path.abspath(
 
 
 #
-#   进入应用的首页,是进入其他页面的入口
+#
 class LoveShoppingPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(LoveShoppingPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

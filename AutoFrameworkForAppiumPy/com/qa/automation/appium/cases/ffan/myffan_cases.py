@@ -47,7 +47,7 @@ class MyFfanCases(unittest.TestCase):
         myFfanPage.validLoginStatus()
         dashboardPage.waitBySeconds(seconds=2);
 
-    def test_logout_myffan(self):
+    def test_logout(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
