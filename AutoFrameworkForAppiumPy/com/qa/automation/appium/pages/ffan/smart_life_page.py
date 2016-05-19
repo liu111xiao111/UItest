@@ -23,9 +23,8 @@ class SmartLifePage(SuperPage):
         usage : 进入慧生活,检查ffan logo
     '''
     def validSelf(self):
-        API().assert_view_by_text_android(testcase = self.testcase , driver = self.driver,
-                                          logger = self.logger ,
-                                          text=SmartLifePageConfigs.resource_id__iv_logo__iv);
+        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
+                                                resource_id = SmartLifePageConfigs.resource_id__iv_logo__iv,seconds=18);
 
     '''
         usage : 进入慧生活,点击全城找店
