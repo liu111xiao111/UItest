@@ -25,74 +25,88 @@ class SmartLifeCases(unittest.TestCase):
                                    ).getDriver()
 
 
-
-    # 测试慧生活页面
-    def test_self(self):
+    # 测试点击快车
+    def test_ClickQuickCar(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
         smartLifePage.validSelf();
+        smartLifePage.clickQuickCar();
 
-
-
-    # 测试点击全城找店图标
-    def test_ClickFindStore(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+    # 测试点击出租车
+    def test_clickTaxi(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickFindStore();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickTaxi();
 
-    # 测试点击全城找店图标
-    def test_ClickQueue(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+    # 测试点击专车
+    def test_clickTailoredCar(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickQueue();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickTailoredCar();
 
-    # 测试点击全城找店图标
-    def test_ClickFly(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+
+    # 测试点击代驾
+    def test_clickDrivingService(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickFly();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickDrivingService();
 
-    # 测试点击优惠券图标
-    def test_ClickCoupon(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+    # 测试点击话费
+    def test_clickTelephoneCharge(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickCoupon();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickTelephoneCharge();
 
-    # 测试点击活动图标
-    def test_ClickActivity(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+
+    # 测试点击流量
+    def test_clickFlow(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickActivity();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickFlow();
 
-
-    # 测试点击活动页签
-    def test_ClickActivityTag(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+    # 测试点击Q币
+    def test_clickQCoin(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickActivityTag();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickQCoin();
 
-    # 测试点击优惠页签
-    def test_ClickCouponTag(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+    # 测试点击游戏充值
+    def test_clickGameCharge(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
-        smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
-        smartLifePage.clickCouponTag();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickGameCharge();
 
+    # 测试点击股票
+    def test_clickStock(self):
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.validSelf();
+        dashboardPage.clickOnSmartLife();
+        smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
+        smartLifePage.validSelf();
+        smartLifePage.clickStock();
 
 
 if __name__ == "__main__":
