@@ -43,11 +43,11 @@ suite.addTest(SmartLifeCases("test_ClickQuickCar"))
 suite.addTest(SmartLifeCases("test_clickTaxi"))
 suite.addTest(SmartLifeCases("test_clickTailoredCar"))
 suite.addTest(SmartLifeCases("test_clickDrivingService"))
-suite.addTest(SmartLifeCases("test_clickTelephoneCharge"))
-suite.addTest(SmartLifeCases("test_clickFlow"))
-suite.addTest(SmartLifeCases("test_clickQCoin"))
-suite.addTest(SmartLifeCases("test_clickGameCharge"))
-suite.addTest(SmartLifeCases("test_clickStock"))
+# suite.addTest(SmartLifeCases("test_clickTelephoneCharge"))
+# suite.addTest(SmartLifeCases("test_clickFlow"))
+# suite.addTest(SmartLifeCases("test_clickQCoin"))
+# suite.addTest(SmartLifeCases("test_clickGameCharge"))
+# suite.addTest(SmartLifeCases("test_clickStock"))
 
 
 filename = reportpath + 'feifan_automation_test_report.html'
