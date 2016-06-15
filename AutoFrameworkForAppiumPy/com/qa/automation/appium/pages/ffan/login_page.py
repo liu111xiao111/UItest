@@ -37,11 +37,13 @@ class LoginPage(SuperPage):
                                          text=LoginPageConfigs.text_normal_login);
 
     def inputUserName(self):
+        #API().hidden_keyborad(driver=self.driver);
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
                                                resource_id=LoginPageConfigs.resource_id_user_name, string=LoginPageConfigs.account_name
                                                );
 
     def inputPassWord(self):
+        #API().hidden_keyborad(driver=self.driver);
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
                                                resource_id=LoginPageConfigs.resource_id_pass_word, string=LoginPageConfigs.account_passwd
                                                );

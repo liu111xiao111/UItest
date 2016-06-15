@@ -30,6 +30,7 @@ class MyFfanCases(unittest.TestCase):
     def test_login(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
         dashboardPage.validSelf()
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.clickOnMy()
         myFfanPage = MyFfanPage(testcase=self,driver=self.driver,logger=self.logger)
         myFfanPage.validSelf()
@@ -50,6 +51,7 @@ class MyFfanCases(unittest.TestCase):
     def test_logout(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboardPage.validSelf()
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.clickOnMy()
         myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
         myFfanPage.validSelf()

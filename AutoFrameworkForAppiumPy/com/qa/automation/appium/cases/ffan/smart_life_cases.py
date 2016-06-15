@@ -27,17 +27,24 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击快车
     def test_ClickQuickCar(self):
+
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self,driver=self.driver,logger=self.logger);
+
         smartLifePage.validSelf();
         smartLifePage.clickQuickCar();
 
     # 测试点击出租车
     def test_clickTaxi(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -45,8 +52,11 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击专车
     def test_clickTailoredCar(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -55,8 +65,11 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击代驾
     def test_clickDrivingService(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -64,8 +77,11 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击话费
     def test_clickTelephoneCharge(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -74,8 +90,11 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击流量
     def test_clickFlow(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -83,8 +102,11 @@ class SmartLifeCases(unittest.TestCase):
 
     # 测试点击Q币
     def test_clickQCoin(self):
+
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
+
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
         smartLifePage.validSelf();
@@ -93,6 +115,7 @@ class SmartLifeCases(unittest.TestCase):
     # 测试点击游戏充值
     def test_clickGameCharge(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);
@@ -102,6 +125,7 @@ class SmartLifeCases(unittest.TestCase):
     # 测试点击股票
     def test_clickStock(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         dashboardPage.clickOnSmartLife();
         smartLifePage = SmartLifePage(testcase=self, driver=self.driver, logger=self.logger);

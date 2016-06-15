@@ -28,6 +28,7 @@ class LoveShoppingCases(unittest.TestCase):
 
     def test_shopping_mall(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnShoppingMall();
@@ -36,54 +37,63 @@ class LoveShoppingCases(unittest.TestCase):
 
     def test_film(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnFilm();
 
     def test_food(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnFood();
 
     def test_brand(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnBrand();
 
     def test_children(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnChlidren();
 
     def test_preferential(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnPreferential();
 
     def test_shopping(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnShopping();
 
     def test_flash_sale(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnFlashSale();
 
     def test_parking(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnParking();
 
     def test_le_pay(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage.waitBySeconds(seconds=20)
         dashboardPage.validSelf();
         loveShoppingPage = LoveShoppingPage(testcase=self, driver=self.driver, logger=self.logger);
         loveShoppingPage.clickOnLePays();
