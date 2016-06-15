@@ -223,6 +223,9 @@ class API:
         input_field = self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id)
         input_field.send_keys(string)
 
+    def hidden_keyborad(self,driver):
+        driver.hide_keyboard();
+
 
 
 
