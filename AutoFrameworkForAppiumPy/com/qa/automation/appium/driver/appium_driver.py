@@ -20,13 +20,14 @@ class AppiumDriver():
 
     def __init__(self,app_package='com.ffan.bp.test',app_activity='.SplashActivity',
                  platform_name='Android',platform_version='4.4',device_name='Android',
-                 driver_url='http://localhost:4723/wd/hub'):
+                 driver_url='http://localhost:4723/wd/hub',bundle_id='com'):
         self.appPackage = app_package;
         self.appActivity = app_activity;
         self.platformName = platform_name;
         self.platformVersion = platform_version;
         self.deviceName = device_name;
         self.driver_url = driver_url;
+        self.bundle_id = bundle_id
 
     def getDriver(self):
         # desired_caps = {}
@@ -35,12 +36,21 @@ class AppiumDriver():
         # desired_caps['deviceName'] = self.deviceName;
         # desired_caps['appPackage'] = self.appPackage;
         # desired_caps['appActivity'] = self.appActivity;
-        desired_caps = {
-            'platformName': self.platformName,
-            'platformVersion': self.platformVersion,
-            'deviceName': self.deviceName,
-            'appPackage': self.appPackage,
-            'appActivity': self.appActivity
+        if(self.platformName=="Android"):
+            desired_caps = {
+                'platformName': self.platformName,
+                'platformVersion': self.platformVersion,
+                'deviceName': self.deviceName,
+                'appPackage': self.appPackage,
+                'appActivity': self.appActivity
+        }
+        else:
+            desired_caps = {
+                'platformName': self.platformName,
+                'platformVersion': self.platformVersion,
+                'deviceName': self.deviceName,
+                'appPackage': self.appPackage,
+                'bundleId':self.bundle_id
         }
         return webdriver.Remote(self.driver_url, desired_caps)
 
