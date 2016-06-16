@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import sys,time
-# reload(sys)
-# sys.setdefaultencoding('utf8')
+from _ast import IsNot
+import sys, time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from appium import webdriver
+from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+
+
+
+
 
 class API:
 
@@ -138,23 +143,97 @@ class API:
 
     def find_view_by_text_Until_android(self, driver , logger , text="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
-        return wdw.until(EC.text_to_be_present_in_element((By.ID, resource_id),));
+        return wdw.until(EC.text_to_be_present_in_element((MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("' + text + '")'), text));
 
+    
+    def find_view_by_content_desc_Until_android(self, driver , logger , content_desc="default", seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(EC.presence_of_element_located((By.NAME, content_desc)))
+    
+    def find_view_by_xpath_Until_android(self, driver , logger , xpath="default", seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+    
     '''
     ***********************************************************************************
         click methods
     ***********************************************************************************
     '''
+    def click_view_by_resourceID_android(self, testcase, driver, logger , resource_id,seconds=10):
+        
+        try:
+            wdw = WebDriverWait(driver=driver, timeout=seconds)
+            findResult = wdw.until(EC.presence_of_element_located((By.ID, resource_id)))
+            if findResult is not None:
+                self.get_view_by_resourceID(driver=driver , logger=logger , resource_id=resource_id).click();  
+        except NoSuchElementException:
+            testcase.assertTrue(False, "resource_id %s none" % (resource_id))
+        except TimeoutException:
+            testcase.assertIsNotNone(None,"get resource_id %s timeout until %s seconds" % (resource_id, seconds))     
+         
 
-    def click_view_by_resourceID_android(self, driver, logger , resource_id):
-        self.get_view_by_resourceID(driver = driver , logger = logger , resource_id = resource_id).click();
+    def click_view_by_text_android(self, testcase, driver , logger , text="default", seconds = 10):
 
-    def click_view_by_text_android(self, driver , logger , text="default"):
-        logger.d("click text is ======== %s",text)
-        web_element = self.get_view_text_equal_android(driver=driver, logger = logger , text=text);
-        web_element.click();
+        try:
+            wdw = WebDriverWait(driver=driver, timeout=seconds)
+            findResult = wdw.until(EC.text_to_be_present_in_element((MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("' + text + '")'), text));
+            if findResult is not None:
+                web_element = self.get_view_text_equal_android(driver=driver, logger=logger , text=text)
+                web_element.click()
+        except NoSuchElementException:
+            testcase.assertTrue(False, "text %s none" % (text))
+        except TimeoutException:
+            testcase.assertIsNotNone(None,"get text %s timeout until %s seconds" % (text, seconds)) 
+            
+            
+    def click_view_by_xpath(self, testcase, driver , logger, xpath,seconds=10):
+        try:
+            wdw = WebDriverWait(driver=driver, timeout=seconds)
+            findResult = wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+            if findResult is not None:
+                driver.find_element_by_xpath(xpath).click();
+        except NoSuchElementException:
+            logger.d("no such element")
+            testcase.assertTrue(False, "xpath %s none" % (xpath))
+        except TimeoutException:
+            logger.d("get xpath timeout")
+            testcase.assertIsNotNone(None,"get xpath %s timeout until %s seconds" % (xpath, seconds))  
+            
+       
+    def click_back_key(self, driver , logger):
+        #logger.d("click back key , keycode ======== 4",)
+        driver.press_keycode(4);
+        time.sleep(2)
+        
 
-
+    '''
+    ***********************************************************************************
+        scroll method
+    ***********************************************************************************
+    '''
+    def scroll(self, driver, logger , start_x, start_y, end_x, end_y, duration=None):
+        # logger.d("swipe ========","from : " + start_x + " , ", start_y + " , ","to :" + end_x + " , ", end_y)
+        driver.swipe(start_x=start_x, start_y=start_y, end_x=end_x, end_y=end_y, duration=None);
+       
+    
+    '''
+    ***********************************************************************************
+        get device width 
+    ***********************************************************************************
+    '''
+    def get_width_of_device(self, driver , logger):
+        x = driver.get_window_size()['width']
+        # logger.d("window size = d%" + x);
+        return x;
+    '''
+    ***********************************************************************************
+        get device height 
+    ***********************************************************************************
+    '''
+    def get_height_of_device(self, driver , logger):
+        y = driver.get_window_size()['height']
+        # logger.d("window size = d%" + y)
+        return y;  
 
     '''
     ***********************************************************************************
@@ -165,14 +244,18 @@ class API:
     '''
         用法和findViewByText,增加结果申明判断.
     '''
-
-    def assert_view_by_text_android(self, testcase, driver, logger, text="default"):
+    def assert_view_by_text_android(self, testcase, driver, logger, text="default", seconds=10):
         try:
             testcase.assertIsNotNone(
-                self.get_view_text_equal_android(driver=driver, logger=logger, text=text),
-                "resource id none")
+                # self.get_view_text_equal_android(driver=driver, logger=logger, text=text),
+                # "resource id none"
+                self.find_view_by_text_Until_android(driver=driver, logger=logger, text=text, seconds=10)
+                )
         except NoSuchElementException as e:
             testcase.assertTrue(False, "text %s none" % (text))
+            
+        except TimeoutException as e:
+            testcase.assertIsNotNone(None,"get text %s timeout until %s seconds" % (text, seconds))   
 
     '''
         用法和findViewByResourceIDUntil,增加结果申明判断.
@@ -180,22 +263,38 @@ class API:
 
     def assert_view_by_resourceID_Until_android(self, testcase, driver , logger , resource_id="default", seconds=10):
         try:
-            testcase.assertIsNotNone(
-                self.find_view_by_resourceID_Until_android(driver=driver, logger = logger , resource_id=resource_id, seconds=seconds),
-                "resource id none")
+            testcase.assertIsNotNone(self.find_view_by_resourceID_Until_android(driver=driver, logger=logger , resource_id=resource_id, seconds=seconds), "resource id none")
         except NoSuchElementException as e:
             testcase.assertTrue(False, "resource id %s none" % (resource_id))
         except TimeoutException as e:
             testcase.assertTrue(False,
                                  "get resource id %s timeout until %s seconds" % (resource_id, seconds))
 
+    def assert_none_view_by_resource_id_until_android(self, testcase, driver, logger, resource_id="default", seconds=10):
+        '''
+           usage : verify whether the current page is the version upgrade page.
+        '''
+        try:
+            testcase.assertIsNotNone(self.find_view_by_resourceID_Until_android(driver, logger, resource_id, seconds), "resource id none")
+        except TimeoutException:
+            testcase.assertTrue(True, "resource id %s is not none" % (resource_id))
+
     def assert_view_by_resourceID_android(self, testcase, logger , driver, resource_id="default"):
         try:
-            testcase.assertIsNotNone(self.get_view_by_resourceID(driver = driver, logger = logger , resource_id=resource_id),
+            testcase.assertIsNotNone(self.get_view_by_resourceID(driver=driver, logger=logger , resource_id=resource_id),
                                       "resource id %s not none" % (resource_id))
         except NoSuchElementException as e:
             testcase.assertIsNotNone(None,
                                       "resource id %s none" % (resource_id))
+            
+    def assert_view_xpath_android(self, testcase, driver, logger, xpath="default",seconds = 10):
+        try:
+            testcase.assertIsNotNone(self.find_view_by_xpath_Until_android(driver = driver, logger = logger, xpath = xpath, seconds= 10))
+        except NoSuchElementException as e:
+            testcase.assertTrue(False, "content_desc %s none" % (xpath))
+            
+        except TimeoutException as e:
+            testcase.assertIsNotNone(None,"get content_desc %s timeout until %s seconds" % (xpath, seconds))                 
 
     '''
     ***********************************************************************************
@@ -206,6 +305,9 @@ class API:
     def scroll_to_text(self, driver , logger , text):
         el = driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
                                                         'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
+        
+    def scrollFromElToEl(self , driver , logger , el1 , el2):
+        driver.scroll(el1,el2)
 
     def wait_by_seconds(self,seconds=1):
         time.sleep(seconds)
