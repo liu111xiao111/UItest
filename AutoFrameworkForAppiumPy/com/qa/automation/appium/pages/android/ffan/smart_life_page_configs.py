@@ -21,6 +21,13 @@ class SmartLifePageConfigs():
     text_gameCharge = "游戏充值";
     text_stock = "股票";
     text_feiyue = "飞悦";
+	text_findStore = "全城找店";
+	text_queue = "排队";
+	text_coupon = "优惠券";
+	text_activity = "活动";
+	
+	tag_activity = "活动";
+    tag_coupon = "优惠";
 
 
     def __init__(self):

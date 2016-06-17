@@ -6,8 +6,8 @@ from time import sleep
 import unittest
 from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.common.super_page import *
-from com.qa.automation.appium.pages.ffan.login_page_configs import *
+from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.login_page_configs import *
 
 from appium import webdriver
 
@@ -33,23 +33,21 @@ class LoginPage(SuperPage):
                                                       seconds=10);
 
     def switchToNormalLogin(self):
-        API().click_view_by_text_android(driver=self.driver, logger=self.logger,
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger=self.logger,
                                          text=LoginPageConfigs.text_normal_login);
 
     def inputUserName(self):
-        #API().hidden_keyborad(driver=self.driver);
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
                                                resource_id=LoginPageConfigs.resource_id_user_name, string=LoginPageConfigs.account_name
                                                );
 
     def inputPassWord(self):
-        #API().hidden_keyborad(driver=self.driver);
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
                                                resource_id=LoginPageConfigs.resource_id_pass_word, string=LoginPageConfigs.account_passwd
                                                );
 
     def clickOnLoginBtn(self):
-        API().click_view_by_resourceID_android(driver=self.driver,logger=self.logger,resource_id=LoginPageConfigs.resource_id_login_button)
+        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=LoginPageConfigs.resource_id_login_button)
 
 
 if __name__ == '__main__':

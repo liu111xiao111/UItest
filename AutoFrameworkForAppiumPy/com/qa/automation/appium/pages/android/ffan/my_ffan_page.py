@@ -9,9 +9,9 @@ import os,sys
 from time import sleep
 import unittest
 from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.ffan.my_ffan_page_configs import *
+from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import *
 from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.common.super_page import *
+from com.qa.automation.appium.pages.android.common.super_page import *
 
 from appium import webdriver
 
@@ -34,10 +34,10 @@ class MyFfanPage(SuperPage):
         API().assert_view_by_text_android(testcase = self.testcase , driver = self.driver,
                                           logger = self.logger ,
                                           text=MyFfanPageConfigs.text_my_ffan);
-
+        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)                                  
 
     def clickOnLogin(self):
-        API().click_view_by_resourceID_android(driver = self.driver,logger=self.logger,resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
+        API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger=self.logger,resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
 
 
     def validLoginStatus(self):
@@ -45,8 +45,32 @@ class MyFfanPage(SuperPage):
 
     def clickOnSettings(self):
         API().scroll_to_text(driver=self.driver,logger=self.logger,text=MyFfanPageConfigs.text_settins)
-        API().click_view_by_text_android(driver=self.driver,logger=self.logger,text=MyFfanPageConfigs.text_settins)
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver,logger=self.logger,text=MyFfanPageConfigs.text_settins)
 
+    def clickOnMyQueue(self):
+        '''
+        usage : Load "我的排队" page， according to textview in "我的排队", check "我的排队" page whether load correctly.
+        '''
+        API().scroll_to_text(driver = self.driver, logger = self.logger, text = MyFfanPageConfigs.text_my_queue)
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger = self.logger, text = MyFfanPageConfigs.text_my_queue)
+
+    def clickOnMyTicket(self):
+        '''
+        usage : Load "我的票券" page， according to textview in "我的票券", check "我的票券" page whether load correctly.
+        '''
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger = self.logger, text = MyFfanPageConfigs.text_my_ticket)
+
+    def clickOnMyOrder(self):
+        '''
+        usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
+        '''
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger = self.logger, text = MyFfanPageConfigs.text_my_order)
+
+    def clickOnMyLike(self):
+        '''
+        usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
+        '''
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger = self.logger, text = MyFfanPageConfigs.text_my_like)
 
 if __name__ == '__main__':
     pass;

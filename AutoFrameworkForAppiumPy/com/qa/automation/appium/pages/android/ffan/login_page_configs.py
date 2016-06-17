@@ -16,7 +16,7 @@ class LoginPageConfigs():
 
     # text指明类型为text label,后面是文字的拼音
     text_quick_login = "快捷登录";
-    text_normal_login = "普通登录";
+    text_normal_login = u"普通登录";
     text_forget_password = "忘记密码?"
 
     account_name = "13601138742"

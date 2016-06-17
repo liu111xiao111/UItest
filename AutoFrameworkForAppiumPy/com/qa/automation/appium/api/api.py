@@ -59,10 +59,10 @@ class API:
             viewClassName : 预查找的兄弟节点的class name,view class name在父节点具有唯一性
         应用场景 : 某些多tab ui,点击tab后,tab对应的view状态属性不变,而且增加兄弟view的方式来标识状态.
     '''
-    def get_brother_by_class_name_android(self, driver , logger,text="default", viewClassName="default"):
+    def get_brother_by_class_name_android(self, driver , logger, text="default", viewClassName="default"):
         selector = 'new UiSelector().text("%s").fromParent(new UiSelector().className("%s"))' % (
             text, viewClassName);
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector=selector);
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     '''
         usage: by android api
@@ -74,7 +74,7 @@ class API:
 
     '''
     def get_view_text_equal_android(self, driver , logger, text="default"):
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = 'new UiSelector().text("' + text + '")');
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector='new UiSelector().text("' + text + '")');
 
     '''
         usage : by android api
@@ -86,7 +86,7 @@ class API:
     '''
     def get_view_text_contains_android(self, driver, logger , textContains="default"):
         selector = 'new UiSelector().textContains("%s")' % (textContains);
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     '''
         used by android api
@@ -98,7 +98,7 @@ class API:
     '''
     def get_view_text_starts_with_android(self, driver , logger , textStartsWith="default"):
         selector = 'new UiSelector().textStartWith("%s")' % (textStartsWith);
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     '''
         used by android api
@@ -111,7 +111,7 @@ class API:
 
     def get_view_text_matches_android(self, driver , logger , textMatches="default"):
         selector = 'new UiSelector().textContains("%s")' % (textMatches);
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     '''
         used by android api
@@ -124,7 +124,7 @@ class API:
 
     def get_view_by_class_name_android(self, driver , logger , className="default"):
         selector = 'new UiSelector().className("%s")' % (className);
-        return self.get_view_by_uiautomator_android(driver=driver,logger=logger,selector = selector);
+        return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     '''
         usage : 显式等待方法
@@ -193,12 +193,22 @@ class API:
             if findResult is not None:
                 driver.find_element_by_xpath(xpath).click();
         except NoSuchElementException:
-            logger.d("no such element")
+            #logger.d("no such element")
             testcase.assertTrue(False, "xpath %s none" % (xpath))
         except TimeoutException:
             logger.d("get xpath timeout")
             testcase.assertIsNotNone(None,"get xpath %s timeout until %s seconds" % (xpath, seconds))  
             
+    def click_view_by_content_desc(self, testcase, driver , logger, content_desc,seconds=10):
+        try:
+            wdw = WebDriverWait(driver=driver, timeout=seconds)
+            findResult = wdw.until(EC.presence_of_element_located((By.NAME, content_desc)))
+            if findResult is not None:
+                self.find_view_by_content_desc_Until_android(driver=driver, logger=logger, content_desc=content_desc).click()
+        except NoSuchElementException:
+            testcase.assertTrue(False, "content_desc %s none" % (content_desc))
+        except TimeoutException:
+            testcase.assertIsNotNone(None,"get content_desc %s timeout until %s seconds" % (content_desc, seconds))
        
     def click_back_key(self, driver , logger):
         #logger.d("click back key , keycode ======== 4",)
@@ -287,14 +297,14 @@ class API:
             testcase.assertIsNotNone(None,
                                       "resource id %s none" % (resource_id))
             
-    def assert_view_xpath_android(self, testcase, driver, logger, xpath="default",seconds = 10):
+    def assert_view_by_xpath_android(self, testcase, driver, logger, xpath="default",seconds = 10):
         try:
             testcase.assertIsNotNone(self.find_view_by_xpath_Until_android(driver = driver, logger = logger, xpath = xpath, seconds= 10))
         except NoSuchElementException as e:
             testcase.assertTrue(False, "content_desc %s none" % (xpath))
             
         except TimeoutException as e:
-            testcase.assertIsNotNone(None,"get content_desc %s timeout until %s seconds" % (xpath, seconds))                 
+            testcase.assertIsNotNone(None,"get xpath %s timeout until %s seconds" % (xpath, seconds))                 
 
     '''
     ***********************************************************************************

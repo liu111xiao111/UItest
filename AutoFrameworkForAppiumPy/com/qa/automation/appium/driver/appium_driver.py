@@ -42,7 +42,9 @@ class AppiumDriver():
                 'platformVersion': self.platformVersion,
                 'deviceName': self.deviceName,
                 'appPackage': self.appPackage,
-                'appActivity': self.appActivity
+                'appActivity': self.appActivity,
+                'unicodeKeyboard': 'True',
+                'resetKeyboard': 'True'
         }
         else:
             desired_caps = {

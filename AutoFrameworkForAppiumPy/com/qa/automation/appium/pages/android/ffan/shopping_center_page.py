@@ -6,8 +6,8 @@ from time import sleep
 import unittest
 from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.common.super_page import *
-from com.qa.automation.appium.pages.ffan.shopping_center_page_configs import *
+from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.shopping_center_page_configs import *
 
 from appium import webdriver
 

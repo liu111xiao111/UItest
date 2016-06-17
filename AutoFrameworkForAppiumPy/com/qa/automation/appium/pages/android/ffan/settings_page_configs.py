@@ -29,9 +29,15 @@ class SettingsPageConfigs():
     # 退出当前账号textview
     resource_id_setting_btn_logout_rl = "setting_btn_logout";
 
-    text_confirm_btn = "确认";
+    text_confirm_btn = u"确认";
 
     text_cancel_btn = "取消";
+
+    # Account management button
+    resource_id_account_management = "com.wanda.app.wanhui:id/list_item_title"
+
+    # Assert view time out
+    assert_view_timeout = 10
 
     def __init__(self):
         pass;
