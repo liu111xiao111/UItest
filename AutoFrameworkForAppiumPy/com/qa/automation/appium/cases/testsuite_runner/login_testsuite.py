@@ -7,7 +7,7 @@ import sys,os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
-from com.qa.automation.appium.cases.ffan.login_cases import *
+from com.qa.automation.appium.cases.android.ffan.login_cases import *
 
 import unittest
 

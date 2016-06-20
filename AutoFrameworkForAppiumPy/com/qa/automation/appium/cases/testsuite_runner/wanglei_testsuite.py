@@ -6,9 +6,9 @@ import sys,os
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-from com.qa.automation.appium.cases.ffan.myffan_cases import MyFfanCases
-from com.qa.automation.appium.cases.ffan.love_shopping_cases import LoveShoppingCases
-from com.qa.automation.appium.cases.ffan.smart_life_cases import SmartLifeCases
+from com.qa.automation.appium.cases.android.ffan.myffan_cases import MyFfanCases
+from com.qa.automation.appium.cases.android.ffan.love_shopping_cases import LoveShoppingCases
+from com.qa.automation.appium.cases.android.ffan.smart_life_cases import SmartLifeCases
 
 import unittest
 import HTMLTestRunner
