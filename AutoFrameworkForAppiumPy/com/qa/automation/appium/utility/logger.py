@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import sys,time
+import sys, time
 
 import logging
 
 
 class Logger:
-
-    def __init__(self,logger_name="qa.auto"):
+    def __init__(self, logger_name="qa.auto"):
         logger = logging.getLogger(logger_name)
         logger.setLevel(logging.DEBUG)
 
@@ -19,16 +18,16 @@ class Logger:
         logger.addHandler(console_handler)
         self.logger = logger
 
-    def d(self,msg="msg",*args):
-        self.logger.debug(msg,*args)
+    def d(self, msg="msg", *args):
+        self.logger.debug(msg, *args)
 
-    def i(self,msg="msg"):
+    def i(self, msg="msg"):
         self.logger.info(msg)
 
-    def w(self,msg="msg"):
+    def w(self, msg="msg"):
         self.logger.warning(msg)
 
-    def e(self,msg="msg"):
+    def e(self, msg="msg"):
         self.logger.error(msg)
 
 

@@ -17,9 +17,9 @@ PATH = lambda p: os.path.abspath(
 
 
 class ShoppingCenterPageConfigs(SuperPage):
-
-    #购物中心列表对应的image logo
+    # 购物中心列表对应的image logo
     resource_id_image_zone_logo_iv = "image_zone_logo";
+
 
 if __name__ == '__main__':
     pass;

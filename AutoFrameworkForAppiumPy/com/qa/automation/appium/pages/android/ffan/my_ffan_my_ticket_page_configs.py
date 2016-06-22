@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
 
 class MyFfanMyTicketPageConfigs():
-
-    #"我的票券"
+    # "我的票券"
     resource_id_tv_my_ticket_tv = "com.wanda.app.wanhui:id/common_title_view_layout_title";
     text_ticket_unused = u"未使用";
     text_ticket_used = u"已使用";
@@ -14,4 +13,3 @@ class MyFfanMyTicketPageConfigs():
 
     def __init__(self):
         pass;
-

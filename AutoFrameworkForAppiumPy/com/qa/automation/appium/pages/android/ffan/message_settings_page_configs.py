@@ -7,7 +7,6 @@ class MessageSettingsPageConfigs(object):
     This is a configuration class for MessageSettingsPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

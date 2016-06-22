@@ -3,13 +3,14 @@
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page_configs import MyMembershipCardPackagePageConfigs
+from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page_configs import \
+    MyMembershipCardPackagePageConfigs
+
 
 class MyMembershipCardPackagePage(SuperPage):
     '''
     This is membership card package page operation class.
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -23,14 +24,19 @@ class MyMembershipCardPackagePage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger, MyMembershipCardPackagePageConfigs.resource_id_my_membership_card_package_title, MyMembershipCardPackagePageConfigs.assert_view_timeout)
+        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+                                                      MyMembershipCardPackagePageConfigs.resource_id_my_membership_card_package_title,
+                                                      MyMembershipCardPackagePageConfigs.assert_view_timeout)
 
     def clickOnLeHuoKa(self):
         '''
         usage: click on the LeHuoKa button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_button, MyMembershipCardPackagePageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+                                               MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_button,
+                                               MyMembershipCardPackagePageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

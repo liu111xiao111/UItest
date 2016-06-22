@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -19,29 +19,31 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-
 class LefuPayDetailPage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(LefuPayDetailPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def __init__(self,testcase,driver,logger):
-        super(LefuPayDetailPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-                                           
     def validSelf(self):
         '''
         usage : Click "乐付买单" in square page, and load "乐付买单" correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
-                                                resource_id = LefuPayDetailPageConfigs.resource_id_store_title,seconds=18);
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=LefuPayDetailPageConfigs.resource_id_store_title,
+                                                      seconds=18);
 
     def inputMoney(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id = LefuPayDetailPageConfigs.resource_id_total_money, string = LefuPayDetailPageConfigs.total_money
+                                               resource_id=LefuPayDetailPageConfigs.resource_id_total_money,
+                                               string=LefuPayDetailPageConfigs.total_money
                                                );
 
     def clickOnPay(self):
         '''
         usage : Click "确认购买"
-        ''' 
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = LefuPayDetailPageConfigs.resource_id_pay);
+        '''
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=LefuPayDetailPageConfigs.resource_id_pay);
+
 
 if __name__ == '__main__':
     pass;

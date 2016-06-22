@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
 
 class LoginPageConfigs():
-
     # 普通登录手机号码输入框
     resource_id_user_name = "com.wanda.app.wanhui:id/edit_login_name";
 

@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
 
 class LoveShoppingPageConfigs():
-
     # text指明类型为text label,后面是文字的拼音
     text_search_all_city = "全城搜索";
     text_shopping_mall = "购物中心";

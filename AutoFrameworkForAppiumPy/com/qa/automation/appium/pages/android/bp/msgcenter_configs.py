@@ -3,11 +3,11 @@
 
 import os, sys
 
+
 # reload(sys)
 # sys.setdefaultencoding('utf8')
 
 class MessageCenterConfigs:
-
     def __init__(self):
         pass;
 

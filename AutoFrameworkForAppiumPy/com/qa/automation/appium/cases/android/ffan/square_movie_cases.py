@@ -25,8 +25,8 @@ from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPi
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class SquareMovieCases(TestCase):
@@ -43,11 +43,12 @@ class SquareMovieCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
 
@@ -68,6 +69,7 @@ class SquareMovieCases(TestCase):
 
         squareModulePage.validSelf()
         squareModulePage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)

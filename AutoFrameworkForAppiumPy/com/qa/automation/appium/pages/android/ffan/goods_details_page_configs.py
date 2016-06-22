@@ -7,7 +7,6 @@ class GoodsDetailsPageConfigs(object):
     This is a configuration class for GoodsDetailsPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

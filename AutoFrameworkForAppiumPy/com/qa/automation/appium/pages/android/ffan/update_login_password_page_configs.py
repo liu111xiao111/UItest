@@ -7,7 +7,6 @@ class UpdateLoginPasswordPageConfigs(object):
     This is a configuration class for UpdateLoginPassword class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

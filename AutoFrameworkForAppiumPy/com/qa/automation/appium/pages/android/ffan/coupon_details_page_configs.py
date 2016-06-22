@@ -7,7 +7,6 @@ class CouponDetailsPageConfigs(object):
     This is a configuration class for CouponDetailsPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

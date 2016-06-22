@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -18,22 +18,24 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-
 '''
     usage: 门店详情
 '''
 
-class StoreInfoPage(SuperPage):
 
-    def __init__(self,testcase,driver,logger):
-        super(StoreInfoPage, self).__init__(testcase = testcase , driver = driver, logger = logger);
+class StoreInfoPage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(StoreInfoPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
         usage : 检查是否加载出来
     '''
+
     def validSelf(self):
-        #API().assert_view_by_xpath_android(testcase = self.testcase, driver = self.driver, logger = self.logger, xpath=StoreInfoPageConfigs.xpath_store_info)
-        API().assert_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = StoreInfoPageConfigs.text_store_detail)                                   
-            
+        # API().assert_view_by_xpath_android(testcase = self.testcase, driver = self.driver, logger = self.logger, xpath=StoreInfoPageConfigs.xpath_store_info)
+        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                          text=StoreInfoPageConfigs.text_store_detail)
+
+
 if __name__ == '__main__':
     pass;

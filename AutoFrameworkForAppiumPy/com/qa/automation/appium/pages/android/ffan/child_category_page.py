@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -21,49 +21,58 @@ PATH = lambda p: os.path.abspath(
 
 #   首页点击 美食
 class ChildCategoryPage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
-        super(ChildCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+    def __init__(self, testcase, driver, logger):
+        super(ChildCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
         usage : 进入美食页面，根据餐饮的textview,检查找餐饮页面是否加载出来.
     '''
+
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
-                                                resource_id = ChildCategoryPageConfigs.resource_id_ll_child_play_ll,seconds=18);
-                                           
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=ChildCategoryPageConfigs.resource_id_ll_child_play_ll,
+                                                      seconds=18);
+
     '''
         usage : 点击亲子游乐
     '''
+
     def clickOnChildPlay(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=ChildCategoryPageConfigs.resource_id_ll_child_play_ll);
-        
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=ChildCategoryPageConfigs.resource_id_ll_child_play_ll);
+
     '''
         usage : 点击门店的listView
-    ''' 
+    '''
+
     def clickListFirstItem(self):
-        API().click_view_by_xpath(testcase = self.testcase, driver=self.driver, logger=self.logger, xpath=ChildCategoryPageConfigs.xpath_store_list_1);    
-        
+        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                  xpath=ChildCategoryPageConfigs.xpath_store_list_1);
+
     '''
         usage : 点击儿童教育
     '''
-     
+
     def clickOnChildEducation(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=ChildCategoryPageConfigs.resource_id_ll_child_education_ll);
-        
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=ChildCategoryPageConfigs.resource_id_ll_child_education_ll);
+
     '''
         usage : 点击亲子购物
-    '''        
-     
+    '''
+
     def clickOnChildShopping(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=ChildCategoryPageConfigs.resource_id_ll_child_shopping_ll);
-        
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=ChildCategoryPageConfigs.resource_id_ll_child_shopping_ll);
+
     '''
         usage : 点击亲子购物
-    '''        
-     
+    '''
+
     def clickOnOtherStore(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=ChildCategoryPageConfigs.resource_id_ll_other_store_ll);
-            
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=ChildCategoryPageConfigs.resource_id_ll_other_store_ll);
+
+
 if __name__ == '__main__':
     pass;

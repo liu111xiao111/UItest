@@ -7,7 +7,6 @@ class HuiLifePageConfigs(object):
     This is a configuration class for HuiLifePage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

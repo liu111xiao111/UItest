@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
@@ -17,6 +18,7 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 import unittest
 import HTMLTestRunner
 
+
 class MyfeifanMyTicketCases(unittest.TestCase):
     '''
     	巡检checklist #50
@@ -26,7 +28,7 @@ class MyfeifanMyTicketCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
@@ -40,14 +42,14 @@ class MyfeifanMyTicketCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        myFfanPage = MyFfanPage(testcase = self,driver = self.driver,logger = self.logger)
-        myTicketPage = MyFfanMyTicketPage(testcase = self,driver = self.driver,logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
+        myTicketPage = MyFfanMyTicketPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Click "我的票券"， load "我的票券" page.
         dashboardPage.validSelf();
@@ -61,7 +63,7 @@ class MyfeifanMyTicketCases(unittest.TestCase):
         myTicketPage.validSelfOutOfDate();
         myTicketPage.clickOnReturnRefund();
         myTicketPage.validSelfReturnRefund();
-        
+
 
 if __name__ == "__main__":
     log = Logger()
@@ -70,7 +72,7 @@ if __name__ == "__main__":
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + caseName + now + '.html'
-    log.d("report file name ==== %s" , filename)
+    log.d("report file name ==== %s", filename)
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=caseName,
                                            description='Result for test')

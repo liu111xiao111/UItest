@@ -8,7 +8,6 @@ class CinemaPageConfigs(object):
     This is a configuration class for CinemaPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

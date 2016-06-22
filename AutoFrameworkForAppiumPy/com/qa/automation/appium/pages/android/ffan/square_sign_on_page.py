@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -21,16 +21,17 @@ PATH = lambda p: os.path.abspath(
 
 # 签到页面
 class SignOnPage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
-        super(SignOnPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+    def __init__(self, testcase, driver, logger):
+        super(SignOnPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
         usage : 进入广场模块，检查是否加载出来
     '''
+
     def validSelf(self):
-        API().assert_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text=SignOnPageConfigs.text_sign_on);
-                                           
-            
+        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                          text=SignOnPageConfigs.text_sign_on);
+
+
 if __name__ == '__main__':
     pass;

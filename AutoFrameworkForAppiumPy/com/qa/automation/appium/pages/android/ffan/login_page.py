@@ -33,21 +33,24 @@ class LoginPage(SuperPage):
                                                       seconds=10);
 
     def switchToNormalLogin(self):
-        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                          text=LoginPageConfigs.text_normal_login);
 
     def inputUserName(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_user_name, string=LoginPageConfigs.account_name
+                                               resource_id=LoginPageConfigs.resource_id_user_name,
+                                               string=LoginPageConfigs.account_name
                                                );
 
     def inputPassWord(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_pass_word, string=LoginPageConfigs.account_passwd
+                                               resource_id=LoginPageConfigs.resource_id_pass_word,
+                                               string=LoginPageConfigs.account_passwd
                                                );
 
     def clickOnLoginBtn(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=LoginPageConfigs.resource_id_login_button)
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=LoginPageConfigs.resource_id_login_button)
 
 
 if __name__ == '__main__':

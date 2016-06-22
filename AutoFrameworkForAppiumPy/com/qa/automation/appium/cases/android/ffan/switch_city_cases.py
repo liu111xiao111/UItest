@@ -19,14 +19,14 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.utility.logger import Logger
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class SwitchCityCases(TestCase):
     '''
         This is a test case for canceling the switch city.
     '''
-
 
     def tearDown(self):
         self.driver.quit()
@@ -35,7 +35,8 @@ class SwitchCityCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
 
     def test_case(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
@@ -45,6 +46,7 @@ class SwitchCityCases(TestCase):
             switchCityPage.waitBySeconds()
             tempTimes += 1
         switchCityPage.invalidSelf()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SwitchCityCases)

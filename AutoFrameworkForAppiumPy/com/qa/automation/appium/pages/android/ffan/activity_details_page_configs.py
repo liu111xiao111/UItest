@@ -7,7 +7,6 @@ class ActivityDetailsPageConfigs(object):
     This is a configuration class for ActivityDetailsPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

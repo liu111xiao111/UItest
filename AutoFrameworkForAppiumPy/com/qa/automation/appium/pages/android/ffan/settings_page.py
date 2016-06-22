@@ -11,7 +11,6 @@ from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.pages.android.common.super_page import *
 from com.qa.automation.appium.pages.android.ffan.settings_page_configs import *
 
-
 # Returns abs path relative to this file and not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -34,7 +33,8 @@ class SettingsPage(SuperPage):
         API().click_view_by_resourceID_android(self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=SettingsPageConfigs.resource_id_setting_btn_logout_rl);
         if confirmQuit:
-            API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=SettingsPageConfigs.text_confirm_btn)
+            API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                             text=SettingsPageConfigs.text_confirm_btn)
         else:
             API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                              text=SettingsPageConfigs.text_cancel_btn)
@@ -44,7 +44,10 @@ class SettingsPage(SuperPage):
         usage: click on the account management button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, SettingsPageConfigs.resource_id_account_management, SettingsPageConfigs.assert_view_timeout)
+        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+                                               SettingsPageConfigs.resource_id_account_management,
+                                               SettingsPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass;

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -19,25 +19,26 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-
 class SquareLefuPayPage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(SquareLefuPayPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def __init__(self,testcase,driver,logger):
-        super(SquareLefuPayPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-                                           
     def validSelf(self):
         '''
         usage : Click "乐付买单" in square page, and load "乐付买单" correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
-                                                resource_id = SquareLefuPayPageConfigs.resource_id_lefu_pay_title,seconds=18);
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=SquareLefuPayPageConfigs.resource_id_lefu_pay_title,
+                                                      seconds=18);
 
     def clickOnLefuPay(self):
         '''
         usage : Click "乐付买单"
         '''
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, SquareLefuPayPageConfigs.resource_id_lefu_pay, seconds=18);
-        #API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger = self.logger, resource_id = SquareLefuPayPageConfigs.resource_id_lefu_pay)
+        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+                                               SquareLefuPayPageConfigs.resource_id_lefu_pay, seconds=18);
+        # API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger = self.logger, resource_id = SquareLefuPayPageConfigs.resource_id_lefu_pay)
+
 
 if __name__ == '__main__':
     pass;

@@ -22,8 +22,9 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 from com.qa.automation.appium.utility.logger import Logger
 
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 class LogoutCases(TestCase):
     '''
@@ -39,11 +40,12 @@ class LogoutCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.waitBySeconds()
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
@@ -61,6 +63,7 @@ class LogoutCases(TestCase):
 
         myFeiFanPage.waitBySeconds()
         myFeiFanPage.validLogoutStatus()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(LogoutCases)

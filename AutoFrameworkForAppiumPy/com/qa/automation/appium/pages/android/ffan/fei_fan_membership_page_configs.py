@@ -7,7 +7,6 @@ class FeiFanMembershipPageConfigs(object):
     This is a configuration class for FeiFanMembershipPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

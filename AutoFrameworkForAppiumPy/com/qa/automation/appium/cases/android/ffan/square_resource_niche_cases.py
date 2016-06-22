@@ -23,8 +23,8 @@ from com.qa.automation.appium.pages.android.ffan.resource_niche_details_page imp
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class SquareResourceNicheCases(TestCase):
@@ -41,11 +41,12 @@ class SquareResourceNicheCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
 
@@ -59,6 +60,7 @@ class SquareResourceNicheCases(TestCase):
 
         squareModulePage.validSelf()
         squareModulePage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareResourceNicheCases)

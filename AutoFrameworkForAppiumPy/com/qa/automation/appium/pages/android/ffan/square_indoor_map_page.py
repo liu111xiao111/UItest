@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -19,18 +19,17 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-
 class SquareIndoorMapPage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(SquareIndoorMapPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def __init__(self,testcase,driver,logger):
-        super(SquareIndoorMapPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-                                           
     def validSelf(self):
         '''
         usage : Load "室内地图" page， according to textview in "室内地图", check "室内地图" page whether load correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver,logger = self.logger ,
-                                                resource_id = SquareIndoorMapPageConfigs.resource_id_indoor_map,seconds=18);
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=SquareIndoorMapPageConfigs.resource_id_indoor_map,
+                                                      seconds=18);
 
 
 if __name__ == '__main__':

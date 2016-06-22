@@ -24,8 +24,8 @@ from com.qa.automation.appium.pages.android.ffan.flash_sales_square_page import 
 from com.qa.automation.appium.pages.android.ffan.goods_details_page import GoodsDetailsPage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class FlashSalesCases(TestCase):
@@ -42,25 +42,27 @@ class FlashSalesCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnFlashSalesMore()
         dashboardPage.waitBySeconds()
 
-        flashSalesSquarePage = FlashSalesSquarePage(self , self.driver , self.logger)
+        flashSalesSquarePage = FlashSalesSquarePage(self, self.driver, self.logger)
         flashSalesSquarePage.validSelf()
         flashSalesSquarePage.clickOnGoods()
 
-        goodsDetailsPage = GoodsDetailsPage(self , self.driver , self.logger)
+        goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
         goodsDetailsPage.validSelf()
         goodsDetailsPage.clickBackKey()
 
         flashSalesSquarePage.validSelf()
         flashSalesSquarePage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FlashSalesCases)

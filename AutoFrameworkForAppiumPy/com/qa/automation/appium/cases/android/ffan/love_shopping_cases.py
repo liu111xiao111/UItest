@@ -10,22 +10,26 @@ from com.qa.automation.appium.pages.android.ffan.love_shopping_page import *;
 from com.qa.automation.appium.pages.android.ffan.shopping_center_page import *;
 from com.qa.automation.appium.driver.appium_driver import *;
 from com.qa.automation.appium.utility.logger import Logger;
+from com.qa.automation.appium.utility.device_info_util import *;
 
 import unittest
 import HTMLTestRunner
+
 
 class LoveShoppingCases(unittest.TestCase):
     '''
         备注：原始版本的case
     '''
-    
+
     def tearDown(self):
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
+        deviceInfoUtil = DeviceInfoUtil();
+        platform_Version = deviceInfoUtil.getBuildVersion();
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
+                                   platform_name=platformName_andr, platform_version=platform_Version,
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 

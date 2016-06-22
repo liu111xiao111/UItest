@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 import time
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -32,7 +33,7 @@ class ParkingCatergoryCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
@@ -46,14 +47,14 @@ class ParkingCatergoryCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
-        parkingLotPage = ParkingLotPage(testcase = self, driver = self.driver, logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        parkingPage = ParkingCategoryPage(testcase=self, driver=self.driver, logger=self.logger)
+        parkingLotPage = ParkingLotPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Load parking page
         dashboardPage.validSelf();
@@ -63,7 +64,7 @@ class ParkingCatergoryCases(unittest.TestCase):
         # Click "附近停车场"， load parking lot list.
         parkingPage.clickOnParkingLot();
         parkingLotPage.validSelf();
-    
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(ParkingCatergoryCases)

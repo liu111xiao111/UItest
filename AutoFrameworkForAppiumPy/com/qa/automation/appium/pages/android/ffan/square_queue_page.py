@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -19,35 +19,37 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-
 class SquareQueuePage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(SquareQueuePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def __init__(self,testcase,driver,logger):
-        super(SquareQueuePage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-                                           
     def validSelf(self):
         '''
         usage : Click "排队取号" in square page, and load "排队取号" correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase , driver = self.driver,logger = self.logger ,
-                                                resource_id = SquareQueuePageConfigs.resource_id_queue,seconds=18);
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=SquareQueuePageConfigs.resource_id_queue, seconds=18);
 
     def clicOnQueueNumber(self):
         '''
         usage: Click "取号"
-        ''' 
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = SquareQueuePageConfigs.text_queue_number);
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                         text=SquareQueuePageConfigs.text_queue_number);
 
     def inputNumberOfMeals(self):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id = SquareQueuePageConfigs.resource_id_number_of_meals, string = SquareQueuePageConfigs.number_of_meals
+                                               resource_id=SquareQueuePageConfigs.resource_id_number_of_meals,
+                                               string=SquareQueuePageConfigs.number_of_meals
                                                );
 
     def clicOnGetQueueNumber(self):
         '''
         usage: Click "一键取号"
-        ''' 
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = SquareQueuePageConfigs.text_get_queue_number);
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                         text=SquareQueuePageConfigs.text_get_queue_number);
+
 
 if __name__ == '__main__':
     pass;

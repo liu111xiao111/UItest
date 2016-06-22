@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import *;
@@ -17,6 +18,7 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 import unittest
 import HTMLTestRunner
 
+
 class FeiFanCardIntegralCases(unittest.TestCase):
     '''
     	巡检checklist #45
@@ -26,28 +28,28 @@ class FeiFanCardIntegralCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
     def setUp(self):
         clearAppData = ClearAppData()
         clearAppData.clearData()
-    
+
         self.logger = Logger()
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                    platform_name=platformName_andr, platform_version=platformVersion,
-                                    device_name=deviceName_andr, driver_url=driver_url
-                                    ).getDriver()
-    
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+                                   platform_name=platformName_andr, platform_version=platformVersion,
+                                   device_name=deviceName_andr, driver_url=driver_url
+                                   ).getDriver()
+
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        ffanCardPage = FeiFanCardPage(testcase = self , driver = self.driver , logger = self.logger)
-        ffanCardIntegralPage = FeiFanCardIntegralPage(testcase = self , driver = self.driver , logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        ffanCardPage = FeiFanCardPage(testcase=self, driver=self.driver, logger=self.logger)
+        ffanCardIntegralPage = FeiFanCardIntegralPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Click "飞凡卡", load Feifan card page.
         dashboardPage.validSelf();
@@ -57,6 +59,7 @@ class FeiFanCardIntegralCases(unittest.TestCase):
         # Click "积分", load "积分主页"
         ffanCardPage.clickOnIntegral();
         ffanCardIntegralPage.validSelf();
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(FeiFanCardIntegralCases)

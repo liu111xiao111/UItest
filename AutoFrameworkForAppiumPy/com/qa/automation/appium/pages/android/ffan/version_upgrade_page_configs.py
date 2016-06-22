@@ -5,7 +5,6 @@ class VersionUpgradePageConfigs(object):
     This is a configuration class for VersionUpdatePage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

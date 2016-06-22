@@ -26,8 +26,8 @@ from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPa
 from com.qa.automation.appium.pages.android.ffan.update_login_password_page import UpdateLoginPasswordPage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class UpdateLoginPasswordCases(TestCase):
@@ -37,7 +37,6 @@ class UpdateLoginPasswordCases(TestCase):
     点击设置，在账号管理中可以成功修改登录密码，支付密码，小额免密设置
     '''
 
-
     def tearDown(self):
         self.driver.quit()
         ClearAppData().clearData()
@@ -45,11 +44,12 @@ class UpdateLoginPasswordCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.waitBySeconds()
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
@@ -88,6 +88,7 @@ class UpdateLoginPasswordCases(TestCase):
 
         settingPage.waitBySeconds()
         myFeiFanPage.validSelf()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(UpdateLoginPasswordCases)

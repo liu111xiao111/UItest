@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 
@@ -22,16 +22,16 @@ PATH = lambda p: os.path.abspath(
 
 
 class MyFfanMyQueuePage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
-        super(MyFfanMyQueuePage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-
+    def __init__(self, testcase, driver, logger):
+        super(MyFfanMyQueuePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
         '''
         usage : Click "我的排队" in my Feifan page， and load "我的排队" page correctly. 
-        ''' 
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id=MyFfanMyQueuePageConfigs.resource_id_tv_registration_tv)                             
+        '''
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=MyFfanMyQueuePageConfigs.resource_id_tv_registration_tv)
+
 
 if __name__ == '__main__':
     pass;

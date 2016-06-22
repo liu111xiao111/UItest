@@ -27,11 +27,15 @@ class VersionUpgradePage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger, VersionUpgradePageConfigs.resource_id_upgrade_cancel_button, VersionUpgradePageConfigs.assert_view_timeout)
+            API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+                                                          VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
+                                                          VersionUpgradePageConfigs.assert_view_timeout)
             return True
         else:
             try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger, VersionUpgradePageConfigs.resource_id_upgrade_cancel_button, VersionUpgradePageConfigs.verify_view_timeout)
+                API().find_view_by_resourceID_Until_android(self.driver, self.logger,
+                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
+                                                            VersionUpgradePageConfigs.verify_view_timeout)
                 return True
             except TimeoutException:
                 return False
@@ -41,14 +45,16 @@ class VersionUpgradePage(SuperPage):
         usage: cancel version upgrade.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, VersionUpgradePageConfigs.resource_id_upgrade_cancel_button)
+        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+                                               VersionUpgradePageConfigs.resource_id_upgrade_cancel_button)
 
     def confirmVersionUpgrade(self):
         '''
         usage: confirm version upgrade.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, VersionUpgradePageConfigs.resource_id_upgrade_confirm_button)
+        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+                                               VersionUpgradePageConfigs.resource_id_upgrade_confirm_button)
 
     def validPercentage(self):
         '''
@@ -62,7 +68,10 @@ class VersionUpgradePage(SuperPage):
         usage: verify whether the current page is not the version upgrade page.
         '''
 
-        API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger, VersionUpgradePageConfigs.resource_id_upgrade_cancel_button, VersionUpgradePageConfigs.assert_invalid_view_time)
+        API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
+                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
+                                                            VersionUpgradePageConfigs.assert_invalid_view_time)
+
 
 if __name__ == '__main__':
     pass

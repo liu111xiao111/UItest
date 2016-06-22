@@ -7,7 +7,6 @@ class ResourceNicheDetailsPageConfigs(object):
     This is a configuration class for ResourceNicheDetailsPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

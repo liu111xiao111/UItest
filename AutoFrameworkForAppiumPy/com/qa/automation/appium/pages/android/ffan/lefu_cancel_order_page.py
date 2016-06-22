@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -19,17 +19,18 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-
 class LefuCancelOrderPage(SuperPage):
+    def __init__(self, testcase, driver, logger):
+        super(LefuCancelOrderPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def __init__(self,testcase,driver,logger):
-        super(LefuCancelOrderPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
-                                           
     '''
         usage : Click "确认"
     '''
+
     def clickOnConfirmBtn(self):
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = LefuCancelOrderPageConfigs.resource_id_confirm_button)
-            
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=LefuCancelOrderPageConfigs.resource_id_confirm_button)
+
+
 if __name__ == '__main__':
     pass;

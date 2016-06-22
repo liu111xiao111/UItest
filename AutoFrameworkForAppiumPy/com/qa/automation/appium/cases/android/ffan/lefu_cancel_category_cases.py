@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import *;
@@ -31,7 +32,7 @@ class LefuCancelCatergoryCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
@@ -45,18 +46,18 @@ class LefuCancelCatergoryCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        lefuPage = SquareLefuPayPage(testcase = self, driver = self.driver, logger = self.logger)
-        lefuPayDetailPage = LefuPayDetailPage(testcase = self, driver = self.driver, logger = self.logger)
-        lefuPayWayPage = LefuPayWayPage(testcase = self, driver = self.driver, logger = self.logger)
-        lefuCancelOrderPage = LefuCancelOrderPage(testcase = self, driver = self.driver, logger = self.logger)
-        myFfanPage = MyFfanPage(testcase = self,driver = self.driver,logger = self.logger)
-        myOrderPage = MyFfanMyOrderPage(testcase = self,driver = self.driver,logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        lefuPage = SquareLefuPayPage(testcase=self, driver=self.driver, logger=self.logger)
+        lefuPayDetailPage = LefuPayDetailPage(testcase=self, driver=self.driver, logger=self.logger)
+        lefuPayWayPage = LefuPayWayPage(testcase=self, driver=self.driver, logger=self.logger)
+        lefuCancelOrderPage = LefuCancelOrderPage(testcase=self, driver=self.driver, logger=self.logger)
+        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
+        myOrderPage = MyFfanMyOrderPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Load square page
         dashboardPage.validSelf();
@@ -66,19 +67,19 @@ class LefuCancelCatergoryCases(unittest.TestCase):
         # Click "乐付买单"， load detail pay page.
         lefuPage.clickOnLefuPay();
         lefuPayDetailPage.validSelf();
-        
+
         # Input money, click "确认买单".
         lefuPayDetailPage.inputMoney();
         lefuPayDetailPage.waitBySeconds(seconds=3);
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
-        
+
         # Cancel the order
         lefuPayWayPage.clickBackKey();
         lefuCancelOrderPage.clickOnConfirmBtn();
         lefuPayDetailPage.clickBackKey();
         lefuPage.clickBackKey();
-        
+
         dashboardPage.clickOnMy();
         myFfanPage.validSelf();
         myFfanPage.clickOnMyOrder();
@@ -88,9 +89,9 @@ class LefuCancelCatergoryCases(unittest.TestCase):
         myOrderPage.validSelfNoPay();
         myOrderPage.waitBySeconds(seconds=2);
         myOrderPage.clickOnOrderPaid();
-        myOrderPage.validSelfPaid(); 
+        myOrderPage.validSelfPaid();
         myOrderPage.waitBySeconds(seconds=2);
-        
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(LefuCancelCatergoryCases)

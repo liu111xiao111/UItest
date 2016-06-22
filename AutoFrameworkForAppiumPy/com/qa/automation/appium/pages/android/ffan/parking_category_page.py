@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -21,24 +21,25 @@ PATH = lambda p: os.path.abspath(
 
 #   首页点击 停车
 class ParkingCategoryPage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
+    def __init__(self, testcase, driver, logger):
         self.a = 12;
-        super(ParkingCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(ParkingCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
         '''
         usage : Load "停车" page
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver,logger = self.logger ,
-                                                resource_id = ParkingCategoryPageConfigs.resource_id_tv_parking_tv, seconds=18);
-    
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_tv,
+                                                      seconds=18);
+
     def clickOnParkingLot(self):
         '''
         usage : Click "附近停车场"， load "停车场列表" page
         '''
-        API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger = self.logger, resource_id = ParkingCategoryPageConfigs.resource_id_tv_parking_lot_tv);
-    
+        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                               resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_lot_tv);
+
 
 if __name__ == '__main__':
     pass;

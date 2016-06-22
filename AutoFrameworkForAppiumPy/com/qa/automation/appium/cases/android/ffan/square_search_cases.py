@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
@@ -21,17 +22,17 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 import unittest
 import HTMLTestRunner
 
+
 class SquareSearchCases(unittest.TestCase):
     '''
         usage : No.19 首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
     '''
-    
+
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
-
 
     def setUp(self):
         clearAppData = ClearAppData()
@@ -42,33 +43,33 @@ class SquareSearchCases(unittest.TestCase):
                                    platform_name=platformName_andr, platform_version=platformVersion,
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
-                                   
-        #登陆　升级
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+
+        # 登陆　升级
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        squarePage = SquareModulePage(testcase = self , driver = self.driver , logger = self.logger)
-        squareFindStorePage = SquareFindStorePage(testcase = self , driver = self.driver , logger = self.logger)
-        searchPage = SearchPage(testcase = self , driver = self.driver , logger = self.logger)
-        searchResultStorePage = SearchResultStorePage(testcase = self , driver = self.driver , logger = self.logger)
-        
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
+        squareFindStorePage = SquareFindStorePage(testcase=self, driver=self.driver, logger=self.logger)
+        searchPage = SearchPage(testcase=self, driver=self.driver, logger=self.logger)
+        searchResultStorePage = SearchResultStorePage(testcase=self, driver=self.driver, logger=self.logger)
+
         dashboardPage.validSelf()
         squarePage.waitBySeconds(seconds=2)
-        
+
         dashboardPage.clickOnSquareModule()
         squarePage.validSelf()
-        
+
         squarePage.clickOnSearch()
-        
+
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
-        
+
         searchResultStorePage.validSelf()
-        
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareSearchCases)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -21,15 +21,18 @@ PATH = lambda p: os.path.abspath(
 
 # 会员类目
 class MemberPage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
-        super(MemberPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+    def __init__(self, testcase, driver, logger):
+        super(MemberPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
         usage : 检查会员类目是否加载出来
     '''
+
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver, logger = self.logger , resource_id = MemberPageConfigs.resource_id__tv_member_tv,seconds = 5);
-            
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=MemberPageConfigs.resource_id__tv_member_tv,
+                                                      seconds=5);
+
+
 if __name__ == '__main__':
     pass;

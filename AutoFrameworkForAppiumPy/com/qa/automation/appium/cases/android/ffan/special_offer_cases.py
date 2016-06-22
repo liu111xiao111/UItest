@@ -25,8 +25,8 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.hui_life_page import HuiLifePage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class SpecialOfferCases(TestCase):
@@ -43,11 +43,12 @@ class SpecialOfferCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSmartLife()
 
@@ -67,6 +68,7 @@ class SpecialOfferCases(TestCase):
         couponDetailsPage = CouponDetailsPage(self, self.driver, self.logger)
         couponDetailsPage.validSelf()
         activityDetailsPage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SpecialOfferCases)

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
@@ -18,6 +19,7 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 import unittest
 import HTMLTestRunner
 
+
 class SquareIndoorMapCases(unittest.TestCase):
     '''
 		巡检checklist #25
@@ -27,7 +29,7 @@ class SquareIndoorMapCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
@@ -41,14 +43,14 @@ class SquareIndoorMapCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        squarePage = SquareModulePage(testcase = self , driver = self.driver , logger = self.logger)
-        locationBluetoothPage = LocationBluetoothPage(testcase = self , driver = self.driver , logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
+        locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
         indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Load square page
@@ -60,6 +62,7 @@ class SquareIndoorMapCases(unittest.TestCase):
         squarePage.clicOnIndoorMap();
         locationBluetoothPage.clickOnCancleBtn()
         indoormapPage.validSelf();
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)

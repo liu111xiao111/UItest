@@ -12,7 +12,6 @@ class AccountManagementPage(SuperPage):
     This is a version update page operation class.
     '''
 
-
     def __init__(self, testcase, driver, logger):
         '''
         Constructor
@@ -25,14 +24,19 @@ class AccountManagementPage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger, AccountManagementPageConfigs.resource_id_account_management_title, AccountManagementPageConfigs.assert_view_timeout)
+        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+                                                      AccountManagementPageConfigs.resource_id_account_management_title,
+                                                      AccountManagementPageConfigs.assert_view_timeout)
 
     def clickOnUpdatePassword(self):
         '''
         usage: click on the update password button.
         '''
 
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, AccountManagementPageConfigs.text_update_login_password_button, AccountManagementPageConfigs.click_on_button_timeout)
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
+                                         AccountManagementPageConfigs.text_update_login_password_button,
+                                         AccountManagementPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

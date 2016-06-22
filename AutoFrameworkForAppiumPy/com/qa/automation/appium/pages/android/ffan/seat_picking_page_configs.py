@@ -7,7 +7,6 @@ class SeatPickingPageConfigs(object):
     This is a configuration class for SeatPickingPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

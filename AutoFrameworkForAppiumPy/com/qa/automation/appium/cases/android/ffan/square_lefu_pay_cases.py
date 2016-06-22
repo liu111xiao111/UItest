@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *
@@ -28,7 +29,7 @@ class SquareLefuPayCases(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        
+
         clearAppData = ClearAppData()
         clearAppData.clearData()
 
@@ -42,14 +43,14 @@ class SquareLefuPayCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # Login & update version
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        squarePage = SquareModulePage(testcase = self , driver = self.driver , logger = self.logger)
-        lefuPayPage = SquareLefuPayPage(testcase = self, driver = self.driver, logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
+        lefuPayPage = SquareLefuPayPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # Load square page
         dashboardPage.validSelf();
@@ -59,6 +60,7 @@ class SquareLefuPayCases(unittest.TestCase):
         # Click "乐付买单"， load "乐付买单" page.
         squarePage.clicOnLefuPay();
         lefuPayPage.validSelf();
+
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareLefuPayCases)

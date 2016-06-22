@@ -25,8 +25,8 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
 from com.qa.automation.appium.utility.logger import Logger
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class MembershipCardPackageCases(TestCase):
@@ -43,11 +43,12 @@ class MembershipCardPackageCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
 
@@ -64,6 +65,7 @@ class MembershipCardPackageCases(TestCase):
         feiFanMembershipPage.clickBackKey()
 
         myMembershipCardPackagePage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MembershipCardPackageCases)

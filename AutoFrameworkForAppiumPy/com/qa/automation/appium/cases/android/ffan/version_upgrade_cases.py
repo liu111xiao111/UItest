@@ -22,7 +22,8 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import VersionUpgradePage
 from com.qa.automation.appium.utility.logger import Logger
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class VersionUpgradeCases(TestCase):
@@ -37,7 +38,8 @@ class VersionUpgradeCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+                                   deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).switchCity()
 
     def test_case(self):
@@ -48,6 +50,7 @@ class VersionUpgradeCases(TestCase):
             versionUpgradePage.waitBySeconds()
             tempTimes += 1
         versionUpgradePage.invalidSelf()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(VersionUpgradeCases)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
+import os, sys
 
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from time import sleep
 import unittest
@@ -20,18 +20,18 @@ PATH = lambda p: os.path.abspath(
 
 
 class ParkingLotPage(SuperPage):
-
-    def __init__(self,testcase,driver,logger):
+    def __init__(self, testcase, driver, logger):
         self.a = 12;
-        super(ParkingLotPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(ParkingLotPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
         '''
         usage : Load "停车场列表" page
         '''
-        API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver,logger = self.logger ,
-                                                resource_id = ParkingLotPageConfigs.resource_id_tv_parking_list_tv,seconds=18);
-    
+        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                      resource_id=ParkingLotPageConfigs.resource_id_tv_parking_list_tv,
+                                                      seconds=18);
+
 
 if __name__ == '__main__':
     pass;

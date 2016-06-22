@@ -8,7 +8,6 @@ class FlashSalesSquarePageConfigs(object):
     This is a configuration class for FlashSalesSquarePage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 

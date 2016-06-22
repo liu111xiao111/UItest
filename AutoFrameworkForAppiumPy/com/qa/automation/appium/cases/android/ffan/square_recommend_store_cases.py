@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+sys.path.append(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
@@ -19,6 +20,7 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 import unittest
 import HTMLTestRunner
+
 
 class SquareRecommendCases(unittest.TestCase):
     '''
@@ -39,31 +41,32 @@ class SquareRecommendCases(unittest.TestCase):
                                    platform_name=platformName_andr, platform_version=platformVersion,
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
-        #登陆　升级
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        # 登陆　升级
+        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
-        
+
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        squarePage = SquareModulePage(testcase = self , driver = self.driver , logger = self.logger)
-        storeInfoPage = StoreInfoPage(testcase = self , driver = self.driver , logger = self.logger)
-        
+        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
+        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
+        storeInfoPage = StoreInfoPage(testcase=self, driver=self.driver, logger=self.logger)
+
         dashboardPage.validSelf()
         squarePage.waitBySeconds(seconds=2)
-        
+
         dashboardPage.clickOnSquareModule()
         squarePage.validSelf()
-        
-        for i in range(0,5):
-            if i==5:
+
+        for i in range(0, 5):
+            if i == 5:
                 break
             else:
                 squarePage.scrollAsScreenPercent(0.5,0.5,0.5,0.3);
         
         squarePage.clickOnRecommmendStore()
-        
+
         storeInfoPage.validSelf()
-        
+
+
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareRecommendCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')

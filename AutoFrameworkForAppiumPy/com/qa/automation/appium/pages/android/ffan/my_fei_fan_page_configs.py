@@ -5,7 +5,6 @@ class MyFeiFanPageConfigs(object):
     This is a configuration class for MyFeiFanPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
 
