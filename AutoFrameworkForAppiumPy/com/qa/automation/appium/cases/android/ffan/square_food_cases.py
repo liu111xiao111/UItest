@@ -54,7 +54,7 @@ class SquareFoodCases(unittest.TestCase):
         dashboardPage.clickOnSquareModule();
         squarePage.validSelf();
         
-        squarePage.scrollAsScreenPercent(xPercent = 20, yPercent = 30, orientation = 'down');
+        squarePage.scrollAsScreenPercent(0.5,0.5,0.5,0.3);
         #squarePage.scrollToFood()
         squarePage.waitBySeconds(seconds=2);
         

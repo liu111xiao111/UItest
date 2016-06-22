@@ -23,21 +23,16 @@ class SuperPage(object):
         API().click_back_key(driver=self.driver, logger=self.logger);
         
     
-    '''
-        Description : scroll as screen percent
-        orientation: if orientation is down,scroll to bootom of screen
-    '''
         
-    def scrollAsScreenPercent(self,xPercent,yPercent,orientation):
+    def scrollAsScreenPercent(self,start_x_percent,start_y_percent,end_x_percent,end_y_percent,duration=800):
+        '''
+            Description : scroll as screen percent
+        '''
         x = API().get_width_of_device(driver = self.driver, logger = self.logger)
         y = API().get_height_of_device(driver = self.driver, logger = self.logger)
         
-        if orientation == "down":    
-            API().scroll(driver = self.driver, logger = self.logger,start_x = x*10/xPercent,start_y = y*10/xPercent, end_x = x*10/xPercent, end_y = y*10/yPercent, duration = 1);
-            API().wait_by_seconds(seconds = 2)
-        elif orientation == "up": 
-            API().scroll(driver = self.driver, logger = self.logger,start_x = x*10/xPercent,start_y =y*10/yPercent, end_x = x*10/xPercent, end_y = y*10/xPercent, duration = 1);
-            API().wait_by_seconds(seconds = 2)   
+        API().scroll(driver = self.driver, logger = self.logger,start_x = x*start_x_percent,start_y = y*start_y_percent, end_x = x*end_x_percent, end_y = y*end_y_percent, duration = duration);
+        API().wait_by_seconds(seconds = 2)
             
             
 if __name__ == '__main__':

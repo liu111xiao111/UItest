@@ -223,9 +223,9 @@ class API:
     '''
     def scroll(self, driver, logger , start_x, start_y, end_x, end_y, duration=None):
         # logger.d("swipe ========","from : " + start_x + " , ", start_y + " , ","to :" + end_x + " , ", end_y)
-        driver.swipe(start_x=start_x, start_y=start_y, end_x=end_x, end_y=end_y, duration=None);
-       
-    
+        driver.swipe(start_x=start_x, start_y=start_y, end_x=end_x, end_y=end_y, duration=duration);
+
+
     '''
     ***********************************************************************************
         get device width 
