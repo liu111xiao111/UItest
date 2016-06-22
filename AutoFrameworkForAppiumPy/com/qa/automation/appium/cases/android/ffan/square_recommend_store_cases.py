@@ -58,7 +58,7 @@ class SquareRecommendCases(unittest.TestCase):
             if i==5:
                 break
             else:
-                squarePage.scrollAsScreenPercent(xPercent = 20, yPercent = 30, orientation = 'down');
+                squarePage.scrollAsScreenPercent(0.5,0.5,0.5,0.3);
         
         squarePage.clickOnRecommmendStore()
         
