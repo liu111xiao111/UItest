@@ -22,7 +22,7 @@ class DeviceInfoUtil:
         pass
 
     '''
-        获取设备系统版本号
+        获取安卓设备系统版本号
     '''
     def getBuildVersion(self):
         cmd = 'adb shell getprop ro.build.version.release'
@@ -34,7 +34,31 @@ class DeviceInfoUtil:
         # print(out.decode("utf-8").rstrip(), err.rstrip())
         return out.decode("utf-8").rstrip();
 
+    """
+        获取iOS设备UDID,需要安装ideviceinstaller才能调用
+    """
+
+    def getUdid(self):
+        cmd = 'idevice_id -l'
+        p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+
+        out, err = p.communicate()
+        # print("out is %s" % (type(out)));
+        # print("Return code: ", p.returncode)
+        # print(out.decode("utf-8").rstrip(), err.rstrip())
+        return out.decode("utf-8").rstrip();
+
+    """
+
+    """
+    def get_product_version(self):
+        cmd = 'ideviceinfo -k ProductVersion'
+        p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        out, err = p.communicate()
+        return out.decode("utf-8").strip();
+
+
 
 if __name__ == '__main__':
-    clearAppData = DeviceInfoUtil()
-    print(clearAppData.getBuildVersion())
+    deviceInfoUtil = DeviceInfoUtil()
+    print(deviceInfoUtil.get_product_version())
