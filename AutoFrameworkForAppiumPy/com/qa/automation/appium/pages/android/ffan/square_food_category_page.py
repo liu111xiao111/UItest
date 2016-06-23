@@ -32,7 +32,7 @@ class SquareFoodPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SquareFoodPageConfigs.resource_id_ll_find_restaurant,
                                                       seconds=10);
 

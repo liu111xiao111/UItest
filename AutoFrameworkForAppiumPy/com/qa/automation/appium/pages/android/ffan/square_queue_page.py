@@ -27,7 +27,7 @@ class SquareQueuePage(SuperPage):
         '''
         usage : Click "排队取号" in square page, and load "排队取号" correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SquareQueuePageConfigs.resource_id_queue, seconds=18);
 
     def clicOnQueueNumber(self):

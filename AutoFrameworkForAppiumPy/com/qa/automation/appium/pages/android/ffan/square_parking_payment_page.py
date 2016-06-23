@@ -32,7 +32,7 @@ class ParkingPaymentPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=ParkingPaymengConfigs.resource_id__et_input_license_plate_et,
                                                       seconds=5);
 

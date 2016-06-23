@@ -35,7 +35,7 @@ class DashboardPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=DashboardPageConfigs.resource_id__iv_logo__iv,seconds=30)
 
     def validSelfByText(self, text=DashboardPageConfigs.text_city_beijing):

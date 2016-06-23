@@ -30,7 +30,7 @@ class FoodCategoryPage(SuperPage):
     '''
 
     def validFindRestaurant(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=FoodCategoryPageConfigs.resource_id_tv_restaurant_tv,
                                                       seconds=18);
 
@@ -39,7 +39,7 @@ class FoodCategoryPage(SuperPage):
     '''
 
     def validFindCoupon(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=FoodCategoryPageConfigs.resource_id_tv_restaurant_tv,
                                                       seconds=18);
 

@@ -29,7 +29,7 @@ class MyFfanMyTicketPage(SuperPage):
         '''
         usage : Load "我的票券" page， according to textview in "我的票券", check "我的票券" page whether load correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=MyFfanMyTicketPageConfigs.resource_id_tv_my_ticket_tv)
 
     def clickOnTicketUnused(self):

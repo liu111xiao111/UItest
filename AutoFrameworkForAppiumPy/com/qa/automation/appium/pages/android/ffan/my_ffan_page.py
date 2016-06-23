@@ -40,7 +40,7 @@ class MyFfanPage(SuperPage):
                                                resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
 
     def validLoginStatus(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, logger=self.logger, driver=self.driver,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, logger=self.logger, driver=self.driver,
                                                       resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv,
                                                       seconds=90)
 

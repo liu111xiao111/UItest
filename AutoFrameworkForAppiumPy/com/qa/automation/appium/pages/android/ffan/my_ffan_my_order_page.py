@@ -29,7 +29,7 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=MyFfanMyOrderPageConfigs.resource_id_tv_my_order_tv)
 
     def clickOnOrderAll(self):

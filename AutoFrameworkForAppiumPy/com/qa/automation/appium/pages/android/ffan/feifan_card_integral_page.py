@@ -27,7 +27,7 @@ class FeiFanCardIntegralPage(SuperPage):
         '''
         usage : Check "积分主页" whether loading correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=FeiFanCardIntegralPageConfigs.resource_id_tv_integral_tv,
                                                       seconds=10)
         # API().assert_view_by_resourceID_Until_android(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = FeiFanCardIntegralPageConfigs.resource_id_tv_myIntegral_tv, seconds = 10)

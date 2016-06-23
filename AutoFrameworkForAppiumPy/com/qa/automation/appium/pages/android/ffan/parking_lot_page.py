@@ -28,7 +28,7 @@ class ParkingLotPage(SuperPage):
         '''
         usage : Load "停车场列表" page
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=ParkingLotPageConfigs.resource_id_tv_parking_list_tv,
                                                       seconds=18);
 

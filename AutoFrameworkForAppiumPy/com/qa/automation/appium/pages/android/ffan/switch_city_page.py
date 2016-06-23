@@ -25,7 +25,7 @@ class SwitchCityPage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                           SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
                                                           SwitchCityPageConfigs.assert_view_timeout)
             return True

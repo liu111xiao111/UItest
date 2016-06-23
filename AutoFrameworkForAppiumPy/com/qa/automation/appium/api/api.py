@@ -25,16 +25,18 @@ class API(object):
     ***********************************************************************************
     '''
 
+    def find_view_by_name(self,driver,logger,text):
+        return driver.find_element_by_ios_uiautomation()
+
     '''
-        usage: by android api
+        usage: by both android and ios api
         parameters:
             driver: appium driver
             logger: logging
-            resource id : view resource id
+            resource id : view resource id, or view name
         return : view of the sepecified resource id
 
     '''
-
     def get_view_by_resourceID(self, driver, logger, resource_id="default"):
         return driver.find_element_by_id(resource_id);
 
@@ -281,7 +283,7 @@ class API(object):
         用法和findViewByResourceIDUntil,增加结果申明判断.
     '''
 
-    def assert_view_by_resourceID_Until_android(self, testcase, driver, logger, resource_id="default", seconds=10):
+    def assert_view_by_resourceID_Until(self, testcase, driver, logger, resource_id="default", seconds=10):
         try:
             testcase.assertIsNotNone(
                 self.find_view_by_resourceID_Until_android(driver=driver, logger=logger, resource_id=resource_id,

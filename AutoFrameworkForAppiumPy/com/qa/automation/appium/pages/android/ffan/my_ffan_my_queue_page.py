@@ -29,7 +29,7 @@ class MyFfanMyQueuePage(SuperPage):
         '''
         usage : Click "我的排队" in my Feifan page， and load "我的排队" page correctly. 
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=MyFfanMyQueuePageConfigs.resource_id_tv_registration_tv)
 
 

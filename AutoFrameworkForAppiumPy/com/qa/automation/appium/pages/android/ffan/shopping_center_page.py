@@ -28,7 +28,7 @@ class ShoppingCenterPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase,
                                                       driver=self.driver,
                                                       logger=self.logger,
                                                       resource_id=ShoppingCenterPageConfigs.resource_id_image_zone_logo_iv,

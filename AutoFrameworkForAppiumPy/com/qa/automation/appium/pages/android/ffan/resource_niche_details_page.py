@@ -25,7 +25,7 @@ class ResourceNicheDetailsPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       ResourceNicheDetailsPageConfigs.resource_id_reource_niche_details_title,
                                                       ResourceNicheDetailsPageConfigs.assert_view_timeout)
 

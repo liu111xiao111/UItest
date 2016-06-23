@@ -22,7 +22,7 @@ class MyFeiFanPage(SuperPage):
         usage: verify whether the current page is correct page.
         """
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       MyFeiFanPageConfigs.resource_id_my_fei_fan_title,
                                                       MyFeiFanPageConfigs.assert_view_timeout)
 
@@ -31,7 +31,7 @@ class MyFeiFanPage(SuperPage):
         usage: Verify whether the current status is login.
         """
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       MyFeiFanPageConfigs.resource_id_nickname_button,
                                                       MyFeiFanPageConfigs.assert_view_timeout)
 
@@ -41,7 +41,7 @@ class MyFeiFanPage(SuperPage):
         """
 
         API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_login)
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       MyFeiFanPageConfigs.resource_id_login_button,
                                                       MyFeiFanPageConfigs.assert_view_timeout)
 

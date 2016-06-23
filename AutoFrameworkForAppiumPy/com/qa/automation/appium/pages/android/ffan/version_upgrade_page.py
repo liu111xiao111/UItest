@@ -27,7 +27,7 @@ class VersionUpgradePage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                           VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
                                                           VersionUpgradePageConfigs.assert_view_timeout)
             return True

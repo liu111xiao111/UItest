@@ -29,7 +29,7 @@ class MyFfanMyLikePage(SuperPage):
         '''
         usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=MyFfanMyLikePageConfigs.resource_id_tv_my_like_tv)
 
     def clickOnLikeGoods(self):

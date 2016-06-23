@@ -28,7 +28,7 @@ class SquareFindStorePage(SuperPage):
         super(SquareFindStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SquareFindStoreConfigs.resource_id_tv_category_tv,
                                                       seconds=10);
 

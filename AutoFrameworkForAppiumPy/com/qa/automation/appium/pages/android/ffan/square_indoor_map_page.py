@@ -27,7 +27,7 @@ class SquareIndoorMapPage(SuperPage):
         '''
         usage : Load "室内地图" page， according to textview in "室内地图", check "室内地图" page whether load correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SquareIndoorMapPageConfigs.resource_id_indoor_map,
                                                       seconds=18);
 

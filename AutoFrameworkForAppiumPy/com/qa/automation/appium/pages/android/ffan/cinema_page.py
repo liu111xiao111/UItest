@@ -23,7 +23,7 @@ class CinemaPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       CinemaPageConfigs.resource_id_cinema_title,
                                                       CinemaPageConfigs.assert_view_timeout)
 

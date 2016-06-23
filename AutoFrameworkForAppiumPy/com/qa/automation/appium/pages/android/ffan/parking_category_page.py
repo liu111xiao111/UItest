@@ -29,7 +29,7 @@ class ParkingCategoryPage(SuperPage):
         '''
         usage : Load "停车" page
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_tv,
                                                       seconds=18);
 

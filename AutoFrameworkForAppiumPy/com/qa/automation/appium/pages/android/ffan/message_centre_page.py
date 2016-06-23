@@ -24,7 +24,7 @@ class MessageCentrePage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       MessageCentrePageConfigs.resource_id_message_centre_title,
                                                       MessageCentrePageConfigs.assert_view_timeout)
 

@@ -24,7 +24,7 @@ class AccountManagementPage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger,
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       AccountManagementPageConfigs.resource_id_account_management_title,
                                                       AccountManagementPageConfigs.assert_view_timeout)
 

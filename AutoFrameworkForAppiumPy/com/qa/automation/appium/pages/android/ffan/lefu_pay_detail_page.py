@@ -27,7 +27,7 @@ class LefuPayDetailPage(SuperPage):
         '''
         usage : Click "乐付买单" in square page, and load "乐付买单" correctly.
         '''
-        API().assert_view_by_resourceID_Until_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=LefuPayDetailPageConfigs.resource_id_store_title,
                                                       seconds=18);
 
