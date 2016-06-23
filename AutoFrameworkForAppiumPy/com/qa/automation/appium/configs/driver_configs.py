@@ -19,3 +19,5 @@ appActivity_ffan = 'com.feifan.o2o.business.launch.LauncherActivity';
 appActivity_bp = 'com.feifan.bp.SplashActivity';
 
 driver_url = 'http://localhost:4723/wd/hub';
+
+bundle_id = "com.dianshang.wanhui"
