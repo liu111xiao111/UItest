@@ -35,7 +35,7 @@ class SquareLefuPayPage(SuperPage):
         '''
         usage : Click "乐付买单"
         '''
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SquareLefuPayPageConfigs.resource_id_lefu_pay, seconds=18);
         # API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger = self.logger, resource_id = SquareLefuPayPageConfigs.resource_id_lefu_pay)
 

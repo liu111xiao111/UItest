@@ -163,11 +163,12 @@ class API(object):
 
     '''
     ***********************************************************************************
-        click methods
+        click methods,resource_id android是resource id,ios是name属性对应的值
+        used by both android and ios
     ***********************************************************************************
     '''
 
-    def click_view_by_resourceID_android(self, testcase, driver, logger, resource_id, seconds=10):
+    def click_view_by_resourceID(self, testcase, driver, logger, resource_id, seconds=10):
 
         try:
             wdw = WebDriverWait(driver=driver, timeout=seconds)

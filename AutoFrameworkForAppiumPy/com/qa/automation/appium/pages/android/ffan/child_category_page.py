@@ -38,7 +38,7 @@ class ChildCategoryPage(SuperPage):
     '''
 
     def clickOnChildPlay(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ChildCategoryPageConfigs.resource_id_ll_child_play_ll);
 
     '''
@@ -54,7 +54,7 @@ class ChildCategoryPage(SuperPage):
     '''
 
     def clickOnChildEducation(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ChildCategoryPageConfigs.resource_id_ll_child_education_ll);
 
     '''
@@ -62,7 +62,7 @@ class ChildCategoryPage(SuperPage):
     '''
 
     def clickOnChildShopping(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ChildCategoryPageConfigs.resource_id_ll_child_shopping_ll);
 
     '''
@@ -70,7 +70,7 @@ class ChildCategoryPage(SuperPage):
     '''
 
     def clickOnOtherStore(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ChildCategoryPageConfigs.resource_id_ll_other_store_ll);
 
 

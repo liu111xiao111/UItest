@@ -43,7 +43,7 @@ class SwitchCityPage(SuperPage):
         usage: cancel switch city.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SwitchCityPageConfigs.resource_id_switch_city_cancel_button)
 
     def confirmSwitchCity(self):
@@ -51,7 +51,7 @@ class SwitchCityPage(SuperPage):
         usage: confirm switch city.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SwitchCityPageConfigs.resource_id_switch_city_switch_button)
 
     def invalidSelf(self):

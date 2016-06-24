@@ -48,7 +48,7 @@ class FoodCategoryPage(SuperPage):
     '''
 
     def clickOnFindCoupon(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=FoodCategoryPageConfigs.resource_id_bt_find_coupon_bt);
 
     '''
@@ -56,7 +56,7 @@ class FoodCategoryPage(SuperPage):
     '''
 
     def clickOnFindRestaurant(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=FoodCategoryPageConfigs.resource_id_bt_find_restaurant_bt);
 
 

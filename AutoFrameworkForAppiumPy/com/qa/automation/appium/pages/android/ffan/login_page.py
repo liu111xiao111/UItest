@@ -49,7 +49,7 @@ class LoginPage(SuperPage):
                                                );
 
     def clickOnLoginBtn(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=LoginPageConfigs.resource_id_login_button)
 
 

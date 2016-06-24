@@ -87,7 +87,7 @@ class SquareModulePage(SuperPage):
     '''
 
     def clickOnSearch(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=SquareModulePageConfigs.resource_id_iv_search_iv);
 
     '''
@@ -145,7 +145,7 @@ class SquareModulePage(SuperPage):
         usage: click on resource niche.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SquareModulePageConfigs.resource_id_resource_niche_button,
                                                SquareModulePageConfigs.click_on_button_timeout)
 

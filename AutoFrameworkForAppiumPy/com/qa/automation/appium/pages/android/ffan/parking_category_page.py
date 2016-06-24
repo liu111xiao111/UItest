@@ -37,7 +37,7 @@ class ParkingCategoryPage(SuperPage):
         '''
         usage : Click "附近停车场"， load "停车场列表" page
         '''
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_lot_tv);
 
 

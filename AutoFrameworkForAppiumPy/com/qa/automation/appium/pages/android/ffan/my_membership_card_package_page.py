@@ -33,7 +33,7 @@ class MyMembershipCardPackagePage(SuperPage):
         usage: click on the LeHuoKa button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_button,
                                                MyMembershipCardPackagePageConfigs.click_on_button_timeout)
 

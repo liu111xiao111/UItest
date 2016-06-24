@@ -60,7 +60,7 @@ class UpdateLoginPasswordPage(SuperPage):
         usage: click on the confirm button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                UpdateLoginPasswordPageConfigs.resource_id_confirm_button,
                                                UpdateLoginPasswordPageConfigs.click_on_button_timeout)
 

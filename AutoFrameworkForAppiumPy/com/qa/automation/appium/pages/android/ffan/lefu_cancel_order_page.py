@@ -28,7 +28,7 @@ class LefuCancelOrderPage(SuperPage):
     '''
 
     def clickOnConfirmBtn(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=LefuCancelOrderPageConfigs.resource_id_confirm_button)
 
 

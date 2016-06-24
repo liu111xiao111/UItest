@@ -41,7 +41,7 @@ class LefuPayDetailPage(SuperPage):
         '''
         usage : Click "确认购买"
         '''
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=LefuPayDetailPageConfigs.resource_id_pay);
 
 

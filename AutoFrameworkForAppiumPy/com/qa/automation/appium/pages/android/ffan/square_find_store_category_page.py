@@ -37,7 +37,7 @@ class SquareFindStorePage(SuperPage):
     '''
 
     def clickOnSearch(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=SquareFindStoreConfigs.resource_id_iv_search_iv)
 
 

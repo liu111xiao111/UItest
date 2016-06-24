@@ -50,7 +50,7 @@ class MyFeiFanPage(SuperPage):
         usage: click on the login button.
         """
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                MyFeiFanPageConfigs.resource_id_login_button);
 
     def clickOnSettings(self):
@@ -66,7 +66,7 @@ class MyFeiFanPage(SuperPage):
         usage: click on the message centre button.
         """
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                MyFeiFanPageConfigs.resource_id_message_centre_button,
                                                MyFeiFanPageConfigs.click_on_button_timeout);
 
@@ -84,7 +84,7 @@ class MyFeiFanPage(SuperPage):
         usage: click on the nickname button.
         """
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                MyFeiFanPageConfigs.resource_id_nickname_button,
                                                MyFeiFanPageConfigs.click_on_button_timeout);
 

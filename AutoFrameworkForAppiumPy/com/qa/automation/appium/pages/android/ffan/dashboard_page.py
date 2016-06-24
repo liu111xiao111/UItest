@@ -101,7 +101,7 @@ class DashboardPage(SuperPage):
         """
             usage: 点击摇一摇提示框
         """
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=DashboardPageConfigs.resource_id_iv_home_shake_tips)
 
     def clickOnLefuCategory(self):
@@ -127,7 +127,7 @@ class DashboardPage(SuperPage):
         """
         API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                          text=DashboardPageConfigs.text_parking)
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                DashboardPageConfigs.resource_id_flash_sales_more_button,
                                                DashboardPageConfigs.click_on_button_timeout)
 
@@ -135,7 +135,7 @@ class DashboardPage(SuperPage):
         """
             usage:点击全城搜索
         """
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=DashboardPageConfigs.resource_id_tv_search_tv)
 
 

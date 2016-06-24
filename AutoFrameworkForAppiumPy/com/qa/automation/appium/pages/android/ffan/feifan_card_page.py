@@ -41,7 +41,7 @@ class FeiFanCardPage(SuperPage):
     '''
 
     def clickOnBill(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=FeiFanCardPageConfigs.resource_id_tv_bill_tv)
 
     '''
@@ -49,7 +49,7 @@ class FeiFanCardPage(SuperPage):
     '''
 
     def clickOnPocketMoney(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=FeiFanCardPageConfigs.resource_id_tv_pocket_money_tv)
 
     '''

@@ -32,7 +32,7 @@ class CinemaPage(SuperPage):
         usage: click on the buy ticket button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                CinemaPageConfigs.resource_id_buy_ticket_button,
                                                CinemaPageConfigs.click_on_button_timeout)
 

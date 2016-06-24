@@ -30,7 +30,7 @@ class SettingsPage(SuperPage):
 
     # 点击退出当前账号button
     def clickOnQuitAccountBtn(self, confirmQuit=True):
-        API().click_view_by_resourceID_android(self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=SettingsPageConfigs.resource_id_setting_btn_logout_rl);
         if confirmQuit:
             API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
@@ -44,7 +44,7 @@ class SettingsPage(SuperPage):
         usage: click on the account management button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SettingsPageConfigs.resource_id_account_management,
                                                SettingsPageConfigs.assert_view_timeout)
 

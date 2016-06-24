@@ -65,7 +65,7 @@ class SearchPage(SuperPage):
     '''
 
     def clickOnSearch(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=SearchPageConfigs.resource_tv_search_tv);
 
     '''

@@ -36,7 +36,7 @@ class MyFfanPage(SuperPage):
                                           text=MyFfanPageConfigs.text_my_ffan);
 
     def clickOnLogin(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=MyFfanPageConfigs.resource_id_tv_login_tv);
 
     def validLoginStatus(self):

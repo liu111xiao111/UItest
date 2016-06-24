@@ -50,7 +50,7 @@ class HuiLifePage(SuperPage):
         usage: click on the specific activity button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                HuiLifePageConfigs.resource_id_specific_activity_button,
                                                HuiLifePageConfigs.click_on_button_timeout);
 
@@ -59,7 +59,7 @@ class HuiLifePage(SuperPage):
         usage: click on the specific privilege button.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                HuiLifePageConfigs.resource_id_specific_privilege_button,
                                                HuiLifePageConfigs.click_on_button_timeout);
 

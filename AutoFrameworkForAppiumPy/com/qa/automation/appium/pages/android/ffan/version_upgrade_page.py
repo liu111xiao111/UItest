@@ -45,7 +45,7 @@ class VersionUpgradePage(SuperPage):
         usage: cancel version upgrade.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                VersionUpgradePageConfigs.resource_id_upgrade_cancel_button)
 
     def confirmVersionUpgrade(self):
@@ -53,7 +53,7 @@ class VersionUpgradePage(SuperPage):
         usage: confirm version upgrade.
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                VersionUpgradePageConfigs.resource_id_upgrade_confirm_button)
 
     def validPercentage(self):

@@ -5,7 +5,11 @@ import os, sys
 
 class DashboardPageConfigs():
 
-    # name
+    """
+        *********************************iOS 控件name*****************************
+
+    """
+
     """
         摇一摇图标name
     """
@@ -17,7 +21,30 @@ class DashboardPageConfigs():
     name_home_title_icon = "home_title_icon"
 
     """
-        text label
+        爱逛街icon name
+    """
+    name_app_tabbar_home_normal = 'app_tabbar_home_normal'
+
+    """
+        慧生活icon name
+    """
+    name_app_tabbar_life_normal = "app_tabbar_life_normal"
+
+    """
+        飞凡卡icon name
+    """
+    name_app_tabbar_card_normal = "app_tabbar_card_normal"
+
+    """
+        我的icon name
+    """
+    name_app_tabbar_user_normal = "app_tabbar_user_normal"
+
+
+
+    """
+        *********************************iOS text label*****************************
+
     """
     text_aiguangjie = "爱逛街";
     text_huishenghuo = "慧生活";

@@ -33,7 +33,7 @@ class FlashSalesSquarePage(SuperPage):
         usage: click goods button
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger,
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                FlashSalesSquarePageConfigs.resource_id_goods_button,
                                                FlashSalesSquarePageConfigs.click_on_button_timeout)
 

@@ -56,11 +56,10 @@ class AppiumDriver():
                 'bundleId': self.bundle_id,
                 'udid' : self.ios_udid
             }
-        print("desired caps %s" % (desired_caps));
+        #print("desired caps %s" % (desired_caps));
         return webdriver.Remote(self.driver_url, desired_caps)
 
-        # def tearDown(self):
-        #     self.driver.quit()
+
 
 
 if __name__ == '__main__':

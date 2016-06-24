@@ -28,7 +28,7 @@ class LocationBluetoothPage(SuperPage):
     '''
 
     def clickOnCancleBtn(self):
-        API().click_view_by_resourceID_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=LocationBluetoothPageConfigs.resource_id_cancle_button)
 
 
