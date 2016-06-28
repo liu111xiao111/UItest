@@ -25,9 +25,6 @@ class API(object):
     ***********************************************************************************
     '''
 
-    def find_view_by_name(self,driver,logger,text):
-        return driver.find_element_by_ios_uiautomation()
-
     '''
         usage: by both android and ios api
         parameters:
@@ -157,9 +154,10 @@ class API(object):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.NAME, content_desc)))
 
-    def find_view_by_xpath_Until_android(self, driver, logger, xpath="default", seconds=10):
+    def find_view_by_xpath_Until(self, driver, logger, xpath="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+
 
     '''
     ***********************************************************************************
@@ -317,7 +315,7 @@ class API(object):
     def assert_view_by_xpath_android(self, testcase, driver, logger, xpath="default", seconds=10):
         try:
             testcase.assertIsNotNone(
-                self.find_view_by_xpath_Until_android(driver=driver, logger=logger, xpath=xpath, seconds=10))
+                self.find_view_by_xpath_Until(driver=driver, logger=logger, xpath=xpath, seconds=10))
         except NoSuchElementException as e:
             testcase.assertTrue(False, "content_desc %s none" % (xpath))
 
