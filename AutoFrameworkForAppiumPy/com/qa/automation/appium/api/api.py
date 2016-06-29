@@ -49,6 +49,9 @@ class API(object):
     def get_view_by_uiautomator_android(self, driver, logger, selector="default"):
         return driver.find_element_by_android_uiautomator(selector);
 
+    def find_element_by_ios_uiautomation(self, driver, logger, uia_string="default"):
+        return driver.find_element_by_ios_uiautomation(uia_string=uia_string)
+
     '''
         usage : by android api
         parameters:
@@ -130,6 +133,12 @@ class API(object):
         selector = 'new UiSelector().className("%s")' % (className);
         return self.get_view_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
+    """
+        通过class name查找元素,iOS和Android平台通用函数
+    """
+    def find_view_by_class_name_both(self, driver, logger, className="default"):
+        return driver.find_element_by_class_name(name=className)
+
     '''
         usage : 显式等待方法
         parameters:
@@ -144,11 +153,19 @@ class API(object):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.ID, resource_id)));
 
+    def find_view_by_uia_string_until_ios(self, driver, logger, uia_string, seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(
+            EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uia_string)))
+
+
     def find_view_by_text_Until_android(self, driver, logger, text="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(
             EC.text_to_be_present_in_element((MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("' + text + '")'),
                                              text));
+
+
 
     def find_view_by_content_desc_Until_android(self, driver, logger, content_desc="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
@@ -321,6 +338,10 @@ class API(object):
 
         except TimeoutException as e:
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
+
+
+    def assert_equal(self,test_case,driver,logger,actual_text,expect_text):
+        test_case.assertEqual(first=actual_text,second=expect_text,msg="actual text : %s != expected text : %s" % (actual_text,expect_text))
 
     '''
     ***********************************************************************************
