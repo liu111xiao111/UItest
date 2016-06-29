@@ -24,7 +24,11 @@ class LoveShoppingPageConfigs():
     name_search_all_city = "全城搜索";
 
 
+    """
+        *********************************iOS 控件xpath*****************************
 
+    """
+    xpath_flash_sale = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIACollectionView[1]/UIACollectionCell[6]"
 
 
     def __init__(self):

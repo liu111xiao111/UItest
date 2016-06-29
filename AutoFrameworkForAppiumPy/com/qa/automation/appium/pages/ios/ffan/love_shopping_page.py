@@ -40,8 +40,6 @@ class LoveShoppingPage(IosSuperPage):
     def clickOnShoppingMall(self):
         API().click_view_by_resourceID(testcase=self.testcase,driver=self.driver,
                                                logger=self.logger,resource_id=LoveShoppingPageConfigs.name_shopping_mall)
-        # API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-        #                                  text=LoveShoppingPageConfigs.text_shopping_mall);
 
     # 点击电影按钮
     def clickOnFilm(self):
@@ -81,9 +79,7 @@ class LoveShoppingPage(IosSuperPage):
 
     # 点击限时抢购按钮
     def clickOnFlashSale(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver,
-                                               logger=self.logger,
-                                               resource_id=LoveShoppingPageConfigs.name_flash_sale)
+        API().click_view_by_xpath(testcase=self.testcase,driver=self.driver,logger=self.logger,xpath=LoveShoppingPageConfigs.xpath_flash_sale)
 
     # 点击停车按钮
     def clickOnParking(self):

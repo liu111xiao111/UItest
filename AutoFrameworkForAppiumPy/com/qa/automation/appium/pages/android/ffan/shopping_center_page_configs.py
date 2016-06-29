@@ -15,8 +15,11 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-
+"""
+    购物中心页面配置项
+"""
 class ShoppingCenterPageConfigs(SuperPage):
+
     # 购物中心列表对应的image logo
     resource_id_image_zone_logo_iv = "image_zone_logo";
 
