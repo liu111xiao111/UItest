@@ -20,8 +20,6 @@ PATH = lambda p: os.path.abspath(
 """
     爱逛街tab对应页面实现
 """
-
-
 class LoveShoppingPage(IosSuperPage):
 
     def __init__(self, test_case, driver, logger):

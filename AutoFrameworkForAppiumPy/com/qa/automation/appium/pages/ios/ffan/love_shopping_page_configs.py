@@ -2,7 +2,9 @@
 
 import os, sys
 
-
+"""
+    爱逛街页面配置
+"""
 class LoveShoppingPageConfigs():
 
 
