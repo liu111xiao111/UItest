@@ -20,7 +20,7 @@ class CouponDetailsPageConfigs(object):
     resource_id_coupon_details_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # Receive free button
-    text_receive_free_button = u"免费领取"
+    text_receive_free_button = "免费领取"
 
     def __init__(self):
         pass

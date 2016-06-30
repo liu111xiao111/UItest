@@ -3,6 +3,11 @@
 
 import os
 import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))))
+
+
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -19,13 +24,12 @@ from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.square_coupon_detail_page import SquareCouponDetailPage
+from com.qa.automation.appium.pages.android.ffan.coupon_details_page import *
 from com.qa.automation.appium.pages.android.ffan.square_coupon_page import SquareCouponPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import *
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class PrivilegeCouponCases(TestCase):
@@ -37,14 +41,14 @@ class PrivilegeCouponCases(TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        ClearAppData().clearData()
+        #ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
+        #ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion() ,
                                    deviceName_andr, driver_url).getDriver()
-        TestPrepare(self, self.driver, self.logger).prepare()
+        #TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
@@ -59,16 +63,11 @@ class PrivilegeCouponCases(TestCase):
         squareCouponPage.validSelf()
         squareCouponPage.clickOnListItem()
 
-        squareCouponDetailPage = SquareCouponDetailPage(self, self.driver, self.logger)
-        squareCouponDetailPage.validSelf()
-        squareCouponDetailPage.clickBackKey()
+        couponDetailPage = CouponDetailsPage(self, self.driver, self.logger)
+        couponDetailPage.validSelf()
 
-        squareCouponPage.validSelf()
-        squareCouponPage.clickBackKey()
-
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
-
+        couponDetailPage.clickOnReceiveFree()
+        couponDetailPage.waitBySeconds(seconds=20)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(PrivilegeCouponCases)
