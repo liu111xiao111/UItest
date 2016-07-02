@@ -23,14 +23,11 @@ class LefuCancelOrderPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(LefuCancelOrderPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    '''
-        usage : Click "确认"
-    '''
-
     def clickOnConfirmBtn(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=LefuCancelOrderPageConfigs.resource_id_confirm_button)
-
-
+        '''
+        usage : Click "确认"
+        '''
+        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = LefuCancelOrderPageConfigs.resource_id_confirm_button)
+            
 if __name__ == '__main__':
     pass;

@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 
-import sys, os
+import sys,os
+import time
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import *;
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page import *;
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
-from com.qa.automation.appium.utility.logger import Logger;
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
+from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage;
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page import LefuPayDetailPage
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import LefuPayWayPage
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.logger import Logger;
 
 import unittest
 import HTMLTestRunner
@@ -50,12 +52,10 @@ class LefuPayCatergoryCases(unittest.TestCase):
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        lefuPage = SquareLefuPayPage(testcase=self, driver=self.driver, logger=self.logger)
-        lefuPayDetailPage = LefuPayDetailPage(testcase=self, driver=self.driver, logger=self.logger)
-        lefuPayWayPage = LefuPayWayPage(testcase=self, driver=self.driver, logger=self.logger)
-        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
-        myOrderPage = MyFfanMyOrderPage(testcase=self, driver=self.driver, logger=self.logger)
+        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
+        lefuPage = SquareLefuPayPage(testcase = self, driver = self.driver, logger = self.logger)
+        lefuPayDetailPage = LefuPayDetailPage(testcase = self, driver = self.driver, logger = self.logger)
+        lefuPayWayPage = LefuPayWayPage(testcase = self, driver = self.driver, logger = self.logger)
 
         # Load square page
         dashboardPage.validSelf();

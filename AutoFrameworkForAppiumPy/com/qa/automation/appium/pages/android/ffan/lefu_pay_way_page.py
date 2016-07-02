@@ -34,6 +34,12 @@ class LefuPayWayPage(SuperPage):
                                           text=LefuPayWayPageConfigs.text_pay_way,
                                           seconds=10);'''
 
+    def getOrderNumber(self):
+        '''
+        usage : Get order number.
+        '''
+        orderNumber = API().get_view_by_resourceID(self.driver, self.logger, LefuPayWayPageConfigs.resource_id_order_number).text
+        return orderNumber;
 
 if __name__ == '__main__':
     pass;

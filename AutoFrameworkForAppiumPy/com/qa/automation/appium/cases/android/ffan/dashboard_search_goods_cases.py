@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
+import unittest
+
+import HTMLTestRunner
+
+from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+
 
 sys.path.append(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
@@ -13,11 +20,7 @@ from com.qa.automation.appium.configs.driver_configs import *;
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver;
 from com.qa.automation.appium.utility.logger import Logger;
 
-from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
-from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
-import unittest
-import HTMLTestRunner
 
 
 class DashboardSearchGoodsCases(unittest.TestCase):
@@ -48,20 +51,16 @@ class DashboardSearchGoodsCases(unittest.TestCase):
         testPrepare.prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        searchPage = SearchPage(testcase=self, driver=self.driver, logger=self.logger)
-
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.waitBySeconds(3)
-
         dashboardPage.clickOnSearchView()
 
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.inputGoodsName()
         searchPage.clickOnSearch()
-
-        searchPage.validSearchResult()
-
+        searchPage.validSearchResult(u"MU8600", u"//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
+        searchPage.clickBackKey()
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(DashboardSearchGoodsCases)

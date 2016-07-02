@@ -21,7 +21,8 @@ PATH = lambda p: os.path.abspath(
 
 #   首页点击 停车
 class ParkingCategoryPage(SuperPage):
-    def __init__(self, testcase, driver, logger):
+
+    def __init__(self,testcase,driver,logger):
         self.a = 12;
         super(ParkingCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
@@ -39,6 +40,13 @@ class ParkingCategoryPage(SuperPage):
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_lot_tv);
+
+    def clickOnParkingPayment(self):
+        '''
+        usage : Click "停车交费"， load "停车交费" page
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                                resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_payment_tv);    
 
 
 if __name__ == '__main__':

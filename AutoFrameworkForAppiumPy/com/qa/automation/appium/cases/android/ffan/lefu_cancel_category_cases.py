@@ -1,23 +1,27 @@
 # -*- coding: utf-8 -*-
 
-import sys, os
+import sys,os
+import time
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import *;
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page import *;
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import *;
-from com.qa.automation.appium.pages.android.ffan.lefu_cancel_order_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
-from com.qa.automation.appium.utility.logger import Logger;
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
+from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage;
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page import LefuPayDetailPage
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import LefuPayWayPage
+from com.qa.automation.appium.pages.android.ffan.lefu_cancel_order_page import LefuCancelOrderPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.logger import Logger;
 
 import unittest
 import HTMLTestRunner
@@ -26,7 +30,7 @@ import HTMLTestRunner
 class LefuCancelCatergoryCases(unittest.TestCase):
     '''
         巡检checklist #15
-        自动化测试 #15-1
+        自动化测试 #15-2
         首页进入乐付买单（城市维度），并下单，取消订单，支付（虚拟城市），并查看相应订单状态
     '''
 
@@ -73,6 +77,7 @@ class LefuCancelCatergoryCases(unittest.TestCase):
         lefuPayDetailPage.waitBySeconds(seconds=3);
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
+        lefuOrderNumber = lefuPayWayPage.getOrderNumber();
 
         # Cancel the order
         lefuPayWayPage.clickBackKey();
@@ -85,12 +90,28 @@ class LefuCancelCatergoryCases(unittest.TestCase):
         myFfanPage.clickOnMyOrder();
         myOrderPage.validSelf();
         myOrderPage.waitBySeconds(seconds=2);
+        myOrderNumber = myOrderPage.getOrderNumber();
+
+        #Judge order number
+        if lefuOrderNumber == myOrderNumber[5:]:
+            print("Order display correctly!")
+        else:
+            print("Not find new order number!")
+
         myOrderPage.clickOnOrderNoPay();
-        myOrderPage.validSelfNoPay();
-        myOrderPage.waitBySeconds(seconds=2);
+        #myOrderNumberNoPay = myOrderPage.getOrderNumber();
+        #Judge order number
+        '''if lefuOrderNumber != myOrderNumberNoPay[5:]:
+            print("Order display correctly!")
+        else:
+            print("Order error!")'''
         myOrderPage.clickOnOrderPaid();
-        myOrderPage.validSelfPaid();
-        myOrderPage.waitBySeconds(seconds=2);
+        myOrderNumberPaid = myOrderPage.getOrderNumber();
+        #Judge order number
+        if lefuOrderNumber != myOrderNumberPaid[5:]:
+            print("Order display correctly!")
+        else:
+            print("Order error!")
 
 
 if __name__ == "__main__":

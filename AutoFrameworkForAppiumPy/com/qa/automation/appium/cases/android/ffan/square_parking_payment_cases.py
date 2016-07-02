@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
+import unittest
+
+import HTMLTestRunner
+
+from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 
 sys.path.append(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
@@ -45,19 +52,28 @@ class SquareParkingPaymentCases(unittest.TestCase):
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
-        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger);
-        parkingPaymentPage = ParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchAll()
 
-        dashboardPage.validSelf();
-        squarePage.waitBySeconds(seconds=2);
+        searchPage = SearchPage(self, self.driver, self.logger)
+        searchPage.validSelf()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
 
-        dashboardPage.clickOnSquareModule();
-        squarePage.validSelf();
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.validSelf()
+        squareModulePage.clickOnParking()
 
-        squarePage.clickOnParking();
-        parkingPaymentPage.validSelf();
+        parkingPaymentPage = ParkingPaymentPage(self, self.driver, self.logger)
+        parkingPaymentPage.validSelf()
+        parkingPaymentPage.clickBackKey()
 
+        squareModulePage.validSelf()
+        squareModulePage.clickBackKey()
+
+        searchPage.clickBackKey()
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareParkingPaymentCases)

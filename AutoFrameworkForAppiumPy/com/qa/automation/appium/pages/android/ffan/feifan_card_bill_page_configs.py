@@ -9,6 +9,12 @@ class FeiFanCardBillPageConfigs():
     # 账号列表
     resource_id_tv_bill_list_tv = "android:id/list"
 
+    # Click button time out
+    click_on_button_timeout = 10
+
+    # Filter button
+    resource_id_filter_button = "com.wanda.app.wanhui:id/title_settings"
+
     # text指明类型为text label,后面是文字的拼音
 
     def __init__(self):

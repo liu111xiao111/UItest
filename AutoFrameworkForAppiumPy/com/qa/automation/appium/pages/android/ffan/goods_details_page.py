@@ -27,6 +27,16 @@ class GoodsDetailsPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       GoodsDetailsPageConfigs.resource_id_reource_goods_details_title,
                                                       GoodsDetailsPageConfigs.assert_view_timeout)
+													  
+	def validKeywords(self, keywords):
+        '''
+        usage: verify whether the keyword is correct.
+        '''
+
+        print "KEYWORDS: %s" % keywords
+
+        API().assert_view_by_text_android(self.testcase, self.driver, self.logger, keywords, 
+											GoodsDetailsPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

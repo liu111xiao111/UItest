@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
+import unittest
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+import HTMLTestRunner
+
+from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
@@ -15,12 +21,6 @@ from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
 from com.qa.automation.appium.configs.driver_configs import *;
 from com.qa.automation.appium.driver.appium_driver import *;
 from com.qa.automation.appium.utility.logger import Logger;
-
-from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
-from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-
-import unittest
-import HTMLTestRunner
 
 
 class SquareSearchCases(unittest.TestCase):
@@ -66,10 +66,13 @@ class SquareSearchCases(unittest.TestCase):
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        searchPage.clickOnSearchResultFirstItem()
+        tempText = searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage.validSelf()
+        searchResultStorePage.validKeywords(tempText)
+        searchResultStorePage.clickBackKey()
 
+        searchPage.clickBackKey()
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareSearchCases)

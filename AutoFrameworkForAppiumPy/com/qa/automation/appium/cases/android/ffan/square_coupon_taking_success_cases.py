@@ -66,10 +66,10 @@ class SquareCouponTakingSuccessCases(unittest.TestCase):
         squareCouponPage.clickOnListItem()
 
         squareCouponDetailPage.validSelf()
-        # squareCouponDetailPage.clickOnFreeTake()
-
-        # squareCouponTakingSuccessPage.validSelf()
-
+        squareCouponDetailPage.clickOnFreeTake()
+        
+        squareCouponTakingSuccessPage.validSelf()
+        
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareCouponTakingSuccessCases)

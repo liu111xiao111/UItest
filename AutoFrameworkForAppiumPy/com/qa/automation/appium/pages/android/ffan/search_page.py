@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from time import sleep
+import os, sys
 import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.ffan.search_page_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.common.super_page import *
 
 from appium import webdriver
 
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.search_page_configs import *
+
+
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 # Returns abs path relative to this file and not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -73,15 +73,49 @@ class SearchPage(SuperPage):
     '''
 
     def clickOnSearchResultFirstItem(self):
-        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                  xpath=SearchPageConfigs.xpath_search_result_first_item);
+        tempText = API().get_view_by_resourceID(self.driver, self.logger, SearchPageConfigs.resource_id_specific_store_button).text
+        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger, xpath=SearchPageConfigs.xpath_search_result_first_item);
 
-    def validSearchResult(self):
+        return tempText
+
+    def clickOnMovie(self):
+        '''
+        usage: click on the movie button
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, SearchPageConfigs.text_movie_button, SearchPageConfigs.click_on_button_timeout)
+
+    def clickOnSpecificMovie(self):
+        '''
+        usage: click on the specific movie button
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, SearchPageConfigs.resource_id_specific_movie_button, SearchPageConfigs.click_on_button_timeout)
+
+    def validSearchResult(self, textContains="default", xpath="default"):
         '''
             usage: 验证搜索结果
         '''
-        API().assert_view_by_xpath_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                           xpath=SearchPageConfigs.xpath_search_result_first_item)
+
+        API().assert_view_by_text_contains_according_to_xpath_until_android(self.testcase, self.driver, self.logger, textContains, xpath, SearchPageConfigs.assert_view_timeout)
+
+    def inputKeywords(self, keywords):
+        '''
+        usage: input keywords.
+        '''
+
+        API().input_view_by_resourceID_android(self.driver, self.logger,
+												SearchPageConfigs.resource_et_search_input_et,
+												keywords)
+
+    def clickOnSpecificSquare(self):
+        '''
+        usage: click on the specific square button
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+										SearchPageConfigs.resource_id_specific_square_button,
+										SearchPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

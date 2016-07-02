@@ -26,10 +26,8 @@ class LoveShoppingCases(unittest.TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        deviceInfoUtil = DeviceInfoUtil();
-        platform_Version = deviceInfoUtil.getBuildVersion();
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platform_Version,
+                                   platform_name=platformName_andr, platform_version=platformVersion,
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 

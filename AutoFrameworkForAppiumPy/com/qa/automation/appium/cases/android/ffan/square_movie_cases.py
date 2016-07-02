@@ -21,6 +21,9 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.cinema_page import CinemaPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.popup_page import ClickActivityKeywordsType
+from com.qa.automation.appium.pages.android.ffan.popup_page import PopupPage
+from com.qa.automation.appium.pages.android.ffan.popup_page import VerifyActivityKeywordsType
 from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
@@ -58,18 +61,28 @@ class SquareMovieCases(TestCase):
 
         cinemaPage = CinemaPage(self, self.driver, self.logger)
         cinemaPage.validSelf()
-        cinemaPage.clickOnBuyTicket()
+        tempText = cinemaPage.clickOnBuyTicket()
+
+        popupPage = PopupPage(self , self.driver , self.logger)
+        for tempTimes in range(3):
+            print "ATTEMPTS: %d" % (tempTimes + 1)
+            if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
+                popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
+                break
+            popupPage.waitBySeconds()
 
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
+        seatPickingPage.validKeywords(tempText)
         seatPickingPage.clickBackKey()
 
+        cinemaPage.waitBySeconds()
         cinemaPage.validSelf()
         cinemaPage.clickBackKey()
 
+        squareModulePage.waitBySeconds()
         squareModulePage.validSelf()
         squareModulePage.clickBackKey()
-
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)

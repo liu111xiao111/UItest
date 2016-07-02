@@ -36,6 +36,34 @@ class MessageCentrePage(SuperPage):
         API().click_view_by_text_android(self.testcase, self.driver, self.logger,
                                          MessageCentrePageConfigs.text_settings_button,
                                          MessageCentrePageConfigs.click_on_button_timeout)
+										 
+	def clickOnFeiFanActivity(self):
+        '''
+        usage: click on the fei fan activity button.
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_fei_fan_activity, MessageCentrePageConfigs.click_on_button_timeout)
+
+    def clickOnSquareDynamic(self):
+        '''
+        usage: click on the square dynamic button.
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_square_dynamic, MessageCentrePageConfigs.click_on_button_timeout)
+
+    def clickOnBrandActivity(self):
+        '''
+        usage: click on the brand activity button.
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_brand_activity, MessageCentrePageConfigs.click_on_button_timeout)
+
+    def clickOnStoreMessage(self):
+        '''
+        usage: click on the store message button.
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_store_message, MessageCentrePageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

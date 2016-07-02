@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 import os
@@ -40,11 +41,12 @@ class SwitchCityCases(TestCase):
 
     def test_case(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-        tempTimes = 0
-        while switchCityPage.validSelf(False) and tempTimes < 3:
-            switchCityPage.cancelSwitchCity()
-            switchCityPage.waitBySeconds()
-            tempTimes += 1
+        for tempTimes in range(5):
+            print("ATTEMPTS: %d") % (tempTimes + 1)
+            if switchCityPage.validSelf(False):
+                switchCityPage.cancelSwitchCity()
+                break
+            switchCityPage.waitBySeconds(2)
         switchCityPage.invalidSelf()
 
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os, sys
@@ -35,6 +36,15 @@ class SquareShoppingPage(SuperPage):
         API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SquareShoppingPageConfigs.resource_id_iv_find_iv,
                                                       seconds=10);
+													  
+	def clickOnSubCommodity(self):
+        '''
+        usage: click on the sub-commodity button.
+        '''
+
+        tempText = API().get_view_by_resourceID(self.driver, self.logger, SquareShoppingPageConfigs.resource_id_sub_commodity_button).text
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, SquareShoppingPageConfigs.resource_id_sub_commodity_button, SquareShoppingPageConfigs.click_on_button_timeout)
+        return tempText
 
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os, sys
@@ -10,6 +11,11 @@ class SquareShoppingPageConfigs():
 
     # text指明类型为text label,后面是文字的拼音
 
+    # Click button time out
+    click_on_button_timeout = 10
+
+    # Sub-commodity button
+    resource_id_sub_commodity_button = "com.wanda.app.wanhui:id/goods_list_item_name"
 
     def __init__(self):
         pass;

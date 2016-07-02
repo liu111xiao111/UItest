@@ -19,5 +19,8 @@ class ActivityDetailsPageConfigs(object):
     # Activity details title
     resource_id_activity_details_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
+    # Sharing button
+    xpath_sharing_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.view.View[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.ImageView[1]"
+
     def __init__(self):
         pass

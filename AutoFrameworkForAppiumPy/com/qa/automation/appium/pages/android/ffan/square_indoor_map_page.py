@@ -31,6 +31,18 @@ class SquareIndoorMapPage(SuperPage):
                                                       resource_id=SquareIndoorMapPageConfigs.resource_id_indoor_map,
                                                       seconds=18);
 
+	def clickOnFoodMap(self):
+        '''
+        usage : Click "美食地图" page.
+        '''
+        API().click_view_by_resourceID(testcase = self.testcase, driver=self.driver,logger=self.logger,resource_id=SquareIndoorMapPageConfigs.resource_id_food_map)
+
+    def validSelfFood(self):
+        '''
+        usage : Load "美食地图" page.
+        '''
+        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver,logger = self.logger ,
+                                                resource_id = SquareIndoorMapPageConfigs.resource_id_food_map,seconds=18);
 
 if __name__ == '__main__':
     pass;

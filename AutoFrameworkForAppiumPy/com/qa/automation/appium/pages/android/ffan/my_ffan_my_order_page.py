@@ -68,6 +68,14 @@ class MyFfanMyOrderPage(SuperPage):
         API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                           text=MyFfanMyOrderPageConfigs.text_order_paid, seconds=10);
 
+    def getOrderNumber(self):
+        '''
+        usage : Get order number.
+        '''
+        orderNumber = API().get_view_by_resourceID(self.driver, self.logger, 
+													MyFfanMyOrderPageConfigs.resource_id_tv_order_number_tv).text
+        return orderNumber;
+
 
 if __name__ == '__main__':
     pass;

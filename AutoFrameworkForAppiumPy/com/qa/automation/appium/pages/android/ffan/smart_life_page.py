@@ -49,7 +49,9 @@ class SmartLifePage(SuperPage):
     def clickTailoredCar(self):
         API().click_view_by_text_android(driver=self.driver, logger=self.logger,
                                          text=SmartLifePageConfigs.text_tailoredCar);
-
+	'''
+        usage : 进入慧生活,点击全城找店
+    '''
     def clickFindStore(self):
         API().click_view_by_text_android(testcase=self.testcase,
                                          driver=self.driver, logger=self.logger,

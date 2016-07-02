@@ -19,10 +19,14 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.pages.android.ffan.brand_activity_page import BrandActivityPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.fei_fan_activity_page import FeiFanActivityPage
 from com.qa.automation.appium.pages.android.ffan.message_centre_page import MessageCentrePage
 from com.qa.automation.appium.pages.android.ffan.message_settings_page import MessageSettingsPage
 from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFanPage
+from com.qa.automation.appium.pages.android.ffan.square_dynamic_page import SquareDynamicPage
+from com.qa.automation.appium.pages.android.ffan.store_message_page import StoreMessagePage
 from com.qa.automation.appium.utility.logger import Logger
 
 sys.path.append(os.path.dirname(
@@ -58,13 +62,34 @@ class MessageSettingsCases(TestCase):
 
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
         messageCentrePage.validSelf()
-        messageCentrePage.clickOnSettings()
+        messageCentrePage.clickOnFeiFanActivity()
 
-        messageSettingsPage = MessageSettingsPage(self, self.driver, self.logger)
-        messageSettingsPage.validSelf()
-        messageSettingsPage.clickOnActivityPush()
-        messageSettingsPage.clickBackKey()
+        feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
+        feiFanActivityPage.validSelf()
+        feiFanActivityPage.clickBackKey()
 
+        messageCentrePage.validSelf()
+        messageCentrePage.clickOnSquareDynamic()
+
+        squareDynamicPage = SquareDynamicPage(self, self.driver, self.logger)
+        squareDynamicPage.validSelf()
+        squareDynamicPage.clickBackKey()
+
+        messageCentrePage.validSelf()
+        messageCentrePage.clickOnBrandActivity()
+
+        brandActivityPage = BrandActivityPage(self, self.driver, self.logger)
+        brandActivityPage.validSelf()
+        brandActivityPage.clickBackKey()
+
+        messageCentrePage.validSelf()
+        messageCentrePage.clickOnStoreMessage()
+
+        storeMessagePage = StoreMessagePage(self, self.driver, self.logger)
+        storeMessagePage.validSelf()
+        storeMessagePage.clickBackKey()
+
+        messageCentrePage.validSelf()
         messageCentrePage.clickBackKey()
 
 

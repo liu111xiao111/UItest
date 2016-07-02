@@ -5,12 +5,19 @@ import sys, os
 sys.path.append(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
-from com.qa.automation.appium.pages.android.ffan.location_bluetooth_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_indoor_map_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage;
+from com.qa.automation.appium.pages.android.ffan.square_indoor_map_page import SquareIndoorMapPage;
+from com.qa.automation.appium.pages.android.ffan.location_bluetooth_page import LocationBluetoothPage;
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -62,7 +69,8 @@ class SquareIndoorMapCases(unittest.TestCase):
         squarePage.clicOnIndoorMap();
         locationBluetoothPage.clickOnCancleBtn()
         indoormapPage.validSelf();
-
+        indoormapPage.clickOnFoodMap();
+        indoormapPage.validSelfFood();
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)

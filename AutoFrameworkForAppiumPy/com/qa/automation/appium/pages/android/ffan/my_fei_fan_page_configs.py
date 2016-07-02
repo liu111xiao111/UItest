@@ -35,5 +35,8 @@ class MyFeiFanPageConfigs(object):
     # Login button
     text_login = u"登录"
 
+    # My fei fan card
+    text_my_fei_fan_card = u"我的飞凡卡"
+
     def __init__(self):
         pass

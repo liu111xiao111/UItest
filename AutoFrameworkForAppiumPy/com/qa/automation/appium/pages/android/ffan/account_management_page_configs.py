@@ -23,5 +23,8 @@ class AccountManagementPageConfigs(object):
     # Change login password button
     text_update_login_password_button = u"修改登录密码";
 
+    # Small amount password less payment
+    text_small_amount_password_less_payments = u"小额免密支付"
+
     def __init__(self):
         pass

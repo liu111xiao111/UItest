@@ -27,6 +27,16 @@ class SeatPickingPage(SuperPage):
                                                       SeatPickingPageConfigs.resource_id_seat_picking_title,
                                                       SeatPickingPageConfigs.assert_view_timeout)
 
+    def validKeywords(self, keywords):
+        '''
+        usage: verify whether the keyword is correct.
+        '''
+
+        print("KEYWORDS: %s") % keywords
+
+        API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
+										keywords, SeatPickingPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

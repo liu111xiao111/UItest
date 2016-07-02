@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import os, sys
-
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-
-
 from time import sleep
 import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.common.super_page import *
 
 from appium import webdriver
 
+from com.qa.automation.appium.api.api import *
+from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import *
+
+
+# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 # Returns abs path relative to this file and not cwd
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -34,6 +32,10 @@ class MyFfanPage(SuperPage):
         API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver,
                                           logger=self.logger,
                                           text=MyFfanPageConfigs.text_my_ffan);
+        API().assert_view_by_resourceID_Until(testcase=self.testcase,
+												driver=self.driver,
+												logger=self.logger,
+												resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)
 
     def clickOnLogin(self):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
@@ -45,10 +47,8 @@ class MyFfanPage(SuperPage):
                                                       seconds=90)
 
     def clickOnSettings(self):
-        # API().scroll_to_text(driver=self.driver, logger=self.logger, text=MyFfanPageConfigs.text_settins)
-        super().scrollAsScreenPercent(start_x_percent= 0.5,start_y_percent=0.8,end_x_percent=0.5,end_y_percent=0.2,duration=800);
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanPageConfigs.text_settins)
+        API().scroll_to_text(driver=self.driver, logger=self.logger, text=MyFfanPageConfigs.text_settins)
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=MyFfanPageConfigs.text_settins)
 
     def clickOnMyQueue(self):
         '''
@@ -81,10 +81,21 @@ class MyFfanPage(SuperPage):
 
     def isLoginStatus(self):
         try:
-            nick_name_tv = API().find_view_by_resourceID_Until_android(driver=self.driver,logger=self.logger,resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)
+            nick_name_tv = API().find_view_by_resourceID_Until_android(driver=self.driver, logger=self.logger, resource_id=MyFfanPageConfigs.resource_id_txt_user_nick_name_tv)
             return True
         except TimeoutException as e:
             return False
+
+    def clickOnParkingPayment(self):
+        '''
+        usage : Load "停车交费" page， according to textview in "停车交费", check "停车交费" page whether load correctly.
+        '''
+        API().scroll_to_text(driver=self.driver, logger=self.logger,
+								text=MyFfanPageConfigs.text_parking_payment)
+        API().click_view_by_text_android(testcase=self.testcase,
+											driver=self.driver,
+											logger=self.logger,
+											text=MyFfanPageConfigs.text_parking_payment)
 
 if __name__ == '__main__':
     pass;

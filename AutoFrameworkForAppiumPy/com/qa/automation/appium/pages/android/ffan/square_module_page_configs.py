@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os, sys
@@ -23,6 +24,7 @@ class SquareModulePageConfigs():
     text_lefu_pay = u"乐付买单";
     text_queue = u"排队取号";
     text_coupon = u"优惠券"
+    text_flash_sales = u"限时抢购"
 
     # Click button time out
     click_on_button_timeout = 10
@@ -32,6 +34,13 @@ class SquareModulePageConfigs():
 
     # Resource niche
     resource_id_resource_niche_button = "com.wanda.app.wanhui:id/film_gallery_item_poster"
+
+    # Staff picks button
+    text_staff_picks_button = u"达人推荐"
+    xpath_staff_picks_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
+
+    # Born to shop
+    text_born_to_shop = u"爱购物"
 
     def __init__(self):
         pass;

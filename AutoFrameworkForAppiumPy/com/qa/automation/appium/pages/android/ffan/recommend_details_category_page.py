@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+
+import os
+
+#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.recommend_details_category_page_configs import RecommendDetailsCategoryPageConfigs
+
+# Returns abs path relative to this file and not cwd
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
+
+
+#   首页点击推荐，显示详情页
+class RecommendDetailsCategoryPage(SuperPage):
+
+    def __init__(self,testcase,driver,logger):
+        self.a = 12;
+        super(RecommendDetailsCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+
+    def validSelf(self):
+        '''
+        usage : Check "推荐" details whether loading correctly.
+        '''
+        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = RecommendDetailsCategoryPageConfigs.resource_id_tv_recommend_details_tv, seconds = 10)
+    
+    def clickOnSubsciber(self):
+        '''
+        usage : Click "喜欢"
+        '''   
+        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger, xpath=RecommendDetailsCategoryPageConfigs.xpath_recommend_subscriber)  
+
+if __name__ == '__main__':
+    pass;

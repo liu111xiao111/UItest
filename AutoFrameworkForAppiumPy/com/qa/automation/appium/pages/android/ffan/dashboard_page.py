@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from time import sleep
 import os
 import sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))
-
-from time import sleep
 import unittest
 
 from appium import webdriver
@@ -15,6 +11,13 @@ from com.qa.automation.appium.api.api import *
 from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.pages.android.common.super_page import *
 from com.qa.automation.appium.pages.android.ffan.dashboard_page_configs import *
+
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))
+
+
+
 
 # Returns abs path relative to this file and not cwd
 PATH = lambda p: os.path.abspath(
@@ -36,7 +39,7 @@ class DashboardPage(SuperPage):
 
     def validSelf(self):
         API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=DashboardPageConfigs.resource_id__iv_logo__iv,seconds=30)
+                                                      resource_id=DashboardPageConfigs.resource_id__iv_logo__iv, seconds=30)
 
     def validSelfByText(self, text=DashboardPageConfigs.text_city_beijing):
         '''
@@ -83,7 +86,7 @@ class DashboardPage(SuperPage):
                                   xpath=DashboardPageConfigs.xpath_square_module)
 
     '''
-        usage: 点击飞凡卡 
+        usage: 点击飞凡卡
     '''
 
     def clickOnFeiFanCard(self):
@@ -98,45 +101,94 @@ class DashboardPage(SuperPage):
                                          text=DashboardPageConfigs.text_aiguangjie)
 
     def clickOnHomeShakeTips(self):
-        """
+        '''
             usage: 点击摇一摇提示框
-        """
+        '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                resource_id=DashboardPageConfigs.resource_id_iv_home_shake_tips)
 
     def clickOnLefuCategory(self):
-        """
+        '''
             usage: 点击"乐付"类目
-        """
+        '''
         API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                          text=DashboardPageConfigs.text_lefu)
 
     def clickOnFlashSalesMore(self):
+        '''
+        usage: click flash sales more button
+        '''
 
-        """
-            usage: click flash sales more button
-        """
         tempWidth = API().get_width_of_device(self.driver, self.logger)
         tempHeight = API().get_height_of_device(self.driver, self.logger)
         API().scroll(self.driver, self.logger, tempWidth / 2, tempHeight * 2 / 3, tempWidth / 2, tempHeight / 3)
         API().scroll_to_text(self.driver, self.logger, DashboardPageConfigs.text_flash_sales_more_button)
 
     def clickOnParkingCategory(self):
-        """
+        '''
             usage: 点击"停车"类目
-        """
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=DashboardPageConfigs.text_parking)
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               DashboardPageConfigs.resource_id_flash_sales_more_button,
-                                               DashboardPageConfigs.click_on_button_timeout)
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=DashboardPageConfigs.text_parking);
+
+    def clickOnPrivilege(self):
+        '''
+        usage: click privilege button
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, DashboardPageConfigs.text_privilege_button, DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnShoppingMall(self):
+        '''
+        usage: click shopping mall button
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, DashboardPageConfigs.text_shopping_mall_button, DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnSearchAll(self):
+        '''
+        usage: click on search all button
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, DashboardPageConfigs.resource_id_search_all_button, DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnSearchView(self):
-        """
+        '''
             usage:点击全城搜索
-        """
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=DashboardPageConfigs.resource_id_tv_search_tv)
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.resource_id_tv_search_tv)
+
+    def clickOnBrandCategory(self):
+        '''
+            usage: 点击"品牌"类目
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=DashboardPageConfigs.text_brand);
+
+    def clickOnSalesPromotion(self):
+        '''
+            usage: 点击"优惠活动"
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=DashboardPageConfigs.text_sales_promotion);
+
+    def clickOnSales(self):
+        '''
+            usage: 点击"优惠"类目
+        '''
+
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=DashboardPageConfigs.text_sales);
+
+    def clickOnMovie(self):
+        '''
+        usage: click on movie button
+        '''
+
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, DashboardPageConfigs.text_movie_button, DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnShoppingCategory(self):
+        '''
+            usage: 点击"购物"类目
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                         text=DashboardPageConfigs.text_shopping);
 
 
 if __name__ == '__main__':

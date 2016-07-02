@@ -42,6 +42,13 @@ class CouponDetailsPage(SuperPage):
         textview = webview_1.find_element_by_accessibility_id(CouponDetailsPageConfigs.text_receive_free_button)
         textview.click()
 
+    def clickOnSharing(self):
+        '''
+        usage: click sharing button
+        '''
+
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger, CouponDetailsPageConfigs.xpath_sharing_button, CouponDetailsPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

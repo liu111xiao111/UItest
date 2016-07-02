@@ -44,11 +44,12 @@ class VersionUpgradeCases(TestCase):
 
     def test_case(self):
         versionUpgradePage = VersionUpgradePage(self, self.driver, self.logger)
-        tempTimes = 0
-        while versionUpgradePage.validSelf(False) and tempTimes < 3:
-            versionUpgradePage.cancelVersionUpgrade()
-            versionUpgradePage.waitBySeconds()
-            tempTimes += 1
+        for tempTimes in range(5):
+            print "ATTEMPTS: %d" % (tempTimes + 1)
+            if versionUpgradePage.validSelf(False):
+                versionUpgradePage.cancelVersionUpgrade()
+                break
+            versionUpgradePage.waitBySeconds(2)
         versionUpgradePage.invalidSelf()
 
 

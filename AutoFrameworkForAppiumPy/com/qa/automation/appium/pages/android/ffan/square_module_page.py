@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os, sys
@@ -31,8 +32,9 @@ class SquareModulePage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=SquareModulePageConfigs.text_find_store);
+        API().wait_by_seconds(10)
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_find_store)
+        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=SquareModulePageConfigs.text_find_store);
 
     '''
         usage: 点击签到
@@ -148,6 +150,31 @@ class SquareModulePage(SuperPage):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                                SquareModulePageConfigs.resource_id_resource_niche_button,
                                                SquareModulePageConfigs.click_on_button_timeout)
+											   
+	 def clickOnFlashSales(self):
+        '''
+            usage: click flash sales
+        '''
+        API().scroll_to_text(driver=self.driver, logger=self.logger, text=SquareModulePageConfigs.text_flash_sales)
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text=SquareModulePageConfigs.text_flash_sales)
+
+    def clickOnStaffPicks(self):
+        '''
+        usage: click on the staff picks button.
+        '''
+
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_staff_picks_button)
+        tempText = API().get_view_by_resourceID(self.driver, self.logger, "com.wanda.app.wanhui:id/tv_title").text
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger, SquareModulePageConfigs.xpath_recommend_store, SquareModulePageConfigs.click_on_button_timeout)
+        return tempText
+
+    def clickOnBornToShop(self):
+        '''
+        usage: click on the born to shop button.
+        '''
+
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_born_to_shop)
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, SquareModulePageConfigs.text_born_to_shop, SquareModulePageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

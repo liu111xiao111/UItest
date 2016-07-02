@@ -82,6 +82,13 @@ class MyFfanMyTicketPage(SuperPage):
         API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                           text=MyFfanMyTicketPageConfigs.text_ticket_return_refund, seconds=10);
 
+    def getTicketNo(self):
+        '''
+        usage : Get ticket number.
+        '''
+        ticketNumber = API().get_view_by_resourceID(self.driver, self.logger, 
+													MyFfanMyTicketPageConfigs.resource_id_tv_my_ticket_no_tv).text
+        return ticketNumber[3:];
 
 if __name__ == '__main__':
     pass;

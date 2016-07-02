@@ -41,6 +41,10 @@ class DashboardPageConfigs():
 
     text_lefu = u"乐付";
     text_parking = u"停车";
+    text_brand = u"品牌";
+    text_sales_promotion = u"优惠活动";
+    text_sales = u"优惠";
+    text_shopping = u"购物";
 
     # 搜索框默认字段
     text_quanchengsousuo = u"全城搜索";
@@ -64,9 +68,22 @@ class DashboardPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
-    # Flash sales more
+    # Flash sales more button
     resource_id_flash_sales_more_button = "com.wanda.app.wanhui:id/tv_more"
     text_flash_sales_more_button = u"更多"
 
+    # Privilege buttion
+    text_privilege_button = u"优惠"
+
+    # Shopping mall buttion
+    text_shopping_mall_button = u"购物中心"
+
+    # Search all button
+    resource_id_search_all_button = "com.wanda.app.wanhui:id/tv_text"
+
+    # Movie buttion
+    text_movie_button = u"电影"
+
     def __init__(self):
         pass;
+

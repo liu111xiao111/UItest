@@ -17,7 +17,7 @@ class MyFfanPageConfigs():
     resource_id_txt_user_nick_name_tv = "txt_user_nick_name";
 
     # text指明类型为text label
-    text_my_ffan = "我的飞凡";
+    text_my_ffan = u"我的飞凡";
     text_register = "注册";
     text_login = "登录";
     text_welcome_2_ffan = "欢迎来到飞凡";
@@ -28,6 +28,7 @@ class MyFfanPageConfigs():
     text_my_ticket = u"我的票券";
     text_my_order = u"我的订单";
     text_my_like = u"我的喜欢";
+    text_parking_payment = u"停车交费";
 
     def __init__(self):
         pass;

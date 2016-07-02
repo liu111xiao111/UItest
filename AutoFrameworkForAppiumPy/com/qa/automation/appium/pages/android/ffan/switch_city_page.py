@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 from selenium.common.exceptions import TimeoutException

@@ -21,6 +21,7 @@ class SmartLifePageConfigs():
     text_feiyue = "飞悦";
     text_findStore = "全城找店";
     text_queue = "排队";
+    text_fly = "飞悦";
     text_coupon = "优惠券";
     text_activity = "活动";
 

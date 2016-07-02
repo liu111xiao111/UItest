@@ -32,10 +32,17 @@ class CinemaPage(SuperPage):
         usage: click on the buy ticket button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               CinemaPageConfigs.resource_id_buy_ticket_button,
-                                               CinemaPageConfigs.click_on_button_timeout)
+        API().wait_by_seconds(5)
+        tempText = API().get_view_by_resourceID(self.driver, self.logger, 
+												CinemaPageConfigs.resource_id_movie_name_button).text
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger, 
+												CinemaPageConfigs.xpath_tomorrows_date_button, 
+												CinemaPageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, 
+										CinemaPageConfigs.resource_id_buy_ticket_button, 
+										CinemaPageConfigs.click_on_button_timeout)
 
+        return tempText
 
 if __name__ == '__main__':
     pass

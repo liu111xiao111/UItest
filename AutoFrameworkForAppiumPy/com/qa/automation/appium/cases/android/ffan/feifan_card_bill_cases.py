@@ -1,29 +1,37 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys, os
+import os
+import sys
+import time
+from unittest import TestCase
+from unittest import TestLoader
+
+import HTMLTestRunner
+
+from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
+from com.qa.automation.appium.utility.logger import Logger
+
 
 sys.path.append(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.food_category_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
-from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import *;
-from com.qa.automation.appium.pages.android.ffan.feifan_card_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
-from com.qa.automation.appium.utility.logger import Logger;
-
-from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
-from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-
-import unittest
-import HTMLTestRunner
-
-
 class FeiFanCardBillCases(unittest.TestCase):
     '''
-       usage: NO.43 首页-飞凡卡查看账单，确认显示零花钱账单页面
+    巡检checklist No.: 43
+    自动化测试case No.: 43
+    首页-飞凡卡查看账单，确认显示零花钱账单页面
     '''
 
     def tearDown(self):
@@ -42,29 +50,32 @@ class FeiFanCardBillCases(unittest.TestCase):
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 
-        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
-        testPrepare.prepare()
+        TestPrepare(self , self.driver , self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        feifanCard = FeiFanCardPage(testcase=self, driver=self.driver, logger=self.logger)
-        feifanCardBill = FeiFanCardBillPage(testcase=self, driver=self.driver, logger=self.logger)
-
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnFeiFanCard()
 
-        feifanCard.validSelf()
-        feifanCard.clickOnBill()
+        feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
+        feifanCardPage.validSelf()
+        feifanCardPage.clickOnBill()
 
-        feifanCardBill.validSelf()
+        feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
+        feifanCardBillPage.validSelf()
+        for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
+            feifanCardBillPage.clickOnFilter()
+            feifanCardBillPage.clickOnSubFilterByText(tempText)
+            feifanCardBillPage.validSubFilterByText(tempText)
+        feifanCardBillPage.clickBackKey()
 
+        feifanCardPage.validSelf()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(FeiFanCardBillCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiFanCardBillCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
-                                           description='Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
     runner.run(suite)
