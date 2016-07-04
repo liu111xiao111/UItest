@@ -49,27 +49,23 @@ class SquareSearchCases(unittest.TestCase):
         testPrepare.prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        squareFindStorePage = SquareFindStorePage(testcase=self, driver=self.driver, logger=self.logger)
-        searchPage = SearchPage(testcase=self, driver=self.driver, logger=self.logger)
-        searchResultStorePage = SearchResultStorePage(testcase=self, driver=self.driver, logger=self.logger)
-
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        squarePage.waitBySeconds(seconds=2)
-
         dashboardPage.clickOnSquareModule()
-        squarePage.validSelf()
 
-        squarePage.clickOnSearch()
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.validSelf()
+        squareModulePage.clickOnSearch()
 
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        tempText = searchPage.clickOnSearchResultFirstItem()
+        searchPage.validSearchResult(u"北京石景山店", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
+        searchPage.clickOnSearchResultFirstItem()
 
+        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
         searchResultStorePage.validSelf()
-        searchResultStorePage.validKeywords(tempText)
         searchResultStorePage.clickBackKey()
 
         searchPage.clickBackKey()

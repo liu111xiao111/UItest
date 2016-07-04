@@ -27,14 +27,14 @@ class ActivityDetailsPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                                       ActivityDetailsPageConfigs.resource_id_activity_details_title,
                                                       ActivityDetailsPageConfigs.assert_view_timeout)
-													  
-	def clickOnSharing(self):
+
+    def clickOnSharing(self):
         '''
         usage: click sharing button
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, 
-								ActivityDetailsPageConfigs.xpath_sharing_button, 
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+								ActivityDetailsPageConfigs.xpath_sharing_button,
 								ActivityDetailsPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':

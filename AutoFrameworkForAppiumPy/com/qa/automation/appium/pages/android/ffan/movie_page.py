@@ -32,7 +32,7 @@ class MoviePage(SuperPage):
         usage: click seat picking and buying ticket button
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, MoviePageConfigs.resource_id_seat_picking_and_buying_ticket_button, MoviePageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, MoviePageConfigs.resource_id_seat_picking_and_buying_ticket_button, MoviePageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass

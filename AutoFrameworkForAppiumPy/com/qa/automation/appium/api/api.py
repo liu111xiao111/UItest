@@ -30,6 +30,18 @@ class API(object):
             driver: appium driver
             logger: logging
             resource id : view resource id, or view name
+        return : views of the sepecified resource id
+
+    '''
+    def get_views_by_resourceID(self, driver, logger, resource_id="default"):
+        return driver.find_elements_by_id(resource_id);
+
+    '''
+        usage: by both android and ios api
+        parameters:
+            driver: appium driver
+            logger: logging
+            resource id : view resource id, or view name
         return : view of the sepecified resource id
 
     '''
@@ -71,6 +83,9 @@ class API(object):
     def get_view_by_uiautomator_android(self, driver, logger, selector="default"):
         return driver.find_element_by_android_uiautomator(selector);
 
+    def get_views_by_uiautomator_android(self, driver, logger, selector="default"):
+        return driver.find_elements_by_android_uiautomator(selector);
+
     def find_element_by_ios_uiautomation(self, driver, logger, uia_string="default"):
         return driver.find_element_by_ios_uiautomation(uia_string=uia_string)
 
@@ -98,6 +113,19 @@ class API(object):
         return : view of the sepecified text
 
     '''
+
+    '''
+        usage : by android api
+        parameters:
+            driver : appium driver
+            logger : logging
+            textContains : 查找的view包含的字段部分
+        return : views of the sepecified text
+    '''
+
+    def get_views_text_contains_android(self, driver, logger, textContains="default"):
+        selector = 'new UiSelector().textContains("%s")' % (textContains);
+        return self.get_views_by_uiautomator_android(driver=driver, logger=logger, selector=selector);
 
     def get_view_text_equal_android(self, driver, logger, text="default"):
         return self.get_view_by_uiautomator_android(driver=driver, logger=logger,

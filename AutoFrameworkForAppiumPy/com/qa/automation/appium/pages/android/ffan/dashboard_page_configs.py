@@ -36,7 +36,7 @@ class DashboardPageConfigs():
     text_ffancard = u"飞凡卡";
     text_mine = u"我的";
     # Home pannel, shopping, film, food and so on.
-    text_food = u"美食";
+    text_food = u"美食汇";
     text_child = u"亲子"
 
     text_lefu = u"乐付";

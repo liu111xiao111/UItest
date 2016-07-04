@@ -61,7 +61,6 @@ class MovieTicketCases(TestCase):
 
         movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
         movieDetailsPage.validSelf()
-        movieDetailsPage.clickOnTomorrowsDate()
         movieDetailsPage.clickOnSubCinema()
 
         cinemaPage = CinemaPage(self, self.driver, self.logger)
@@ -70,7 +69,7 @@ class MovieTicketCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            print "ATTEMPTS: %d" % (tempTimes + 1)
+            print("ATTEMPTS: %d") % (tempTimes + 1)
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break

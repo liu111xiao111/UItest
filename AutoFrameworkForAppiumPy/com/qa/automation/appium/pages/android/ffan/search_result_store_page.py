@@ -40,7 +40,7 @@ class SearchResultStorePage(SuperPage):
         usage: verify whether the keyword is correct.
         '''
 
-        print("KEYWORDS: %s") % keywords
+        print("KEYWORDS: %s" % keywords)
 
         API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
 											keywords, SearchPageConfigs.assert_view_timeout)

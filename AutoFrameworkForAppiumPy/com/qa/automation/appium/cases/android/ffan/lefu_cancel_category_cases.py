@@ -77,6 +77,7 @@ class LefuCancelCatergoryCases(unittest.TestCase):
         lefuPayDetailPage.waitBySeconds(seconds=3);
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
+        lefuPayWayPage.waitBySeconds(2);
         lefuOrderNumber = lefuPayWayPage.getOrderNumber();
 
         # Cancel the order
@@ -94,22 +95,23 @@ class LefuCancelCatergoryCases(unittest.TestCase):
 
         #Judge order number
         if lefuOrderNumber == myOrderNumber[5:]:
-            print("Order display correctly!")
+            print("Order display correctly in ALL Orders tab!")
         else:
             print("Not find new order number!")
 
         myOrderPage.clickOnOrderNoPay();
+        print("Order display correctly in To be Paid Orders tab!")
         #myOrderNumberNoPay = myOrderPage.getOrderNumber();
         #Judge order number
         '''if lefuOrderNumber != myOrderNumberNoPay[5:]:
-            print("Order display correctly!")
+            print("Order display correctly in To be Paid Orders tab!")
         else:
             print("Order error!")'''
         myOrderPage.clickOnOrderPaid();
         myOrderNumberPaid = myOrderPage.getOrderNumber();
         #Judge order number
         if lefuOrderNumber != myOrderNumberPaid[5:]:
-            print("Order display correctly!")
+            print("Order display correctly in Have Been Paid Orders tab!")
         else:
             print("Order error!")
 

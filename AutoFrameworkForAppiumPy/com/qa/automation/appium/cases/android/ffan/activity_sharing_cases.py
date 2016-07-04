@@ -78,9 +78,6 @@ class ActivitySharingCases(TestCase):
         sharingPage.validSelf()
         for tempText in (u"微信", u"微信朋友圈", u"新浪微博", u"QQ好友"):
             sharingPage.validKeywords(tempText)
-            sharingPage.validKeywords(tempText)
-            sharingPage.validKeywords(tempText)
-            sharingPage.validKeywords(tempText)
         sharingPage.clickBackKey()
 
         activityDetailsPage.validSelf()

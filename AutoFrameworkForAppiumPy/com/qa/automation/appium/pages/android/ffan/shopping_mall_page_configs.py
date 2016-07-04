@@ -22,27 +22,22 @@ class ShoppingMallPageConfigs(object):
     This is a configuration class for ShoppingMallPage class.
     '''
 
-
     # Assert view time out
     assert_view_timeout = 10
-
-    # Assert invalid view time out
-    assert_invalid_view_time = 3
 
     # Click button time out
     click_on_button_timeout = 10
 
     # Shopping mall title
     resource_id_shopping_mall_title = "com.wanda.app.wanhui:id/txt_common_title"
-
-    # Total button
-    resource_id_total_button = "com.wanda.app.wanhui:id/txt_tab_name"
-
-    # Specific shopping mall button
-    resource_id_specific_shopping_mall_button = "com.wanda.app.wanhui:id/image_zone_logo"
     
-    # "北京通州万达广场"
-    text_beijing_tongzou_mall = u"北京通州万达广场"
+    # Plaza view id
+    resource_id_plaza_id = "com.wanda.app.wanhui:id/txt_item_name"
+    
+    # Shopping mall tab id
+    resource_id_tab_id = "com.wanda.app.wanhui:id/txt_tab_name"
+    
+    view_text_distance = "公里"
 
     def __init__(self):
         pass

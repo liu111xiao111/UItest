@@ -1,63 +1,85 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
+from com.qa.automation.appium.pages.android.ffan.food_category_page_configs import FoodCategoryPageConfigs
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.api.api import API
 
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-from time import sleep
-import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.ffan.food_category_page_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.common.super_page import *
-
-from appium import webdriver
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
-
+FCPC = FoodCategoryPageConfigs()
 
 #   首页点击 美食
 class FoodCategoryPage(SuperPage):
     def __init__(self, testcase, driver, logger):
-        self.a = 12;
         super(FoodCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
-        usage : 进入美食页面，根据餐饮的textview,检查找餐饮页面是否加载出来.
+        usage: 美食主界面，根据美食种类button入口，检查美食主页面是否加载出来.
     '''
-
-    def validFindRestaurant(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=FoodCategoryPageConfigs.resource_id_tv_restaurant_tv,
-                                                      seconds=18);
-
-    '''
-        usage : 进入美食页面，根据餐饮的textview,检查找优惠页面是否加载出来.
-    '''
-
-    def validFindCoupon(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=FoodCategoryPageConfigs.resource_id_tv_restaurant_tv,
-                                                      seconds=18);
+    def validFoodHomePage(self):
+        API().assert_view_by_text_android(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          FCPC.view_text_tiltle,
+                                          FCPC.verify_view_timeout);
 
     '''
-        usage : 点击找优惠
+        usage : 进入美食子页面，根据餐饮的textview, 检查找餐饮页面是否加载出来.
     '''
-
-    def clickOnFindCoupon(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=FoodCategoryPageConfigs.resource_id_bt_find_coupon_bt);
+    def validRestaurant(self):
+        API().assert_view_by_resourceID_Until(self.testcase,
+                                              self.driver,
+                                              self.logger,
+                                              FCPC.resource_id_tv_restaurant_tv,
+                                              FCPC.verify_view_timeout);
 
     '''
-        usage : 点击找餐厅
+        usage : 进入优惠打折界面，根据餐饮的textview, 检查找优惠页面是否加载出来.
     '''
+    def validCoupon(self):
+        API().assert_view_by_resourceID_Until(self.testcase,
+                                              self.driver,
+                                              self.logger,
+                                              FCPC.resource_id_tv_restaurant_tv,
+                                              FCPC.verify_view_timeout);
+    
+    '''
+        usage: 进入抢券界面，根据餐饮的textview, 检查抢券界面是否加载出来.
+    '''
+    def validGrabCoupons(self):
+        API().assert_view_by_resourceID_Until(self.testcase,
+                                              self.driver,
+                                              self.logger,
+                                              FCPC.resource_id_tv_restaurant_tv,
+                                              FCPC.verify_view_timeout);
 
-    def clickOnFindRestaurant(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=FoodCategoryPageConfigs.resource_id_bt_find_restaurant_bt);
+    '''
+        usage: 点击美食主界面的所有入口并验证
+    '''
+    def validModules(self):
+        restaurantList = API().get_views_by_resourceID(self.driver,
+                                                       self.logger,
+                                                       FCPC.resource_id_bt_restaurant_bt)
+        for restaurant in restaurantList:
+            restaurant.click()
+            self.validRestaurant()
+            self.clickBackKey()
+
+    '''
+        usage : 点击优惠打折
+    '''
+    def clickOnCoupon(self):
+        API().click_view_by_resourceID(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_coupon_bt);
+
+    '''
+        usage : 点击抢券
+    '''
+    def clickOnGrabCoupons(self):
+        API().click_view_by_resourceID(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_grab_bt);
 
 
 if __name__ == '__main__':

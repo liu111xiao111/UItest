@@ -25,7 +25,7 @@ class MovieDetailsPage(SuperPage):
         usage: verify whether the current page is the switch city page.
         '''
 
-        API().assert_view_by_resourceID_Until_android(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.resource_id_movie_details_title, MovieDetailsPageConfigs.assert_view_timeout)
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.resource_id_movie_details_title, MovieDetailsPageConfigs.assert_view_timeout)
 
     def clickOnTomorrowsDate(self):
         '''
@@ -39,7 +39,7 @@ class MovieDetailsPage(SuperPage):
         usage: click on a sub-cinema button
         '''
 
-        API().click_view_by_resourceID_android(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.resource_id_sub_cinema_button, MovieDetailsPageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.resource_id_sub_cinema_button, MovieDetailsPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass

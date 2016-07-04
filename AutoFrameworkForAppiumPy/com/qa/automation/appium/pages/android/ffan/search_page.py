@@ -35,6 +35,13 @@ class SearchPage(SuperPage):
         API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SearchPageConfigs.resource_tv_search_tv, seconds=10);
 
+
+
+    def inputText(self, text):
+        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
+                                               resource_id=SearchPageConfigs.resource_et_search_input_et,
+                                               string=text)
+
     '''
         usage ： 输入商家名
     '''
