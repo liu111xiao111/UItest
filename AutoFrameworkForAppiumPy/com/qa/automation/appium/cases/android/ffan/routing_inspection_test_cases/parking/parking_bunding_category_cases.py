@@ -69,11 +69,8 @@ class ParkingBundingCatergoryCases(unittest.TestCase):
 
         # Click "停车交费"， load parking payment.
         parkingPage.clickOnParkingPayment();
-        parkingPaymentPage.validSelf();
 
         # Bunding VIN
-        parkingPaymentPage.inputVIN();
-        parkingPaymentPage.clickOnNextBtn();
         parkingPaymentDetailsPage.validSelf();
         parkingPaymentDetailsPage.clickOnMore();
         parkingPaymentMorePage.clickOnUnbundingBtn();
