@@ -28,17 +28,14 @@ class GeneralCouponPage(SuperPage):
                                               GeneralCouponPageConfigs.resource_id_general_coupon_title,
                                               GeneralCouponPageConfigs.assert_view_timeout)
 
-    def clickOnGeneralCoupon(self):
+    def clickOnImmediatelyToReceive(self):
         '''
-        usage: click on the general coupon button.
+        usage: click on the immediately to receive button.
         '''
 
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
                                   GeneralCouponPageConfigs.xpath_immediately_to_receive,
                                   GeneralCouponPageConfigs.click_on_button_timeout)
-#         API().click_view_by_content_desc(self.testcase, self.driver, self.logger,
-#                                          GeneralCouponPageConfigs.text_immediately_to_receive,
-#                                          GeneralCouponPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass

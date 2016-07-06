@@ -55,7 +55,7 @@ class SquareGeneralCouponCases(TestCase):
 
         generalCouponPage = GeneralCouponPage(self, self.driver, self.logger)
         generalCouponPage.validSelf()
-        generalCouponPage.clickOnGeneralCoupon()
+        generalCouponPage.clickOnImmediatelyToReceive()
 
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
