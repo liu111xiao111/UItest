@@ -9,6 +9,8 @@ from unittest import TestLoader
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
+from com.qa.automation.appium.pages.android.ffan.square_queue_page import SquareQueuePage
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
@@ -53,6 +55,29 @@ class MyfeifanMyQueueCases(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
+        queuePage = SquareQueuePage(self, self.driver, self.logger)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
+
+        # Load square page
+        dashboardPage.validSelf();
+        dashboardPage.clickOnSquareModule()
+        squarePage.validSelf();
+
+        # Click "排队取号"， load "排队取号" page.
+        squarePage.clicOnQueue();
+        queuePage.validSelf();
+
+        # Click "取号"
+        queuePage.clicOnQueueNumber()
+        queuePage.waitBySeconds(10)
+        queuePage.inputNumberOfMeals()
+        queuePage.clicOnGetQueueNumber()
+        queuePage.validQueueSuccess()
+        queuePage.clickOnCancelQueue()
+
+        myFfanPage.clickBackKey()
+        myFfanPage.clickBackKey()
+        myFfanPage.clickBackKey()
 
         # Click "我的排队"， load "我的排队" page.
         dashboardPage.validSelf()
