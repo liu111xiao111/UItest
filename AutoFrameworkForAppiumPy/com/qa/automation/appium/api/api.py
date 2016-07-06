@@ -220,7 +220,7 @@ class API(object):
     def find_view_by_content_desc_Until_android(self, driver, logger, content_desc="default", seconds=10):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(
-            EC.presence_of_all_elements_located((MobileBy.ANDROID_UIAUTOMATOR,
+            EC.presence_of_element_located((MobileBy.ANDROID_UIAUTOMATOR,
                                             'new UiSelector().description("' + content_desc + '")')))
 
     def find_view_by_xpath_Until(self, driver, logger, xpath="default", seconds=10):
@@ -276,11 +276,8 @@ class API(object):
 
     def click_view_by_content_desc(self, testcase, driver, logger, content_desc, seconds=10):
         try:
-            wdw = WebDriverWait(driver=driver, timeout=seconds)
-            findResult = wdw.until(EC.presence_of_element_located((By.NAME, content_desc)))
-            if findResult is not None:
-                self.find_view_by_content_desc_Until_android(driver=driver, logger=logger,
-                                                             content_desc=content_desc).click()
+            self.find_view_by_content_desc_Until_android(driver=driver, logger=logger,
+                                                         content_desc=content_desc).click()
         except NoSuchElementException:
             testcase.assertTrue(False, "content_desc %s none" % (content_desc))
         except TimeoutException:
@@ -464,7 +461,7 @@ class API(object):
         except TimeoutException:
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
-    def assert_view_by_text_contains_android(self, testcase, logger , driver, text="default"):
+    def assert_view_by_text_contains_android(self, testcase, driver, logger, text="default"):
         '''
         usage: verify whether the current view is found.
         '''
@@ -503,6 +500,13 @@ class API(object):
 
     def input_view_by_resourceID_android(self, driver, logger, resource_id, string):
         input_field = self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id)
+        input_field.send_keys(string)
+
+    def input_view_by_class_name_android(self, driver, logger, class_name, string):
+        input_field = self.get_view_by_class_name_android(driver,
+                                                          logger,
+                                                          class_name)
+        input_field.click()
         input_field.send_keys(string)
 
     def hidden_keyborad(self, driver):

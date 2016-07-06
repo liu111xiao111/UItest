@@ -65,6 +65,13 @@ class ShoppingMallPage(SuperPage):
                 if operator.gt(prev_plaza_distance, current_plaza_distance):
                     self.testcase.assertTrue(False, "The plaza distance is not ordered.")
 
+    def clickOnBeijinTongzouMall(self):
+        '''
+        usage: click "北京通州万达广场"
+        '''
+        API().scroll_to_text(self.driver, self.logger, ShoppingMallPageConfigs.text_beijing_tongzou_mall)
+        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger=self.logger,
+                                         text=ShoppingMallPageConfigs.text_beijing_tongzou_mall);
 
 
 if __name__ == '__main__':

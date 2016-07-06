@@ -31,5 +31,8 @@ class MessageCentrePageConfigs(object):
     # Store message
     text_store_message = u"门店消息"
 
+    # Settings button
+    text_settings_button = u"设置"
+
     def __init__(self):
         pass

@@ -11,6 +11,9 @@ class RecommendDetailsCategoryPageConfigs():
     resource_id_tv_subscriber_tv = "com.wanda.app.wanhui:id/iv_approval"
     xpath_recommend_subscriber = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.view.View[23]/android.widget.Image[1]"
 
+    desc_like_button = "heartSelectNo@2x"
+    desc_unlike_button = "heartSelect@2x"
+
     def __init__(self):
         pass;
 

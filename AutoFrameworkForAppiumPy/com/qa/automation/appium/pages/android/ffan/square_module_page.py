@@ -20,12 +20,17 @@ class SquareModulePage(SuperPage):
         usage : 进入广场模块，检查是否加载出来
     '''
     def validSelf(self):
-        API().wait_by_seconds(10)
-        API().scroll_to_text(self.driver, self.logger, SMPC.text_find_store)
-        API().assert_view_by_text_android(self.testcase,
-                                          self.driver,
-                                          self.logger,
-                                          SMPC.text_find_store);
+        tempWidth = API().get_width_of_device(self.driver, self.logger)
+        tempHight = API().get_height_of_device(self.driver, self.logger)
+        for _ in range(10):
+            API().scroll(self.driver, self.logger,
+                         tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
+
+        API().scroll_to_text(self.driver,
+                             self.logger,
+                             SMPC.text_find_store)
+        API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
+                                          SquareModulePageConfigs.text_find_store)
 
     '''
         usage: 点击签到
@@ -147,7 +152,9 @@ class SquareModulePage(SuperPage):
         usage: click movie button
     '''
     def clickOnMovie(self):
-        API().scroll_to_text(self.driver, self.logger, SMPC.text_movie_button)
+        API().scroll_to_text(self.driver,
+                             self.logger,
+                             SMPC.text_movie_button)
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
                                          self.logger,
@@ -164,42 +171,57 @@ class SquareModulePage(SuperPage):
                                        SMPC.resource_id_resource_niche_button,
                                        SMPC.click_on_button_timeout)
 
-    '''
-        usage: click flash sales
-    '''
     def clickOnFlashSales(self):
-        API().scroll_to_text(self.driver, self.logger, SMPC.text_flash_sales)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SMPC.text_flash_sales)
+        '''
+        usage: click on flash sales button.
+        '''
 
-    '''
-        usage: click on the staff picks button.
-    '''
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_flash_sales)
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
+                                         SquareModulePageConfigs.text_flash_sales,
+                                         SquareModulePageConfigs.click_on_button_timeout)
+
     def clickOnStaffPicks(self):
-        API().scroll_to_text(self.driver, self.logger, SMPC.text_staff_picks_button)
-        tempText = API().get_view_by_resourceID(self.driver,
-                                                self.logger,
-                                                "com.wanda.app.wanhui:id/tv_title").text
-        API().click_view_by_xpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SMPC.xpath_recommend_store,
-                                  SMPC.click_on_button_timeout)
+        '''
+        usage: click on the staff picks button.
+        '''
+
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_staff_picks_button)
+        tempText = API().get_view_by_xpath_android(self.testcase, self.driver, self.logger,
+                                                   SquareModulePageConfigs.xpath_sub_staff_picks_button,
+                                                   SquareModulePageConfigs.get_view_timeout).text
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  SquareModulePageConfigs.xpath_recommend_store,
+                                  SquareModulePageConfigs.click_on_button_timeout)
+
         return tempText
 
-    '''
-        usage: click on the born to shop button.
-    '''
-    def clickOnBornToShop(self):
-        API().scroll_to_text(self.driver, self.logger, SMPC.text_born_to_shop)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SMPC.text_born_to_shop,
-                                         SMPC.click_on_button_timeout)
 
+    def clickOnBornToShop(self):
+        '''
+        usage: click on the born to shop button.
+        '''
+
+        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_born_to_shop)
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
+                                         SquareModulePageConfigs.text_born_to_shop,
+                                         SquareModulePageConfigs.click_on_button_timeout)
+
+    def clickOnGeneralCoupon(self):
+        '''
+        usage: click on the general coupon button.
+        '''
+
+        tempWidth = API().get_width_of_device(self.driver, self.logger)
+        tempHight = API().get_height_of_device(self.driver, self.logger)
+        for _ in range(10):
+            API().scroll(self.driver, self.logger, tempWidth / 2, tempHight * 4 / 5, tempWidth / 2, tempHight / 5)
+
+        API().scroll_to_text(self.driver, self.logger,
+                             SquareModulePageConfigs.text_general_coupon_button)
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  SquareModulePageConfigs.xpath_general_coupon_button,
+                                  SquareModulePageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass;

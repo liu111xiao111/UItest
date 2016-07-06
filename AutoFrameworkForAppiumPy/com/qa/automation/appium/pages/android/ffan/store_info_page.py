@@ -41,5 +41,12 @@ class StoreInfoPage(SuperPage):
 
         API().assert_view_by_text_contains_android(self.testcase, self.driver, self.logger, keywords)
 
+    def clickOnStoreImageTextDetails(self):
+        '''
+        usage: click on the store image-text button.
+        '''
+
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger, StoreInfoPageConfigs.xpath_store_image_text_details_button, StoreInfoPageConfigs.click_on_button_timeout)
+
 if __name__ == '__main__':
     pass;

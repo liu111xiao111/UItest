@@ -39,5 +39,8 @@ class ShoppingMallPageConfigs(object):
     
     view_text_distance = "公里"
 
+    # "北京通州万达广场"
+    text_beijing_tongzou_mall = u"北京通州万达广场"
+
     def __init__(self):
         pass

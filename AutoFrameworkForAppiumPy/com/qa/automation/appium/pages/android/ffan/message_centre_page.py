@@ -33,11 +33,9 @@ class MessageCentrePage(SuperPage):
         usage: click on the settings button.
         '''
 
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-                                         MessageCentrePageConfigs.text_settings_button,
-                                         MessageCentrePageConfigs.click_on_button_timeout)
-										 
-	def clickOnFeiFanActivity(self):
+        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_settings_button, MessageCentrePageConfigs.click_on_button_timeout)
+
+    def clickOnFeiFanActivity(self):
         '''
         usage: click on the fei fan activity button.
         '''

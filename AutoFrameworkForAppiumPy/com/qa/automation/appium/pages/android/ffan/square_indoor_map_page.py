@@ -31,7 +31,7 @@ class SquareIndoorMapPage(SuperPage):
                                                       resource_id=SquareIndoorMapPageConfigs.resource_id_indoor_map,
                                                       seconds=18);
 
-	def clickOnFoodMap(self):
+    def clickOnFoodMap(self):
         '''
         usage : Click "美食地图" page.
         '''

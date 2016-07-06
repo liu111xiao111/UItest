@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class LefuPayDetailPageConfigs():
     # "乐付买单" detail page

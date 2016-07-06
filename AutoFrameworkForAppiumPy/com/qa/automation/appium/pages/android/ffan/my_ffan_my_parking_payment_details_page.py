@@ -22,9 +22,17 @@ class MyFfanMyParkingPaymentDetailsPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : Load "停车缴费" details page correctly. 
+        usage : Load "停车交费" details page correctly. 
         ''' 
-        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id=MyFfanMyParkingPaymentDetailsPageConfigs.resource_id_tv_parking_VIN_tv)                             
+        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
+                                              resource_id=MyFfanMyParkingPaymentDetailsPageConfigs.resource_id_tv_parking_VIN_tv)                             
+
+    def clickOnMore(self):
+        '''
+            usage: 点击"更多"
+        '''
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                         text=MyFfanMyParkingPaymentDetailsPageConfigs.text_more)
 
 if __name__ == '__main__':
     pass;
