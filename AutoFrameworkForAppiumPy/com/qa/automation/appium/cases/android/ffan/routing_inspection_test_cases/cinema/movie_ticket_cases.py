@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __init__ import *
 
-import os
-import sys
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -28,9 +27,10 @@ from com.qa.automation.appium.pages.android.ffan.popup_page import PopupPage
 from com.qa.automation.appium.pages.android.ffan.popup_page import VerifyActivityKeywordsType
 from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class MovieTicketCases(TestCase):
@@ -47,7 +47,7 @@ class MovieTicketCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -69,7 +69,7 @@ class MovieTicketCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            print("ATTEMPTS: %d") % (tempTimes + 1)
+            #print("ATTEMPTS: %d" % (tempTimes + 1)) 
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break
@@ -96,5 +96,5 @@ if __name__ == "__main__":
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

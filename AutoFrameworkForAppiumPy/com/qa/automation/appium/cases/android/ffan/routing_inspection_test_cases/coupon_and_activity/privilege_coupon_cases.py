@@ -1,8 +1,7 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import os
-import sys
+from __init__ import *
+
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -28,8 +27,8 @@ from com.qa.automation.appium.pages.android.ffan.square_module_page import Squar
 from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))))
+# sys.path.append(os.path.dirname(os.path.dirname(
+#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))))
 
 
 class PrivilegeCouponCases(TestCase):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys, time
+from __init__ import *
 
 import logging
 

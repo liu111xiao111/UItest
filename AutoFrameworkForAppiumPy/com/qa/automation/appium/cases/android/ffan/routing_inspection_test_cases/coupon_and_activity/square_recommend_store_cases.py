@@ -1,7 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
+from __init__ import *
+
 import time
 from unittest import TestCase
 from unittest import TestLoader

@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os
-import sys
+from __init__ import *
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -21,9 +20,6 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 from com.qa.automation.appium.utility.logger import Logger
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class LogoutCases(TestCase):

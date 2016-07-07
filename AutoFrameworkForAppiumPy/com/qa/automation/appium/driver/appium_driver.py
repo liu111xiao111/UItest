@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-
+from __init__ import *
 
 from time import sleep
 
 from com.qa.automation.appium.configs.driver_configs import *
 
 from appium import webdriver
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 
 class AppiumDriver():
@@ -32,12 +24,7 @@ class AppiumDriver():
         self.ios_udid = ios_udid
 
     def getDriver(self):
-        # desired_caps = {}
-        # desired_caps['platformName'] = self.platformName;
-        # desired_caps['platformVersion'] = self.platformVersion;
-        # desired_caps['deviceName'] = self.deviceName;
-        # desired_caps['appPackage'] = self.appPackage;
-        # desired_caps['appActivity'] = self.appActivity;
+       
         if (self.platformName == "Android"):
             desired_caps = {
                 'platformName': self.platformName,

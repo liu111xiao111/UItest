@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __init__ import *
 
-import os
-import sys
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -27,10 +26,7 @@ from com.qa.automation.appium.pages.android.ffan.popup_page import VerifyActivit
 from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class SquareMovieCases(TestCase):
     '''
@@ -46,7 +42,7 @@ class SquareMovieCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -90,5 +86,5 @@ if __name__ == "__main__":
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

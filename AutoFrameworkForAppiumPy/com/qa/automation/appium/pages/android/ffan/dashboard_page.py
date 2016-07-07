@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from time import sleep
-import os
-import sys
+from __init__ import *
+
 import unittest
 
 from appium import webdriver
@@ -12,17 +11,6 @@ from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.pages.android.common.super_page import *
 from com.qa.automation.appium.pages.android.ffan.dashboard_page_configs import *
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))
-
-
-
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 '''
     usage :  进入应用的首页

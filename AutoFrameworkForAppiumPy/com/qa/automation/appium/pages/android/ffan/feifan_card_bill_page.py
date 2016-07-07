@@ -1,7 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os, sys
+from __init__ import *
+
 from time import sleep
 import unittest
 

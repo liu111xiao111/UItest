@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from __init__ import *
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage

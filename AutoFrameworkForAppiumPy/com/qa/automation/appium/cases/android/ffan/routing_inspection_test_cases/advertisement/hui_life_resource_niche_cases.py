@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import os
+
+from __init__ import *
+
 import time
 import HTMLTestRunner
 
@@ -23,6 +25,7 @@ from com.qa.automation.appium.pages.android.ffan.resource_niche_details_page imp
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.hui_life_page import HuiLifePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SpecialOfferCases(TestCase):
@@ -41,7 +44,7 @@ class SpecialOfferCases(TestCase):
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
 
@@ -72,5 +75,5 @@ if __name__ == "__main__":
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

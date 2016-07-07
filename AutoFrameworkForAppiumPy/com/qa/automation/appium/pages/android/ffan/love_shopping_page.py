@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
+from __init__ import *
 
 from time import sleep
 import unittest
@@ -9,15 +9,6 @@ from com.qa.automation.appium.api.api import *
 from com.qa.automation.appium.pages.android.common.super_page import *
 from com.qa.automation.appium.pages.android.ffan.love_shopping_page_configs import *
 
-from appium import webdriver
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
-
-
-#
 #
 class LoveShoppingPage(SuperPage):
     def __init__(self, testcase, driver, logger):

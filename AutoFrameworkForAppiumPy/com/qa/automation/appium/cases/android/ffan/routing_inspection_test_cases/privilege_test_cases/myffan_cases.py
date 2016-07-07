@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys, os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))))
+from __init__ import *
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;

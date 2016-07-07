@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import sys, os
+from __init__ import *
 import unittest
 import unittest
 
@@ -11,11 +11,6 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
-
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import *;

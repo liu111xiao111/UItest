@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
+from __init__ import *
 import time
 import HTMLTestRunner
 

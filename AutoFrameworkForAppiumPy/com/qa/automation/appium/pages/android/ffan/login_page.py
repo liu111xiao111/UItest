@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
+from __init__ import *
 
 from time import sleep
 import unittest
@@ -8,14 +8,6 @@ from com.qa.automation.appium.configs.driver_configs import *
 from com.qa.automation.appium.api.api import *
 from com.qa.automation.appium.pages.android.common.super_page import *
 from com.qa.automation.appium.pages.android.ffan.login_page_configs import *
-
-from appium import webdriver
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
-
 
 #
 #   进入应用的首页,是进入其他页面的入口

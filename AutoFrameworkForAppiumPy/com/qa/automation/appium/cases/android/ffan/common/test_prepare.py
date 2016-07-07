@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
-
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from __init__ import *
 
 from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import VersionUpgradePage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.login_page import LoginPage
+from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 '''
     usage :  
@@ -86,6 +80,19 @@ class TestPrepare:
     def closeHomeShakeTips(self):
         dashboardPage = DashboardPage(testcase = self.testcase , driver = self.driver , logger = self.logger)
         dashboardPage.clickOnHomeShakeTips()
+        
+    def confirm_logout_status(self):
+        dashboardPage = DashboardPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+        dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+        myFfanPage.validSelf()
+        res = myFfanPage.isLoginStatus()
+        if res:
+            myFfanPage.clickOnSettings()
+            settingPage = SettingsPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+            settingPage.validSelf()
+            settingPage.clickOnQuitAccountBtn()
+            myFfanPage.waitBySeconds(seconds=2)
         
 if __name__ == '__main__':
     pass;

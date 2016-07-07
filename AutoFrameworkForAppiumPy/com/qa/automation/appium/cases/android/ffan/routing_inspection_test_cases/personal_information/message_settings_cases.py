@@ -1,9 +1,7 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __init__ import *
 
-import os
-import sys
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -28,11 +26,6 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.square_dynamic_page import SquareDynamicPage
 from com.qa.automation.appium.pages.android.ffan.store_message_page import StoreMessagePage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
 
 class MessageSettingsCases(TestCase):
     '''

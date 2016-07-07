@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from __init__ import *
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page_configs import ShoppingDetailsCategoryPageConfigs
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(_), p)
-)
 
 
 #   购物点击商品详情页

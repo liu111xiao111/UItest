@@ -2,9 +2,6 @@
 
 import sys
 
-# reload(sys)
-# sys.setdefaultencoding('utf8')
-
 platformName_andr = 'Android';
 
 platformVersion = '4.4';

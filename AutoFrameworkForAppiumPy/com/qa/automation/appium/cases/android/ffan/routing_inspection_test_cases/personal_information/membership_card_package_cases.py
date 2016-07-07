@@ -1,9 +1,6 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
-import os
-import sys
+from __init__ import *
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -24,10 +21,6 @@ from com.qa.automation.appium.pages.android.ffan.fei_fan_membership_page import 
 from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
 from com.qa.automation.appium.utility.logger import Logger
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
 
 class MembershipCardPackageCases(TestCase):
     '''

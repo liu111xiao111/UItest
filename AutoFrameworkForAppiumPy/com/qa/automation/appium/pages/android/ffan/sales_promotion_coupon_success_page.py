@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from __init__ import *
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page_configs import SalesPromotionCouponSuccessPageConfigs
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 
 class SalesPromotionCouponSuccessPage(SuperPage):

@@ -1,5 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+from __init__ import *
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage

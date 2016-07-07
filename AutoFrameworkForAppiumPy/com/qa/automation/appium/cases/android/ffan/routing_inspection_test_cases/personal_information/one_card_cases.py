@@ -1,9 +1,7 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __init__ import *
 
-import os
-import sys
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -27,9 +25,6 @@ from com.qa.automation.appium.pages.android.ffan.small_amount_password_less_paym
 from com.qa.automation.appium.pages.android.ffan.transaction_record_page import TransactionRecordPage
 from com.qa.automation.appium.pages.android.ffan.update_payments_password_page import UpdatePaymentsPasswordPage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class OneCardCases(TestCase):

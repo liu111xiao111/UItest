@@ -1,9 +1,6 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
-import os
-import sys
+from __init__ import *
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -25,9 +22,6 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 from com.qa.automation.appium.pages.android.ffan.update_login_password_page import UpdateLoginPasswordPage
 from com.qa.automation.appium.utility.logger import Logger
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class UpdateLoginPasswordCases(TestCase):

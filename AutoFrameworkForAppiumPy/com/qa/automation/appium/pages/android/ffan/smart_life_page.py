@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
-import sys
+from __init__ import *
 
 from com.qa.automation.appium.api.api import *
 from com.qa.automation.appium.pages.android.ffan.smart_life_page_configs import *

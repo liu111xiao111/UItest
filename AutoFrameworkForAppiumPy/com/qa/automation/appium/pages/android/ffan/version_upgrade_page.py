@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
+from __init__ import *
 
 from selenium.common.exceptions import TimeoutException
 
