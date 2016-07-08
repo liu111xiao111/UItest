@@ -70,6 +70,13 @@ class API(object):
             # logger.d("get xpath timeout")
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
+    def get_view_by_xpath_ios(self, driver, logger, xpath="default"):
+        '''
+        usage: get view by xpath for ios.
+        '''
+
+        return driver.find_element_by_xpath(xpath)
+
     '''
         usage: by android api
         parameters:
@@ -285,6 +292,10 @@ class API(object):
     def click_back_key(self, driver, logger):
         # logger.d("click back key , keycode ======== 4",)
         driver.press_keycode(4);
+        time.sleep(2)
+
+    def click_back_key_ios(self, testcase, driver, logger, resource_id, seconds=10):
+        self.click_view_by_resourceID(testcase, driver, logger, resource_id, seconds)
         time.sleep(2)
 
     '''
@@ -506,6 +517,10 @@ class API(object):
                                                           logger,
                                                           class_name)
         input_field.click()
+        input_field.send_keys(string)
+
+    def input_view_by_xpath_ios(self, driver, logger, xpath, string):
+        input_field = self.get_view_by_xpath_ios(driver, logger, xpath)
         input_field.send_keys(string)
 
     def screen_shot(self, driver, screen_shot_name="myfeifan_auto_test"):

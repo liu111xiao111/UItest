@@ -31,13 +31,13 @@ class DashboardPage(IosSuperPage):
     '''
     def valid_self(self):
         # name_home_title_icon = API().get_view_by_resourceID(driver=self.driver,logger=self.logger,resource_id=DashboardPageConfigs.name_home_title_icon);
-        API().assert_view_by_resourceID_Until(testcase=self.testcase,driver=self.driver,logger=self.logger,resource_id=DashboardPageConfigs.name_home_title_icon,seconds=10);
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.name_home_title_icon, seconds=10);
 
     """
         点击爱逛街icon
     """
     def click_aiguangjie(self):
-        API().click_view_by_resourceID(testcase=self.testcase,driver=self.driver,logger=self.logger,resource_id=DashboardPageConfigs.name_app_tabbar_home_normal)
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.name_app_tabbar_home_normal)
 
 
     """
@@ -62,6 +62,12 @@ class DashboardPage(IosSuperPage):
     def click_my(self):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                              resource_id=DashboardPageConfigs.name_app_tabbar_user_normal)
+
+    def clickOnSearchView(self):
+        '''
+        usage: click on search in city.
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.resource_id_tv_search_tv)
 
 if __name__ == '__main__':
     print("path %s" % (sys.path))

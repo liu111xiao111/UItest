@@ -40,7 +40,8 @@ class DashboardPageConfigs():
     """
     name_app_tabbar_user_normal = "app_tabbar_user_normal"
 
-
+    # 全城搜索输入框
+    resource_id_tv_search_tv = "全城搜索"
 
     """
         *********************************iOS text label*****************************
