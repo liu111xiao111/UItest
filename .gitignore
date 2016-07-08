@@ -12,3 +12,7 @@
 *.html
 __pycache__/
 *.xml
+.DS_Store/
+*.project
+.pydevproject
+*.settings/
