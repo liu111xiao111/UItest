@@ -34,8 +34,8 @@ class HuiLifePageConfigs(object):
     text_online_game_recharge = u"网游充值"
     text_stock_information    = u"股票资讯"
 
-    # Verify modules entry
-    verify_text_didi_travel          = u"滴滴出行"
+    # Verify modules entry 
+    verify_resource_didi_travel      = "com.wanda.app.wanhui:id/didi_webview_title"  # 滴滴出行
     verify_text_fly_yue              = u"飞悦"
     verify_text_prepaid_recharge     = u"话费充值"
     verify_text_traffic_recharge     = u"流量充值"

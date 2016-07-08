@@ -2,6 +2,10 @@
 
 from __init__ import *
 import time
+import HTMLTestRunner
+
+from unittest import TestCase
+from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -20,11 +24,8 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
-import unittest
-import HTMLTestRunner
 
-
-class MyfeifanMyTicketCases(unittest.TestCase):
+class MyfeifanMyTicketCases(TestCase):
     '''
     	巡检checklist #50
     	自动化测试 #50
@@ -84,7 +85,7 @@ class MyfeifanMyTicketCases(unittest.TestCase):
 if __name__ == "__main__":
     log = Logger()
     caseName = 'myfeifan_my_queue_cases'
-    suite = unittest.TestLoader().loadTestsFromTestCase(MyfeifanMyTicketCases)
+    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyTicketCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + caseName + now + '.html'

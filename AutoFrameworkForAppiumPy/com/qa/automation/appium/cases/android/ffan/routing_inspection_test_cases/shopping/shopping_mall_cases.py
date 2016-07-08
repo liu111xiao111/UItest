@@ -1,13 +1,13 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import os
-import sys
+from __init__ import *
+
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
 
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -27,10 +27,6 @@ from com.qa.automation.appium.pages.android.ffan.shopping_mall_page import Shopp
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 
 from com.qa.automation.appium.utility.logger import Logger
-
-
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class ShoppingMallCases(TestCase):

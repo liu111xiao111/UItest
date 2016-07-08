@@ -23,7 +23,6 @@ class ClearAppData:
         
         
 if __name__ == '__main__':
-    # clearAppData = ClearAppData()
-    # clearAppData.clearData()
-    print(root_dir)
+    clearAppData = ClearAppData()
+    clearAppData.clearData()
     

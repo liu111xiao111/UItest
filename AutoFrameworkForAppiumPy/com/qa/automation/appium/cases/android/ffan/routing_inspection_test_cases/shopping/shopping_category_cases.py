@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import sys,os
+from __init__ import *
 import time
+import HTMLTestRunner
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+from unittest import TestCase
+from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -19,11 +21,8 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
-import unittest
-import HTMLTestRunner
 
-
-class ShoppingCatergoryCases(unittest.TestCase):
+class ShoppingCatergoryCases(TestCase):
     '''
         巡检checklist #12
         自动化测试 #12
@@ -41,19 +40,20 @@ class ShoppingCatergoryCases(unittest.TestCase):
         clearAppData.clearData()
 
         self.logger = Logger()
-        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
-                                   device_name=deviceName_andr, driver_url=driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   platformVersion,
+                                   deviceName_andr,
+                                   driver_url).getDriver()
 
         #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
-        testPrepare.prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        shoppingPage = ShoppingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
-        shoppingDetailsPage = ShoppingDetailsCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        shoppingPage = ShoppingCategoryPage(self, self.driver, self.logger)
+        shoppingDetailsPage = ShoppingDetailsCategoryPage(self, self.driver, self.logger)
 
         # Load goods page
         dashboardPage.validSelf();
@@ -66,7 +66,7 @@ class ShoppingCatergoryCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(ShoppingCatergoryCases)
+    suite = TestLoader().loadTestsFromTestCase(ShoppingCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

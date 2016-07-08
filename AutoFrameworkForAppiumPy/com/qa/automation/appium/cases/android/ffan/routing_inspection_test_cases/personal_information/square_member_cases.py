@@ -1,24 +1,30 @@
 # -*- coding: utf-8 -*-
 
 from __init__ import *
+import time
+import HTMLTestRunner
+
+from unittest import TestCase
+from unittest import TestLoader
 
 
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
-from com.qa.automation.appium.pages.android.ffan.member_category_page import *;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
-from com.qa.automation.appium.utility.logger import Logger;
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.member_category_page import MemberPage
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.logger import Logger
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
-import unittest
-import HTMLTestRunner
 
-
-class SquareMemberCases(unittest.TestCase):
+class SquareMemberCases(TestCase):
     '''
        usage:  No.28 广场详情页点击会员，成功进入会员页面，检查数据正常显示
     '''
@@ -33,18 +39,19 @@ class SquareMemberCases(unittest.TestCase):
         clearAppData.clearData()
 
         self.logger = Logger()
-        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
-                                   device_name=deviceName_andr, driver_url=driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   platformVersion,
+                                   deviceName_andr,
+                                   driver_url).getDriver()
         # 登陆　升级
-        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
-        testPrepare.prepare()
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger);
-        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger);
-        memberPage = MemberPage(testcase=self, driver=self.driver, logger=self.logger);
+        dashboardPage = DashboardPage(self, self.driver, self.logger);
+        squarePage = SquareModulePage(self, self.driver, self.logger);
+        memberPage = MemberPage(self, self.driver, self.logger);
 
         dashboardPage.validSelf();
         squarePage.waitBySeconds(seconds=2);
@@ -57,7 +64,7 @@ class SquareMemberCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(SquareMemberCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareMemberCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

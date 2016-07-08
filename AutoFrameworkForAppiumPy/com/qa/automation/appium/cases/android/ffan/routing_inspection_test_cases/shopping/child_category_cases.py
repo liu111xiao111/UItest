@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import os
+from __init__ import *
 import time
 import HTMLTestRunner
 
-from unittest import TestCase, TestLoader
+from unittest import TestCase
+from unittest import TestLoader
+
 
 # Pages function
 from com.qa.automation.appium.pages.android.ffan.child_category_page import ChildCategoryPage
@@ -64,6 +66,8 @@ class ChildCatergoryCases(TestCase):
         dashboardPage.clickOnChildCategory()
         childPage.validSelf()
 
+        childPage.screen_shot("child_category_cases")
+
         # Launch Child Play, Child Education, Child Shopping and
         clickChildList = (childPage.clickOnChildPlay,
                           childPage.clickOnChildEducation,
@@ -82,7 +86,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ChildCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = reportpath + '/food-test_' + now + '.html'
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')

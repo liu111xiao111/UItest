@@ -22,6 +22,7 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
 from com.qa.automation.appium.utility.logger import Logger
 
+
 class MembershipCardPackageCases(TestCase):
     '''
     巡检checklist No.: 52

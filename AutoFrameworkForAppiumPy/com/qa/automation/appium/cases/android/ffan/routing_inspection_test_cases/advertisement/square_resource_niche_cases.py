@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 from __init__ import *
@@ -32,7 +31,7 @@ class SquareResourceNicheCases(TestCase):
     '''
     巡检checklist No.: 20
     自动化测试case No.: 20
-    广场详情页查看资源位可以轮播，点击资源位可进入详情页
+    广场详情页查看资源位，点击资源位可进入详情页
     '''
 
     def tearDown(self):
@@ -58,11 +57,13 @@ class SquareResourceNicheCases(TestCase):
 
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
-
         squareModulePage.validSelf()
-        squareModulePage.clickOnResourceNiche()
+        dashboardPage.screen_shot("square_resource_niche_square")
 
+        squareModulePage.clickOnResourceNiche()
         resourceNicheDetailsPage.validSelf()
+        squareModulePage.screen_shot("square_resource_niche")
+
         resourceNicheDetailsPage.clickBackKey()
 
         squareModulePage.validSelf()

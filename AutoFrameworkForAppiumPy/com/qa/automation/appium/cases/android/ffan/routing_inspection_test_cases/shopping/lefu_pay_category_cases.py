@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-
+from __init__ import *
 import sys,os
 import time
+import HTMLTestRunner
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+from unittest import TestCase
+from unittest import TestLoader
+
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -20,11 +23,8 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
-import unittest
-import HTMLTestRunner
 
-
-class LefuPayCatergoryCases(unittest.TestCase):
+class LefuPayCatergoryCases(TestCase):
     '''
         巡检checklist #15
         自动化测试 #15-1
@@ -42,20 +42,21 @@ class LefuPayCatergoryCases(unittest.TestCase):
         clearAppData.clearData()
 
         self.logger = Logger()
-        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
-                                   device_name=deviceName_andr, driver_url=driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   platformVersion,
+                                   deviceName_andr,
+                                   driver_url).getDriver()
 
         # Login & update version
-        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
-        testPrepare.prepare()
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        lefuPage = SquareLefuPayPage(testcase = self, driver = self.driver, logger = self.logger)
-        lefuPayDetailPage = LefuPayDetailPage(testcase = self, driver = self.driver, logger = self.logger)
-        lefuPayWayPage = LefuPayWayPage(testcase = self, driver = self.driver, logger = self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
+        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
+        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
 
         # Load square page
         dashboardPage.validSelf();
@@ -74,7 +75,7 @@ class LefuPayCatergoryCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(LefuPayCatergoryCases)
+    suite = TestLoader().loadTestsFromTestCase(LefuPayCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

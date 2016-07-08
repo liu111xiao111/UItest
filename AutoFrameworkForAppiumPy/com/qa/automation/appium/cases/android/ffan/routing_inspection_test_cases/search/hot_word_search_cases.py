@@ -1,28 +1,12 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
-
-'''
-Title: hot_word_search_cases.py
-Package: com.qa.automation.appium.cases.android.ffan
-Description: This is a test case for checking hot word search.
-Company: Neusoft
-All rights Reserved, Designed By Zhaosheng Liu
-@copyright: Copyright(C) 2016-2017
-@author: Zhaosheng Liu
-@date Jun 17, 2016 05:27:25 PM
-Modification  History:
-Date                Author                Version                Description
-Jun 17, 2016        liuzhsh               V0.0.0.1               New file
-Why & What is modified: TODO
-'''
-
+# -*- coding: utf-8 -*-
 import os
 import sys
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -39,9 +23,6 @@ from com.qa.automation.appium.pages.android.ffan.store_info_page import StoreInf
 from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
-
 class HotWordSearchCases(TestCase):
     '''
     巡检checklist No.: 04
@@ -56,7 +37,12 @@ class HotWordSearchCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   platformVersion,
+                                   deviceName_andr,
+                                   driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

@@ -186,11 +186,11 @@ class HuiLifePage(SuperPage):
         '''
         usage: valid didi travel view
         '''
-        API().assert_view_by_text_android(self.testcase,
-                                          self.driver,
-                                          self.logger,
-                                          HLPC.verify_text_didi_travel,
-                                          HLPC.assert_view_timeout)
+        API().assert_view_by_resourceID_Until(self.testcase,
+                                              self.driver,
+                                              self.logger,
+                                              HLPC.verify_resource_didi_travel,
+                                              HLPC.assert_view_timeout)
 
     def validFlyYue(self):
         '''

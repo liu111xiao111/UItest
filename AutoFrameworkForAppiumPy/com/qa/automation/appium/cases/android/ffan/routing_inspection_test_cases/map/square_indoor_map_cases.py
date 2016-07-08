@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from __init__ import *
-
+import os
+import sys
 import time
+import HTMLTestRunner
+
+from unittest import TestCase
+from unittest import TestLoader
 
 # sys.path.append(os.path.dirname(
 #     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
@@ -23,11 +28,8 @@ from com.qa.automation.appium.utility.logger import Logger;
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
-import unittest
-import HTMLTestRunner
 
-
-class SquareIndoorMapCases(unittest.TestCase):
+class SquareIndoorMapCases(TestCase):
     '''
 		巡检checklist #25
 		自动化测试 #25
@@ -73,7 +75,7 @@ class SquareIndoorMapCases(unittest.TestCase):
         indoormapPage.validSelfFood();
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

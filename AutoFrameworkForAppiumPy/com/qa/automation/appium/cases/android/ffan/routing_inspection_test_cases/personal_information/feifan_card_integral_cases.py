@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from __init__ import *
+import time
+import HTMLTestRunner
 
+from unittest import TestCase
+from unittest import TestLoader
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import *;
 from com.qa.automation.appium.pages.android.ffan.feifan_card_integral_page import *;
@@ -12,11 +16,8 @@ from com.qa.automation.appium.utility.logger import Logger;
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
-import unittest
-import HTMLTestRunner
 
-
-class FeiFanCardIntegralCases(unittest.TestCase):
+class FeiFanCardIntegralCases(TestCase):
     '''
     	巡检checklist #45
     	自动化测试 #45
@@ -59,7 +60,7 @@ class FeiFanCardIntegralCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(FeiFanCardIntegralCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiFanCardIntegralCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

@@ -508,5 +508,8 @@ class API(object):
         input_field.click()
         input_field.send_keys(string)
 
+    def screen_shot(self, driver, screen_shot_name="myfeifan_auto_test"):
+        driver.save_screenshot(screen_shot_name + ".png")
+
     def hidden_keyborad(self, driver):
         driver.hide_keyboard();

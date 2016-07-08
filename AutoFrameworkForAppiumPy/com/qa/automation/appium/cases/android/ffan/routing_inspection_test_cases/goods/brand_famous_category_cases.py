@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from __init__ import *
-
+import os
+import sys
 import time
+import HTMLTestRunner
 
+from unittest import TestCase
+from unittest import TestLoader
 # sys.path.append(os.path.dirname(
 #     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
@@ -21,11 +25,8 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
-import unittest
-import HTMLTestRunner
 
-
-class BrandFamousCatergoryCases(unittest.TestCase):
+class BrandFamousCatergoryCases(TestCase):
     '''
         巡检checklist #8
         自动化测试 #8-2
@@ -83,7 +84,7 @@ class BrandFamousCatergoryCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(BrandFamousCatergoryCases)
+    suite = TestLoader().loadTestsFromTestCase(BrandFamousCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

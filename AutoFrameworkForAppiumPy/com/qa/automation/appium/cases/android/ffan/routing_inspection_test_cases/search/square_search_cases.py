@@ -1,29 +1,30 @@
 # -*- coding: utf-8 -*-
 
-import sys, os
-import unittest
-
+from __init__ import *
+import time
 import HTMLTestRunner
+
+from unittest import TestCase
+from unittest import TestLoader
+
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
+from com.qa.automation.appium.pages.android.ffan.search_result_store_page import SearchResultStorePage
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import platformVersion
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_module_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_sign_on_page import *;
-from com.qa.automation.appium.pages.android.ffan.square_find_store_category_page import *;
-from com.qa.automation.appium.pages.android.ffan.search_page import *;
-from com.qa.automation.appium.pages.android.ffan.search_result_store_page import SearchResultStorePage;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;
-from com.qa.automation.appium.configs.driver_configs import *;
-from com.qa.automation.appium.driver.appium_driver import *;
-from com.qa.automation.appium.utility.logger import Logger;
-
-
-class SquareSearchCases(unittest.TestCase):
+class SquareSearchCases(TestCase):
     '''
         usage : No.19 首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
     '''
@@ -39,14 +40,15 @@ class SquareSearchCases(unittest.TestCase):
         clearAppData.clearData()
 
         self.logger = Logger()
-        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
-                                   device_name=deviceName_andr, driver_url=driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   platformVersion,
+                                   deviceName_andr,
+                                   driver_url).getDriver()
 
         # 登陆　升级
-        testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
-        testPrepare.prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
@@ -71,7 +73,7 @@ class SquareSearchCases(unittest.TestCase):
         searchPage.clickBackKey()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(SquareSearchCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareSearchCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'
