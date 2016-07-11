@@ -1,22 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
-'''
-Title: sharing_page.py
-Package: com.qa.automation.appium.pages.android.ffan
-Description: This is sharing page operation class.
-Company: Neusoft
-All rights Reserved, Designed By Zhaosheng Liu
-@copyright: Copyright(C) 2016-2017
-@author: Zhaosheng Liu
-@date Jun 17, 2016 02:37:35 PM
-Modification  History:
-Date                Author                Version                Description
-Jun 17, 2016        liuzhsh               V0.0.0.1               New file
-Why & What is modified: TODO
-'''
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.sharing_page_configs import SharingPageConfigs

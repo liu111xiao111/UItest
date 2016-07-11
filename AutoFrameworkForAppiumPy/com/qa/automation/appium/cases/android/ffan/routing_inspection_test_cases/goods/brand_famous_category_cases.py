@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
 import os
-import sys
 import time
 import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
-# sys.path.append(os.path.dirname(
-#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData

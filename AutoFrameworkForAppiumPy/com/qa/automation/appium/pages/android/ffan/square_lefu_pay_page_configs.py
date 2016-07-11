@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class SquareLefuPayPageConfigs():
     # "乐付买单"

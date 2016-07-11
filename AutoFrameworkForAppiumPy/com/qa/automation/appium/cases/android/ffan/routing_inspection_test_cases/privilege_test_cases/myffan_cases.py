@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import *;
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import *;

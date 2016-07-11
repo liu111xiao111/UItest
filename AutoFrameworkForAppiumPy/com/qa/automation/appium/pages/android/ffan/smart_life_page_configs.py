@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
-
 class SmartLifePageConfigs():
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
     # ffan logo图标

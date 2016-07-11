@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
 
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 

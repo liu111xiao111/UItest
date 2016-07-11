@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.ffan.smart_life_page_configs import *
-from com.qa.automation.appium.pages.android.common.super_page import *
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.android.ffan.smart_life_page_configs import SmartLifePageConfigs
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 
 
 #   进入应用的首页,是进入其他页面的入口

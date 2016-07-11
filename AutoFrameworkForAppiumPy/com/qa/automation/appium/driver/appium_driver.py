@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
-from time import sleep
-
-from com.qa.automation.appium.configs.driver_configs import *
-
 from appium import webdriver
 
 

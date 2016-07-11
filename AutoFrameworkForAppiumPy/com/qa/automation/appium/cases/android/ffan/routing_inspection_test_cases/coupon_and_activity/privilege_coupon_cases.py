@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -25,10 +24,6 @@ from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(
-#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))))
 
 
 class PrivilegeCouponCases(TestCase):

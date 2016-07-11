@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -21,10 +20,6 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_active_details_page import SalesPromotionActiveDetailsPage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
 
 ACTIVENUMBER = 4
 

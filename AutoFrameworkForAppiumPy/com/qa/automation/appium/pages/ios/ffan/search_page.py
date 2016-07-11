@@ -1,28 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-from time import sleep
-import unittest
-
-from appium import webdriver
-
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.configs.driver_configs import *
+from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
 from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
-
 '''
     usage: 搜索页面
 '''
-
-
 class SearchPage(IosSuperPage):
     def __init__(self, testcase, driver, logger):
         super(SearchPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
@@ -115,10 +100,10 @@ class SearchPage(IosSuperPage):
         '''
         usage: input keywords.
         '''
-
-        API().input_view_by_resourceID_android(self.driver, self.logger,
-												SearchPageConfigs.resource_et_search_input_et,
-												keywords)
+        pass
+#         API().input_view_by_resourceID_android(self.driver, self.logger,
+#                                                SearchPageConfigs.resource_et_search_input_et,
+#                                                keywords)
 
     def clickOnSpecificSquare(self):
         '''

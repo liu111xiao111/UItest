@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
-import unittest
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.utility.logger import Logger
-
 
 
 class SuperPage(object):

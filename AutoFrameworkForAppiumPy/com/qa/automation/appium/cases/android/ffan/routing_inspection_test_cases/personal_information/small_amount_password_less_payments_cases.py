@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -23,7 +23,7 @@ from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPa
 from com.qa.automation.appium.pages.android.ffan.small_amount_password_less_payments_page import SmallAmountPasswordLessPaymentsPage
 from com.qa.automation.appium.utility.logger import Logger
 
-class UpdateLoginPasswordCases(TestCase):
+class SmallAmountPasswordLessPaymentCases(TestCase):
     '''
     巡检checklist No.: 57
     自动化测试case No.: 57_1
@@ -76,7 +76,7 @@ class UpdateLoginPasswordCases(TestCase):
         myFeiFanPage.validSelf()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(UpdateLoginPasswordCases)
+    suite = TestLoader().loadTestsFromTestCase(SmallAmountPasswordLessPaymentCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

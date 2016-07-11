@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class LoginPageConfigs():
     # 普通登录手机号码输入框

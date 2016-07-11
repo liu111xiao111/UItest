@@ -2,7 +2,6 @@
 # -*- coding:utf-8 -*-
 
 
-
 class CinemaPageConfigs(object):
     '''
     This is a configuration class for CinemaPage class.

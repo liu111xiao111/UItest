@@ -2,7 +2,6 @@
 # -*- coding:utf-8 -*-
 
 
-
 class FlashSalesSquarePageConfigs(object):
     '''
     This is a configuration class for FlashSalesSquarePage class.

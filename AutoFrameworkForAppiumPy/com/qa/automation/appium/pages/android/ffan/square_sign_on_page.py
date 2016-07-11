@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.square_sign_on_page_configs import SignOnPageConfigs
 
-from time import sleep
-import unittest
-
-from appium import webdriver
-
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.common.super_page import *
-from com.qa.automation.appium.pages.android.ffan.square_sign_on_page_configs import *
-
+from selenium.common.exceptions import TimeoutException
 
 # 签到页面
 class SignOnPage(SuperPage):

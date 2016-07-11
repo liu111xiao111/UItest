@@ -2,7 +2,6 @@
 
 from selenium.common.exceptions import TimeoutException
 
-from __init__ import *
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.popup_page_configs import PopupPageConfigs

@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -22,9 +21,6 @@ from com.qa.automation.appium.pages.android.ffan.activity_details_page import Ac
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.sharing_page import SharingPage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class ActivitySharingCases(TestCase):

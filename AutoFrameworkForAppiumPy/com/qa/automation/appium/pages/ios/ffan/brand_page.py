@@ -1,23 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
-from time import sleep
-import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.ios.common.ios_super_page import *
-from com.qa.automation.appium.pages.ios.ffan.brand_page_configs import *
-
-from appium import webdriver
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.ffan.brand_page_configs import BrandPageConfigs
 
 
-#
 #   电影选择页面,入口:首页 -> 品牌
 class BrandPage(IosSuperPage):
 

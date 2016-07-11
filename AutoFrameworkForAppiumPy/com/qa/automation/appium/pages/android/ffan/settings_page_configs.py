@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
-
 class SettingsPageConfigs():
     # 账号管理relativelayout
     resource_id_setting_account_management_rl = "setting_account_management";

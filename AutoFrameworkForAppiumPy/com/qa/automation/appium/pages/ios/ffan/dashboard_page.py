@@ -1,26 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.ffan.dashboard_page_configs import DashboardPageConfigs
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))))
-
-from time import sleep
-import unittest
-
-from appium import webdriver
-
-from com.qa.automation.appium.api.api import *
-
-from com.qa.automation.appium.pages.ios.common.ios_super_page import *
-from com.qa.automation.appium.pages.ios.ffan.dashboard_page_configs import *
 
 '''
     usage :  进入应用的首页
 '''
-
-
 class DashboardPage(IosSuperPage):
 
     def __init__(self, testcase, driver, logger):
@@ -105,4 +92,4 @@ class DashboardPage(IosSuperPage):
                                        resource_id=DashboardPageConfigs.name_parking);
 
 if __name__ == '__main__':
-    print("path %s" % (sys.path))
+    pass

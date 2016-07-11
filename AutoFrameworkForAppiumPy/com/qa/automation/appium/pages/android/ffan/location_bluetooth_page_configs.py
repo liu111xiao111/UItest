@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class LocationBluetoothPageConfigs():
     # “取消” button

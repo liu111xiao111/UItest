@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
-
 class AccountManagementPageConfigs(object):
     '''
     This is a configuration class for AccountManagement class.

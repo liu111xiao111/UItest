@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
 
 """
     爱逛街页面配置

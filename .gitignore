@@ -1,6 +1,6 @@
 .idea/
 *.[oa]        #忽略以.o或.a结尾的文件或目录
-*.pyc        
+*.pyc
 *.exe       #忽略以.exe结尾的文件或目录
 .*              #忽略以.开头的文件或目录
 *.rar
@@ -12,7 +12,7 @@
 *.html
 __pycache__/
 *.xml
-.DS_Store/
+.DS_Store
 *.project
 .pydevproject
 *.settings/

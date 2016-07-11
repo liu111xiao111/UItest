@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
-from time import sleep
-import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.ffan.square_flash_sales_page_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.square_flash_sales_page_configs import SquareFlashSalesPageConfigs
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 
 
 class SquareFlashSalesPage(SuperPage):

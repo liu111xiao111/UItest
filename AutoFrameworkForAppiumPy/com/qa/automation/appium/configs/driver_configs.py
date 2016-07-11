@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import sys
-
 platformName_andr = 'Android';
 
 platformVersion = '4.4';

@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.splash_screen_home_page_configs import SplashScreenHomePageConfigs

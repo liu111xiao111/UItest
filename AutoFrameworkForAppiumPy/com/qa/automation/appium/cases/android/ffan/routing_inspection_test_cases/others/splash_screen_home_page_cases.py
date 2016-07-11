@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
-
-from __init__ import *
+import os
 import time
 import HTMLTestRunner
 
@@ -19,9 +18,6 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.splash_screen_home_page import SplashScreenHomePage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class SplashScreenHomePageCases(TestCase):

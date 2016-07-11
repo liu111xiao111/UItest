@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.pages.android.ffan.food_category_page_configs import FoodCategoryPageConfigs
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.api.api import API

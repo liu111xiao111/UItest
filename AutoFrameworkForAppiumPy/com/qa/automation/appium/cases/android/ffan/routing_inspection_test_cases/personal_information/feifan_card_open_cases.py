@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
+import os
 import time
 import HTMLTestRunner
 
@@ -30,7 +30,7 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 
 
-class ChildCatergoryCases(TestCase):
+class FeiFanCardOpenCases(TestCase):
     '''
     巡检checklist No.: 44
     自动化测试case No.: 44
@@ -74,7 +74,7 @@ class ChildCatergoryCases(TestCase):
         openCardPage.validJointCard()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(ChildCatergoryCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiFanCardOpenCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

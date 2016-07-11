@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import VersionUpgradePage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage

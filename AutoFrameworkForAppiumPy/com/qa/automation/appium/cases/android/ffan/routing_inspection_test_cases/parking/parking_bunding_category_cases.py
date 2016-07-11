@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
+import os
 import time
+import HTMLTestRunner
 
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+from unittest import TestCase
+from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -22,11 +24,8 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger;
 
-import unittest
-import HTMLTestRunner
 
-
-class ParkingBundingCatergoryCases(unittest.TestCase):
+class ParkingBundingCatergoryCases(TestCase):
     '''
         巡检checklist #14
         自动化测试 #14-2
@@ -79,7 +78,7 @@ class ParkingBundingCatergoryCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(ParkingBundingCatergoryCases)
+    suite = TestLoader().loadTestsFromTestCase(ParkingBundingCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class LoveShoppingPageConfigs():
     # text指明类型为text label,后面是文字的拼音

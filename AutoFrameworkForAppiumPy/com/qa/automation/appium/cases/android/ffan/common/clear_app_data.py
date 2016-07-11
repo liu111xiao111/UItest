@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
 from subprocess import Popen, PIPE
-from __init__ import *
 
 '''
     usage :  进入应用的首页

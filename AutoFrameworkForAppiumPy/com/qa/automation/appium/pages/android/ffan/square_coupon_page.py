@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.pages.android.ffan.square_coupon_page_configs import SquareCouponPageConfigs
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
@@ -10,8 +8,6 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 '''
     usage : 广场模块，优惠券
 '''
-
-
 class SquareCouponPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(SquareCouponPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 import HTMLTestRunner
 
@@ -25,10 +24,6 @@ from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
-
-# sys.path.append(os.path.dirname(
-#     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-#     os.path.dirname(os.path.dirname(__file__))))))))
 
 class FoodCases(TestCase):
     '''

@@ -8,7 +8,7 @@ import sys, os
 sys.path.append(os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
-from com.qa.automation.appium.cases.android.ffan.love_shopping_cases import LoveShoppingCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.privilege_test_cases.love_shopping_cases import LoveShoppingCases
 
 import unittest
 import HTMLTestRunner

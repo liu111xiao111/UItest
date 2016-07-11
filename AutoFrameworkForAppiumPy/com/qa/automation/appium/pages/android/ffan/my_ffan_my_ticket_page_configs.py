@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 
 class MyFfanMyTicketPageConfigs():
     # "我的票券"

@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.account_management_page_configs import AccountManagementPageConfigs
@@ -36,7 +34,7 @@ class AccountManagementPage(SuperPage):
         API().click_view_by_text_android(self.testcase, self.driver, self.logger,
                                          AccountManagementPageConfigs.text_update_login_password_button,
                                          AccountManagementPageConfigs.click_on_button_timeout)
-										 
+
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
         usage: click on the small account password-less payments button.

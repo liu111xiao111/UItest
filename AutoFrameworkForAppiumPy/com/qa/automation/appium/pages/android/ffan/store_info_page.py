@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.store_info_page_configs import StoreInfoPageConfigs
@@ -10,8 +8,6 @@ from com.qa.automation.appium.pages.android.ffan.store_info_page_configs import 
 '''
     usage: 门店详情
 '''
-
-
 class StoreInfoPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(StoreInfoPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

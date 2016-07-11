@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page_configs import DashboardPageConfigs
 
-
 '''
     usage :  进入应用的首页
 '''
-
-
 class DashboardPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(DashboardPage, self).__init__(testcase=testcase, driver=driver, logger=logger)

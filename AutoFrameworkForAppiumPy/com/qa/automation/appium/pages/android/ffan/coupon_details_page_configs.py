@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
 class CouponDetailsPageConfigs(object):
     '''
     This is a configuration class for CouponDetailsPage class.

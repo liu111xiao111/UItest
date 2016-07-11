@@ -1,8 +1,6 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -16,7 +14,6 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.cinema_page import CinemaPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
@@ -28,9 +25,6 @@ from com.qa.automation.appium.pages.android.ffan.popup_page import VerifyActivit
 from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class MovieTicketCases(TestCase):
@@ -69,7 +63,7 @@ class MovieTicketCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            #print("ATTEMPTS: %d" % (tempTimes + 1)) 
+            print("ATTEMPTS: %d" % (tempTimes + 1)) 
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break

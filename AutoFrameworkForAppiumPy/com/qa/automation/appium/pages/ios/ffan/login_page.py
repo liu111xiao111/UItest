@@ -1,16 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-import os
-import sys
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
 from com.qa.automation.appium.pages.ios.ffan.login_page_configs import LoginPageConfigs
-
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class LoginPage(IosSuperPage):

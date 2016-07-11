@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 import HTMLTestRunner
 
@@ -26,7 +25,7 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
 
-class MyfeifanMyOrderCases(TestCase):
+class MyfeifanMyLikeCases(TestCase):
     '''
     	巡检checklist: No.54
     	自动化测试: No.54
@@ -74,7 +73,7 @@ class MyfeifanMyOrderCases(TestCase):
 if __name__ == "__main__":
     log = Logger()
     caseName = 'myfeifan_my_lick_cases'
-    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyOrderCases)
+    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyLikeCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + caseName + now + '.html'

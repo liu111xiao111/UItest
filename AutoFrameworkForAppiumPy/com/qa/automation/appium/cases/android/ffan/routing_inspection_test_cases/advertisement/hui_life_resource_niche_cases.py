@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 import HTMLTestRunner
 
@@ -18,7 +17,6 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 
 from com.qa.automation.appium.pages.android.ffan.resource_niche_details_page import ResourceNicheDetailsPage
@@ -28,7 +26,7 @@ from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
-class SpecialOfferCases(TestCase):
+class HuiLifeResourceNicheCases(TestCase):
     '''
     巡检checklist No.: 39
     自动化测试case No.: 39
@@ -60,7 +58,7 @@ class SpecialOfferCases(TestCase):
 
         huiLifePage.validSelf()
         huiLifePage.screen_shot("hui_life_resource_niche")
-        
+
         huiLifePage.clickOnResourceNiche()
 
         resourceNicheDetailsPage.validSelf()
@@ -72,7 +70,7 @@ class SpecialOfferCases(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SpecialOfferCases)
+    suite = TestLoader().loadTestsFromTestCase(HuiLifeResourceNicheCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

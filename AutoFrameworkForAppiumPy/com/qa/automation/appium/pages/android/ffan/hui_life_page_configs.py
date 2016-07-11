@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
 class HuiLifePageConfigs(object):
     '''
     This is a configuration class for HuiLifePage class.

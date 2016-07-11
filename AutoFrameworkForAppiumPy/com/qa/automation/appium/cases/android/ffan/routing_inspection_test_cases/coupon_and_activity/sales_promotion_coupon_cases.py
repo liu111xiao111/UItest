@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
+import os
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -23,10 +22,6 @@ from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import Sal
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
 
 COUPONNUMBER = 2
 

@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
-from time import sleep
-import unittest
-from com.qa.automation.appium.configs.driver_configs import *
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page_configs import *
-from com.qa.automation.appium.api.api import *
-from com.qa.automation.appium.pages.android.common.super_page import *
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page_configs import LefuPayWayPageConfigs
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 
 class LefuPayWayPage(SuperPage):
     def __init__(self, testcase, driver, logger):

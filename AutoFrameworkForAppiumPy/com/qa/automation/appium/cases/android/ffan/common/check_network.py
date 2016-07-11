@@ -2,8 +2,6 @@
 
 from subprocess import Popen, PIPE
 
-from __init__ import *
-
 CONNECTION = 0
 NOCONNECTION = -1
 NOFIND = -1
