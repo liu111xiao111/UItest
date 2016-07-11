@@ -80,5 +80,22 @@ class DashboardPage(IosSuperPage):
                                        DashboardPageConfigs.resource_id_movie_st,
                                        DashboardPageConfigs.click_on_button_timeout)
 
+    def clickOnPrivilege(self):
+        '''
+        usage: click privilege button
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       DashboardPageConfigs.resource_id_movieprivilege_st,
+                                       DashboardPageConfigs.click_on_button_timeout)
+
+    def validSelf(self):
+        '''
+        usage: verify whether the current page is conrrect.
+        '''
+
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                              DashboardPageConfigs.name_home_title_icon)
+
 if __name__ == '__main__':
     print("path %s" % (sys.path))

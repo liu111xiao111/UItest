@@ -64,5 +64,8 @@ class DashboardPageConfigs():
     # Movie button
     resource_id_movie_st = "电影"
 
+    # Privilege button
+    resource_id_movieprivilege_st = u"优惠"
+
     def __init__(self):
         pass;
