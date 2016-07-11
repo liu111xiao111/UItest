@@ -67,7 +67,18 @@ class DashboardPage(IosSuperPage):
         '''
         usage: click on search in city.
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.resource_id_tv_search_tv)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       DashboardPageConfigs.resource_id_tv_search_tv,
+                                       DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnMovie(self):
+        '''
+        usage: click on movie button
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       DashboardPageConfigs.resource_id_movie_st,
+                                       DashboardPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     print("path %s" % (sys.path))

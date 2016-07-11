@@ -65,7 +65,7 @@ class MovieTicketCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            print("ATTEMPTS: %d") % (tempTimes + 1)
+            print("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break
@@ -74,17 +74,17 @@ class MovieTicketCases(TestCase):
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
-        seatPickingPage.clickBackKey()
-
-        cinemaPage.waitBySeconds()
-        cinemaPage.validSelf()
-        cinemaPage.clickBackKey()
-
-        movieDetailsPage.validSelf()
-        movieDetailsPage.clickBackKey()
-
-        moviePage.validSelf()
-        moviePage.clickBackKey()
+#         seatPickingPage.clickBackKey()
+#
+#         cinemaPage.waitBySeconds()
+#         cinemaPage.validSelf()
+#         cinemaPage.clickBackKey()
+#
+#         movieDetailsPage.validSelf()
+#         movieDetailsPage.clickBackKey()
+#
+#         moviePage.validSelf()
+#         moviePage.clickBackKey()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MovieTicketCases)

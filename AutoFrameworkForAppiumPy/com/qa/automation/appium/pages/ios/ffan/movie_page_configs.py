@@ -25,6 +25,7 @@ class MoviePageConfigs(object):
 
     # Seat picking and buying ticket button
     resource_id_seat_picking_and_buying_ticket_button = "com.wanda.app.wanhui:id/movie_buy_ticket"
+    xpath_seat_picking_and_buying_ticket_bt = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
 
     def __init__(self):
         pass

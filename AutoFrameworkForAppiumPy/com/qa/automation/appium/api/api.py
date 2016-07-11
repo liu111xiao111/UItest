@@ -294,8 +294,9 @@ class API(object):
         driver.press_keycode(4);
         time.sleep(2)
 
-    def click_back_key_ios(self, testcase, driver, logger, resource_id, seconds=10):
-        self.click_view_by_resourceID(testcase, driver, logger, resource_id, seconds)
+    def click_back_key_ios(self, testcase, driver, logger, xpath, seconds=10):
+#         self.click_view_by_resourceID(testcase, driver, logger, resource_id, seconds)
+        self.click_view_by_xpath(testcase, driver, logger, xpath, seconds)
         time.sleep(2)
 
     '''

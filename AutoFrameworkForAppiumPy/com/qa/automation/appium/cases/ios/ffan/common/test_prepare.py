@@ -79,7 +79,7 @@ class TestPrepare:
 
     def backToDashBoard(self):
         dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
-        dashboardPage.clickLikeShopping()
+        dashboardPage.click_aiguangjie()
 
 
     def closeHomeShakeTips(self):
