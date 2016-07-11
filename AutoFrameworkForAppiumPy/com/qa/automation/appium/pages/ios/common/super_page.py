@@ -14,7 +14,7 @@ class SuperPage(object):
 
     def clickBackKey(self):
         API().click_back_key_ios(self.testcase, self.driver, self.logger,
-                                 "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")
+                                 "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]")
 
 if __name__ == '__main__':
     pass

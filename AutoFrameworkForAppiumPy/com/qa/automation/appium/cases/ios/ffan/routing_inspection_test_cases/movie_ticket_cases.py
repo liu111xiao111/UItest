@@ -74,17 +74,17 @@ class MovieTicketCases(TestCase):
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
-#         seatPickingPage.clickBackKey()
-#
-#         cinemaPage.waitBySeconds()
-#         cinemaPage.validSelf()
-#         cinemaPage.clickBackKey()
-#
-#         movieDetailsPage.validSelf()
-#         movieDetailsPage.clickBackKey()
-#
-#         moviePage.validSelf()
-#         moviePage.clickBackKey()
+        seatPickingPage.clickBackKey()
+
+        cinemaPage.waitBySeconds()
+        cinemaPage.validSelf()
+        cinemaPage.clickBackKey()
+
+        movieDetailsPage.validSelf()
+        movieDetailsPage.clickBackKey()
+
+        moviePage.validSelf()
+        moviePage.clickBackKey()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MovieTicketCases)
