@@ -67,15 +67,7 @@ class SquareMovieCases(TestCase):
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
-        seatPickingPage.clickBackKey()
-
-        cinemaPage.waitBySeconds()
-        cinemaPage.validSelf()
-        cinemaPage.clickBackKey()
-
-        squareModulePage.waitBySeconds()
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
+        seatPickingPage.waitBySeconds(seconds=3)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)
