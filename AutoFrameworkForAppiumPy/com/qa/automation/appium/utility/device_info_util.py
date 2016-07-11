@@ -35,9 +35,6 @@ class DeviceInfoUtil:
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 
         out, err = p.communicate()
-        # print("out is %s" % (type(out)));
-        # print("Return code: ", p.returncode)
-        # print(out.decode("utf-8").rstrip(), err.rstrip())
         return out.decode("utf-8").rstrip();
 
     """
