@@ -39,7 +39,7 @@ class ParkingPaymentCases(unittest.TestCase):
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
 
-    def test_bound_license_plate(self):
+    def test_parking_bound_license_plate(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
@@ -61,7 +61,8 @@ class ParkingPaymentCases(unittest.TestCase):
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
         parkingPaymentInputPlateNumberPage.clickOnNextStep()
         parkingPaymentPage.validSelf()
-    def test_unbound_license_plate(self):
+
+    def test_parking_unbound_license_plate(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
@@ -79,6 +80,39 @@ class ParkingPaymentCases(unittest.TestCase):
         parkingPage.clickOnParkingPayment()
         parkingPaymentPage.validSelf()
         parkingPaymentPage.waitBySeconds(seconds=1)
+
+        # Unbound license plate
+        parkingPaymentPage.clickOnMore()
+        parkingPaymentMorePage.validSelf()
+        parkingPaymentMorePage.clickOnUnbundLicensePlate()
+        parkingPaymentUnboundConfirmPage.validSelf()
+        parkingPaymentUnboundConfirmPage.clickOnConfirm()
+        parkingPaymentInputPlateNumberPage.validSelf()
+
+    def test_my_feifan_parking_payment(self):
+        dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
+        parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
+        parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingPaymentMorePage = ParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
+
+        # Load parking page
+        dashboard.wait_by_seconds(seconds=1)
+        dashboard.valid_self()
+        dashboard.click_Parking()
+        parkingPage.validSelf()
+
+        # Load parking payment page
+        parkingPage.clickOnParkingPayment()
+        parkingPaymentInputPlateNumberPage.validSelf()
+        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+
+        # Input license plate
+        parkingPaymentInputPlateNumberPage.inputPlateNumber()
+        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+        parkingPaymentInputPlateNumberPage.clickOnNextStep()
+        parkingPaymentPage.validSelf()
 
         # Unbound license plate
         parkingPaymentPage.clickOnMore()
