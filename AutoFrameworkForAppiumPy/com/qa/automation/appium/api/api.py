@@ -466,6 +466,9 @@ class API(object):
 
     def assert_equal(self, test_case, driver, logger, actual_text, expect_text):
         test_case.assertEqual(first=actual_text, second=expect_text, msg="actual text : %s != expected text : %s" % (actual_text, expect_text))
+        
+    def assert_true(self, test_case, driver, logger, result = True):
+        test_case.assertTrue(result, msg="actual result : %s != expected result : %s" % (result, True))
 
     def assert_view_by_text_contains_according_to_xpath_until_android(self, testcase, driver, logger, textContains="default", xpath="default", seconds=10):
         '''
