@@ -37,8 +37,12 @@ class SpecialOfferCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion=DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr, driver_url).getDriver()
+#         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion=DeviceInfoUtil().getBuildVersion(),
+#                                    deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
+                                    platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
+                                    device_name=deviceName_andr, driver_url=driver_url
+                                    ).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
