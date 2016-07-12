@@ -21,10 +21,11 @@ class ActivityDetailsPage(SuperPage):
         '''
         usage: verify whether the current page is correct page.
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      ActivityDetailsPageConfigs.resource_id_activity_details_title,
-                                                      ActivityDetailsPageConfigs.assert_view_timeout)
+# 
+#         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+#                                                       ActivityDetailsPageConfigs.resource_id_activity_details_title,
+#                                                       ActivityDetailsPageConfigs.assert_view_timeout)
+        API().assert_view_by_content_desc_android(testcase=self.testcase, driver=self.driver, logger=self.logger, content_desc=ActivityDetailsPageConfigs.content_desc_activity_detail, seconds=45)
 
     def clickOnSharing(self):
         '''

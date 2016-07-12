@@ -21,6 +21,7 @@ from com.qa.automation.appium.pages.android.ffan.activity_details_page import Ac
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.sharing_page import SharingPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class ActivitySharingCases(TestCase):
@@ -37,7 +38,7 @@ class ActivitySharingCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

@@ -4,9 +4,10 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.activity_and_privilege_coupon_page_configs import ActivityAndPrivilegeCouponPageConfigs
 
+
 class ActivityAndPrivilegeCouponPage(SuperPage):
     '''
-    This is activity and privilege coupon page operation class.
+        首页 -> 优惠券页面.
     '''
 
 
@@ -29,7 +30,8 @@ class ActivityAndPrivilegeCouponPage(SuperPage):
         usage: click activity button
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, ActivityAndPrivilegeCouponPageConfigs.resource_id_activity_title, ActivityAndPrivilegeCouponPageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, 
+                                       ActivityAndPrivilegeCouponPageConfigs.resource_id_activity_title, ActivityAndPrivilegeCouponPageConfigs.click_on_button_timeout)
 
     def clickOnSpecificActivity(self):
         '''
