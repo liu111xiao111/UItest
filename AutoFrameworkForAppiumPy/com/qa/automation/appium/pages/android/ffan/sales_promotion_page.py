@@ -4,7 +4,9 @@ from com.qa.automation.appium.pages.android.ffan.sales_promotion_page_configs im
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 
-
+'''
+    首页 -> 优惠页面
+'''
 class SalesPromotionPage(SuperPage):
 
     def __init__(self,testcase,driver,logger):
