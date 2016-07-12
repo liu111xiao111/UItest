@@ -34,9 +34,12 @@ class CinemaPage(SuperPage):
         API().wait_by_seconds(5)
         tempText = API().get_view_by_resourceID(self.driver, self.logger, 
 												CinemaPageConfigs.resource_id_movie_name_button).text
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, 
-												CinemaPageConfigs.xpath_tomorrows_date_button, 
-												CinemaPageConfigs.click_on_button_timeout)
+                                                
+        buy_btn = API().find_view_by_resourceID_Until_android(driver=self.driver, logger=self.logger, resource_id = CinemaPageConfigs.resource_id_buy_ticket_button, seconds = 45)
+        if not buy_btn:
+            API().click_view_by_xpath(self.testcase, self.driver, self.logger, 
+    												CinemaPageConfigs.xpath_tomorrows_date_button, 
+    												CinemaPageConfigs.click_on_button_timeout)
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger, 
 										CinemaPageConfigs.resource_id_buy_ticket_button, 
 										CinemaPageConfigs.click_on_button_timeout)
