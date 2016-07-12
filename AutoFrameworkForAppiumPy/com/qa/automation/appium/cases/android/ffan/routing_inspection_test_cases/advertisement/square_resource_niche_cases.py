@@ -24,6 +24,7 @@ from com.qa.automation.appium.pages.android.ffan.square_module_page import Squar
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SquareResourceNicheCases(TestCase):
@@ -43,7 +44,7 @@ class SquareResourceNicheCases(TestCase):
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
 
@@ -62,11 +63,7 @@ class SquareResourceNicheCases(TestCase):
         squareModulePage.clickOnResourceNiche()
         resourceNicheDetailsPage.validSelf()
         squareModulePage.screen_shot("square_resource_niche")
-
-        resourceNicheDetailsPage.clickBackKey()
-
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
+        squareModulePage.waitBySeconds()
 
 
 if __name__ == "__main__":

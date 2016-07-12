@@ -236,6 +236,10 @@ class API(object):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
 
+    def find_view_by_classname_until(self, driver, logger, class_name, seconds=10):
+        wdw = WebDriverWait(driver=driver, timeout=seconds);
+        return wdw.until(EC.presence_of_element_located((By.CLASS_NAME, class_name)))
+
 
     '''
     ***********************************************************************************
@@ -484,6 +488,16 @@ class API(object):
             testcase.assertIsNotNone(self.get_view_text_contains_android(driver, logger , text), "text %s not none" % (text))
         except NoSuchElementException:
             testcase.assertIsNotNone(None, "text %s none" % (text))
+            
+    def assert_view_by_classname_both(self, testcase, driver, logger, class_name="default",seconds = 10):
+        '''
+        usage: verify whether the current view is found.
+        '''
+        try:
+            testcase.assertIsNotNone(self.find_view_by_classname_until(driver=driver, logger=logger, class_name=class_name, seconds=seconds), 
+                                     "class name %s not none" % (class_name))
+        except NoSuchElementException:
+            testcase.assertIsNotNone(None, "class name %s none" % (class_name))
 
     '''
     ***********************************************************************************

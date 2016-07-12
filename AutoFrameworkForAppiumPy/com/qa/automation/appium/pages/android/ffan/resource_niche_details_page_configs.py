@@ -21,6 +21,13 @@ class ResourceNicheDetailsPageConfigs(object):
     
     #分享按钮图标resource id
     resource_id_common_title_view_layout_right_container = "common_title_view_layout_right_container"
+    
+    
+    """
+        class name of web view
+    """
+    class_name_android_webkit_WebView = "android.webkit.WebView"
+    
 
     def __init__(self):
         pass
