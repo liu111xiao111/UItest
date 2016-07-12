@@ -40,7 +40,7 @@ class TestPrepare:
         dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
         myFfanPage = MyFfanPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
 
-        dashboardPage.clickOnMy()
+        dashboardPage.click_my()
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
         loginPage.validSelf()
