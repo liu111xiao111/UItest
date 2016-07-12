@@ -18,6 +18,9 @@ class ResourceNicheDetailsPageConfigs(object):
 
     # Resource Niche Details title
     resource_id_reource_niche_details_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
+    
+    #分享按钮图标resource id
+    resource_id_common_title_view_layout_right_container = "common_title_view_layout_right_container"
 
     def __init__(self):
         pass

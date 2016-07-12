@@ -45,6 +45,12 @@ class HuiLifePageConfigs(object):
     # Specific activity button
     resource_id_specific_activity_button = "com.wanda.app.wanhui:id/activities_img"
 
+    """
+        底部导航栏tab resource id
+        
+    """
+    resource_id_ll_bottom_bar = "ll_bottom_bar"
+
     # Specific privilege button
     resource_id_specific_privilege_button = "com.wanda.app.wanhui:id/activities_img"
     xpath_specific_privilege_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.support.v4.view.ViewPager[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]"
@@ -54,6 +60,11 @@ class HuiLifePageConfigs(object):
     # Resource niche
     resource_id_resource_niche_button = "com.wanda.app.wanhui:id/film_gallery_item_poster"
     text_specific_activity_title = u"水云间满额赠礼活动"
+
+    '''
+        class name find by 
+    '''
+    class_name_android_widget_FrameLayout = "android.widget.FrameLayout"
 
     def __init__(self):
         pass

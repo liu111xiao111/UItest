@@ -26,7 +26,7 @@ class ResourceNicheDetailsPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase,
                                               self.driver,
                                               self.logger,
-                                              RNDPC.resource_id_reource_niche_details_title,
+                                              RNDPC.resource_id_common_title_view_layout_right_container,
                                               RNDPC.assert_view_timeout)
 
 

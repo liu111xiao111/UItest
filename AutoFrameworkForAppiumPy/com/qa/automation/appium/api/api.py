@@ -198,6 +198,9 @@ class API(object):
     def find_views_by_class_name_both(self, driver, logger, className="default"):
         return driver.find_elements_by_class_name(name=className)
 
+    def find_views_of_view_by_class_name_both(self, element,driver, logger, className="default"):
+        return element.find_elements_by_class_name(name=className)
+
     '''
         usage : 显式等待方法
         parameters:

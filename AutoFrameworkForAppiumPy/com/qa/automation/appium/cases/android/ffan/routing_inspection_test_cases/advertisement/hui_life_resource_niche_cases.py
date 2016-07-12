@@ -59,13 +59,6 @@ class HuiLifeResourceNicheCases(TestCase):
         huiLifePage.validSelf()
         huiLifePage.screen_shot("hui_life_resource_niche")
 
-        huiLifePage.clickOnResourceNiche()
-
-        resourceNicheDetailsPage.validSelf()
-        resourceNicheDetailsPage.clickBackKey()
-
-        huiLifePage.validSelf()
-
         huiLifePage.validModules()
 
 

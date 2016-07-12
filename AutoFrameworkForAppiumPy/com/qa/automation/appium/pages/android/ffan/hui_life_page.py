@@ -23,11 +23,9 @@ class HuiLifePage(SuperPage):
         '''
         usage: verify whether the current page is correct page.
         '''
-        API().assert_view_by_text_android(self.testcase,
-                                          self.driver,
-                                          self.logger,
-                                          HLPC.text_activity_button,
-                                          HLPC.assert_view_timeout)
+        bottom_bar = API().get_view_by_resourceID(driver=self.driver, logger=self.driver, resource_id=HLPC.resource_id_ll_bottom_bar)
+        framell_list = API().find_views_of_view_by_class_name_both(element=bottom_bar,logger=self.logger , driver=self.driver,className=HLPC.class_name_android_widget_FrameLayout)
+        API().assert_equal(test_case = self.testcase, driver = self.logger, logger = self.logger, actual_text = framell_list[1].get_attribute("selected"), expect_text = "true")
 
     def clickOnActivity(self):
         '''
@@ -255,17 +253,17 @@ class HuiLifePage(SuperPage):
         usage: click on modules button and valid
         '''
         module_list = (# Express train
-                       {"click" : self.clickOnExpressTrain,
-                        "valid" : self.validDiDiTravel},
-                       # Taxi
-                       {"click" : self.clickOnTaxi,
-                        "valid" : self.validDiDiTravel},
-                       # Designated driving
-                       {"click" : self.clickOnDesignatedDriving,
-                        "valid" : self.validDiDiTravel},
-                       # Special train
-                       {"click" : self.clickOnSpecialTrain,
-                        "valid" : self.validDiDiTravel},
+#                        {"click" : self.clickOnExpressTrain,
+#                         "valid" : self.validDiDiTravel},
+#                        # Taxi
+#                        {"click" : self.clickOnTaxi,
+#                         "valid" : self.validDiDiTravel},
+#                        # Designated driving
+#                        {"click" : self.clickOnDesignatedDriving,
+#                         "valid" : self.validDiDiTravel},
+#                        # Special train
+#                        {"click" : self.clickOnSpecialTrain,
+#                         "valid" : self.validDiDiTravel},
                        # Fly yue
                        {"click" : self.clickOnFlyYue,
                         "valid" : self.validFlyYue},
@@ -282,8 +280,9 @@ class HuiLifePage(SuperPage):
                        {"click" : self.clickOnOnlineGameRecharge,
                         "valid" : self.validOnlineGameRecharge},
                        # Stock information
-                       {"click" : self.clickOnStockInformation,
-                        "valid" : self.validStockInformation})
+#                        {"click" : self.clickOnStockInformation,
+#                         "valid" : self.validStockInformation}
+                    )
 
         for module in module_list:
             module["click"]()
