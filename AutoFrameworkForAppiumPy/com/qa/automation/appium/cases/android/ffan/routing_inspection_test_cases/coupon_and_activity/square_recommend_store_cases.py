@@ -21,6 +21,7 @@ from com.qa.automation.appium.pages.android.ffan.square_module_page import Squar
 from com.qa.automation.appium.pages.android.ffan.store_image_text_details_page import StoreImageTextDetailsPage
 from com.qa.automation.appium.pages.android.ffan.store_info_page import StoreInfoPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SquareRecommendCases(TestCase):
@@ -37,7 +38,7 @@ class SquareRecommendCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion=DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

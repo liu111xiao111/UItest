@@ -23,6 +23,7 @@ from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.receive_success_page import ReceiveSuccessPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SquareGeneralCouponCases(TestCase):
@@ -40,7 +41,7 @@ class SquareGeneralCouponCases(TestCase):
         ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   platformVersion, deviceName_andr, driver_url).getDriver()
+                                   platformVersion=DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

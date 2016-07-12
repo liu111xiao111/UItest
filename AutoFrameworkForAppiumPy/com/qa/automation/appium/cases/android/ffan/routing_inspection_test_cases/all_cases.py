@@ -22,6 +22,11 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.c
          
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.activity_sharing_cases import ActivitySharingCases
         
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.privilege_coupon_cases import PrivilegeCouponCases
+
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.sales_promotion_active_cases import SalesPromotionActiveCases
+
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.sales_promotion_coupon_cases import SalesPromotionCouponCases
 
 if __name__ == "__main__":
     build_num = sys.argv[1]
@@ -35,8 +40,10 @@ if __name__ == "__main__":
 #     suite.addTest(SquareResourceNicheCases("test_case"))
 #     suite.addTest(MovieTicketCases("test_case"))
 #     suite.addTest(SquareMovieCases("test_case"))
-    suite.addTest(ActivitySharingCases("test_case"))
-
+#     suite.addTest(ActivitySharingCases("test_case"))
+#     suite.addTest(PrivilegeCouponCases("test_case"))  ###绑定“水云间满额赠礼活动”，强依赖特定数据
+#     suite.addTest(SalesPromotionActiveCases("test_case"))
+    suite.addTest(SalesPromotionCouponCases("test_case"))
     
     now = time.strftime('%H_%M_%S')
     
