@@ -8,6 +8,9 @@ from com.qa.automation.appium.pages.android.ffan.shopping_mall_page_configs impo
 
 SMP = ShoppingMallPageConfigs()
 
+'''
+    首页->购物中心页面
+'''
 class ShoppingMallPage(SuperPage):
     '''
     This is shopping mall page operation class.
