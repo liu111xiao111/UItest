@@ -24,7 +24,7 @@ from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
-
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class PrivilegeCouponCases(TestCase):
     '''
@@ -40,7 +40,7 @@ class PrivilegeCouponCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

@@ -20,6 +20,7 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_active_details_page import SalesPromotionActiveDetailsPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 ACTIVENUMBER = 4
 
@@ -42,7 +43,7 @@ class SalesPromotionActiveCases(TestCase):
     
         self.logger = Logger()
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                    platform_name=platformName_andr, platform_version=platformVersion,
+                                    platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
                                     device_name=deviceName_andr, driver_url=driver_url
                                     ).getDriver()
 
@@ -58,6 +59,7 @@ class SalesPromotionActiveCases(TestCase):
         # Click "优惠活动"
         dashboardPage.validSelf();
         dashboardPage.clickOnSalesPromotion();
+        
         salesPromotionPage.validSelf();
         salesPromotionPage.waitBySeconds(2);
         activeListNum = salesPromotionPage.getActiveListNumber();
