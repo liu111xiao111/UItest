@@ -40,7 +40,7 @@ class DashboardSearchGoodsCases(unittest.TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.valid_self()
-        dashboardPage.clickOnSearchView()
+        dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()

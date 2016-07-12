@@ -70,5 +70,8 @@ class DashboardPageConfigs():
     # Square module
     xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
 
+    # Search all
+    resource_id_search_all_tv = "全城搜索"
+
     def __init__(self):
         pass;

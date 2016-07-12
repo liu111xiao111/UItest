@@ -50,12 +50,12 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                              resource_id=DashboardPageConfigs.name_app_tabbar_user_normal)
 
-    def clickOnSearchView(self):
+    def clickOnSearchAll(self):
         '''
         usage: click on search in city.
         '''
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       DashboardPageConfigs.resource_id_tv_search_tv,
+                                       DashboardPageConfigs.resource_id_search_all_tv,
                                        DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnMovie(self):
