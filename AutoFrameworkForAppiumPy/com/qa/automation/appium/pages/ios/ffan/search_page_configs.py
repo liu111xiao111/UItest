@@ -5,10 +5,10 @@ class SearchPageConfigs():
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
 
     # 搜索 id
-    resource_tv_search_tv = "Search"
+    resource_id_search_bt = "Search"
     # 搜索 输入框
     resource_et_search_input_et = "com.wanda.app.wanhui:id/et_search"
-    xpath_search_tv = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]"
+    xpath_search_tf = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]"
 
     # xpath　搜索出来的店铺第一个
     xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]"
@@ -25,6 +25,7 @@ class SearchPageConfigs():
 
     # Specific movie button
     resource_id_specific_square_button = "com.wanda.app.wanhui:id/icon"
+    xpath_specific_square_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]"
 
     text_store_detail = u"门店详情"
     resource_id_store_details_st = u"门店详情"

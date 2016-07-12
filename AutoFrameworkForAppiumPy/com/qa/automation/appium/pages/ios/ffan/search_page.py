@@ -14,12 +14,13 @@ class SearchPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=SearchPageConfigs.resource_tv_search_tv, seconds=10);
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                              SearchPageConfigs.resource_id_search_bt,
+                                              SearchPageConfigs.assert_view_timeout)
 
     def inputText(self, text):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=SearchPageConfigs.xpath_search_tv,
+                                               resource_id=SearchPageConfigs.xpath_search_tf,
                                                string=text)
 
     def inputStoreName(self):
@@ -27,7 +28,7 @@ class SearchPage(SuperPage):
         usage ： 输入商家名
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tv,
+        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
                                       SearchPageConfigs.text_searching_store_name)
 
     def inputBrandName(self):
@@ -35,7 +36,7 @@ class SearchPage(SuperPage):
         usage ： 输入品牌名称
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tv,
+        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
                                       SearchPageConfigs.text_searching_brand_name)
 
     def inputGoodsName(self):
@@ -43,7 +44,7 @@ class SearchPage(SuperPage):
         usage ：输入商品
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tv,
+        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
                                       SearchPageConfigs.text_searching_goods_name)
 
     '''
@@ -56,7 +57,8 @@ class SearchPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.resource_tv_search_tv)
+                                       SearchPageConfigs.resource_id_search_bt,
+                                       SearchPageConfigs.click_on_button_timeout)
 
     '''
         usage : 点击搜索出来的结果list1
@@ -97,16 +99,15 @@ class SearchPage(SuperPage):
         usage: input keywords.
         '''
 
-        API().input_view_by_resourceID_android(self.driver, self.logger,
-                                               SearchPageConfigs.resource_et_search_input_et, keywords)
+        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf, keywords)
 
     def clickOnSpecificSquare(self):
         '''
         usage: click on the specific square button
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.resource_id_specific_square_button,
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                       SearchPageConfigs.xpath_specific_square_st,
                                        SearchPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':

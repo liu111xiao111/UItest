@@ -71,5 +71,8 @@ class SquareModulePageConfigs():
     # Search
     resource_id_search_bt = "home nav search"
 
+    # Parking
+    resource_id_parking_cc = u"停车"
+
     def __init__(self):
         pass;

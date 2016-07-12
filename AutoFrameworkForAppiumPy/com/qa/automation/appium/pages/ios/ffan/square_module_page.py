@@ -37,14 +37,14 @@ class SquareModulePage(SuperPage):
                                          self.logger,
                                          SquareModulePageConfigs.text_sign_on);
 
-    '''
-        usage: 点击停车类目
-    '''
     def clickOnParking(self):
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_parking);
+        '''
+        usage: click on the parking button.
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.resource_id_parking_cc,
+                                       SquareModulePageConfigs.click_on_button_timeout)
 
     '''
         usage: 点击停车类目
