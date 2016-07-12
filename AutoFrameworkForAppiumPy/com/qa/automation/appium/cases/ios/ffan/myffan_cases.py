@@ -163,7 +163,7 @@ class MyFfanCases(unittest.TestCase):
         loveShoppingPage.validSelf()
         loveShoppingPage.clickOnParking()
         loveShoppingPage.wait_by_seconds(seconds=2)
-        parkingPage = ParkingingPage(testcase=self,driver=self.driver,logger=self.logger)
+        parkingPage = ParkingPage(testcase=self,driver=self.driver,logger=self.logger)
         parkingPage.validSelf()
 
     def test_le_pay(self):

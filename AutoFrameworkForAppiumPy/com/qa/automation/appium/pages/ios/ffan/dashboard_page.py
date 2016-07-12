@@ -97,5 +97,12 @@ class DashboardPage(IosSuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               DashboardPageConfigs.name_home_title_icon)
 
+    def click_Parking(self):
+        '''
+        usage: click on "停车".
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_parking);
+
 if __name__ == '__main__':
     print("path %s" % (sys.path))

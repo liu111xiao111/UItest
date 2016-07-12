@@ -10,6 +10,8 @@ class ParkingPageConfigs():
 
     """
     name_parking_navigation_bar = "停车"
+    # 停车交费
+    name_parking_payment = u"停车交费";
 
     """
         *********************************iOS 控件 xpath*****************************
