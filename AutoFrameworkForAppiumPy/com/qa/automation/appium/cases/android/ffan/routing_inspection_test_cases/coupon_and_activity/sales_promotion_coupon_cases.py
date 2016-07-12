@@ -46,8 +46,7 @@ class SalesPromotionCouponCases(TestCase):
         self.logger = Logger()
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
                                     platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
-                                    device_name=deviceName_andr, driver_url=driver_url
-                                    ).getDriver()
+                                    device_name=deviceName_andr, driver_url=driver_url).getDriver()
     
         #Login & update version
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
