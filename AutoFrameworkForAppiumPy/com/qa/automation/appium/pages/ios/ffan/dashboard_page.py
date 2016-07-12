@@ -82,7 +82,17 @@ class DashboardPage(IosSuperPage):
         '''
 
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              DashboardPageConfigs.name_home_title_icon)
+                                              DashboardPageConfigs.name_home_title_icon,
+                                              DashboardPageConfigs.assert_view_timeout)
+
+    def clickOnSquareModule(self):
+        '''
+        usage: click on the nearby business circle.
+        '''
+
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.xpath_square_module_st,
+                                  DashboardPageConfigs.click_on_button_timeout)
 
     def click_Parking(self):
         '''

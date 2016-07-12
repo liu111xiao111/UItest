@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.search_page_configs import SearchPageConfigs
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
+from com.qa.automation.appium.pages.ios.ffan.search_result_store_page_configs import SearchResultStorePageConfigs
 
 
 '''
@@ -17,8 +18,9 @@ class SearchResultStorePage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=SearchPageConfigs.text_store_detail);
+        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                              SearchResultStorePageConfigs.resource_id_store_details_st,
+                                              SearchResultStorePageConfigs.assert_view_timeout)
 
     def validKeywords(self, keywords):
         '''
@@ -28,8 +30,7 @@ class SearchResultStorePage(SuperPage):
         print("KEYWORDS: %s" % keywords)
 
         API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
-											keywords, SearchPageConfigs.assert_view_timeout)
-
+                                          keywords, SearchResultStorePageConfigs.assert_view_timeout)
 
 if __name__ == '__main__':
     pass;
