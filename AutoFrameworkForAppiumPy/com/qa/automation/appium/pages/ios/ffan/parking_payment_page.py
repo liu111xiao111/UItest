@@ -29,7 +29,6 @@ class ParkingPaymentPage(SuperPage):
         '''
         usage: Click on more operation.
         '''
-
         API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                   xpath = ParkingPaymentPageConfigs.xpath_more)
 

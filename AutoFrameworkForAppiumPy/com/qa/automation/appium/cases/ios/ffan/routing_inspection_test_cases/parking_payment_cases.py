@@ -27,6 +27,7 @@ class ParkingPaymentCases(unittest.TestCase):
         巡检checklist #14
         自动化测试 #14-1、#14-2
         首页进入停车，查看停车交费，绑定/解绑车牌
+        点击停车缴费，成功进入并显示正确数据
     '''
 
     def tearDown(self):
