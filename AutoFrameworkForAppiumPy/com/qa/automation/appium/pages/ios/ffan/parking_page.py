@@ -18,7 +18,7 @@ class ParkingPage(SuperPage):
 
     def clickOnParkingPayment(self):
         '''
-        usage: click on "停车交费".
+        usage: 点击"停车交费".
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=ParkingPageConfigs.name_parking_payment);

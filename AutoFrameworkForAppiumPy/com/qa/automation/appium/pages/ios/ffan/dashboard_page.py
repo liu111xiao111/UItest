@@ -96,7 +96,7 @@ class DashboardPage(IosSuperPage):
 
     def click_Parking(self):
         '''
-        usage: click on "停车".
+        usage: 点击"停车"
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_parking);

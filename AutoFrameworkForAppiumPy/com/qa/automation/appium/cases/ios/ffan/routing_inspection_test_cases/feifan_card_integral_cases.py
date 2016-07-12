@@ -11,9 +11,8 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
-from com.qa.automation.appium.pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
-from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_page import FeiFanCardPage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_integral_page import FeiFanCardIntegralPage
 from com.qa.automation.appium.utility.logger import Logger
 
 from unittest import TestCase
@@ -21,11 +20,11 @@ from unittest import TestLoader
 import HTMLTestRunner
 
 
-class SquareIndoorMapCases(TestCase):
+class FeiFanCardIntegralCases(TestCase):
     '''
-        巡检checklist #25
-        自动化测试 #25
-        广场详情页点击室内地图，正常进入室内地图模块
+        巡检checklist #45
+        自动化测试 #45
+        首页-飞凡卡点击积分，确认显示积分主页页面
     '''
 
     def tearDown(self):
@@ -39,25 +38,22 @@ class SquareIndoorMapCases(TestCase):
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
-        indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
+        dashboardPage = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
+        ffanCardPage = FeiFanCardPage(testcase=self, driver=self.driver, logger=self.logger)
+        ffanCardIntegralPage = FeiFanCardIntegralPage(testcase=self, driver=self.driver, logger=self.logger)
 
-        # 首页进入广场页
+        # 首页点击"飞凡卡"
         dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        dashboardPage.click_ffan_card();
+        ffanCardPage.validSelf();
 
-        # 点击室内地图
-        squarePage.clicOnIndoorMap();
-        locationBluetoothPage.clickOnOkBtn()
-        indoormapPage.validSelf();
-        indoormapPage.clickOnFoodMap();
-        indoormapPage.validSelfFood();
+        # 点击"积分"
+        ffanCardPage.clickOnIntegral();
+        ffanCardIntegralPage.validSelf();
+
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiFanCardIntegralCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

@@ -11,18 +11,19 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.parking_page import ParkingPage;
+from com.qa.automation.appium.pages.ios.ffan.parking_page import ParkingPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_input_plate_number_page import ParkingPaymentInputPlateNumberPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_page import ParkingPaymentPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_more_page import ParkingPaymentMorePage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_unbound_confirm_page import ParkingPaymentUnboundConfirmPage
 from com.qa.automation.appium.utility.logger import Logger
 
-import unittest
+from unittest import TestCase
+from unittest import TestLoader
 import HTMLTestRunner
 
 
-class ParkingPaymentCases(unittest.TestCase):
+class ParkingPaymentCases(TestCase):
     '''
         巡检checklist #14
         自动化测试 #14-1、#14-2、#56
@@ -46,18 +47,18 @@ class ParkingPaymentCases(unittest.TestCase):
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
 
-        # Load parking page
+        # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
         dashboard.click_Parking()
         parkingPage.validSelf()
 
-        # Load parking payment page
+        # 点击停车交费
         parkingPage.clickOnParkingPayment()
         parkingPaymentInputPlateNumberPage.validSelf()
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
 
-        # Input license plate
+        # 输入要绑定的车牌号
         parkingPaymentInputPlateNumberPage.inputPlateNumber()
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
         parkingPaymentInputPlateNumberPage.clickOnNextStep()
@@ -71,18 +72,18 @@ class ParkingPaymentCases(unittest.TestCase):
         parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
 
-        # Load parking page
+        # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
         dashboard.click_Parking()
         parkingPage.validSelf()
 
-        # Load parking payment page
+        # 点击停车交费
         parkingPage.clickOnParkingPayment()
         parkingPaymentPage.validSelf()
         parkingPaymentPage.waitBySeconds(seconds=1)
 
-        # Unbound license plate
+        # 点击解除绑定
         parkingPaymentPage.clickOnMore()
         parkingPaymentMorePage.validSelf()
         parkingPaymentMorePage.clickOnUnbundLicensePlate()
@@ -98,24 +99,24 @@ class ParkingPaymentCases(unittest.TestCase):
         parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
 
-        # Load parking page
+        # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
         dashboard.click_Parking()
         parkingPage.validSelf()
 
-        # Load parking payment page
+        # 点击停车交费
         parkingPage.clickOnParkingPayment()
         parkingPaymentInputPlateNumberPage.validSelf()
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
 
-        # Input license plate
+        # 输入要绑定的车牌号
         parkingPaymentInputPlateNumberPage.inputPlateNumber()
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
         parkingPaymentInputPlateNumberPage.clickOnNextStep()
         parkingPaymentPage.validSelf()
 
-        # Unbound license plate
+        # 解除绑定
         parkingPaymentPage.clickOnMore()
         parkingPaymentMorePage.validSelf()
         parkingPaymentMorePage.clickOnUnbundLicensePlate()
@@ -125,7 +126,7 @@ class ParkingPaymentCases(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(ParkingPaymentCases)
+    suite = TestLoader().loadTestsFromTestCase(ParkingPaymentCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

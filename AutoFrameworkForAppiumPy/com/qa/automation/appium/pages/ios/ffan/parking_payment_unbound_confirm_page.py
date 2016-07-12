@@ -15,7 +15,7 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-#   首页点击 停车
+#   解除绑定POPUP页
 class ParkingPaymentUnboundConfirmPage(SuperPage):
 
     def __init__(self, testcase, driver, logger):
@@ -27,7 +27,7 @@ class ParkingPaymentUnboundConfirmPage(SuperPage):
 
     def clickOnConfirm(self):
         '''
-        usage: click on "确认".
+        usage: 点击"确认".
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=ParkingPaymentUnboundConfirmPageConfigs.name_confirm);

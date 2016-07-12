@@ -20,14 +20,14 @@ class ParkingPaymentInputPlateNumberPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : Load "停车交费" details page correctly. 
+        usage : 判断"停车交费"标题显示是否正确 
         '''
         API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                               resource_id=ParkingPaymentInputPlateNumberPageConfigs.name_parking_payment_title)
 
     def inputPlateNumber(self):
         '''
-        usage : Input license plate. 
+        usage : 输入要绑定的车牌号
         '''
         API().input_view_by_xpath_ios(self.driver, self.logger, ParkingPaymentInputPlateNumberPageConfigs.xpath_plate_number,
                                       ParkingPaymentInputPlateNumberPageConfigs.plate_number)
@@ -36,7 +36,7 @@ class ParkingPaymentInputPlateNumberPage(SuperPage):
 
     def clickOnNextStep(self):
         '''
-        usage: Click on next step.
+        usage: 点击下一步
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from xml.etree.ElementPath import xpath_tokenizer
 
 
 class ParkingPaymentPageConfigs():

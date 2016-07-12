@@ -3,7 +3,7 @@
 
 class ParkingPaymentInputPlateNumberPageConfigs():
 
-    #"停车交费"
+    # "停车交费"
     name_parking_payment_title = u"停车交费";
     name_next_step = u"下一步"
     name_return = "Return"
