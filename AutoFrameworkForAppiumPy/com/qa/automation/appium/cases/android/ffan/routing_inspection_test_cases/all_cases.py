@@ -30,6 +30,9 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.c
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.special_offer_cases import SpecialOfferCases
 
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.square_general_coupon_cases import SquareGeneralCouponCases
+
+
 if __name__ == "__main__":
     build_num = sys.argv[1]
     reportpath = "%s/report/ffan/%s/%s/" % ("/Users/maguowei/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
@@ -47,6 +50,7 @@ if __name__ == "__main__":
 #     suite.addTest(SalesPromotionActiveCases("test_case"))
 #     suite.addTest(SalesPromotionCouponCases("test_case"))
 #     suite.addTest(SpecialOfferCases("test_case")) ### 慧生活没有活动和优惠tab了，delete case
+    suite.addTest(SquareGeneralCouponCases("test_case"))
     
     
     now = time.strftime('%H_%M_%S')
