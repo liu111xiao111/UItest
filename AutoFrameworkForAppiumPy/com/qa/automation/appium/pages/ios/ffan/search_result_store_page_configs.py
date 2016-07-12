@@ -6,6 +6,10 @@ class SearchResultStorePageConfigs():
 
     # text指明类型为text label,后面是文字的拼音
     text_store_info = u"门店信息";
+    resource_id_store_details_st = u"门店详情"
+
+    # Assert view time out
+    assert_view_timeout = 10
 
     def __init__(self):
         pass;

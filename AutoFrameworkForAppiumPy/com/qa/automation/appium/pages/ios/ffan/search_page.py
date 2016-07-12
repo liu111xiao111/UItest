@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
-'''
-    usage: 搜索页面
-'''
-class SearchPage(IosSuperPage):
+class SearchPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(SearchPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
@@ -20,14 +17,10 @@ class SearchPage(IosSuperPage):
         API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                                       resource_id=SearchPageConfigs.resource_tv_search_tv, seconds=10);
 
-
-
     def inputText(self, text):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
                                                resource_id=SearchPageConfigs.xpath_search_tv,
                                                string=text)
-
-
 
     def inputStoreName(self):
         '''
@@ -35,7 +28,7 @@ class SearchPage(IosSuperPage):
         '''
 
         API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tv,
-                                               string=SearchPageConfigs.text_searching_store_name)
+                                      SearchPageConfigs.text_searching_store_name)
 
     def inputBrandName(self):
         '''
@@ -63,15 +56,18 @@ class SearchPage(IosSuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.resource_tv_search_tv);
+                                       SearchPageConfigs.resource_tv_search_tv)
 
     '''
         usage : 点击搜索出来的结果list1
     '''
 
     def clickOnSearchResultFirstItem(self):
-        tempText = API().get_view_by_resourceID(self.driver, self.logger, SearchPageConfigs.resource_id_specific_store_button).text
-        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger, xpath=SearchPageConfigs.xpath_search_result_first_item);
+        tempText = API().get_view_by_xpath_android(self.testcase, self.driver, self.logger,
+                                                SearchPageConfigs.xpath_specific_store_tv).text
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  SearchPageConfigs.xpath_search_result_first_item_tv,
+                                  SearchPageConfigs.click_on_button_timeout)
 
         return tempText
 
@@ -100,10 +96,9 @@ class SearchPage(IosSuperPage):
         '''
         usage: input keywords.
         '''
-        pass
-#         API().input_view_by_resourceID_android(self.driver, self.logger,
-#                                                SearchPageConfigs.resource_et_search_input_et,
-#                                                keywords)
+
+        API().input_view_by_resourceID_android(self.driver, self.logger,
+                                               SearchPageConfigs.resource_et_search_input_et, keywords)
 
     def clickOnSpecificSquare(self):
         '''
@@ -111,9 +106,8 @@ class SearchPage(IosSuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-										SearchPageConfigs.resource_id_specific_square_button,
-										SearchPageConfigs.click_on_button_timeout)
-
+                                       SearchPageConfigs.resource_id_specific_square_button,
+                                       SearchPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass;
