@@ -8,20 +8,17 @@ HLPC = HuiLifePageConfigs()
 
 class HuiLifePage(SuperPage):
     '''
-    This is hui life page operation class.
+    首页->惠生活页面
     '''
 
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
         super(HuiLifePage, self).__init__(testcase,
                                           driver,
                                           logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证惠生活界面
         '''
         bottom_bar = API().get_view_by_resourceID(driver=self.driver, logger=self.driver, resource_id=HLPC.resource_id_ll_bottom_bar)
         framell_list = API().find_views_of_view_by_class_name_both(element=bottom_bar,logger=self.logger , driver=self.driver,className=HLPC.class_name_android_widget_FrameLayout)
@@ -29,7 +26,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnActivity(self):
         '''
-        usage: click on the activity button.
+        usage: 点击活动
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -39,7 +36,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnPrivilege(self):
         '''
-        usage: click on the privilege button.
+        usage: 点击优惠
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -49,7 +46,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnSpecificActivity(self):
         '''
-        usage: click on the specific activity button.
+        usage: 点击特别活动按钮
         '''
         API().click_view_by_resourceID(self.testcase,
                                        self.driver,
@@ -59,7 +56,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnSpecificPrivilege(self):
         '''
-        usage: click on the specific privilege button.
+        usage: 点击特权
         '''
         API().click_view_by_resourceID(self.testcase,
                                        self.driver,
@@ -70,7 +67,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnResourceNiche(self):
         '''
-        usage: click on resource niche.
+        usage: 点击资源位
         '''
         API().click_view_by_resourceID(self.testcase,
                                        self.driver,
@@ -78,19 +75,9 @@ class HuiLifePage(SuperPage):
                                        HLPC.resource_id_resource_niche_button,
                                        HLPC.click_on_button_timeout)
 
-    def clickOnExpressTrain(self):
-        '''
-        usage: click on express train
-        '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         HLPC.text_express_train,
-                                         HLPC.click_on_button_timeout)
-
     def clickOnTaxi(self):
         '''
-        usage: click on taxi
+        usage: 点击打车
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -98,19 +85,9 @@ class HuiLifePage(SuperPage):
                                          HLPC.text_taxi,
                                          HLPC.click_on_button_timeout)
 
-    def clickOnSpecialTrain(self):
-        '''
-        usage: click on special train
-        '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         HLPC.text_special_train,
-                                         HLPC.click_on_button_timeout)
-
     def clickOnDesignatedDriving(self):
         '''
-        usage: click on designated driving
+        usage: 点击代驾
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -118,9 +95,29 @@ class HuiLifePage(SuperPage):
                                          HLPC.text_designated_driving,
                                          HLPC.click_on_button_timeout)
 
+    def clickOnBus(self):
+        '''
+        usage: 点击公交查询
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_bus,
+                                         HLPC.click_on_button_timeout)
+
+    def clickOnFeifanRead(self):
+        '''
+        usage: 点击飞凡阅读
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_feifan_read,
+                                         HLPC.click_on_button_timeout)
+
     def clickOnFlyYue(self):
         '''
-        usage: click on fly yue
+        usage: 点击飞悦
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -130,7 +127,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnPrepaidRecharge(self):
         '''
-        usage: click on prepaid recharge
+        usage: 点击话费充值
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -140,7 +137,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnTrafficRecharge(self):
         '''
-        usage: click on traffic recharge
+        usage: 点击流量充值
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -150,7 +147,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnQQRecharge(self):
         '''
-        usage: click on qq recharge
+        usage: 点击QQ充值
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -160,7 +157,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnOnlineGameRecharge(self):
         '''
-        usage: click on online game recharge
+        usage: 点击网游充值
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -170,7 +167,7 @@ class HuiLifePage(SuperPage):
 
     def clickOnStockInformation(self):
         '''
-        usage: click on stock information
+        usage: 点击股票资讯
         '''
         API().click_view_by_text_android(self.testcase,
                                          self.driver,
@@ -178,9 +175,59 @@ class HuiLifePage(SuperPage):
                                          HLPC.text_stock_information,
                                          HLPC.click_on_button_timeout)
 
+    def clickOnRefuel(self):
+        '''
+        usage: 点击加油
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_refuel,
+                                         HLPC.click_on_button_timeout)
+
+    def clickOnConcert(self):
+        '''
+        usage: 点击演唱会
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_concert,
+                                         HLPC.click_on_button_timeout)
+
+    def clickOnDrama(self):
+        '''
+        usage: 点击话剧
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_drama,
+                                         HLPC.click_on_button_timeout)
+
+    def clickOnPhilharmonic(self):
+        '''
+        usage: 点击音乐会
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_philharmonic,
+                                         HLPC.click_on_button_timeout)
+
+    def clickOnIllegalInquiry(self):
+        '''
+        usage: 点击违章查询
+        '''
+        API().click_view_by_text_android(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         HLPC.text_illegal_inquiry,
+                                         HLPC.click_on_button_timeout)
+
     def validDiDiTravel(self):
         '''
-        usage: valid didi travel view
+        usage: 验证滴滴出行界面
         '''
         API().assert_view_by_resourceID_Until(self.testcase,
                                               self.driver,
@@ -188,9 +235,19 @@ class HuiLifePage(SuperPage):
                                               HLPC.verify_resource_didi_travel,
                                               HLPC.assert_view_timeout)
 
+    def validFeifanRead(self):
+        '''
+        usage: 验证飞凡阅读界面
+        '''
+        API().assert_view_by_text_android(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          HLPC.verify_text_feifan_read,
+                                          HLPC.assert_view_timeout)
+
     def validFlyYue(self):
         '''
-        usage: valid fly yue view
+        usage: 验证飞悦界面
         '''
         API().assert_view_by_text_android(self.testcase,
                                           self.driver,
@@ -200,7 +257,7 @@ class HuiLifePage(SuperPage):
 
     def validPrepaidRecharge(self):
         '''
-        usage: valid prepaid recharge view
+        usage: 验证话费充值界面
         '''
         API().assert_view_by_text_android(self.testcase,
                                           self.driver,
@@ -210,7 +267,7 @@ class HuiLifePage(SuperPage):
 
     def validTrafficRecharge(self):
         '''
-        usage: valid traffic recharge view
+        usage: 验证流量充值界面
         '''
         API().assert_view_by_text_android(self.testcase,
                                           self.driver,
@@ -220,7 +277,7 @@ class HuiLifePage(SuperPage):
 
     def validQQRecharge(self):
         '''
-        usage: valid qq recharge view
+        usage: 验证QQ充值界面
         '''
         API().assert_view_by_text_android(self.testcase,
                                           self.driver,
@@ -230,7 +287,7 @@ class HuiLifePage(SuperPage):
 
     def validOnlineGameRecharge(self):
         '''
-        usage: valid online game recharge view
+        usage: 验证网游充值界面
         '''
         API().assert_view_by_text_android(self.testcase,
                                           self.driver,
@@ -240,7 +297,7 @@ class HuiLifePage(SuperPage):
 
     def validStockInformation(self):
         '''
-        usage: valid stock information view
+        usage: 验证股票资讯界面
         '''
         API().assert_view_by_content_desc_android(self.testcase,
                                                   self.driver,
@@ -248,49 +305,55 @@ class HuiLifePage(SuperPage):
                                                   HLPC.verify_text_stock_information,
                                                   HLPC.assert_view_timeout)
 
-    def validModules(self):
+    def validRefuel(self):
         '''
-        usage: click on modules button and valid
+        usage: 验证加油界面
         '''
-        module_list = (# Express train
-#                        {"click" : self.clickOnExpressTrain,
-#                         "valid" : self.validDiDiTravel},
-#                        # Taxi
-#                        {"click" : self.clickOnTaxi,
-#                         "valid" : self.validDiDiTravel},
-#                        # Designated driving
-#                        {"click" : self.clickOnDesignatedDriving,
-#                         "valid" : self.validDiDiTravel},
-#                        # Special train
-#                        {"click" : self.clickOnSpecialTrain,
-#                         "valid" : self.validDiDiTravel},
-                       # Fly yue
-                       {"click" : self.clickOnFlyYue,
-                        "valid" : self.validFlyYue},
-                       # Prepaid recharge
-                       {"click" : self.clickOnPrepaidRecharge,
-                        "valid" : self.validPrepaidRecharge},
-                       # Traffic recharge
-                       {"click" : self.clickOnTrafficRecharge,
-                        "valid" : self.validTrafficRecharge},
-                       # QQ recharge
-                       {"click" : self.clickOnQQRecharge,
-                        "valid" : self.validQQRecharge},
-                       # Online game recharge
-                       {"click" : self.clickOnOnlineGameRecharge,
-                        "valid" : self.validOnlineGameRecharge},
-                       # Stock information
-#                        {"click" : self.clickOnStockInformation,
-#                         "valid" : self.validStockInformation}
-                    )
+        API().assert_view_by_content_desc_android(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  HLPC.verify_text_refuel,
+                                                  HLPC.assert_view_timeout)
 
-        for module in module_list:
-            module["click"]()
-            module["valid"]()
-            self.clickBackKey()
+    def validConcert(self):
+        '''
+        usage: 验证演唱会界面
+        '''
+        API().assert_view_by_content_desc_android(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  HLPC.verify_text_concert,
+                                                  HLPC.assert_view_timeout)
 
-#         API().scroll_to_text(self.driver, self.logger, HuiLifePageConfigs.text_specific_activity_title)
-#         API().click_view_by_xpath(self.testcase, self.driver, self.logger, HuiLifePageConfigs.xpath_specific_privilege_button, HuiLifePageConfigs.click_on_button_timeout)
+    def validDrama(self):
+        '''
+        usage: 验证话剧界面
+        '''
+        API().assert_view_by_content_desc_android(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  HLPC.verify_text_drama,
+                                                  HLPC.assert_view_timeout)
+
+    def validPhilharmonic(self):
+        '''
+        usage: 验证音乐会界面
+        '''
+        API().assert_view_by_content_desc_android(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  HLPC.verify_text_philharmonic,
+                                                  HLPC.assert_view_timeout)
+
+    def validIllegalInquiry(self):
+        '''
+        usage: 验证违章查询界面
+        '''
+        API().assert_view_by_content_desc_android(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  HLPC.verify_text_illegal_inquiry,
+                                                  HLPC.assert_view_timeout)
 
 if __name__ == '__main__':
     pass
