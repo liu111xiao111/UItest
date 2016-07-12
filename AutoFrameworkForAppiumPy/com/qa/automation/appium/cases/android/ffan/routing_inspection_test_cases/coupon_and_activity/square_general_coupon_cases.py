@@ -41,7 +41,7 @@ class SquareGeneralCouponCases(TestCase):
         ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   platformVersion=DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
+                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -59,28 +59,31 @@ class SquareGeneralCouponCases(TestCase):
 
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
+        
+        receiveSuccessPage.waitBySeconds(seconds=2)
+        
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()
-        receiveSuccessPage.clickBackKey()
-
-        generalCouponPage.validSelf()
-        generalCouponPage.clickBackKey()
-
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
-
-        dashboardPage.validSelf()
-        dashboardPage.clickOnMy()
-
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyTicket()
-
-        myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
-        myFfanMyTicketPage.validSelf()
-#         myFfanMyTicketPage.validCouponCode(tempText)
-        myFfanMyTicketPage.clickBackKey()
-
-        myFfanPage.validSelf()
+#         receiveSuccessPage.clickBackKey()
+# 
+#         generalCouponPage.validSelf()
+#         generalCouponPage.clickBackKey()
+# 
+#         squareModulePage.validSelf()
+#         squareModulePage.clickBackKey()
+# 
+#         dashboardPage.validSelf()
+#         dashboardPage.clickOnMy()
+# 
+#         myFfanPage = MyFfanPage(self, self.driver, self.logger)
+#         myFfanPage.validSelf()
+#         myFfanPage.clickOnMyTicket()
+# 
+#         myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
+#         myFfanMyTicketPage.validSelf()
+# #         myFfanMyTicketPage.validCouponCode(tempText)
+#         myFfanMyTicketPage.clickBackKey()
+# 
+#         myFfanPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareGeneralCouponCases)
