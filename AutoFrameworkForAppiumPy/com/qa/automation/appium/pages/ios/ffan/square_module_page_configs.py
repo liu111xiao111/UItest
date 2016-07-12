@@ -34,7 +34,6 @@ class SquareModulePageConfigs():
 
     # Resource niche
     resource_id_resource_niche_button = "com.wanda.app.wanhui:id/film_gallery_item_poster"
-    xpath_resource_niche_tc = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]"
 
     # Staff picks button
     text_staff_picks_button = u"达人推荐"

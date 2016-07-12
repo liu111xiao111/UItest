@@ -16,8 +16,5 @@ class SuperPage(object):
         API().click_back_key_ios(self.testcase, self.driver, self.logger,
                                  "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]")
 
-    def screen_shot(self, screen_shot_name="myfeifan_auto_test"):
-        API().screen_shot(self.driver, screen_shot_name)
-
 if __name__ == '__main__':
     pass
