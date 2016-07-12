@@ -111,10 +111,10 @@ class SquareModulePage(SuperPage):
         usage: Click "室内地图"
     '''
     def clicOnIndoorMap(self):
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_indoor_map);
+        API().click_view_by_resourceID(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SquareModulePageConfigs.text_indoor_map)
 
     '''
         usage: Click "乐付买单"
