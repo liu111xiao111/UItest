@@ -20,18 +20,18 @@ class ParkingPaymentPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : Load "停车交费" details page correctly. 
+        usage : Load "停车交费" (pay page) correctly. 
         '''
         API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                               resource_id=ParkingPaymentPageConfigs.name_parking_payment)
 
-    def clickOnNextStep(self):
+    def clickOnMore(self):
         '''
-        usage: Click on next step.
+        usage: Click on more operation.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               ParkingPaymentPageConfigs.xpath_more)
+        API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
+                                  xpath = ParkingPaymentPageConfigs.xpath_more)
 
 if __name__ == '__main__':
     pass;
