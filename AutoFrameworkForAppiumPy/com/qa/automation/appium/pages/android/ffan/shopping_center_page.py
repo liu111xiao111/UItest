@@ -5,7 +5,7 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.shopping_center_page_configs import ShoppingCenterPageConfigs
 
 
-#   购物中心
+#   单个购物中心、广场页面
 class ShoppingCenterPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(ShoppingCenterPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
