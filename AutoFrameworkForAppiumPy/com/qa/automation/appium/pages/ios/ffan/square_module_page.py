@@ -156,14 +156,14 @@ class SquareModulePage(SuperPage):
                                          SquareModulePageConfigs.text_movie_button,
                                          SquareModulePageConfigs.click_on_button_timeout)
 
-    '''
-        usage: click on resource niche.
-    '''
+
     def clickOnResourceNiche(self):
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       SquareModulePageConfigs.resource_id_resource_niche_button,
+        '''
+        usage: click on resource niche.
+        '''
+
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.xpath_resource_niche_tc,
                                        SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnFlashSales(self):
