@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-
+'''
+    活动详情页
+'''
 class ActivityDetailsPageConfigs(object):
     '''
     This is a configuration class for ActivityDetailsPage class.
     '''
+    
+    content_desc_activity_detail = "活动详情"
 
     # Assert view time out
     assert_view_timeout = 10
