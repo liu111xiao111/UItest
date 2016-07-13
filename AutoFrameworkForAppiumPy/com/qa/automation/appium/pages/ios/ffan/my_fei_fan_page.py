@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
 
 
 class MyFeiFanPage(SuperPage):
@@ -23,8 +23,8 @@ class MyFeiFanPage(SuperPage):
         '''
 
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_my_fei_fan_title,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+                                              MyFeiFanPageConfigs.resource_id_my_fei_fan_title_st,
+                                              MyFeiFanPageConfigs.assert_view_timeout)
 
     def validLoginStatus(self):
         '''
@@ -32,18 +32,19 @@ class MyFeiFanPage(SuperPage):
         '''
 
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_nickname_button,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+                                              MyFeiFanPageConfigs.resource_id_nickname_st,
+                                              MyFeiFanPageConfigs.assert_view_timeout)
 
     def validLogoutStatus(self):
         '''
         usage: Verify whether the current status is logout.
         '''
 
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_login)
+        for _ in range(3):
+            self.scrollAsScreenPercent(0.5, 0.4, 0.5, 0.6)
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_login_button,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+                                              MyFeiFanPageConfigs.resource_id_login_bt,
+                                              MyFeiFanPageConfigs.assert_view_timeout)
 
     def clickOnLogin(self):
         '''
@@ -58,8 +59,11 @@ class MyFeiFanPage(SuperPage):
         usage: click on the settings button.
         '''
 
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_settings)
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MyFeiFanPageConfigs.text_settings)
+        for _ in range(3):
+            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       MyFeiFanPageConfigs.resource_id_settings_st,
+                                       MyFeiFanPageConfigs.click_on_button_timeout)
 
     def clickOnMessageCentre(self):
         '''

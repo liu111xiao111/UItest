@@ -15,10 +15,11 @@ class MyFeiFanPageConfigs(object):
     click_on_button_timeout = 10
 
     # My FeiFan title
-    resource_id_my_fei_fan_title = "com.wanda.app.wanhui:id/txt_title"
+    resource_id_my_fei_fan_title_st = "我的飞凡"
 
     # Login button
     resource_id_login_button = "com.wanda.app.wanhui:id/tv_login"
+    resource_id_login_bt = "登录"
 
     # Message centre button
     resource_id_message_centre_button = "com.wanda.app.wanhui:id/image_icon_message_entry"
@@ -26,11 +27,12 @@ class MyFeiFanPageConfigs(object):
     # Membership card package button
     text_membership_card_package_button = u"会员卡包"
 
-    # Nickname button
+    # Nickname
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"
+    resource_id_nickname_st = "ffan8742"
 
     # Settings button
-    text_settings = u"设置"
+    resource_id_settings_st = u"设置"
 
     # Login button
     text_login = u"登录"
