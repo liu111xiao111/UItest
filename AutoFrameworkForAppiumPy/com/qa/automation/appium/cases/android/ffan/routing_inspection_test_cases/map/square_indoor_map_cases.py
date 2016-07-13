@@ -35,7 +35,7 @@ class SquareIndoorMapCases(TestCase):
         self.driver.quit()
 
         clearAppData = ClearAppData()
-        clearAppData.clearData()
+#         clearAppData.clearData()
 
     def setUp(self):
         clearAppData = ClearAppData()

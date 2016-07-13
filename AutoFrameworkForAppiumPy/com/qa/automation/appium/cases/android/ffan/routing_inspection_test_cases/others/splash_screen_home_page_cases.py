@@ -32,10 +32,10 @@ class SplashScreenHomePageCases(TestCase):
         ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
+#         ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+#         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         SplashScreenHomePage(self, self.driver, self.logger).validSelf()
