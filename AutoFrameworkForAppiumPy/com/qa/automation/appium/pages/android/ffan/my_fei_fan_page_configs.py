@@ -21,7 +21,7 @@ class MyFeiFanPageConfigs(object):
     resource_id_login_button = "com.wanda.app.wanhui:id/tv_login"
 
     # Message centre button
-    resource_id_message_centre_button = "com.wanda.app.wanhui:id/image_icon_message_entry"
+    resource_id_message_centre_button = "layout_title_right" #"com.wanda.app.wanhui:id/image_icon_message_entry" image_icon_message_entry有多个重复控件
 
     # Membership card package button
     text_membership_card_package_button = u"会员卡包"

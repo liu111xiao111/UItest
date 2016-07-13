@@ -25,6 +25,7 @@ from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFan
 from com.qa.automation.appium.pages.android.ffan.square_dynamic_page import SquareDynamicPage
 from com.qa.automation.appium.pages.android.ffan.store_message_page import StoreMessagePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class MessageSettingsCases(TestCase):
     '''
@@ -40,7 +41,7 @@ class MessageSettingsCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -55,6 +56,7 @@ class MessageSettingsCases(TestCase):
 
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
         messageCentrePage.validSelf()
+        '''
         messageCentrePage.clickOnFeiFanActivity()
 
         feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
@@ -83,6 +85,9 @@ class MessageSettingsCases(TestCase):
         storeMessagePage.clickBackKey()
 
         messageCentrePage.validSelf()
+        '''
+        
+        
         messageCentrePage.clickOnSettings()
 
         messageSettingsPage = MessageSettingsPage(self, self.driver, self.logger)

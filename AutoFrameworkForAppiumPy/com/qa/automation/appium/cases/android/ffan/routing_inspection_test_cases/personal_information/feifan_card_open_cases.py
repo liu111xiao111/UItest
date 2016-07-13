@@ -24,6 +24,7 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 
 # Logger
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 # Common function
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
@@ -48,7 +49,7 @@ class FeiFanCardOpenCases(TestCase):
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
 

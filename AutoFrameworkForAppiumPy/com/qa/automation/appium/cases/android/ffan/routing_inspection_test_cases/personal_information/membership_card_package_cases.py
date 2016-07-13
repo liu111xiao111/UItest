@@ -21,6 +21,7 @@ from com.qa.automation.appium.pages.android.ffan.fei_fan_membership_page import 
 from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.pages.android.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class MembershipCardPackageCases(TestCase):
@@ -37,7 +38,7 @@ class MembershipCardPackageCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 

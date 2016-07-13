@@ -20,6 +20,8 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
+
 
 class FeiFanCardBillCases(TestCase):
     '''
@@ -40,7 +42,7 @@ class FeiFanCardBillCases(TestCase):
 
         self.logger = Logger()
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
+                                   platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 

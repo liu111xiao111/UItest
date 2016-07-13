@@ -24,6 +24,7 @@ from com.qa.automation.appium.pages.android.ffan.small_amount_password_less_paym
 from com.qa.automation.appium.pages.android.ffan.transaction_record_page import TransactionRecordPage
 from com.qa.automation.appium.pages.android.ffan.update_payments_password_page import UpdatePaymentsPasswordPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class OneCardCases(TestCase):
@@ -41,7 +42,8 @@ class OneCardCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, 
+                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
