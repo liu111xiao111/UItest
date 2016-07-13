@@ -40,6 +40,9 @@ class DashboardPageConfigs():
     # "停车"
     name_parking = u"停车"
 
+    # "购物"
+    name_shopping = u"购物"
+
     # 全城搜索输入框
     resource_id_tv_search_tv = "全城搜索"
 

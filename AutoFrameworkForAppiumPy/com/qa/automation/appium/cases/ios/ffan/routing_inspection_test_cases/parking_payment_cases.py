@@ -50,7 +50,7 @@ class ParkingPaymentCases(TestCase):
         # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
-        dashboard.click_Parking()
+        dashboard.click_parking()
         parkingPage.validSelf()
 
         # 点击停车交费
@@ -75,7 +75,7 @@ class ParkingPaymentCases(TestCase):
         # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
-        dashboard.click_Parking()
+        dashboard.click_parking()
         parkingPage.validSelf()
 
         # 点击停车交费
@@ -102,7 +102,7 @@ class ParkingPaymentCases(TestCase):
         # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
-        dashboard.click_Parking()
+        dashboard.click_parking()
         parkingPage.validSelf()
 
         # 点击停车交费

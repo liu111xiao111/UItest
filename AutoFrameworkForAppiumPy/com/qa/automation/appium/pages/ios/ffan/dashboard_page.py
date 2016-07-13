@@ -94,12 +94,19 @@ class DashboardPage(IosSuperPage):
                                   DashboardPageConfigs.xpath_square_module_st,
                                   DashboardPageConfigs.click_on_button_timeout)
 
-    def click_Parking(self):
+    def click_parking(self):
         '''
         usage: 点击"停车"
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_parking);
+
+    def click_shopping(self):
+        '''
+        usage: 点击"购物"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_shopping);
 
 if __name__ == '__main__':
     pass
