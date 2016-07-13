@@ -290,7 +290,7 @@ class API(object):
     def click_view_by_content_desc(self, testcase, driver, logger, content_desc, seconds=10):
         try:
             self.find_view_by_content_desc_Until_android(driver=driver, logger=logger,
-                                                         content_desc=content_desc).click()
+                                                         content_desc=content_desc,seconds=seconds).click()
         except NoSuchElementException:
             testcase.assertTrue(False, "content_desc %s none" % (content_desc))
         except TimeoutException:

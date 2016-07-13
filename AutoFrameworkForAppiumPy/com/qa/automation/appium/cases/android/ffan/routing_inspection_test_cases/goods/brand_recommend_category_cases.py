@@ -22,7 +22,7 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
-
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class BrandRecommendCatergoryCases(TestCase):
     '''
@@ -42,7 +42,7 @@ class BrandRecommendCatergoryCases(TestCase):
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
 
