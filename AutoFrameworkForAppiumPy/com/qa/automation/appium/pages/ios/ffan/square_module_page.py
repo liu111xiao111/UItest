@@ -191,10 +191,9 @@ class SquareModulePage(SuperPage):
         usage: click on the born to shop button.
         '''
 
-        API().scroll_to_text(self.driver, self.logger, SquareModulePageConfigs.text_born_to_shop)
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-                                         SquareModulePageConfigs.text_born_to_shop,
-                                         SquareModulePageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.resource_id_born_to_shop_st,
+                                       SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnGeneralCoupon(self):
         '''
