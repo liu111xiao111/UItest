@@ -20,7 +20,8 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.utility.logger import Logger;
+from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class ParkingBindingsCatergoryCases(TestCase):
@@ -42,7 +43,7 @@ class ParkingBindingsCatergoryCases(TestCase):
 
         self.logger = Logger()
         self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=platformVersion,
+                                   platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
                                    device_name=deviceName_andr, driver_url=driver_url
                                    ).getDriver()
 

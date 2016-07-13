@@ -77,6 +77,12 @@ class LoveShoppingPage(SuperPage):
                                          text=LoveShoppingPageConfigs.text_le_pays
                                          );
 
+    def clickCityTextView(self):
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=LoveShoppingPageConfigs.resource_id_id_tv_city, seconds=2)
+        
+    def selectCity(self,city_name):
+        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger, text="安康市", seconds=1)
+
 
 if __name__ == '__main__':
     pass;

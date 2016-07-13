@@ -14,6 +14,8 @@ class LoveShoppingPageConfigs():
     text_flash_sale = "限时抢购";
     text_parking = "停车";
     text_le_pays = "乐付";
+    
+    resource_id_id_tv_city = "tv_city"
 
     def __init__(self):
         pass;

@@ -18,6 +18,8 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
+from com.qa.automation.appium.pages.android.ffan.love_shopping_page import LoveShoppingPage
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 
 
 class SwitchCityCases(TestCase):
@@ -27,7 +29,7 @@ class SwitchCityCases(TestCase):
 
     def tearDown(self):
         self.driver.quit()
-        ClearAppData().clearData()
+        #ClearAppData().clearData()
 
     def setUp(self):
         ClearAppData().clearData()
@@ -35,7 +37,29 @@ class SwitchCityCases(TestCase):
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr, driver_url).getDriver()
 
+    def test_case_prepare(self):
+        dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
+        dashboard.clickLikeShopping()
+        
+        loveShoppingPage = LoveShoppingPage(testcase=self,driver=self.driver,logger=self.logger)
+        loveShoppingPage.validSelf()
+        
+        loveShoppingPage.clickCityTextView()
+        loveShoppingPage.waitBySeconds(seconds=1)
+        loveShoppingPage.selectCity(city_name="保定市")
+        loveShoppingPage.validSelf()
+        
     def test_case(self):
+        dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
+        dashboard.clickLikeShopping()
+        
+        loveShoppingPage = LoveShoppingPage(testcase=self,driver=self.driver,logger=self.logger)
+        loveShoppingPage.validSelf()
+        
+        loveShoppingPage.clickCityTextView()
+        loveShoppingPage.waitBySeconds(seconds=1)
+        loveShoppingPage.selectCity(city_name="保定市")
+        
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         for tempTimes in range(5):
             print("ATTEMPTS: %d" % (tempTimes + 1))
