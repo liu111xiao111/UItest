@@ -31,6 +31,7 @@ class SquareModulePageConfigs():
 
     # Movie button
     text_movie_button = u"电影"
+    resource_id_movie_st = u"电影"
 
     # Resource niche
     resource_id_resource_niche_button = "com.wanda.app.wanhui:id/film_gallery_item_poster"
@@ -73,6 +74,9 @@ class SquareModulePageConfigs():
 
     # Parking
     resource_id_parking_cc = u"停车"
+
+    # Sign in
+    resource_id_sign_in_st = u"签到"
 
     def __init__(self):
         pass;

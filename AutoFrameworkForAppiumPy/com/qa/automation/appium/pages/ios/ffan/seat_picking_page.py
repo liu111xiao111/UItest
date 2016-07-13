@@ -23,8 +23,9 @@ class SeatPickingPage(SuperPage):
         '''
 
         API().assert_view_by_xpath_android(self.testcase, self.driver, self.logger,
-                                                      SeatPickingPageConfigs.xpath_seat_picking_title_st,
-                                                      SeatPickingPageConfigs.assert_view_timeout)
+                                           SeatPickingPageConfigs.xpath_seat_picking_title_st,
+                                           SeatPickingPageConfigs.assert_view_timeout)
+
 
     def validKeywords(self, keywords):
         '''

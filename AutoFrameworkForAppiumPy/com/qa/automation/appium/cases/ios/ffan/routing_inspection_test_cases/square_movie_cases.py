@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
+
 import os
-import sys
 import time
 from unittest import TestCase
 from unittest import TestLoader
@@ -14,25 +13,19 @@ from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.cinema_page import CinemaPage
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.movie_details_page import MovieDetailsPage
-from com.qa.automation.appium.pages.ios.ffan.movie_page import MoviePage
 from com.qa.automation.appium.pages.ios.ffan.popup_page import ClickActivityKeywordsType
 from com.qa.automation.appium.pages.ios.ffan.popup_page import PopupPage
 from com.qa.automation.appium.pages.ios.ffan.popup_page import VerifyActivityKeywordsType
 from com.qa.automation.appium.pages.ios.ffan.seat_picking_page import SeatPickingPage
+from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(sys.path[0]))))))))))
-
-
-class MovieTicketCases(TestCase):
+class SquareMovieCases(TestCase):
     '''
-    巡检checklist No.: 06
-    自动化测试case No.: 06
-    首页进入电影模块，检查数据正常并可以成功选座下单，支付并退票
+    巡检checklist No.: 30
+    自动化测试case No.: 30
+    广场详情页点击进入电影模块，检查数据正常并可以成功选座下单，取消订单
     '''
 
     def tearDown(self):
@@ -47,17 +40,13 @@ class MovieTicketCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
-        dashboardPage.valid_self()
-        dashboardPage.clickOnMovie()
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSquareModule()
 
-        moviePage = MoviePage(self , self.driver , self.logger)
-        moviePage.validSelf()
-        moviePage.clickOnSeatPickingAndBuyingTicket()
-
-        movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
-        movieDetailsPage.validSelf()
-        movieDetailsPage.clickOnSubCinema()
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.validSelf()
+        squareModulePage.clickOnMovie()
 
         cinemaPage = CinemaPage(self, self.driver, self.logger)
         cinemaPage.validSelf()
@@ -65,7 +54,7 @@ class MovieTicketCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            print("ATTEMPTS: %d" % (tempTimes + 1))
+            print ("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton(u"是", ClickActivityKeywordsType.RESOURCE_ID)
                 break
@@ -74,23 +63,13 @@ class MovieTicketCases(TestCase):
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
-        seatPickingPage.clickBackKey()
-
-        cinemaPage.waitBySeconds()
-        cinemaPage.validSelf()
-        cinemaPage.clickBackKey()
-
-        movieDetailsPage.validSelf()
-        movieDetailsPage.clickBackKey()
-
-        moviePage.validSelf()
-        moviePage.clickBackKey()
+        seatPickingPage.waitBySeconds(seconds=3)
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(MovieTicketCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

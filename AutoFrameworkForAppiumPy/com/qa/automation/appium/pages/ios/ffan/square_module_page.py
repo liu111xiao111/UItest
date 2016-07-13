@@ -32,10 +32,9 @@ class SquareModulePage(SuperPage):
         usage: 点击签到
     '''
     def clickOnSignOn(self):
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_sign_on);
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.resource_id_sign_in_st,
+                                       SquareModulePageConfigs.assert_view_timeout)
 
     def clickOnParking(self):
         '''
@@ -143,19 +142,14 @@ class SquareModulePage(SuperPage):
                                          self.logger,
                                          SquareModulePageConfigs.text_coupon)
 
-    '''
-        usage: click movie button
-    '''
     def clickOnMovie(self):
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             SquareModulePageConfigs.text_movie_button)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_movie_button,
-                                         SquareModulePageConfigs.click_on_button_timeout)
+        '''
+        usage: click on movie button
+        '''
 
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.resource_id_movie_st,
+                                       SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnResourceNiche(self):
         '''

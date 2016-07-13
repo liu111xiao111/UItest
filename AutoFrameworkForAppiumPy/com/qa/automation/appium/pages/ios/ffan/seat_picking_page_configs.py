@@ -17,7 +17,6 @@ class SeatPickingPageConfigs(object):
     click_on_button_timeout = 10
 
     # SeatPicking title
-    resource_id_seat_picking_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
     xpath_seat_picking_title_st = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAStaticText[1]"
 
     def __init__(self):
