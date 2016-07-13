@@ -108,5 +108,13 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_shopping);
 
+    def click_lePay(self):
+        '''
+        usage: 点击"乐付"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_le_pay);
+
+
 if __name__ == '__main__':
     pass

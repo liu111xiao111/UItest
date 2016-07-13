@@ -43,6 +43,9 @@ class DashboardPageConfigs():
     # "购物"
     name_shopping = u"购物"
 
+    # "乐付"
+    name_le_pay = u"乐付";
+
     # 全城搜索输入框
     resource_id_tv_search_tv = "全城搜索"
 
