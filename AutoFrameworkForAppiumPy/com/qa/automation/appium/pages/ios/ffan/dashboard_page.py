@@ -85,6 +85,12 @@ class DashboardPage(IosSuperPage):
                                               DashboardPageConfigs.name_home_title_icon,
                                               DashboardPageConfigs.assert_view_timeout)
 
+    def waitBySeconds(self, seconds=1):
+        self.wait_by_seconds(seconds)
+
+    def clickOnMy(self):
+        self.click_my()
+
     def clickOnSquareModule(self):
         '''
         usage: click on the nearby business circle.

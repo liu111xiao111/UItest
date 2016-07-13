@@ -33,13 +33,13 @@ class LogoutCases(TestCase):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.wait_by_seconds()
+        dashboardPage.waitBySeconds()
         dashboardPage.validSelf()
-        dashboardPage.click_my()
+        dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.waitBySeconds()

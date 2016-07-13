@@ -70,9 +70,9 @@ class MyFeiFanPage(SuperPage):
         usage: click on the message centre button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_message_centre_button,
-                                               MyFeiFanPageConfigs.click_on_button_timeout);
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  MyFeiFanPageConfigs.xpath_message_centre_bt,
+                                  MyFeiFanPageConfigs.click_on_button_timeout)
 
     def clickOnMembershipCardPackage(self):
         '''

@@ -23,6 +23,7 @@ class MyFeiFanPageConfigs(object):
 
     # Message centre button
     resource_id_message_centre_button = "com.wanda.app.wanhui:id/image_icon_message_entry"
+    xpath_message_centre_bt = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]"
 
     # Membership card package button
     text_membership_card_package_button = u"会员卡包"
