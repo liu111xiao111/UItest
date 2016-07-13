@@ -9,11 +9,10 @@ class LocationBluetoothPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(LocationBluetoothPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    '''
-        usage : Click "好"
-    '''
-
     def clickOnOkBtn(self):
+        '''
+            usage : 点击 "好" button
+        '''
         API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                   xpath = LocationBluetoothPageConfigs.xpath_ok_button)
 

@@ -20,14 +20,14 @@ class ParkingPaymentPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : Load "停车交费" (pay page) correctly. 
+        usage : 判断“付停车费”是否正确显示
         '''
         API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                               resource_id=ParkingPaymentPageConfigs.name_parking_payment)
 
     def clickOnMore(self):
         '''
-        usage: Click on more operation.
+        usage: 点击右上角“更多”的图标
         '''
         API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
                                   xpath = ParkingPaymentPageConfigs.xpath_more)

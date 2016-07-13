@@ -15,7 +15,7 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-#   首页点击 停车
+#    停车交费“更多”详细页
 class ParkingPaymentMorePage(SuperPage):
 
     def __init__(self, testcase, driver, logger):
@@ -27,7 +27,7 @@ class ParkingPaymentMorePage(SuperPage):
 
     def clickOnUnbundLicensePlate(self):
         '''
-        usage: click on "解除绑定".
+        usage: 点击"解除绑定".
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=ParkingPaymentMorePageConfigs.name_unbound_license_plate);
