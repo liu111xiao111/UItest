@@ -18,6 +18,7 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import VersionUpgradePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class VersionUpgradeCases(TestCase):
@@ -32,7 +33,7 @@ class VersionUpgradeCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).switchCity()
 

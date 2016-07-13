@@ -18,7 +18,7 @@ from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.splash_screen_home_page import SplashScreenHomePage
 from com.qa.automation.appium.utility.logger import Logger
-
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class SplashScreenHomePageCases(TestCase):
     '''
@@ -34,7 +34,7 @@ class SplashScreenHomePageCases(TestCase):
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, platformVersion, deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(), deviceName_andr, driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
