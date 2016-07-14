@@ -90,8 +90,8 @@ class MyFeiFanPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_nickname_button,
-                                               MyFeiFanPageConfigs.click_on_button_timeout);
+                                       MyFeiFanPageConfigs.resource_id_nickname_st,
+                                       MyFeiFanPageConfigs.click_on_button_timeout)
 
     def clickOnMyFeiFanCard(self):
         '''
