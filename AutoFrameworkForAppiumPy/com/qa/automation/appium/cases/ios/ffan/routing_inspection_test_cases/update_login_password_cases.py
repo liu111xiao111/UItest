@@ -35,7 +35,7 @@ class UpdateLoginPasswordCases(TestCase):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-#         TestPrepare(self, self.driver, self.logger).prepare()
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
