@@ -23,24 +23,26 @@ class LoginPage(IosSuperPage):
         '''
 
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      LoginPageConfigs.text_login,
-                                                      LoginPageConfigs.assert_view_timeout)
+                                              LoginPageConfigs.resource_id_login_title_st,
+                                              LoginPageConfigs.assert_view_timeout)
 
     def switchToNormalLogin(self):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       LoginPageConfigs.text_normal_login)
+                                       LoginPageConfigs.text_normal_login,
+                                       LoginPageConfigs.click_on_button_timeout)
 
     def inputUserName(self):
-        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_user_name,
-                                      LoginPageConfigs.account_name)
+        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_mobile_number_tf,
+                                      LoginPageConfigs.text_mobile_number)
 
     def inputPassWord(self):
-        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_password,
-                                      LoginPageConfigs.account_passwd)
+        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_password_tf,
+                                      LoginPageConfigs.text_password)
 
     def clickOnLoginBtn(self):
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-                                       LoginPageConfigs.xpath_login_button)
+                                       LoginPageConfigs.xpath_login_bt,
+                                       LoginPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass;

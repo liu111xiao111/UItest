@@ -15,7 +15,7 @@ from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -42,12 +42,12 @@ class LoginCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.valid_self()
-        dashboardPage.click_my()
+        dashboardPage.validSelf()
+        dashboardPage.clickOnMy()
 
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myFfanPage.validSelf()
-        myFfanPage.clickOnLogin()
+        myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
+        myFeiFanPage.validSelf()
+        myFeiFanPage.clickOnLogin()
 
         loginPage = LoginPage(self, self.driver, self.logger)
         loginPage.validSelf()
@@ -57,7 +57,7 @@ class LoginCases(TestCase):
         loginPage.clickOnLoginBtn()
         loginPage.wait_by_seconds(5)
 
-        myFfanPage.validSelf()
+        myFeiFanPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(LoginCases)

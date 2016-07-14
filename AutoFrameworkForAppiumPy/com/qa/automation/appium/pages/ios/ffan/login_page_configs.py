@@ -5,15 +5,12 @@
 class LoginPageConfigs():
     # 普通登录手机号码输入框
     resource_id_user_name = "com.wanda.app.wanhui:id/edit_login_name";
-    xpath_user_name = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]"
 
     # 普通登录密码输入框
     resource_id_pass_word = "com.wanda.app.wanhui:id/widget_input";
-    xpath_password = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIASecureTextField[1]"
 
     # 登录按钮
     resource_id_login_button = "com.wanda.app.wanhui:id/btn_login";
-    xpath_login_button = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
 
     # text指明类型为text label,后面是文字的拼音
     text_quick_login = "快捷登录";
@@ -32,8 +29,23 @@ class LoginPageConfigs():
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
-    # Login tittle
+    # Click button time out
+    click_on_button_timeout = 10
+
+    # Login title
     text_login = "登录"
+    resource_id_login_title_st = u"登录"
+
+    # Mobile number
+    xpath_mobile_number_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]"
+    text_mobile_number = u"13601138742"
+
+    # Password
+    xpath_password_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIASecureTextField[1]"
+    text_password = "9875321mgw"
+
+    # Login
+    xpath_login_bt = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
 
     def __init__(self):
         pass;

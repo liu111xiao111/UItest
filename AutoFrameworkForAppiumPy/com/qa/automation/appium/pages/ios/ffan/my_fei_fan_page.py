@@ -52,7 +52,8 @@ class MyFeiFanPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_login_button);
+                                               MyFeiFanPageConfigs.resource_id_login_bt,
+                                               MyFeiFanPageConfigs.assert_view_timeout)
 
     def clickOnSettings(self):
         '''
