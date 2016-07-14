@@ -61,13 +61,16 @@ class API(object):
             wdw = WebDriverWait(driver, timeout=seconds)
             findResult = wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
             if findResult is None:
+                self.screen_shot(driver, "get_xpath_none")
                 testcase.assertTrue(False, "xpath %s none" % (xpath))
             return driver.find_element_by_xpath(xpath);
         except NoSuchElementException:
             # logger.d("no such element")
+            self.screen_shot(driver, "get_xpath_none")
             testcase.assertTrue(False, "xpath %s none" % (xpath))
         except TimeoutException:
             # logger.d("get xpath timeout")
+            self.screen_shot(driver, "get_xpath_timeout")
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
     def get_view_by_xpath_ios(self, driver, logger, xpath="default"):
@@ -256,8 +259,10 @@ class API(object):
             if findResult is not None:
                 self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id).click();
         except NoSuchElementException:
+            self.screen_shot(driver, "get_resource_id_none")
             testcase.assertTrue(False, "resource_id %s none" % (resource_id))
         except TimeoutException:
+            self.screen_shot(driver, "get_resource_id_timeout")
             testcase.assertIsNotNone(None, "get resource_id %s timeout until %s seconds" % (resource_id, seconds))
 
     def click_view_by_text_android(self, testcase, driver, logger, text="default", seconds=10):
@@ -270,8 +275,10 @@ class API(object):
                 web_element = self.get_view_text_equal_android(driver=driver, logger=logger, text=text)
                 web_element.click()
         except NoSuchElementException:
+            self.screen_shot(driver, "get_text_none")
             testcase.assertTrue(False, "text %s none" % (text))
         except TimeoutException:
+            self.screen_shot(driver, "get_text_timeout")
             testcase.assertIsNotNone(None, "get text %s timeout until %s seconds" % (text, seconds))
 
     def click_view_by_xpath(self, testcase, driver, logger, xpath, seconds=10):
@@ -282,9 +289,10 @@ class API(object):
                 driver.find_element_by_xpath(xpath).click();
         except NoSuchElementException:
             # logger.d("no such element")
+            self.screen_shot(driver, "get_xpath_none")
             testcase.assertTrue(False, "xpath %s none" % (xpath))
         except TimeoutException:
-            logger.d("get xpath timeout")
+            self.screen_shot(driver, "get_xpath_timeout")
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
     def click_view_by_content_desc(self, testcase, driver, logger, content_desc, seconds=10):
@@ -292,8 +300,10 @@ class API(object):
             self.find_view_by_content_desc_Until_android(driver=driver, logger=logger,
                                                          content_desc=content_desc,seconds=seconds).click()
         except NoSuchElementException:
+            self.screen_shot(driver, "get_content_desc_none")
             testcase.assertTrue(False, "content_desc %s none" % (content_desc))
         except TimeoutException:
+            self.screen_shot(driver, "get_content_desc_timeout")
             testcase.assertIsNotNone(None, "get content_desc %s timeout until %s seconds" % (content_desc, seconds))
 
     def click_back_key(self, driver, logger):
@@ -357,9 +367,11 @@ class API(object):
                 self.find_view_by_text_Until_android(driver=driver, logger=logger, text=text, seconds=10)
             )
         except NoSuchElementException as e:
+            self.screen_shot(driver, "get_text_none")
             testcase.assertTrue(False, "text %s none" % (text))
 
         except TimeoutException as e:
+            self.screen_shot(driver, "get_text_timeout")
             testcase.assertIsNotNone(None, "get text %s timeout until %s seconds" % (text, seconds))
 
     def assert_view_by_content_desc_android(self, testcase, driver, logger,
@@ -373,8 +385,10 @@ class API(object):
                                                             seconds)
             )
         except NoSuchElementException:
+            self.screen_shot(driver, "get_text_none")
             testcase.assertTrue(False, "text %s none" % (content_desc))
         except TimeoutException:
+            self.screen_shot(driver, "get_text_timeout")
             testcase.assertIsNotNone(None, "get text %s timeout until %s seconds" % (content_desc, seconds))
 
     def assert_none_view_by_text_until_android(self, testcase, driver, logger, text="default", seconds=10):
@@ -385,10 +399,13 @@ class API(object):
         try:
             testcase.assertIsNotNone(self.find_view_by_text_Until_android(driver, logger, text, seconds), "resource id is none")
         except NoSuchElementException:
+            self.screen_shot(driver, "get_text_is_not_none")
             testcase.assertTrue(True, "text %s is not none firstly" % (text))
         except TimeoutException:
+            self.screen_shot(driver, "get_text_is_not_none")
             testcase.assertTrue(True, "text %s is not none secondly" % (text))
         else:
+            self.screen_shot(driver, "get_text_is_not_none")
             testcase.assertTrue(False, "text %s is not none thirdly" % (text))
 
     '''
@@ -401,8 +418,10 @@ class API(object):
                 self.find_view_by_resourceID_Until_android(driver=driver, logger=logger, resource_id=resource_id,
                                                            seconds=seconds), "resource id none")
         except NoSuchElementException as e:
+            self.screen_shot(driver, "get_resource_id_none")
             testcase.assertTrue(False, "resource id %s none" % (resource_id))
         except TimeoutException as e:
+            self.screen_shot(driver, "get_resource_id_timeout")
             testcase.assertTrue(False,
                                 "get resource id %s timeout until %s seconds" % (resource_id, seconds))
 
@@ -416,8 +435,10 @@ class API(object):
             testcase.assertIsNotNone(self.find_view_by_resourceID_Until_android(driver, logger, resource_id, seconds),
                                      "resource id none")
         except TimeoutException:
+            self.screen_shot(driver, "get_resource_id_is_not_none")
             testcase.assertTrue(True, "resource id %s is not none secondly" % (resource_id))
         else:
+            self.screen_shot(driver, "get_resource_id_is_not_none")
             testcase.assertTrue(False, "resource id %s is not none thirdly" % (resource_id))
 
     def assert_view_by_resourceID_android(self, testcase, logger, driver, resource_id="default"):
@@ -425,6 +446,7 @@ class API(object):
             testcase.assertIsNotNone(self.get_view_by_resourceID(driver=driver, logger=logger, resource_id=resource_id),
                                      "resource id %s not none" % (resource_id))
         except NoSuchElementException as e:
+            self.screen_shot(driver, "get_resource_id_none")
             testcase.assertIsNotNone(None,
                                      "resource id %s none" % (resource_id))
 
@@ -436,8 +458,10 @@ class API(object):
         try:
             testcase.assertIsNotNone(self.get_view_by_resourceID(driver, logger, resource_id), "resource id %s is none" % (resource_id))
         except NoSuchElementException:
+            self.screen_shot(driver, "get_resource_id_is_not_none")
             testcase.assertTrue(True, "resource id %s is not none firstly" % (resource_id))
         else:
+            self.screen_shot(driver, "get_resource_id_is_not_none")
             testcase.assertTrue(False, "resource id %s is not none secondly" % (resource_id))
 
     def assert_view_by_xpath_android(self, testcase, driver, logger, xpath="default", seconds=10):
@@ -445,9 +469,11 @@ class API(object):
             testcase.assertIsNotNone(
                 self.find_view_by_xpath_Until(driver=driver, logger=logger, xpath=xpath, seconds=10))
         except NoSuchElementException as e:
-            testcase.assertTrue(False, "content_desc %s none" % (xpath))
+            self.screen_shot(driver, "get_xpath_none")
+            testcase.assertTrue(False, "xpath  %s none" % (xpath))
 
         except TimeoutException as e:
+            self.screen_shot(driver, "get_xpath_timeout")
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
     def assert_none_view_by_xpath_android(self, testcase, driver, logger, xpath="default", seconds=10):
@@ -458,10 +484,13 @@ class API(object):
         try:
             testcase.assertIsNotNone(self.find_view_by_xpath_Until_android(driver, logger, xpath, seconds), "resource id none")
         except NoSuchElementException:
+            self.screen_shot(driver, "get_xpath_is_not_none")
             testcase.assertTrue(True, "xpath %s is not none firstly" % (xpath))
         except TimeoutException:
+            self.screen_shot(driver, "get_xpath_is_not_none")
             testcase.assertTrue(True, "xpath %s is not none secondly" % (xpath))
         else:
+            self.screen_shot(driver, "get_xpath_is_not_none")
             testcase.assertTrue(False, "xpath %s is not none thirdly" % (xpath))
 
     def assert_equal(self, test_case, driver, logger, actual_text, expect_text):
@@ -478,8 +507,10 @@ class API(object):
         try:
             testcase.assertTrue(textContains in self.find_view_by_xpath_Until(driver, logger, xpath, seconds).text, "text contents is not found")
         except NoSuchElementException:
+            self.screen_shot(driver, "get_xpath_none")
             testcase.assertTrue(False, "xpath %s is none" % (xpath))
         except TimeoutException:
+            self.screen_shot(driver, "get_xpath_timeout")
             testcase.assertIsNotNone(None, "get xpath %s timeout until %s seconds" % (xpath, seconds))
 
     def assert_view_by_text_contains_android(self, testcase, driver, logger, text="default"):
@@ -490,6 +521,7 @@ class API(object):
         try:
             testcase.assertIsNotNone(self.get_view_text_contains_android(driver, logger , text), "text %s not none" % (text))
         except NoSuchElementException:
+            self.screen_shot(driver, "get_text_none")
             testcase.assertIsNotNone(None, "text %s none" % (text))
             
     def assert_view_by_classname_both(self, testcase, driver, logger, class_name="default",seconds = 10):
@@ -500,6 +532,7 @@ class API(object):
             testcase.assertIsNotNone(self.find_view_by_classname_until(driver=driver, logger=logger, class_name=class_name, seconds=seconds), 
                                      "class name %s not none" % (class_name))
         except NoSuchElementException:
+            self.screen_shot(driver, "get_class_name_none")
             testcase.assertIsNotNone(None, "class name %s none" % (class_name))
 
     '''
