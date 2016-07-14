@@ -28,8 +28,8 @@ class LePayDetailsPage(SuperPage):
         '''
         usage : Click "确认购买"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=LePayDetailsPageConfigs.name_pay);
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  LePayDetailsPageConfigs.xpath_pay)
 
 
 if __name__ == '__main__':

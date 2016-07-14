@@ -63,10 +63,10 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_order)
+        API().click_view_by_resourceID(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MFPC.text_my_order)
 
     def clickOnMyLike(self):
         '''

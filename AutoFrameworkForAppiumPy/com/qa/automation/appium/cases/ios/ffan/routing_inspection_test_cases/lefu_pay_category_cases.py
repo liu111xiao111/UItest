@@ -44,17 +44,16 @@ class LefuPayCatergoryCases(TestCase):
         lePayDetailPage = LePayDetailsPage(self, self.driver, self.logger)
         lePayWayPage = LePayWayPage(self, self.driver, self.logger)
 
-
-        # Load square page
+        # 首页点击乐付
         dashboardPage.validSelf()
         dashboardPage.click_lePay()
         lePayPage.validSelf()
 
-        # Click "乐付买单"， load detail pay page.
+        # 点击第一条乐付买单
         lePayPage.clickOnDetailsLePay()
         lePayDetailPage.validSelf()
 
-        # Input money, click "确认买单".
+        # 下单
         lePayDetailPage.inputMoney()
         lePayDetailPage.waitBySeconds(seconds=5)
         lePayDetailPage.clickOnPay()

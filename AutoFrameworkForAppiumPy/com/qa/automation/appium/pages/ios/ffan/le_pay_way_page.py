@@ -16,5 +16,20 @@ class LePayWayPage(SuperPage):
                                                       resource_id=LePayWayPageConfigs.name_choose_pay_way,
                                                       seconds=18);
 
+    def clickOnCancelIcon(self):
+        '''
+        usage : 点击"X"标示
+        '''
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  LePayWayPageConfigs.xpath_cancle_icon)
+
+    def getOrderNumber(self):
+        '''
+        usage : 取得乐付订单号
+        '''
+        orderNumber = API().get_view_by_xpath_ios(self.driver, self.logger,
+                                                  LePayWayPageConfigs.xpath_order_number).text
+        return orderNumber;
+
 if __name__ == '__main__':
     pass;
