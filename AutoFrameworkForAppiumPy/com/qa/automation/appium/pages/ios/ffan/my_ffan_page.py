@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
 
 
 #   进入应用的首页,是进入其他页面的入口
@@ -90,10 +90,16 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "停车交费" page， according to textview in "停车交费", check "停车交费" page whether load correctly.
         '''
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             MFPC.text_parking_payment)
-        API().click_view_by_text_android(self.testcase,
+        start_x = API().get_width_of_device(self.driver, self.logger)/2
+        end_x = API().get_width_of_device(self.driver, self.logger)/2
+        start_y = API().get_height_of_device(self.driver, self.logger)/2
+        end_y = API().get_height_of_device(self.driver, self.logger)/5
+
+        API().scroll(self.driver,
+                     self.logger,
+                     start_x, start_y, end_x, end_y)
+
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          MFPC.text_parking_payment)
