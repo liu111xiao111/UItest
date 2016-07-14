@@ -27,6 +27,7 @@ class MyFeiFanPageConfigs(object):
 
     # Membership card package button
     text_membership_card_package_button = u"会员卡包"
+    xpath_membership_card_package_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
 
     # Nickname
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"

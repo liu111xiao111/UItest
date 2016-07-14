@@ -80,9 +80,9 @@ class MyFeiFanPage(SuperPage):
         usage: click on the membership card package button.
         '''
 
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-                                         MyFeiFanPageConfigs.text_membership_card_package_button,
-                                         MyFeiFanPageConfigs.click_on_button_timeout);
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  MyFeiFanPageConfigs.xpath_membership_card_package_st,
+                                  MyFeiFanPageConfigs.click_on_button_timeout)
 
     def clickOnNickname(self):
         '''
