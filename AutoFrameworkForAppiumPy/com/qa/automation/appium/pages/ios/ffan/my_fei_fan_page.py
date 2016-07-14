@@ -98,10 +98,11 @@ class MyFeiFanPage(SuperPage):
         usage: click on the my fei fan card button.
         '''
 
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_my_fei_fan_card)
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-										MyFeiFanPageConfigs.text_my_fei_fan_card)
-
+        for _ in range(3):
+            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       MyFeiFanPageConfigs.resource_id_my_fei_fan_card_st,
+                                       MyFeiFanPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass

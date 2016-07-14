@@ -40,6 +40,7 @@ class MyFeiFanPageConfigs(object):
 
     # My fei fan card
     text_my_fei_fan_card = u"我的飞凡卡"
+    resource_id_my_fei_fan_card_st = u"我的飞凡卡"
 
     def __init__(self):
         pass
