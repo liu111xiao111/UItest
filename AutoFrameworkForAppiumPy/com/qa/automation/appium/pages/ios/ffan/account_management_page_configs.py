@@ -24,6 +24,7 @@ class AccountManagementPageConfigs(object):
 
     # Small amount password less payment
     text_small_amount_password_less_payments = u"小额免密支付"
+    resource_id_small_amount_password_less_payments = u"小额免密支付"
 
     def __init__(self):
         pass

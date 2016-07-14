@@ -32,17 +32,17 @@ class AccountManagementPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                              AccountManagementPageConfigs.resource_id_update_login_password_st,
-                                              AccountManagementPageConfigs.click_on_button_timeout)
+                                       AccountManagementPageConfigs.resource_id_update_login_password_st,
+                                       AccountManagementPageConfigs.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
         usage: click on the small account password-less payments button.
         '''
 
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-										AccountManagementPageConfigs.text_small_amount_password_less_payments,
-										AccountManagementPageConfigs.click_on_button_timeout)
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       AccountManagementPageConfigs.resource_id_small_amount_password_less_payments,
+                                       AccountManagementPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass
