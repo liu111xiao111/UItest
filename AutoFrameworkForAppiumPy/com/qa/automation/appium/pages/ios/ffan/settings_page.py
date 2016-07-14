@@ -35,8 +35,8 @@ class SettingsPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SettingsPageConfigs.resource_id_account_management,
-                                               SettingsPageConfigs.assert_view_timeout)
+                                       SettingsPageConfigs.resource_id_account_management_st,
+                                       SettingsPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':
