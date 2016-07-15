@@ -17,11 +17,9 @@ class RecommendDetailsCategoryPage(SuperPage):
         '''
         usage : 进入推荐商品详细页
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              RDCPC.resource_id_tv_recommend_details_tv,
-                                              seconds = 20)
+        API().assert_view_by_xpath_android(self.testcase, self.driver, self.logger,
+                                           RDCPC.xpath_recommend_subscriber,
+                                           seconds = 10)
 
     def clickOnSubsciber(self):
         '''

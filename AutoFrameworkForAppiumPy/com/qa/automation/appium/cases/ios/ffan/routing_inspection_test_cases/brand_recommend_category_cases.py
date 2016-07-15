@@ -53,10 +53,10 @@ class BrandRecommendCatergoryCases(TestCase):
         recommendDetailsPage.validSelf()
 
         # 点击 “心形”订阅
-        orifinalNumber = recommendDetailsPage.getSubsciberNumber()
+        originNumber = recommendDetailsPage.getSubsciberNumber()
         recommendDetailsPage.clickOnSubsciber()
-        newNumber = recommendDetailsPage.getSubsciberNumber()
-        recommendDetailsPage.validSelfSubsciberNumber(orifinalNumber, newNumber+1)
+        newNumber = str(int(recommendDetailsPage.getSubsciberNumber()) + 1)
+        recommendDetailsPage.validSelfSubsciberNumber(originNumber, newNumber)
 
         # 取消订阅
         '''recommendDetailsPage.clickOnSubsciber()

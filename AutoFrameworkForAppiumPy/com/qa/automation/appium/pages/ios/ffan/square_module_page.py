@@ -119,7 +119,7 @@ class SquareModulePage(SuperPage):
         usage: Click "乐付买单"
     '''
     def clicOnLefuPay(self):
-        API().click_view_by_text_android(self.testcase,
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          SquareModulePageConfigs.text_lefu_pay);
