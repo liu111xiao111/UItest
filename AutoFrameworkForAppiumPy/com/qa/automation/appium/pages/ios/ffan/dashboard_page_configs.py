@@ -46,6 +46,9 @@ class DashboardPageConfigs():
     # "乐付"
     name_le_pay = u"乐付";
 
+    # "乐付"
+    name_brand = u"品牌街";
+
     # 全城搜索输入框
     resource_id_tv_search_tv = "全城搜索"
 

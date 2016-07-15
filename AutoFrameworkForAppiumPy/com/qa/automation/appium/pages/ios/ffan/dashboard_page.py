@@ -121,6 +121,12 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_le_pay);
 
+    def click_brand(self):
+        '''
+        usage: 点击"品牌街"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_brand);
 
 if __name__ == '__main__':
     pass
