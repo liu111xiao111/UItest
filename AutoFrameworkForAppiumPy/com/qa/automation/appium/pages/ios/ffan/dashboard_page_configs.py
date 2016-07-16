@@ -49,6 +49,8 @@ class DashboardPageConfigs():
     # "乐付"
     name_brand = u"品牌街";
 
+    name_sales_promotion = u"优惠";
+
     # 全城搜索输入框
     resource_id_tv_search_tv = "全城搜索"
 

@@ -128,5 +128,24 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_brand);
 
+    def clickOnSalesPromotion(self):
+        '''
+            usage: 点击"优惠活动"
+        '''
+        '''        start_x = API().get_width_of_device(self.driver, self.logger)/2
+        end_x = API().get_width_of_device(self.driver, self.logger)/2
+        start_y = API().get_height_of_device(self.driver, self.logger)/2
+        end_y = API().get_height_of_device(self.driver, self.logger)/7
+
+        API().scroll(self.driver,
+                     self.logger,
+                     start_x, start_y, end_x, end_y)'''
+
+        API().click_view_by_resourceID(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         DashboardPageConfigs.name_sales_promotion)
+
+
 if __name__ == '__main__':
     pass
