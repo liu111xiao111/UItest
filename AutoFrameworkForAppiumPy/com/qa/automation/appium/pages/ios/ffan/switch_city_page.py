@@ -26,16 +26,16 @@ class SwitchCityPage(SuperPage):
 
         if assertable:
             API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                          SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
-                                                          SwitchCityPageConfigs.assert_view_timeout)
+                                                  SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                                  SwitchCityPageConfigs.assert_view_timeout)
             return True
         else:
             try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger,
-                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
-                                                            SwitchCityPageConfigs.verify_view_timeout)
+                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                                      SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                                      SwitchCityPageConfigs.verify_view_timeout)
                 return True
-            except TimeoutException:
+            except AssertionError:
                 return False
 
     def cancelSwitchCity(self):
@@ -44,7 +44,8 @@ class SwitchCityPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SwitchCityPageConfigs.resource_id_switch_city_cancel_button)
+                                       SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                       SwitchCityPageConfigs.click_on_button_timeout)
 
     def confirmSwitchCity(self):
         '''
@@ -52,7 +53,8 @@ class SwitchCityPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SwitchCityPageConfigs.resource_id_switch_city_switch_button)
+                                       SwitchCityPageConfigs.resource_id_switch_city_switch_bt,
+                                       SwitchCityPageConfigs.click_on_button_timeout)
 
     def invalidSelf(self):
         '''
@@ -60,7 +62,7 @@ class SwitchCityPage(SuperPage):
         '''
 
         API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
-                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
+                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                                             SwitchCityPageConfigs.assert_invalid_view_time)
 
 if __name__ == '__main__':

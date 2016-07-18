@@ -3,11 +3,11 @@
 from selenium.common.exceptions import TimeoutException
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page_configs import VersionUpgradePageConfigs
 
 
-class VersionUpgradePage(IosSuperPage):
+class VersionUpgradePage(SuperPage):
     '''
     This is a version update page operation class.
     '''
@@ -26,16 +26,16 @@ class VersionUpgradePage(IosSuperPage):
 
         if assertable:
             API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                          VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
-                                                          VersionUpgradePageConfigs.assert_view_timeout)
+                                                  VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                                  VersionUpgradePageConfigs.assert_view_timeout)
             return True
         else:
             try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger,
-                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
-                                                            VersionUpgradePageConfigs.verify_view_timeout)
+                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                                      VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                                      VersionUpgradePageConfigs.verify_view_timeout)
                 return True
-            except TimeoutException:
+            except AssertionError:
                 return False
 
     def cancelVersionUpgrade(self):
@@ -44,7 +44,8 @@ class VersionUpgradePage(IosSuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               VersionUpgradePageConfigs.resource_id_upgrade_cancel_button)
+                                       VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                       VersionUpgradePageConfigs.click_on_button_timeout)
 
     def confirmVersionUpgrade(self):
         '''
@@ -52,7 +53,8 @@ class VersionUpgradePage(IosSuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               VersionUpgradePageConfigs.resource_id_upgrade_confirm_button)
+                                       VersionUpgradePageConfigs.resource_id_upgrade_confirm_bt,
+                                       VersionUpgradePageConfigs.click_on_button_timeout)
 
     def validPercentage(self):
         '''
@@ -67,7 +69,7 @@ class VersionUpgradePage(IosSuperPage):
         '''
 
         API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
-                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_button,
+                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
                                                             VersionUpgradePageConfigs.assert_invalid_view_time)
 
 

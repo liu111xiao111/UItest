@@ -14,11 +14,14 @@ class VersionUpgradePageConfigs(object):
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
+    # Click button time out
+    click_on_button_timeout = 10
+
     # Upgrade cancel button
-    resource_id_upgrade_cancel_button = "com.wanda.app.wanhui:id/upgrade_cancel"
+    resource_id_upgrade_cancel_bt = u"取消"
 
     # Upgrade confirm button
-    resource_id_upgrade_confirm_button = "com.wanda.app.wanhui:id/upgrade_confirm"
+    resource_id_upgrade_confirm_bt = u"确定"
 
     def __init__(self):
         pass
