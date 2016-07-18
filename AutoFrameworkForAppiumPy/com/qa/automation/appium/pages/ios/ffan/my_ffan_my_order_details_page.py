@@ -59,6 +59,13 @@ class MyFfanMyOrderDetailsPage(SuperPage):
         orderNumber = API().get_view_by_xpath_ios(self.driver, self.logger, MyFfanMyOrderDetailsPageConfigs.xpath_le_pay_order_number).text
         return orderNumber;
 
+    def getMyCouponNumber(self):
+        '''
+        usage : 进入详情页，取得优惠券号
+        '''
+        couponNumber = API().get_view_by_xpath_ios(self.driver, self.logger, MyFfanMyOrderDetailsPageConfigs.xpath_coupon_number).text
+        return couponNumber;
+
     def getMyParkingPaymentOrderNumber(self):
         '''
         usage : 点击我的停车缴费订单中的第一条订单，进入详情页，取得订单号
