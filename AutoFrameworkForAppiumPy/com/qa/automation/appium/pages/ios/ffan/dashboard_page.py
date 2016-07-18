@@ -88,6 +88,12 @@ class DashboardPage(IosSuperPage):
     def waitBySeconds(self, seconds=1):
         self.wait_by_seconds(seconds)
 
+    def clickOnHuiLife(self):
+        self.click_huishenghuo()
+
+    def clickOnFeiFanCard(self):
+        self.click_ffan_card()
+
     def clickOnMy(self):
         self.click_my()
 
