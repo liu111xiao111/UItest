@@ -1,28 +1,19 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
 
-import HTMLTestRunner
-
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
-# from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
 from com.qa.automation.appium.pages.ios.ffan.store_info_page import StoreInfoPage
 from com.qa.automation.appium.utility.logger import Logger
-
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(sys.path[0]))))))))))
-
 
 
 class HotWordSearchCases(TestCase):
@@ -33,16 +24,22 @@ class HotWordSearchCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.driver = AppiumDriver(None,
+                                   None,
+                                   IDC.platformName,
+                                   IDC.platformVersion,
+                                   IDC.deviceName,
+                                   IDC.driverUrl,
+                                   IDC.bundleId,
+                                   IDC.udid).getDriver()
 
-#         TestPrepare(self, self.driver, self.logger).prepare(False)
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)

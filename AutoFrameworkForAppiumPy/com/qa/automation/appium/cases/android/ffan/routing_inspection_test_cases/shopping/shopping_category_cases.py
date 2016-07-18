@@ -9,17 +9,17 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
-from com.qa.automation.appium.pages.android.ffan.shopping_category_page import ShoppingCategoryPage;
-from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page import ShoppingDetailsCategoryPage;
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.shopping_category_page import ShoppingCategoryPage
+from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page import ShoppingDetailsCategoryPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.utility.logger import Logger;
+from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class ShoppingCatergoryCases(TestCase):
@@ -30,24 +30,21 @@ class ShoppingCatergoryCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
 
     def setUp(self):
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
 
-        #Login & update version
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

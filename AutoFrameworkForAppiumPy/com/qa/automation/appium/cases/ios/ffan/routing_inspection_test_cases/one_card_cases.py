@@ -2,10 +2,10 @@
 
 import os
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -28,16 +28,24 @@ class OneCardCases(TestCase):
     点击进入我的一卡通验证付款码显示正常交易记录显示正常，可以进行支付密码设置和小额免密开关
     '''
 
-
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.driver = AppiumDriver(None,
+                                   None,
+                                   IDC.platformName,
+                                   IDC.platformVersion,
+                                   IDC.deviceName,
+                                   IDC.driverUrl,
+                                   IDC.bundleId,
+                                   IDC.udid).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

@@ -21,7 +21,6 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -34,33 +33,30 @@ class MyfeifanMyParkingPaymentCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
 
     def setUp(self):
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
         self.logger = Logger()
-        self.driver = AppiumDriver(app_package=appPackage_ffan, app_activity=appActivity_ffan,
-                                   platform_name=platformName_andr, platform_version=DeviceInfoUtil().getBuildVersion(),
-                                   device_name=deviceName_andr, driver_url=driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
 
-        #Login & update version
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
-        testPrepare.prepare()
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        myFfanPage = MyFfanPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(testcase = self,driver = self.driver,logger = self.logger)
-
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        parkingPaymentPage = MyFfanMyParkingPaymentPage(self, self.driver, self.logger)
+        parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(self, self.driver, self.logger)
+        parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(self, self.driver, self.logger)
+        parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(self, self.driver, self.logger)
 
         # Click "我的排队"， load "我的排队" page.
         dashboardPage.validSelf();

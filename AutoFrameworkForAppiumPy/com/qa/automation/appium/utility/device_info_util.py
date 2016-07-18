@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __init__ import *
-
 from subprocess import Popen, PIPE
 
 '''

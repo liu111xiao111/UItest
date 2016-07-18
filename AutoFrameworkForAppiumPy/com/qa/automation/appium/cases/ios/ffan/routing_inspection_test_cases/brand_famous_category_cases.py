@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 
 import os
-import sys
 import time
+import HTMLTestRunner
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
+from unittest import TestCase
+from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
@@ -14,10 +14,6 @@ from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.brand_category_page import BrandCategoryPage
 from com.qa.automation.appium.pages.ios.ffan.famous_details_category_page import FamousDetailsCategoryPage
 from com.qa.automation.appium.utility.logger import Logger
-
-from unittest import TestCase
-from unittest import TestLoader
-import HTMLTestRunner
 
 
 class BrandFamousCatergoryCases(TestCase):
@@ -28,14 +24,22 @@ class BrandFamousCatergoryCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.driver = AppiumDriver(None,
+                                   None,
+                                   IDC.platformName,
+                                   IDC.platformVersion,
+                                   IDC.deviceName,
+                                   IDC.driverUrl,
+                                   IDC.bundleId,
+                                   IDC.udid).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
 
     def test_case(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)

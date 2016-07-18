@@ -1,26 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from subprocess import Popen, PIPE
-
 '''
-    usage :  进入应用的首页
+    usage :  清除App数据
 '''
 class ClearAppData:
 
-    def __init__(self):
-        pass
-    
+    def __init__(self, driver):
+        self.driver = driver
+
     def clearData(self):
-        cmd = 'adb shell pm clear com.wanda.app.wanhui'
-        p = Popen(cmd , shell=True, stdout=PIPE, stderr=PIPE)
-        
-        out, err = p.communicate() 
-        
-        #print "Return code: ", p.returncode  
-        #print out.rstrip(), err.rstrip()
-        
-        
-if __name__ == '__main__':
-    clearAppData = ClearAppData()
-    clearAppData.clearData()
-    
+        self.driver.reset()

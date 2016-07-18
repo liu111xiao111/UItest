@@ -12,7 +12,6 @@ from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
@@ -25,16 +24,16 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class LoginCases(TestCase):
     '''
-        usage: 登陆case
+    巡检checklist No.: 48
+    自动化测试case No.: 48
+    启动app，能够正常登陆
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
-        
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -42,7 +41,10 @@ class LoginCases(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
-        # 登陆　升级
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -53,18 +55,11 @@ class LoginCases(TestCase):
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self, self.driver, self.logger)
         loginPage.validSelf()
-        #loginPage.waitBySeconds(seconds=2)
         loginPage.switchToNormalLogin()
         loginPage.inputUserName();
-        #loginPage.waitBySeconds(seconds=1)
         loginPage.inputPassWord()
-        #loginPage.waitBySeconds(seconds=1)
         loginPage.clickOnLoginBtn();
-        #loginPage.waitBySeconds(seconds=3)
-        #dashboardPage.validSelf()
-        #dashboardPage.clickOnMy()
         myFfanPage.validSelf()
-        #myFfanPage.validLoginStatus()
         dashboardPage.waitBySeconds(seconds=2);
 
 

@@ -1,13 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -19,24 +17,30 @@ from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
-
-
 class LoginCases(TestCase):
     '''
-    This is a test case for login.
+    巡检checklist No.: 48
+    自动化测试case No.: 48
+    启动app，能够正常登陆
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.driver = AppiumDriver(None,
+                                   None,
+                                   IDC.platformName,
+                                   IDC.platformVersion,
+                                   IDC.deviceName,
+                                   IDC.driverUrl,
+                                   IDC.bundleId,
+                                   IDC.udid).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 

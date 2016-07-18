@@ -1,12 +1,10 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import os
-import sys
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -23,11 +21,6 @@ from com.qa.automation.appium.pages.ios.ffan.seat_picking_page import SeatPickin
 from com.qa.automation.appium.utility.logger import Logger
 
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                os.path.dirname(sys.path[0]))))))))))
-
-
 class MovieTicketCases(TestCase):
     '''
     巡检checklist No.: 06
@@ -36,14 +29,23 @@ class MovieTicketCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.driver = AppiumDriver(None,
+                                   None,
+                                   IDC.platformName,
+                                   IDC.platformVersion,
+                                   IDC.deviceName,
+                                   IDC.driverUrl,
+                                   IDC.bundleId,
+                                   IDC.udid).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

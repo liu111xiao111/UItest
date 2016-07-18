@@ -9,21 +9,19 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
-from com.qa.automation.appium.pages.android.ffan.square_find_store_category_page import SquareFindStorePage;
-from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage;
-from com.qa.automation.appium.pages.android.ffan.search_result_store_page import SearchResultStorePage;
-from com.qa.automation.appium.driver.appium_driver import AppiumDriver;
-from com.qa.automation.appium.utility.logger import Logger;
-
+from com.qa.automation.appium.pages.android.ffan.square_find_store_category_page import SquareFindStorePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
+from com.qa.automation.appium.pages.android.ffan.search_result_store_page import SearchResultStorePage
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
-
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SquareFindStoreSearchCases(TestCase):
@@ -34,20 +32,21 @@ class SquareFindStoreSearchCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
-        # 登陆　升级
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

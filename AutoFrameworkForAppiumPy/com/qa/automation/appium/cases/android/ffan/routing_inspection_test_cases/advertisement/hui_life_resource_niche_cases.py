@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
 import os
@@ -33,11 +32,10 @@ class HuiLifeResourceNicheCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -45,6 +43,9 @@ class HuiLifeResourceNicheCases(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
 
         TestPrepare(self, self.driver, self.logger).prepare()
 

@@ -6,6 +6,7 @@ import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
+
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.android.ffan.square_sign_on_page import SignOnPage
@@ -14,7 +15,6 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
@@ -28,15 +28,10 @@ class SquareSignOnCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
 
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
     def setUp(self):
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -44,7 +39,10 @@ class SquareSignOnCases(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
-        # 登陆　升级
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

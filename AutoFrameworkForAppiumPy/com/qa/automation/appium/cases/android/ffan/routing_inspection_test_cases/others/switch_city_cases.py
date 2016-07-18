@@ -2,10 +2,10 @@
 
 import os
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
@@ -13,7 +13,6 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.utility.logger import Logger
@@ -24,18 +23,26 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 
 class SwitchCityCases(TestCase):
     '''
-        This is a test case for canceling the switch city.
+    巡检checklist No.: 02
+    自动化测试case No.: 02
+    启动APP，城市切换正常
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        #ClearAppData().clearData()
 
     def setUp(self):
         ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+
+        self.reset = ClearAppData(self.driver)
 
     def test_case_prepare(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)

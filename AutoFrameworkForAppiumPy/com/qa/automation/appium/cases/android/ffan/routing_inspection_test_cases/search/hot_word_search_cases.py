@@ -14,12 +14,12 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.pages.android.ffan.store_info_page import StoreInfoPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class HotWordSearchCases(TestCase):
@@ -30,18 +30,21 @@ class HotWordSearchCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   platformVersion,
+                                   DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

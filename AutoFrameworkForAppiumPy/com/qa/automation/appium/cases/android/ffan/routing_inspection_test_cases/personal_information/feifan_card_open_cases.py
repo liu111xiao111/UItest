@@ -4,29 +4,20 @@ import os
 import time
 import HTMLTestRunner
 
-from unittest import TestCase, TestLoader
+from unittest import TestCase
+from unittest import TestLoader
 
-# Pages function
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.open_card_page import OpenCardPage
-
-# Driver parameters
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
-
-# Driver function
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-
-# Logger
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
-
-# Common function
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 
@@ -39,12 +30,10 @@ class FeiFanCardOpenCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -53,7 +42,9 @@ class FeiFanCardOpenCases(TestCase):
                                    deviceName_andr,
                                    driver_url).getDriver()
 
-        # Prepare switch city. update version and login
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

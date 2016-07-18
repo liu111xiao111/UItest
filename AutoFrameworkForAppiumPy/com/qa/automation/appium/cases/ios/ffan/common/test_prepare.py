@@ -1,19 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.ios.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page import VersionUpgradePage
-
-
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 '''
     usage :

@@ -2,10 +2,10 @@
 
 import os
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -14,7 +14,6 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import VersionUpgradePage
 from com.qa.automation.appium.utility.logger import Logger
@@ -23,18 +22,27 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class VersionUpgradeCases(TestCase):
     '''
-    This is a test case for canceling the version upgrade.
+    巡检checklist No.: 60
+    自动化测试case No.: 60
+    启动APP，判断是否弹出更新对话框
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).switchCity()
 
     def test_case(self):

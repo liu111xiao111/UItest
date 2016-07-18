@@ -18,9 +18,9 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.utility.logger import Logger;
+from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
 class SquareLefuPayCases(TestCase):
@@ -31,23 +31,22 @@ class SquareLefuPayCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
 
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
     def setUp(self):
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan,
-                                   platformName_andr, platformVersion,
-                                   deviceName_andr, driver_url
-                                   ).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
 
-        #Login & update version
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)

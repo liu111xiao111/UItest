@@ -1,16 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os,sys
 from subprocess import Popen, PIPE
-
-#sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 CONNECTION = 0
 NOCONNECTION = -1

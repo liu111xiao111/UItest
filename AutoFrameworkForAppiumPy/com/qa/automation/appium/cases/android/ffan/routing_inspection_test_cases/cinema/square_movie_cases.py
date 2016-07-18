@@ -2,10 +2,10 @@
 
 import os
 import time
+import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
-
-import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -33,14 +33,21 @@ class SquareMovieCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr, DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr, driver_url).getDriver()
+        self.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

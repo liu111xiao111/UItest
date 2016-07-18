@@ -3,6 +3,7 @@
 import os
 import time
 import HTMLTestRunner
+
 from unittest import TestCase
 from unittest import TestLoader
 
@@ -11,14 +12,11 @@ from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_queue_page import SquareQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
-
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
-
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -34,12 +32,10 @@ class MyfeifanMyQueueCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -48,7 +44,9 @@ class MyfeifanMyQueueCases(TestCase):
                                    deviceName_andr,
                                    driver_url).getDriver()
 
-        # Login & update version
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

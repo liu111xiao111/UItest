@@ -16,7 +16,6 @@ from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import platformVersion
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
@@ -30,15 +29,10 @@ class SquareParkingPaymentCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
 
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
     def setUp(self):
-        clearAppData = ClearAppData()
-        clearAppData.clearData()
-
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -46,7 +40,10 @@ class SquareParkingPaymentCases(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
-        # 登陆　升级
+
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
