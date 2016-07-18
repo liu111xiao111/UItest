@@ -78,5 +78,8 @@ class SquareModulePageConfigs():
     # Sign in
     resource_id_sign_in_st = u"签到"
 
+    # Privilege coupon
+    resource_id_privilege_coupon_st = u"优惠券"
+
     def __init__(self):
         pass;

@@ -133,14 +133,14 @@ class SquareModulePage(SuperPage):
                                          self.logger,
                                          SquareModulePageConfigs.text_queue);
 
-    '''
-        usage: click coupon category
-    '''
     def clickOnCoupon(self):
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_coupon)
+        '''
+        usage: click on privilege coupon.
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       SquareModulePageConfigs.resource_id_privilege_coupon_st,
+                                       SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''
