@@ -38,8 +38,8 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 点击优惠券详情
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       text=SalesPromotionPageConfigs.xpath_coupon_details_tv)
+        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       xpath=SalesPromotionPageConfigs.xpath_coupon_details_tv)
 
     def validSelfListNumber(self, expectLength):
         '''
