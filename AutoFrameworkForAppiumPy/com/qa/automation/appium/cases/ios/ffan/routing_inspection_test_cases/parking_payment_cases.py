@@ -7,6 +7,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
@@ -45,6 +46,9 @@ class ParkingPaymentCases(TestCase):
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+
+        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        testPrepare.prepare()
 
     def test_parking_bound_license_plate(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
