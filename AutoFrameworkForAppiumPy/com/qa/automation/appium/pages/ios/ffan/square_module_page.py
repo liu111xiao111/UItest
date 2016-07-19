@@ -58,7 +58,7 @@ class SquareModulePage(SuperPage):
         usage: 点击美食汇
     '''
     def clickOnFood(self):
-        API().click_view_by_text_android(self.testcase,
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          SquareModulePageConfigs.text_food);
