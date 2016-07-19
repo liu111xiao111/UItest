@@ -2,13 +2,11 @@
 
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.pages.ios.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page import VersionUpgradePage
 
-'''
-    usage :
-'''
+
 class TestPrepare:
 
     def __init__(self, testcase, driver, logger):
@@ -20,35 +18,29 @@ class TestPrepare:
         self.updateVersion()
         self.switchCity()
 
-        # self.closeHomeShakeTips()
-
-        if needLogin == True:
+        if needLogin:
             self.login()
 
         self.backToDashBoard()
 
     def login(self):
-        dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
-        myFfanPage = MyFfanPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+        dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnMy()
 
-        dashboardPage.click_my()
-        myFfanPage.clickOnLogin()
-        loginPage = LoginPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+        myFeiFanPage = MyFeiFanPage(self.testcase, self.driver, self.logger)
+        myFeiFanPage.validSelf()
+        myFeiFanPage.clickOnLogin()
+
+        loginPage = LoginPage(self.testcase, self.driver, self.logger)
         loginPage.validSelf()
-        # loginPage.waitBySeconds(seconds=2)
         loginPage.switchToNormalLogin()
-        loginPage.inputUserName();
-        # loginPage.waitBySeconds(seconds=1)
+        loginPage.inputUserName()
         loginPage.inputPassWord()
-        # loginPage.waitBySeconds(seconds=1)
-        loginPage.clickOnLoginBtn();
-        # loginPage.waitBySeconds(seconds=3)
-        # dashboardPage.validSelf()
-        # dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        # myFfanPage.validLoginStatus()
-        dashboardPage.waitBySeconds(seconds=2);
+        loginPage.clickOnLoginBtn()
+        loginPage.wait_by_seconds(5)
 
+        myFeiFanPage.validSelf()
 
     def updateVersion(self):
         versionUpgradePage = VersionUpgradePage(self.testcase, self.driver, self.logger)
@@ -57,7 +49,6 @@ class TestPrepare:
             versionUpgradePage.cancelVersionUpgrade()
             versionUpgradePage.waitBySeconds()
             tempTimes += 1
-        # versionUpgradePage.invalidSelf()
 
     def switchCity(self):
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
@@ -66,16 +57,14 @@ class TestPrepare:
             switchCityPage.cancelSwitchCity()
             switchCityPage.waitBySeconds()
             tempTimes += 1
-            # switchCityPage.invalidSelf()
 
     def backToDashBoard(self):
-        dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
-        dashboardPage.click_aiguangjie()
-
+        dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
+        dashboardPage.clickOnBornToShop()
 
     def closeHomeShakeTips(self):
         dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
         dashboardPage.clickOnHomeShakeTips()
 
 if __name__ == '__main__':
-    pass;
+    pass
