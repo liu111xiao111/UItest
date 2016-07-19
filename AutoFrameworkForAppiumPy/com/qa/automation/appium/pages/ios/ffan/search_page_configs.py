@@ -6,6 +6,8 @@ class SearchPageConfigs():
 
     # 搜索 id
     resource_id_search_bt = "Search"
+    name_search_bt = u"搜索"
+
     # 搜索 输入框
     resource_et_search_input_et = "com.wanda.app.wanhui:id/et_search"
     xpath_search_tf = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]"

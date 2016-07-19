@@ -57,7 +57,7 @@ class SearchPage(SuperPage):
         '''
 
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.resource_id_search_bt,
+                                       SearchPageConfigs.name_search_bt,
                                        SearchPageConfigs.click_on_button_timeout)
 
     '''
@@ -65,13 +65,9 @@ class SearchPage(SuperPage):
     '''
 
     def clickOnSearchResultFirstItem(self):
-        tempText = API().get_view_by_xpath_android(self.testcase, self.driver, self.logger,
-                                                SearchPageConfigs.xpath_specific_store_tv).text
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_search_result_first_item_tv,
                                   SearchPageConfigs.click_on_button_timeout)
-
-        return tempText
 
     def clickOnMovie(self):
         '''
