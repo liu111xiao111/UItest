@@ -97,6 +97,9 @@ class DashboardPage(IosSuperPage):
     def clickOnMy(self):
         self.click_my()
 
+    def clickOnBornToShop(self):
+        self.click_aiguangjie()
+
     def clickOnSquareModule(self):
         '''
         usage: click on the nearby business circle.
