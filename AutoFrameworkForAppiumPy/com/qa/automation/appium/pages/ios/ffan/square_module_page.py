@@ -128,7 +128,7 @@ class SquareModulePage(SuperPage):
         usage: Click "排队取号"
     '''
     def clicOnQueue(self):
-        API().click_view_by_text_android(self.testcase,
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          SquareModulePageConfigs.text_queue);

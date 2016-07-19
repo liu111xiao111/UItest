@@ -72,7 +72,7 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
         '''
-        API().click_view_by_text_android(self.testcase,
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          MFPC.text_my_like)
