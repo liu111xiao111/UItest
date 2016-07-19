@@ -495,7 +495,10 @@ class API(object):
 
     def assert_equal(self, test_case, driver, logger, actual_text, expect_text):
         test_case.assertEqual(first=actual_text, second=expect_text, msg="actual text : %s != expected text : %s" % (actual_text, expect_text))
-        
+
+    def assert_greater_equal(self, test_case, driver, logger, list_len, expect_num):
+        test_case.assertGreaterEqual(a=list_len, b=expect_num, msg="actual text : %s !> expected text : %s" % (list_len, expect_num))
+
     def assert_true(self, test_case, driver, logger, result = True):
         test_case.assertTrue(result, msg="actual result : %s != expected result : %s" % (result, True))
 
@@ -575,6 +578,7 @@ class API(object):
 
     def input_view_by_xpath_ios(self, driver, logger, xpath, string):
         input_field = self.get_view_by_xpath_ios(driver, logger, xpath)
+        input_field.click()
         input_field.send_keys(string)
 
     def screen_shot(self, driver, screen_shot_name="myfeifan_auto_test"):
