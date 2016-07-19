@@ -42,10 +42,16 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "我的排队" page， according to textview in "我的排队", check "我的排队" page whether load correctly.
         '''
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             MFPC.text_my_queue)
-        API().click_view_by_text_android(self.testcase,
+        start_x = API().get_width_of_device(self.driver, self.logger)/2
+        end_x = API().get_width_of_device(self.driver, self.logger)/2
+        start_y = API().get_height_of_device(self.driver, self.logger)/2
+        end_y = API().get_height_of_device(self.driver, self.logger)/5
+
+        API().scroll(self.driver,
+                     self.logger,
+                     start_x, start_y, end_x, end_y)
+
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          MFPC.text_my_queue)

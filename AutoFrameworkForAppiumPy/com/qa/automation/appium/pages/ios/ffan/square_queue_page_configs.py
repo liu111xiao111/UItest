@@ -12,6 +12,7 @@ class SquareQueuePageConfigs():
     text_cancel_queue = u"取消排队"
     number_of_meals = "5"
 
+    xpath_view_text = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[7]"
     verify_view_text = u"取号成功"
     verify_view_timeout = 10
     verify_input_timeout = 10

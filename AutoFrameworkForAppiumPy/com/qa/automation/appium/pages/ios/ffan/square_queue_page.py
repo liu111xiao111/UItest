@@ -26,11 +26,13 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 检查是否取号成功
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                                  self.driver,
-                                                  self.logger,
-                                                  SQPC.verify_view_text,
-                                                  SQPC.verify_view_timeout)
+        getNumber = API().get_view_by_xpath_ios(self.driver,
+                                    self.logger,
+                                    SQPC.xpath_view_text).text
+        API().assert_equal(self.testcase,
+                           self.driver,
+                           self.logger, getNumber,
+                           SQPC.verify_view_text)
 
     def clicOnQueueNumber(self):
         '''
@@ -45,16 +47,16 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 输入用餐人数
         '''
-        '''API().input_view_by_xpath_ios(self.driver,
+        API().input_view_by_xpath_ios(self.driver,
                                       self.logger,
                                       SQPC.xpath_number_of_meals,
-                                      SQPC.number_of_meals)'''
+                                      SQPC.number_of_meals)
 
     def clicOnGetQueueNumber(self):
         '''
-        usage: Click "一键取号"
+        usage: 点击 "一键取号"
         '''
-        API().input_view_by_xpath_ios(self.testcase,
+        API().click_view_by_xpath(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SQPC.xpath_get_queue_number,
@@ -62,7 +64,7 @@ class SquareQueuePage(SuperPage):
 
     def clickOnCancelQueue(self):
         '''
-            Usage: Click on "取消排队"
+            Usage: 点击 "取消排队"
         '''
         API().click_view_by_xpath(self.testcase,
                                   self.driver,

@@ -42,14 +42,13 @@ class RecommendDetailsCategoryPage(SuperPage):
 
     def validSelfSubsciberNumber(self, originalNumber, newNumber):
         '''
-        usage : 取得 "喜欢"数
+        usage : 判断 "喜欢"数是否正确
         '''   
-        subsciberNumber = API().assert_equal(self.testcase,
+        API().assert_equal(self.testcase,
                                          self.driver,
                                          self.logger,
                                          originalNumber,
                                          newNumber)
-        return subsciberNumber
 
 
 if __name__ == '__main__':

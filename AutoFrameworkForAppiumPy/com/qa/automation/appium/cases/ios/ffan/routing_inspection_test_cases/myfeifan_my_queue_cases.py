@@ -11,16 +11,18 @@ from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearA
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_queue_page import SquareQueuePage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class SquareLefuPayCases(TestCase):
+class MyfeifanMyQueueCases(TestCase):
     '''
-    	巡检checklist: No.24
-    	自动化测试: No.24
-    	广场详情页点击排队取号进入排队取号页面，可以成功排队
+    	巡检checklist: No.55
+    	自动化测试: No.55
+    	点击我的排队，成功进入并显示正确数据
     '''
 
     def tearDown(self):
@@ -43,8 +45,10 @@ class SquareLefuPayCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
 
         # 首页进入广场页
         dashboardPage.validSelf();
@@ -64,13 +68,27 @@ class SquareLefuPayCases(TestCase):
         queuePage.validQueueSuccess()
         queuePage.clickOnCancelQueue()
 
+        myFfanPage.clickBackKey()
+        myFfanPage.clickBackKey()
+        myFfanPage.clickBackKey()
+
+        # 点击 "我的排队"
+        dashboardPage.validSelf()
+        dashboardPage.clickOnMy()
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyQueue()
+        myQueuePage.validSelf()
+
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SquareLefuPayCases)
+    log = Logger()
+    caseName = 'myfeifan_my_queue_cases'
+    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyQueueCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
+    filename = reportpath + caseName + now + '.html'
+    log.d("report file name ==== %s", filename)
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=caseName,
                                            description='Result for test')
     runner.run(suite)

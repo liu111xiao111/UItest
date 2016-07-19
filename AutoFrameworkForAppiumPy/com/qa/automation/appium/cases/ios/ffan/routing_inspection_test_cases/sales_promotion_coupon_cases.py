@@ -73,12 +73,6 @@ class SalesPromotionCouponCases(TestCase):
         salesPromotionCouponDetailsPage.waitBySeconds(1);
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn();
         salesPromotionCouponSuccessPage.validSelf();
-        '''salesPromotionCouponSuccessPage.clickOnCheckMyTicketBtn();
-        myOrderDetailsPage.waitBySeconds(seconds=5)
-        couponNo = myOrderDetailsPage.getMyCouponNumber();
-        
-        myOrderNo = salesPromotionCouponSuccessPage.getCouponDetails();
-        myTicketPage.validSelfTicketName(myOrderNo, couponNo);'''
 
 
 if __name__ == "__main__":
