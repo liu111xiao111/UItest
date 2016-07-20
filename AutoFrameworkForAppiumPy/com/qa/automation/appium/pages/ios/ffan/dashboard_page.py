@@ -97,6 +97,9 @@ class DashboardPage(IosSuperPage):
     def clickOnMy(self):
         self.click_my()
 
+    def clickOnBornToShop(self):
+        self.click_aiguangjie()
+
     def clickOnSquareModule(self):
         '''
         usage: click on the nearby business circle.
@@ -133,6 +136,13 @@ class DashboardPage(IosSuperPage):
         '''
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_brand);
+
+    def click_food(self):
+        '''
+        usage: 点击"美食汇"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_food);
 
     def clickOnSalesPromotion(self):
         '''

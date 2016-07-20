@@ -76,7 +76,7 @@ class SquareModulePage(SuperPage):
         usage: 点击找店
     '''
     def clicOnFindStore(self):
-        API().click_view_by_text_android(self.testcase,
+        API().click_view_by_resourceID(self.testcase,
                                          self.driver,
                                          self.logger,
                                          SquareModulePageConfigs.text_find_store);
