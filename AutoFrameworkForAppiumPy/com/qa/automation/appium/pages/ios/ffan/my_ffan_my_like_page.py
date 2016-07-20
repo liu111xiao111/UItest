@@ -24,28 +24,28 @@ class MyFfanMyLikePage(SuperPage):
         '''
         usage : Click "商品" in my order page， and load "商品" tab correctly. 
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.name_like_goods)
+        API().click_view_by_ios_uiautomation(self.testcase,
+                                             self.driver,
+                                             self.logger,
+                                             MLPC.uia_string_like_goods)
 
     def clickOnLikeDissertation(self):
         '''
         usage : Click "专题" in my order page， and load "专题" tab correctly. 
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.name_like_dissertation)
+        API().click_view_by_ios_uiautomation(self.testcase,
+                                             self.driver,
+                                             self.logger,
+                                             MLPC.uia_string_like_dissertation)
 
     def clickOnLikeBrand(self):
         '''
         usage : Click "品牌" in my order page， and load "品牌" tab correctly. 
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.name_like_brand)
+        API().click_view_by_ios_uiautomation(self.testcase,
+                                             self.driver,
+                                             self.logger,
+                                             MLPC.uia_string_like_brand)
 
 
 if __name__ == '__main__':
