@@ -95,11 +95,6 @@ class API(object):
     def get_views_by_uiautomator_android(self, driver, logger, selector="default"):
         return driver.find_elements_by_android_uiautomator(selector);
 
-    def find_element_by_ios_uiautomation(self, driver, logger, uia_string="default"):
-        return driver.find_element_by_ios_uiautomation(uia_string=uia_string)
-
-    def find_elements_by_ios_uiautomation(self, driver, logger, uia_string="default"):
-        return driver.find_elements_by_ios_uiautomation(uia_string=uia_string)
     '''
         usage : by android api
         parameters:
@@ -203,7 +198,7 @@ class API(object):
     def find_views_by_class_name_both(self, driver, logger, className="default"):
         return driver.find_elements_by_class_name(name=className)
 
-    def find_views_of_view_by_class_name_both(self, element,driver, logger, className="default"):
+    def find_views_of_view_by_class_name_both(self, element, driver, logger, className="default"):
         return element.find_elements_by_class_name(name=className)
 
     '''
@@ -245,6 +240,12 @@ class API(object):
         wdw = WebDriverWait(driver=driver, timeout=seconds);
         return wdw.until(EC.presence_of_element_located((By.CLASS_NAME, class_name)))
 
+    def find_element_by_ios_uiautomation(self, driver, logger, uia_string="default"):
+        return driver.find_element_by_ios_uiautomation(uia_string=uia_string)
+
+    def find_elements_by_ios_uiautomation(self, driver, logger, uia_string="default"):
+        return driver.find_elements_by_ios_uiautomation(uia_string=uia_string)
+
 
     '''
     ***********************************************************************************
@@ -252,6 +253,20 @@ class API(object):
         used by both android and ios
     ***********************************************************************************
     '''
+
+    def click_view_by_ios_uiautomation(self, testcase, driver, logger, uia_string="default", seconds=10):
+
+        try:
+            wdw = WebDriverWait(driver=driver, timeout=seconds)
+            findResult = wdw.until(EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uia_string)))
+            testcase.assertIsNotNone(findResult, "get ios automation %s timeout until %s seconds" % (uia_string, seconds))
+            findResult.click()
+        except NoSuchElementException:
+            self.screen_shot(driver, "get_ios_uiautomation_none")
+            testcase.assertTrue(False, "ios uiautomation %s none" % (uia_string))
+        except TimeoutException:
+            self.screen_shot(driver, "get_ios_uiautomation_none")
+            testcase.assertIsNotNone(None, "get ios uiautomation %s timeout until %s seconds" % (uia_string, seconds))
 
     def click_view_by_resourceID(self, testcase, driver, logger, resource_id, seconds=10):
 
@@ -300,7 +315,7 @@ class API(object):
     def click_view_by_content_desc(self, testcase, driver, logger, content_desc, seconds=10):
         try:
             self.find_view_by_content_desc_Until_android(driver=driver, logger=logger,
-                                                         content_desc=content_desc,seconds=seconds).click()
+                                                         content_desc=content_desc, seconds=seconds).click()
         except NoSuchElementException:
             self.screen_shot(driver, "get_content_desc_none")
             testcase.assertTrue(False, "content_desc %s none" % (content_desc))

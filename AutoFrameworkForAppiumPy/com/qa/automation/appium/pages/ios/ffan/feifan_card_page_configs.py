@@ -30,10 +30,7 @@ class FeiFanCardPageConfigs():
     resource_id_score_st = u"积分"
 
     # Bill
-#     xpath_bill_bt = "//UIAApplication[1]/UIAWindow[1]/UIAButton[4]"
-#     xpath_bill_bt = "//UIAApplication[1]/UIAWindow[1]/UIAImage[4]"
-    xpath_bill_bt = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]"
-    resource_id_bill_st = u"账单"
+    ios_uiautomation_bill_bt = ".buttons()[3]"
 
     def __init__(self):
         pass;
