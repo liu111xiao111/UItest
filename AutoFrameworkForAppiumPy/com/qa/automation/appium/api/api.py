@@ -98,6 +98,8 @@ class API(object):
     def find_element_by_ios_uiautomation(self, driver, logger, uia_string="default"):
         return driver.find_element_by_ios_uiautomation(uia_string=uia_string)
 
+    def find_elements_by_ios_uiautomation(self, driver, logger, uia_string="default"):
+        return driver.find_elements_by_ios_uiautomation(uia_string=uia_string)
     '''
         usage : by android api
         parameters:

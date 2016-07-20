@@ -144,6 +144,13 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_food);
 
+    def click_shopping_mall(self):
+        '''
+        usage: 点击"购物中心"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_shopping_mall);
+
     def clickOnSalesPromotion(self):
         '''
             usage: 点击"优惠活动"

@@ -37,6 +37,9 @@ class DashboardPageConfigs():
     """
     name_app_tabbar_user_normal = "app_tabbar_user_normal"
 
+    # "购物中心"
+    name_shopping_mall = u"购物中心"
+
     # "停车"
     name_parking = u"停车"
 
