@@ -30,7 +30,7 @@ class ChildCategoryPage(SuperPage):
         usage : 点击门店的listView
     '''
     def clickListFirstItem(self):
-        tempText = API().find_view_by_xpath_Until(self.driver,
+        tempText = API().get_view_by_xpath_ios(self.driver,
                                            self.logger,
                                            CCPC.xpath_store_list_1).text
 
@@ -81,17 +81,23 @@ class ChildCategoryPage(SuperPage):
         API().click_view_by_resourceID(self.testcase,
                                        self.driver,
                                        self.logger,
-                                       CCPC.resource_id_ll_other_store_ll);
+                                       CCPC.resource_id_ll_other_store_ll)
 
         '''
-        usage: verify whether the keyword is correct.
+        usage: 获取项目名称
         '''
-    def validKeywords(self, keywords):
-        API().assert_view_by_content_desc_android(self.testcase,
-                                                  self.driver,
-                                                  self.logger,
-                                                  keywords,
-                                                  CCPC.click_on_button_timeout)
+    def getItemName(self):
+        itemName = API().get_view_by_xpath_ios(driver=self.driver,
+                                               logger=self.logger,
+                                               xpath=CCPC.xpath_store_title).text
+        return itemName
+
+        '''
+        usage: 判断项目名称是否一致
+        '''
+    def validKeywords(self, keywords, itemName):
+        API().assert_equal(test_case=self.testcase,driver=self.driver,logger=self.logger,
+                           actual_text=itemName,expect_text=keywords)
 
 if __name__ == '__main__':
     pass

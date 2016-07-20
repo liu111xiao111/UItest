@@ -6,21 +6,20 @@ class ChildCategoryPageConfigs():
     # 亲子儿童
     name_child_title = u"亲子儿童"
     # 亲自游乐
-    resource_id_ll_child_play_ll = "亲子游乐"
+    resource_id_ll_child_play_ll = u"亲子游乐"
     # 儿童教育
     resource_id_ll_child_education_ll = u"儿童教育"
     # 亲子购物
-    resource_id_ll_child_shopping_ll = u"儿童购物"
+    resource_id_ll_child_shopping_ll = u"亲子购物"
     # 其它门店
     resource_id_ll_other_store_ll = u"其他门店"
 
     #xpath
     # 亲自游乐 儿童教育 亲子购物 其他门店 点击进去后的listview 的第一个的xpath
-    xpath_store_list_1 = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
+    xpath_store_list_1 = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
     # 门店详情界面
-    xpath_store_list_2 = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]"
+    xpath_store_list_2 = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]"
+    # 门店详情界面标题
+    xpath_store_title = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[1]"
     click_on_button_timeout = 10
-
-    # text指明类型为text label,后面是文字的拼音
-    text_chile_category = "儿童教育"
 
