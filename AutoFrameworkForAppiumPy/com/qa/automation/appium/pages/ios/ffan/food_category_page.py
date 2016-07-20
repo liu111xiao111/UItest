@@ -16,6 +16,17 @@ class FoodCategoryPage(IosSuperPage):
         API().assert_equal(test_case=self.testcase,driver=self.driver,logger=self.logger,
                            actual_text=navigation.get_attribute("name"),expect_text=FoodCategoryPageConfigs.name_food_category_navigation_bar)
 
+    def validModules(self):
+        '''
+        usage: 点击美食主界面的所有入口并验证
+        '''
+        restaurantList = API().get_views_by_resourceID(self.driver,
+                                                       self.logger,
+                                                       FCPC.resource_id_bt_restaurant_bt)
+        for restaurant in restaurantList:
+            restaurant.click()
+            self.validRestaurant()
+            self.clickBackKey()
 
 if __name__ == '__main__':
     pass;

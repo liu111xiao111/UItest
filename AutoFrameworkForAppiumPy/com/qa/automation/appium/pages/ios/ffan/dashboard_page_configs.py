@@ -55,7 +55,12 @@ class DashboardPageConfigs():
     # "美食汇"
     name_food = u"美食汇";
 
+    # "优惠"
     name_sales_promotion = u"优惠";
+
+    # "亲子"
+    name_child = u"亲子";
+
 
     # 全城搜索输入框
     resource_id_tv_search_tv = "全城搜索"

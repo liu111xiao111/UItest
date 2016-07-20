@@ -169,6 +169,12 @@ class DashboardPage(IosSuperPage):
                                          self.logger,
                                          DashboardPageConfigs.name_sales_promotion)
 
+    def clickOnChildCategory(self):
+        '''
+        usage: 点击"亲子"
+        '''
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
+                                       resource_id=DashboardPageConfigs.name_child);
 
 if __name__ == '__main__':
     pass
