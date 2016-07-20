@@ -61,15 +61,17 @@ class BrandRecommendCatergoryCases(TestCase):
         recommendDetailsPage.validSelf()
 
         # 点击 “心形”订阅
+        recommendDetailsPage.waitBySeconds(10)
         originNumber = recommendDetailsPage.getSubsciberNumber()
         recommendDetailsPage.clickOnSubsciber()
         newNumber = str(int(recommendDetailsPage.getSubsciberNumber()) + 1)
         recommendDetailsPage.validSelfSubsciberNumber(originNumber, newNumber)
 
         # 取消订阅
-        '''recommendDetailsPage.clickOnSubsciber()
+        recommendDetailsPage.waitBySeconds(10)
+        recommendDetailsPage.clickOnSubsciber()
         newCancelNumber = recommendDetailsPage.getSubsciberNumber()
-        recommendDetailsPage.validSelfSubsciberNumber(orifinalNumber, newCancelNumber)'''
+        recommendDetailsPage.validSelfSubsciberNumber(originNumber, newCancelNumber)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(BrandRecommendCatergoryCases)
