@@ -16,10 +16,9 @@ from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
-from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver;
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
-
 
 class DashboardSearchBrandCases(TestCase):
     '''
