@@ -517,6 +517,9 @@ class API(object):
     def assert_equal(self, test_case, driver, logger, actual_text, expect_text):
         test_case.assertEqual(first=actual_text, second=expect_text, msg="actual text : %s != expected text : %s" % (actual_text, expect_text))
 
+    def assert_not_equal(self, test_case, driver, logger, actual_text, expect_text):
+        test_case.assert_not_equal(first=actual_text, second=expect_text, msg="actual text : %s == expected text : %s" % (actual_text, expect_text))
+
     def assert_greater_equal(self, test_case, driver, logger, list_len, expect_num):
         test_case.assertGreaterEqual(a=list_len, b=expect_num, msg="actual text : %s !> expected text : %s" % (list_len, expect_num))
 
