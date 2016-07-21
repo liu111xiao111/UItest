@@ -30,6 +30,8 @@ class TestPrepare:
 
         myFeiFanPage = MyFeiFanPage(self.testcase, self.driver, self.logger)
         myFeiFanPage.validSelf()
+        if myFeiFanPage.validLoginStatus(False):
+            return
         myFeiFanPage.clickOnLogin()
 
         loginPage = LoginPage(self.testcase, self.driver, self.logger)

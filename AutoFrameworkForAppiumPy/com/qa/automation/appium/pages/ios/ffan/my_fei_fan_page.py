@@ -26,14 +26,24 @@ class MyFeiFanPage(SuperPage):
                                               MyFeiFanPageConfigs.resource_id_my_fei_fan_title_st,
                                               MyFeiFanPageConfigs.assert_view_timeout)
 
-    def validLoginStatus(self):
+    def validLoginStatus(self, assertable=True):
         '''
         usage: Verify whether the current status is login.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              MyFeiFanPageConfigs.resource_id_nickname_st,
-                                              MyFeiFanPageConfigs.assert_view_timeout)
+        if assertable:
+            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                                  MyFeiFanPageConfigs.resource_id_nickname_st,
+                                                  MyFeiFanPageConfigs.assert_view_timeout)
+            return True
+        else:
+            try:
+                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
+                                                      MyFeiFanPageConfigs.resource_id_nickname_st,
+                                                      MyFeiFanPageConfigs.assert_view_timeout)
+                return True
+            except AssertionError:
+                return False
 
     def validLogoutStatus(self):
         '''
