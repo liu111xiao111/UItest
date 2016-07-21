@@ -354,6 +354,10 @@ class API(object):
         x = driver.get_window_size()['width']
         # logger.d("window size = d%" + x);
         return x;
+    
+    
+    def get_info(self,driver,logger):
+        pass
 
     '''
     ***********************************************************************************
