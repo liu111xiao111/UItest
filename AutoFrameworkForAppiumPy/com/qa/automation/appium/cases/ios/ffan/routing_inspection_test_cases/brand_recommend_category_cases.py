@@ -63,13 +63,16 @@ class BrandRecommendCatergoryCases(TestCase):
         # 点击 “心形”订阅
         recommendDetailsPage.waitBySeconds(10)
         originNumber = recommendDetailsPage.getSubsciberNumber()
+        tempNumber = str(int(originNumber)+1)
         recommendDetailsPage.clickOnSubsciber()
-        newNumber = str(int(recommendDetailsPage.getSubsciberNumber()) + 1)
-        recommendDetailsPage.validSelfSubsciberNumber(originNumber, newNumber)
+        recommendDetailsPage.waitBySeconds(10)
+        newNumber = recommendDetailsPage.getSubsciberNumber()
+        recommendDetailsPage.validSelfSubsciberNumber(tempNumber, newNumber)
 
         # 取消订阅
         recommendDetailsPage.waitBySeconds(10)
         recommendDetailsPage.clickOnSubsciber()
+        recommendDetailsPage.waitBySeconds(10)
         newCancelNumber = recommendDetailsPage.getSubsciberNumber()
         recommendDetailsPage.validSelfSubsciberNumber(originNumber, newCancelNumber)
 

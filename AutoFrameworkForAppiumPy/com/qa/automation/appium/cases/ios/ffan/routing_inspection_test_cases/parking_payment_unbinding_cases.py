@@ -12,11 +12,11 @@ from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearA
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.ios.ffan.parking_page import ParkingPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_input_plate_number_page import ParkingPaymentInputPlateNumberPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_page import ParkingPaymentPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_more_page import ParkingPaymentMorePage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_unbound_confirm_page import ParkingPaymentUnboundConfirmPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -51,30 +51,24 @@ class ParkingPaymentCases(TestCase):
 
     def test_case(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
+        parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentMorePage = ParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
         # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
         dashboard.valid_self()
-        dashboard.click_my()
-        myFfanPage.validSelf()
+        dashboard.click_parking()
+        parkingPage.validSelf()
 
         # 点击停车交费
-        myFfanPage.clickOnParkingPayment()
-        parkingPaymentInputPlateNumberPage.validSelf()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-
-        # 输入要绑定的车牌号
-        parkingPaymentInputPlateNumberPage.inputPlateNumber()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        parkingPaymentInputPlateNumberPage.clickOnNextStep()
+        parkingPage.clickOnParkingPayment()
         parkingPaymentPage.validSelf()
+        parkingPaymentPage.waitBySeconds(seconds=1)
 
-        # 解除绑定
+        # 点击解除绑定
         parkingPaymentPage.clickOnMore()
         parkingPaymentMorePage.validSelf()
         parkingPaymentMorePage.clickOnUnbundLicensePlate()
