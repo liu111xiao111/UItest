@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
-from com.qa.automation.appium.pages.ios.ffan.love_shopping_page_configs import LoveShoppingPageConfigs
-
-
 """
     爱逛街tab对应页面实现
 """
-class LoveShoppingPage(IosSuperPage):
+
+from sys import api_version
+
+from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.love_shopping_page_configs import LoveShoppingPageConfigs
+
+
+class LoveShoppingPage(SuperPage):
 
     def __init__(self, test_case, driver, logger):
         super(LoveShoppingPage, self).__init__(testcase=test_case, driver=driver, logger=logger);
@@ -18,14 +21,14 @@ class LoveShoppingPage(IosSuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase,driver=self.driver,
-                                              logger=self.logger,resource_id=LoveShoppingPageConfigs.name_shopping_mall)
+        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver,
+                                              logger=self.logger, resource_id=LoveShoppingPageConfigs.name_shopping_mall)
 
 
     # 点击购物中心按钮
     def clickOnShoppingMall(self):
-        API().click_view_by_resourceID(testcase=self.testcase,driver=self.driver,
-                                               logger=self.logger,resource_id=LoveShoppingPageConfigs.name_shopping_mall)
+        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver,
+                                               logger=self.logger, resource_id=LoveShoppingPageConfigs.name_shopping_mall)
 
     # 点击电影按钮
     def clickOnFilm(self):
@@ -65,7 +68,7 @@ class LoveShoppingPage(IosSuperPage):
 
     # 点击限时抢购按钮
     def clickOnFlashSale(self):
-        API().click_view_by_xpath(testcase=self.testcase,driver=self.driver,logger=self.logger,xpath=LoveShoppingPageConfigs.xpath_flash_sale)
+        API().click_view_by_xpath(testcase=self.testcase, driver=self.driver, logger=self.logger, xpath=LoveShoppingPageConfigs.xpath_flash_sale)
 
     # 点击停车按钮
     def clickOnParking(self):
@@ -79,6 +82,24 @@ class LoveShoppingPage(IosSuperPage):
                                                logger=self.logger,
                                                resource_id=LoveShoppingPageConfigs.name_le_pays)
 
+    def getCurrentCityName(self):
+        return API.get_view_by_xpath_ios(self.testcase, self.driver, self.logger,
+                                         LoveShoppingPageConfigs.xpath_city_name_st).text
+
+    def clickOnCityName(self):
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+                                  LoveShoppingPageConfigs.xpath_city_name_bt,
+                                  LoveShoppingPageConfigs.click_on_button_timeout)
+
+    def switchCity(self, cityName):
+        startPoint = 2
+        tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[%d]"
+        goalXpath = tempXpath % startPoint
+        while(cityName == API().get_view_by_xpath_ios(self.driver, self.logger, goalXpath).text):
+            startPoint += 1
+            goalXpath = tempXpath % startPoint
+        API().click_view_by_xpath(self.testcase, self.driver, self.logger, goalXpath,
+                                  LoveShoppingPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass;

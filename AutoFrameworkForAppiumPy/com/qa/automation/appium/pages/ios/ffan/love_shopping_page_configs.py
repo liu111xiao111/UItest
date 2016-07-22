@@ -31,6 +31,21 @@ class LoveShoppingPageConfigs():
     """
     xpath_flash_sale = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIACollectionView[1]/UIACollectionCell[6]"
 
+    # Assert view time out
+    assert_view_timeout = 10
+
+    # Verify view time out
+    verify_view_timeout = 10
+
+    # Assert invalid view time out
+    assert_invalid_view_time = 3
+
+    # Click button time out
+    click_on_button_timeout = 10
+
+    # City name
+    xpath_city_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
+    xpath_city_name_bt = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
 
     def __init__(self):
         pass;
