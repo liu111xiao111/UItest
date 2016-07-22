@@ -56,7 +56,7 @@ class DashboardPageConfigs():
     name_food = u"美食汇";
 
     # "优惠"
-    name_sales_promotion = u"优惠";
+    name_sales_promotion = u"优惠活动";
 
     # "亲子"
     name_child = u"亲子";
