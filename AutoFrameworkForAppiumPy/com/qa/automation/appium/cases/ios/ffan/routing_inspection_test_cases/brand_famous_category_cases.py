@@ -19,9 +19,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class BrandFamousCatergoryCases(TestCase):
     '''
-        巡检checklist #8
-        自动化测试 #8-2
-        首页进入品牌简单浏览品牌中推荐和大牌的内容，点击验证是否可以进入详情页，显示是否正常，能否喜欢订阅
+    作者 刘涛
+    巡检checklist #8
+    自动化测试 #8-2
+    首页进入品牌简单浏览品牌中推荐和大牌的内容，点击验证是否可以进入详情页，显示是否正常，能否喜欢订阅
     '''
 
     def tearDown(self):

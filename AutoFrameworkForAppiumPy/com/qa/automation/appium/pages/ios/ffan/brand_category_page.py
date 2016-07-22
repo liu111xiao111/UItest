@@ -7,6 +7,10 @@ from com.qa.automation.appium.pages.ios.ffan.brand_category_page_configs import 
 
 
 class BrandCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>品牌
+    '''
 
     def __init__(self,testcase,driver,logger):
         self.a = 12;
