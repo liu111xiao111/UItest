@@ -43,6 +43,9 @@ class LoveShoppingPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    # Get view time out
+    get_view_timeout = 10
+
     # City name
     xpath_city_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
     xpath_city_name_bt = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"

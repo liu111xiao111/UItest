@@ -20,9 +20,9 @@ class LoveShoppingPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assertElementByResourceId(testcase=self.testcase, driver=self.driver,
-                                              logger=self.logger, resource_id=LoveShoppingPageConfigs.name_shopping_mall)
-
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        LoveShoppingPageConfigs.name_shopping_mall,
+                                        LoveShoppingPageConfigs.assert_view_timeout)
 
     # 点击购物中心按钮
     def clickOnShoppingMall(self):
@@ -82,11 +82,11 @@ class LoveShoppingPage(SuperPage):
                                                resource_id=LoveShoppingPageConfigs.name_le_pays)
 
     def getCurrentCityName(self):
-        return API.getTextByXpath(self.testcase, self.driver, self.logger,
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
                                   LoveShoppingPageConfigs.xpath_city_name_st)
 
     def clickOnCityName(self):
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   LoveShoppingPageConfigs.xpath_city_name_bt,
                                   LoveShoppingPageConfigs.click_on_button_timeout)
 
@@ -94,10 +94,11 @@ class LoveShoppingPage(SuperPage):
         startPoint = 2
         tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[%d]"
         goalXpath = tempXpath % startPoint
-        while(cityName == API().get_view_by_xpath_ios(self.driver, self.logger, goalXpath).text):
+        while(cityName == API().getTextByXpath(self.testcase, self.driver, self.logger, goalXpath,
+                                               LoveShoppingPageConfigs.get_view_timeout)):
             startPoint += 1
             goalXpath = tempXpath % startPoint
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, goalXpath,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, goalXpath,
                                   LoveShoppingPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':

@@ -38,7 +38,7 @@ class SwitchCityPage(SuperPage):
         usage: cancel switch city.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                        SwitchCityPageConfigs.click_on_button_timeout)
 
@@ -56,9 +56,10 @@ class SwitchCityPage(SuperPage):
         usage: verify whether the current page is not the switch city page.
         '''
 
-        API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
-                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
-                                                            SwitchCityPageConfigs.assert_invalid_view_time)
+        API().assertFalse(self.testcase, self.logger,
+                          API().validElementByResourceId(self.testcase, self.driver, self.logger,
+                                                         SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                                         SwitchCityPageConfigs.assert_invalid_view_time))
 
 if __name__ == '__main__':
     pass
