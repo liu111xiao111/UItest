@@ -4,7 +4,9 @@ from appium import webdriver
 
 
 class AppiumDriver():
-
+    '''
+    Appium Dirver初始化
+    '''
     def __init__(self, app_package='com.ffan.bp.test', app_activity='.SplashActivity',
                  platform_name='Android', platform_version='4.4', device_name='Android',
                  driver_url='http://localhost:4723/wd/hub', bundle_id='com.dianshang.wanhui',ios_udid=""):
@@ -18,7 +20,9 @@ class AppiumDriver():
         self.ios_udid = ios_udid
 
     def getDriver(self):
-       
+        '''
+        usage: 获取driver方法
+        '''
         if (self.platformName == "Android"):
             desired_caps = {
                 'platformName': self.platformName,
@@ -39,10 +43,3 @@ class AppiumDriver():
             }
         #print("desired caps %s" % (desired_caps));
         return webdriver.Remote(self.driver_url, desired_caps)
-
-
-
-
-if __name__ == '__main__':
-    appiumDriver = AppiumDriver(platform_name="iOS",platform_version="9.3.1",device_name='iPhone',bundle_id="com.dianshang.wanhui",ios_udid="94f6c2802867d75fbca745af712e03b7f72d4cc1")
-    appiumDriver.getDriver();

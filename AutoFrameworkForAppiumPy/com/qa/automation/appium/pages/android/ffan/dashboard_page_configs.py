@@ -50,9 +50,6 @@ class DashboardPageConfigs():
 
     text_search_text = u"adidas"
 
-    # Verify view time out
-    verify_view_timeout = 10
-
     # Beijing Text identify
     text_city_beijing = "北京市"
 

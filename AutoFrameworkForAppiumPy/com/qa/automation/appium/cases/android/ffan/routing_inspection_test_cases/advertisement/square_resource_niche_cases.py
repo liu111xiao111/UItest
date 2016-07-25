@@ -55,11 +55,11 @@ class SquareResourceNicheCases(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
         squareModulePage.validSelf()
-        dashboardPage.screen_shot("square_resource_niche_square")
+        dashboardPage.screenShot("square_resource_niche_square")
 
         squareModulePage.clickOnResourceNiche()
         resourceNicheDetailsPage.validSelf()
-        squareModulePage.screen_shot("square_resource_niche")
+        squareModulePage.screenShot("square_resource_niche")
         squareModulePage.waitBySeconds()
 
 

@@ -8,7 +8,7 @@ NOFIND = -1
 
 class CheckNetworkStatus:
     '''
-        usage :  Check Network status.
+        usage :  检查网络连接状态
     '''
 
     def __init__(self):
@@ -23,8 +23,3 @@ class CheckNetworkStatus:
         else:
             print(err);
             return NOCONNECTION;
-        
-
-if __name__ == '__main__':
-    checkNetworkStatus = CheckNetworkStatus()
-    checkNetworkStatus.checkNetwork()
