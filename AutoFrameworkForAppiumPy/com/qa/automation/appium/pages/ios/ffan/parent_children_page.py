@@ -2,11 +2,11 @@
 
 from com.qa.automation.appium.pages.ios.ffan.parent_children_page_configs import ParentChildrenPageConfigs
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
 #   首页 亲子
-class ParentChildrenPage(IosSuperPage):
+class ParentChildrenPage(SuperPage):
 
     def __init__(self, testcase, driver, logger):
         super(ParentChildrenPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

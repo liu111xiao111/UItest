@@ -2,11 +2,12 @@
 
 from com.qa.automation.appium.pages.ios.ffan.food_category_page_configs import FoodCategoryPageConfigs
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
+FCPC = FoodCategoryPageConfigs()
 #   首页点击 美食
-class FoodCategoryPage(IosSuperPage):
+class FoodCategoryPage(SuperPage):
 
     def __init__(self, testcase, driver, logger):
         super(FoodCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

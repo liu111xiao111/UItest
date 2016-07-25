@@ -6,8 +6,11 @@ from com.qa.automation.appium.pages.android.ffan.recommend_details_category_page
 
 RDCPC = RecommendDetailsCategoryPageConfigs()
 
-#   首页点击推荐，显示详情页
 class RecommendDetailsCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>品牌(大牌)=>详情页
+    '''
 
     def __init__(self,testcase,driver,logger):
         self.a = 12;

@@ -5,8 +5,11 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.famous_details_category_page_configs import FamousDetailsCategoryPageConfigs
 
 
-#   首页点击推荐，显示详情页
 class FamousDetailsCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>品牌(推荐)=>详情页
+    '''
 
     def __init__(self,testcase,driver,logger):
         self.a = 12;
