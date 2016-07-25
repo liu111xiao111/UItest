@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.square_dynamic_page_configs import 
 
 class SquareDynamicPage(SuperPage):
     '''
-    This is square dynamic page operation class.
+    作者 宋波
+    首页=>我的飞凡=>消息中心=>飞凡活动
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -26,6 +26,7 @@ class SquareDynamicPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               SquareDynamicPageConfigs.resource_id_square_dynamic_title_st,
                                               SquareDynamicPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

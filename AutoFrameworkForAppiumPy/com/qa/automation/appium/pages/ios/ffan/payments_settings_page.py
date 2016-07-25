@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.payments_settings_page_configs impo
 
 class PaymentsSettingsPage(SuperPage):
     '''
-    This is a payments settings page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>支付设置
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -44,6 +44,7 @@ class PaymentsSettingsPage(SuperPage):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                        PaymentsSettingsPageConfigs.resource_id_small_amount_password_less_payments_st,
                                        PaymentsSettingsPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

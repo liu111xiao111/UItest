@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.payments_password_management_page_c
 
 class PaymentsPasswordManagementPage(SuperPage):
     '''
-    This is a payments password management page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>支付设置=>支付密码管理
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -26,6 +26,7 @@ class PaymentsPasswordManagementPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               PaymentsPasswordManagementPageConfigs.resource_id_update_payments_password_title_st,
                                               PaymentsPasswordManagementPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

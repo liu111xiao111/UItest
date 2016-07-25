@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page_configs import VersionUpgradePageConfigs

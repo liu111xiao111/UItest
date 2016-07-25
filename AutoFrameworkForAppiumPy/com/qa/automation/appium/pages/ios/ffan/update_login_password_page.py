@@ -2,13 +2,13 @@
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.update_login_password_page_configs import \
-    UpdateLoginPasswordPageConfigs
+from com.qa.automation.appium.pages.ios.ffan.update_login_password_page_configs import UpdateLoginPasswordPageConfigs
 
 
 class UpdateLoginPasswordPage(SuperPage):
     '''
-    This is a version update page operation class.
+    作者 宋波
+    首页=>我的飞凡=>设置=>账号管理=>修改登录密码
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -62,6 +62,7 @@ class UpdateLoginPasswordPage(SuperPage):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                        UpdateLoginPasswordPageConfigs.resource_id_confirm_bt,
                                        UpdateLoginPasswordPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

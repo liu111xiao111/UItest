@@ -6,9 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.hui_life_page_configs import HuiLif
 
 HLPC = HuiLifePageConfigs()
 
+
 class HuiLifePage(SuperPage):
     '''
-    首页->惠生活页面
+    作者 宋波
+    首页=>惠生活页面
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -373,6 +375,7 @@ class HuiLifePage(SuperPage):
                                                   self.logger,
                                                   HLPC.verify_text_illegal_inquiry,
                                                   HLPC.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

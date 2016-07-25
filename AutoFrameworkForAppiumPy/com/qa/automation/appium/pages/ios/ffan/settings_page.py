@@ -5,8 +5,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.settings_page_configs import SettingsPageConfigs
 
 
-#   设置页面
 class SettingsPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>我的飞凡=>设置
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SettingsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

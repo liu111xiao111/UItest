@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.coupon_details_page_configs import 
 
 class CouponDetailsPage(SuperPage):
     '''
-    This is hui life page operation class.
+    作者 宋波
+    首页=>惠生活页面=>券详情
     '''
 
     def __init__(self, testcase, driver, logger):

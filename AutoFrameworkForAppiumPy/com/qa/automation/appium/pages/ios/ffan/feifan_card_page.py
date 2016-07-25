@@ -6,10 +6,13 @@ from com.qa.automation.appium.pages.ios.ffan.feifan_card_page_configs import Fei
 
 FCPC = FeiFanCardPageConfigs()
 
-'''
-    usage: 飞凡卡
-'''
+
 class FeiFanCardPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>飞凡卡
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(FeiFanCardPage, self).__init__(testcase,
                                              driver,

@@ -5,10 +5,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.feifan_card_bill_page_configs import FeiFanCardBillPageConfigs
 
 
-'''
-    usage: 飞凡卡
-'''
 class FeiFanCardBillPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>飞凡卡=>飞凡卡账单
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(FeiFanCardBillPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
@@ -45,6 +47,7 @@ class FeiFanCardBillPage(SuperPage):
 
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, text,
                                               FeiFanCardBillPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass;

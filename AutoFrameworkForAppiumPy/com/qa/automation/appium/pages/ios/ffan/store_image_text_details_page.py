@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.store_image_text_details_page_confi
 
 class StoreImageTextDetailsPage(SuperPage):
     '''
-    This is a store image text details page operation class.
+    作者 宋波
+    首页=>搜索页=>门店信息=>门店图文详情
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -32,6 +33,7 @@ class StoreImageTextDetailsPage(SuperPage):
         print("KEYWORDS: %s" % keywords)
 
         API().assert_view_by_content_desc_android(self.testcase, self.driver, self.logger, keywords, StoreImageTextDetailsPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

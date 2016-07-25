@@ -6,11 +6,12 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.small_amount_password_less_payments_page_configs import SmallAmountPasswordLessPaymentsPageConfigs
 
+
 class SmallAmountPasswordLessPaymentsPage(SuperPage):
     '''
-    This is small amount password-less payments page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>支付设置=>小额免密支付
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -49,6 +50,7 @@ class SmallAmountPasswordLessPaymentsPage(SuperPage):
             return True
         except TimeoutException:
             return False
+
 
 if __name__ == '__main__':
     pass

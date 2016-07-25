@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.message_centre_page_configs import 
 
 class MessageCentrePage(SuperPage):
     '''
-    This is message centre page operation class.
+    作者 宋波
+    首页=>我的飞凡=>消息中心
     '''
 
     def __init__(self, testcase, driver, logger):

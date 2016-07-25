@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.goods_details_page_configs import G
 
 class GoodsDetailsPage(SuperPage):
     '''
-    This is goods details page operation class.
+    作者 宋波
+    首页=>广场=>爱购物=>商品详情
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -37,6 +38,7 @@ class GoodsDetailsPage(SuperPage):
                                                                             self.logger, keywords,
                                                                             GoodsDetailsPageConfigs.xpath_commodity_name_st,
                                                                             GoodsDetailsPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

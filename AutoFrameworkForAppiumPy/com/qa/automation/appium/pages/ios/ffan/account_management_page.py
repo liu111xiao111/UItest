@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.account_management_page_configs imp
 
 class AccountManagementPage(SuperPage):
     '''
-    This is a version update page operation class.
+    作者 宋波
+    首页=>我的飞凡=>设置=>账号管理
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -43,6 +44,7 @@ class AccountManagementPage(SuperPage):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                        AccountManagementPageConfigs.resource_id_small_amount_password_less_payments,
                                        AccountManagementPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

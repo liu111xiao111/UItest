@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.login_page_configs import LoginPage
 
 class LoginPage(IosSuperPage):
     '''
-    This is a test case for login.
+    作者 宋波
+    首页=>我的飞凡=>登录
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -43,6 +44,7 @@ class LoginPage(IosSuperPage):
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
                                        LoginPageConfigs.xpath_login_bt,
                                        LoginPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass;

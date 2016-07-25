@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.general_coupon_page_configs import 
 
 class GeneralCouponPage(SuperPage):
     '''
-    This is general coupon page operation class.
+    作者 宋波
+    首页=>广场=>通用券
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -35,6 +35,7 @@ class GeneralCouponPage(SuperPage):
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
                                   GeneralCouponPageConfigs.xpath_immediately_to_receive,
                                   GeneralCouponPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

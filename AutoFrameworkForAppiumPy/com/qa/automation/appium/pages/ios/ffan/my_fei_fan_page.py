@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page_configs import MyFe
 
 class MyFeiFanPage(SuperPage):
     '''
-    This is a My FeiFan page operation class.
+    作者 宋波
+    首页=>我的飞凡
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -113,6 +114,7 @@ class MyFeiFanPage(SuperPage):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
                                        MyFeiFanPageConfigs.resource_id_my_fei_fan_card_st,
                                        MyFeiFanPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

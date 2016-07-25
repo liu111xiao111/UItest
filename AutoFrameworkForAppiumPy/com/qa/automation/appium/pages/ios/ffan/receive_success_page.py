@@ -9,9 +9,9 @@ from com.qa.automation.appium.pages.ios.ffan.receive_success_page_configs import
 
 class ReceiveSuccessPage(SuperPage):
     '''
-    This is receive success page operation class.
+    作者 宋波
+    首页=>广场=>通用券=>领取成功
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -44,6 +44,7 @@ class ReceiveSuccessPage(SuperPage):
         '''
 
         return None
+
 
 if __name__ == '__main__':
     pass

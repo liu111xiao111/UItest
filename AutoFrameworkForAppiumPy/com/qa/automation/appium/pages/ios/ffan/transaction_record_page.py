@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.transaction_record_page_configs imp
 
 class TransactionRecordPage(SuperPage):
     '''
-    This is a transaction record page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>交易记录
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -26,6 +26,7 @@ class TransactionRecordPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               TransactionRecordPageConfigs.resource_id_transaction_record_title_st,
                                               TransactionRecordPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

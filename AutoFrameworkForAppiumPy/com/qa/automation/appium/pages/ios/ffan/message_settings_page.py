@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.message_settings_page_configs impor
 
 class MessageSettingsPage(SuperPage):
     '''
-    This is message settings page operation class.
+    作者 宋波
+    首页=>我的飞凡=>消息中心=>设置
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -35,6 +35,7 @@ class MessageSettingsPage(SuperPage):
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,
                                   MessageSettingsPageConfigs.xpath_activity_push_compound_sc,
                                   MessageSettingsPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

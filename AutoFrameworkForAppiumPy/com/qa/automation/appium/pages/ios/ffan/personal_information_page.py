@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.personal_information_page_configs i
 
 class PersonalInformationPage(SuperPage):
     '''
-    This is personal information page operation class.
+    作者 宋波
+    首页=>我的飞凡=>个人信息
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -25,6 +26,7 @@ class PersonalInformationPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               PersonalInformationPageConfigs.resource_id_nickname_st,
                                               PersonalInformationPageConfigs.assert_view_timeout)
+
 
 if __name__ == '__main__':
     pass

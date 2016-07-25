@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.fei_fan_membership_page_configs imp
 
 class FeiFanMembershipPage(SuperPage):
     '''
-    This is fei fan membership page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的会员卡包=>飞凡会员
     '''
 
     def __init__(self, testcase, driver, logger):

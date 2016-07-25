@@ -53,9 +53,7 @@ class SquareGeneralCouponCases(TestCase):
 
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
-
-        receiveSuccessPage.waitBySeconds(seconds=2)
-
+        receiveSuccessPage.waitBySeconds(2)
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()
 #         receiveSuccessPage.clickBackKey()
 #
@@ -78,6 +76,7 @@ class SquareGeneralCouponCases(TestCase):
 #         myFfanMyTicketPage.clickBackKey()
 #
 #         myFfanPage.validSelf()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareGeneralCouponCases)
