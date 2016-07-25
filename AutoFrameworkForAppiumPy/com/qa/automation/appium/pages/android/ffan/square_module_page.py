@@ -200,10 +200,10 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击达人推荐
         '''
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             SMPC.text_staff_picks_button)
-        tempText = API().getTextByxPath(self.testcase,
+        API().scrollToText(self.driver,
+                           self.logger,
+                           SMPC.text_staff_picks_button)
+        tempText = API().getTextByXpath(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SMPC.xpath_sub_staff_picks_button,

@@ -1,37 +1,34 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.store_image_text_details_page_configs import StoreImageTextDetailsPageConfigs
+from com.qa.automation.appium.pages.android.ffan.store_image_text_details_page_configs import StoreImageTextDetailsPageConfigs as SITDPC
 
 
 class StoreImageTextDetailsPage(SuperPage):
     '''
-    This is a store image text details page operation class.
+    作者 宋波
+    首页=>搜索页=>门店信息=>门店图文详情
     '''
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(StoreImageTextDetailsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct.
+        usage: 验证门店图文详情界面
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, StoreImageTextDetailsPageConfigs.resource_id_store_image_text_details, StoreImageTextDetailsPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SITDPC.resource_id_store_image_text_details,
+                                        SITDPC.assert_view_timeout)
 
     def validKeywords(self, keywords):
         '''
-        usage: verify whether the keyword is correct.
+        usage: 验证关键字
         '''
-
-        print("KEYWORDS: %s" % keywords)
-
-        API().assert_view_by_content_desc_android(self.testcase, self.driver, self.logger, keywords, StoreImageTextDetailsPageConfigs.assert_view_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         keywords,
+                                         SITDPC.assert_view_timeout)
