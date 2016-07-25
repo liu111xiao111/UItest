@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.switch_city_page_configs import SwitchCityPageConfigs
 
@@ -24,18 +24,14 @@ class SwitchCityPage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                  SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
-                                                  SwitchCityPageConfigs.assert_view_timeout)
+            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                            SwitchCityPageConfigs.assert_view_timeout)
             return True
         else:
-            try:
-                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
-                                                      SwitchCityPageConfigs.verify_view_timeout)
-                return True
-            except AssertionError:
-                return False
+            return API().validElementByResourceId(self.testcase, self.driver, self.logger,
+                                                  SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
+                                                  SwitchCityPageConfigs.verify_view_timeout)
 
     def cancelSwitchCity(self):
         '''

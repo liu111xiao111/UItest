@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
 
-"""
-    爱逛街tab对应页面实现
-"""
 
-from sys import api_version
-
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.love_shopping_page_configs import LoveShoppingPageConfigs
 
@@ -25,7 +20,7 @@ class LoveShoppingPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver,
+        API().assertElementByResourceId(testcase=self.testcase, driver=self.driver,
                                               logger=self.logger, resource_id=LoveShoppingPageConfigs.name_shopping_mall)
 
 
@@ -87,8 +82,8 @@ class LoveShoppingPage(SuperPage):
                                                resource_id=LoveShoppingPageConfigs.name_le_pays)
 
     def getCurrentCityName(self):
-        return API.get_view_by_xpath_ios(self.testcase, self.driver, self.logger,
-                                         LoveShoppingPageConfigs.xpath_city_name_st).text
+        return API.getTextByXpath(self.testcase, self.driver, self.logger,
+                                  LoveShoppingPageConfigs.xpath_city_name_st)
 
     def clickOnCityName(self):
         API().click_view_by_xpath(self.testcase, self.driver, self.logger,

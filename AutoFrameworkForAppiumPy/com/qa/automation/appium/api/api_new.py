@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 class API(object):
     '''
     UI自动化测试接口
@@ -72,23 +73,23 @@ class API(object):
         '''
         driver.save_screenshot(pic_name + ".png")
 
-    def inputStringByXpath(self, testcase, driver, logger, xPath, string, timeout = 10):
+    def inputStringByXpath(self, testcase, driver, logger, xpath, string, timeout=10):
         '''
         usage : 页面输入方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 页面element的 xpath属性
+            xpath : 页面element的 xpath属性
             string : 需要输入的值
             timeout: 超时时间,单位秒,默认十秒。
         '''
         try:
-            input_field = self._findElementByXpath(driver, logger, xPath, timeout)
+            input_field = self._findElementByXpath(driver, logger, xpath, timeout)
         except TimeoutException:
-            testcase.assertTrue(False, "Get element by xPath [%s] timeout" % (xPath))
+            testcase.assertTrue(False, "Get element by xpath [%s] timeout" % (xpath))
         except:
-            testcase.assertTrue(False, "Can not get element by xPath [%s]" % (xPath))
+            testcase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
 
         input_field.click()
         input_field.send_keys(string)
@@ -120,7 +121,7 @@ class API(object):
             'new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
             'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
 
-    def inputStringByResourceId(self, testcase, driver, logger, resourceId, string, timeout = 10):
+    def inputStringByResourceId(self, testcase, driver, logger, resourceId, string, timeout=10):
         '''
         usage : 页面输入方法 （适用Android设备）
         parameters:
@@ -141,7 +142,7 @@ class API(object):
         input_field.click()
         input_field.send_keys(string)
 
-    def inputStringByClassName(self, testcase, driver, logger, className, string, timeout = 10):
+    def inputStringByClassName(self, testcase, driver, logger, className, string, timeout=10):
         '''
         usage : 页面输入方法 （适用Android设备）
         parameters:
@@ -168,20 +169,20 @@ class API(object):
     IOS 平台基本方法
     ********************************************************************************************
     '''
-    def clickBackKeyForIos(self, testcase, driver, logger, xPath, timeout=10):
+    def clickBackKeyForIos(self, testcase, driver, logger, xpath, timeout=10):
         '''
         usage : 点击返回按钮方法 （适用IOS平台）
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 页面返回按钮的 xpath属性
+            xpath : 页面返回按钮的 xpath属性
             timeout : 超时时间,单位秒,默认十秒。
         '''
-        self.clickElementByxPath(testcase, driver, logger, xPath, timeout)
+        self.clickElementByXpath(testcase, driver, logger, xpath, timeout)
         time.sleep(2)
 
-    def inputStringByName(self, testcase, driver, logger, name, string, timeout = 10):
+    def inputStringByName(self, testcase, driver, logger, name, string, timeout=10):
         '''
         usage : 页面输入方法 （适用IOS平台）
         parameters:
@@ -202,7 +203,7 @@ class API(object):
         input_field.click()
         input_field.send_keys(string)
 
-    def inputStringByType(self, testcase, driver, logger, elementType, string, timeout = 10):
+    def inputStringByType(self, testcase, driver, logger, elementType, string, timeout=10):
         '''
         usage : 页面输入方法 （适用IOS平台）
         parameters:
@@ -403,23 +404,23 @@ class API(object):
     通用获取element text方法
     ********************************************************************************************
     '''
-    def getTextByxPath(self, testcase, driver, logger, xPath="default", timeout=10):
+    def getTextByXpath(self, testcase, driver, logger, xpath="default", timeout=10):
         '''
         usage : 获取页面element text方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 页面element的 xpath
+            xpath : 页面element的 xpath
             timeout : 超时时间,单位秒,默认十秒。
         return : 返回element text
         '''
         try:
-            return self._findElementByXpath(driver, logger, xPath, timeout).text
+            return self._findElementByXpath(driver, logger, xpath, timeout).text
         except TimeoutException:
-            testcase.assertTrue(False, "Get element text by xPath [%s] timeout" % (xPath))
+            testcase.assertTrue(False, "Get element text by xpath [%s] timeout" % (xpath))
         except:
-            testcase.assertTrue(False, "Can not get element text by xPath [%s]" % (xPath))
+            testcase.assertTrue(False, "Can not get element text by xpath [%s]" % (xpath))
 
 
     '''
@@ -547,22 +548,22 @@ class API(object):
     通用点击操作方法
     ********************************************************************************************
     '''
-    def clickElementByxPath(self, testcase, driver, logger, xPath="default", timeout=10):
+    def clickElementByXpath(self, testcase, driver, logger, xpath="default", timeout=10):
         '''
         usage : 页面element点击操作方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 点击element的 xpath
+            xpath : 点击element的 xpath
             timeout : 超时时间,单位秒,默认十秒。
         '''
         try:
-            self._findElementByXpath(driver, logger, xPath, timeout).click()
+            self._findElementByXpath(driver, logger, xpath, timeout).click()
         except TimeoutException:
-            testcase.assertTrue(False, "Click element by xPath [%s] timeout" % (xPath))
+            testcase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
         except:
-            testcase.assertTrue(False, "Can not click element by xPath [%s]" % (xPath))
+            testcase.assertTrue(False, "Can not click element by xpath [%s]" % (xpath))
 
 
     '''
@@ -729,25 +730,25 @@ class API(object):
         except:
             testcase.assertTrue(False, "Can not click element by uia string [%s]" % (uiaString))
 
-    
+
     '''
     ********************************************************************************************
     通用验证element方法
     ********************************************************************************************
     '''
-    def validElementByxPath(self, testcase, driver, logger, xPath="default", timeout=10):
+    def validElementByXpath(self, testcase, driver, logger, xpath="default", timeout=10):
         '''
         usage : 页面element验证方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 验证element的 xpath
+            xpath : 验证element的 xpath
             timeout : 超时时间,单位秒,默认十秒。
         return: element或false
         '''
         try:
-            return self._findElementByXpath(driver, logger, xPath, timeout)
+            return self._findElementByXpath(driver, logger, xpath, timeout)
         except:
             return False
 
@@ -917,22 +918,22 @@ class API(object):
         1. 通用断言单一element方法
         ************************************************************************
     '''
-    def assertElementByxPath(self, testcase, driver, logger, xPath="default", timeout=10):
+    def assertElementByXpath(self, testcase, driver, logger, xpath="default", timeout=10):
         '''
         usage : 页面element验证方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPath : 断言element的 xpath
+            xpath : 断言element的 xpath
             timeout : 超时时间,单位秒,默认十秒。
         '''
         try:
-            self._findElementByXpath(driver, logger, xPath, timeout)
+            self._findElementByXpath(driver, logger, xpath, timeout)
         except TimeoutException:
-            testcase.assertTrue(False, "Get element by xPath [%s] timeout" % (xPath))
+            testcase.assertTrue(False, "Get element by xpath [%s] timeout" % (xpath))
         except:
-            testcase.assertTrue(False, "Can not get element by xPath [%s]" % (xPath))
+            testcase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
 
 
     '''
@@ -940,19 +941,19 @@ class API(object):
         2. 通用断言多个element方法 （只需一个验证成功，即为成功）
         ************************************************************************
     '''
-    def assertElementsByxPaths(self, testcase, driver, logger, xPaths=[], timeout=10):
+    def assertElementsByXpaths(self, testcase, driver, logger, xpaths=[], timeout=10):
         '''
         usage : 页面多个element验证方法
         parameters:
             testcase: unittest testcase
             driver: appium driver
             logger: logging
-            xPaths : 断言多个element的xpath列表
+            xpaths : 断言多个element的xpath列表
             timeout : 超时时间,单位秒,默认十秒。
         return : 返回assert命中element
         '''
-        testcase.assertTrue(xPaths, "The xpath list is empty.")
-        for xpath in xPaths:
+        testcase.assertTrue(xpaths, "The xpath list is empty.")
+        for xpath in xpaths:
             try:
                 return self._findElementByXpath(driver, logger, xpath, timeout)
             except TimeoutException:
@@ -1427,13 +1428,13 @@ class API(object):
         wdw = WebDriverWait(driver=driver, timeout=timeout)
         return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
 
-    def _findElementByXpath(self, driver, logger, xPath="default", timeout=10):
+    def _findElementByXpath(self, driver, logger, xpath="default", timeout=10):
         '''
         usage : 显式等待方法
         parameters:
             driver: appium driver
             logger: logging
-            xPath : 查找element的xpath
+            xpath : 查找element的xpath
             timeout : 超时时间,单位秒,默认十秒。
         return : 返回查找的element
         应用场景 : 查找的element展现时间受网络状态影响,显式等待时间设置后,会最大等待timeout秒,
@@ -1441,7 +1442,7 @@ class API(object):
                   抛出TimeoutException异常。
         '''
         wdw = WebDriverWait(driver=driver, timeout=timeout)
-        return wdw.until(EC.presence_of_element_located((By.XPATH, xPath)))
+        return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
 
     def _findElementByClassName(self, driver, logger, className="default", timeout=10):
         '''

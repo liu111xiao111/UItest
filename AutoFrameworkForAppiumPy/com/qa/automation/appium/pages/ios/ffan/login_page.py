@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.login_page_configs import LoginPageConfigs
 
 
-class LoginPage(IosSuperPage):
+class LoginPage(SuperPage):
     '''
     作者 宋波
     首页=>我的飞凡=>登录
