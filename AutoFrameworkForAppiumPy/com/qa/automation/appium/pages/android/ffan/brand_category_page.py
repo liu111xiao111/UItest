@@ -5,8 +5,12 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.brand_category_page_configs import BrandCategoryPageConfigs
 
-#    推荐&大牌
+
 class BrandCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>品牌
+    '''
 
     def __init__(self,testcase,driver,logger):
         self.a = 12;
