@@ -1,40 +1,35 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.activity_details_page_configs import ActivityDetailsPageConfigs
+from com.qa.automation.appium.pages.android.ffan.activity_details_page_configs import ActivityDetailsPageConfigs as ADPC
 
 
 class ActivityDetailsPage(SuperPage):
     '''
-    This is hui life page operation class.
+    作者 刘涛
+    首页=>活动=>活动详情界面
     '''
 
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(ActivityDetailsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证活动详情界面
         '''
-# 
-#         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-#                                                       ActivityDetailsPageConfigs.resource_id_activity_details_title,
-#                                                       ActivityDetailsPageConfigs.assert_view_timeout)
-        API().assert_view_by_content_desc_android(testcase=self.testcase, driver=self.driver, logger=self.logger, content_desc=ActivityDetailsPageConfigs.content_desc_activity_detail, seconds=45)
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         ADPC.content_desc_activity_detail,
+                                         45)
 
     def clickOnSharing(self):
         '''
-        usage: click sharing button
+        usage: 点击分享按钮
         '''
-
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-								ActivityDetailsPageConfigs.xpath_sharing_button,
-								ActivityDetailsPageConfigs.click_on_button_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  ADPC.xpath_sharing_button,
+                                  ADPC.click_on_button_timeout)
