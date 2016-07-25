@@ -56,10 +56,6 @@ class HuiLifePageConfigs(object):
     # Specific activity button
     resource_id_specific_activity_button = "com.wanda.app.wanhui:id/activities_img"
 
-    """
-        底部导航栏tab resource id
-        
-    """
     resource_id_ll_bottom_bar = "ll_bottom_bar"
 
     # Specific privilege button
