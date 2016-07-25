@@ -67,7 +67,7 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击广场模块
         '''
-        API().clickElementByxPath(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   DPC.xpath_square_module,

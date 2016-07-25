@@ -42,7 +42,7 @@ class CinemaPage(SuperPage):
                                                  CPC.resource_id_buy_ticket_button,
                                                  45)
         if not buy_btn:
-            API().clickElementByxPath(self.testcase,
+            API().clickElementByXpath(self.testcase,
                                       self.driver,
                                       self.logger, 
                                       CPC.xpath_tomorrows_date_button, 

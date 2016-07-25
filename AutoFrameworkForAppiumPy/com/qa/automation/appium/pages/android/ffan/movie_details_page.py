@@ -28,7 +28,7 @@ class MovieDetailsPage(SuperPage):
         usage: 点击明日信息
         '''
 
-        API().clickElementByxPath(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   MDPC.xpath_tomorrows_date_button,

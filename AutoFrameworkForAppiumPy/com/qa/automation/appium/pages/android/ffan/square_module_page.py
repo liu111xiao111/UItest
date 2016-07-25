@@ -106,7 +106,7 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击达人推荐店
         '''
-        API().clickElementByxPath(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SMPC.xpath_recommend_store,
@@ -208,7 +208,7 @@ class SquareModulePage(SuperPage):
                                         self.logger,
                                         SMPC.xpath_sub_staff_picks_button,
                                         SMPC.get_view_timeout)
-        API().clickElementByxPath(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SMPC.xpath_recommend_store,
@@ -241,6 +241,6 @@ class SquareModulePage(SuperPage):
 
         API().scrollToText(self.driver, self.logger,
                              SMPC.text_general_coupon_button)
-        API().clickElementByxPath(self.testcase, self.driver, self.logger,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SMPC.xpath_general_coupon_button,
                                   SMPC.click_on_button_timeout)
