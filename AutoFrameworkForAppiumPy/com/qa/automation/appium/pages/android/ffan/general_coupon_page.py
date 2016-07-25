@@ -1,40 +1,35 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.general_coupon_page_configs import GeneralCouponPageConfigs
+from com.qa.automation.appium.pages.android.ffan.general_coupon_page_configs import GeneralCouponPageConfigs as GCPC
 
 
 class GeneralCouponPage(SuperPage):
     '''
-    This is general coupon page operation class.
+    作者 宋波
+    首页=>广场=>通用券
     '''
-
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(GeneralCouponPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct.
+        usage: 验证通用券界面
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              GeneralCouponPageConfigs.resource_id_general_coupon_title,
-                                              GeneralCouponPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        GCPC.resource_id_general_coupon_title,
+                                        GCPC.assert_view_timeout)
 
     def clickOnImmediatelyToReceive(self):
         '''
-        usage: click on the immediately to receive button.
+        usage: 点击马上领取
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-                                  GeneralCouponPageConfigs.xpath_immediately_to_receive,
-                                  GeneralCouponPageConfigs.click_on_button_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  GCPC.xpath_immediately_to_receive,
+                                  GCPC.click_on_button_timeout)
