@@ -29,7 +29,7 @@ class SwitchCityPage(SuperPage):
                                             SwitchCityPageConfigs.assert_view_timeout)
             return True
         else:
-            return API().validElementByResourceId(self.testcase, self.driver, self.logger,
+            return API().validElementByResourceId(self.driver, self.logger,
                                                   SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                                   SwitchCityPageConfigs.verify_view_timeout)
 
@@ -57,7 +57,7 @@ class SwitchCityPage(SuperPage):
         '''
 
         API().assertFalse(self.testcase, self.logger,
-                          API().validElementByResourceId(self.testcase, self.driver, self.logger,
+                          API().validElementByResourceId(self.driver, self.logger,
                                                          SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                                          SwitchCityPageConfigs.assert_invalid_view_time))
 
