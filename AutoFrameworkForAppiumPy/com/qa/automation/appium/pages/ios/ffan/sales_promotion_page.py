@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
-'''
-    首页 -> 优惠页面
-'''
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_page_configs import SalesPromotionPageConfigs
 
 
 class SalesPromotionPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>优惠活动
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(SalesPromotionPage, self).__init__(testcase=testcase , driver=driver, logger=logger);

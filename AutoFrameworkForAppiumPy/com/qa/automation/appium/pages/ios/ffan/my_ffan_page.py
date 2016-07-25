@@ -5,8 +5,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
 
 
-#   进入应用的首页,是进入其他页面的入口
 class MyFfanPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>我的(飞凡)
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(MyFfanPage, self).__init__(testcase,
                                          driver,

@@ -5,6 +5,10 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_details_page_configs import SalesPromotionCouponDetailsPageConfigs
 
 class SalesPromotionCouponDetailsPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>优惠活动(优惠券)=>门店详情页
+    '''
 
     def __init__(self,testcase,driver,logger):
         super(SalesPromotionCouponDetailsPage, self).__init__(testcase = testcase , driver = driver, logger = logger);

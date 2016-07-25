@@ -13,6 +13,10 @@ sys.path.append(os.path.dirname(
 
 
 class ParkingPaymentInputPlateNumberPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>停车=>停车交费=>输入车牌号码页
+    '''
 
     def __init__(self,testcase,driver,logger):
         super(ParkingPaymentInputPlateNumberPage, self).__init__(testcase = testcase , driver = driver,logger = logger);

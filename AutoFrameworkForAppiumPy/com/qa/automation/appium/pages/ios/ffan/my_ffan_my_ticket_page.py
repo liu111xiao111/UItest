@@ -6,6 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page_configs impo
 
 
 class MyFfanMyTicketPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的票券
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(MyFfanMyTicketPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

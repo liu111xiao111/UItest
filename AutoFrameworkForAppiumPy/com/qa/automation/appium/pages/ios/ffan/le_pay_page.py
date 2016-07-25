@@ -5,8 +5,11 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
-#   首页点击 乐付
 class LePayPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(LePayPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

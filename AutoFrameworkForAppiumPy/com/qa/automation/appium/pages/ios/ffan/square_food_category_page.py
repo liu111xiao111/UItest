@@ -6,10 +6,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 SFPC = SquareFoodPageConfigs()
 
-'''
-    usage : 广场模块，向下滑动美食汇界面
-'''
 class SquareFoodPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>广场=>美食汇
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SquareFoodPage, self).__init__(testcase,
                                              driver,

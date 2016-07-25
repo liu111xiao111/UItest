@@ -6,8 +6,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
 FCPC = FoodCategoryPageConfigs()
-#   首页点击 美食
+
 class FoodCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>美食汇
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(FoodCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

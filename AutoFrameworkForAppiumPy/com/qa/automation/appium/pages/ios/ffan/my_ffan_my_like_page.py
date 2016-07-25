@@ -7,6 +7,11 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 MLPC = MyFfanMyLikePageConfigs()
 
 class MyFfanMyLikePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的喜欢
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(MyFfanMyLikePage, self).__init__(testcase,
                                                driver,

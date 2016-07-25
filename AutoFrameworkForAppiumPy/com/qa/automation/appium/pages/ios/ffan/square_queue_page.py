@@ -7,6 +7,11 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 SQPC = SquareQueuePageConfigs()
 
 class SquareQueuePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>广场=>排队取号
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SquareQueuePage, self).__init__(testcase,
                                               driver,

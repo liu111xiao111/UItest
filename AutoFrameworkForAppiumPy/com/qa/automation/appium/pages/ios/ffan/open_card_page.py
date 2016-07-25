@@ -6,10 +6,11 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 OCPC = OpenCardPageConfigs()
 
-'''
-    usage: 飞凡卡
-'''
 class OpenCardPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>飞凡卡=>开卡
+    '''
     def __init__(self, testcase, driver, logger):
         super(OpenCardPage, self).__init__(testcase,
                                            driver,
