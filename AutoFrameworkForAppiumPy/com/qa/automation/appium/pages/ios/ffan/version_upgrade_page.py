@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page_configs import VersionUpgradePageConfigs
 
@@ -23,25 +23,21 @@ class VersionUpgradePage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                  VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                                  VersionUpgradePageConfigs.assert_view_timeout)
+            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                            VersionUpgradePageConfigs.assert_view_timeout)
             return True
         else:
-            try:
-                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                                      VersionUpgradePageConfigs.verify_view_timeout)
-                return True
-            except AssertionError:
-                return False
+            return API().validElementByResourceId(self.driver, self.logger,
+                                                  VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                                  VersionUpgradePageConfigs.verify_view_timeout)
 
     def cancelVersionUpgrade(self):
         '''
         usage: cancel version upgrade.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
                                        VersionUpgradePageConfigs.click_on_button_timeout)
 
@@ -66,9 +62,10 @@ class VersionUpgradePage(SuperPage):
         usage: verify whether the current page is not the version upgrade page.
         '''
 
-        API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
-                                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                                            VersionUpgradePageConfigs.assert_invalid_view_time)
+        API().assertFalse(self.testcase, self.logger,
+                          API().validElementByResourceId(self.driver, self.logger,
+                                                         VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                                         VersionUpgradePageConfigs.assert_invalid_view_time))
 
 
 if __name__ == '__main__':

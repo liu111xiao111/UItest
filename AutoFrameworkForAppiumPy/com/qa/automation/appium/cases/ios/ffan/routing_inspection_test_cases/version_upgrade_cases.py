@@ -24,14 +24,15 @@ class VersionUpgradeCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).switchCity()
 
     def test_case(self):
