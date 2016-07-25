@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class ActivitySharingCases(TestCase):
     '''
-    巡检checklist No.: 11
-    自动化测试case No.: 11
+    作者 宋波
+    巡检checklist #11
+    自动化测试 #11
     首页进入优惠简单浏览活动内容，城市维度，且按距离排序，点击验证活动可以进入活动详情，并查看适用门店，最后进行分享
     '''
 

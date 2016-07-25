@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -23,8 +23,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class MovieTicketCases(TestCase):
     '''
-    巡检checklist No.: 06
-    自动化测试case No.: 06
+    作者 宋波
+    巡检checklist #6
+    自动化测试 #6
     首页进入电影模块，检查数据正常并可以成功选座下单，支付并退票
     '''
 

@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class MembershipCardPackageCases(TestCase):
     '''
-    巡检checklist No.: 52
-    自动化测试case No.: 52
+    作者 宋波
+    巡检checklist #52
+    自动化测试 #52
     点击进入我的会员卡包，查看数据是否显示正常并可进入会员页
     '''
 

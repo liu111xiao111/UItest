@@ -19,8 +19,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class FeiFanCardBillCases(TestCase):
     '''
-    巡检checklist No.: 43
-    自动化测试case No.: 43
+    作者 宋波
+    巡检checklist #43
+    自动化测试 #43
     首页-飞凡卡查看账单，确认显示零花钱账单页面
     '''
 

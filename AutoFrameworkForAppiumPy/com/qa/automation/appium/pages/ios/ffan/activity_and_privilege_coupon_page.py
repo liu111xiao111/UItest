@@ -4,11 +4,12 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.activity_and_privilege_coupon_page_configs import ActivityAndPrivilegeCouponPageConfigs
 
+
 class ActivityAndPrivilegeCouponPage(SuperPage):
     '''
-    This is activity and privilege coupon page operation class.
+    作者 宋波
+    首页=>活动与优惠券
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''

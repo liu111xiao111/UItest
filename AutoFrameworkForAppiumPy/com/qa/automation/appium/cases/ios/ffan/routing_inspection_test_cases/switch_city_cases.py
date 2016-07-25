@@ -18,8 +18,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SwitchCityCases(TestCase):
     '''
-    巡检checklist No.: 02
-    自动化测试case No.: 02
+    作者 宋波
+    巡检checklist #2
+    自动化测试 #2
     启动APP，城市切换正常
     '''
 

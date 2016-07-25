@@ -12,6 +12,10 @@ from com.qa.automation.appium.pages.ios.ffan.love_shopping_page_configs import L
 
 
 class LoveShoppingPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>爱逛街
+    '''
 
     def __init__(self, test_case, driver, logger):
         super(LoveShoppingPage, self).__init__(testcase=test_case, driver=driver, logger=logger);

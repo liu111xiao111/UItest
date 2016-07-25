@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.seat_picking_page_configs import Se
 
 class SeatPickingPage(SuperPage):
     '''
-    This is seat picking page operation class.
+    作者 宋波
+    首页=>电影=>电影详情=>选座
     '''
 
     def __init__(self, testcase, driver, logger):

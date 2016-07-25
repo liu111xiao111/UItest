@@ -2,24 +2,25 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
 
+import HTMLTestRunner
+
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage;
-from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver;
 from com.qa.automation.appium.utility.logger import Logger;
 
 
 class DashboardSearchStoreCases(TestCase):
     '''
-        巡检checklist No.: 3
-        自动化测试case No.: 5
-        全城搜索商品
+    作者 宋波
+    巡检checklist #3
+    自动化测试 #3-3
+    全城搜索门店
     '''
 
     def tearDown(self):

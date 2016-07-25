@@ -9,7 +9,8 @@ from com.qa.automation.appium.pages.ios.ffan.cinema_page_configs import CinemaPa
 
 class CinemaPage(SuperPage):
     '''
-    This is hui life page operation class.
+    作者 宋波
+    首页=>电影=>电影详情=>电影院
     '''
 
     def __init__(self, testcase, driver, logger):
@@ -27,7 +28,6 @@ class CinemaPage(SuperPage):
         API().assert_view_by_xpath_android(self.testcase, self.driver, self.logger,
                                            CinemaPageConfigs.xpath_cinema_title_st,
                                            CinemaPageConfigs.assert_view_timeout)
-
 
     def clickOnBuyTicket(self):
         '''

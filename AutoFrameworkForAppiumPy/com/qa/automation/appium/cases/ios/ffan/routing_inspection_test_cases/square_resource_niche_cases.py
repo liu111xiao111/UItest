@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -19,8 +19,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareResourceNicheCases(TestCase):
     '''
-    巡检checklist No.: 20
-    自动化测试case No.: 20
+    作者 宋波
+    巡检checklist #20
+    自动化测试 #20
     广场详情页查看资源位，点击资源位可进入详情页
     '''
 

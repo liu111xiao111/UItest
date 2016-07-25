@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -18,9 +18,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class DashboardSearchBrandCases(TestCase):
     '''
-        巡检checklist No.: 3
-        自动化测试case No.: 4
-        全城搜索品牌
+    作者 宋波
+    巡检checklist #3
+    自动化测试 #3-2
+    全城搜索品牌
     '''
 
     def tearDown(self):

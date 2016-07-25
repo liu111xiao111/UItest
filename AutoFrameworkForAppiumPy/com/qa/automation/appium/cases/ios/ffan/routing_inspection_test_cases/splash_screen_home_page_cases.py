@@ -16,8 +16,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SplashScreenHomePageCases(TestCase):
     '''
-    巡检checklist No.: 01
-    自动化测试case No.: 01
+    作者 宋波
+    巡检checklist #1
+    自动化测试 #1
     启动APP，闪屏首页等正常显示
     '''
 

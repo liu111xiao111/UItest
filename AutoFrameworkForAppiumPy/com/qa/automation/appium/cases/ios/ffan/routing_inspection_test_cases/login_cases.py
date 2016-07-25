@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -19,8 +19,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class LoginCases(TestCase):
     '''
-    巡检checklist No.: 48
-    自动化测试case No.: 48
+    作者 宋波
+    巡检checklist #48
+    自动化测试 #48
     启动app，能够正常登陆
     '''
 

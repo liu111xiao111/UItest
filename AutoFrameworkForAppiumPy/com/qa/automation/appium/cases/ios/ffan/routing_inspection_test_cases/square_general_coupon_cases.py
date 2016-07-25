@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareGeneralCouponCases(TestCase):
     '''
-    巡检checklist No.: 36
-    自动化测试case No.: 36
+    作者 宋波
+    巡检checklist #36
+    自动化测试 #36
     广场详情页点击通用券可以进入通用券并可以成功领取通用券在我的票券中显示
     '''
 

@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
@@ -18,8 +18,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class HotWordSearchCases(TestCase):
     '''
-    巡检checklist No.: 04
-    自动化测试case No.: 04
+    作者 宋波
+    巡检checklist #4
+    自动化测试 #4
     查看搜索中的热词并点击，热词显示正常点击进入内容无误
     '''
 

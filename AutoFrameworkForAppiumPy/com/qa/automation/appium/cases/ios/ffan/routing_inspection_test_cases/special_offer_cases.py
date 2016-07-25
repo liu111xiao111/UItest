@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SpecialOfferCases(TestCase):
     '''
-    巡检checklist No.: 38
-    自动化测试case No.: 38
+    作者 宋波
+    巡检checklist #38
+    自动化测试 #38
     首页-慧生活，查看优惠活动，按距离近远显示活动和优惠信息（城市维度）并选择一个优惠券领取在我的票券中显示，选择一个活动查看门店
     '''
 

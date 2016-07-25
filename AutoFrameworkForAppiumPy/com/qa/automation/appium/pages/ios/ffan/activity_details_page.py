@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.activity_details_page_configs impor
 
 class ActivityDetailsPage(SuperPage):
     '''
-    This is hui life page operation class.
+    作者 宋波
+    首页=>活动与优惠券=>活动详情
     '''
 
     def __init__(self, testcase, driver, logger):

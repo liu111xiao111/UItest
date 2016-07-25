@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.splash_screen_home_page_configs imp
 
 class SplashScreenHomePage(SuperPage):
     '''
-    This is a splash screen home page operation class.
+    作者 宋波
+    闪屏首页
     '''
 
     def __init__(self, testcase, driver, logger):

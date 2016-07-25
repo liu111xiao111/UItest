@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareParkingPaymentCases(TestCase):
     '''
-    巡检checklist No.: 26
-    自动化测试case No.: 26
+    作者 宋波
+    巡检checklist #26
+    自动化测试 #26
     广场详情页点击停车，正常进入停车模块
     '''
 

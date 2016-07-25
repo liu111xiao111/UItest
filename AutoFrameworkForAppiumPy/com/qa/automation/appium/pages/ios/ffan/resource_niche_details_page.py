@@ -6,9 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.resource_niche_details_page_configs
 
 RNDPC = ResourceNicheDetailsPageConfigs()
 
+
 class ResourceNicheDetailsPage(SuperPage):
     '''
-    This is resource niche page operation class.
+    作者 宋波
+    首页=>广场=>资源位详情
     '''
 
     def __init__(self, testcase, driver, logger):

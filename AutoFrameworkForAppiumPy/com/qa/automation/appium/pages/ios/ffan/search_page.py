@@ -6,6 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPa
 
 
 class SearchPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>搜索页
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SearchPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

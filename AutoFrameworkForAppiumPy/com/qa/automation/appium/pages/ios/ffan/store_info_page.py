@@ -5,10 +5,12 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.store_info_page_configs import StoreInfoPageConfigs
 
 
-'''
-    usage: 门店详情
-'''
 class StoreInfoPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>搜索页=>门店信息
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(StoreInfoPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

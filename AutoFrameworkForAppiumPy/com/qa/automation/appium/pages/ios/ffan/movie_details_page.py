@@ -7,9 +7,9 @@ from com.qa.automation.appium.pages.ios.ffan.movie_details_page_configs import M
 
 class MovieDetailsPage(SuperPage):
     '''
-    This is a movie details page operation class.
+    作者 宋波
+    首页=>电影=>电影详情
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''

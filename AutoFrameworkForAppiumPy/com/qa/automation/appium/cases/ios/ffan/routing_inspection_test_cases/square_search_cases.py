@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareSearchCases(TestCase):
     '''
-    巡检checklist No.: 19
-    自动化测试case No.: 19
+    作者 宋波
+    巡检checklist #19
+    自动化测试 #19
     首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
     '''
 

@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -21,8 +21,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SmallAmountPasswordLessPaymentCases(TestCase):
     '''
-    巡检checklist No.: 57
-    自动化测试case No.: 57_1
+    作者 宋波
+    巡检checklist #57
+    自动化测试 #57-2
     点击设置，在账号管理中可以成功修改登录密码，支付密码，小额免密设置
     '''
 

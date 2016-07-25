@@ -20,8 +20,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareRecommendCases(TestCase):
     '''
-    巡检checklist No.: 35
-    自动化测试case No.: 35
+    作者 宋波
+    巡检checklist #35
+    自动化测试 #35
     广场详情页点击达人推荐可以进入门店详情页
     '''
 

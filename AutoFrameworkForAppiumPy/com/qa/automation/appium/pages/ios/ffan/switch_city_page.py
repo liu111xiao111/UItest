@@ -7,7 +7,8 @@ from com.qa.automation.appium.pages.ios.ffan.switch_city_page_configs import Swi
 
 class SwitchCityPage(SuperPage):
     '''
-    This is a switch city page operation class.
+    作者 宋波
+    城市切换
     '''
 
     def __init__(self, testcase, driver, logger):

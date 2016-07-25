@@ -2,21 +2,21 @@
 
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
 from com.qa.automation.appium.pages.ios.ffan.search_result_store_page_configs import SearchResultStorePageConfigs
 
 
-'''
-    usage: 门店详情
-'''
 class SearchResultStorePage(SuperPage):
+    '''
+    作者 宋波
+    首页=>搜索页=>搜索结果店详情
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SearchResultStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     '''
-        usage : 检查是否加载出来
+    usage : 检查是否加载出来
     '''
-
     def validSelf(self):
         API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
                                               SearchResultStorePageConfigs.resource_id_store_details_st,

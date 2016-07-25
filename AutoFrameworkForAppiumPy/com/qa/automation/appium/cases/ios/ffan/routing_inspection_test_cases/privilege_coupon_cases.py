@@ -24,8 +24,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class PrivilegeCouponCases(TestCase):
     '''
-    巡检checklist No.: 37
-    自动化测试case No.: 37
+    作者 宋波
+    巡检checklist #37
+    自动化测试 #37
     广场详情页点击优惠券可以进入通用券并可以成功领取优惠券在我的票券中显示
     '''
 

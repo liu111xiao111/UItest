@@ -4,11 +4,12 @@ from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sharing_page_configs import SharingPageConfigs
 
+
 class SharingPage(SuperPage):
     '''
-    This is sharing page operation class.
+    作者 宋波
+    首页=>活动与优惠券=>活动详情=>分享
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''

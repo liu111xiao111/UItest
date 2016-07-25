@@ -19,8 +19,9 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareSignOnCases(TestCase):
     '''
-    巡检checklist No.: 26
-    自动化测试case No.: 26
+    作者 宋波
+    巡检checklist #29
+    自动化测试 #29
     广场详情页点击签到可以正常签到
     '''
 

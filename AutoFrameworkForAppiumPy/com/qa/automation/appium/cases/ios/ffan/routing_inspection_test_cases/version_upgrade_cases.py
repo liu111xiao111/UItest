@@ -17,7 +17,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class VersionUpgradeCases(TestCase):
     '''
-    This is a test case for canceling the version upgrade.
+    作者 宋波
+    巡检checklist #60
+    自动化测试 #60
+    版本升级
     '''
 
     def tearDown(self):

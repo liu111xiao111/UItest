@@ -5,10 +5,12 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page_configs import SquareModulePageConfigs as SquareModulePageConfigs
 
 
-'''
-    usage ： 主页，点击广场模块（高新万达广场）
-'''
 class SquareModulePage(SuperPage):
+    '''
+    作者 宋波
+    首页=>广场
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SquareModulePage, self).__init__(testcase,
                                                driver,
