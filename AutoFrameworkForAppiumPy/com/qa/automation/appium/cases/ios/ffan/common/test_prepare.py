@@ -15,8 +15,11 @@ class TestPrepare:
         self.logger = logger
 
     def prepare(self, needLogin=True):
-        self.updateVersion()
-        self.switchCity()
+        for i in range(4):
+            if i % 2:
+                self.updateVersion()
+            else:
+                self.switchCity()
 
         if needLogin:
             self.login()
