@@ -2,45 +2,39 @@
 
 from selenium.common.exceptions import TimeoutException
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.popup_page_configs import PopupPageConfigs
+from com.qa.automation.appium.pages.android.ffan.popup_page_configs import PopupPageConfigs as PPC
 
 
 class KeywordsType(object):
     '''
-    This is a keywords type class.
+    作者 刘涛
+    usage: 关键值类型类
     '''
-
-
     RESOURCE_ID = "resource_id"
     TEXT = "text"
 
 class ClickActivityKeywordsType(KeywordsType):
     '''
-    This is a click activity keywords type class.
+    作者 刘涛
+    usage: 点击页面关键值类型类
     '''
-
-
     XPATH = "xpath"
     CONTENT_DESC = "content-desc"
 
 class VerifyActivityKeywordsType(KeywordsType):
     '''
-    This is a verify activity keywords type class.
+    作者 刘涛
+    usage: 验证页面关键值类型类
     '''
 
 class PopupPage(SuperPage):
     '''
-    This is a Popup page operation class.
+    作者 刘涛
+    usage: 弹出框
     '''
-
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(PopupPage, self).__init__(testcase, driver, logger)
 
         self._validOperator = {VerifyActivityKeywordsType.RESOURCE_ID : self._validSelfByResourceId,
@@ -51,61 +45,69 @@ class PopupPage(SuperPage):
 
     def _validSelfByResourceId(self, keywords, assertable):
         '''
-        usage: verify whether the current page is correct by resource id.
+        usage: 通过resource id 验证页面
         '''
-
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.assert_view_timeout)
+            API().assertElementByResourceId(self.testcase,
+                                            self.driver,
+                                            self.logger,
+                                            keywords,
+                                            PPC.assert_view_timeout)
             return True
         else:
-            try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger, keywords, PopupPageConfigs.verify_view_timeout)
-                return True
-            except TimeoutException:
-                return False
+            return API().validElementByResourceId(self.driver,
+                                                  self.logger,
+                                                  keywords,
+                                                  PPC.verify_view_timeout)
 
     def _validSelfByText(self, keywords, assertable):
         '''
-        usage: verify whether the current page is correct by text.
+        usage: 通过text验证页面
         '''
 
         if assertable:
-            API().assert_view_by_text_android(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.assert_view_timeout)
+            API().assertElementByText(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      keywords,
+                                      PPC.assert_view_timeout)
             return True
         else:
-            try:
-                API().find_view_by_text_Until_android(self.driver, self.logger, keywords, PopupPageConfigs.verify_view_timeout)
-                return True
-            except TimeoutException:
-                return False
+            return API().validElementByText(self.driver,
+                                            self.logger,
+                                            keywords,
+                                            PPC.verify_view_timeout)
 
     def validSelf(self, keywords, keywordsType=VerifyActivityKeywordsType.RESOURCE_ID, assertable=True):
         '''
-        usage: verify whether the current page is correct.
+        usage: 验证当前页面
         '''
 
         return self._validOperator.get(keywordsType)(keywords, assertable)
 
     def _clickOnButtonByResourceId(self, keywords):
         '''
-        usage: click on the button by resource id.
+        usage: 通过resource id点击按钮
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.click_on_button_timeout)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       keywords,
+                                       PPC.click_on_button_timeout)
 
     def _clickOnButtonByText(self, keywords):
         '''
-        usage: click on the button by text.
+        usage: 通过text点击按钮
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 keywords,
+                                 PPC.click_on_button_timeout)
 
     def clickOnButton(self, keywords, keywordsType=ClickActivityKeywordsType.RESOURCE_ID):
         '''
-        usage: click on a button.
+        usage: 点击按钮
         '''
-
         self._clickOperator.get(keywordsType)(keywords)
-
-if __name__ == '__main__':
-    pass

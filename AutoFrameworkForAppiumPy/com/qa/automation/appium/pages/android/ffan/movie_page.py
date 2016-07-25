@@ -1,36 +1,34 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.movie_page_configs import MoviePageConfigs
+from com.qa.automation.appium.pages.android.ffan.movie_page_configs import MoviePageConfigs as MPC
 
 
 class MoviePage(SuperPage):
     '''
-    This is a movie page operation class.
+    作者 陈诚
+    首页=>电影页面
     '''
-
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(MoviePage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is the switch city page.
+        usage: 验证电影页面
         '''
-
-        API().assert_view_by_text_android(self.testcase, self.driver, self.logger, MoviePageConfigs.text_movie_title, MoviePageConfigs.assert_view_timeout)
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MPC.text_movie_title,
+                                  MPC.assert_view_timeout)
 
     def clickOnSeatPickingAndBuyingTicket(self):
         '''
-        usage: click seat picking and buying ticket button
+        usage: 点击座位信息
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, MoviePageConfigs.resource_id_seat_picking_and_buying_ticket_button, MoviePageConfigs.click_on_button_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MPC.resource_id_seat_picking_and_buying_ticket_button,
+                                       MPC.click_on_button_timeout)

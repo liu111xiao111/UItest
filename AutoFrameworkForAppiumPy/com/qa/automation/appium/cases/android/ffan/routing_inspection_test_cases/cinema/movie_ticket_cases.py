@@ -53,23 +53,25 @@ class MovieTicketCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
+        movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
+        seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         dashboardPage = DashboardPage(self , self.driver , self.logger)
+        moviePage = MoviePage(self , self.driver , self.logger)
+        cinemaPage = CinemaPage(self, self.driver, self.logger)
+        popupPage = PopupPage(self , self.driver , self.logger)
+
         dashboardPage.validSelf()
         dashboardPage.clickOnMovie()
 
-        moviePage = MoviePage(self , self.driver , self.logger)
         moviePage.validSelf()
         moviePage.clickOnSeatPickingAndBuyingTicket()
 
-        movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
         movieDetailsPage.validSelf()
         movieDetailsPage.clickOnSubCinema()
 
-        cinemaPage = CinemaPage(self, self.driver, self.logger)
         cinemaPage.validSelf()
         tempText = cinemaPage.clickOnBuyTicket()
 
-        popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
             print("ATTEMPTS: %d" % (tempTimes + 1)) 
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
@@ -77,7 +79,6 @@ class MovieTicketCases(TestCase):
                 break
             popupPage.waitBySeconds()
 
-        seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
         seatPickingPage.clickBackKey()

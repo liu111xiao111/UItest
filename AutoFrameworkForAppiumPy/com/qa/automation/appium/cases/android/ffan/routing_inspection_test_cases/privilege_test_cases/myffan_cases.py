@@ -34,7 +34,7 @@ class MyFfanCases(unittest.TestCase):
 
     def test_login(self):
         testPrepare = TestPrepare(testcase=self,driver=self.driver,logger=self.logger)
-        testPrepare.confirm_logout_status()
+        testPrepare.validLogoutStatus()
         testPrepare.backToDashBoard()
 
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)

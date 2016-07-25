@@ -1,50 +1,56 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.cinema_page_configs import CinemaPageConfigs
+from com.qa.automation.appium.pages.android.ffan.cinema_page_configs import CinemaPageConfigs as CPC
 
 
 class CinemaPage(SuperPage):
     '''
-    This is hui life page operation class.
+    作者 陈诚
+    首页=>电影=>电影详细信息=>电影院界面
     '''
 
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(CinemaPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证电影院界面
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      CinemaPageConfigs.resource_id_cinema_title,
-                                                      CinemaPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        CPC.resource_id_cinema_title,
+                                        CPC.assert_view_timeout)
 
     def clickOnBuyTicket(self):
         '''
-        usage: click on the buy ticket button.
+        usage: 点击买票
         '''
 
-        API().wait_by_seconds(5)
-        tempText = API().get_view_by_resourceID(self.driver, self.logger, 
-												CinemaPageConfigs.resource_id_movie_name_button).text
+        API().waitBySeconds(5)
+        tempText = API().getTextByResourceId(self.testcase,
+                                             self.driver,
+                                             self.logger, 
+                                             CPC.resource_id_movie_name_button,
+                                             CPC.click_on_button_timeout)
                                                 
-        buy_btn = API().find_view_by_resourceID_Until_android(driver=self.driver, logger=self.logger, resource_id = CinemaPageConfigs.resource_id_buy_ticket_button, seconds = 45)
+        buy_btn = API().validElementByResourceId(self.driver,
+                                                 self.logger,
+                                                 CPC.resource_id_buy_ticket_button,
+                                                 45)
         if not buy_btn:
-            API().click_view_by_xpath(self.testcase, self.driver, self.logger, 
-    												CinemaPageConfigs.xpath_tomorrows_date_button, 
-    												CinemaPageConfigs.click_on_button_timeout)
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, 
-										CinemaPageConfigs.resource_id_buy_ticket_button, 
-										CinemaPageConfigs.click_on_button_timeout)
+            API().clickElementByxPath(self.testcase,
+                                      self.driver,
+                                      self.logger, 
+                                      CPC.xpath_tomorrows_date_button, 
+                                      CPC.click_on_button_timeout)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       CPC.resource_id_buy_ticket_button, 
+                                       CPC.click_on_button_timeout)
 
         return tempText
-
-if __name__ == '__main__':
-    pass
