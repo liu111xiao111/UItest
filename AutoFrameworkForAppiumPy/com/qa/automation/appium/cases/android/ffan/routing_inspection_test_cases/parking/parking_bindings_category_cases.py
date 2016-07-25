@@ -25,9 +25,10 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class ParkingBindingsCatergoryCases(TestCase):
     '''
-        巡检checklist #14
-        自动化测试 #14-1
-        首页进入停车，查看停车交费，绑定/解绑车牌
+    作者 刘涛
+    巡检checklist #14
+    自动化测试 #14-1
+    首页进入停车，查看停车交费，绑定车牌
     '''
 
     def tearDown(self):

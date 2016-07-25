@@ -19,9 +19,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareLefuPayCases(TestCase):
     '''
-    	巡检checklist: No.24
-    	自动化测试: No.24
-    	广场详情页点击排队取号进入排队取号页面，可以成功排队
+    作者 刘涛
+    巡检checklist: No.24
+    自动化测试: No.24
+    广场详情页点击排队取号进入排队取号页面，可以成功排队
     '''
 
     def tearDown(self):

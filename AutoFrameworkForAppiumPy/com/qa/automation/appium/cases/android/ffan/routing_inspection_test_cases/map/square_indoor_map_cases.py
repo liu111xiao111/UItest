@@ -25,9 +25,10 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class SquareIndoorMapCases(TestCase):
     '''
-		巡检checklist #25
-		自动化测试 #25
-		广场详情页点击室内地图，正常进入室内地图模块
+    作者 刘涛
+	巡检checklist #25
+	自动化测试 #25
+	广场详情页点击室内地图，正常进入室内地图模块
     '''
 
     def tearDown(self):

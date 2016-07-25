@@ -23,8 +23,11 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class FoodCases(TestCase):
     '''
-       usage: No.7 首页进入美食正常进入找餐厅找优惠，数据显示正常可点击进入
-       备注：由于版本变化，页面元素缺失，case无法通过
+    作者 刘涛
+    巡检checklist #7
+    自动化测试 #7
+    首页进入美食正常进入找餐厅找优惠，数据显示正常可点击进入
+    备注：由于版本变化，页面元素缺失，case无法通过
     '''
 
     def tearDown(self):

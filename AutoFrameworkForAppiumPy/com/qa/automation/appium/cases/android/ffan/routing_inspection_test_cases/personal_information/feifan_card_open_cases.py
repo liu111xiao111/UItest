@@ -24,6 +24,7 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 
 class FeiFanCardOpenCases(TestCase):
     '''
+    作者 刘涛
     巡检checklist No.: 44
     自动化测试case No.: 44
     首页飞凡卡界面，点击开卡，验证飞凡标准卡及一卡通飞凡联名卡

@@ -25,9 +25,10 @@ ACTIVENUMBER = 4
 
 class SalesPromotionActiveCases(TestCase):
     '''
-        巡检checklist #18
-        自动化测试 #18-1
-        首页查看优惠活动，包含4个优惠券，2个活动（城市维度）并选择一个优惠券领取在我的票券中显示，选择一个活动查看门店
+    作者 刘涛
+    巡检checklist #18
+    自动化测试 #18-1
+    首页查看优惠活动，包含4个优惠券，2个活动（城市维度）并选择一个优惠券领取在我的票券中显示，选择一个活动查看门店
     '''
 
     def tearDown(self):

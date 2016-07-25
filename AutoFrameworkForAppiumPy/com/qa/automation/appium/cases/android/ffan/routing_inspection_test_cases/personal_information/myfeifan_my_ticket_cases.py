@@ -27,9 +27,10 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class MyfeifanMyTicketCases(TestCase):
     '''
-    	巡检checklist #50
-    	自动化测试 #50
-    	查看我的票券里数据显示正常
+    作者 刘涛
+    巡检checklist #50
+    自动化测试 #50
+    查看我的票券里数据显示正常
     '''
 
     def tearDown(self):

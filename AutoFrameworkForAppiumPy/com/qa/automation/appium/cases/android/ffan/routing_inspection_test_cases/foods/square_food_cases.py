@@ -24,7 +24,10 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class SquareFoodCases(TestCase):
     '''
-       usage: No.31 广场详情页点击美食汇正常进入餐饮模块，数据显示正常可点击进入
+    作者 刘涛
+    巡检checklist #31
+    自动化测试 #31
+    广场详情页点击美食汇正常进入餐饮模块，数据显示正常可点击进入
     '''
 
     def tearDown(self):

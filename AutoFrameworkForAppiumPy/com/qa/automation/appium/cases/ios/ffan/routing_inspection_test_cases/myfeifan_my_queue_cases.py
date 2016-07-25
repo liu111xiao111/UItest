@@ -21,9 +21,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class MyfeifanMyQueueCases(TestCase):
     '''
-    	巡检checklist: No.55
-    	自动化测试: No.55
-    	点击我的排队，成功进入并显示正确数据
+    作者 刘涛
+    巡检checklist: No.55
+    自动化测试: No.55
+    点击我的排队，成功进入并显示正确数据
     '''
 
     def tearDown(self):

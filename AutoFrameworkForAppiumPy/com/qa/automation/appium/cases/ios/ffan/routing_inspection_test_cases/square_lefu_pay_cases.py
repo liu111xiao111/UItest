@@ -20,9 +20,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareLefuPayCases(TestCase):
     '''
-    	巡检checklist #27
-    	自动化测试 #27
-    	广场详情页点击进入乐付买单
+    作者 刘涛
+    巡检checklist #27
+    自动化测试 #27
+    广场详情页点击进入乐付买单
     '''
 
     def tearDown(self):

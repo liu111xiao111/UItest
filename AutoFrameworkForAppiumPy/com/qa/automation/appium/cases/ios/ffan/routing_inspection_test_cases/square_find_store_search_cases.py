@@ -21,6 +21,7 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class SquareFindStoreSearchCases(TestCase):
     '''
+    作者 刘涛
     巡检checklist No.: 21
     自动化测试case No.: 21
     广场详情页点击找店，成功进入找店页面，并成功完成一次搜索，数据显示正常，点击门店可进入门店详情页，数据显示正常

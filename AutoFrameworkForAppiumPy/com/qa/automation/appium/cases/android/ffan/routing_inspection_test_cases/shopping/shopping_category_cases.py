@@ -24,9 +24,10 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class ShoppingCatergoryCases(TestCase):
     '''
-        巡检checklist #12
-        自动化测试 #12
-        首页进入购物模块，数据显示正常，点击进入详情页可以激活商品的提醒
+    作者 刘涛
+    巡检checklist #12
+    自动化测试 #12
+    首页进入购物模块，数据显示正常，点击进入详情页可以激活商品的提醒
     '''
 
     def tearDown(self):

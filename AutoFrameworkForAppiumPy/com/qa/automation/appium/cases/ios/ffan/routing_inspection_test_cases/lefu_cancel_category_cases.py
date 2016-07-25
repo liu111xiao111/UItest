@@ -24,9 +24,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class LefuCancelCatergoryCases(TestCase):
     '''
-        巡检checklist #15
-        自动化测试 #15-2
-        首页进入乐付买单（城市维度），并下单，取消订单，支付（虚拟城市），并查看相应订单状态
+    作者 刘涛
+    巡检checklist #15
+    自动化测试 #15-2
+    首页进入乐付买单（城市维度），并下单，取消订单，支付（虚拟城市），并查看相应订单状态
     '''
 
     def tearDown(self):

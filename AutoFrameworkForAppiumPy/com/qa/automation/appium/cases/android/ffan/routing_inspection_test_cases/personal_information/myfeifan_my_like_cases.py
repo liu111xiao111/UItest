@@ -24,9 +24,10 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class MyfeifanMyLikeCases(TestCase):
     '''
-    	巡检checklist: No.54
-    	自动化测试: No.54
-    	查看我的喜欢信息及状态是否正确
+    作者 刘涛
+    巡检checklist: No.54
+    自动化测试: No.54
+    查看我的喜欢信息及状态是否正确
     '''
 
     def tearDown(self):

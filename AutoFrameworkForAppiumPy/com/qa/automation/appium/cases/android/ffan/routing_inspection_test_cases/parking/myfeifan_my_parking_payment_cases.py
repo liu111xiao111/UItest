@@ -27,9 +27,10 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class MyfeifanMyParkingPaymentCases(TestCase):
     '''
-    	巡检checklist #56
-    	自动化测试 #56
-    	点击停车缴费，成功进入并显示正确数据
+    作者 刘涛
+    巡检checklist #56
+    自动化测试 #56
+    点击停车缴费，成功进入并显示正确数据
     '''
 
     def tearDown(self):

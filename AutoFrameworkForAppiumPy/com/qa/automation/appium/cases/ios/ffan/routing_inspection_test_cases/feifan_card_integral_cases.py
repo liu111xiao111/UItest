@@ -19,9 +19,10 @@ from com.qa.automation.appium.utility.logger import Logger
 
 class FeiFanCardIntegralCases(TestCase):
     '''
-        巡检checklist #45
-        自动化测试 #45
-        首页-飞凡卡点击积分，确认显示积分主页页面
+    作者 刘涛
+    巡检checklist #45
+    自动化测试 #45
+    首页-飞凡卡点击积分，确认显示积分主页页面
     '''
 
     def tearDown(self):

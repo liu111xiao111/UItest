@@ -18,12 +18,12 @@ from com.qa.automation.appium.pages.ios.ffan.parking_payment_page import Parking
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class ParkingPaymentCases(TestCase):
+class ParkingPaymentBindingsCases(TestCase):
     '''
-        巡检checklist #14
-        自动化测试 #14-1、#14-2、#56
-        首页进入停车，查看停车交费，绑定/解绑车牌
-        点击停车缴费，成功进入并显示正确数据
+    作者 刘涛
+    巡检checklist #14
+    自动化测试 #14-1
+    首页进入停车，查看停车交费，绑定车牌
     '''
 
     def tearDown(self):
