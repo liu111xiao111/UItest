@@ -6,6 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page_configs imp
 
 
 class LocationBluetoothPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>广场=>室内地图=>是否开启蓝牙设置提示
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(LocationBluetoothPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

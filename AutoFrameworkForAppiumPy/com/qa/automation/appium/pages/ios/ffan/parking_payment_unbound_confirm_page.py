@@ -15,8 +15,11 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-#   解除绑定POPUP页
 class ParkingPaymentUnboundConfirmPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>停车=>停车交费=>输入车牌号码页=>更多=>解绑车牌确认提示页
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(ParkingPaymentUnboundConfirmPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

@@ -6,6 +6,11 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
 class MyFfanMyOrderDetailsPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的订单=>详情页
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(MyFfanMyOrderDetailsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

@@ -10,10 +10,12 @@ from builtins import range
 
 SMP = ShoppingMallPageConfigs()
 
-'''
-    首页->购物中心页面
-'''
 class ShoppingMallPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>购物中心
+    '''
+
     def __init__(self, testcase, driver, logger):
         '''
         初始化

@@ -6,10 +6,12 @@ from com.qa.automation.appium.pages.ios.ffan.square_find_store_category_page_con
 
 SFSC = SquareFindStoreConfigs()
 
-'''
-    usage : 广场模块，找店类目
-'''
 class SquareFindStorePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>飞凡卡
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(SquareFindStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

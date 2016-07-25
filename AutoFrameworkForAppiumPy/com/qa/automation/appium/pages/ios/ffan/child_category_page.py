@@ -6,9 +6,12 @@ from com.qa.automation.appium.api.api import API
 
 CCPC = ChildCategoryPageConfigs
 
-
-#   首页点击亲子
 class ChildCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页＝>亲子
+    '''
+
     def __init__(self, testcase, driver, logger):
         """
         Constructor

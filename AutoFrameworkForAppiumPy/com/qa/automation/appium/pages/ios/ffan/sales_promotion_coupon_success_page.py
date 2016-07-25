@@ -6,6 +6,10 @@ from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_success_page
 
 
 class SalesPromotionCouponSuccessPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>优惠活动(优惠券)=>门店详情页=>领券成功页
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(SalesPromotionCouponSuccessPage, self).__init__(testcase=testcase , driver=driver, logger=logger);

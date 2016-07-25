@@ -15,8 +15,11 @@ PATH = lambda p: os.path.abspath(
 )
 
 
-#    停车交费“更多”详细页
 class ParkingPaymentMorePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>停车=>停车交费=>输入车牌号码页=>更多
+    '''
 
     def __init__(self, testcase, driver, logger):
         super(ParkingPaymentMorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);

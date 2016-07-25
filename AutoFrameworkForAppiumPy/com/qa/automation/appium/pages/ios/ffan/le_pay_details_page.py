@@ -6,6 +6,11 @@ from com.qa.automation.appium.pages.ios.ffan.le_pay_details_page_configs import 
 
 
 class LePayDetailsPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付=>输入乐付消费金额页
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(LePayDetailsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 

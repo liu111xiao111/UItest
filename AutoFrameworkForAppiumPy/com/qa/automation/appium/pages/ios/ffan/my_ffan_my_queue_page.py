@@ -7,6 +7,11 @@ from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 MQPC = MyFfanMyQueuePageConfigs()
 
 class MyFfanMyQueuePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的排队
+    '''
+
     def __init__(self, testcase, driver, logger):
         super(MyFfanMyQueuePage, self).__init__(testcase,
                                                 driver,

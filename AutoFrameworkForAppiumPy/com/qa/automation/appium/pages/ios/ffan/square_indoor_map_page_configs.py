@@ -3,10 +3,9 @@
 
 class SquareIndoorMapPageConfigs():
     # "室内地图"
-    resource_id_indoor_map = "com.wanda.app.wanhui:id/tab1";
+    name_indoor_map = u"室内地图";
     # "美食地图"
-    resource_id_food_map = "com.wanda.app.wanhui:id/tab2";
-    
-    
+    name_food_map = u"美食地图";
+
     def __init__(self):
         pass;

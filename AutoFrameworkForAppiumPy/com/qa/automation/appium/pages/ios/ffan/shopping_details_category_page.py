@@ -5,8 +5,11 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page_configs import ShoppingDetailsCategoryPageConfigs
 
 
-#   购物点击商品详情页
 class ShoppingDetailsCategoryPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>购物=>详情页
+    '''
 
     def __init__(self,testcase,driver,logger):
         self.a = 12;
