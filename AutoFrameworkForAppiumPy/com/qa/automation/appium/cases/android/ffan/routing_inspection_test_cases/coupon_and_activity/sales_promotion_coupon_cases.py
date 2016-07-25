@@ -52,11 +52,11 @@ class SalesPromotionCouponCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionPage = SalesPromotionPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(testcase = self , driver = self.driver , logger = self.logger)
-        myTicketPage = MyFfanMyTicketPage(testcase = self,driver = self.driver,logger = self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
+        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
+        myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
 
 
         # Click "优惠活动"

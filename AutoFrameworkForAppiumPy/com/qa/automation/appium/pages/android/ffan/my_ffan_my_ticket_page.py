@@ -1,95 +1,130 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_ticket_page_configs import MyFfanMyTicketPageConfigs
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_ticket_page_configs import MyFfanMyTicketPageConfigs as MMTPC
 
 
 class MyFfanMyTicketPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的票券
+    '''
     def __init__(self, testcase, driver, logger):
-        super(MyFfanMyTicketPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(MyFfanMyTicketPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Load "我的票券" page， according to textview in "我的票券", check "我的票券" page whether load correctly.
+        usage : 判断"我的票券"券码显示是否正确
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=MyFfanMyTicketPageConfigs.resource_id_tv_my_ticket_tv)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MMTPC.resource_id_tv_my_ticket_tv,
+                                        MMTPC.assert_view_timeout)
 
     def clickOnTicketUnused(self):
         '''
-        usage : Click "未使用" in my ticket page， and load "未使用" tab correctly.
+        usage : 点击未使用
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyTicketPageConfigs.text_ticket_unused)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_unused,
+                                 MMTPC.click_view_timeout)
 
     def clickOnTicketUsed(self):
         '''
-        usage : Click "已使用" in my ticket page， and load "已使用" tab correctly.
+        usage : 点击已使用
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyTicketPageConfigs.text_ticket_used)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_used,
+                                 MMTPC.click_view_timeout)
 
     def clickOnTicketOutOfDate(self):
         '''
-        usage : Click "已过期" in my ticket page， and load "已过期" tab correctly.
+        usage : 点击已过期
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyTicketPageConfigs.text_ticket_out_of_date)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_out_of_date,
+                                 MMTPC.click_view_timeout)
 
     def clickOnReturnRefund(self):
         '''
-        usage : Click "退货退款" in my ticket page， and load "退货退款" tab correctly.
+        usage : 点击退货退款
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyTicketPageConfigs.text_ticket_return_refund)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_return_refund,
+                                 MMTPC.click_view_timeout)
 
     def validSelfUsed(self):
         '''
-        usage : Load "已使用" tab correctly.
+        usage : 验证已使用正确
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=MyFfanMyTicketPageConfigs.text_ticket_used, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MMTPC.text_ticket_used,
+                                  MMTPC.assert_view_timeout)
 
     def validSelfOutOfDate(self):
         '''
-        usage : Load "已过期" tab correctly.
+        usage : 验证已过期正确
         '''
 
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=MyFfanMyTicketPageConfigs.text_ticket_out_of_date, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MMTPC.text_ticket_out_of_date,
+                                  MMTPC.assert_view_timeout)
 
     def validSelfReturnRefund(self):
         '''
-        usage : Load "退货退款" tab correctly.
+        usage : 验证退货退款正确
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=MyFfanMyTicketPageConfigs.text_ticket_return_refund, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MMTPC.text_ticket_return_refund,
+                                  MMTPC.assert_view_timeout)
 
     def getTicketNo(self):
         '''
-        usage : Get ticket number.
+        usage : 获取券数
         '''
-        ticketNumber = API().get_view_by_resourceID(self.driver, self.logger,
-													MyFfanMyTicketPageConfigs.resource_id_tv_my_ticket_no_tv).text
+        ticketNumber = API().getTextByResourceId(self.testCase,
+                                                 self.driver,
+                                                 self.logger,
+                                                 MMTPC.resource_id_tv_my_ticket_no_tv,
+                                                 MMTPC.assert_view_timeout)
         return ticketNumber[3:];
 
     def validSelfTicketName(self, ticketName="default"):
         '''
-        usage : Check ticket name correctly.
+        usage : 验证票券名字
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=ticketName, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  ticketName,
+                                  MMTPC.assert_view_timeout)
 
     def validCouponCode(self, couponCode="default"):
         '''
-        usage: verify whether the coupon is correct.
+        usage: 验证优惠是否有效
         '''
-
-        API().assert_view_by_text_contains_according_to_xpath_until_android(self.testcase, self.driver,
-                                                                            self.logger, couponCode,
-                                                                            MyFfanMyTicketPageConfigs.xpath_coupon_code_button,
-                                                                            MyFfanMyTicketPageConfigs.assert_view_timeout)
-
-if __name__ == '__main__':
-    pass;
+        text = API().getTextByXpath(self.testCase,
+                                    self.driver,
+                                    self.logger,
+                                    MMTPC.xpath_coupon_code_button,
+                                    MMTPC.assert_view_timeout)
+        API().assertGreaterEqual(self.testCase,
+                                 self.logger,
+                                 text,
+                                 couponCode)

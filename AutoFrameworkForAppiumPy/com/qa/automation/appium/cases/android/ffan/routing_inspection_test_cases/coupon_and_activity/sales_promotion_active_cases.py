@@ -50,9 +50,9 @@ class SalesPromotionActiveCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionPage = SalesPromotionPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionActiveDetailsPage = SalesPromotionActiveDetailsPage(testcase = self , driver = self.driver , logger = self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        salesPromotionActiveDetailsPage = SalesPromotionActiveDetailsPage(self, self.driver, self.logger)
 
         # Click "优惠活动"
         dashboardPage.validSelf();

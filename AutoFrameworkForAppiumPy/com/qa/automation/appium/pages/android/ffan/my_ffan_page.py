@@ -1,113 +1,126 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import MyFfanPageConfigs
+from com.qa.automation.appium.pages.android.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
 
-MFPC = MyFfanPageConfigs()
-
-#   进入应用的首页,是进入其他页面的入口
 class MyFfanPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的页面
+    '''
     def __init__(self, testcase, driver, logger):
-        super(MyFfanPage, self).__init__(testcase,
-                                         driver,
-                                         logger);
+        super(MyFfanPage, self).__init__(testcase, driver, logger)
 
-    '''
-        usage : 进入到应用首页,检查ffan logo
-    '''
     def validSelf(self):
-        API().assert_view_by_text_android(self.testcase,
-                                          self.driver,
-                                          self.logger,
-                                          MFPC.text_member_card_bag);
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              MFPC.resource_id_txt_user_nick_name_tv)
+        '''
+        usage : 进入到应用首页,检查ffan logo
+        '''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MFPC.text_member_card_bag,
+                                  MFPC.verify_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MFPC.resource_id_txt_user_nick_name_tv,
+                                        MFPC.verify_view_timeout)
 
     def clickOnLogin(self):
-        API().click_view_by_resourceID(self.testcase,
+        '''
+        usage: 点击登录按钮
+        '''
+        API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
-                                       MFPC.resource_id_tv_login_tv);
+                                       MFPC.resource_id_tv_login_tv,
+                                       MFPC.click_view_timeout)
 
     def validLoginStatus(self):
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.logger,
-                                              self.driver,
-                                              MFPC.resource_id_txt_user_nick_name_tv,
-                                              seconds=90)
+        '''
+        usage： 验证登录状态
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.logger,
+                                        self.driver,
+                                        MFPC.resource_id_txt_user_nick_name_tv,
+                                        90)
 
     def clickOnSettings(self):
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             MFPC.text_settins)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_settins)
+        '''
+        usage： 点击设置
+        '''
+        API().scrollToText(self.driver,
+                           self.logger,
+                           MFPC.text_settins)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_settins,
+                                 MFPC.verify_view_timeout)
 
     def clickOnMyQueue(self):
         '''
-        usage : Load "我的排队" page， according to textview in "我的排队", check "我的排队" page whether load correctly.
+        usage : 点击我的排队
         '''
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             MFPC.text_my_queue)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_queue)
+        API().scrollToText(self.driver,
+                           self.logger,
+                           MFPC.text_my_queue)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_queue,
+                                 MFPC.verify_view_timeout)
 
     def clickOnMyTicket(self):
         '''
-        usage : Load "我的票券" page， according to textview in "我的票券", check "我的票券" page whether load correctly.
+        usage : 点击我的票券
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_ticket)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_ticket,
+                                 MFPC.verify_view_timeout)
 
     def clickOnMyOrder(self):
         '''
-        usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
+        usage : 点击我的订单
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_order)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_order,
+                                 MFPC.verify_view_timeout)
 
     def clickOnMyLike(self):
         '''
-        usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
+        usage : 点击我的喜欢
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_like)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_like,
+                                 MFPC.verify_view_timeout)
 
     def isLoginStatus(self):
-        try:
-            API().find_view_by_resourceID_Until_android(self.driver,
-                                                        self.logger,
-                                                        MFPC.resource_id_txt_user_nick_name_tv)
-            return True
-        except TimeoutError:
-            return False
+        '''
+        usage: 返回登录状态
+        '''
+        return API().validElementByResourceId(self.driver,
+                                       self.logger,
+                                       MFPC.resource_id_txt_user_nick_name_tv,
+                                       MFPC.verify_view_timeout)
 
     def clickOnParkingPayment(self):
         '''
-        usage : Load "停车交费" page， according to textview in "停车交费", check "停车交费" page whether load correctly.
+        usage : 点击停车缴费
         '''
-        API().scroll_to_text(self.driver,
-                             self.logger,
-                             MFPC.text_parking_payment)
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_parking_payment)
-
-
-if __name__ == '__main__':
-    pass;
+        API().scrollToText(self.driver,
+                           self.logger,
+                           MFPC.text_parking_payment)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_parking_payment,
+                                 MFPC.verify_view_timeout)

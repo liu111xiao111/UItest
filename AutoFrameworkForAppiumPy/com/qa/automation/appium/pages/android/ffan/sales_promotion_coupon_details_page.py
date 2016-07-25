@@ -1,36 +1,34 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page_configs import SalesPromotionCouponDetailsPageConfigs
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page_configs import SalesPromotionCouponDetailsPageConfigs as SPCDPC
 
 class SalesPromotionCouponDetailsPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>优惠活动(优惠券)=>门店详情页
+    '''
 
     def __init__(self,testcase,driver,logger):
-        super(SalesPromotionCouponDetailsPage, self).__init__(testcase = testcase , driver = driver, logger = logger);
+        super(SalesPromotionCouponDetailsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-            usage : "优惠券" whether loading correctly.
+            usage : "优惠券" 页加载是否正确
         '''
-        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                              resource_id = SalesPromotionCouponDetailsPageConfigs.resource_id_tv_coupon_details_tv, seconds = 10)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPCDPC.resource_id_tv_coupon_details_tv,
+                                        10)
 
     def clickOnFreeOfChargeBtn(self):
         '''
-            usage : Click on "免费领取" button.
+            usage : 点击 "免费领取"
         ''' 
-        '''webview = API().find_view_by_class_name_both(driver=self.driver, logger=self.logger,
-                                                     className="android.webkit.WebView")
-        webview_1 = webview.find_element_by_android_uiautomator("new UiSelector().className(android.webkit.WebView)")
-        textview = webview_1.find_element_by_accessibility_id(SalesPromotionCouponDetailsPageConfigs.text_receive_free_button)
-        textview.click()'''
-        '''API().click_view_by_content_desc(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                         content_desc = SalesPromotionCouponDetailsPageConfigs.text_receive_free_button, seconds = 10)'''
-        '''API().get_view_by_class_name_android(driver=self.driver, logger=self.logger,
-                                             className="android.webkit.WebView").click()'''
-        API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger, xpath = SalesPromotionCouponDetailsPageConfigs.xpath_get_free_ticket, seconds = 10)
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPCDPC.xpath_get_free_ticket,
+                                  10)

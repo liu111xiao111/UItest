@@ -1,76 +1,98 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.sales_promotion_page_configs import SalesPromotionPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_page_configs import SalesPromotionPageConfigs as SPPC
 
-'''
-    首页 -> 优惠页面
-'''
+
 class SalesPromotionPage(SuperPage):
-
+    '''
+    作者 刘涛
+    首页=>优惠活动
+    '''
     def __init__(self,testcase,driver,logger):
-        super(SalesPromotionPage, self).__init__(testcase = testcase , driver = driver, logger = logger);
+        super(SalesPromotionPage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
         '''
-            usage : Check "优惠活动" whether loading correctly.
+            usage : 判断 "优惠活动" 页显示是否正确
         '''
-        API().assert_view_by_resourceID_Until(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                              resource_id = SalesPromotionPageConfigs.resource_id_tv_active_tv, seconds = 10)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPPC.resource_id_tv_active_tv,
+                                        10)
  
     def clickOnActiveTab(self):
         '''
-            usage : Check active tab
-        '''     
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       resource_id = SalesPromotionPageConfigs.resource_id_tv_active_tv)
+            usage : 点击优惠券tab
+        '''   
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPPC.resource_id_tv_active_tv,
+                                       10)
 
     def clickOnCouponTab(self):
         '''
-            usage : Check coupon tab
-        '''     
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       resource_id = SalesPromotionPageConfigs.resource_id_tv_coupon_tv)
+            usage : 点击活动详情
+        '''  
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPPC.resource_id_tv_coupon_tv,
+                                       10)
     
     def clickOnActiveDetails(self):
         '''
-            usage : Check active details
+            usage : 点击优惠券详情
         '''
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       resource_id = SalesPromotionPageConfigs.resource_id_tv_active_details_tv)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPPC.resource_id_tv_active_details_tv,
+                                       10)
 
     def clickOnCouponDetails(self):
         '''
-            usage : Check coupon details
+            usage : 获得活动列表的长度
         '''
-        API().scroll_to_text(self.driver, self.logger, SalesPromotionPageConfigs.text_special_store)
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       text = SalesPromotionPageConfigs.text_special_store)
+        API().scrollToText(self.driver, self.logger, SPPC.text_special_store)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SPPC.text_special_store,
+                                 10)
 
     def getActiveListNumber(self):
         '''
-            usage : Get active list number
+            usage : 获取活动列表
         '''
-        activeListNumber = API().get_views_by_resourceID(driver = self.driver, logger = self.logger,
-                                                   resource_id = SalesPromotionPageConfigs.resource_id_tv_active_details_tv)
-        return activeListNumber;
+        activeListNumber = API().getElementsByResourceId(self.testcase,
+                                                         self.driver,
+                                                         self.logger,
+                                                         SPPC.resource_id_tv_active_details_tv,
+                                                         10)
+        return activeListNumber
 
     def getCouponListNumber(self):
         '''
-            usage : Get coupon list number
+        usage: 获取优惠信息列表
         '''
-        couponListNumber = API().get_views_by_resourceID(driver = self.driver, logger = self.logger,
-                                                   resource_id = SalesPromotionPageConfigs.resource_id_tv_active_details_tv)
-        return couponListNumber;
+        couponListNumber = API().getElementsByResourceId(self.testcase,
+                                                         self.driver,
+                                                         self.logger,
+                                                         SPPC.resource_id_tv_active_details_tv,
+                                                         10)
+        return couponListNumber
 
     def getItemName(self):
         '''
-        usage : Get item name.
+        usage : 获得活动标题名称
         '''
-        itemName = API().find_view_by_resourceID_Until_android(self.driver, self.logger, 
-                                                    SalesPromotionPageConfigs.resource_id_tv_active_details_tv).text
-        return itemName;
-
-if __name__ == '__main__':
-    pass;
+        itemName = API().getTextByResourceId(self.testcase,
+                                             self.driver,
+                                             self.logger, 
+                                             SPPC.resource_id_tv_active_details_tv,
+                                             10)
+        return itemName

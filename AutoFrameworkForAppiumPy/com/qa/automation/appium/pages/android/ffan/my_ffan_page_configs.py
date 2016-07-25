@@ -27,5 +27,6 @@ class MyFfanPageConfigs():
     text_my_like = u"我的喜欢";
     text_parking_payment = u"停车交费";
 
-    def __init__(self):
-        pass;
+    verify_view_timeout = 10
+
+    click_view_timeout = 10
