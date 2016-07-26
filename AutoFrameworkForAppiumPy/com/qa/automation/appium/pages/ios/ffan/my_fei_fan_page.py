@@ -33,18 +33,14 @@ class MyFeiFanPage(SuperPage):
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                  MyFeiFanPageConfigs.resource_id_nickname_st,
-                                                  MyFeiFanPageConfigs.assert_view_timeout)
+            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                            MyFeiFanPageConfigs.resource_id_nickname_st,
+                                            MyFeiFanPageConfigs.assert_view_timeout)
             return True
         else:
-            try:
-                API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_nickname_st,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
-                return True
-            except AssertionError:
-                return False
+            return API().validElementByResourceId(self.driver, self.logger,
+                                                  MyFeiFanPageConfigs.resource_id_nickname_st,
+                                                  MyFeiFanPageConfigs.assert_view_timeout)
 
     def validLogoutStatus(self):
         '''
@@ -53,9 +49,9 @@ class MyFeiFanPage(SuperPage):
 
         for _ in range(3):
             self.scrollAsScreenPercent(0.5, 0.4, 0.5, 0.6)
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              MyFeiFanPageConfigs.resource_id_login_bt,
-                                              MyFeiFanPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        MyFeiFanPageConfigs.resource_id_login_bt,
+                                        MyFeiFanPageConfigs.assert_view_timeout)
 
     def clickOnLogin(self):
         '''
@@ -73,7 +69,7 @@ class MyFeiFanPage(SuperPage):
 
         for _ in range(3):
             self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        MyFeiFanPageConfigs.resource_id_settings_st,
                                        MyFeiFanPageConfigs.click_on_button_timeout)
 
