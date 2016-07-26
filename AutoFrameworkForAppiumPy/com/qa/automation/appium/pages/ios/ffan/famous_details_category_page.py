@@ -19,10 +19,14 @@ class FamousDetailsCategoryPage(SuperPage):
         '''
         usage : 判断 品牌"推荐"页显示是否正确
         '''
-        API().assertElementByName(testCase=self.testcase, driver=self.driver, logger=self.logger,
-                                          name=FamousDetailsCategoryPageConfigs.text_dashboardpage)
-        API().assertElementByName(testCase=self.testcase, driver=self.driver, logger=self.logger,
-                                          name=FamousDetailsCategoryPageConfigs.text_goods)
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=FamousDetailsCategoryPageConfigs.text_dashboardpage)
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=FamousDetailsCategoryPageConfigs.text_goods)
 
 if __name__ == '__main__':
     pass;

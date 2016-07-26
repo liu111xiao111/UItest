@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
 
@@ -20,8 +20,10 @@ class MyFfanPage(SuperPage):
         usage : 进入到应用首页,检查ffan logo
     '''
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              MFPC.text_my_ffan)
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=MFPC.text_my_ffan)
 
     def clickOnLogin(self):
         API().click_view_by_resourceID(self.testcase, self.driver, self.logger, MFPC.text_login)
@@ -55,10 +57,10 @@ class MyFfanPage(SuperPage):
                      self.logger,
                      start_x, start_y, end_x, end_y)
 
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_queue)
+        API().clickElementByName(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  name = MFPC.text_my_queue)
 
     def clickOnMyTicket(self):
         '''
@@ -73,19 +75,19 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       MFPC.text_my_order)
+        API().clickElementByName(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  name = MFPC.text_my_order)
 
     def clickOnMyLike(self):
         '''
         usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MFPC.text_my_like)
+        API().clickElementByName(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  name = MFPC.text_my_like)
 
     def isLoginStatus(self):
         try:

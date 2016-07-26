@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from com.qa.automation.appium.pages.ios.ffan.le_pay_cancel_order_configs import LePayCancelOrderPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
 
@@ -18,9 +18,10 @@ class LePayCancelOrderPage(SuperPage):
         '''
             usage : 点击 "确定" button
         '''
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                  resource_id = LePayCancelOrderPageConfigs.name_confirm_button)
-
+        API().clickElementByName(testCase = self.testcase,
+                                 driver = self.driver,
+                                 logger = self.logger,
+                                 name = LePayCancelOrderPageConfigs.name_confirm_button)
 
 if __name__ == '__main__':
     pass;
