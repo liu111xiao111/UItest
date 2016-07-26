@@ -1,46 +1,54 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page_configs import FeiFanCardBillPageConfigs
+from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page_configs import FeiFanCardBillPageConfigs as FCBPC
 
 
-'''
-    usage: 飞凡卡
-'''
 class FeiFanCardBillPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>飞凡卡=>飞凡卡账单
+    '''
     def __init__(self, testcase, driver, logger):
-        super(FeiFanCardBillPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
-
-    '''
-        usage : 检查是否加载出来
-    '''
+        super(FeiFanCardBillPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=FeiFanCardBillPageConfigs.resource_id_tv_bill_list_tv,
-                                                      seconds=10)
+        '''
+        usage : 检查是否加载出来
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCBPC.resource_id_tv_bill_list_tv,
+                                        10)
 
     def validSubFilterByText(self, text=u"全部"):
         '''
-        usage: verify whether the filter is correct.
+        usage: 验证子标签
         '''
-
-        API().assert_view_by_text_android(self.testcase, self.driver, self.logger, text, FeiFanCardBillPageConfigs.click_on_button_timeout)
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  text,
+                                  FCBPC.click_on_button_timeout)
 
     def clickOnFilter(self):
         '''
-        usage: click on the filter button.
+        usage: 点击标签
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, FeiFanCardBillPageConfigs.resource_id_filter_button, FeiFanCardBillPageConfigs.click_on_button_timeout);
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCBPC.resource_id_filter_button,
+                                       FCBPC.click_on_button_timeout)
 
     def clickOnSubFilterByText(self, text=u"全部"):
         '''
-        usage: click on the sub-filter button.
+        usage: 点击子标签
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, text, FeiFanCardBillPageConfigs.click_on_button_timeout);
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 text,
+                                 FCBPC.click_on_button_timeout)
