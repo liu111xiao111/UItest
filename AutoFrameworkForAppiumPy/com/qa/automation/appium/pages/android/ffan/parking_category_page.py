@@ -1,38 +1,44 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.parking_category_page_configs import ParkingCategoryPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.parking_category_page_configs import ParkingCategoryPageConfigs as PCPC
 
-#   首页点击 停车
+
 class ParkingCategoryPage(SuperPage):
-
+    '''
+    作者 刘涛
+    首页=>停车
+    '''
     def __init__(self,testcase,driver,logger):
-        self.a = 12;
-        super(ParkingCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(ParkingCategoryPage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
         '''
-        usage : Load "停车" page
+        usage : 验证停车页面
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_tv,
-                                                      seconds=18);
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        PCPC.resource_id_tv_parking_tv,
+                                        18)
 
     def clickOnParkingLot(self):
         '''
-        usage : Click "附近停车场"， load "停车场列表" page
+        usage : 点击附近停车场
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_lot_tv);
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       PCPC.resource_id_tv_parking_lot_tv,
+                                       10)
 
     def clickOnParkingPayment(self):
         '''
-        usage : Click "停车交费"， load "停车交费" page
+        usage : 点击停车缴费
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                resource_id=ParkingCategoryPageConfigs.resource_id_tv_parking_payment_tv);    
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       PCPC.resource_id_tv_parking_payment_tv,
+                                       10)

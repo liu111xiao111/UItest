@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_unbunding_page_configs import MyFfanMyParkingPaymentUnbundingPageConfigs
 
@@ -17,8 +17,8 @@ class MyFfanMyParkingPaymentUnbundingPage(SuperPage):
         '''
         usage: 点击"更多"
         ''' 
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MyFfanMyParkingPaymentUnbundingPageConfigs.text_confirm,
-                                         10)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MyFfanMyParkingPaymentUnbundingPageConfigs.text_confirm,
+                                 10)
