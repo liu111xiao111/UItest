@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page_configs import SquareModulePageConfigs as SquareModulePageConfigs
 
@@ -20,15 +20,12 @@ class SquareModulePage(SuperPage):
         usage : 进入广场模块，检查是否加载出来
     '''
     def validSelf(self):
-        tempWidth = API().get_width_of_device(self.driver, self.logger)
-        tempHight = API().get_height_of_device(self.driver, self.logger)
         for _ in range(10):
-            API().scroll(self.driver, self.logger,
-                         tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
+            self.scrollAsScreenPercent(0.5, 0.2, 0.5, 0.8)
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                          SquareModulePageConfigs.resource_id_find_store_st,
-                                          SquareModulePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SquareModulePageConfigs.resource_id_find_store_st,
+                                  SquareModulePageConfigs.assert_view_timeout)
 
     '''
         usage: 点击签到
@@ -202,14 +199,10 @@ class SquareModulePage(SuperPage):
         usage: click on the general coupon button.
         '''
 
-        tempWidth = API().get_width_of_device(self.driver, self.logger)
-        tempHight = API().get_height_of_device(self.driver, self.logger)
         for _ in range(10):
-            API().scroll(self.driver, self.logger, tempWidth / 2, tempHight * 4 / 5, tempWidth / 2, tempHight / 5)
+            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
 
-        API().scroll_to_text(self.driver, self.logger,
-                             SquareModulePageConfigs.text_general_coupon_button)
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SquareModulePageConfigs.xpath_general_coupon_button,
                                   SquareModulePageConfigs.click_on_button_timeout)
 
