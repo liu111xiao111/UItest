@@ -96,7 +96,7 @@ class MyFeiFanPage(SuperPage):
         usage: click on the nickname button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        MyFeiFanPageConfigs.resource_id_nickname_st,
                                        MyFeiFanPageConfigs.click_on_button_timeout)
 
