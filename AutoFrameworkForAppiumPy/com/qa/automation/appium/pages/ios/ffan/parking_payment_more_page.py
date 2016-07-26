@@ -1,18 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-# sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_more_page_configs import ParkingPaymentMorePageConfigs
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-
-
-# Returns abs path relative to this file and not cwd
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
 
 
 class ParkingPaymentMorePage(SuperPage):

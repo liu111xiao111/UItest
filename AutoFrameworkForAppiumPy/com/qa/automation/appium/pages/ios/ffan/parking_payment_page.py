@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os
-import sys
-
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_page_configs import ParkingPaymentPageConfigs
-
-
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))))))
 
 
 class ParkingPaymentPage(SuperPage):
