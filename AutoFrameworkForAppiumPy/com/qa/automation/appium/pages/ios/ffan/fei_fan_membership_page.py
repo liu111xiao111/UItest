@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.fei_fan_membership_page_configs import FeiFanMembershipPageConfigs
 
@@ -23,9 +23,9 @@ class FeiFanMembershipPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              FeiFanMembershipPageConfigs.resource_id_fei_fan_membership_title_st,
-                                              FeiFanMembershipPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        FeiFanMembershipPageConfigs.resource_id_fei_fan_membership_title_st,
+                                        FeiFanMembershipPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':
