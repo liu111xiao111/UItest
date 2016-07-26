@@ -23,14 +23,14 @@ class LoginPage(SuperPage):
         usage: verify whether the current page is the switch city page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        LoginPageConfigs.resource_id_login_title_st,
-                                        LoginPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  LoginPageConfigs.resource_id_login_title_st,
+                                  LoginPageConfigs.assert_view_timeout)
 
     def switchToNormalLogin(self):
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       LoginPageConfigs.text_normal_login,
-                                       LoginPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 LoginPageConfigs.text_normal_login,
+                                 LoginPageConfigs.click_on_button_timeout)
 
     def inputUserName(self):
         API().inputStringByXpath(self.testcase, self.driver, self.logger,

@@ -17,28 +17,28 @@ class SquareIndoorMapPage(SuperPage):
         '''
         usage : 判断"室内地图"显示是否正常
         '''
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        SIMPC.name_indoor_map,
-                                        18)
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SIMPC.name_indoor_map,
+                                  18)
 
     def clickOnFoodMap(self):
         '''
         usage : 点击 "美食地图"
         '''
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       SIMPC.name_food_map,
-                                       10)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SIMPC.name_food_map,
+                                 10)
 
     def validSelfFood(self):
         '''
         usage : 判断"美食地图"显示是否正常
         '''
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       SIMPC.name_food_map,
-                                       18)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SIMPC.name_food_map,
+                                 18)

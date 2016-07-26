@@ -25,9 +25,9 @@ class SmallAmountPasswordLessPaymentsPage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        SmallAmountPasswordLessPaymentsPageConfigs.resource_id_small_amount_password_less_payments_title_st,
-                                        SmallAmountPasswordLessPaymentsPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SmallAmountPasswordLessPaymentsPageConfigs.resource_id_small_amount_password_less_payments_title_st,
+                                  SmallAmountPasswordLessPaymentsPageConfigs.assert_view_timeout)
 
     def clickOnSmallAmountPasswordLessPaymentsSwitch(self):
         '''
@@ -43,9 +43,9 @@ class SmallAmountPasswordLessPaymentsPage(SuperPage):
         usage: verify whether the small amount password-lsee payment is opened.
         '''
 
-        return API().validElementByResourceId(self.driver, self.logger,
-                                              SmallAmountPasswordLessPaymentsPageConfigs.resource_id_choose_small_amount_password_less_quota_st,
-                                              SmallAmountPasswordLessPaymentsPageConfigs.find_view_timeout)
+        return API().validElementByName(self.driver, self.logger,
+                                        SmallAmountPasswordLessPaymentsPageConfigs.resource_id_choose_small_amount_password_less_quota_st,
+                                        SmallAmountPasswordLessPaymentsPageConfigs.find_view_timeout)
 
 
 if __name__ == '__main__':

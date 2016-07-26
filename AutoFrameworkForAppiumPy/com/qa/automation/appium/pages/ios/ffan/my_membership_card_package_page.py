@@ -23,18 +23,18 @@ class MyMembershipCardPackagePage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MyMembershipCardPackagePageConfigs.resource_id_my_membership_card_package_title_st,
-                                        MyMembershipCardPackagePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  MyMembershipCardPackagePageConfigs.resource_id_my_membership_card_package_title_st,
+                                  MyMembershipCardPackagePageConfigs.assert_view_timeout)
 
     def clickOnLeHuoKa(self):
         '''
         usage: click on the LeHuoKa button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_st,
-                                       MyMembershipCardPackagePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_st,
+                                 MyMembershipCardPackagePageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

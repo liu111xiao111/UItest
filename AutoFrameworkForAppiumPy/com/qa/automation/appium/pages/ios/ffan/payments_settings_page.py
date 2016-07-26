@@ -23,27 +23,27 @@ class PaymentsSettingsPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        PaymentsSettingsPageConfigs.resource_id_payments_settings_title_st,
-                                        PaymentsSettingsPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  PaymentsSettingsPageConfigs.resource_id_payments_settings_title_st,
+                                  PaymentsSettingsPageConfigs.assert_view_timeout)
 
     def clickOnPaymentsPasswordManagement(self):
         '''
         usage: click on the payments password management button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       PaymentsSettingsPageConfigs.resource_id_update_payments_password_st,
-                                       PaymentsSettingsPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 PaymentsSettingsPageConfigs.resource_id_update_payments_password_st,
+                                 PaymentsSettingsPageConfigs.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
         usage: click on the small amount password less payment button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       PaymentsSettingsPageConfigs.resource_id_small_amount_password_less_payments_st,
-                                       PaymentsSettingsPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 PaymentsSettingsPageConfigs.resource_id_small_amount_password_less_payments_st,
+                                 PaymentsSettingsPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

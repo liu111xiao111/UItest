@@ -23,54 +23,54 @@ class MessageCentrePage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MessageCentrePageConfigs.resource_id_message_centre_title_st,
-                                        MessageCentrePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  MessageCentrePageConfigs.resource_id_message_centre_title_st,
+                                  MessageCentrePageConfigs.assert_view_timeout)
 
     def clickOnSettings(self):
         '''
         usage: click on the settings button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MessageCentrePageConfigs.resource_id_settings_st,
-                                        MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MessageCentrePageConfigs.resource_id_settings_st,
+                                 MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnFeiFanActivity(self):
         '''
         usage: click on the fei fan activity button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MessageCentrePageConfigs.resource_id_fei_fan_activity_st,
-                                       MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MessageCentrePageConfigs.resource_id_fei_fan_activity_st,
+                                 MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnSquareDynamic(self):
         '''
         usage: click on the square dynamic button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MessageCentrePageConfigs.resource_id_square_dynamic_st,
-                                       MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MessageCentrePageConfigs.resource_id_square_dynamic_st,
+                                 MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnBrandActivity(self):
         '''
         usage: click on the brand activity button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MessageCentrePageConfigs.resource_id_brand_activity_st,
-                                       MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MessageCentrePageConfigs.resource_id_brand_activity_st,
+                                 MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnStoreMessage(self):
         '''
         usage: click on the store message button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MessageCentrePageConfigs.resource_id_store_message_st,
-                                       MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MessageCentrePageConfigs.resource_id_store_message_st,
+                                 MessageCentrePageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

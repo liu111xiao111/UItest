@@ -23,9 +23,9 @@ class MessageSettingsPage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MessageSettingsPageConfigs.resource_id_message_settings_title_st,
-                                        MessageSettingsPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  MessageSettingsPageConfigs.resource_id_message_settings_title_st,
+                                  MessageSettingsPageConfigs.assert_view_timeout)
 
     def clickOnActivityPush(self):
         '''

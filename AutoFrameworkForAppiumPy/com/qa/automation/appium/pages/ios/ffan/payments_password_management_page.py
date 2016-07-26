@@ -23,9 +23,9 @@ class PaymentsPasswordManagementPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        PaymentsPasswordManagementPageConfigs.resource_id_update_payments_password_title_st,
-                                        PaymentsPasswordManagementPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  PaymentsPasswordManagementPageConfigs.resource_id_update_payments_password_title_st,
+                                  PaymentsPasswordManagementPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

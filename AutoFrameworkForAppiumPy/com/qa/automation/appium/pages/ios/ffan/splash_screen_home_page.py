@@ -23,9 +23,9 @@ class SplashScreenHomePage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        SplashScreenHomePageConfigs.resource_id_skip_st,
-                                        SplashScreenHomePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SplashScreenHomePageConfigs.resource_id_skip_st,
+                                  SplashScreenHomePageConfigs.assert_view_timeout)
 
 if __name__ == '__main__':
     pass

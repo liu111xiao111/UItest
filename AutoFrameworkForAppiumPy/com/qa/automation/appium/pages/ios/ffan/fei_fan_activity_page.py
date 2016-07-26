@@ -23,9 +23,9 @@ class FeiFanActivityPage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        FeiFanActivityPageConfigs.resource_id_fei_fan_activity_title_st,
-                                        FeiFanActivityPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  FeiFanActivityPageConfigs.resource_id_fei_fan_activity_title_st,
+                                  FeiFanActivityPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

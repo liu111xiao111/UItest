@@ -23,27 +23,27 @@ class MyFeiFanCardPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MyFeiFanCardPageConfigs.resource_id_my_fei_fan_card_title_st,
-                                        MyFeiFanCardPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  MyFeiFanCardPageConfigs.resource_id_my_fei_fan_card_title_st,
+                                  MyFeiFanCardPageConfigs.assert_view_timeout)
 
     def clickOnTransactionRecord(self):
         '''
         usage: click on the transaction record button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MyFeiFanCardPageConfigs.resource_id_transaction_record_st,
-                                       MyFeiFanCardPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MyFeiFanCardPageConfigs.resource_id_transaction_record_st,
+                                 MyFeiFanCardPageConfigs.click_on_button_timeout)
 
     def clickOnPayemntsSettings(self):
         '''
         usage: click on the payments settings button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       MyFeiFanCardPageConfigs.resource_id_payments_settings_st,
-                                       MyFeiFanCardPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MyFeiFanCardPageConfigs.resource_id_payments_settings_st,
+                                 MyFeiFanCardPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

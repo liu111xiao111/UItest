@@ -22,9 +22,9 @@ class StoreMessagePage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        StoreMessagePageConfigs.resource_id_store_message_title_st,
-                                        StoreMessagePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  StoreMessagePageConfigs.resource_id_store_message_title_st,
+                                  StoreMessagePageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

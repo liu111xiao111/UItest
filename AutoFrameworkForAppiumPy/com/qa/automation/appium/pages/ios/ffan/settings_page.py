@@ -15,32 +15,31 @@ class SettingsPage(SuperPage):
         super(SettingsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        SettingsPageConfigs.resource_id_title_st,
-                                        SettingsPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SettingsPageConfigs.resource_id_title_st,
+                                  SettingsPageConfigs.assert_view_timeout)
 
-    # 点击退出当前账号button
     def clickOnQuitAccountBtn(self, confirmQuit=True):
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       SettingsPageConfigs.resource_id_exit_from_current_account_st,
-                                       SettingsPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SettingsPageConfigs.resource_id_exit_from_current_account_st,
+                                 SettingsPageConfigs.click_on_button_timeout)
         if confirmQuit:
-            API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                           SettingsPageConfigs.resource_id_confirm_bt,
-                                           SettingsPageConfigs.click_on_button_timeout)
+            API().clickElementByName(self.testcase, self.driver, self.logger,
+                                     SettingsPageConfigs.resource_id_confirm_bt,
+                                     SettingsPageConfigs.click_on_button_timeout)
         else:
-            API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                           SettingsPageConfigs.resource_id_cancel_bt,
-                                           SettingsPageConfigs.click_on_button_timeout)
+            API().clickElementByName(self.testcase, self.driver, self.logger,
+                                     SettingsPageConfigs.resource_id_cancel_bt,
+                                     SettingsPageConfigs.click_on_button_timeout)
 
     def clickOnAccountManagement(self):
         '''
         usage: click on the account management button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       SettingsPageConfigs.resource_id_account_management_st,
-                                       SettingsPageConfigs.assert_view_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SettingsPageConfigs.resource_id_account_management_st,
+                                 SettingsPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

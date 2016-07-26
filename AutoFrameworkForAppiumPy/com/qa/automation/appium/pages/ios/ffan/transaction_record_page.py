@@ -23,9 +23,9 @@ class TransactionRecordPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        TransactionRecordPageConfigs.resource_id_transaction_record_title_st,
-                                        TransactionRecordPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  TransactionRecordPageConfigs.resource_id_transaction_record_title_st,
+                                  TransactionRecordPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

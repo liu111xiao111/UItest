@@ -20,9 +20,9 @@ class LoveShoppingPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        LoveShoppingPageConfigs.name_shopping_mall,
-                                        LoveShoppingPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  LoveShoppingPageConfigs.name_shopping_mall,
+                                  LoveShoppingPageConfigs.assert_view_timeout)
 
     # 点击购物中心按钮
     def clickOnShoppingMall(self):

@@ -23,23 +23,23 @@ class VersionUpgradePage(SuperPage):
         '''
 
         if assertable:
-            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                            VersionUpgradePageConfigs.assert_view_timeout)
+            API().assertElementByName(self.testcase, self.driver, self.logger,
+                                      VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                      VersionUpgradePageConfigs.assert_view_timeout)
             return True
         else:
-            return API().validElementByResourceId(self.driver, self.logger,
-                                                  VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                                  VersionUpgradePageConfigs.verify_view_timeout)
+            return API().validElementByName(self.driver, self.logger,
+                                            VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                            VersionUpgradePageConfigs.verify_view_timeout)
 
     def cancelVersionUpgrade(self):
         '''
         usage: cancel version upgrade.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                       VersionUpgradePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                 VersionUpgradePageConfigs.click_on_button_timeout)
 
     def confirmVersionUpgrade(self):
         '''
@@ -63,9 +63,9 @@ class VersionUpgradePage(SuperPage):
         '''
 
         API().assertFalse(self.testcase, self.logger,
-                          API().validElementByResourceId(self.driver, self.logger,
-                                                         VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
-                                                         VersionUpgradePageConfigs.assert_invalid_view_time))
+                          API().validElementByName(self.driver, self.logger,
+                                                   VersionUpgradePageConfigs.resource_id_upgrade_cancel_bt,
+                                                   VersionUpgradePageConfigs.assert_invalid_view_time))
 
 
 if __name__ == '__main__':

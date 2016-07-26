@@ -23,9 +23,9 @@ class SquareDynamicPage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        SquareDynamicPageConfigs.resource_id_square_dynamic_title_st,
-                                        SquareDynamicPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SquareDynamicPageConfigs.resource_id_square_dynamic_title_st,
+                                  SquareDynamicPageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

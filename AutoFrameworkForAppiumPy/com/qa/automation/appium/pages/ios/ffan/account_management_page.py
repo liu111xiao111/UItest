@@ -23,27 +23,27 @@ class AccountManagementPage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        AccountManagementPageConfigs.resource_id_account_management_title_st,
-                                        AccountManagementPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  AccountManagementPageConfigs.resource_id_account_management_title_st,
+                                  AccountManagementPageConfigs.assert_view_timeout)
 
     def clickOnUpdatePassword(self):
         '''
         usage: click on the update password button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       AccountManagementPageConfigs.resource_id_update_login_password_st,
-                                       AccountManagementPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 AccountManagementPageConfigs.resource_id_update_login_password_st,
+                                 AccountManagementPageConfigs.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
         usage: click on the small account password-less payments button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       AccountManagementPageConfigs.resource_id_small_amount_password_less_payments,
-                                       AccountManagementPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 AccountManagementPageConfigs.resource_id_small_amount_password_less_payments,
+                                 AccountManagementPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

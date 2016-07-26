@@ -23,9 +23,9 @@ class UpdateLoginPasswordPage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        UpdateLoginPasswordPageConfigs.resource_id_update_login_password_title_st,
-                                        UpdateLoginPasswordPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  UpdateLoginPasswordPageConfigs.resource_id_update_login_password_title_st,
+                                  UpdateLoginPasswordPageConfigs.assert_view_timeout)
 
     def inputOldLoginPassword(self, oldPassword):
         '''
@@ -59,9 +59,9 @@ class UpdateLoginPasswordPage(SuperPage):
         usage: click on the confirm button.
         '''
 
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       UpdateLoginPasswordPageConfigs.resource_id_confirm_bt,
-                                       UpdateLoginPasswordPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 UpdateLoginPasswordPageConfigs.resource_id_confirm_bt,
+                                 UpdateLoginPasswordPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':
