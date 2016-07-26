@@ -42,9 +42,9 @@ class FeiFanCardPage(SuperPage):
         usage : 点击账单
     '''
     def clickOnBill(self):
-        API().click_view_by_ios_uiautomation(self.testcase, self.driver, self.logger,
-                                             FeiFanCardPageConfigs.ios_uiautomation_bill_bt,
-                                             FeiFanCardPageConfigs.click_on_button_timeout)
+        API().clickElementByIosUiautomation(self.testcase, self.driver, self.logger,
+                                            FeiFanCardPageConfigs.ios_uiautomation_bill_bt,
+                                            FeiFanCardPageConfigs.click_on_button_timeout)
 
     '''
         usage : 点击零花钱

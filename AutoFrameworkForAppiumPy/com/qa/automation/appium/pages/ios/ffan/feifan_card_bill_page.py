@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.feifan_card_bill_page_configs import FeiFanCardBillPageConfigs
 
@@ -19,34 +19,34 @@ class FeiFanCardBillPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              FeiFanCardBillPageConfigs.resource_id_pocket_money_bill_st,
-                                              FeiFanCardBillPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  FeiFanCardBillPageConfigs.resource_id_pocket_money_bill_st,
+                                  FeiFanCardBillPageConfigs.assert_view_timeout)
 
     def validSubFilterByText(self, text=u"全部"):
         '''
         usage: verify whether the filter is correct.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, text,
-                                              FeiFanCardBillPageConfigs.click_on_button_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger, text,
+                                  FeiFanCardBillPageConfigs.click_on_button_timeout)
 
     def clickOnFilter(self):
         '''
         usage: click on the filter button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       FeiFanCardBillPageConfigs.resource_id_filter_bt,
-                                       FeiFanCardBillPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 FeiFanCardBillPageConfigs.resource_id_filter_bt,
+                                 FeiFanCardBillPageConfigs.click_on_button_timeout)
 
     def clickOnSubFilterByText(self, text=u"全部"):
         '''
         usage: click on the sub-filter button.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, text,
-                                              FeiFanCardBillPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger, text,
+                                 FeiFanCardBillPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':
