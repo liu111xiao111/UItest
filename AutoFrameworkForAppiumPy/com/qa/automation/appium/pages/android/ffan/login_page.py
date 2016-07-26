@@ -1,44 +1,67 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.login_page_configs import LoginPageConfigs
+from com.qa.automation.appium.pages.android.ffan.login_page_configs import LoginPageConfigs as LPC
 
 #
 #   进入应用的首页,是进入其他页面的入口
 class LoginPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>我的飞凡=>登录
+    '''
     def __init__(self, testcase, driver, logger):
-        super(LoginPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
-
-    '''
-        usage : 进入到登录页,检查登录按钮
-    '''
+        super(LoginPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=LoginPageConfigs.resource_id_login_button,
-                                                      seconds=10);
+        '''
+        usage : 进入到登录页,检查登录按钮
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        LPC.resource_id_login_button,
+                                        10)
 
     def switchToNormalLogin(self):
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=LoginPageConfigs.text_normal_login);
+        '''
+        usage: 切换到正常登陆
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                LPC.text_normal_login,
+                                10)
 
     def inputUserName(self):
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_user_name,
-                                               string=LoginPageConfigs.account_name
-                                               );
+        '''
+        usage: 输入用户名
+        '''
+        API().inputStringByResourceId(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      LPC.resource_id_user_name,
+                                      LPC.account_name,
+                                      10)
 
     def inputPassWord(self):
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_pass_word,
-                                               string=LoginPageConfigs.account_passwd
-                                               );
+        '''
+        usage: 输入密码
+        '''
+        API().inputStringByResourceId(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      LPC.resource_id_pass_word,
+                                      LPC.account_passwd,
+                                      10)
 
     def clickOnLoginBtn(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=LoginPageConfigs.resource_id_login_button)
-
-
-if __name__ == '__main__':
-    pass;
+        '''
+        usage: 点击登陆按钮
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       LPC.resource_id_login_button,
+                                       10)
