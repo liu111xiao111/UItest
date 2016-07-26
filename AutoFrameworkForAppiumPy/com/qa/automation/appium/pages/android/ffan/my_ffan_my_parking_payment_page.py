@@ -1,39 +1,46 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_page_configs import MyFfanMyParkingPaymentPageConfigs
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_page_configs import MyFfanMyParkingPaymentPageConfigs as PPPC
 
 
 class MyFfanMyParkingPaymentPage(SuperPage):
-
+    '''
+    作者 刘涛
+    首页=>停车=>停车交费
+    '''
     def __init__(self,testcase,driver,logger):
-        super(MyFfanMyParkingPaymentPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(MyFfanMyParkingPaymentPage, self).__init__(testcase, driver, logger);
 
 
     def validSelf(self):
         '''
-        usage : Click "停车交费" in my Feifan page， and load "停车交费" page correctly. 
-        ''' 
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                              resource_id=MyFfanMyParkingPaymentPageConfigs.resource_id_tv_parking_payment_tv
-                                              );
+        usage : 判断“付停车费”是否正确显示
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        PPPC.resource_id_tv_parking_payment_tv,
+                                        10)
 
     def inputVIN(self):
         '''
-        usage : Input VIN 
+        usage : 输入车牌号
         ''' 
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id = MyFfanMyParkingPaymentPageConfigs.resource_id_tv_VIN_tv, string = MyFfanMyParkingPaymentPageConfigs.input_VIN
-                                               );
+        API().inputStringByResourceId(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      PPPC.resource_id_tv_VIN_tv,
+                                      PPPC.input_VIN,
+                                      10)
 
     def clickOnNextBtn(self):
         '''
-            usage: 点击"下一步" button
+        usage: 点击"下一步"
         ''' 
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text = MyFfanMyParkingPaymentPageConfigs.text_next_btn);
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 PPPC.text_next_btn,
+                                 10)
