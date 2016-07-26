@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
 
@@ -23,9 +23,9 @@ class MyFeiFanPage(SuperPage):
         usage: verify whether the current page is correct page.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              MyFeiFanPageConfigs.resource_id_my_fei_fan_title_st,
-                                              MyFeiFanPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        MyFeiFanPageConfigs.resource_id_my_fei_fan_title_st,
+                                        MyFeiFanPageConfigs.assert_view_timeout)
 
     def validLoginStatus(self, assertable=True):
         '''
@@ -62,9 +62,9 @@ class MyFeiFanPage(SuperPage):
         usage: click on the login button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_login_bt,
-                                               MyFeiFanPageConfigs.assert_view_timeout)
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       MyFeiFanPageConfigs.resource_id_login_bt,
+                                       MyFeiFanPageConfigs.assert_view_timeout)
 
     def clickOnSettings(self):
         '''

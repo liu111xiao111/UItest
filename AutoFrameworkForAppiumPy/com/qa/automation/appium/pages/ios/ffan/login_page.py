@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.login_page_configs import LoginPageConfigs
 
@@ -23,27 +23,31 @@ class LoginPage(SuperPage):
         usage: verify whether the current page is the switch city page.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              LoginPageConfigs.resource_id_login_title_st,
-                                              LoginPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        LoginPageConfigs.resource_id_login_title_st,
+                                        LoginPageConfigs.assert_view_timeout)
 
     def switchToNormalLogin(self):
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        LoginPageConfigs.text_normal_login,
                                        LoginPageConfigs.click_on_button_timeout)
 
     def inputUserName(self):
-        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_mobile_number_tf,
-                                      LoginPageConfigs.text_mobile_number)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 LoginPageConfigs.xpath_mobile_number_tf,
+                                 LoginPageConfigs.text_mobile_number,
+                                 LoginPageConfigs.input_timeout)
 
     def inputPassWord(self):
-        API().input_view_by_xpath_ios(self.driver, self.logger, LoginPageConfigs.xpath_password_tf,
-                                      LoginPageConfigs.text_password)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 LoginPageConfigs.xpath_password_tf,
+                                 LoginPageConfigs.text_password,
+                                 LoginPageConfigs.input_timeout)
 
     def clickOnLoginBtn(self):
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-                                       LoginPageConfigs.xpath_login_bt,
-                                       LoginPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  LoginPageConfigs.xpath_login_bt,
+                                  LoginPageConfigs.click_on_button_timeout)
 
 
 if __name__ == '__main__':

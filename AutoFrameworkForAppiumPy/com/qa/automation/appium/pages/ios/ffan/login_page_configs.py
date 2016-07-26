@@ -32,6 +32,9 @@ class LoginPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    # Input time out
+    input_timeout = 10
+
     # Login title
     text_login = "登录"
     resource_id_login_title_st = u"登录"
