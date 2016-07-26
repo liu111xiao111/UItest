@@ -11,14 +11,14 @@ from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearA
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.ios.ffan.brand_activity_page import BrandActivityPage
+# from com.qa.automation.appium.pages.ios.ffan.brand_activity_page import BrandActivityPage
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.fei_fan_activity_page import FeiFanActivityPage
+# from com.qa.automation.appium.pages.ios.ffan.fei_fan_activity_page import FeiFanActivityPage
 from com.qa.automation.appium.pages.ios.ffan.message_centre_page import MessageCentrePage
 from com.qa.automation.appium.pages.ios.ffan.message_settings_page import MessageSettingsPage
 from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
-from com.qa.automation.appium.pages.ios.ffan.square_dynamic_page import SquareDynamicPage
-from com.qa.automation.appium.pages.ios.ffan.store_message_page import StoreMessagePage
+# from com.qa.automation.appium.pages.ios.ffan.square_dynamic_page import SquareDynamicPage
+# from com.qa.automation.appium.pages.ios.ffan.store_message_page import StoreMessagePage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -36,18 +36,10 @@ class MessageSettingsCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -60,33 +52,33 @@ class MessageSettingsCases(TestCase):
         myFeiFanPage.clickOnMessageCentre()
 
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnFeiFanActivity()
-
-        feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
-        feiFanActivityPage.validSelf()
-        feiFanActivityPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnSquareDynamic()
-
-        squareDynamicPage = SquareDynamicPage(self, self.driver, self.logger)
-        squareDynamicPage.validSelf()
-        squareDynamicPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnBrandActivity()
-
-        brandActivityPage = BrandActivityPage(self, self.driver, self.logger)
-        brandActivityPage.validSelf()
-        brandActivityPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnStoreMessage()
-
-        storeMessagePage = StoreMessagePage(self, self.driver, self.logger)
-        storeMessagePage.validSelf()
-        storeMessagePage.clickBackKey()
+#         messageCentrePage.validSelf()
+#         messageCentrePage.clickOnFeiFanActivity()
+#
+#         feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
+#         feiFanActivityPage.validSelf()
+#         feiFanActivityPage.clickBackKey()
+#
+#         messageCentrePage.validSelf()
+#         messageCentrePage.clickOnSquareDynamic()
+#
+#         squareDynamicPage = SquareDynamicPage(self, self.driver, self.logger)
+#         squareDynamicPage.validSelf()
+#         squareDynamicPage.clickBackKey()
+#
+#         messageCentrePage.validSelf()
+#         messageCentrePage.clickOnBrandActivity()
+#
+#         brandActivityPage = BrandActivityPage(self, self.driver, self.logger)
+#         brandActivityPage.validSelf()
+#         brandActivityPage.clickBackKey()
+#
+#         messageCentrePage.validSelf()
+#         messageCentrePage.clickOnStoreMessage()
+#
+#         storeMessagePage = StoreMessagePage(self, self.driver, self.logger)
+#         storeMessagePage.validSelf()
+#         storeMessagePage.clickBackKey()
 
         messageCentrePage.validSelf()
         messageCentrePage.clickOnSettings()

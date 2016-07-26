@@ -43,7 +43,7 @@ class TestPrepare:
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
-        loginPage.wait_by_seconds(5)
+        loginPage.waitBySeconds(5)
 
         myFeiFanPage.validSelf()
 

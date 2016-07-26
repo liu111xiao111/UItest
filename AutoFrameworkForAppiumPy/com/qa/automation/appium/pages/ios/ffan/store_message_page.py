@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.store_message_page_configs import StoreMessagePageConfigs
 
@@ -22,9 +22,9 @@ class StoreMessagePage(SuperPage):
         usage: verify whether the current page is correct.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              StoreMessagePageConfigs.resource_id_store_message_title_st,
-                                              StoreMessagePageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        StoreMessagePageConfigs.resource_id_store_message_title_st,
+                                        StoreMessagePageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':
