@@ -16,6 +16,8 @@ class BrandCategoryPageConfigs():
     text_men_fasion = u"男装";
     text_competitive_products = u"精品";
 
+    assert_view_timeout = 10
+    click_view_timeout = 10
 
     def __init__(self):
         pass;

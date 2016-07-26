@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.brand_category_page_configs import BrandCategoryPageConfigs
+from com.qa.automation.appium.pages.android.ffan.brand_category_page_configs import BrandCategoryPageConfigs as BCPC
 
 
 class BrandCategoryPage(SuperPage):
@@ -11,100 +10,145 @@ class BrandCategoryPage(SuperPage):
     作者 刘涛
     首页＝>品牌
     '''
-
     def __init__(self,testcase,driver,logger):
-        self.a = 12;
-        super(BrandCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(BrandCategoryPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Load "推荐 & “大牌” page
+        usage : 验证品牌页面
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_recommend, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_recommend,
+                                  BCPC.assert_view_timeout)
 
     def clickOnBrand(self):
         '''
-        usage : Click "大牌" tab
+        usage : 点击大牌
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_brand)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_brand,
+                                 BCPC.click_view_timeout)
 
     def clickOnBrandDetails(self):
         '''
-        usage : Enter recommend details page
+        usage : 点击品牌详情
         ''' 
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = BrandCategoryPageConfigs.resource_id_tv_brand_details_tv); 
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       BCPC.resource_id_tv_brand_details_tv,
+                                       BCPC.click_view_timeout)
 
     def clickOnRecommendDetails(self):
         '''
-        usage : Click "推荐" details
+        usage : 点击推荐详情
         '''
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = BrandCategoryPageConfigs.resource_id_tv_recommend_details_tv)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       BCPC.resource_id_tv_recommend_details_tv,
+                                       BCPC.click_view_timeout)
 
     def clickOnMenFasion(self):
         '''
-        usage : Click "男装" tab
+        usage : 点击男装
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_men_fasion)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_men_fasion,
+                                 BCPC.click_view_timeout)
 
     def clickOnCatering(self):
         '''
-        usage : Click "餐饮" tab
+        usage : 点击餐饮
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_catering)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_catering,
+                                 BCPC.click_view_timeout)
 
     def clickOnLife(self):
         '''
-        usage : Click "生活" tab
+        usage : 点击生活
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_life)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_life,
+                                 BCPC.click_view_timeout)
 
     def clickOnSports(self):
         '''
-        usage : Click "运动" tab
+        usage : 点击运动
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_sports)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_sports,
+                                 BCPC.click_view_timeout)
 
     def clickOnCompetitiveProducts(self):
         '''
-        usage : Click "精品" tab
+        usage : 点击精品
         '''
-        API().click_view_by_text_android(testcase = self.testcase, driver = self.driver, logger = self.logger, text = BrandCategoryPageConfigs.text_competitive_products)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.text_competitive_products,
+                                 BCPC.click_view_timeout)
 
     def validSelfMenFasion(self):
         '''
-        usage : Load "男装" tab
+        usage : 验证男装
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_men_fasion, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_men_fasion,
+                                  BCPC.assert_view_timeout)
 
     def validSelfCertering(self):
         '''
-        usage : Load "餐饮" tab
+        usage : 验证餐饮
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_catering, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_catering,
+                                  BCPC.assert_view_timeout)
 
     def validSelfLife(self):
         '''
-        usage : Load "生活" tab
+        usage : 验证生活
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_life, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_life,
+                                  BCPC.assert_view_timeout)
 
     def validSelfSports(self):
         '''
-        usage : Load "运动" tab
+        usage : 验证运动
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_sports, seconds=10);
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_sports,
+                                  BCPC.assert_view_timeout)
 
     def validSelfCompetitiveProducts(self):
         '''
-        usage : Load "精品" tab
+        usage : 验证精品
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text = BrandCategoryPageConfigs.text_competitive_products, seconds=10);
-
-if __name__ == '__main__':
-    pass;
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_competitive_products,
+                                  BCPC.assert_view_timeout)
