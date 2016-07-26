@@ -5,8 +5,6 @@ import operator
 from com.qa.automation.appium.api.api import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.shopping_mall_page_configs import ShoppingMallPageConfigs
-from django.test.html import Element
-from builtins import range
 
 SMP = ShoppingMallPageConfigs()
 
