@@ -21,5 +21,5 @@ class ChildCategoryPageConfigs():
     xpath_store_list_2 = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]"
     # 门店详情界面标题
     xpath_store_title = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[1]"
-    click_on_button_timeout = 10
+    click_on_button_timeout = 20
 

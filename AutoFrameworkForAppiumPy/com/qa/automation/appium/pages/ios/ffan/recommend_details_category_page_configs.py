@@ -7,8 +7,8 @@ class RecommendDetailsCategoryPageConfigs():
 
     #  推荐&品牌 details page
     resource_id_tv_recommend_details_tv = u"阅读"
-    xpath_recommend_subscriber = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[29]"
-    xpath_subcriber_number = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[45]"
+    xpath_recommend_subscriber = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[15]"
+    xpath_subcriber_number = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[39]"
 
 
     def __init__(self):
