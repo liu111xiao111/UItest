@@ -1,83 +1,84 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_like_page_configs import MyFfanMyLikePageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_like_page_configs import MyFfanMyLikePageConfigs as MLPC
 
-MLPC = MyFfanMyLikePageConfigs()
 
 class MyFfanMyLikePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的喜欢
+    '''
     def __init__(self, testcase, driver, logger):
-        super(MyFfanMyLikePage, self).__init__(testcase,
-                                               driver,
-                                               logger);
+        super(MyFfanMyLikePage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
         '''
-        usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
+        usage : 验证我的喜欢
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              MLPC.resource_id_tv_my_like_tv)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MLPC.resource_id_tv_my_like_tv,
+                                        MLPC.verify_view_timeout)
 
     def clickOnLikeGoods(self):
         '''
-        usage : Click "商品" in my order page， and load "商品" tab correctly. 
+        usage : 点击商品
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.text_like_goods)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MLPC.text_like_goods,
+                                 MLPC.verify_view_timeout)
 
     def clickOnLikeDissertation(self):
         '''
-        usage : Click "专题" in my order page， and load "专题" tab correctly. 
+        usage : 点击专题
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.text_like_dissertation)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MLPC.text_like_dissertation,
+                                 MLPC.verify_view_timeout)
 
     def clickOnLikeBrand(self):
         '''
-        usage : Click "品牌" in my order page， and load "品牌" tab correctly. 
+        usage : 点击品牌 
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         MLPC.text_like_brand)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MLPC.text_like_brand,
+                                 MLPC.verify_view_timeout)
 
     def validSelfGoods(self):
         '''
-        usage : Load "商品" correctly.
+        usage : 验证商品
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                                self.driver,
-                                                self.logger,
-                                                MLPC.verify_goods_view_resourceId,
-                                                MLPC.verify_view_timeout);
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MLPC.verify_goods_view_resourceId,
+                                        MLPC.verify_view_timeout)
 
     def validSelfDissertation(self):
         '''
-        usage : Load "专题" correctly.
+        usage : 验证专题
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                                self.driver,
-                                                self.logger,
-                                                MLPC.verify_dissertation_view_resourceId,
-                                                MLPC.verify_view_timeout);
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MLPC.verify_dissertation_view_resourceId,
+                                        MLPC.verify_view_timeout)
 
     def validSelfBrand(self):
         '''
-        usage : Load "品牌" correctly.
+        usage : 验证品牌
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                                self.driver,
-                                                self.logger,
-                                                MLPC.verify_brand_view_resourceId,
-                                                MLPC.verify_view_timeout);
-
-if __name__ == '__main__':
-    pass;
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MLPC.verify_brand_view_resourceId,
+                                        MLPC.verify_view_timeout)

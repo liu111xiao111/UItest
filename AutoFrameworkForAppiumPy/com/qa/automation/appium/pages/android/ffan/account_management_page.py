@@ -1,48 +1,38 @@
 # -*- coding:utf-8 -*-
 #hupi
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.account_management_page_configs import AccountManagementPageConfigs
+from com.qa.automation.appium.pages.android.ffan.account_management_page_configs import AccountManagementPageConfigs as AMPC
 
 
 class AccountManagementPage(SuperPage):
     '''
-    This is a version update page operation class.
+    作者 宋波
+    首页=>我的飞凡=>设置=>账号管理
     '''
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(AccountManagementPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is the version upgrade page.
+        usage: 验证账号管理页面
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      AccountManagementPageConfigs.resource_id_account_management_title,
-                                                      AccountManagementPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        AMPC.resource_id_account_management_title,
+                                        AMPC.assert_view_timeout)
 
     def clickOnUpdatePassword(self):
         '''
-        usage: click on the update password button.
+        usage: 点击更新密码
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-                                         AccountManagementPageConfigs.text_update_login_password_button,
-                                         AccountManagementPageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 AMPC.text_update_login_password_button,
+                                 AMPC.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
-        usage: click on the small account password-less payments button.
+        usage: 点击小额免密支付
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, 
-										AccountManagementPageConfigs.text_small_amount_password_less_payments, 
-										AccountManagementPageConfigs.click_on_button_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByText(self.testcase, self.driver, self.logger, 
+                                 AMPC.text_small_amount_password_less_payments, 
+                                 AMPC.click_on_button_timeout)

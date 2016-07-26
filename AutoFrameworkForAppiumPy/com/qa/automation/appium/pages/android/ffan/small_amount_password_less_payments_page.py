@@ -1,49 +1,46 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
-
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.small_amount_password_less_payments_page_configs import \
+ SmallAmountPasswordLessPaymentsPageConfigs as SPLPPC
 
-from com.qa.automation.appium.pages.android.ffan.small_amount_password_less_payments_page_configs import SmallAmountPasswordLessPaymentsPageConfigs
 
 class SmallAmountPasswordLessPaymentsPage(SuperPage):
     '''
-    This is small amount password-less payments page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>支付设置=>小额免密支付
     '''
-
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(SmallAmountPasswordLessPaymentsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct.
+        usage: 验证小额免密支付
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, SmallAmountPasswordLessPaymentsPageConfigs.resource_id_square_dynamic_title, SmallAmountPasswordLessPaymentsPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPLPPC.resource_id_square_dynamic_title,
+                                        SPLPPC.assert_view_timeout)
 
     def clickOnSmallAmountPasswordLessPaymentsSwitch(self):
         '''
-        usage: click on the small amount password-less payment switch button.
+        usage: 点击小额免密支付开关按钮
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, SmallAmountPasswordLessPaymentsPageConfigs.resource_id_small_amount_password_less_payment_switch, SmallAmountPasswordLessPaymentsPageConfigs.click_on_button_timeout)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPLPPC.resource_id_small_amount_password_less_payment_switch,
+                                       SPLPPC.click_on_button_timeout)
 
     def validSmallAmountPasswordLessPaymentsStatus(self):
         '''
-        usage: verify whether the small amount password-lsee payment is opened.
+        usage: 验证小额免密支付是否打开
         '''
-
-        try:
-            API().find_view_by_text_Until_android(self.driver, self.logger, SmallAmountPasswordLessPaymentsPageConfigs.text_choose_small_amount_password_less_quota, SmallAmountPasswordLessPaymentsPageConfigs.click_on_button_timeout)
+        if API().validElementByText(self.driver,
+                                    self.logger,
+                                    SPLPPC.text_choose_small_amount_password_less_quota,
+                                    SPLPPC.click_on_button_timeout):
             return True
-        except TimeoutException:
-            return False
-
-if __name__ == '__main__':
-    pass
+        return False

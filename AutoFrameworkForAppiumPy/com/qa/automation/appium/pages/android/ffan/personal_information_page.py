@@ -1,31 +1,22 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.personal_information_page_configs import PersonalInformationPageConfigs
+from com.qa.automation.appium.pages.android.ffan.personal_information_page_configs import PersonalInformationPageConfigs as PIPC
 
 
 class PersonalInformationPage(SuperPage):
     '''
-    This is personal information page operation class.
+    作者 宋波
+    首页=>我的飞凡=>个人信息
     '''
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(PersonalInformationPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证个人信息
         '''
-
-        API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
-                                          PersonalInformationPageConfigs.text_nickname_button,
-                                          PersonalInformationPageConfigs.assert_view_timeout)
-
-
-if __name__ == '__main__':
-    pass
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  PIPC.text_nickname_button,
+                                  PIPC.assert_view_timeout)

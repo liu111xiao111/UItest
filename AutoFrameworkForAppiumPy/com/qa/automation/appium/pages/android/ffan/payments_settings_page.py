@@ -1,43 +1,44 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.payments_settings_page_configs import PaymentsSettingsPageConfigs
+from com.qa.automation.appium.pages.android.ffan.payments_settings_page_configs import PaymentsSettingsPageConfigs as PSPC
 
 
 class PaymentsSettingsPage(SuperPage):
     '''
-    This is a payments settings page operation class.
+    作者 宋波
+    首页=>我的飞凡=>我的飞凡卡=>支付设置
     '''
-
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(PaymentsSettingsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证支付设置页面
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, PaymentsSettingsPageConfigs.resource_id_payments_settings_title, PaymentsSettingsPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        PSPC.resource_id_payments_settings_title,
+                                        PSPC.assert_view_timeout)
 
     def clickOnUpdatePaymentsPassword(self):
         '''
-        usage: click on the update payments password button.
+        usage: 点击更新支付密码
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, PaymentsSettingsPageConfigs.text_update_payments_password_button, PaymentsSettingsPageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 PSPC.text_update_payments_password_button,
+                                 PSPC.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
-        usage: click on the small amount password less payment button.
+        usage: 点击小额免密支付
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, PaymentsSettingsPageConfigs.text_small_amount_password_less_payments_button, PaymentsSettingsPageConfigs.click_on_button_timeout)
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 PSPC.text_small_amount_password_less_payments_button,
+                                 PSPC.click_on_button_timeout)

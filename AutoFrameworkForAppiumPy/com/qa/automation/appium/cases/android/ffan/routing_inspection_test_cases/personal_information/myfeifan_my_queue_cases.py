@@ -26,7 +26,6 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 
 class MyfeifanMyQueueCases(TestCase):
     '''
-    作者 刘涛
     巡检checklist: No.55
     自动化测试: No.55
     点击我的排队，成功进入并显示正确数据
