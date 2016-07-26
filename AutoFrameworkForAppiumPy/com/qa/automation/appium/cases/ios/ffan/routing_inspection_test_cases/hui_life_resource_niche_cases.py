@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
@@ -29,18 +29,10 @@ class HuiLifeResourceNicheCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testHuiLifeScreenShot(self):
@@ -52,13 +44,11 @@ class HuiLifeResourceNicheCases(TestCase):
         huiLifePage.validSelf()
         huiLifePage.screen_shot("hui_life_resource_niche")
 
-        tempTuple = (u"滴滴出行", u"话费充值", u"加油",
-                     u"滴滴出行", u"流量充值", u"演唱会",
-                     u"滴滴出行", u"QQ充值", u"话剧",
-                     u"自选股", u"数码回收", u"音乐会",
-                     u"首页", u"有料", u"违章查询")
+        tempTuple = (u"滴滴出行", u"滴滴出行", u"违章查询", u"自选股", u"首页",
+                     u"话费充值", u"流量充值", u"QQ充值", u"数码回收", u"有料",
+                     u"加油", u"演唱会", u"话剧", u"音乐会", u"亲子票务")
         for tempNum in range(15):
-            huiLifePage.clickOnAndValidByXpathAndResourceId("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[%d]" % (tempNum + 1), tempTuple[tempNum])
+            huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
             huiLifePage.waitBySeconds()
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.hui_life_page_configs import HuiLifePageConfigs
 
@@ -23,26 +23,27 @@ class HuiLifePage(SuperPage):
         usage: 验证惠生活界面
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              HuiLifePageConfigs.resource_id_taking_taxi_st,
-                                              HuiLifePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  HuiLifePageConfigs.resource_id_taking_taxi_st,
+                                  HuiLifePageConfigs.assert_view_timeout)
 
-    def clickOnAndValidByXpathAndResourceId(self, viewXpath, validValue):
+    def clickOnAndValidByXpathAndName(self, viewXpath, validValue):
         '''
         usage: 点击一个控件，并验证是否点击正确。
         '''
 
         print("KEYWORDS: %s" % validValue)
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, viewXpath,
-                                       HuiLifePageConfigs.click_on_button_timeout)
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, validValue,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, viewXpath,
+                                  HuiLifePageConfigs.click_on_button_timeout)
+        API().waitBySeconds(10)
+        API().assertElementByName(self.testcase, self.driver, self.logger, validValue,
                                               HuiLifePageConfigs.assert_view_timeout)
         if u"滴滴出行" == validValue:
             tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
         else:
             tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]"
 
-        API().click_back_key_ios(self.testcase, self.driver, self.logger, tempXpath,
+        API().clickBackKeyForIos(self.testcase, self.driver, self.logger, tempXpath,
                                  HuiLifePageConfigs.click_on_button_timeout)
 
     def clickOnActivity(self):
