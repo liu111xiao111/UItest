@@ -10,6 +10,9 @@ class SquareShoppingPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    # Get time out
+    get_timeout = 10
+
     # Sub-commodity button
     resource_id_sub_commodity_button = "com.wanda.app.wanhui:id/goods_list_item_name"
     xpath_sub_commodity_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
