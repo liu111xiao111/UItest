@@ -1,34 +1,34 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.square_find_store_category_page_configs import SquareFindStoreConfigs
+from com.qa.automation.appium.pages.android.ffan.square_find_store_category_page_configs import SquareFindStoreConfigs as SFSC
 
-SFSC = SquareFindStoreConfigs()
 
-'''
-    usage : 广场模块，找店类目
-'''
 class SquareFindStorePage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>广场=>找店
+    '''
     def __init__(self, testcase, driver, logger):
-        super(SquareFindStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(SquareFindStorePage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              SFSC.resource_id_tv_category_tv,
-                                              SFSC.verify_view_timeout);
+        '''
+        usage : 验证找店页面
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SFSC.resource_id_tv_category_tv,
+                                        SFSC.verify_view_timeout)
 
-    '''
-        usage : 点击search
-    '''
     def clickOnSearch(self):
-        API().click_view_by_resourceID(self.testcase,
+        '''
+        usage : 点击搜索
+        '''
+        API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
-                                       SFSC.resource_id_iv_search_iv)
-
-
-if __name__ == '__main__':
-    pass;
+                                       SFSC.resource_id_iv_search_iv,
+                                       SFSC.verify_view_timeout)

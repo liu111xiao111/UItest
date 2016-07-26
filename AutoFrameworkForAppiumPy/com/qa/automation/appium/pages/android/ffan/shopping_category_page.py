@@ -1,31 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.shopping_category_page_configs import ShoppingCategoryPageConfigs
+from com.qa.automation.appium.pages.android.ffan.shopping_category_page_configs import ShoppingCategoryPageConfigs as SCPC
 
 
-#   首页点击购物，显示商品页
 class ShoppingCategoryPage(SuperPage):
-
+    '''
+    作者 刘涛
+    首页=>购物
+    '''
     def __init__(self,testcase,driver,logger):
-        self.a = 12;
-        super(ShoppingCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(ShoppingCategoryPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Check "商品" details whether loading correctly.
+        usage : 验证购物页面
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=ShoppingCategoryPageConfigs.text_goods, seconds=10);
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  SCPC.text_goods,
+                                  10)
 
     def clickOnGoodsDetails(self):
         '''
-        usage : Enter recommend details page
+        usage : 点击美食详情
         ''' 
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       resource_id = ShoppingCategoryPageConfigs.resource_id_tv_goods_details_tv); 
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       SCPC.resource_id_tv_goods_details_tv,
+                                       10)

@@ -1,30 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page_configs import LefuPayWayPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page_configs import LefuPayWayPageConfigs as LPWPC
+
 
 class LefuPayWayPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付=>输入乐付消费金额页=>选择支付方式页
+    '''
     def __init__(self, testcase, driver, logger):
-        super(LefuPayWayPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(LefuPayWayPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Click "确认买单" in lefu pay page, and load "选择支付方式" page correctly.
+        usage : 验证支付方式页
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=LefuPayWayPageConfigs.resource_id_pay_way,
-                                                      seconds=18);
-        '''API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=LefuPayWayPageConfigs.text_pay_way,
-                                          seconds=10);'''
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        LPWPC.resource_id_pay_way,
+                                        18)
 
     def getOrderNumber(self):
         '''
-        usage : Get order number.
+        usage : 获取数值
         '''
-        orderNumber = API().get_view_by_resourceID(self.driver, self.logger, LefuPayWayPageConfigs.resource_id_order_number).text
-        return orderNumber;
-
-if __name__ == '__main__':
-    pass;
+        orderNumber = API().getTextByResourceId(self.testcase, self.driver, self.logger,
+                                                LPWPC.resource_id_order_number,
+                                                10)
+        return orderNumber

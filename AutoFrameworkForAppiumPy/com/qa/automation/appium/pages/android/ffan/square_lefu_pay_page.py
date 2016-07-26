@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page_configs import SquareLefuPayPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page_configs import SquareLefuPayPageConfigs as SLPPC
 
 
 class SquareLefuPayPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付
+    '''
     def __init__(self, testcase, driver, logger):
-        super(SquareLefuPayPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(SquareLefuPayPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Click "乐付买单" in square page, and load "乐付买单" correctly.
+        usage : 验证乐付买单
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=SquareLefuPayPageConfigs.resource_id_lefu_pay_title,
-                                                      seconds=18);
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        SLPPC.resource_id_lefu_pay_title,
+                                        18)
 
     def clickOnLefuPay(self):
         '''
-        usage : Click "乐付买单"
+        usage : 点击 "乐付买单"
         '''
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SquareLefuPayPageConfigs.resource_id_lefu_pay, seconds=18);
-        # API().click_view_by_resourceID_android(testcase = self.testcase, driver = self.driver,logger = self.logger, resource_id = SquareLefuPayPageConfigs.resource_id_lefu_pay)
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       SLPPC.resource_id_lefu_pay,
+                                       18)

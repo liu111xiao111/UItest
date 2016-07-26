@@ -1,19 +1,24 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.lefu_cancel_order_configs import LefuCancelOrderPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.lefu_cancel_order_configs import LefuCancelOrderPageConfigs as LCOPC
 
 
 class LefuCancelOrderPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付=>输入乐付消费金额页=>选择支付方式页=>取消订单提示确定页
+    '''
     def __init__(self, testcase, driver, logger):
-        super(LefuCancelOrderPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(LefuCancelOrderPage, self).__init__(testcase, driver, logger);
 
     def clickOnConfirmBtn(self):
         '''
-        usage : Click "确认"
+        usage : 点击 "确认"
         '''
-        API().click_view_by_resourceID(testcase = self.testcase, driver = self.driver, logger = self.logger, resource_id = LefuCancelOrderPageConfigs.resource_id_confirm_button)
-            
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       LCOPC.resource_id_confirm_button,
+                                       10)

@@ -1,35 +1,39 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page_configs import LefuPayDetailPageConfigs
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page_configs import LefuPayDetailPageConfigs as LPDPC
 
 
 class LefuPayDetailPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>乐付=>输入乐付消费金额页
+    '''
     def __init__(self, testcase, driver, logger):
-        super(LefuPayDetailPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(LefuPayDetailPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Click "乐付买单" in square page, and load "乐付买单" correctly.
+        usage : 验证乐付消费输入页
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=LefuPayDetailPageConfigs.resource_id_store_title,
-                                                      seconds=18);
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        LPDPC.resource_id_store_title,
+                                        18)
 
     def inputMoney(self):
-        API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
-                                               resource_id=LefuPayDetailPageConfigs.resource_id_total_money,
-                                               string=LefuPayDetailPageConfigs.total_money
-                                               );
+        '''
+        usage : 输入金额
+        '''
+        API().inputStringByResourceId(self.testcase, self.driver, self.logger,
+                                      LPDPC.resource_id_total_money,
+                                      LPDPC.total_money,
+                                      10)
 
     def clickOnPay(self):
         '''
-        usage : Click "确认购买"
+        usage : 点击 "确认购买"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=LefuPayDetailPageConfigs.resource_id_pay);
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       LPDPC.resource_id_pay,
+                                       10)

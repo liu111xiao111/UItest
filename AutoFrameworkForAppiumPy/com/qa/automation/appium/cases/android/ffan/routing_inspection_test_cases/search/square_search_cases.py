@@ -25,7 +25,9 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class SquareSearchCases(TestCase):
     '''
-        usage : No.19 首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
+    巡检checklist No.: 19
+    自动化测试case No.: 19
+    首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
     '''
 
     def tearDown(self):

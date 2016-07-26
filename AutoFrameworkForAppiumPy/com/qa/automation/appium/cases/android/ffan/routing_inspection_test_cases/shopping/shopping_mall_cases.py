@@ -23,7 +23,6 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class ShoppingMallCases(TestCase):
     '''
-    作者 刘涛
     巡检checklist No.: 05
     自动化测试case No.: 05
     爱逛街进入购物中心确认广场距离排序顺序以及广场信息

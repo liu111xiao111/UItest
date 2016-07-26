@@ -25,7 +25,6 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class SquareLefuPayCases(TestCase):
     '''
-    作者 刘涛
     巡检checklist #27
     自动化测试 #27
     广场详情页点击进入乐付买单

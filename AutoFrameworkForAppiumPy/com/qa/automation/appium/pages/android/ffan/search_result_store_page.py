@@ -1,35 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.search_page_configs import SearchPageConfigs
+from com.qa.automation.appium.pages.android.ffan.search_page_configs import SearchPageConfigs as SPC
 
 
-'''
-    usage: 门店详情
-'''
 class SearchResultStorePage(SuperPage):
+    '''
+    作者 宋波
+    首页=>搜索页=>搜索结果店详情
+    '''
     def __init__(self, testcase, driver, logger):
-        super(SearchResultStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
-
-    '''
-        usage : 检查是否加载出来
-    '''
+        super(SearchResultStorePage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=SearchPageConfigs.text_store_detail);
+        '''
+        usage : 检查是否加载出来
+        '''
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  SPC.text_store_detail,
+                                  SPC.assert_view_timeout)
 
     def validKeywords(self, keywords):
         '''
-        usage: verify whether the keyword is correct.
+        usage: 验证关键字
         '''
-
-        print("KEYWORDS: %s" % keywords)
-
-        API().assert_view_by_text_android(self.testcase, self.driver, self.logger,
-											keywords, SearchPageConfigs.assert_view_timeout)
-
-
-if __name__ == '__main__':
-    pass;
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  keywords,
+                                  SPC.assert_view_timeout)

@@ -1,68 +1,54 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
-
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.switch_city_page_configs import SwitchCityPageConfigs
+from com.qa.automation.appium.pages.android.ffan.switch_city_page_configs import SwitchCityPageConfigs as SCPC
 
 
 class SwitchCityPage(SuperPage):
     '''
-    This is a switch city page operation class.
+    作者 宋波
+    城市切换
     '''
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(SwitchCityPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self, assertable=True):
         '''
-        usage: verify whether the current page is the switch city page.
+        usage: 验证切换城市
         '''
-
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                          SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
-                                                          SwitchCityPageConfigs.assert_view_timeout)
+            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                            SCPC.resource_id_switch_city_cancel_button,
+                                            SCPC.assert_view_timeout)
             return True
         else:
-            try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger,
-                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
-                                                            SwitchCityPageConfigs.verify_view_timeout)
-                return True
-            except TimeoutException:
-                return False
+            return API().validElementByResourceId(self.driver,
+                                                  self.logger,
+                                                  SCPC.resource_id_switch_city_cancel_button,
+                                                  SCPC.verify_view_timeout)
 
     def cancelSwitchCity(self):
         '''
-        usage: cancel switch city.
+        usage: 取消切换城市
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SwitchCityPageConfigs.resource_id_switch_city_cancel_button)
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       SCPC.resource_id_switch_city_cancel_button,
+                                       SCPC.verify_view_timeout)
 
     def confirmSwitchCity(self):
         '''
-        usage: confirm switch city.
+        usage: 确认切换城市
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SwitchCityPageConfigs.resource_id_switch_city_switch_button)
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       SCPC.resource_id_switch_city_switch_button,
+                                       SCPC.verify_view_timeout)
 
     def invalidSelf(self):
         '''
-        usage: verify whether the current page is not the switch city page.
+        usage: 验证当前页面不是切换城市页面
         '''
-
-        API().assert_none_view_by_resource_id_until_android(self.testcase, self.driver, self.logger,
-                                                            SwitchCityPageConfigs.resource_id_switch_city_cancel_button,
-                                                            SwitchCityPageConfigs.assert_invalid_view_time)
-
-
-if __name__ == '__main__':
-    pass
+        res = API().validElementByResourceId(self.testcase, self.driver, self.logger,
+                                             SCPC.resource_id_switch_city_cancel_button,
+                                             SCPC.assert_invalid_view_time)
+        API().assertFalse(self.testCase, self.logger, res)

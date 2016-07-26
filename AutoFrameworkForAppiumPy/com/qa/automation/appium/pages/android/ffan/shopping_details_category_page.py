@@ -1,28 +1,24 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page_configs import ShoppingDetailsCategoryPageConfigs
+from com.qa.automation.appium.pages.android.ffan.shopping_details_category_page_configs import \
+    ShoppingDetailsCategoryPageConfigs as SDCPC
 
 
-#   购物点击商品详情页
 class ShoppingDetailsCategoryPage(SuperPage):
-
+    '''
+    作者 刘涛
+    首页=>购物=>详情页
+    '''
     def __init__(self,testcase,driver,logger):
-        self.a = 12;
-        super(ShoppingDetailsCategoryPage, self).__init__(testcase = testcase , driver = driver,logger = logger);
+        super(ShoppingDetailsCategoryPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Check "商品" details whether loading correctly.
+        usage : 验证详情页
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=ShoppingDetailsCategoryPageConfigs.text_dashboard, seconds=10);
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=ShoppingDetailsCategoryPageConfigs.text_goods, seconds=10);
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=ShoppingDetailsCategoryPageConfigs.text_store, seconds=10);
-
-
-if __name__ == '__main__':
-    pass;
+        valid_text_list = [SDCPC.text_dashboard, SDCPC.text_goods, SDCPC.text_store]
+        API().assertElementsByTexts(self.testcase, self.driver, self.logger,
+                                    valid_text_list,
+                                    10)

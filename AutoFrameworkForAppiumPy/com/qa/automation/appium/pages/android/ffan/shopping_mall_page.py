@@ -2,62 +2,59 @@
 
 import operator
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.shopping_mall_page_configs import ShoppingMallPageConfigs
+from com.qa.automation.appium.pages.android.ffan.shopping_mall_page_configs import ShoppingMallPageConfigs as SMPC
 
-SMP = ShoppingMallPageConfigs()
 
-'''
-    首页->购物中心页面
-'''
 class ShoppingMallPage(SuperPage):
     '''
-    This is shopping mall page operation class.
+    作者 刘涛
+    首页=>购物中心
     '''
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
         super(ShoppingMallPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证购物中心页面
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              SMP.resource_id_shopping_mall_title,
-                                              SMP.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SMPC.resource_id_shopping_mall_title,
+                                        SMPC.assert_view_timeout)
 
     def clickOnTab(self, tab_number):
         '''
-        usage: click on tab_list(total, mall, department) button.
+        usage: 点击 全部/商场/百货
         '''
-        viewList = API().get_views_by_resourceID(self.driver,
+        viewList = API().getElementsByResourceId(self.testcase,
+                                                 self.driver,
                                                  self.logger,
-                                                 SMP.resource_id_tab_id)
+                                                 SMPC.resource_id_tab_id,
+                                                 SMPC.assert_view_timeout)
         viewList[tab_number-1].click()
 
     def validListView(self):
         '''
-        usage: check ListView
+        usage: 验证标签页
         '''
-        API().assert_view_by_resourceID_Until(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                              SMP.resource_id_plaza_id,
-                                              SMP.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SMPC.resource_id_plaza_id,
+                                        SMPC.assert_view_timeout)
 
     def validDistance(self):
         '''
-        usage: check distance sequence
+        usage: 验证距离
         '''
-
-        elementList = API().get_views_text_contains_android(self.driver,
-                                              self.logger,
-                                              SMP.view_text_distance)
+        elementList = API().getElementsByContainsText(self.testcase,
+                                                      self.driver,
+                                                      self.logger,
+                                                      SMPC.view_text_distance,
+                                                      SMPC.assert_view_timeout)
         
         plaza_number = len(elementList)
         if plaza_number > 1:
@@ -65,16 +62,15 @@ class ShoppingMallPage(SuperPage):
                 current_plaza_distance = elementList[i].text.split(" ")[0]
                 prev_plaza_distance = elementList[i-1].text.split(" ")[0]
                 if operator.gt(prev_plaza_distance, current_plaza_distance):
-                    self.testcase.assertTrue(False, "The plaza distance is not ordered.")
+                    API().assertTrue(self.testcase, self.logger, False)
 
     def clickOnBeijinTongzouMall(self):
         '''
-        usage: click "北京通州万达广场"
+        usage: 点击 "北京通州万达广场"
         '''
-        API().scroll_to_text(self.driver, self.logger, ShoppingMallPageConfigs.text_beijing_tongzou_mall)
-        API().click_view_by_text_android(testcase = self.testcase, driver=self.driver, logger=self.logger,
-                                         text=ShoppingMallPageConfigs.text_beijing_tongzou_mall);
-
-
-if __name__ == '__main__':
-    pass
+        API().scrollToText(self.testcase, self.driver, self.logger,
+                           SMPC.text_beijing_tongzou_mall,
+                           SMPC.assert_view_timeout)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 SMPC.text_beijing_tongzou_mall,
+                                 SMPC.click_on_button_timeout)

@@ -1,65 +1,72 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs as MOPC
 
 
 class MyFfanMyOrderPage(SuperPage):
+    '''
+    作者 刘涛
+    首页=>我的=>我的订单
+    '''
     def __init__(self, testcase, driver, logger):
-        super(MyFfanMyOrderPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(MyFfanMyOrderPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage : Load "我的订单" page， according to textview in "我的订单", check "我的订单" page whether load correctly.
+        usage : 验证我的订单
         '''
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=MyFfanMyOrderPageConfigs.resource_id_tv_my_order_tv)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        MOPC.resource_id_tv_my_order_tv,
+                                        10)
 
     def clickOnOrderAll(self):
         '''
-        usage : Click "全部" in my order page， and load "全部" tab correctly. 
+        usage : 点击全部
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyOrderPageConfigs.text_order_all)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 MOPC.text_order_all,
+                                 10)
 
     def clickOnOrderNoPay(self):
         '''
-        usage : Click "待付款" in my order page， and load "已使用" tab correctly. 
+        usage : 点击待付款
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyOrderPageConfigs.text_order_no_pay)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 MOPC.text_order_no_pay,
+                                 10)
 
     def clickOnOrderPaid(self):
         '''
-        usage : Click "已付款" in my order page， and load "已付款" tab correctly. 
+        usage : 点击已付款
         '''
-        API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                         text=MyFfanMyOrderPageConfigs.text_order_paid)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 MOPC.text_order_paid,
+                                 10)
 
     def validSelfNoPay(self):
         '''
-        usage : Load "待付款" correctly.
+        usage : 验证待付款
         '''
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=MyFfanMyOrderPageConfigs.text_order_no_pay, seconds=10);
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  MOPC.text_order_no_pay,
+                                  10)
 
     def validSelfPaid(self):
         '''
-        usage : Load "已付款" correctly.
+        usage : 验证已付款
         '''
 
-        API().assert_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                          text=MyFfanMyOrderPageConfigs.text_order_paid, seconds=10);
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  MOPC.text_order_paid,
+                                  10)
 
     def getOrderNumber(self):
         '''
-        usage : Get order number.
+        usage : 获取数值
         '''
-        orderNumber = API().get_view_by_resourceID(self.driver, self.logger, 
-													MyFfanMyOrderPageConfigs.resource_id_tv_order_number_tv).text
-        return orderNumber;
-
-
-if __name__ == '__main__':
-    pass;
+        orderNumber = API().getTextByResourceId(self.testcase, self.driver, self.logger, 
+                                                MOPC.resource_id_tv_order_number_tv,
+                                                10)
+        return orderNumber

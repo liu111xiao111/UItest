@@ -23,7 +23,6 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class ChildCatergoryCases(TestCase):
     '''
-    作者 刘涛
     巡检checklist No.: 9
     自动化测试case No.: 9
     首页进入亲子模块，显示该城市下所有亲子门店，点击可以进入门店详情页
@@ -58,7 +57,7 @@ class ChildCatergoryCases(TestCase):
         dashboardPage.clickOnChildCategory()
         childPage.validSelf()
 
-        childPage.screen_shot("child_category_cases")
+        childPage.screenShot("child_category_cases")
 
         # Launch Child Play, Child Education, Child Shopping and
         clickChildList = (childPage.clickOnChildPlay,

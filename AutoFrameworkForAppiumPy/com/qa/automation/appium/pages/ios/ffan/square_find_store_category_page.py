@@ -9,7 +9,7 @@ SFSC = SquareFindStoreConfigs()
 class SquareFindStorePage(SuperPage):
     '''
     作者 刘涛
-    首页=>飞凡卡
+    首页=>广场=>找店
     '''
 
     def __init__(self, testcase, driver, logger):
