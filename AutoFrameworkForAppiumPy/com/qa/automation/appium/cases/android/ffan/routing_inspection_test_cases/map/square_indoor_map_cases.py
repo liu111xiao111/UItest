@@ -50,10 +50,10 @@ class SquareIndoorMapCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
-        squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
-        indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
+        locationBluetoothPage = LocationBluetoothPage(self, self.driver, self.logger)
+        indoormapPage = SquareIndoorMapPage(self, self.driver, self.logger)
 
         # Load square page
         dashboardPage.validSelf();

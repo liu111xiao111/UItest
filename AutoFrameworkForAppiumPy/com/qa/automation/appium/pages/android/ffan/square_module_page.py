@@ -23,7 +23,8 @@ class SquareModulePage(SuperPage):
             API().scroll(self.driver, self.logger,
                          tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
 
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_find_store)
         API().assertElementByText(self.testcase,
@@ -116,7 +117,8 @@ class SquareModulePage(SuperPage):
         '''
         usage: 滑动到美食入口
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_food)
 
@@ -164,7 +166,8 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击电影类目
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_movie_button)
         API().clickElementByText(self.testcase,
@@ -187,7 +190,8 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击限时抢购
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_flash_sales)
         API().clickElementByText(self.testcase,
@@ -200,7 +204,8 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击达人推荐
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_staff_picks_button)
         tempText = API().getTextByXpath(self.testcase,
@@ -220,7 +225,8 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击爱购物
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            SMPC.text_born_to_shop)
         API().clickElementByText(self.testcase,
@@ -239,8 +245,10 @@ class SquareModulePage(SuperPage):
             API().scroll(self.driver, self.logger, tempWidth / 2,
                          tempHight * 4 / 5, tempWidth / 2, tempHight / 5)
 
-        API().scrollToText(self.driver, self.logger,
-                             SMPC.text_general_coupon_button)
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           SMPC.text_general_coupon_button)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SMPC.xpath_general_coupon_button,
                                   SMPC.click_on_button_timeout)

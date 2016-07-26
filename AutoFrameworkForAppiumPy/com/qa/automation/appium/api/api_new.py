@@ -3,7 +3,7 @@
 import time
 
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -109,17 +109,23 @@ class API(object):
         driver.press_keycode(4)
         time.sleep(2)
 
-    def scrollToText(self, driver, logger, text):
+    def scrollToText(self, testCase, driver, logger, text):
         '''
         usage : 滑动页面到指定文本控件方法 （适用Android平台）
         parameters:
+            testCase: unit test case
             driver: appium driver
             logger: logging
             text: 页面element的text属性
         '''
-        driver.find_element_by_android_uiautomator(
-            'new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
-            'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
+        try:
+            driver.find_element_by_android_uiautomator(
+                'new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
+                'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
+        except NoSuchElementException:
+            testCase.assertTrue(False, "Scroll to element by text [%s] failed." % (text))
+        except:
+            testCase.assertTrue(False, "Can not scroll to element by text [%s]." % (text))
 
     def inputStringByResourceId(self, testCase, driver, logger, resourceId, string, timeout=10):
         '''

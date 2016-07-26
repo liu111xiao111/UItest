@@ -51,7 +51,8 @@ class MyFfanPage(SuperPage):
         '''
         usage： 点击设置
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            MFPC.text_settins)
         API().clickElementByText(self.testcase,
@@ -64,7 +65,8 @@ class MyFfanPage(SuperPage):
         '''
         usage : 点击我的排队
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            MFPC.text_my_queue)
         API().clickElementByText(self.testcase,
@@ -116,7 +118,8 @@ class MyFfanPage(SuperPage):
         '''
         usage : 点击停车缴费
         '''
-        API().scrollToText(self.driver,
+        API().scrollToText(self.testcase,
+                           self.driver,
                            self.logger,
                            MFPC.text_parking_payment)
         API().clickElementByText(self.testcase,

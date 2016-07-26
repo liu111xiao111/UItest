@@ -57,7 +57,10 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 获得活动列表的长度
         '''
-        API().scrollToText(self.driver, self.logger, SPPC.text_special_store)
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           SPPC.text_special_store)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
