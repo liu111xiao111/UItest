@@ -27,25 +27,16 @@ class SmallAmountPasswordLessPaymentCases(TestCase):
     点击设置，在账号管理中可以成功修改登录密码，支付密码，小额免密设置
     '''
 
-
     def tearDown(self):
         self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

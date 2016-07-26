@@ -38,7 +38,7 @@ class SettingsPage(SuperPage):
         usage: click on the account management button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        SettingsPageConfigs.resource_id_account_management_st,
                                        SettingsPageConfigs.assert_view_timeout)
 
