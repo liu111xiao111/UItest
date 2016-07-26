@@ -17,7 +17,8 @@ class FoodCategoryPage(SuperPage):
         super(FoodCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,logger=self.logger,uia_string=".navigationBars()[0]")
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
         API().assertEqual(testCase=self.testcase,
                           logger=self.logger,
                           actualText=navigation.get_attribute("name"),

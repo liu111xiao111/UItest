@@ -730,7 +730,7 @@ class API(object):
             timeout : 超时时间,单位秒,默认十秒。
         '''
         try:
-            self._findElementByIosUiautomation(driver, logger, uiaString, timeout)
+            self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
         except TimeoutException:
             testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
         except:
