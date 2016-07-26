@@ -1,40 +1,56 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.settings_page_configs import SettingsPageConfigs
+from com.qa.automation.appium.pages.android.ffan.settings_page_configs import SettingsPageConfigs as SPC
 
 
-#   设置页面
 class SettingsPage(SuperPage):
+    '''
+    作者 宋波
+    首页=>我的飞凡=>设置
+    '''
     def __init__(self, testcase, driver, logger):
-        super(SettingsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
+        super(SettingsPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                                      resource_id=SettingsPageConfigs.resource_id_setting_account_management_rl,
-                                                      seconds=10);
+        '''
+        usage: 验证设置页面
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPC.resource_id_setting_account_management_rl,
+                                        SPC.assert_view_timeout)
 
-    # 点击退出当前账号button
     def clickOnQuitAccountBtn(self, confirmQuit=True):
-        API().click_view_by_resourceID(self.testcase, driver=self.driver, logger=self.logger,
-                                               resource_id=SettingsPageConfigs.resource_id_setting_btn_logout_rl);
+        '''
+        usage: 点击退出当前账号
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPC.resource_id_setting_btn_logout_rl,
+                                       SPC.assert_view_timeout)
         if confirmQuit:
-            API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                             text=SettingsPageConfigs.text_confirm_btn)
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     SPC.text_confirm_btn,
+                                     SPC.assert_view_timeout)
         else:
-            API().click_view_by_text_android(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                             text=SettingsPageConfigs.text_cancel_btn)
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     SPC.text_cancel_btn,
+                                     SPC.assert_view_timeout)
 
     def clickOnAccountManagement(self):
         '''
-        usage: click on the account management button.
+        usage: 点击账户管理
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               SettingsPageConfigs.resource_id_account_management,
-                                               SettingsPageConfigs.assert_view_timeout)
-
-
-if __name__ == '__main__':
-    pass;
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPC.resource_id_account_management,
+                                       SPC.assert_view_timeout)

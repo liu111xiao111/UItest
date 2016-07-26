@@ -1,102 +1,116 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
+from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs as MFPC
 
 
 class MyFeiFanPage(SuperPage):
     '''
-    This is a My FeiFan page operation class.
+    作者 宋波
+    首页=>我的飞凡
     '''
-
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(MyFeiFanPage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is correct page.
+        usage: 验证我的飞凡
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_my_fei_fan_title,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MFPC.resource_id_my_fei_fan_title,
+                                        MFPC.assert_view_timeout)
 
     def validLoginStatus(self):
         '''
-        usage: Verify whether the current status is login.
+        usage: 验证登陆状态
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_nickname_button,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MFPC.resource_id_nickname_button,
+                                        MFPC.assert_view_timeout)
 
     def validLogoutStatus(self):
         '''
-        usage: Verify whether the current status is logout.
+        usage: 验证退出登陆状态
         '''
-
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_login)
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MyFeiFanPageConfigs.resource_id_login_button,
-                                                      MyFeiFanPageConfigs.assert_view_timeout)
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           MFPC.text_login)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MFPC.resource_id_login_button,
+                                        MFPC.assert_view_timeout)
 
     def clickOnLogin(self):
         '''
-        usage: click on the login button.
+        usage: 点击登陆
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_login_button);
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MFPC.resource_id_login_button,
+                                       MFPC.click_on_button_timeout)
 
     def clickOnSettings(self):
         '''
-        usage: click on the settings button.
+        usage: 点击设置
         '''
-
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_settings)
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MyFeiFanPageConfigs.text_settings)
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           MFPC.text_settings)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_settings,
+                                 MFPC.click_on_button_timeout)
 
     def clickOnMessageCentre(self):
         '''
-        usage: click on the message centre button.
+        usage: 点击消息中心
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_message_centre_button,
-                                               MyFeiFanPageConfigs.click_on_button_timeout);
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MFPC.resource_id_message_centre_button,
+                                       MFPC.click_on_button_timeout)
 
     def clickOnMembershipCardPackage(self):
         '''
-        usage: click on the membership card package button.
+        usage: 点击会员卡包
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-                                         MyFeiFanPageConfigs.text_membership_card_package_button,
-                                         MyFeiFanPageConfigs.click_on_button_timeout);
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_membership_card_package_button,
+                                 MFPC.click_on_button_timeout)
 
     def clickOnNickname(self):
         '''
-        usage: click on the nickname button.
+        usage: 点击昵称
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                               MyFeiFanPageConfigs.resource_id_nickname_button,
-                                               MyFeiFanPageConfigs.click_on_button_timeout);
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MFPC.resource_id_nickname_button,
+                                       MFPC.click_on_button_timeout)
 
     def clickOnMyFeiFanCard(self):
         '''
-        usage: click on the my fei fan card button.
+        usage: 点击我的飞凡卡
         '''
-
-        API().scroll_to_text(self.driver, self.logger, MyFeiFanPageConfigs.text_my_fei_fan_card)
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger,
-										MyFeiFanPageConfigs.text_my_fei_fan_card)
-
-
-if __name__ == '__main__':
-    pass
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           MFPC.text_my_fei_fan_card)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_fei_fan_card,
+                                 MFPC.click_on_button_timeout)

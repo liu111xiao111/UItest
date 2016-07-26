@@ -1,66 +1,75 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.message_centre_page_configs import MessageCentrePageConfigs
+from com.qa.automation.appium.pages.android.ffan.message_centre_page_configs import MessageCentrePageConfigs as MCPC
 
 
 class MessageCentrePage(SuperPage):
     '''
-    This is message centre page operation class.
+    作者 宋波
+    首页=>我的飞凡=>消息中心
     '''
 
     def __init__(self, testcase, driver, logger):
-        '''
-        Constructor
-        '''
-
         super(MessageCentrePage, self).__init__(testcase, driver, logger)
 
     def validSelf(self):
         '''
-        usage: verify whether the current page is the version upgrade page.
+        usage: 验证消息中心
         '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                                      MessageCentrePageConfigs.resource_id_message_centre_title,
-                                                      MessageCentrePageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MCPC.resource_id_message_centre_title,
+                                        MCPC.assert_view_timeout)
 
     def clickOnSettings(self):
         '''
-        usage: click on the settings button.
+        usage: 点击设置
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_settings_button, MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MCPC.text_settings_button,
+                                 MCPC.click_on_button_timeout)
 
     def clickOnFeiFanActivity(self):
         '''
-        usage: click on the fei fan activity button.
+        usage: 点击飞凡活动
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_fei_fan_activity, MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MCPC.text_fei_fan_activity,
+                                 MCPC.click_on_button_timeout)
 
     def clickOnSquareDynamic(self):
         '''
-        usage: click on the square dynamic button.
+        usage: 点击广场动态
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_square_dynamic, MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MCPC.text_square_dynamic,
+                                 MCPC.click_on_button_timeout)
 
     def clickOnBrandActivity(self):
         '''
-        usage: click on the brand activity button.
+        usage: 点击品牌活动
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_brand_activity, MessageCentrePageConfigs.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MCPC.text_brand_activity,
+                                 MCPC.click_on_button_timeout)
 
     def clickOnStoreMessage(self):
         '''
-        usage: click on the store message button.
+        usage: 点击商户信息
         '''
-
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, MessageCentrePageConfigs.text_store_message, MessageCentrePageConfigs.click_on_button_timeout)
-
-
-if __name__ == '__main__':
-    pass
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MCPC.text_store_message,
+                                 MCPC.click_on_button_timeout)
