@@ -44,7 +44,7 @@ class SquareParkingPaymentCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        TestPrepare(self, self.driver, self.logger).prepare()
+        TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
