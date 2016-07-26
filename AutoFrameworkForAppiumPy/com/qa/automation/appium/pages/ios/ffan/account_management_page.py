@@ -32,7 +32,7 @@ class AccountManagementPage(SuperPage):
         usage: click on the update password button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        AccountManagementPageConfigs.resource_id_update_login_password_st,
                                        AccountManagementPageConfigs.click_on_button_timeout)
 

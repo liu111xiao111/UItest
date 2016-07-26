@@ -16,6 +16,9 @@ class UpdateLoginPasswordPageConfigs(object):
     # Click button time out
     click_on_button_timeout = 10
 
+    # Input time out
+    input_timeout = 10
+
     # Update login password title
     resource_id_update_login_password_title_st = u"修改登录密码"
 

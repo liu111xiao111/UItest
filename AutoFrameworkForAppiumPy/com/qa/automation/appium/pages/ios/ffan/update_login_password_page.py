@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.update_login_password_page_configs import UpdateLoginPasswordPageConfigs
 
@@ -23,43 +23,43 @@ class UpdateLoginPasswordPage(SuperPage):
         usage: verify whether the current page is the version upgrade page.
         '''
 
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              UpdateLoginPasswordPageConfigs.resource_id_update_login_password_title_st,
-                                              UpdateLoginPasswordPageConfigs.assert_view_timeout)
+        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                        UpdateLoginPasswordPageConfigs.resource_id_update_login_password_title_st,
+                                        UpdateLoginPasswordPageConfigs.assert_view_timeout)
 
     def inputOldLoginPassword(self, oldPassword):
         '''
         usage: input the old login password.
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger,
-                                      UpdateLoginPasswordPageConfigs.xpath_input_old_password_stf,
-                                      oldPassword)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 UpdateLoginPasswordPageConfigs.xpath_input_old_password_stf,
+                                 oldPassword, UpdateLoginPasswordPageConfigs.input_timeout)
 
     def inputNewLoginPassword(self, newPassword):
         '''
         usage: input the new login password.
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger,
-                                      UpdateLoginPasswordPageConfigs.xpath_input_new_password_stf,
-                                      newPassword)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 UpdateLoginPasswordPageConfigs.xpath_input_new_password_stf,
+                                 newPassword, UpdateLoginPasswordPageConfigs.input_timeout)
 
     def inputNewLoginPasswordAgain(self, newPasswordAgain):
         '''
         usage: input the new login password again.
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger,
-                                      UpdateLoginPasswordPageConfigs.xpath_input_new_password_again_stf,
-                                      newPasswordAgain)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 UpdateLoginPasswordPageConfigs.xpath_input_new_password_again_stf,
+                                 newPasswordAgain, UpdateLoginPasswordPageConfigs.input_timeout)
 
     def clickOnConfirm(self):
         '''
         usage: click on the confirm button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        UpdateLoginPasswordPageConfigs.resource_id_confirm_bt,
                                        UpdateLoginPasswordPageConfigs.click_on_button_timeout)
 
