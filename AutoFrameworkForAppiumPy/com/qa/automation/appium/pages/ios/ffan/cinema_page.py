@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import NoSuchElementException
-
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.cinema_page_configs import CinemaPageConfigs
@@ -43,18 +41,9 @@ class CinemaPage(SuperPage):
 
         if API().validElementByXpath(self.driver, self.logger, CinemaPageConfigs.xpath_tomorrows_date_bt,
                                      CinemaPageConfigs.valid_timeout):
-            API().clickElementByName(self.testcase, self.driver, self.logger,
+            API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                       CinemaPageConfigs.xpath_tomorrows_date_bt,
                                       CinemaPageConfigs.click_on_button_timeout)
-
-#         try:
-#             API().get_view_by_xpath_ios(self.driver, self.logger,
-#                                         CinemaPageConfigs.xpath_tomorrows_date_bt)
-#             API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-#                                       CinemaPageConfigs.xpath_tomorrows_date_bt,
-#                                       CinemaPageConfigs.click_on_button_timeout)
-#         except NoSuchElementException:
-#             pass
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  CinemaPageConfigs.resource_id_buy_ticket_bt,

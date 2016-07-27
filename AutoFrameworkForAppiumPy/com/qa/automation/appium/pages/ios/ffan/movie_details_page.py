@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.movie_details_page_configs import MovieDetailsPageConfigs
 
@@ -23,7 +23,9 @@ class MovieDetailsPage(SuperPage):
         usage: verify whether the current page is the switch city page.
         '''
 
-        API().assert_view_by_xpath_android(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.xpath_movie_details_title_st, MovieDetailsPageConfigs.assert_view_timeout)
+        API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                   MovieDetailsPageConfigs.xpath_movie_details_title_st,
+                                   MovieDetailsPageConfigs.assert_view_timeout)
 
     def clickOnTomorrowsDate(self):
         '''
@@ -37,7 +39,9 @@ class MovieDetailsPage(SuperPage):
         usage: click on a sub-cinema button
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, MovieDetailsPageConfigs.xpath_sub_cinema_st, MovieDetailsPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  MovieDetailsPageConfigs.xpath_sub_cinema_st,
+                                  MovieDetailsPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass
