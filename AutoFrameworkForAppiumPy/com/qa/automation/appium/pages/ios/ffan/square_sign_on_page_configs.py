@@ -14,9 +14,14 @@ class SignOnPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
-    # Sign in button
-    xpath_sign_in_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[2]/android.view.View[1]"
-    text_sign_in_button = u"已签到"
+    # Sign in
+    xpath_sign_in_st = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]"
+
+    # Daily see
+    name_daily_see_st = u"天天见"
+
+    # Checked in
+    name_chicked_in_st = u"已签到"
 
     def __init__(self):
         pass;

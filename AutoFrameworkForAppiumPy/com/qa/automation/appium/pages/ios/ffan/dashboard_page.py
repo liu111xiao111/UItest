@@ -176,5 +176,14 @@ class DashboardPage(IosSuperPage):
         API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
                                        resource_id=DashboardPageConfigs.name_child);
 
+    def clickOnSignOn(self):
+        '''
+        usage: 点击签到
+        '''
+
+        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+                                       DashboardPageConfigs.name_sign_in_st,
+                                       DashboardPageConfigs.click_on_button_timeout)
+
 if __name__ == '__main__':
     pass

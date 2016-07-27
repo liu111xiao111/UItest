@@ -12,7 +12,6 @@ from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrep
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_sign_on_page import SignOnPage
 from com.qa.automation.appium.utility.logger import Logger
 
@@ -26,34 +25,29 @@ class SquareSignOnCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger);
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSignOn()
 
-        squareModulePage = SquareModulePage(self, self.driver, self.logger);
-        squareModulePage.validSelf()
-        squareModulePage.clickOnSignOn()
-
-        signOnPage = SignOnPage(self, self.driver, self.logger);
+        signOnPage = SignOnPage(self, self.driver, self.logger)
         signOnPage.validSelf()
         if not signOnPage.validChickedInStatus(False):
             signOnPage.clickOnSignIn()
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()
 
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareSignOnCases)

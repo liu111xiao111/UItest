@@ -95,5 +95,8 @@ class DashboardPageConfigs():
     # Search all
     resource_id_search_all_tv = "全城搜索"
 
+    # Sign in
+    name_sign_in_st = u"签到"
+
     def __init__(self):
         pass;
