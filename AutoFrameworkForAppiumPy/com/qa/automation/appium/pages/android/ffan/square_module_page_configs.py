@@ -27,7 +27,7 @@ class SquareModulePageConfigs():
     click_on_button_timeout = 10
 
     # Movie button
-    text_movie_button = u"电影"
+    text_movie_button = u"电影逛"
 
     # Resource niche
     resource_id_resource_niche_button = "com.wanda.app.wanhui:id/film_gallery_item_poster"

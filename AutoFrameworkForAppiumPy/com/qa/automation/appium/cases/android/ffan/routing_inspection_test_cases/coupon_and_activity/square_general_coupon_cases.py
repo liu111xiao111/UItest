@@ -63,7 +63,7 @@ class SquareGeneralCouponCases(TestCase):
 
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
-        
+
         receiveSuccessPage.waitBySeconds(seconds=2)
         
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()

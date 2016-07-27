@@ -42,6 +42,8 @@ class TestPrepare:
         myFfanPage = MyFfanPage(self.testcase, self.driver, self.logger)
 
         dashboardPage.clickOnMy()
+        if myFfanPage.isLoginStatus():
+            return
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self.testcase, self.driver, self.logger)
         loginPage.validSelf()
@@ -50,7 +52,7 @@ class TestPrepare:
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
         myFfanPage.validSelf()
-        dashboardPage.waitBySeconds(seconds=2);
+        dashboardPage.waitBySeconds(seconds=2)
 
     def updateVersion(self):
         '''

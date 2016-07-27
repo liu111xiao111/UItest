@@ -67,7 +67,7 @@ class DashboardPageConfigs():
     text_flash_sales_more_button = u"更多"
 
     # Privilege buttion
-    text_privilege_button = u"优惠"
+    text_privilege_button = u"优惠活动"
 
     # Shopping mall buttion
     text_shopping_mall_button = u"购物中心"

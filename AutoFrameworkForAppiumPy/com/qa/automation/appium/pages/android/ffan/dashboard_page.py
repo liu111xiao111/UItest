@@ -127,6 +127,10 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击优惠按钮
         '''
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           DPC.text_privilege_button)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
@@ -177,6 +181,10 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"优惠活动"
         '''
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           DPC.text_sales_promotion)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,

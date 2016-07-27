@@ -17,18 +17,18 @@ class SalesPromotionCouponDetailsPage(SuperPage):
         '''
             usage : "优惠券" 页加载是否正确
         '''
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        SPCDPC.resource_id_tv_coupon_details_tv,
-                                        10)
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         SPCDPC.text_tv_coupon_details,
+                                         10)
 
     def clickOnFreeOfChargeBtn(self):
         '''
             usage : 点击 "免费领取"
         ''' 
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SPCDPC.xpath_get_free_ticket,
-                                  10)
+        API().clickElementByContentDesc(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPCDPC.text_tv_coupon_details,
+                                        10)

@@ -20,7 +20,7 @@ class ReceiveSuccessPage(SuperPage):
                                                 self.logger,
                                                 RSPC.text_receive_success,
                                                 45)
-        if received_suc:
+        if not received_suc:
             API().assertElementByContentDesc(self.testcase,
                                              self.driver,
                                              self.logger, 
