@@ -30,18 +30,10 @@ class DashboardSearchBrandCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -53,7 +45,7 @@ class DashboardSearchBrandCases(TestCase):
         searchPage.validSelf()
         searchPage.inputBrandName()
         searchPage.clickOnSearch()
-        searchPage.wait_by_seconds(10)
+        searchPage.waitBySeconds(10)
         searchPage.validSearchResult(u"adidas", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
 
 if __name__ == "__main__":
