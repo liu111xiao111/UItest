@@ -74,10 +74,9 @@ class VersionUpgradePage(SuperPage):
         usage: 验证当前页面不是版本更新页面
         '''
 
-        API().assertFalse(self.testCase,
+        API().assertFalse(self.testcase,
                           self.logger,
-                          API().validElementByResourceId(self.testcase,
-                                                         self.driver,
+                          API().validElementByResourceId(self.driver,
                                                          self.logger,
                                                          VUPC.resource_id_upgrade_cancel_button,
                                                          VUPC.assert_invalid_view_time))

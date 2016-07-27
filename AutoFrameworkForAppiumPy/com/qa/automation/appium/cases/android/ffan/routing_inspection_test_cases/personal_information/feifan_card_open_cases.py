@@ -27,7 +27,7 @@ class FeiFanCardOpenCases(TestCase):
     作者 刘涛
     巡检checklist No.: 44
     自动化测试case No.: 44
-    首页飞凡卡界面，点击开卡，验证飞凡标准卡及一卡通飞凡联名卡
+    首页飞凡卡界面，点击市民/公交卡，验证飞凡标准卡及一卡通飞凡联名卡
     '''
 
     def tearDown(self):
@@ -46,7 +46,7 @@ class FeiFanCardOpenCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)

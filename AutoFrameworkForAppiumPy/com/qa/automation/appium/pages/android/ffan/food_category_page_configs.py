@@ -14,7 +14,7 @@ class FoodCategoryPageConfigs():
 
     # text指明类型为text label,后面是文字的拼音
 
-    view_text_tiltle = "美食"
+    view_text_tiltle = u"美食汇"
 
     verify_view_timeout = 10
     click_view_timeout = 10

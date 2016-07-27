@@ -26,7 +26,7 @@ class FeiFanCardPage(SuperPage):
 
     def clickOnOpenCard(self):
         '''
-        usage: 点击开卡
+        usage: 点击市民/公交卡
         '''
         API().clickElementByText(self.testcase,
                                 self.driver,

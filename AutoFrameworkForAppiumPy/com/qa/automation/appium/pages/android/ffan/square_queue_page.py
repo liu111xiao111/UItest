@@ -21,7 +21,7 @@ class SquareQueuePage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SQPC.resource_id_queue,
-                                        seconds=18)
+                                        18)
 
     def validQueueSuccess(self):
         '''
@@ -47,7 +47,7 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 输入人数
         '''
-        API().inputStringByClassName(self.testCase,
+        API().inputStringByClassName(self.testcase,
                                      self.driver,
                                      self.logger,
                                      SQPC.class_name_number_of_meals,
@@ -58,11 +58,11 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 点击 "一键取号"
         '''
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SQPC.xpath_get_queue_number,
-                                  SQPC.verify_click_timeout)
+        API().clickElementByContentDesc(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SQPC.text_get_queue_number,
+                                        SQPC.verify_click_timeout)
 
     def clickOnCancelQueue(self):
         '''

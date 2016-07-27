@@ -24,7 +24,7 @@ class OpenCardPage(SuperPage):
 
     def validFeifanCard(self):
         '''
-        usage: 验证飞凡标准卡
+        usage: 验证市民公交卡
         '''
         API().assertElementByContainsText(self.testcase,
                                           self.driver,
@@ -34,7 +34,7 @@ class OpenCardPage(SuperPage):
 
     def validJointCard(self):
         '''
-        usage : 验证一卡通
+        usage : 验证一卡通飞凡联名卡
         '''
         API().assertElementByContainsText(self.testcase,
                                           self.driver,

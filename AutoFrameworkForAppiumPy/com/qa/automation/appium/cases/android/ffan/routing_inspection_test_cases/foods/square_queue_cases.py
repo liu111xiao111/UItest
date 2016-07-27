@@ -7,9 +7,11 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+# from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.android.ffan.square_queue_page import SquareQueuePage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+# from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -49,6 +51,8 @@ class SquareLefuPayCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
+#         myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
+#         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
@@ -66,9 +70,14 @@ class SquareLefuPayCases(TestCase):
         queuePage.clicOnQueueNumber()
         queuePage.waitBySeconds(10)
         queuePage.inputNumberOfMeals()
-        queuePage.clicOnGetQueueNumber()
-        queuePage.validQueueSuccess()
-        queuePage.clickOnCancelQueue()
+#         queuePage.clicOnGetQueueNumber()
+#         queuePage.clickBackKey()
+#         queuePage.clickBackKey()
+#         queuePage.clickBackKey()
+#         squarePage.clickBackKey()
+# 
+#         dashboardPage.clickOnMy()
+#         myFfanPage.clickOnMyQueue()
 
 
 if __name__ == "__main__":
