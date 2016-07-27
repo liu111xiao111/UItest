@@ -155,9 +155,9 @@ class SquareModulePage(SuperPage):
         usage: click on resource niche.
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-                                       SquareModulePageConfigs.xpath_resource_niche_tc,
-                                       SquareModulePageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  SquareModulePageConfigs.xpath_resource_niche_tc,
+                                  SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnFlashSales(self):
         '''

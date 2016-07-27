@@ -31,18 +31,10 @@ class SquareResourceNicheCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
