@@ -43,8 +43,10 @@ class SearchPage(SuperPage):
         usage ： 输入品牌名称
         '''
 
-        API().inputStringByXpath(self.testcase, self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
-                                 SearchPageConfigs.text_searching_brand_name)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.xpath_search_tf,
+                                 SearchPageConfigs.text_searching_brand_name,
+                                 SearchPageConfigs.input_timeout)
 
     def inputGoodsName(self):
         '''
