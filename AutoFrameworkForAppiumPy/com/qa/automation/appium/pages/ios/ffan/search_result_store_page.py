@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.search_result_store_page_configs import SearchResultStorePageConfigs
 
@@ -18,9 +18,9 @@ class SearchResultStorePage(SuperPage):
     usage : 检查是否加载出来
     '''
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              SearchResultStorePageConfigs.resource_id_store_details_st,
-                                              SearchResultStorePageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SearchResultStorePageConfigs.resource_id_store_details_st,
+                                  SearchResultStorePageConfigs.assert_view_timeout)
 
     def validKeywords(self, keywords):
         '''

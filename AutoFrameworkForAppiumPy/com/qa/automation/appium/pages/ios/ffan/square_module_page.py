@@ -84,9 +84,9 @@ class SquareModulePage(SuperPage):
         usage: 点击搜索
     '''
     def clickOnSearch(self):
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SquareModulePageConfigs.resource_id_search_bt,
-                                       SquareModulePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SquareModulePageConfigs.resource_id_search_bt,
+                                 SquareModulePageConfigs.click_on_button_timeout)
 
     '''
         usage: 点击达人推荐店

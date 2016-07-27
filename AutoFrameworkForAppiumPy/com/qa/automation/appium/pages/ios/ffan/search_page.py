@@ -33,8 +33,10 @@ class SearchPage(SuperPage):
         usage ： 输入商家名
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
-                                      SearchPageConfigs.text_searching_store_name)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.xpath_search_tf,
+                                 SearchPageConfigs.text_searching_store_name,
+                                 SearchPageConfigs.input_timeout)
 
     def inputBrandName(self):
         '''
@@ -70,7 +72,7 @@ class SearchPage(SuperPage):
     '''
 
     def clickOnSearchResultFirstItem(self):
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_search_result_first_item_tv,
                                   SearchPageConfigs.click_on_button_timeout)
 
@@ -93,7 +95,9 @@ class SearchPage(SuperPage):
             usage: 验证搜索结果
         '''
 
-        API().assert_view_by_text_contains_according_to_xpath_until_android(self.testcase, self.driver, self.logger, textContains, xpath, SearchPageConfigs.assert_view_timeout)
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        xpath, SearchPageConfigs.get_timeout)
+        API().assertTrue(self.testcase, self.logger, textContains in tempText)
 
     def inputKeywords(self, keywords):
         '''
