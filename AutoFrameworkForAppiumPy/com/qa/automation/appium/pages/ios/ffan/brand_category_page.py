@@ -23,12 +23,12 @@ class BrandCategoryPage(SuperPage):
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name = BrandCategoryPageConfigs.text_recommend);
+                                  name=BrandCategoryPageConfigs.text_recommend);
 
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name = BrandCategoryPageConfigs.text_recommend);
+                                  name=BrandCategoryPageConfigs.text_recommend);
 
     def clickOnBrand(self):
         '''

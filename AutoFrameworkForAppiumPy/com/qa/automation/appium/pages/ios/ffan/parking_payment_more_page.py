@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.ffan.parking_payment_more_page_configs import ParkingPaymentMorePageConfigs
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 
@@ -15,15 +15,19 @@ class ParkingPaymentMorePage(SuperPage):
         super(ParkingPaymentMorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              ParkingPaymentMorePageConfigs.name_parking_payment_my_license_plate)
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=ParkingPaymentMorePageConfigs.name_parking_payment_my_license_plate)
 
     def clickOnUnbundLicensePlate(self):
         '''
         usage: 点击"解除绑定".
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=ParkingPaymentMorePageConfigs.name_unbound_license_plate);
+        API().clickElementByName(testCase = self.testcase,
+                                 driver = self.driver,
+                                 logger = self.logger,
+                                 name = ParkingPaymentMorePageConfigs.name_unbound_license_plate)
 
 if __name__ == '__main__':
     pass;

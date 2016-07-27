@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page_configs import MyFfanMyTicketPageConfigs
 
@@ -18,8 +18,10 @@ class MyFfanMyTicketPage(SuperPage):
         '''
         usage : 判断"我的票券"券码显示是否正确
         '''
-        API().assert_equal(test_case=self.testcase,driver=self.driver,logger=self.logger,
-                           actual_text=couponNumber,expect_text=myCouponNumber)
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=couponNumber,
+                          expectText=myCouponNumber)
 
     def clickOnTicketUnused(self):
         '''
@@ -75,8 +77,10 @@ class MyFfanMyTicketPage(SuperPage):
         '''
         usage : Get ticket number.
         '''
-        ticketNumber = API().get_view_by_xpath_ios(self.driver, self.logger,
-													MyFfanMyTicketPageConfigs.xpath_my_ticket_no_tv).text
+        ticketNumber = API().getTextByXpath(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           MyFfanMyTicketPageConfigs.xpath_my_ticket_no_tv)
         return ticketNumber[3:];
 
     def validSelfTicketNo(self, ticketName="default"):

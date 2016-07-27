@@ -58,7 +58,7 @@ class BrandRecommendCatergoryCases(TestCase):
 
         # 首页点击推荐商品详细页
         brandPage.clickOnRecommendDetails()
-        recommendDetailsPage.waitBySeconds(10)
+        recommendDetailsPage.waitBySeconds(20)
         recommendDetailsPage.validSelf()
 
         # 点击 “心形”订阅

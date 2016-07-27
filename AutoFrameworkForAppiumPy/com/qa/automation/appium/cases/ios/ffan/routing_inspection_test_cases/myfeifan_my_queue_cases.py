@@ -65,12 +65,15 @@ class MyfeifanMyQueueCases(TestCase):
         queuePage.validSelf();
 
         # 点击 "取号"
+        queuePage.waitBySeconds(10)
         queuePage.clicOnQueueNumber()
         queuePage.waitBySeconds(10)
         queuePage.inputNumberOfMeals()
         queuePage.waitBySeconds(5)
         queuePage.clicOnGetQueueNumber()
+        queuePage.waitBySeconds(10)
         queuePage.validQueueSuccess()
+        queuePage.waitBySeconds(10)
         queuePage.clickOnCancelQueue()
 
         myFfanPage.clickBackKey()

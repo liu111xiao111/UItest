@@ -63,9 +63,9 @@ class ChildCatergoryCases(TestCase):
 
         for clickChild in clickChildList:
             clickChild()
-            childPage.waitBySeconds(10)
+            childPage.waitBySeconds(20)
             tempText = childPage.clickListFirstItem()
-            childPage.waitBySeconds(10)
+            childPage.waitBySeconds(20)
             itemName = childPage.getItemName()
             childPage.validKeywords(tempText, itemName)
             childPage.clickBackKey()
