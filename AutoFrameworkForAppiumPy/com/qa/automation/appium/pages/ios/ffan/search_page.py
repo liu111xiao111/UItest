@@ -81,14 +81,18 @@ class SearchPage(SuperPage):
         usage: click on the movie button
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, SearchPageConfigs.text_movie_button, SearchPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.text_movie_button,
+                                 SearchPageConfigs.click_on_button_timeout)
 
     def clickOnSpecificMovie(self):
         '''
         usage: click on the specific movie button
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger, SearchPageConfigs.xpath_specific_movie_st, SearchPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  SearchPageConfigs.xpath_specific_movie_st,
+                                  SearchPageConfigs.click_on_button_timeout)
 
     def validSearchResult(self, textContains="default", xpath="default"):
         '''
