@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page_configs import LocationBluetoothPageConfigs
 
@@ -18,7 +18,9 @@ class LocationBluetoothPage(SuperPage):
         '''
             usage : 点击 "好" button
         '''
-        API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
                                   xpath = LocationBluetoothPageConfigs.xpath_ok_button)
 
 

@@ -12,25 +12,22 @@ class ShoppingMallPageConfigs(object):
 
     # Shopping mall title
     name_shopping_mall_title = u"百货"
-    
+
     # 购物广场class
     class_plaza_id = "UIATableCell"
-    
+
     # 全部
-    xpath_tab_title_1 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]"
-    
+    xpath_tab_title_1 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
+
     # 全部
-    xpath_tab_title_2 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[4]"
-    
+    xpath_tab_title_2 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]"
+
     # 全部
-    xpath_tab_title_3 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[6]"
+    xpath_tab_title_3 = "//UIAApplication[1]/UIAWindow[1]/UIAButton[3]"
 
     view_text_distance = u"公里"
 
     views_uia_string = ".tableViews()[0].cells()"
-
-    # "北京通州万达广场"
-    text_beijing_tongzou_mall = u"北京通州万达广场"
 
     def __init__(self):
         pass

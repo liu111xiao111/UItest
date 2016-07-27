@@ -75,10 +75,11 @@ class SquareModulePage(SuperPage):
         usage: 点击找店
     '''
     def clicOnFindStore(self):
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_find_store);
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SquareModulePageConfigs.text_find_store,
+                                 SquareModulePageConfigs.click_on_button_timeout)
 
     '''
         usage: 点击搜索
@@ -109,10 +110,10 @@ class SquareModulePage(SuperPage):
         usage: Click "室内地图"
     '''
     def clicOnIndoorMap(self):
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       SquareModulePageConfigs.text_indoor_map)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SquareModulePageConfigs.text_indoor_map)
 
     '''
         usage: Click "乐付买单"

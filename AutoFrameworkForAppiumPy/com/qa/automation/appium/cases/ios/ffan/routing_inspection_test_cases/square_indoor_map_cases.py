@@ -14,7 +14,7 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
-from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
+#from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -50,20 +50,20 @@ class SquareIndoorMapCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
+        #locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
         indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # 首页进入广场页
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        squarePage.validSelf()
 
         # 点击室内地图
-        squarePage.clicOnIndoorMap();
-        locationBluetoothPage.clickOnOkBtn()
-        indoormapPage.validSelf();
-        indoormapPage.clickOnFoodMap();
-        indoormapPage.validSelfFood();
+        squarePage.clicOnIndoorMap()
+        #locationBluetoothPage.clickOnOkBtn()
+        indoormapPage.validSelf()
+        indoormapPage.clickOnFoodMap()
+        indoormapPage.validSelfFood()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)
