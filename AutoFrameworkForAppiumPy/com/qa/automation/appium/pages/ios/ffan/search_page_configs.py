@@ -6,7 +6,7 @@ class SearchPageConfigs():
 
     # 搜索 id
     resource_id_search_bt = "Search"
-    name_search_bt = u"搜索"
+    name_search_bt = u"Search"
 
     # 搜索 输入框
     resource_et_search_input_et = "com.wanda.app.wanhui:id/et_search"

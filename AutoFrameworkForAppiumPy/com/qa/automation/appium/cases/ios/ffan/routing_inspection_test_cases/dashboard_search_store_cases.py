@@ -8,6 +8,7 @@ from unittest import TestLoader
 import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage;
@@ -29,17 +30,11 @@ class DashboardSearchStoreCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
@@ -50,8 +45,8 @@ class DashboardSearchStoreCases(TestCase):
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        searchPage.wait_by_seconds(10)
-        searchPage.validSearchResult(u"北京石景山店", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+        searchPage.waitBySeconds(10)
+        searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(DashboardSearchStoreCases)
