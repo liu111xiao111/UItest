@@ -53,8 +53,10 @@ class SearchPage(SuperPage):
         usage ：输入商品
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf,
-                                      SearchPageConfigs.text_searching_goods_name)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.xpath_search_tf,
+                                 SearchPageConfigs.text_searching_goods_name,
+                                 SearchPageConfigs.input_timeout)
 
     '''
         usage ： 点击搜索
