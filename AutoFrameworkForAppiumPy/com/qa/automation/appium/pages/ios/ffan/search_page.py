@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
 
@@ -19,9 +19,9 @@ class SearchPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              SearchPageConfigs.resource_id_search_bt,
-                                              SearchPageConfigs.assert_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SearchPageConfigs.resource_id_search_bt,
+                                  SearchPageConfigs.assert_view_timeout)
 
     def inputText(self, text):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
@@ -61,9 +61,9 @@ class SearchPage(SuperPage):
         usage: click on the search button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.name_search_bt,
-                                       SearchPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.name_search_bt,
+                                 SearchPageConfigs.click_on_button_timeout)
 
     '''
         usage : 点击搜索出来的结果list1
@@ -100,16 +100,18 @@ class SearchPage(SuperPage):
         usage: input keywords.
         '''
 
-        API().input_view_by_xpath_ios(self.driver, self.logger, SearchPageConfigs.xpath_search_tf, keywords)
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                 SearchPageConfigs.xpath_search_tf, keywords,
+                                 SearchPageConfigs.input_timeout)
 
     def clickOnSpecificSquare(self):
         '''
         usage: click on the specific square button
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
-                                       SearchPageConfigs.xpath_specific_square_st,
-                                       SearchPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  SearchPageConfigs.xpath_specific_square_st,
+                                  SearchPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass;

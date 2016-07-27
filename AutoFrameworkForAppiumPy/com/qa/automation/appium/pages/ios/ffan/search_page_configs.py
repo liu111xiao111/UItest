@@ -18,6 +18,9 @@ class SearchPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    # Input time out
+    input_timeout = 10
+
     # Movie button
     text_movie_button = u"电影"
 

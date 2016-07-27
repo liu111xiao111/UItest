@@ -40,9 +40,9 @@ class SquareModulePage(SuperPage):
         usage: click on the parking button.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SquareModulePageConfigs.resource_id_parking_cc,
-                                       SquareModulePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SquareModulePageConfigs.resource_id_parking_cc,
+                                 SquareModulePageConfigs.click_on_button_timeout)
 
     '''
         usage: 点击停车类目
