@@ -54,9 +54,11 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 获得活动列表的长度
         '''
-        
-        activeListNumber = len(API().find_views_by_class_name_both(driver=self.driver, logger=self.logger,
-                                                   className=SalesPromotionPageConfigs.type_list_tv))
+        activeListNumber = len(API().getElementsByType(testCase=self.testcase,
+                                                       driver=self.driver,
+                                                       logger=self.driver,
+                                                       elementType=SalesPromotionPageConfigs.type_list_tv))
+
         API().assertGreaterEqual(testCase=self.testcase,
                                  logger=self.logger,
                                  listLength=activeListNumber,
