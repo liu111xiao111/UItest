@@ -35,18 +35,10 @@ class SquareMovieCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -65,15 +57,15 @@ class SquareMovieCases(TestCase):
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
             print ("ATTEMPTS: %d" % (tempTimes + 1))
-            if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.RESOURCE_ID, False):
-                popupPage.clickOnButton(u"是", ClickActivityKeywordsType.RESOURCE_ID)
+            if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.NAME, False):
+                popupPage.clickOnButton(u"是", ClickActivityKeywordsType.NAME)
                 break
             popupPage.waitBySeconds()
 
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
-        seatPickingPage.waitBySeconds(seconds=3)
+        seatPickingPage.waitBySeconds(3)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)

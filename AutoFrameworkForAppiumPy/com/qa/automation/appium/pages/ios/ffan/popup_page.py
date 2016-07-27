@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
-
-from com.qa.automation.appium.api.api import API
+from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.popup_page_configs import PopupPageConfigs
 
@@ -12,9 +10,9 @@ class KeywordsType(object):
     This is a keywords type class.
     '''
 
+    NAME = "name"
+    XPATH = "xpath"
 
-    RESOURCE_ID = "resource_id"
-    TEXT = "text"
 
 class ClickActivityKeywordsType(KeywordsType):
     '''
@@ -22,19 +20,16 @@ class ClickActivityKeywordsType(KeywordsType):
     '''
 
 
-    XPATH = "xpath"
-    CONTENT_DESC = "content-desc"
-
 class VerifyActivityKeywordsType(KeywordsType):
     '''
     This is a verify activity keywords type class.
     '''
 
+
 class PopupPage(SuperPage):
     '''
     This is a Popup page operation class.
     '''
-
 
     def __init__(self, testcase, driver, logger):
         '''
@@ -43,64 +38,60 @@ class PopupPage(SuperPage):
 
         super(PopupPage, self).__init__(testcase, driver, logger)
 
-        self._validOperator = {VerifyActivityKeywordsType.RESOURCE_ID : self._validSelfByResourceId,
-                               VerifyActivityKeywordsType.TEXT : self._validSelfByText}
+        self._validOperator = {VerifyActivityKeywordsType.NAME : self._validSelfByName,
+                               VerifyActivityKeywordsType.XPATH : self._validSelfByXpath}
 
-        self._clickOperator = {ClickActivityKeywordsType.RESOURCE_ID : self._clickOnButtonByResourceId,
-                               ClickActivityKeywordsType.TEXT : self._clickOnButtonByText}
+        self._clickOperator = {ClickActivityKeywordsType.NAME : self._clickOnButtonByName,
+                               ClickActivityKeywordsType.XPATH : self._clickOnButtonByXpath}
 
-    def _validSelfByResourceId(self, keywords, assertable):
+    def _validSelfByName(self, keywords, assertable):
         '''
         usage: verify whether the current page is correct by resource id.
         '''
 
         if assertable:
-            API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.assert_view_timeout)
-            return True
+            API().assertElementByName(self.testcase, self.driver, self.logger,
+                                      keywords, PopupPageConfigs.assert_view_timeout)
         else:
-            try:
-                API().find_view_by_resourceID_Until_android(self.driver, self.logger, keywords, PopupPageConfigs.verify_view_timeout)
-                return True
-            except TimeoutException:
-                return False
+            return API().validElementByName(self.driver, self.logger,
+                                            keywords, PopupPageConfigs.verify_view_timeout)
 
-    def _validSelfByText(self, keywords, assertable):
+    def _validSelfByXpath(self, keywords, assertable):
         '''
         usage: verify whether the current page is correct by text.
         '''
 
         if assertable:
-            API().assert_view_by_text_android(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.assert_view_timeout)
-            return True
+            API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                       keywords, PopupPageConfigs.assert_view_timeout)
         else:
-            try:
-                API().find_view_by_text_Until_android(self.driver, self.logger, keywords, PopupPageConfigs.verify_view_timeout)
-                return True
-            except TimeoutException:
-                return False
+            return API().validElementByXpath(self.driver, self.logger,
+                                             keywords, PopupPageConfigs.verify_view_timeout)
 
-    def validSelf(self, keywords, keywordsType=VerifyActivityKeywordsType.RESOURCE_ID, assertable=True):
+    def validSelf(self, keywords, keywordsType=VerifyActivityKeywordsType.NAME, assertable=True):
         '''
         usage: verify whether the current page is correct.
         '''
 
         return self._validOperator.get(keywordsType)(keywords, assertable)
 
-    def _clickOnButtonByResourceId(self, keywords):
+    def _clickOnButtonByName(self, keywords):
         '''
         usage: click on the button by resource id.
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 keywords, PopupPageConfigs.click_on_button_timeout)
 
-    def _clickOnButtonByText(self, keywords):
+    def _clickOnButtonByXpath(self, keywords):
         '''
         usage: click on the button by text.
         '''
 
-        API().click_view_by_text_android(self.testcase, self.driver, self.logger, keywords, PopupPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  keywords, PopupPageConfigs.click_on_button_timeout)
 
-    def clickOnButton(self, keywords, keywordsType=ClickActivityKeywordsType.RESOURCE_ID):
+    def clickOnButton(self, keywords, keywordsType=ClickActivityKeywordsType.NAME):
         '''
         usage: click on a button.
         '''
