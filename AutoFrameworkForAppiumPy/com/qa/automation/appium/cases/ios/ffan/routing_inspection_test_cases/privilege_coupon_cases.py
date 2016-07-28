@@ -89,7 +89,7 @@ class PrivilegeCouponCases(TestCase):
 
         myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
         myOrderNo = myFfanMyTicketPage.getTicketNo()
-        myFfanMyTicketPage.validSelf(couponNo, myOrderNo)
+        myFfanMyTicketPage.validSelf(couponNo[3:], myOrderNo)
         myFfanMyTicketPage.clickBackKey()
 
         myFfanPage.validSelf()

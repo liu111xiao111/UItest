@@ -2,22 +2,22 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
+import HTMLTestRunner
+
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.sales_promotion_page import SalesPromotionPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
+from com.qa.automation.appium.pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -47,16 +47,16 @@ class MyfeifanMyTicketCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionPage = SalesPromotionPage(testcase = self , driver = self.driver , logger = self.logger)
-        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(testcase = self , driver = self.driver , logger = self.logger)
-        myFfanPage = MyFfanPage(testcase = self,driver = self.driver,logger = self.logger)
-        myTicketPage = MyFfanMyTicketPage(testcase = self,driver = self.driver,logger = self.logger)
-        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(testcase = self , driver = self.driver , logger = self.logger)
+        dashboardPage = DashboardPage(testcase=self , driver=self.driver , logger=self.logger)
+        salesPromotionPage = SalesPromotionPage(testcase=self , driver=self.driver , logger=self.logger)
+        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(testcase=self , driver=self.driver , logger=self.logger)
+        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
+        myTicketPage = MyFfanMyTicketPage(testcase=self, driver=self.driver, logger=self.logger)
+        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(testcase=self , driver=self.driver , logger=self.logger)
         myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
 
         # 点击 "优惠活动"
@@ -92,7 +92,7 @@ class MyfeifanMyTicketCases(TestCase):
         myFfanPage.validSelf();
         myFfanPage.clickOnMyTicket();
         myOrderNo = myTicketPage.getTicketNo();
-        myTicketPage.validSelf(couponNo, myOrderNo);
+        myTicketPage.validSelf(couponNo[3:], myOrderNo);
 
 
 if __name__ == "__main__":
