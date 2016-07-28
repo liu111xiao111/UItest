@@ -123,10 +123,9 @@ class SearchPage(SuperPage):
                              self.logger,
                              xpath,
                              SPC.assert_view_timeout)
-        API().assertGreaterEqual(self.testcase,
-                                 self.logger,
-                                 textContains,
-                                 text)
+        API().assertTrue(self.testcase,
+                         self.logger,
+                         textContains in text)
 
     def inputKeywords(self, keywords):
         '''

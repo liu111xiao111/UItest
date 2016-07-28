@@ -27,11 +27,12 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 检查是否取号成功
         '''
-        API().assertElementByContentDesc(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SQPC.verify_view_text,
-                                         SQPC.verify_view_timeout)
+        text_list = [SQPC.verify_view_text_1, SQPC.verify_view_text_2]
+        API().assertElementsByContentDescs(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           text_list,
+                                           SQPC.verify_view_timeout)
 
     def clicOnQueueNumber(self):
         '''

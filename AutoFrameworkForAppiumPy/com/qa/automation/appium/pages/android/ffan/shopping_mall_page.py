@@ -69,8 +69,7 @@ class ShoppingMallPage(SuperPage):
         usage: 点击 "北京通州万达广场"
         '''
         API().scrollToText(self.testcase, self.driver, self.logger,
-                           SMPC.text_beijing_tongzou_mall,
-                           SMPC.assert_view_timeout)
+                           SMPC.text_beijing_tongzou_mall)
         API().clickElementByText(self.testcase, self.driver, self.logger,
                                  SMPC.text_beijing_tongzou_mall,
                                  SMPC.click_on_button_timeout)

@@ -13,7 +13,8 @@ class SquareQueuePageConfigs():
     text_get_queue_number = u"一键取号"
     number_of_meals = "5"
 
-    verify_view_text = u"取号成功"
+    verify_view_text_1 = u"取号成功"
+    verify_view_text_2 = u"取号中"
     verify_view_timeout = 10
     verify_input_timeout = 10
     verify_click_timeout = 10

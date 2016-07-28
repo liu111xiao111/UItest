@@ -22,3 +22,18 @@ class MyFfanMyQueuePage(SuperPage):
                                         self.logger,
                                         MQPC.resource_id_tv_registration_tv,
                                         10)
+
+    def clickOnCancelQueue(self):
+        '''
+        usage : 取消排队
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MQPC.resource_id_tv_cancel_queue_tv,
+                                       10)
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       MQPC.resource_id_tv_certain_tv,
+                                       10)

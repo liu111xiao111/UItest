@@ -23,7 +23,7 @@ class ShoppingCategoryPage(SuperPage):
 
     def clickOnGoodsDetails(self):
         '''
-        usage : 点击美食详情
+        usage : 点击商品详情
         ''' 
         API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        SCPC.resource_id_tv_goods_details_tv,
