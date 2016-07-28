@@ -27,22 +27,32 @@ class OpenCardPage(SuperPage):
                                   OCPC.verify_view_timeout)
 
     '''
-        usage: 验证飞凡标准卡是否加载
-    '''
-    def validFeifanCard(self):
-        API().assert_view_by_text_contains_android(self.testcase,
-                                                   self.driver,
-                                                   self.logger,
-                                                   OCPC.text_feifan_card)
-
-    '''
-        usage : 验证一卡通是否加载
+        usage: 验证一卡通是否加载
     '''
     def validJointCard(self):
-        API().assert_view_by_text_contains_android(self.testcase,
-                                                   self.driver,
-                                                   self.logger,
-                                                   OCPC.text_joint_card)
+        jointCard = API().getTextByXpath(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         OCPC.xpath_joint_card)
+
+        API().assertGreaterEqual(self.testcase,
+                                 self.logger,
+                                 jointCard,
+                                 OCPC.text_joint_card)
+
+    '''
+        usage : 验证市民公交卡是否加载
+    '''
+    def validBusCard(self):
+        busCard = API().getTextByXpath(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         OCPC.xpath_bus_card)
+
+        API().assertGreaterEqual(self.testcase,
+                                 self.logger,
+                                 busCard,
+                                 OCPC.text_bus_card)
 
 if __name__ == '__main__':
     pass;

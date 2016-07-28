@@ -66,7 +66,7 @@ class SquareFindStoreSearchCases(TestCase):
         squareFindStorePage.clickOnSearch()
 
         searchPage.validSelf()
-        searchPage.inputKeywords("通州")
+        searchPage.inputKeywords("北京通州万达广场")
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
 

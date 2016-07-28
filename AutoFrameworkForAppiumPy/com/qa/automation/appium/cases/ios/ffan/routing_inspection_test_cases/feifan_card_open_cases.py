@@ -56,12 +56,12 @@ class FeiFanCardOpenCases(TestCase):
         dashboardPage.click_ffan_card();
         feifanCardPage.validSelf();
 
-        # 点击"开卡"
+        # 点击"市民/公交卡"
         feifanCardPage.clickOnOpenCard()
         openCardPage.validSelf()
 
-        openCardPage.validFeifanCard()
         openCardPage.validJointCard()
+        openCardPage.validBusCard()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardOpenCases)
