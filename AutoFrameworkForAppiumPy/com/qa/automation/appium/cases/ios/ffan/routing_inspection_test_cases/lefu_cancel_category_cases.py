@@ -67,7 +67,7 @@ class LefuCancelCatergoryCases(TestCase):
         # 首页点击乐付
         dashboardPage.wait_by_seconds(seconds=1)
         dashboardPage.validSelf()
-        dashboardPage.click_lePay()
+        dashboardPage.clickOnLePay()
         lePayPage.validSelf()
 
         # 点击第一条乐付买单
@@ -93,7 +93,7 @@ class LefuCancelCatergoryCases(TestCase):
         lePayPage.clickBackKey()
 
         # 查看我的订单状态
-        dashboardPage.click_my()
+        dashboardPage.clickOnMy()
         myFfanPage.validSelf()
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()

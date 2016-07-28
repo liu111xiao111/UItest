@@ -53,7 +53,7 @@ class BrandRecommendCatergoryCases(TestCase):
 
         # 首页点击品牌街
         dashboardPage.validSelf();
-        dashboardPage.click_brand();
+        dashboardPage.clickOnBrand();
         brandPage.validSelf();
 
         # 首页点击推荐商品详细页

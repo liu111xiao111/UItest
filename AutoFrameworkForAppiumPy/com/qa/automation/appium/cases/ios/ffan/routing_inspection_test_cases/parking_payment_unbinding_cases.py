@@ -59,8 +59,8 @@ class ParkingPaymentUnbindingCases(TestCase):
 
         # 首页点击停车
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_parking()
+        dashboard.validSelf()
+        dashboard.clickOnParking()
         parkingPage.validSelf()
 
         # 点击停车交费

@@ -53,7 +53,7 @@ class FeiFanCardOpenCases(TestCase):
 
         # 首页点击"飞凡卡"
         dashboardPage.validSelf();
-        dashboardPage.click_ffan_card();
+        dashboardPage.clickOnFeiFanCard();
         feifanCardPage.validSelf();
 
         # 点击"市民/公交卡"

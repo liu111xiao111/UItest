@@ -47,8 +47,8 @@ class MyFfanCases(unittest.TestCase):
     def test_shopping_mall(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self,driver=self.driver,logger=self.logger)
         loveShoppingPage.validSelf()
@@ -60,22 +60,22 @@ class MyFfanCases(unittest.TestCase):
     def test_film(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self,driver=self.driver,logger=self.logger)
         loveShoppingPage.validSelf()
         loveShoppingPage.clickOnFilm()
         loveShoppingPage.wait_by_seconds(seconds=2)
         filmSelectorPage = FilmSelectorPage(test_case=self,driver=self.driver,logger=self.logger)
-        filmSelectorPage.valid_self()
+        filmSelectorPage.validSelf()
 
 
     def test_food(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -87,15 +87,15 @@ class MyFfanCases(unittest.TestCase):
     def test_brand(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
         loveShoppingPage.clickOnBrand()
         loveShoppingPage.wait_by_seconds(seconds=2)
         brandPage = BrandPage(test_case=self,driver=self.driver,logger=self.logger)
-        brandPage.valid_self()
+        brandPage.validSelf()
 
     """
         首页点击亲子页面
@@ -103,8 +103,8 @@ class MyFfanCases(unittest.TestCase):
     def test_child(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -119,8 +119,8 @@ class MyFfanCases(unittest.TestCase):
     def test_preferential(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -132,8 +132,8 @@ class MyFfanCases(unittest.TestCase):
     def test_shopping(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -145,8 +145,8 @@ class MyFfanCases(unittest.TestCase):
     def test_flash_pay(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -156,8 +156,8 @@ class MyFfanCases(unittest.TestCase):
     def test_parking(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()
@@ -169,8 +169,8 @@ class MyFfanCases(unittest.TestCase):
     def test_le_pay(self):
         dashboard = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboard.wait_by_seconds(seconds=1)
-        dashboard.valid_self()
-        dashboard.click_aiguangjie()
+        dashboard.validSelf()
+        dashboard.clickOnBornToShop()
         dashboard.wait_by_seconds(seconds=1)
         loveShoppingPage = LoveShoppingPage(test_case=self, driver=self.driver, logger=self.logger)
         loveShoppingPage.validSelf()

@@ -53,7 +53,7 @@ class BrandFamousCatergoryCases(TestCase):
 
         # 首页点击品牌街
         dashboardPage.validSelf();
-        dashboardPage.click_brand()
+        dashboardPage.clickOnBrand()
         brandPage.validSelf();
 
         # 点击 "大牌"

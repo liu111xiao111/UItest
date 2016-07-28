@@ -1,189 +1,183 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from com.qa.automation.appium.api.api_new import API
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page_configs import DashboardPageConfigs
 
 
-'''
-    usage :  进入应用的首页
-'''
-class DashboardPage(IosSuperPage):
+class DashboardPage(SuperPage):
+    '''
+    作者 宋波
+    首页
+    '''
 
     def __init__(self, testcase, driver, logger):
-        super(DashboardPage, self).__init__(testcase=testcase, driver=driver, logger=logger)
+        super(DashboardPage, self).__init__(testcase, driver, logger)
 
-    '''
-        usage : 进入到应用首页,检查ffan logo
-    '''
-    def valid_self(self):
-        # name_home_title_icon = API().get_view_by_resourceID(driver=self.driver,logger=self.logger,resource_id=DashboardPageConfigs.name_home_title_icon);
-        API().assert_view_by_resourceID_Until(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.name_home_title_icon, seconds=10);
+    def validSelf(self):
+        '''
+        usage: 进入到应用首页,检查ffan logo
+        '''
 
-    """
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.name_home_title_icon,
+                                  DashboardPageConfigs.assert_view_timeout)
+
+    def clickOnBornToShop(self):
+        """
         点击爱逛街icon
-    """
-    def click_aiguangjie(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger, resource_id=DashboardPageConfigs.name_app_tabbar_home_normal)
+        """
 
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_app_tabbar_home_normal,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
-    """
+    def clickOnHuiLife(self):
+        """
         点击慧生活icon
-    """
-    def click_huishenghuo(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                             resource_id=DashboardPageConfigs.name_app_tabbar_life_normal)
+        """
 
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_app_tabbar_life_normal,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
-    """
+    def clickOnFeiFanCard(self):
+        """
         点击飞凡卡icon
-    """
-    def click_ffan_card(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                             resource_id=DashboardPageConfigs.name_app_tabbar_card_normal)
+        """
 
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_app_tabbar_card_normal,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
-    """
+    def clickOnMy(self):
+        """
         点击我的icon
-    """
-    def click_my(self):
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                             resource_id=DashboardPageConfigs.name_app_tabbar_user_normal)
+        """
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_app_tabbar_user_normal,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnSearchAll(self):
         '''
         usage: click on search in city.
         '''
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       DashboardPageConfigs.resource_id_search_all_tv,
-                                       DashboardPageConfigs.click_on_button_timeout)
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.resource_id_search_all_tv,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''
         usage: click on movie button
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       DashboardPageConfigs.resource_id_movie_st,
-                                       DashboardPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.resource_id_movie_st,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnPrivilege(self):
         '''
         usage: click privilege button
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       DashboardPageConfigs.resource_id_movieprivilege_st,
-                                       DashboardPageConfigs.click_on_button_timeout)
-
-    def validSelf(self):
-        '''
-        usage: verify whether the current page is conrrect.
-        '''
-
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              DashboardPageConfigs.name_home_title_icon,
-                                              DashboardPageConfigs.assert_view_timeout)
-
-    def waitBySeconds(self, seconds=1):
-        self.wait_by_seconds(seconds)
-
-    def clickOnHuiLife(self):
-        self.click_huishenghuo()
-
-    def clickOnFeiFanCard(self):
-        self.click_ffan_card()
-
-    def clickOnMy(self):
-        self.click_my()
-
-    def clickOnBornToShop(self):
-        self.click_aiguangjie()
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.resource_id_movieprivilege_st,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnSquareModule(self):
         '''
         usage: click on the nearby business circle.
         '''
 
-        API().click_view_by_xpath(self.testcase, self.driver, self.logger,
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.xpath_square_module_st,
                                   DashboardPageConfigs.click_on_button_timeout)
 
-    def click_parking(self):
+    def clickOnParking(self):
         '''
         usage: 点击"停车"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_parking);
 
-    def click_shopping(self):
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_parking,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnShopping(self):
         '''
         usage: 点击"购物"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_shopping);
 
-    def click_lePay(self):
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_shopping,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnLePay(self):
         '''
         usage: 点击"乐付"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_le_pay);
 
-    def click_brand(self):
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_le_pay,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnBrand(self):
         '''
         usage: 点击"品牌街"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_brand);
 
-    def click_food(self):
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_brand,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnFood(self):
         '''
         usage: 点击"美食汇"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_food);
 
-    def click_shopping_mall(self):
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_food,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnShoppingMall(self):
         '''
         usage: 点击"购物中心"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_shopping_mall);
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_shopping_mall,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnSalesPromotion(self):
         '''
-            usage: 点击"优惠活动"
+         usage: 点击"优惠活动"
         '''
-        '''        start_x = API().get_width_of_device(self.driver, self.logger)/2
-        end_x = API().get_width_of_device(self.driver, self.logger)/2
-        start_y = API().get_height_of_device(self.driver, self.logger)/2
-        end_y = API().get_height_of_device(self.driver, self.logger)/7
 
-        API().scroll(self.driver,
-                     self.logger,
-                     start_x, start_y, end_x, end_y)'''
+        self.scrollAsScreenPercent(0.5, 0.5, 0.5, 0.16)
 
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         DashboardPageConfigs.name_sales_promotion)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_sales_promotion,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnChildCategory(self):
         '''
         usage: 点击"亲子"
         '''
-        API().click_view_by_resourceID(testcase=self.testcase, driver=self.driver, logger=self.logger,
-                                       resource_id=DashboardPageConfigs.name_child);
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_child,
+                                 DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnSignOn(self):
         '''
         usage: 点击签到
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       DashboardPageConfigs.name_sign_in_st,
-                                       DashboardPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_sign_in_st,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
 
 if __name__ == '__main__':
     pass

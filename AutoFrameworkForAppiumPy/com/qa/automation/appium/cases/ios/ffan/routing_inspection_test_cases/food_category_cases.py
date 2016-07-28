@@ -52,7 +52,7 @@ class FoodCases(TestCase):
 
         # 首页点击美食汇
         dashboardPage.validSelf();
-        dashboardPage.click_food();
+        dashboardPage.clickOnFood();
         foodPage.validSelf();
 
         # 检查所有子界面入口

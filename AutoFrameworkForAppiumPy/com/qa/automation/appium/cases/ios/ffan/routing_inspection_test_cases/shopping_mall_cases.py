@@ -52,7 +52,7 @@ class ShoppingMallCases(TestCase):
         dashboardPage.validSelf()
 
         # 进入购物中心并验证
-        dashboardPage.click_shopping_mall()
+        dashboardPage.clickOnShoppingMall()
         shoppingMallPage.validSelf()
 
         # 点击 “全部” tab

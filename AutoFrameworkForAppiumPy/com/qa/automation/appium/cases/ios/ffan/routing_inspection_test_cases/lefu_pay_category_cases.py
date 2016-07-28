@@ -55,7 +55,7 @@ class LefuPayCatergoryCases(TestCase):
 
         # 首页点击乐付
         dashboardPage.validSelf()
-        dashboardPage.click_lePay()
+        dashboardPage.clickOnLePay()
         lePayPage.validSelf()
 
         # 点击第一条乐付买单

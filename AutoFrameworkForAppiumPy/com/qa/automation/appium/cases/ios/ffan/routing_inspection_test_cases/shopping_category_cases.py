@@ -53,7 +53,7 @@ class ShoppingCatergoryCases(TestCase):
 
         # 首页点击购物
         dashboardPage.validSelf();
-        dashboardPage.click_shopping()
+        dashboardPage.clickOnShopping()
         shoppingPage.validSelf();
 
         # 点击商品，进入商品详情页

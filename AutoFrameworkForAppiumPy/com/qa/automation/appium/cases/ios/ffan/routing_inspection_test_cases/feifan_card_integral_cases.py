@@ -53,7 +53,7 @@ class FeiFanCardIntegralCases(TestCase):
 
         # 首页点击"飞凡卡"
         dashboardPage.validSelf();
-        dashboardPage.click_ffan_card();
+        dashboardPage.clickOnFeiFanCard();
         ffanCardPage.validSelf();
 
         # 点击"积分"

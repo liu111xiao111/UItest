@@ -44,7 +44,7 @@ class MovieTicketCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
-        dashboardPage.valid_self()
+        dashboardPage.validSelf()
         dashboardPage.clickOnMovie()
 
         moviePage = MoviePage(self , self.driver , self.logger)
