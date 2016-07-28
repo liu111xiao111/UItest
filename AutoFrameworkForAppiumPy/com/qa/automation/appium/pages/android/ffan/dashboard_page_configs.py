@@ -40,7 +40,7 @@ class DashboardPageConfigs():
     text_parking = u"停车";
     text_brand = u"品牌街";
     text_sales_promotion = u"优惠活动";
-    text_sales = u"优惠";
+    text_sales = u"优惠活动";
     text_shopping = u"购物";
 
     # 搜索框默认字段

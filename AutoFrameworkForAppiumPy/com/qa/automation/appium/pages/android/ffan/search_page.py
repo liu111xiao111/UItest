@@ -60,7 +60,8 @@ class SearchPage(SuperPage):
         '''
         usage ：输入商品
         '''
-        API().inputStringByResourceId(self.driver,
+        API().inputStringByResourceId(self.testcase,
+                                      self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_goods_name,
@@ -124,8 +125,8 @@ class SearchPage(SuperPage):
                              SPC.assert_view_timeout)
         API().assertGreaterEqual(self.testcase,
                                  self.logger,
-                                 text,
-                                 textContains)
+                                 textContains,
+                                 text)
 
     def inputKeywords(self, keywords):
         '''

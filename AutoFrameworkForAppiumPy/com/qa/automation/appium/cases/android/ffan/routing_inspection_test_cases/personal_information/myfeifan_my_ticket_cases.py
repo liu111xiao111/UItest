@@ -9,9 +9,9 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage;
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage;
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
@@ -59,25 +59,25 @@ class MyfeifanMyTicketCases(TestCase):
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
 
         # Click "优惠" and get ticket.
-        dashboardPage.validSelf();
-        dashboardPage.clickOnSales();
-        salesPromotionPage.validSelf();
-        salesPromotionPage.clickOnCouponTab();
-        salesPromotionPage.clickOnCouponDetails();
-        salesPromotionCouponDetailsPage.waitBySeconds(10);
-        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn();
-        salesPromotionCouponSuccessPage.validSelf();
-        couponName = salesPromotionCouponSuccessPage.getCouponDetails();
-        salesPromotionCouponSuccessPage.clickBackKey();
-        salesPromotionCouponDetailsPage.clickBackKey();
-        salesPromotionPage.clickBackKey();
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSales()
+        salesPromotionPage.validSelf()
+        salesPromotionPage.clickOnCouponTab()
+        salesPromotionPage.clickOnCouponDetails()
+        salesPromotionCouponDetailsPage.waitBySeconds(10)
+        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        salesPromotionCouponSuccessPage.validSelf()
+        couponName = salesPromotionCouponSuccessPage.getCouponDetails()
+        salesPromotionCouponSuccessPage.clickBackKey()
+        salesPromotionCouponDetailsPage.clickBackKey()
+        salesPromotionPage.clickBackKey()
 
         # Click "我的票券"
-        dashboardPage.clickOnMy();
-        myFfanPage.validSelf();
-        myFfanPage.clickOnMyTicket();
-        myTicketPage.validSelf();
-        myTicketPage.validSelfTicketName(couponName);
+        dashboardPage.clickOnMy()
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyTicket()
+        myTicketPage.validSelf()
+        myTicketPage.validSelfTicketName(couponName)
 
 
 if __name__ == "__main__":

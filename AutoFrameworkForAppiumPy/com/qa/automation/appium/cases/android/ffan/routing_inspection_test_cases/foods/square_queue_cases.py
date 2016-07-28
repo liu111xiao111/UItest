@@ -70,15 +70,9 @@ class SquareLefuPayCases(TestCase):
         queuePage.clicOnQueueNumber()
         queuePage.waitBySeconds(10)
         queuePage.inputNumberOfMeals()
-#         queuePage.clicOnGetQueueNumber()
-#         queuePage.clickBackKey()
-#         queuePage.clickBackKey()
-#         queuePage.clickBackKey()
-#         squarePage.clickBackKey()
-# 
-#         dashboardPage.clickOnMy()
-#         myFfanPage.clickOnMyQueue()
-
+        queuePage.clicOnGetQueueNumber()
+        queuePage.validQueueSuccess()
+        queuePage.clickOnCancelQueue()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareLefuPayCases)

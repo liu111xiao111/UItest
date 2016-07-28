@@ -195,6 +195,10 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"优惠"类目
         '''
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           DPC.text_sales)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,

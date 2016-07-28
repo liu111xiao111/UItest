@@ -27,7 +27,7 @@ class SearchPageConfigs():
 
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 
-    text_searching_store_name = u"北京石景山店"
+    text_searching_store_name = u"北京通州店"
 
     text_searching_brand_name = "adidas"
 
