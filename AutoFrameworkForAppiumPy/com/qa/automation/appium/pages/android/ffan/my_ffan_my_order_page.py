@@ -21,52 +21,56 @@ class MyFfanMyOrderPage(SuperPage):
                                         MOPC.resource_id_tv_my_order_tv,
                                         10)
 
-    def clickOnOrderAll(self):
+    def clickOnOrderDetails(self):
         '''
-        usage : 点击全部
+        usage : 点击我的订单中的第一条订单，进入详情页
         '''
-        API().clickElementByText(self.testcase, self.driver, self.logger,
-                                 MOPC.text_order_all,
-                                 10)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = MOPC.xpath_order_details)
 
-    def clickOnOrderNoPay(self):
+    def clickOnOrderList(self):
         '''
-        usage : 点击待付款
+        usage : 点击我的订单中的第一条订单，进入详情页
         '''
-        API().clickElementByText(self.testcase, self.driver, self.logger,
-                                 MOPC.text_order_no_pay,
-                                 10)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = MOPC.xpath_order_list)
 
-    def clickOnOrderPaid(self):
+    def clickOnAllOrders(self):
         '''
-        usage : 点击已付款
+        usage : 点击"全部订单"
         '''
-        API().clickElementByText(self.testcase, self.driver, self.logger,
-                                 MOPC.text_order_paid,
-                                 10)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MOPC.name_order_all)
 
-    def validSelfNoPay(self):
+    def clickOnFilm(self):
         '''
-        usage : 验证待付款
+        usage : 点击"电影娱乐"
         '''
-        API().assertElementByText(self.testcase, self.driver, self.logger,
-                                  MOPC.text_order_no_pay,
-                                  10)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MOPC.name_order_film)
 
-    def validSelfPaid(self):
+    def clickOnLePay(self):
         '''
-        usage : 验证已付款
+        usage : 点击"乐付买单"
         '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MOPC.name_order_le_pay)
 
-        API().assertElementByText(self.testcase, self.driver, self.logger,
-                                  MOPC.text_order_paid,
-                                  10)
-
-    def getOrderNumber(self):
+    def clickOnParkingPayment(self):
         '''
-        usage : 获取数值
+        usage : 点击"停车缴费"
         '''
-        orderNumber = API().getTextByResourceId(self.testcase, self.driver, self.logger, 
-                                                MOPC.resource_id_tv_order_number_tv,
-                                                10)
-        return orderNumber
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MOPC.name_order_parking_payment)
