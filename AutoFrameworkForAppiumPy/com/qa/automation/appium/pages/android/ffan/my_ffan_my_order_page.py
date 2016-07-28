@@ -43,7 +43,7 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 点击"全部订单"
         '''
-        API().clickElementByName(self.testcase,
+        API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  MOPC.name_order_all)
@@ -52,7 +52,7 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 点击"电影娱乐"
         '''
-        API().clickElementByName(self.testcase,
+        API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  MOPC.name_order_film)
@@ -61,7 +61,7 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 点击"乐付买单"
         '''
-        API().clickElementByName(self.testcase,
+        API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  MOPC.name_order_le_pay)
@@ -70,7 +70,7 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 点击"停车缴费"
         '''
-        API().clickElementByName(self.testcase,
+        API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  MOPC.name_order_parking_payment)

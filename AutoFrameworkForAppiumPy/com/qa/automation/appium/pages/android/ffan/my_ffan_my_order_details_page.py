@@ -14,54 +14,47 @@ class MyFfanMyOrderDetailsPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(MyFfanMyOrderDetailsPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
-    def validSelfAllOrders(self, lePayOrderNumber, myOrderNumber):
+    def validSelfAllOrders(self, lePayOrderNumber):
         '''
         usage : 判断"全部订单"显示是否正确
         '''
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=lePayOrderNumber,
-                          expectText=myOrderNumber)
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         lePayOrderNumber,
+                                         10)
 
-    def validSelfFilmOrders(self, lePayOrderNumber, myOrderNumber):
+    def validSelfFilmOrders(self, lePayOrderNumber):
         '''
         usage : 判断"电影娱乐"显示是否正确
         '''
-        API().assertNotEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=lePayOrderNumber,
-                          expectText=myOrderNumber)
+        API().assertFalse(self.testcase, self.logger,
+                          API().validElementByContentDesc(self.driver,
+                                                          self.logger,
+                                                          lePayOrderNumber,
+                                                          10))
 
-    def validSelfLePayOrders(self, lePayOrderNumber, myOrderNumber):
+    def validSelfLePayOrders(self, lePayOrderNumber):
         '''
         usage : 判断"乐付买单"显示是否正确
         '''
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=lePayOrderNumber,
-                          expectText=myOrderNumber)
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         lePayOrderNumber,
+                                         10)
 
-    def validSelfParkingPaymentOrders(self, lePayOrderNumber, myOrderNumber):
+    def validSelfParkingPaymentOrders(self, lePayOrderNumber):
         '''
         usage : 判断"停车缴费"显示是否正确
         '''
-        API().assertNotEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=lePayOrderNumber,
-                          expectText=myOrderNumber)
+        API().assertFalse(self.testcase, self.logger,
+                          API().validElementByContentDesc(self.driver,
+                                                          self.logger,
+                                                          lePayOrderNumber,
+                                                          10))
 
-    def getMyOrderNumber(self):
-        '''
-        usage : 点击我的全部订单中的第一条订单，进入详情页，取得订单号
-        '''
-        orderNumber = API().getTextByXpath(self.testcase,
-                                           self.driver,
-                                           self.logger,
-                                           MyFfanMyOrderDetailsPageConfigs.xpath_order_number)
-        print(orderNumber)
-        return orderNumber;
-
-    def getMyFilmOrderNumber(self):
+    def getMyFilmOrderNumber(self): 
         '''
         usage : 点击我的电影娱乐订单中的第一条订单，进入详情页，取得订单号
         '''

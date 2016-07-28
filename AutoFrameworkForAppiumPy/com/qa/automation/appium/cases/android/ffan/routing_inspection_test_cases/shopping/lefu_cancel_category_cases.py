@@ -48,8 +48,8 @@ class LefuCancelCatergoryCases(TestCase):
                                    deviceName_andr,
                                    driver_url).getDriver()
 
-        '''self.reset = ClearAppData(self.driver)
-        self.reset.clearData()'''
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -96,9 +96,7 @@ class LefuCancelCatergoryCases(TestCase):
         # 查看我的订单 -- 全部订单状态
         myOrderPage.clickOnOrderDetails()
         myOrderDetailsPage.waitBySeconds(seconds=5)
-        myAllOrderNumber = myOrderDetailsPage.getMyOrderNumber()
-        print(myAllOrderNumber)
-        myOrderDetailsPage.validSelfAllOrders(lePayOrderNumber, myAllOrderNumber)
+        myOrderDetailsPage.validSelfAllOrders(lePayOrderNumber)
 
         # 查看我的订单 -- 乐付买单订单状态
         myOrderDetailsPage.clickBackKey()
@@ -106,8 +104,7 @@ class LefuCancelCatergoryCases(TestCase):
         myOrderPage.clickOnLePay()
         myOrderPage.clickOnOrderDetails()
         myOrderDetailsPage.waitBySeconds(seconds=5)
-        myLePayOrderNumber = myOrderDetailsPage.getMyLePayOrderNumber();
-        myOrderDetailsPage.validSelfLePayOrders(lePayOrderNumber, myLePayOrderNumber)
+        myOrderDetailsPage.validSelfLePayOrders(lePayOrderNumber)
 
         # 查看我的订单 -- 电影娱乐订单状态
         myOrderDetailsPage.clickBackKey()
@@ -115,17 +112,15 @@ class LefuCancelCatergoryCases(TestCase):
         myOrderPage.clickOnFilm()
         myOrderPage.clickOnOrderDetails()
         myOrderDetailsPage.waitBySeconds(seconds=5)
-        myFilmOrderNumber = myOrderDetailsPage.getMyFilmOrderNumber();
-        myOrderDetailsPage.validSelfFilmOrders(lePayOrderNumber, myFilmOrderNumber)
+        myOrderDetailsPage.validSelfFilmOrders(lePayOrderNumber)
 
         # 查看我的订单 -- 停车缴费订单状态
-        '''myOrderDetailsPage.clickBackKey()
-        myOrderPage.clickOnAllOrders()
+        myOrderDetailsPage.clickBackKey()
+        myOrderPage.clickOnOrderList()
         myOrderPage.clickOnParkingPayment()
         myOrderPage.clickOnOrderDetails()
-        myOrderDetailsPage.waitBySeconds(seconds=2)
-        myParkingPaymentOrderNumber = myOrderDetailsPage.getMyParkingPaymentOrderNumber();
-        myOrderDetailsPage.validSelfParkingPaymentOrders(lePayOrderNumber, myParkingPaymentOrderNumber)'''
+        myOrderDetailsPage.waitBySeconds(seconds=5)
+        myOrderDetailsPage.validSelfParkingPaymentOrders(lePayOrderNumber,)
 
 
 if __name__ == "__main__":
