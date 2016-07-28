@@ -27,10 +27,10 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 点击优惠券tab
         '''
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SalesPromotionPageConfigs.resource_id_tv_coupon_tv)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SalesPromotionPageConfigs.resource_id_tv_coupon_tv)
 
     def clickOnActiveDetails(self):
         '''
@@ -79,7 +79,7 @@ class SalesPromotionPage(SuperPage):
         usage : 获得活动标题名称
         '''
         itemName = API().getTextByXpath(self.testcase,
-                                        self.driver, 
+                                        self.driver,
                                         self.logger,
                                         SalesPromotionPageConfigs.xpath_active_details_tv)
         return itemName;

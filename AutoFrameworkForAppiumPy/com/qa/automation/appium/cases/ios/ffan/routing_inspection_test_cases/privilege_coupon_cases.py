@@ -31,14 +31,15 @@ class PrivilegeCouponCases(TestCase):
     '''
 
     def tearDown(self):
-        ClearAppData(self.driver).clearData()
+        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        ClearAppData(self.driver).clearData()
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
