@@ -52,13 +52,13 @@ class SquareLefuPayCases(TestCase):
         queuePage = SquareQueuePage(self, self.driver, self.logger)
 
         # 首页进入广场页
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        squarePage.validSelf()
 
         # 点击 "排队取号"
-        squarePage.clicOnQueue();
-        queuePage.validSelf();
+        squarePage.clicOnQueue()
+        queuePage.validSelf()
 
         # 点击 "取号"
         queuePage.clicOnQueueNumber()
@@ -66,8 +66,11 @@ class SquareLefuPayCases(TestCase):
         queuePage.inputNumberOfMeals()
         queuePage.waitBySeconds(5)
         queuePage.clicOnGetQueueNumber()
+        queuePage.waitBySeconds(20)
         queuePage.validQueueSuccess()
+        queuePage.waitBySeconds(10)
         queuePage.clickOnCancelQueue()
+        queuePage.waitBySeconds(2)
 
 
 if __name__ == "__main__":

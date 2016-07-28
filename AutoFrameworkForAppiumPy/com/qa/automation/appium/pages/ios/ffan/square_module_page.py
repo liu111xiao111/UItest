@@ -119,19 +119,18 @@ class SquareModulePage(SuperPage):
         usage: Click "乐付买单"
     '''
     def clicOnLefuPay(self):
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_lefu_pay);
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SquareModulePageConfigs.text_lefu_pay)
 
     '''
         usage: Click "排队取号"
     '''
     def clicOnQueue(self):
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_queue);
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SquareModulePageConfigs.text_queue,
+                                 SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnCoupon(self):
         '''
