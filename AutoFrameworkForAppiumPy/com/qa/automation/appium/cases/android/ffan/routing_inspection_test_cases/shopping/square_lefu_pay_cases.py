@@ -11,8 +11,8 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
-from com.qa.automation.appium.pages.android.ffan.shopping_mall_page import ShoppingMallPage
 from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -51,17 +51,17 @@ class SquareLefuPayCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
-        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
         lefuPayPage = SquareLefuPayPage(self, self.driver, self.logger)
 
-        # Load square page
-        dashboardPage.validSelf();
-        dashboardPage.clickOnShoppingMall();
-        shoppingMallPage.validSelf();
-        
-        # Click "北京通州万达广场"
-        shoppingMallPage.clickOnBeijinTongzouMall();
-        squarePage.validSelf();
+        # 绑定北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
+        squarePage.validSelf()
 
         # Click "乐付买单"， load "乐付买单" page.
         squarePage.clicOnLefuPay();
