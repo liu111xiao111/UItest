@@ -14,6 +14,7 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
 from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
+from com.qa.automation.appium.pages.ios.ffan.verification_page import VerificationPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -52,8 +53,12 @@ class LoginCases(TestCase):
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
-        loginPage.waitBySeconds(5)
 
+        verificationPage = VerificationPage(self, self.driver, self.logger)
+        verificationPage.validSelf()
+        verificationPage.clickOnSkip()
+
+        myFeiFanPage.waitBySeconds(5)
         myFeiFanPage.validSelf()
 
 if __name__ == "__main__":

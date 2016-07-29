@@ -21,6 +21,10 @@ class SquareModulePage(SuperPage):
     '''
     def validSelf(self):
         for _ in range(10):
+            if API().validElementByName(self.driver, self.logger,
+                                        SquareModulePageConfigs.text_find_store,
+                                        SquareModulePageConfigs.get_view_timeout):
+                break
             self.scrollAsScreenPercent(0.5, 0.2, 0.5, 0.8)
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
