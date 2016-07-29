@@ -23,7 +23,7 @@ class SearchPageConfigs():
     # Specific movie button
     resource_id_specific_square_button = "com.wanda.app.wanhui:id/icon"
 
-    text_store_detail = u"门店详情"
+    text_store_detail = u"通州"
 
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 

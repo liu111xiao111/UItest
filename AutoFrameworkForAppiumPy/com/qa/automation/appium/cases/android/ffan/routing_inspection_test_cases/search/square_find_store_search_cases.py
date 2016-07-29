@@ -56,21 +56,25 @@ class SquareFindStoreSearchCases(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
 
+        # 绑定北京通州万达广场
         dashboardPage.validSelf()
-
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf()
-
-        squarePage.clicOnFindStore()
-
-        squareFindStorePage.validSelf()
-        squareFindStorePage.clickOnSearch()
-
+        dashboardPage.clickOnSearchView()
         searchPage.validSelf()
-        searchPage.inputText("通州")
+        searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
+        squarePage.validSelf()
 
+        # 点击找店
+        squarePage.clicOnFindStore()
+        squareFindStorePage.validSelf()
+
+        # 检索门店
+        squareFindStorePage.clickOnSearch()
+        searchPage.validSelf()
+        searchPage.inputText("adidas")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
         searchResultStorePage.validSelf()
 
 

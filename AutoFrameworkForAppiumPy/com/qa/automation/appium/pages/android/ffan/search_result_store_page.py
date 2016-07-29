@@ -17,7 +17,7 @@ class SearchResultStorePage(SuperPage):
         '''
         usage : 检查是否加载出来
         '''
-        API().assertElementByText(self.testcase, self.driver, self.logger,
+        API().assertElementByContainsText(self.testcase, self.driver, self.logger,
                                   SPC.text_store_detail,
                                   SPC.assert_view_timeout)
 
