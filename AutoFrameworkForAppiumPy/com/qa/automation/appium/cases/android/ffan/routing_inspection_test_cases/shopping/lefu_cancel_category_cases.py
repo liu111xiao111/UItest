@@ -16,6 +16,7 @@ from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import LefuPa
 from com.qa.automation.appium.pages.android.ffan.lefu_cancel_order_page import LefuCancelOrderPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -47,8 +48,8 @@ class LefuCancelCatergoryCases(TestCase):
                                    deviceName_andr,
                                    driver_url).getDriver()
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+        '''self.reset = ClearAppData(self.driver)
+        self.reset.clearData()'''
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -60,58 +61,71 @@ class LefuCancelCatergoryCases(TestCase):
         lefuCancelOrderPage = LefuCancelOrderPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
+        myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
 
-        # Load square page
-        dashboardPage.validSelf();
+        # 首页点击乐付
+        dashboardPage.validSelf()
         dashboardPage.clickOnLefuCategory()
-        lefuPage.validSelf();
+        lefuPage.validSelf()
 
-        # Click "乐付买单"， load detail pay page.
-        lefuPage.clickOnLefuPay();
-        lefuPayDetailPage.validSelf();
+        # 点击第一条乐付买单.
+        lefuPage.clickOnLefuPay()
+        lefuPayDetailPage.validSelf()
 
-        # Input money, click "确认买单".
-        lefuPayDetailPage.inputMoney();
-        lefuPayDetailPage.waitBySeconds(seconds=3);
-        lefuPayDetailPage.clickOnPay();
-        lefuPayWayPage.validSelf();
-        lefuPayWayPage.waitBySeconds(2);
-        lefuOrderNumber = lefuPayWayPage.getOrderNumber();
+        # 下单
+        lefuPayDetailPage.inputMoney()
+        lefuPayDetailPage.waitBySeconds(seconds=3)
+        lefuPayDetailPage.clickOnPay()
+        lefuPayWayPage.validSelf()
+        lefuPayWayPage.waitBySeconds(2)
+        lePayOrderNumber = lefuPayWayPage.getOrderNumber()
 
-        # Cancel the order
-        lefuPayWayPage.clickBackKey();
-        lefuCancelOrderPage.clickOnConfirmBtn();
-        lefuPayDetailPage.clickBackKey();
-        lefuPage.clickBackKey();
+        # 取消订单
+        lefuPayWayPage.clickBackKey()
+        lefuCancelOrderPage.clickOnConfirmBtn()
+        lefuPayDetailPage.clickBackKey()
+        lefuPage.clickBackKey()
 
-        dashboardPage.clickOnMy();
-        myFfanPage.validSelf();
-        myFfanPage.clickOnMyOrder();
-        myOrderPage.validSelf();
-        myOrderPage.waitBySeconds(seconds=2);
-        myOrderNumber = myOrderPage.getOrderNumber();
+        # 查看我的订单状态
+        dashboardPage.clickOnMy()
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyOrder()
+        myOrderPage.validSelf()
+        myOrderPage.waitBySeconds(seconds=3)
 
-        #Judge order number
-        if lefuOrderNumber == myOrderNumber[5:]:
-            print("Order display correctly in ALL Orders tab!")
-        else:
-            print("Not find new order number!")
+        # 查看我的订单 -- 全部订单状态
+        myOrderPage.clickOnOrderDetails()
+        myOrderDetailsPage.waitBySeconds(seconds=5)
+        myAllOrderNumber = myOrderDetailsPage.getMyOrderNumber()
+        print(myAllOrderNumber)
+        myOrderDetailsPage.validSelfAllOrders(lePayOrderNumber, myAllOrderNumber)
 
-        myOrderPage.clickOnOrderNoPay();
-        print("Order display correctly in To be Paid Orders tab!")
-        #myOrderNumberNoPay = myOrderPage.getOrderNumber();
-        #Judge order number
-        '''if lefuOrderNumber != myOrderNumberNoPay[5:]:
-            print("Order display correctly in To be Paid Orders tab!")
-        else:
-            print("Order error!")'''
-        myOrderPage.clickOnOrderPaid();
-        myOrderNumberPaid = myOrderPage.getOrderNumber();
-        #Judge order number
-        if lefuOrderNumber != myOrderNumberPaid[5:]:
-            print("Order display correctly in Have Been Paid Orders tab!")
-        else:
-            print("Order error!")
+        # 查看我的订单 -- 乐付买单订单状态
+        myOrderDetailsPage.clickBackKey()
+        myOrderPage.clickOnOrderList()
+        myOrderPage.clickOnLePay()
+        myOrderPage.clickOnOrderDetails()
+        myOrderDetailsPage.waitBySeconds(seconds=5)
+        myLePayOrderNumber = myOrderDetailsPage.getMyLePayOrderNumber();
+        myOrderDetailsPage.validSelfLePayOrders(lePayOrderNumber, myLePayOrderNumber)
+
+        # 查看我的订单 -- 电影娱乐订单状态
+        myOrderDetailsPage.clickBackKey()
+        myOrderPage.clickOnOrderList()
+        myOrderPage.clickOnFilm()
+        myOrderPage.clickOnOrderDetails()
+        myOrderDetailsPage.waitBySeconds(seconds=5)
+        myFilmOrderNumber = myOrderDetailsPage.getMyFilmOrderNumber();
+        myOrderDetailsPage.validSelfFilmOrders(lePayOrderNumber, myFilmOrderNumber)
+
+        # 查看我的订单 -- 停车缴费订单状态
+        '''myOrderDetailsPage.clickBackKey()
+        myOrderPage.clickOnAllOrders()
+        myOrderPage.clickOnParkingPayment()
+        myOrderPage.clickOnOrderDetails()
+        myOrderDetailsPage.waitBySeconds(seconds=2)
+        myParkingPaymentOrderNumber = myOrderDetailsPage.getMyParkingPaymentOrderNumber();
+        myOrderDetailsPage.validSelfParkingPaymentOrders(lePayOrderNumber, myParkingPaymentOrderNumber)'''
 
 
 if __name__ == "__main__":

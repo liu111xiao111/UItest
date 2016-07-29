@@ -17,8 +17,8 @@ class LefuCancelOrderPage(SuperPage):
         '''
         usage : 点击 "确认"
         '''
-        API().clickElementByResourceId(self.testcase,
+        API().clickElementByText(self.testcase,
                                        self.driver,
                                        self.logger,
-                                       LCOPC.resource_id_confirm_button,
+                                       LCOPC.text_id_confirm_button,
                                        10)
