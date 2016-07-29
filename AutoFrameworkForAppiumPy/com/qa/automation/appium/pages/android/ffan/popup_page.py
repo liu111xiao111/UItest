@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
-
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.popup_page_configs import PopupPageConfigs as PPC
@@ -12,22 +10,27 @@ class KeywordsType(object):
     作者 刘涛
     usage: 关键值类型类
     '''
+
     RESOURCE_ID = "resource_id"
     TEXT = "text"
+    XPATH = "xpath"
+
 
 class ClickActivityKeywordsType(KeywordsType):
     '''
     作者 刘涛
     usage: 点击页面关键值类型类
     '''
-    XPATH = "xpath"
+
     CONTENT_DESC = "content-desc"
+
 
 class VerifyActivityKeywordsType(KeywordsType):
     '''
     作者 刘涛
     usage: 验证页面关键值类型类
     '''
+
 
 class PopupPage(SuperPage):
     '''
@@ -38,10 +41,12 @@ class PopupPage(SuperPage):
         super(PopupPage, self).__init__(testcase, driver, logger)
 
         self._validOperator = {VerifyActivityKeywordsType.RESOURCE_ID : self._validSelfByResourceId,
-                               VerifyActivityKeywordsType.TEXT : self._validSelfByText}
+                               VerifyActivityKeywordsType.TEXT : self._validSelfByText,
+                               VerifyActivityKeywordsType.XPATH: self._validSelfByXpath}
 
         self._clickOperator = {ClickActivityKeywordsType.RESOURCE_ID : self._clickOnButtonByResourceId,
-                               ClickActivityKeywordsType.TEXT : self._clickOnButtonByText}
+                               ClickActivityKeywordsType.TEXT : self._clickOnButtonByText,
+                               ClickActivityKeywordsType.XPATH: self._clickOnButtonByXpath}
 
     def _validSelfByResourceId(self, keywords, assertable):
         '''
@@ -78,6 +83,18 @@ class PopupPage(SuperPage):
                                             keywords,
                                             PPC.verify_view_timeout)
 
+    def _validSelfByXpath(self, keywords, assertable):
+        '''
+        usage: 通过xpath验证页面
+        '''
+
+        if assertable:
+            API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                      keywords, PPC.assert_view_timeout)
+        else:
+            return API().validElementByXpath(self.driver, self.logger,
+                                            keywords, PPC.verify_view_timeout)
+
     def validSelf(self, keywords, keywordsType=VerifyActivityKeywordsType.RESOURCE_ID, assertable=True):
         '''
         usage: 验证当前页面
@@ -105,6 +122,14 @@ class PopupPage(SuperPage):
                                  self.logger,
                                  keywords,
                                  PPC.click_on_button_timeout)
+
+    def _clickOnButtonByXpath(self, keywords):
+        '''
+        usage: 通过xpath点击按钮
+        '''
+
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 keywords, PPC.click_on_button_timeout)
 
     def clickOnButton(self, keywords, keywordsType=ClickActivityKeywordsType.RESOURCE_ID):
         '''

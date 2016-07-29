@@ -224,3 +224,11 @@ class DashboardPage(SuperPage):
                                  self.logger,
                                  DPC.text_shopping,
                                  DPC.click_on_button_timeout)
+
+    def clickOnSignOn(self):
+        '''
+        usage: 点击签到
+        '''
+
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 DPC.text_sign_in_tv, DPC.click_on_button_timeout)

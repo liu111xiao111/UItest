@@ -78,6 +78,9 @@ class DashboardPageConfigs():
     # Movie buttion
     text_movie_button = u"电影"
 
+    # Sign in
+    text_sign_in_tv = u"签到"
+
     def __init__(self):
         pass;
 
