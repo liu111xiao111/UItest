@@ -132,8 +132,8 @@ class LoveShoppingPage(SuperPage):
                                        self.logger,
                                        LSPC.resource_id_id_tv_city,
                                        10)
-        
-    def selectCity(self,city_name):
+
+    def selectCity(self, city_name):
         '''
         usage : 选择城市
         '''
@@ -142,3 +142,22 @@ class LoveShoppingPage(SuperPage):
                                  self.logger,
                                  "安康市",
                                  10)
+
+    def getCurrentCityName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    LSPC.xpath_city_name_tv)
+
+    def clickOnCityName(self):
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  LSPC.xpath_city_name_tv, LSPC.click_on_button_timeout)
+
+    def switchCity(self, cityName):
+        startPoint = 2
+        tempXpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[2]/android.widget.ListView[1]/android.view.View[%d]/android.widget.TextView[1]"
+        goalXpath = tempXpath % startPoint
+        while(cityName == API().getTextByXpath(self.testcase, self.driver, self.logger, goalXpath,
+                                               LSPC.get_view_timeout)):
+            startPoint += 1
+            goalXpath = tempXpath % startPoint
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, goalXpath,
+                                  LSPC.click_on_button_timeout)

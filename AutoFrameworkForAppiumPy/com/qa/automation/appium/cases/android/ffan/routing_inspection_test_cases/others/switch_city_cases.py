@@ -2,10 +2,10 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
+
+import HTMLTestRunner
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
@@ -14,11 +14,10 @@ from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
-from com.qa.automation.appium.utility.logger import Logger
-from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 from com.qa.automation.appium.pages.android.ffan.love_shopping_page import LoveShoppingPage
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.switch_city_page import SwitchCityPage
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
+from com.qa.automation.appium.utility.logger import Logger
 
 
 class SwitchCityCases(TestCase):
@@ -33,40 +32,29 @@ class SwitchCityCases(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
-                                   appActivity_ffan,
-                                   platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr,
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
                                    driver_url).getDriver()
-
         self.reset = ClearAppData(self.driver)
 
-    def test_case_prepare(self):
-        dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
-        dashboard.clickLikeShopping()
-        
-        loveShoppingPage = LoveShoppingPage(testcase=self,driver=self.driver,logger=self.logger)
+    def test_case_step_1(self):
+        switchCityPage = SwitchCityPage(self, self.driver, self.logger)
+        for tempTimes in range(5):
+            print("ATTEMPTS: %d" % (tempTimes + 1))
+            if switchCityPage.validSelf(False):
+                return
+            switchCityPage.waitBySeconds(2)
+
+        loveShoppingPage = LoveShoppingPage(self, self.driver, self.logger)
         loveShoppingPage.validSelf()
-        
-        loveShoppingPage.clickCityTextView()
-        loveShoppingPage.waitBySeconds(seconds=1)
-        loveShoppingPage.selectCity(city_name="保定市")
+        tempCityName = loveShoppingPage.getCurrentCityName()
+        loveShoppingPage.clickOnCityName()
+        loveShoppingPage.waitBySeconds()
+        loveShoppingPage.switchCity(tempCityName)
         loveShoppingPage.validSelf()
-        
-    def test_case(self):
-        dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
-        dashboard.clickLikeShopping()
-        
-        loveShoppingPage = LoveShoppingPage(testcase=self,driver=self.driver,logger=self.logger)
-        loveShoppingPage.validSelf()
-        
-        loveShoppingPage.clickCityTextView()
-        loveShoppingPage.waitBySeconds(seconds=1)
-        loveShoppingPage.selectCity(city_name="保定市")
-        
+
+    def test_case_step_2(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         for tempTimes in range(5):
             print("ATTEMPTS: %d" % (tempTimes + 1))

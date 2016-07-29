@@ -14,8 +14,17 @@ class LoveShoppingPageConfigs():
     text_flash_sale = "限时抢购";
     text_parking = "停车";
     text_le_pays = "乐付";
-    
+
     resource_id_id_tv_city = "tv_city"
+
+    # Click button time out
+    click_on_button_timeout = 10
+
+    # Get view time out
+    get_view_timeout = 10
+
+    # City name
+    xpath_city_name_tv = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"
 
     def __init__(self):
         pass;

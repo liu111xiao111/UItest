@@ -48,7 +48,7 @@ class SwitchCityPage(SuperPage):
         '''
         usage: 验证当前页面不是切换城市页面
         '''
-        res = API().validElementByResourceId(self.testcase, self.driver, self.logger,
+        res = API().validElementByResourceId(self.driver, self.logger,
                                              SCPC.resource_id_switch_city_cancel_button,
                                              SCPC.assert_invalid_view_time)
-        API().assertFalse(self.testCase, self.logger, res)
+        API().assertFalse(self.testcase, self.logger, res)
