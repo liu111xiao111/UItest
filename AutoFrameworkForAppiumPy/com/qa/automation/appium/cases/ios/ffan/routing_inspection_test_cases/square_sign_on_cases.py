@@ -12,6 +12,9 @@ from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrep
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.ios.ffan.popup_page import ClickActivityKeywordsType
+from com.qa.automation.appium.pages.ios.ffan.popup_page import PopupPage
+from com.qa.automation.appium.pages.ios.ffan.popup_page import VerifyActivityKeywordsType
 from com.qa.automation.appium.pages.ios.ffan.square_sign_on_page import SignOnPage
 from com.qa.automation.appium.utility.logger import Logger
 
@@ -43,8 +46,16 @@ class SquareSignOnCases(TestCase):
 
         signOnPage = SignOnPage(self, self.driver, self.logger)
         signOnPage.validSelf()
+
         if not signOnPage.validChickedInStatus(False):
             signOnPage.clickOnSignIn()
+
+        popupPage = PopupPage(self, self.driver, self.logger)
+        if popupPage.validSelf("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[61]",
+                               VerifyActivityKeywordsType.XPATH, False):
+            popupPage.clickOnButton("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]",
+                                    ClickActivityKeywordsType.XPATH)
+
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()
 
