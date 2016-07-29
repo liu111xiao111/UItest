@@ -33,6 +33,15 @@ class MoviePage(SuperPage):
         usage: click seat picking and buying ticket button
         '''
 
+        for _ in range(3):
+            tempTest = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                            MoviePageConfigs.xpath_seat_picking_and_buying_ticket_bt,
+                                            MoviePageConfigs.get_timeout)
+            print(tempTest)
+            if "选座购票" == tempTest:
+                break
+            self.scrollAsScreenPercent(0.5, 0.5, 0.1, 0.5)
+
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   MoviePageConfigs.xpath_seat_picking_and_buying_ticket_bt,
                                   MoviePageConfigs.click_on_button_timeout)
