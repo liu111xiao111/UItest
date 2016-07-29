@@ -6,9 +6,11 @@ class FoodCategoryPageConfigs():
     # 餐厅
     resource_id_bt_restaurant_bt = "com.wanda.app.wanhui:id/food_home_gridview_item"
     # 优惠打折
-    resource_id_bt_coupon_bt = "com.wanda.app.wanhui:id/food_home_campaign"
+    resource_id_bt_coupon_bt = "com.wanda.app.wanhui:id/food_home_discount"
     # 抢券
     resource_id_bt_grab_bt = "com.wanda.app.wanhui:id/food_home_coupon"
+    # 乐付
+    resource_id_bt_pay_bt = "com.wanda.app.wanhui:id/food_home_flashbuy"
 
     resource_id_tv_restaurant_tv = "com.wanda.app.wanhui:id/multiple_headers_dropdown_listview_header_item_text"
 

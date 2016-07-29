@@ -89,3 +89,13 @@ class FoodCategoryPage(SuperPage):
                                        self.logger,
                                        FCPC.resource_id_bt_grab_bt,
                                        FCPC.click_view_timeout)
+
+    def clickOnLePay(self):
+        '''
+        usage : 点击乐付
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_pay_bt,
+                                       FCPC.click_view_timeout)

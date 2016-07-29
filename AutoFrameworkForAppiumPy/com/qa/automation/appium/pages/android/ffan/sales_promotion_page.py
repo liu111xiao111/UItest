@@ -99,3 +99,13 @@ class SalesPromotionPage(SuperPage):
                                              SPPC.resource_id_tv_active_details_tv,
                                              10)
         return itemName
+
+    def validSelfCoupon(self):
+        '''
+            usage : 判断 "优惠券" 页显示是否正确
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPPC.resource_id_tv_coupon_tv,
+                                        10)

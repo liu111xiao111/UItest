@@ -9,6 +9,8 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.food_category_page import FoodCategoryPage
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
+from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -51,6 +53,8 @@ class FoodCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
+        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
 
@@ -62,13 +66,17 @@ class FoodCases(TestCase):
 
         # 检查优惠打折
         foodPage.clickOnCoupon()
-        foodPage.validCoupon()
-        dashboardPage.clickBackKey()
-        
+        salesPromotionPage.validSelf()
+        salesPromotionPage.clickBackKey()
+
         # 检查抢券
         foodPage.clickOnGrabCoupons()
-        foodPage.validGrabCoupons()
+        salesPromotionPage.validSelfCoupon()
+        salesPromotionPage.clickBackKey()
 
+        # 检查乐付
+        foodPage.clickOnLePay()
+        lefuPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FoodCases)
