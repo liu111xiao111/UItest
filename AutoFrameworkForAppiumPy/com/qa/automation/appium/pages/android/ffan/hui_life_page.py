@@ -17,19 +17,9 @@ class HuiLifePage(SuperPage):
         '''
         usage: 验证惠生活界面
         '''
-        bottom_bar = API().validElementByResourceId(self.driver,
-                                                    self.driver,
-                                                    HLPC.resource_id_ll_bottom_bar,
-                                                    10)
-        framell_list = API().getElementsByClassName(self.testcase,
-                                                    bottom_bar,
-                                                    self.logger,
-                                                    HLPC.class_name_android_widget_FrameLayout,
-                                                    10)
-        API().assertEqual(self.testcase,
-                          self.logger,
-                          framell_list[1].get_attribute("selected"),
-                          "true")
+
+        API().assertElementsByTexts(self.testcase, self.driver, self.logger,
+                                    HLPC.text_valid_content, 10)
 
     def clickOnActivity(self):
         '''
@@ -361,3 +351,16 @@ class HuiLifePage(SuperPage):
                                          self.logger,
                                          HLPC.verify_text_illegal_inquiry,
                                          HLPC.assert_view_timeout)
+
+    def clickOnAndValidByXpathAndName(self, viewXpath, validValue):
+        '''
+        usage: 点击一个控件，并验证是否点击正确。
+        '''
+
+        print("KEYWORDS: %s" % validValue)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  viewXpath, HLPC.click_on_button_timeout)
+        API().waitBySeconds(10)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  validValue, HLPC.assert_view_timeout)
+        API().clickBackKeyForAndroid(self.driver, self.logger)
