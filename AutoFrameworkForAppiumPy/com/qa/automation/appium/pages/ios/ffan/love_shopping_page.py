@@ -81,11 +81,6 @@ class LoveShoppingPage(SuperPage):
                                                logger=self.logger,
                                                resource_id=LoveShoppingPageConfigs.name_le_pays)
 
-    def getCurrentCityName(self):
-        return API().getTextByXpath(self.testcase, self.driver, self.logger,
-                                    LoveShoppingPageConfigs.xpath_city_name_st,
-                                    LoveShoppingPageConfigs.get_view_timeout)
-
     def clickOnCityName(self):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   LoveShoppingPageConfigs.xpath_city_name_bt,
@@ -106,11 +101,13 @@ class LoveShoppingPage(SuperPage):
                                   LoveShoppingPageConfigs.click_on_button_timeout)
         return tempText
 
+    def getCurrentCityName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    LoveShoppingPageConfigs.xpath_city_name_st,
+                                    LoveShoppingPageConfigs.get_view_timeout)
+
     def validCurrentCityName(self, cityName):
-        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
-                                        LoveShoppingPageConfigs.xpath_city_name_st,
-                                        LoveShoppingPageConfigs.get_view_timeout)
-        API().assertTrue(self.testcase, self.logger, cityName == tempText)
+        API().assertTrue(self.testcase, self.logger, cityName == self.getCurrentCityName)
 
     def getCurrentCommercialDistrictName(self):
         return API().getTextByXpath(self.testcase, self.driver, self.logger,
@@ -118,10 +115,9 @@ class LoveShoppingPage(SuperPage):
                                     LoveShoppingPageConfigs.get_view_timeout)
 
     def validCurrentCommercialDistrictName(self, commercialDistrictName):
-        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
-                                        LoveShoppingPageConfigs.xpath_commercial_district_name_st,
-                                        LoveShoppingPageConfigs.get_view_timeout)
-        API().assertTrue(self.testcase, self.logger, commercialDistrictName == tempText)
+        API().assertTrue(self.testcase, self.logger,
+                         commercialDistrictName == self.getCurrentCommercialDistrictName)
+
 
 if __name__ == '__main__':
     pass;

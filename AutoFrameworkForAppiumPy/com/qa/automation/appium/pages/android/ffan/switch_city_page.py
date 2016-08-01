@@ -10,6 +10,7 @@ class SwitchCityPage(SuperPage):
     作者 宋波
     城市切换
     '''
+
     def __init__(self, testcase, driver, logger):
         super(SwitchCityPage, self).__init__(testcase, driver, logger)
 
@@ -17,14 +18,13 @@ class SwitchCityPage(SuperPage):
         '''
         usage: 验证切换城市
         '''
+
         if assertable:
             API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                             SCPC.resource_id_switch_city_cancel_button,
                                             SCPC.assert_view_timeout)
-            return True
         else:
-            return API().validElementByResourceId(self.driver,
-                                                  self.logger,
+            return API().validElementByResourceId(self.driver, self.logger,
                                                   SCPC.resource_id_switch_city_cancel_button,
                                                   SCPC.verify_view_timeout)
 
@@ -52,3 +52,11 @@ class SwitchCityPage(SuperPage):
                                              SCPC.resource_id_switch_city_cancel_button,
                                              SCPC.assert_invalid_view_time)
         API().assertFalse(self.testcase, self.logger, res)
+
+    def getCityOrientation(self):
+        '''
+        usage: 获取城市定位
+        '''
+
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    SCPC.xpath_hint_content_st, SCPC.get_view_timeout).split()[1]

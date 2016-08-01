@@ -4,12 +4,13 @@ from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.love_shopping_page_configs import LoveShoppingPageConfigs as LSPC
 
-#
+
 class LoveShoppingPage(SuperPage):
     '''
     作者 宋波
     首页=>爱逛街
     '''
+
     def __init__(self, testcase, driver, logger):
         super(LoveShoppingPage, self).__init__(testcase, driver, logger);
 
@@ -143,10 +144,6 @@ class LoveShoppingPage(SuperPage):
                                  "安康市",
                                  10)
 
-    def getCurrentCityName(self):
-        return API().getTextByXpath(self.testcase, self.driver, self.logger,
-                                    LSPC.xpath_city_name_tv)
-
     def clickOnCityName(self):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   LSPC.xpath_city_name_tv, LSPC.click_on_button_timeout)
@@ -155,9 +152,29 @@ class LoveShoppingPage(SuperPage):
         startPoint = 2
         tempXpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[2]/android.widget.ListView[1]/android.view.View[%d]/android.widget.TextView[1]"
         goalXpath = tempXpath % startPoint
-        while(cityName == API().getTextByXpath(self.testcase, self.driver, self.logger, goalXpath,
-                                               LSPC.get_view_timeout)):
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        goalXpath, LSPC.get_view_timeout)
+        while(cityName == tempText):
             startPoint += 1
             goalXpath = tempXpath % startPoint
+            tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                            goalXpath, LSPC.get_view_timeout)
         API().clickElementByXpath(self.testcase, self.driver, self.logger, goalXpath,
                                   LSPC.click_on_button_timeout)
+        return tempText
+
+    def getCurrentCityName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    LSPC.xpath_city_name_tv, LSPC.get_view_timeout)
+
+    def validCurrentCityName(self, cityName):
+        API().assertTrue(self.testcase, self.logger, cityName == self.getCurrentCityName())
+
+    def getCurrentCommercialDistrictName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    LSPC.xpath_commercial_district_name_st,
+                                    LSPC.get_view_timeout)
+
+    def validCurrentCommercialDistrictName(self, commercialDistrictName):
+        API().assertTrue(self.testcase, self.logger,
+                         commercialDistrictName == self.getCurrentCommercialDistrictName)

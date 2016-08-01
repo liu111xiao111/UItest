@@ -23,7 +23,6 @@ class SwitchCityPage(SuperPage):
             API().assertElementByName(self.testcase, self.driver, self.logger,
                                       SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                       SwitchCityPageConfigs.assert_view_timeout)
-            return True
         else:
             return API().validElementByName(self.driver, self.logger,
                                             SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
