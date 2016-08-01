@@ -83,7 +83,8 @@ class LoveShoppingPage(SuperPage):
 
     def getCurrentCityName(self):
         return API().getTextByXpath(self.testcase, self.driver, self.logger,
-                                  LoveShoppingPageConfigs.xpath_city_name_st)
+                                    LoveShoppingPageConfigs.xpath_city_name_st,
+                                    LoveShoppingPageConfigs.get_view_timeout)
 
     def clickOnCityName(self):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
@@ -92,14 +93,35 @@ class LoveShoppingPage(SuperPage):
 
     def switchCity(self, cityName):
         startPoint = 2
-        tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[%d]"
+        tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[%d]/UIAStaticText[1]"
         goalXpath = tempXpath % startPoint
-        while(cityName == API().getTextByXpath(self.testcase, self.driver, self.logger, goalXpath,
-                                               LoveShoppingPageConfigs.get_view_timeout)):
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        goalXpath, LoveShoppingPageConfigs.get_view_timeout)
+        while(cityName == tempText):
             startPoint += 1
             goalXpath = tempXpath % startPoint
+            tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                            goalXpath, LoveShoppingPageConfigs.get_view_timeout)
         API().clickElementByXpath(self.testcase, self.driver, self.logger, goalXpath,
                                   LoveShoppingPageConfigs.click_on_button_timeout)
+        return tempText
+
+    def validCurrentCityName(self, cityName):
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        LoveShoppingPageConfigs.xpath_city_name_st,
+                                        LoveShoppingPageConfigs.get_view_timeout)
+        API().assertTrue(self.testcase, self.logger, cityName == tempText)
+
+    def getCurrentCommercialDistrictName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    LoveShoppingPageConfigs.xpath_commercial_district_name_st,
+                                    LoveShoppingPageConfigs.get_view_timeout)
+
+    def validCurrentCommercialDistrictName(self, commercialDistrictName):
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        LoveShoppingPageConfigs.xpath_commercial_district_name_st,
+                                        LoveShoppingPageConfigs.get_view_timeout)
+        API().assertTrue(self.testcase, self.logger, commercialDistrictName == tempText)
 
 if __name__ == '__main__':
     pass;

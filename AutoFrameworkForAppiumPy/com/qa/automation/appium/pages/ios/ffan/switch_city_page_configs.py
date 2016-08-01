@@ -19,11 +19,17 @@ class SwitchCityPageConfigs(object):
     # Click button time out
     click_on_button_timeout = 10
 
+    # Get view time out
+    get_view_timeout = 10
+
     # Switch city cancel button
     resource_id_switch_city_cancel_bt = u"否"
 
     # Switch city switch button
     resource_id_switch_city_switch_bt = u"是"
+
+    # Hint content
+    xpath_hint_content_st = "//UIAApplication[1]/UIAWindow[5]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]"
 
     def __init__(self):
         pass

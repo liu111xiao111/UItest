@@ -43,9 +43,9 @@ class SwitchCityPage(SuperPage):
         usage: 确认城市切换
         '''
 
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SwitchCityPageConfigs.resource_id_switch_city_switch_bt,
-                                       SwitchCityPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SwitchCityPageConfigs.resource_id_switch_city_switch_bt,
+                                 SwitchCityPageConfigs.click_on_button_timeout)
 
     def invalidSelf(self):
         '''
@@ -56,3 +56,12 @@ class SwitchCityPage(SuperPage):
                           API().validElementByName(self.driver, self.logger,
                                                    SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                                    SwitchCityPageConfigs.assert_invalid_view_time))
+
+    def getCityOrientation(self):
+        '''
+        usage: 获取城市定位
+        '''
+
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    SwitchCityPageConfigs.xpath_hint_content_st,
+                                    SwitchCityPageConfigs.get_view_timeout).split(u"为")[1]

@@ -50,5 +50,8 @@ class LoveShoppingPageConfigs():
     xpath_city_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
     xpath_city_name_bt = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
 
+    # Commercial District Name
+    xpath_commercial_district_name_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
+
     def __init__(self):
         pass;
