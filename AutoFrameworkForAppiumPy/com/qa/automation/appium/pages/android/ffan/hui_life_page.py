@@ -19,7 +19,7 @@ class HuiLifePage(SuperPage):
         '''
 
         API().assertElementsByTexts(self.testcase, self.driver, self.logger,
-                                    HLPC.text_valid_content, 10)
+                                    HLPC.text_valid_content, HLPC.assert_view_timeout)
 
     def clickOnActivity(self):
         '''
