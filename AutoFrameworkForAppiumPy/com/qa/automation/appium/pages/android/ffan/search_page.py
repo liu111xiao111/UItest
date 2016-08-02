@@ -5,6 +5,18 @@ from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.search_page_configs import SearchPageConfigs as SPC
 
 
+class Ranking(object):
+    FIRST = 1
+    SECOND = 2
+    THIRD = 3
+    FOURTH = 4
+
+
+class Orientation(object):
+    LEFT = "left"
+    RIGHT = "right"
+
+
 class SearchPage(SuperPage):
     '''
     作者 陈诚
@@ -147,3 +159,35 @@ class SearchPage(SuperPage):
                                        self.logger,
                                        SPC.resource_id_specific_square_button,
                                        SPC.click_on_button_timeout)
+
+    def validHotWordModule(self, keyword=None, ranking=Ranking.FIRST):
+        '''
+        usage：验证热词模块显示正常。
+        '''
+
+        if keyword is None:
+            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
+                                            SPC.resource_id_hot_word_module_tv, SPC.valid_view_timeout)
+        else:
+            API().assertFalse(self.testcase, self.logger, keyword == self.getHotWordModule(ranking))
+
+    def getHotWordModule(self, ranking=Ranking.FIRST):
+        '''
+        usage: 获取热词。
+        '''
+
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    SPC.xpath_hot_word_module_tv % ranking, SPC.get_view_timeout)
+
+    def slideHotWordModule(self, keyword, ranking=Ranking.FIRST, orientation=Orientation.RIGHT):
+        '''
+        usage: 滑行热词搜索模块。
+        '''
+
+        if "left" == orientation:
+            self.scrollAsScreenPercent(0.2, 0.2, 0.8, 0.2)
+        elif "right" == orientation:
+            self.scrollAsScreenPercent(0.8, 0.2, 0.2, 0.2)
+
+        API().waitBySeconds()
+        API().assertFalse(self.testcase, self.logger, keyword == self.getHotWordModule())

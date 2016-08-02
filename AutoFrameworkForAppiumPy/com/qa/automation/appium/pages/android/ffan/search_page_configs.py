@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class SearchPageConfigs():
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
 
@@ -38,6 +39,17 @@ class SearchPageConfigs():
 
     # Assert view time out
     assert_view_timeout = 10
+
+    # Valid view time out
+    valid_view_timeout = 10
+
+    # Get view time out
+    get_view_timeout = 10
+
+    # Hot word module
+    resource_id_hot_word_module_tv = "com.wanda.app.wanhui:id/tv_hot_word"
+    xpath_hot_word_module_tv = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]/android.widget.TextView[1]"
+
 
     def __init__(self):
         pass;
