@@ -24,10 +24,10 @@ class MonkeyTestCases(TestCase):
         nowTime = time.strftime('%Y%m%d%H%M%S')
         command = "%sadb shell monkey -p %s --ignore-crashes --ignore-timeouts \
                     --ignore-security-exceptions --pct-touch 90 --pct-motion 4 \
-                    --throttle 300 --monitor-native-crashes -v -v -v 25000 > monkeyTest_%s.log" \
+                    --throttle 300 --monitor-native-crashes -v -v -v 25000 > Android_MonkeyTest_%s.log" \
                     % (resourcesDirectory, appPackage_ffan, nowTime)
         os.system(command)
-        f = open("monkeyTest_%s.log" % (nowTime))
+        f = open("Android_MonkeyTest_%s.log" % (nowTime))
         line = f.readline()
         while line:
             if (line.find(":Sending rotation") != -1) or \

@@ -3,35 +3,36 @@
 
 import os
 import time
-from unittest import TestCase
-from unittest import TestLoader
-
 import HTMLTestRunner
 
-from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from unittest import TestCase
+from unittest import TestLoader
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
-from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.utility.logger import Logger
 
 
 class MonkeyTestCases(TestCase):
 
     def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+        pass
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+        pass
 
     def test_case(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
                                 os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
-        command = "instruments -w %s -t %sAutomation.tracetemplate com.dianshang.wanhui -e UIASCRIPT %sUIAutoMonkey.js" % (IDC.udid, resourcesDirectory, resourcesDirectory)
+        nowTime = time.strftime('%Y%m%d%H%M%S')
+        command = "instruments -w %s -t %sAutomation.tracetemplate com.dianshang.wanhui \
+                    -e UIASCRIPT %sUIAutoMonkey.js > IOS_MonkeyTest_%s.log" \
+                    % (IDC.udid, resourcesDirectory, resourcesDirectory, nowTime)
         os.system(command)
+        f = open("IOS_MonkeyTest_%s.log" % (nowTime))
+        line = f.readline()
+        while line:
+            if line.find("Instruments Trace Complete") != -1:
+                print(line)
+            line = f.readline()
+        f.close()  
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MonkeyTestCases)

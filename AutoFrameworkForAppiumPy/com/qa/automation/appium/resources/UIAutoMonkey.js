@@ -26,7 +26,7 @@ function UIAutoMonkey() {
 		//run either by minutesToRun or numberOfEvents. Only one of these can set. (To use minutes you can use config.numberOfEvents = 0)
 		//minutesToRun = 60 * 8; //sample to run for 8 hours.
 		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used. 
-		numberOfEvents: 100,
+		numberOfEvents: 25000,
 		delayBetweenEvents: 0.5,    // In seconds
 		
 		/**
@@ -83,16 +83,11 @@ function UIAutoMonkey() {
 		// If you want to add your own "events", check out the event method
 		// definitions below.
 		eventWeights: {
-			tap: 500,
+			tap: 90,
 			drag: 1,
 			flick: 1,
-			orientation: 1,
 			clickVolumeUp: 1,
-			clickVolumeDown: 1,
-			lock: 1,
-			pinchClose: 10,
-			pinchOpen: 10,
-			shake: 1
+			clickVolumeDown: 1
 		},
 
 		// Probability that touch events will have these different properties
