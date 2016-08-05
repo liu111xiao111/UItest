@@ -9,4 +9,5 @@ class ClearAppData:
         self.driver = driver
 
     def clearData(self):
-        self.driver.reset()
+#         self.driver.reset()
+        pass

@@ -14,4 +14,5 @@ class ClearAppData:
         '''
         usage: 清除app数据
         '''
-        self.driver.reset()
+#         self.driver.reset()
+        pass

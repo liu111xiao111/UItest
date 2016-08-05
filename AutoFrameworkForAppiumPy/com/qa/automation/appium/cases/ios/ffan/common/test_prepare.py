@@ -15,11 +15,8 @@ class TestPrepare:
         self.logger = logger
 
     def prepare(self, needLogin=True):
-        for i in range(4):
-            if i % 2:
-                self.updateVersion()
-            else:
-                self.switchCity()
+#         self.updateVersion()
+        self.switchCity()
 
         if needLogin:
             self.login()
@@ -49,19 +46,15 @@ class TestPrepare:
 
     def updateVersion(self):
         versionUpgradePage = VersionUpgradePage(self.testcase, self.driver, self.logger)
-        tempTimes = 0
-        while versionUpgradePage.validSelf(False) and tempTimes < 3:
+        if versionUpgradePage.validSelf(False):
             versionUpgradePage.cancelVersionUpgrade()
             versionUpgradePage.waitBySeconds()
-            tempTimes += 1
 
     def switchCity(self):
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
-        tempTimes = 0
-        while switchCityPage.validSelf(False) and tempTimes < 3:
+        if switchCityPage.validSelf(False):
             switchCityPage.cancelSwitchCity()
             switchCityPage.waitBySeconds()
-            tempTimes += 1
 
     def backToDashBoard(self):
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
