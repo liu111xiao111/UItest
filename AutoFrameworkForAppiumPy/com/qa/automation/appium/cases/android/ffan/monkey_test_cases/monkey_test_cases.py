@@ -7,38 +7,37 @@ from unittest import TestCase
 from unittest import TestLoader
 
 import HTMLTestRunner
-
-from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import deviceName_andr
-from com.qa.automation.appium.configs.driver_configs import driver_url
-from com.qa.automation.appium.configs.driver_configs import platformName_andr
-from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
-from com.qa.automation.appium.utility.logger import Logger
 
 
 class MonkeyTestCases(TestCase):
 
     def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+        pass
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
-                                   driver_url).getDriver()
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+        pass
 
     def test_case(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
                                 os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
-        command = "%sadb shell monkey -p %s -s 10 --throttle 500 -v 200" % (resourcesDirectory, appPackage_ffan)
-
+        nowTime = time.strftime('%Y%m%d%H%M%S')
+        command = "%sadb shell monkey -p %s --ignore-crashes --ignore-timeouts \
+                    --ignore-security-exceptions --pct-touch 90 --pct-motion 4 \
+                    --throttle 300 --monitor-native-crashes -v -v -v 25000 > monkeyTest_%s.log" \
+                    % (resourcesDirectory, appPackage_ffan, nowTime)
         os.system(command)
+        f = open("monkeyTest_%s.log" % (nowTime))
+        line = f.readline()
+        while line:
+            if (line.find(":Sending rotation") != -1) or \
+                (line.find(":Dropped:") != -1) or \
+                (line.find("## Network") != -1) or \
+                (line.find("// Monkey finished") != -1):
+                print(line)
+            line = f.readline()
+        f.close()  
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MonkeyTestCases)
