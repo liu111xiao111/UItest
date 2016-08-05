@@ -27,7 +27,7 @@ function UIAutoMonkey() {
 		//minutesToRun = 60 * 8; //sample to run for 8 hours.
 		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used. 
 		numberOfEvents: 25000,
-		delayBetweenEvents: 0.5,    // In seconds
+		delayBetweenEvents: 0.3,    // In seconds
 		
 		/**
 		* Sometimes the monkey can fall into UI Holes from which it it is hard to escape. The monkey may then spend an inordinate
