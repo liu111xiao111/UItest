@@ -5,6 +5,7 @@ from com.qa.automation.appium.pages.android.ffan.version_upgrade_page import Ver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.login_page import LoginPage
+from com.qa.automation.appium.pages.android.ffan.login_verify_page import LoginVerifyPage
 from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 
 
@@ -51,6 +52,9 @@ class TestPrepare:
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
+        loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
+        loginVerifyPage.validSelf()
+        loginVerifyPage.clickOnSkip()
         myFfanPage.validSelf()
         dashboardPage.waitBySeconds(seconds=2)
 

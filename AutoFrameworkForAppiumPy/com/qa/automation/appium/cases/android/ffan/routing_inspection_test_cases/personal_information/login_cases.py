@@ -18,6 +18,7 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 from com.qa.automation.appium.pages.android.ffan.login_page import LoginPage
+from com.qa.automation.appium.pages.android.ffan.login_verify_page import LoginVerifyPage
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
@@ -50,7 +51,7 @@ class LoginCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        
+
         dashboardPage.clickOnMy()
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self, self.driver, self.logger)
@@ -59,6 +60,9 @@ class LoginCases(TestCase):
         loginPage.inputUserName();
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn();
+        loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
+        loginVerifyPage.validSelf()
+        loginVerifyPage.clickOnSkip()
         myFfanPage.validSelf()
         dashboardPage.waitBySeconds(seconds=2);
 

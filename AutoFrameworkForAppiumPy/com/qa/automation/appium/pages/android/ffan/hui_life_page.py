@@ -361,6 +361,6 @@ class HuiLifePage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   viewXpath, HLPC.click_on_button_timeout)
         API().waitBySeconds(10)
-        API().assertElementByName(self.testcase, self.driver, self.logger,
+        API().assertElementByText(self.testcase, self.driver, self.logger,
                                   validValue, HLPC.assert_view_timeout)
         API().clickBackKeyForAndroid(self.driver, self.logger)
