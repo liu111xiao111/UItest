@@ -57,7 +57,7 @@ class SalesPromotionActiveCases(TestCase):
         # Click "优惠活动"
         dashboardPage.validSelf();
         dashboardPage.clickOnSalesPromotion();
-        
+
         salesPromotionPage.validSelf();
         salesPromotionPage.waitBySeconds(2);
         activeListNum = salesPromotionPage.getActiveListNumber();

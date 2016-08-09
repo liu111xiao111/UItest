@@ -30,5 +30,5 @@ class SalesPromotionCouponDetailsPage(SuperPage):
         API().clickElementByContentDesc(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SPCDPC.text_tv_coupon_details,
+                                        SPCDPC.text_receive_free_button,
                                         10)

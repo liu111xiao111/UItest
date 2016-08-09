@@ -58,7 +58,6 @@ class SalesPromotionCouponCases(TestCase):
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
         myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
 
-
         # Click "优惠活动"
         dashboardPage.validSelf();
         dashboardPage.clickOnSalesPromotion();
