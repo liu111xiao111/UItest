@@ -17,8 +17,8 @@ class SignOnPage(SuperPage):
         '''
         usage : 进入广场模块，检查是否加载出来
         '''
-        API().assertElementByText(self.testcase, self.driver, self.logger,
-                                  SOPC.text_sign_on,
+        API().assertElementByContentDesc(self.testcase, self.driver, self.logger,
+                                  SOPC.content_desc_sign_on,
                                   SOPC.assert_view_timeout)
 
     def validChickedInStatus(self, assertable=True):
@@ -26,13 +26,13 @@ class SignOnPage(SuperPage):
         usage: 验证选中状态
         '''
         if assertable:
-            API().assertElementByText(self.driver, self.logger,
-                                      SOPC.text_sign_in_button,
+            API().assertElementByContentDesc(self.testcase, self.driver, self.logger,
+                                      SOPC.content_desc_sign_in_button,
                                       SOPC.assert_view_timeout)
             return True
         else:
-            if API().validElementByText(self.driver, self.logger,
-                                        SOPC.text_sign_in_button,
+            if API().validElementByContentDesc(self.driver, self.logger,
+                                        SOPC.content_desc_sign_in_button,
                                         SOPC.assert_view_timeout):
                 return True
             return False

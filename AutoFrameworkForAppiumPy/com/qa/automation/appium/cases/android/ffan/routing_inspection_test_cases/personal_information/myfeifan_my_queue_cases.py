@@ -69,6 +69,7 @@ class MyfeifanMyQueueCases(TestCase):
         queuePage.clicOnQueueNumber()
         queuePage.waitBySeconds(10)
         queuePage.inputNumberOfMeals()
+        queuePage.waitBySeconds(10)
         queuePage.clicOnGetQueueNumber()
         queuePage.validQueueSuccess()
         queuePage.clickOnCancelQueue()

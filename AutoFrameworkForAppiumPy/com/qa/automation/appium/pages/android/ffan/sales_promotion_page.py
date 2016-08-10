@@ -65,7 +65,7 @@ class SalesPromotionPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  SPPC.text_special_store,
-                                 10)
+                                 20)
 
     def getActiveListNumber(self):
         '''

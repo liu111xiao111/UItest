@@ -26,18 +26,38 @@ class RecommendDetailsCategoryPage(SuperPage):
     def clickOnSubsciber(self):
         '''
         usage : 点击 "喜欢"
-        '''   
-        API().clickElementByContentDesc(self.testcase,
+        '''
+        API().clickElementByXpath(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        RDCPC.desc_like_button,
+                                        RDCPC.xpath_recommend_subscriber,
                                         10)
 
     def clickCancelSubsciber(self):
         '''
         usage : 点击 "取消喜欢"
-        '''   
-        API().clickElementByContentDesc(self.testcase,
+        '''
+        API().clickElementByXpath(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        RDCPC.xpath_recommend_subscriber,
+                                        10)
+
+    def validSelfSubsciberLike(self):
+        '''
+        usage : 新型状态是否被选中
+        '''
+        API().assertElementByContentDesc(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        RDCPC.desc_like_button,
+                                        10)
+
+    def validSelfSubsciberUnlike(self):
+        '''
+        usage : 新型状态是否未被选中
+        '''
+        API().assertElementByContentDesc(self.testcase,
                                         self.driver,
                                         self.logger,
                                         RDCPC.desc_unlike_button,

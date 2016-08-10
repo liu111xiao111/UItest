@@ -47,6 +47,14 @@ class BrandCategoryPage(SuperPage):
         '''
         usage : 点击推荐详情
         '''
+        tempWidth = API().getWidthOfDevice(self.driver, self.logger)
+        tempHight = API().getHeightOfDevice(self.driver, self.logger)
+        API().scroll(self.driver, 
+                     self.logger,
+                     tempWidth / 2,
+                     tempHight / 2,
+                     tempWidth / 2,
+                     tempHight / 3)
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,

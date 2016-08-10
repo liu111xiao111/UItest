@@ -25,7 +25,7 @@ if __name__ == "__main__":
         print("\r")
         print("If you experience permissions issues, please use the root user.")
     elif sys.argv[1] == "install":
-        fp = open(path, 'a')
+        fp = open(path, 'w')
         fp.write(BASE_DIR)
         fp.close
         print("Set automation environment success.")

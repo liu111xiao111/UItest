@@ -68,7 +68,7 @@ class SquareSignOnCases(TestCase):
 #                                VerifyActivityKeywordsType.XPATH, False):
 #             popupPage.clickOnButton("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]",
 #                                     ClickActivityKeywordsType.XPATH)
-
+        signOnPage.waitBySeconds(2)
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()
 

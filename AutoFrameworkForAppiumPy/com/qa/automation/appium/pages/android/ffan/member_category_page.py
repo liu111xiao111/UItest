@@ -18,5 +18,4 @@ class MemberPage(SuperPage):
         usage : 检查会员类目是否加载出来
         '''
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        resource_id=MPC.resource_id__tv_member_tv,
-                                        seconds=5);
+                                        MPC.resource_id_title_tv_member_tv);

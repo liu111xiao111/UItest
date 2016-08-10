@@ -56,16 +56,19 @@ class BrandRecommendCatergoryCases(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnBrandCategory()
         brandPage.validSelf()
+        brandPage.waitBySeconds(2)
         brandPage.clickOnRecommendDetails()
         recommendDetailsPage.validSelf()
+        recommendDetailsPage.waitBySeconds(5)
 
         # Click “心形”
-        recommendDetailsPage.clickOnSubsciber()
-        recommendDetailsPage.clickBackKey()
-        brandPage.clickOnRecommendDetails()
-        recommendDetailsPage.validSelf()
+        '''recommendDetailsPage.clickOnSubsciber()
+        recommendDetailsPage.waitBySeconds(3)
+        recommendDetailsPage.validSelfSubsciberLike()
         recommendDetailsPage.clickCancelSubsciber()
-    
+        recommendDetailsPage.waitBySeconds(3)
+        recommendDetailsPage.validSelfSubsciberUnlike()'''
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(BrandRecommendCatergoryCases)

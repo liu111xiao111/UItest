@@ -63,6 +63,7 @@ class MyfeifanMyTicketCases(TestCase):
         dashboardPage.clickOnSales()
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
+        salesPromotionPage.waitBySeconds(5)
         salesPromotionPage.clickOnCouponDetails()
         salesPromotionCouponDetailsPage.waitBySeconds(10)
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
