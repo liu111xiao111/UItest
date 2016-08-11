@@ -55,7 +55,7 @@ class HuiLifeResourceNicheCases(TestCase):
                      u"数码回收", u"加油", u"演唱会", u"话剧", u"亲子票务")
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]" % (tempNum + 1), tempTuple[tempNum])
-            huiLifePage.waitBySeconds()
+            huiLifePage.waitBySeconds(10)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(HuiLifeResourceNicheCases)

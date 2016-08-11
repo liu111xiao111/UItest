@@ -58,10 +58,12 @@ class SquareParkingPaymentCases(TestCase):
         searchPage.clickOnSpecificSquare()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.waitBySeconds(3)
         squareModulePage.validSelf()
         squareModulePage.clickOnParking()
 
         parkingPaymentPage = ParkingPaymentPage(self, self.driver, self.logger)
+        parkingPaymentPage.waitBySeconds(2)
         parkingPaymentPage.validSelf()
         parkingPaymentPage.clickBackKey()
 

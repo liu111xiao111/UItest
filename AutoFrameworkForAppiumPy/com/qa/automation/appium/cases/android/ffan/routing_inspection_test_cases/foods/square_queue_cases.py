@@ -24,7 +24,7 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 
 
-class SquareLefuPayCases(TestCase):
+class SquareQueueCases(TestCase):
     '''
     作者 刘涛
     巡检checklist: No.24
@@ -60,6 +60,7 @@ class SquareLefuPayCases(TestCase):
         # Load square page
         dashboardPage.validSelf();
         dashboardPage.clickOnSquareModule()
+        squarePage.waitBySeconds(3)
         squarePage.validSelf();
 
         # Click "排队取号"， load "排队取号" page.
@@ -67,23 +68,24 @@ class SquareLefuPayCases(TestCase):
         queuePage.validSelf();
 
         # Click "取号"
-        queuePage.clicOnQueueNumber()
-        queuePage.waitBySeconds(10)
-        queuePage.inputNumberOfMeals()
-        queuePage.clicOnGetQueueNumber()
-        queuePage.validQueueSuccess()
+        if (queuePage.validGetQueue()):
+            queuePage.clicOnQueueNumber()
+            queuePage.waitBySeconds(10)
+            queuePage.inputNumberOfMeals()
+            queuePage.clicOnGetQueueNumber()
+            queuePage.validQueueSuccess()
 
-        for _ in range(3):
-            queuePage.clickBackKey()
+            for _ in range(3):
+                queuePage.clickBackKey()
 
-        dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyQueue()
-        myQueuePage.validSelf()
-        myQueuePage.clickOnCancelQueue()
+            dashboardPage.clickOnMy()
+            myFfanPage.validSelf()
+            myFfanPage.clickOnMyQueue()
+            myQueuePage.validSelf()
+            myQueuePage.clickOnCancelQueue()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SquareLefuPayCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareQueueCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

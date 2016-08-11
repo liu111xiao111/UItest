@@ -7,7 +7,7 @@ class BrandCategoryPageConfigs():
     #  推荐&品牌
     text_recommend = u"推荐";
     text_brand = u"大牌";
-    resource_id_tv_recommend_details_tv = "com.wanda.app.wanhui:id/main_title"
+    resource_id_tv_recommend_details_tv = "com.wanda.app.wanhui:id/brand_rcmd_list_item_layout"
     resource_id_tv_brand_details_tv = "com.wanda.app.wanhui:id/image"
     text_men_fasion = u"男装";
     text_catering = u"餐饮";

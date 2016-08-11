@@ -58,6 +58,7 @@ class MembershipCardPackageCases(TestCase):
         myFeiFanPage.clickOnMembershipCardPackage()
 
         myMembershipCardPackagePage = MyMembershipCardPackagePage(self, self.driver, self.logger)
+        myMembershipCardPackagePage.waitBySeconds(2)
         myMembershipCardPackagePage.validSelf()
         myMembershipCardPackagePage.clickOnLeHuoKa()
 
