@@ -61,6 +61,7 @@ class SquareMovieCases(TestCase):
         dashboardPage.clickOnSquareModule()
 
         squareModulePage.validSelf()
+        squareModulePage.waitBySeconds(5)
         squareModulePage.clickOnMovie()
 
         cinemaPage.validSelf()
