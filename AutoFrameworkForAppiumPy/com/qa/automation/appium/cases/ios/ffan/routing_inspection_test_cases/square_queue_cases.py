@@ -17,7 +17,7 @@ from com.qa.automation.appium.pages.ios.ffan.square_queue_page import SquareQueu
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class SquareLefuPayCases(TestCase):
+class SquareQueueCases(TestCase):
     '''
     作者 刘涛
     巡检checklist: No.24
@@ -74,7 +74,7 @@ class SquareLefuPayCases(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SquareLefuPayCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareQueueCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
