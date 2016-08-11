@@ -25,7 +25,7 @@ class SquareFoodPageConfigs():
     verify_find_favourable_resourceID = "com.wanda.app.wanhui:id/pic"
 
     # 验证智能排队界面id
-    verify_intelligent_queuing_resourceID = "com.wanda.app.wanhui:id/left_queue_view"
+    verify_intelligent_queuing_resourceID = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # 验证帮你挑界面id
     verify_stochastic_resourceID = "com.wanda.app.wanhui:id/layout_middle"

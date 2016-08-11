@@ -56,16 +56,19 @@ class PrivilegeCouponCases(TestCase):
         dashboardPage.clickOnSquareModule()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.waitBySeconds(3)
         squareModulePage.validSelf()
         squareModulePage.clickOnCoupon()
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
+        salesPromotionPage.waitBySeconds(5)
         salesPromotionPage.clickOnCouponDetails()
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         salesPromotionCouponDetailsPage.validSelf()
+        salesPromotionCouponDetailsPage.waitBySeconds(5)
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
 
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)

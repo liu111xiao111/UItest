@@ -74,3 +74,12 @@ class SquareQueuePage(SuperPage):
                                   self.logger,
                                   SQPC.xpath_cancel_queue,
                                   SQPC.verify_click_timeout)
+
+    def validGetQueue(self):
+        '''
+        usage : 判断是否能够 "取号"
+        '''
+        API().validElementByText(self.driver,
+                                 self.logger,
+                                 SQPC.text_queue_number,
+                                 SQPC.verify_view_timeout)

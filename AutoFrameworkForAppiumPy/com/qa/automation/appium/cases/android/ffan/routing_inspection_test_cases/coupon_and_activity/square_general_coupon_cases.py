@@ -54,6 +54,7 @@ class SquareGeneralCouponCases(TestCase):
         dashboardPage.clickOnSquareModule()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage.waitBySeconds(3)
         squareModulePage.validSelf()
         squareModulePage.clickOnGeneralCoupon()
 
@@ -65,7 +66,7 @@ class SquareGeneralCouponCases(TestCase):
         receiveSuccessPage.validSelf()
 
         receiveSuccessPage.waitBySeconds(seconds=2)
-        
+
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()
 #         receiveSuccessPage.clickBackKey()
 # 

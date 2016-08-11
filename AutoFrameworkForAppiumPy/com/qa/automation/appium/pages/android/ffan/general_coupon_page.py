@@ -27,7 +27,6 @@ class GeneralCouponPage(SuperPage):
         '''
         usage: 点击马上领取
         '''
-
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
