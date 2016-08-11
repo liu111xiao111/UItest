@@ -81,6 +81,12 @@ class DashboardPageConfigs():
     # Sign in
     text_sign_in_tv = u"签到"
 
+    #Olympic
+    resource_id_iv_olympic_iv = "com.wanda.app.wanhui:id/iv_summer_page_bg"
+
+    #Olympic cancle button
+    resource_id_iv_olympic_cancle_iv = "com.wanda.app.wanhui:id/iv_close_rio_olympic"
+
     def __init__(self):
         pass;
 

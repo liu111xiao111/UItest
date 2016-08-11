@@ -232,3 +232,14 @@ class DashboardPage(SuperPage):
 
         API().clickElementByText(self.testcase, self.driver, self.logger,
                                  DPC.text_sign_in_tv, DPC.click_on_button_timeout)
+
+    def ClickOlympicCancleBtn(self):
+        '''
+        usage: 判断是否存在奥运抽奖页面
+        '''
+        if (API().validElementByResourceId(self.driver, self.logger, DPC.resource_id_iv_olympic_iv)):
+            API().clickElementByResourceId(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           DPC.resource_id_iv_olympic_cancle_iv,
+                                           DPC.click_on_button_timeout)
