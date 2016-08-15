@@ -24,9 +24,9 @@ function UIAutoMonkey() {
 		
 	this.config = {
 		//run either by minutesToRun or numberOfEvents. Only one of these can set. (To use minutes you can use config.numberOfEvents = 0)
-		//minutesToRun = 60 * 8; //sample to run for 8 hours.
-		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used. 
-		numberOfEvents: 80000,
+		minutesToRun : 60 * 5, //sample to run for 5 hours.
+		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used.
+		// numberOfEvents: 100,
 		delayBetweenEvents: 0.3,    // In seconds
 		
 		/**
