@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page_configs import DashboardPageConfigs
@@ -88,9 +89,9 @@ class DashboardPage(SuperPage):
 
     def clickOnSquareModule(self):
         '''
-        usage: click on the nearby business circle.
+        usage: 点击"广场"
         '''
-
+        logging.info("Click on square module.")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.xpath_square_module_st,
                                   DashboardPageConfigs.click_on_button_timeout)
@@ -153,12 +154,14 @@ class DashboardPage(SuperPage):
         '''
          usage: 点击"优惠活动"
         '''
+        logging.info('Click on sales promotion.')
+        API().iosScrollToElement(self.driver, self.logger,
+                                 DashboardPageConfigs.xpath_main_page,
+                                 DashboardPageConfigs.name_sales_promotion)
 
-        self.scrollAsScreenPercent(0.5, 0.5, 0.5, 0.16)
-
-        API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 DashboardPageConfigs.name_sales_promotion,
-                                 DashboardPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.xpath_sales_promotion,
+                                  DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnChildCategory(self):
         '''

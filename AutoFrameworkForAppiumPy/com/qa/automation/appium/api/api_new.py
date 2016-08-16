@@ -188,6 +188,27 @@ class API(object):
         self.clickElementByXpath(testCase, driver, logger, xpath, timeout)
         time.sleep(2)
 
+    def iosScrollToElement(self, driver, logger, elementFullXpath, elementName, direction='down'):
+        '''
+        usage : 滑动页面到指定文本控件方法 （适用IOS平台）
+        parameters:
+            testCase: unit test case
+            driver: appium driver
+            logger: logging
+            uiaString: 页面element的text属性
+            timeout : 超时时间,单位秒,默认十秒。
+        '''
+        el = self._findElementByXpath(driver, logger, elementFullXpath)
+        for _ in range(4):
+            try:
+                driver.execute_script("mobile: scroll", {"direction": direction, 'element': el})
+                if self._findElementByResourceId(driver, logger, elementName):
+                    break
+            except NoSuchElementException:
+                continue
+            except TimeoutException:
+                continue
+
     def inputStringByName(self, testCase, driver, logger, name, string, timeout=10):
         '''
         usage : 页面输入方法 （适用IOS平台）

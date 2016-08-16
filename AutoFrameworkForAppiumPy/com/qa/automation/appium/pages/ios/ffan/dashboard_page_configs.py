@@ -15,7 +15,7 @@ class DashboardPageConfigs():
     """
         首页ffan logo图标name
     """
-    name_home_title_icon = "home_title_icon"
+    name_home_title_icon = "home_title_logo"
 
     """
         爱逛街icon name
@@ -56,7 +56,7 @@ class DashboardPageConfigs():
     name_food = u"美食汇";
 
     # "优惠"
-    name_sales_promotion = u"优惠活动";
+    name_sales_promotion = "home_activity";
 
     # "亲子"
     name_child = u"亲子";
@@ -90,7 +90,11 @@ class DashboardPageConfigs():
     resource_id_movieprivilege_st = u"优惠"
 
     # Square module
-    xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
+    xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIAElement[1]"
+
+    # Main page
+    xpath_main_page = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]"
+    xpath_sales_promotion = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAButton[3]"
 
     # Search all
     resource_id_search_all_tv = "全城搜索"

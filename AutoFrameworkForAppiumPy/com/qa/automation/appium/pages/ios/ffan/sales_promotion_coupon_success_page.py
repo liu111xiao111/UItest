@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_success_page_configs import SalesPromotionCouponSuccessPageConfigs
@@ -18,15 +19,18 @@ class SalesPromotionCouponSuccessPage(SuperPage):
         '''
             usage : 判断 "领券成功"
         '''
+        logging.info('Verify sales promotion coupon.')
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=SalesPromotionCouponSuccessPageConfigs.name_tv_coupon_success_tv)
+                                  name=SalesPromotionCouponSuccessPageConfigs.name_tv_coupon_success_tv,
+                                  timeout=20)
 
     def getCouponDetails(self):
         '''
             usage : "优惠券" details correctly.
         '''
+        logging.info('Get coupon details.')
         orderDetails = API().getTextByXpath(self.testcase,
                                         self.driver, 
                                         self.logger,
@@ -37,6 +41,7 @@ class SalesPromotionCouponSuccessPage(SuperPage):
         '''
             usage : 点击 "查看订单" button.
         '''
+        logging.info('Click on check my ticket button.')
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,

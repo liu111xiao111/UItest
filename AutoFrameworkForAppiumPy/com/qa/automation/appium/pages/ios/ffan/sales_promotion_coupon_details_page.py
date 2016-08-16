@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_details_page_configs import SalesPromotionCouponDetailsPageConfigs
@@ -17,6 +18,7 @@ class SalesPromotionCouponDetailsPage(SuperPage):
         '''
             usage : "优惠券" 页加载是否正确
         '''
+        logging.info('Verify the coupon page.')
         couponName = API().getTextByXpath(self.testcase,
                                         self.driver, 
                                         self.logger,
@@ -27,6 +29,7 @@ class SalesPromotionCouponDetailsPage(SuperPage):
         '''
             usage : 点击 "免费领取"
         '''
+        logging.info('Click on the free of charge button.')
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
