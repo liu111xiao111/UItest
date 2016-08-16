@@ -21,13 +21,14 @@ class ColdBootTimePerformanceTestCases(TestCase):
         print("Start the ColdBoot test, please open the file until test complete")
         bootTime = "am start -W " + appPackage_ffan + "/" + appActivity_ffan + " | grep TotalTime"
         cmdam = "%sadb shell \"%s\"" % (resourcesDirectory, bootTime)
-        kill = "am force-stop " + appPackage_ffan 
+        kill = "am force-stop " + appPackage_ffan
         cmdKill = "%sadb shell \"%s\"" % (resourcesDirectory, kill)
         f1 = open("ColdBootTime_" + appPackage_ffan + "_" + now + ".txt", "a")
         for x in range(0,10):
             os.system(cmdKill)
             time.sleep(10)
-            pipe = subprocess.Popen(cmdam, shell=True, stdout = f1).stdout
+            pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)
+            pipe.stdout
             time.sleep(10)
         f1.close()
         f2 = open("ColdBootTime_" + appPackage_ffan + "_" + now + ".txt", "r")

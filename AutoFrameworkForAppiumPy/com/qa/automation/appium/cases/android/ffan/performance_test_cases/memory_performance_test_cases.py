@@ -23,7 +23,7 @@ class MemoryPerformanceTestCases(TestCase):
         cmdpss = "%sadb shell \"%s\"" % (resourcesDirectory, pss)
         #print(cmdpss)
         f1 = open("PSS_" + appPackage_ffan + "_" + now + ".txt", "a")
-        for x in range(0,20): 
+        for x in range(0, 120): 
             pipe = subprocess.Popen(cmdpss, shell=True, stdout = f1)
             pipe.stdout
             time.sleep(1)

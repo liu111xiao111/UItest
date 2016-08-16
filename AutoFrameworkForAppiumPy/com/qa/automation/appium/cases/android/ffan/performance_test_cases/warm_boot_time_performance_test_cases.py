@@ -29,7 +29,8 @@ class WarmBootTimePerformanceTestCases(TestCase):
             time.sleep(0.3)
             os.system(cmdBack)
             time.sleep(10)
-            pipe = subprocess.Popen(cmdam, shell=True, stdout = f1).stdout
+            pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)
+            pipe.stdout
             time.sleep(5)
         f1.close()
         f2 = open("WarmBootTime_" + appPackage_ffan + "_" + now + ".txt", "r")

@@ -37,7 +37,7 @@ class CpuPerformanceTestCases(TestCase):
         cmdcpu = "%sadb shell \"%s\"" % (resourcesDirectory, cpu)
         f1 = open("CPU_" + appPackage_ffan + "_" + now + ".txt", "a")
     
-        for x in range(0, 20):
+        for x in range(0, 120):
         #while executeStatus: 
             pipe = subprocess.Popen(cmdcpu, shell=True, stdout = f1)
             pipe.stdout
