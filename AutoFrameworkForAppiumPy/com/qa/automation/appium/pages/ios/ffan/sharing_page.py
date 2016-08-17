@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import logging
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.sharing_page_configs import SharingPageConfigs
@@ -41,10 +42,10 @@ class SharingPage(SuperPage):
         '''
         usage: click cancel button
         '''
-
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
-                                       SharingPageConfigs.resource_id_cancel_bt,
-                                       SharingPageConfigs.click_on_button_timeout)
+        logging.info('Click on cancel button.')
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SharingPageConfigs.resource_id_cancel_bt,
+                                 SharingPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':
     pass
