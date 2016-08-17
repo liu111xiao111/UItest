@@ -7,8 +7,8 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
-from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
@@ -20,7 +20,7 @@ class DashboardSearchBrandCases(TestCase):
     '''
     作者 宋波
     巡检checklist #3
-    自动化测试 #3-2
+    自动化测试 #3-1
     全城搜索品牌
     '''
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(DashboardSearchBrandCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')

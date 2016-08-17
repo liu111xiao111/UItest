@@ -20,7 +20,7 @@ class DashboardSearchGoodsCases(TestCase):
     '''
     作者 宋波
     巡检checklist #3
-    自动化测试 #3-1
+    自动化测试 #3-2
     全城搜索商品
     '''
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(DashboardSearchGoodsCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')
