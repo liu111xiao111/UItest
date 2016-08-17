@@ -42,6 +42,8 @@ class MonkeyTestCases(TestCase):
         self.monkeyLogName = 'Android_monkey.log'
         self.logcatLogName = 'Android_monkey_logcat.log'
         self.reportPath = reportPath
+        self.resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+                                os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
 
     def test_case(self):
         '''
@@ -76,7 +78,7 @@ class MonkeyTestCases(TestCase):
 
         # 执行monkey稳定性测试, 并生成测试结果日志文件
         monkeyLogFile = os.path.join('/sdcard', self.monkeyLogName)
-        p = pexpect.spawn('adb shell')
+        p = pexpect.spawn('%sadb shell' % self.resourcesDirectory)
         p.expect(r'^shell@', timeout=20)
         p.sendline('monkey -p %s --ignore-crashes --ignore-timeouts \
                 --ignore-security-exceptions --pct-touch 90 --pct-motion 4 \
@@ -87,7 +89,7 @@ class MonkeyTestCases(TestCase):
         time.sleep(4 * 60 * 60) # 睡眠等待4小时
         while True:
             time.sleep(5 * 60) # 每五分钟检查一次
-            p = pexpect.spawn('adb shell')
+            p = pexpect.spawn('%sadb shell' % self.resourcesDirectory)
             p.expect(r'^shell@', timeout=20)
             p.sendline('ps | grep monkey ')
             p.expect(r'shell@', timeout=20)
@@ -97,7 +99,7 @@ class MonkeyTestCases(TestCase):
                 continue
             else:
                 p.close()
-                cmd = 'adb pull %s %s' % (monkeyLogFile, self.reportPath)
+                cmd = '%sadb pull %s %s' % (self.resourcesDirectory, monkeyLogFile, self.reportPath)
                 os.system(cmd)
                 break
 
@@ -106,7 +108,7 @@ class MonkeyTestCases(TestCase):
         清理logcat缓存
         :return: None
         '''
-        command = 'adb logcat -c'
+        command = '%sadb logcat -c' % self.resourcesDirectory
         os.system(command)
 
     def _getLogcat(self):
@@ -115,7 +117,7 @@ class MonkeyTestCases(TestCase):
         :return: None
         '''
         logCatFile = os.path.join(self.reportPath, self.logcatLogName)
-        command = "adb logcat -d > %s" % logCatFile
+        command = "%sadb logcat -d > %s" % (self.resourcesDirectory, logCatFile)
         os.system(command)
 
 
