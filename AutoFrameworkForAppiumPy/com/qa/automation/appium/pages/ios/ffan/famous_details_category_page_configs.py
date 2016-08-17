@@ -8,8 +8,8 @@ class FamousDetailsCategoryPageConfigs():
     text_dashboardpage = u"首页";
     text_goods = u"商品";
     text_store = u"门店"
-    
-    
+
+
     def __init__(self):
         pass;
 
