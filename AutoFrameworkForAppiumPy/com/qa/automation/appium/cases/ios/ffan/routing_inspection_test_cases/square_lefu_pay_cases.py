@@ -51,7 +51,7 @@ class SquareLefuPayCases(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        lePayPage = LePayPage(testcase=self,driver=self.driver,logger=self.logger)
+        lePayPage = LePayPage(self, self.driver, self.logger)
 
         # 首页选择北京通州万达广场
         dashboardPage.validSelf()

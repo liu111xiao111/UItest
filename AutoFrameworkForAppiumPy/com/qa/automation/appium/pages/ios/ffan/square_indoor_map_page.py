@@ -20,8 +20,19 @@ class SquareIndoorMapPage(SuperPage):
         API().assertElementByName(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  SIMPC.name_indoor_map,
+                                  SIMPC.name_verify_indoor,
                                   18)
+
+    def clickOnMapAr(self):
+        '''
+        usage : 点击地图菜单
+        '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SIMPC.name_map_ar_button,
+                                 20)
+
 
     def clickOnFoodMap(self):
         '''
@@ -37,8 +48,9 @@ class SquareIndoorMapPage(SuperPage):
         '''
         usage : 判断"美食地图"显示是否正常
         '''
-        API().clickElementByName(self.testcase,
+        if API().validElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 SIMPC.name_food_map,
-                                 18)
+                                 SIMPC.name_verify_indoor,
+                                 18):
+            API().assertFalse(self.testcase, self.logger, True)

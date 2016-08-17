@@ -50,7 +50,7 @@ class SquareIndoorMapCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        #locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
+        # locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
         indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
 
         # 首页进入广场页
@@ -60,8 +60,9 @@ class SquareIndoorMapCases(TestCase):
 
         # 点击室内地图
         squarePage.clicOnIndoorMap()
-        #locationBluetoothPage.clickOnOkBtn()
+        # locationBluetoothPage.clickOnOkBtn()
         indoormapPage.validSelf()
+        indoormapPage.clickOnMapAr()
         indoormapPage.clickOnFoodMap()
         indoormapPage.validSelfFood()
 

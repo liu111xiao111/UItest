@@ -7,7 +7,7 @@ class LePayPageConfigs():
 
     """
     # 标题"乐付买单"
-    name_le_pay_navigation_bar = "乐付买单"
+    name_le_pay_navigation_bar = u"分类"
     # 商品活动详情"乐付买单"
     xpath_le_pay = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAButton[1]"
 
