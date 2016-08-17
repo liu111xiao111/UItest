@@ -57,61 +57,68 @@ class BrandCategoryPage(SuperPage):
                                   logger = self.logger,
                                   xpath = BrandCategoryPageConfigs.xpath_recommend_details)
 
+    def clickOnWomenFasion(self):
+        '''
+        usage : 点击 "女装" tab
+        '''
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_women_fasion)
+
     def clickOnMenFasion(self):
         '''
         usage : 点击 "男装" tab
         '''
-        API().clickElementByName(testCase = self.testcase,
-                                 driver = self.driver,
-                                 logger = self.logger,
-                                 name = BrandCategoryPageConfigs.text_men_fasion)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_men_fasion)
 
     def clickOnCatering(self):
         '''
         usage : 点击 "餐饮" tab
         '''
-        API().clickElementByName(testCase = self.testcase,
-                                 driver = self.driver,
-                                 logger = self.logger,
-                                 name = BrandCategoryPageConfigs.text_catering)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_catering)
 
     def clickOnLife(self):
         '''
         usage : 点击 "生活" tab
         '''
-        API().clickElementByName(testCase = self.testcase,
-                                 driver = self.driver,
-                                 logger = self.logger,
-                                 name = BrandCategoryPageConfigs.text_life)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_life)
 
     def clickOnSports(self):
         '''
         usage : 点击 "运动" tab
         '''
-        API().clickElementByName(testCase = self.testcase,
-                                 driver = self.driver,
-                                 logger = self.logger,
-                                 name = BrandCategoryPageConfigs.text_sports)
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_sports)
 
     def clickOnCompetitiveProducts(self):
         '''
         usage : 点击 "精品" tab
         '''
-        '''        print(API().get_width_of_device(self.driver, self.logger))
-        print(API().get_height_of_device(self.driver, self.logger))
-        start_x = API().get_width_of_device(self.driver, self.logger)/2
-        end_x = API().get_width_of_device(self.driver, self.logger)/5
-        start_y = API().get_height_of_device(self.driver, self.logger)/5
-        end_y = API().get_height_of_device(self.driver, self.logger)/5'''
-        '''API().scroll(self.driver,
-                     self.logger,
-                     190, 64, 150, 64)'''
-        API().clickElementByName(testCase = self.testcase,
-                                 driver = self.driver,
-                                 logger = self.logger,
-                                 name = BrandCategoryPageConfigs.text_competitive_products)
-        '''API().click_view_by_xpath(testcase = self.testcase, driver = self.driver, logger = self.logger,
-                                       xpath = BrandCategoryPageConfigs.xpath_competitive_products)'''
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_competitive_products)
+
+    def validSelfWomenFasion(self):
+        '''
+        usage : 判断 "女装" tab显示是否正确
+        '''
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name = BrandCategoryPageConfigs.text_women_fasion);
 
     def validSelfMenFasion(self):
         '''

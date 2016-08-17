@@ -26,7 +26,7 @@ class FamousDetailsCategoryPage(SuperPage):
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=FamousDetailsCategoryPageConfigs.text_goods)
+                                  name=FamousDetailsCategoryPageConfigs.text_store)
 
 if __name__ == '__main__':
     pass;

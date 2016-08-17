@@ -51,7 +51,7 @@ class BrandFamousCatergoryCases(TestCase):
         brandPage = BrandCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
         famousDetailsPage = FamousDetailsCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
 
-        # 首页点击品牌街
+        # 首页点击品牌
         dashboardPage.validSelf();
         dashboardPage.clickOnBrand()
         brandPage.validSelf();
@@ -63,6 +63,8 @@ class BrandFamousCatergoryCases(TestCase):
 
         # 点击 "男装“、”餐饮“、”生活“、”运动“及”精品“ tab
         famousDetailsPage.clickBackKey();
+        brandPage.clickOnWomenFasion();
+        brandPage.validSelfWomenFasion();
         brandPage.clickOnMenFasion();
         brandPage.validSelfMenFasion();
         brandPage.clickOnCatering();
@@ -71,11 +73,8 @@ class BrandFamousCatergoryCases(TestCase):
         brandPage.validSelfLife();
         brandPage.clickOnSports();
         brandPage.validSelfSports();
-        '''brandPage.scrollAsScreenPercent(0.5, 0.1166, 0.1666, 0.1166)
-        brandPage.waitBySeconds(1);
         brandPage.clickOnCompetitiveProducts();
-        brandPage.waitBySeconds(1);
-        brandPage.validSelfCompetitiveProducts();'''
+        brandPage.validSelfCompetitiveProducts();
 
 
 if __name__ == "__main__":
