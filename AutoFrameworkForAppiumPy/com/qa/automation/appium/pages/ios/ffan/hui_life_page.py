@@ -50,58 +50,58 @@ class HuiLifePage(SuperPage):
         '''
         usage: 点击活动
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         HLPC.text_activity_button,
-                                         HLPC.click_on_button_timeout);
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.text_activity_button,
+                                 HLPC.click_on_button_timeout);
 
     def clickOnPrivilege(self):
         '''
         usage: 点击优惠
         '''
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         HLPC.text_privilege_button,
-                                         HLPC.click_on_button_timeout);
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.text_privilege_button,
+                                 HLPC.click_on_button_timeout);
 
     def clickOnSpecificActivity(self):
         '''
         usage: 点击特别活动按钮
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       HLPC.resource_id_specific_activity_button,
-                                       HLPC.click_on_button_timeout);
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.resource_id_specific_activity_button,
+                                 HLPC.click_on_button_timeout);
 
     def clickOnSpecificPrivilege(self):
         '''
         usage: 点击特权
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       HLPC.resource_id_specific_privilege_button,
-                                       HLPC.click_on_button_timeout);
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.resource_id_specific_privilege_button,
+                                 HLPC.click_on_button_timeout);
 
 
     def clickOnResourceNiche(self):
         '''
         usage: 点击资源位
         '''
-        API().click_view_by_resourceID(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       HLPC.resource_id_resource_niche_button,
-                                       HLPC.click_on_button_timeout)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.resource_id_resource_niche_button,
+                                 HLPC.click_on_button_timeout)
 
     def clickOnTaxi(self):
         '''
         usage: 点击打车
         '''
-        API().click_view_by_text_android(self.testcase,
+        API().clickElementByText(self.testcase,
                                          self.driver,
                                          self.logger,
                                          HLPC.text_taxi,

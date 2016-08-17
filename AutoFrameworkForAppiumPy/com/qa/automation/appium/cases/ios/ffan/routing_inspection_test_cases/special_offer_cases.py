@@ -11,10 +11,14 @@ from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearA
 from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.ios.ffan.activity_details_page import ActivityDetailsPage
-from com.qa.automation.appium.pages.ios.ffan.coupon_details_page import CouponDetailsPage
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.hui_life_page import HuiLifePage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
+from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
+from com.qa.automation.appium.pages.ios.ffan.sales_promotion_active_details_page import SalesPromotionActiveDetailsPage
+from com.qa.automation.appium.pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -27,37 +31,69 @@ class SpecialOfferCases(TestCase):
     '''
 
     def tearDown(self):
+        self.reset.clearData()
         self.driver.quit()
-        ClearAppData().clearData()
 
     def setUp(self):
-        ClearAppData().clearData()
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.validSelf()
-        dashboardPage.clickOnHuiLife()
+        dashboardPage = DashboardPage(testcase=self , driver=self.driver , logger=self.logger)
+        salesPromotionPage = SalesPromotionPage(testcase=self , driver=self.driver , logger=self.logger)
+        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(testcase=self , driver=self.driver , logger=self.logger)
+        myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
+        myTicketPage = MyFfanMyTicketPage(testcase=self, driver=self.driver, logger=self.logger)
+        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(testcase=self , driver=self.driver , logger=self.logger)
+        myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
+        salesPromotionActiveDetailsPage = SalesPromotionActiveDetailsPage(testcase=self, driver=self.driver,
+                                                                          logger=self.logger)
 
-        huiLifePage = HuiLifePage(self, self.driver, self.logger)
-        huiLifePage.validSelf()
-        huiLifePage.clickOnActivity()
-        huiLifePage.clickOnSpecificActivity()
+        # 点击 "优惠活动"
+        dashboardPage.validSelf();
+        dashboardPage.clickOnSalesPromotion();
+        salesPromotionPage.validSelf();
+        salesPromotionPage.waitBySeconds(2);
 
-        activityDetailsPage = ActivityDetailsPage(self, self.driver, self.logger)
-        activityDetailsPage.validSelf()
-        activityDetailsPage.clickBackKey()
+        # 点击进入"活动"详情页
+        activeListItemName = salesPromotionPage.getItemName();
+        salesPromotionPage.clickOnActiveDetails();
+        salesPromotionActiveDetailsPage.waitBySeconds(3);
+        salesPromotionActiveDetailsPage.validSelf(activeListItemName);
+        salesPromotionCouponDetailsPage.clickBackKey()
 
-        huiLifePage.validSelf()
-        huiLifePage.clickOnPrivilege()
-        huiLifePage.clickOnSpecificPrivilege()
+        # 点击 "优惠券"
+        salesPromotionPage.clickOnCouponTab();
+        salesPromotionPage.waitBySeconds(2);
 
-        couponDetailsPage = CouponDetailsPage(self, self.driver, self.logger)
-        couponDetailsPage.validSelf()
-        activityDetailsPage.clickBackKey()
+        # 点击进入优惠券详情页
+        couponListItemName = salesPromotionPage.getItemName();
+        salesPromotionPage.clickOnCouponDetails();
+        salesPromotionCouponDetailsPage.waitBySeconds(10);
+        salesPromotionCouponDetailsPage.validSelf(couponListItemName);
+
+        # 领取优惠券
+        salesPromotionCouponDetailsPage.waitBySeconds(1);
+        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn();
+        salesPromotionCouponSuccessPage.validSelf();
+        salesPromotionCouponSuccessPage.waitBySeconds(1);
+        salesPromotionCouponSuccessPage.clickOnCheckMyTicketBtn();
+        myOrderDetailsPage.waitBySeconds(seconds=5);
+        couponNo = myOrderDetailsPage.getMyCouponNumber();
+
+        # 查看我的票券
+        myOrderDetailsPage.clickBackKey();
+        salesPromotionCouponDetailsPage.clickBackKey();
+        salesPromotionPage.clickBackKey();
+        dashboardPage.clickOnMy();
+        myFfanPage.validSelf();
+        myFfanPage.clickOnMyTicket();
+        myOrderNo = myTicketPage.getTicketNo();
+        myTicketPage.validSelf(couponNo[3:], myOrderNo);
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SpecialOfferCases)

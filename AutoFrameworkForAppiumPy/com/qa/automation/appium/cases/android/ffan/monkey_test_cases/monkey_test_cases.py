@@ -31,7 +31,7 @@ class MonkeyTestCases(TestCase):
         unittest资源释放回滚函数, 关闭测试应用
         :return: None
         '''
-        command = 'adb shell am force-stop %s' % (appPackage_ffan)
+        command = '%sadb shell am force-stop %s' % (self.resourcesDirectory, appPackage_ffan)
         os.system(command)
 
     def setUp(self):
