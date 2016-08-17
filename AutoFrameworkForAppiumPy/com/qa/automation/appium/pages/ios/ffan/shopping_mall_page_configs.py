@@ -27,7 +27,7 @@ class ShoppingMallPageConfigs(object):
 
     view_text_distance = u"公里"
 
-    views_uia_string = ".tableViews()[0].cells()"
+    views_xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/"
 
     def __init__(self):
         pass

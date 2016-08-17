@@ -16,7 +16,7 @@ class MyFeiFanCardPageConfigs(object):
     click_on_button_timeout = 10
 
     # My Fei fan card title
-    resource_id_my_fei_fan_card_title_st = u"我的飞凡卡"
+    resource_id_my_fei_fan_card_title_st = u"我的飞凡通"
 
     # Transaction record button
     resource_id_transaction_record_st = u"交易记录"

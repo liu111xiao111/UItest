@@ -125,7 +125,7 @@ class DashboardPage(SuperPage):
 
     def clickOnBrand(self):
         '''
-        usage: 点击"品牌街"
+        usage: 点击"品牌"
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
@@ -145,7 +145,7 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"购物中心"
         '''
-
+        logging.info('Click on shopping mall.')
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.name_shopping_mall,
                                  DashboardPageConfigs.click_on_button_timeout)

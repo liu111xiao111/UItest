@@ -50,7 +50,7 @@ class DashboardPageConfigs():
     name_le_pay = u"乐付";
 
     # "品牌街"
-    name_brand = u"品牌街";
+    name_brand = u"品牌";
 
     # "美食汇"
     name_food = u"美食汇";

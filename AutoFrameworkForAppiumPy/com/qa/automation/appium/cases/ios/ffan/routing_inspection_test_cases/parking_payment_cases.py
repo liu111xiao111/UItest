@@ -58,7 +58,7 @@ class ParkingPaymentCases(TestCase):
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
         # 首页点击停车
-        dashboard.wait_by_seconds(seconds=1)
+        dashboard.waitBySeconds(seconds=1)
         dashboard.validSelf()
         dashboard.clickOnMy()
         myFfanPage.validSelf()

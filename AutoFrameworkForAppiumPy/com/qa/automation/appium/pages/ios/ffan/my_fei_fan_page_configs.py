@@ -31,7 +31,7 @@ class MyFeiFanPageConfigs(object):
 
     # Nickname
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"
-    resource_id_nickname_st = "ffan8742"
+    resource_id_nickname_st = "ffan6140"
 
     # Settings button
     resource_id_settings_st = u"设置"
@@ -40,8 +40,8 @@ class MyFeiFanPageConfigs(object):
     text_login = u"登录"
 
     # My fei fan card
-    text_my_fei_fan_card = u"我的飞凡卡"
-    resource_id_my_fei_fan_card_st = u"我的飞凡卡"
+    text_my_fei_fan_card = u"我的飞凡通"
+    resource_id_my_fei_fan_card_st = u"我的飞凡通"
 
     def __init__(self):
         pass

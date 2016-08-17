@@ -20,8 +20,7 @@ class TestPrepare:
 
         if needLogin:
             self.login()
-
-        self.backToDashBoard()
+            self.backToDashBoard()
 
     def login(self):
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)

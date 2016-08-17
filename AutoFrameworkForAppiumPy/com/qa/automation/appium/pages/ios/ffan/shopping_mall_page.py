@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import operator
+import logging
 
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
@@ -24,6 +25,7 @@ class ShoppingMallPage(SuperPage):
         '''
         usage: 验证购物中心界面
         '''
+        logging.info('Verify the shopping mall page.')
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
@@ -33,6 +35,7 @@ class ShoppingMallPage(SuperPage):
         '''
         usage: 点击全部tab
         '''
+        logging.info('Click on the all tab.')
         API().clickElementByXpath(testCase = self.testcase,
                                   driver = self.driver,
                                   logger = self.logger,
@@ -41,8 +44,9 @@ class ShoppingMallPage(SuperPage):
 
     def clickOnShoppingTab(self):
         '''
-        usage: 点击全部tab
+        usage: 点击购物中心tab
         '''
+        logging.info('Click on the shopping tab.')
         API().clickElementByXpath(testCase = self.testcase,
                                   driver = self.driver,
                                   logger = self.logger,
@@ -51,8 +55,9 @@ class ShoppingMallPage(SuperPage):
 
     def clickOnGoodsTab(self):
         '''
-        usage: 点击全部tab
+        usage: 点击百货tab
         '''
+        logging.info('Click on the goods tab.')
         API().clickElementByXpath(testCase = self.testcase,
                                   driver = self.driver,
                                   logger = self.logger,
@@ -63,6 +68,7 @@ class ShoppingMallPage(SuperPage):
         '''
         usage: 验证tab页面
         '''
+        logging.info('Verify the current tab page.')
         API().assertElementByType(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -73,23 +79,24 @@ class ShoppingMallPage(SuperPage):
         '''
         usage: 验证距离排序
         '''
+        logging.info('Verify the mall distance.')
         prev_plaza_distance = "0"
-        cellList = API().getElementsByIosUiautomation(self.testcase,
-                                                      self.driver,
-                                                      self.logger,
-                                                      SMP.views_uia_string)
+        cellList = API().getElementsByType(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           'UIATableCell',
+                                           20)
         plaza_number = len(cellList)
+        logging.info('Current page has %s plazas.' % plaza_number)
         if plaza_number > 1:
-            for i in range(0, plaza_number):
-                uia_string = ".tableViews()[0].cells()[" + str(i) +"].staticTexts()[2]"
-                element = API().validElementByIosUiautomation(self.driver,
-                                                             self.logger,
-                                                             uia_string)
-                current_plaza_distance = element.text.split(SMP.view_text_distance)[0]
+            for i in range(1, plaza_number+1):
+                uia_string = SMP.views_xpath+ "UIATableCell[" + str(i) +"]/UIAStaticText[3]"
+                text = API().getTextByXpath(self.testcase,
+                                            self.driver,
+                                            self.logger,
+                                            uia_string)
+                logging.info('No.%s shopping mall distance is %s' % (i, text))
+                current_plaza_distance = text.split(SMP.view_text_distance)[0]
                 if operator.gt(prev_plaza_distance, current_plaza_distance):
                     self.testcase.assertTrue(False, "The plaza distance is not ordered.")
-                prev_plaza_distance = element.text.split(SMP.view_text_distance)[0]
-
-
-if __name__ == '__main__':
-    pass
+                prev_plaza_distance = text.split(SMP.view_text_distance)[0]

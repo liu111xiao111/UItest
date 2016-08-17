@@ -58,7 +58,7 @@ class ParkingPaymentUnbindingCases(TestCase):
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
 
         # 首页点击停车
-        dashboard.wait_by_seconds(seconds=1)
+        dashboard.waitBySeconds(seconds=1)
         dashboard.validSelf()
         dashboard.clickOnParking()
         parkingPage.validSelf()
@@ -67,6 +67,12 @@ class ParkingPaymentUnbindingCases(TestCase):
         parkingPage.clickOnParkingPayment()
         parkingPaymentPage.validSelf()
         parkingPaymentPage.waitBySeconds(seconds=1)
+
+        # 输入要绑定的车牌号
+        parkingPaymentInputPlateNumberPage.inputPlateNumber()
+        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+        parkingPaymentInputPlateNumberPage.clickOnNextStep()
+        parkingPaymentPage.validSelf()
 
         # 点击解除绑定
         parkingPaymentPage.clickOnMore()
