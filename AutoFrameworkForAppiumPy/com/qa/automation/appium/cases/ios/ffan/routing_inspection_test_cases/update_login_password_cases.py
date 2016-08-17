@@ -64,9 +64,9 @@ class UpdateLoginPasswordCases(TestCase):
         updateLoginPasswordPage = UpdateLoginPasswordPage(self, self.driver, self.logger)
         updateLoginPasswordPage.waitBySeconds()
         updateLoginPasswordPage.validSelf()
-        updateLoginPasswordPage.inputOldLoginPassword("9875321mgw")
-        updateLoginPasswordPage.inputNewLoginPassword("9875321mgw")
-        updateLoginPasswordPage.inputNewLoginPasswordAgain("9875321mgw")
+        updateLoginPasswordPage.inputOldLoginPassword("hupi123456")
+        updateLoginPasswordPage.inputNewLoginPassword("hupi123456")
+        updateLoginPasswordPage.inputNewLoginPasswordAgain("hupi123456")
         updateLoginPasswordPage.clickOnConfirm()
 
         accountManagementPage.waitBySeconds()

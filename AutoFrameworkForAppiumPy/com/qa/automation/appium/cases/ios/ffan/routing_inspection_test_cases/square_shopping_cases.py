@@ -55,14 +55,8 @@ class SquareShoppingCases(TestCase):
         goodsDetailsPage.validSelf()
         goodsDetailsPage.validKeywords(tempText)
         goodsDetailsPage.clickBackKey()
-
-        squareShoppingPage.validSelf()
         squareShoppingPage.clickBackKey()
-
-        squareModulePage.validSelf()
         squareModulePage.clickBackKey()
-
-        dashboardPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareShoppingCases)

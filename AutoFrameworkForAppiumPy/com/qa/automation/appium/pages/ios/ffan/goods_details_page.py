@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+import logging
+
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.goods_details_page_configs import GoodsDetailsPageConfigs
@@ -32,7 +34,7 @@ class GoodsDetailsPage(SuperPage):
         usage: verify whether the keyword is correct.
         '''
 
-        print ("KEYWORDS: %s" % keywords)
+        logging.info("KEYWORDS: %s" % keywords)
 
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         GoodsDetailsPageConfigs.xpath_commodity_name_st,

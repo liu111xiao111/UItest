@@ -55,14 +55,8 @@ class SquareRecommendCases(TestCase):
         storeImageTextDetailsPage.validSelf()
         storeImageTextDetailsPage.validKeywords(tempText)
         storeImageTextDetailsPage.clickBackKey()
-
-        storeInfoPage.validSelf()
         storeInfoPage.clickBackKey()
-
-        squareModulePage.validSelf()
         squareModulePage.clickBackKey()
-
-        dashboardPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareRecommendCases)

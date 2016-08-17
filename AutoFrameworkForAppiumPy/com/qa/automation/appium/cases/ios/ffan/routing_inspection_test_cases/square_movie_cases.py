@@ -2,6 +2,7 @@
 
 import os
 import time
+import logging
 from unittest import TestCase
 from unittest import TestLoader
 
@@ -56,7 +57,7 @@ class SquareMovieCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            print ("ATTEMPTS: %d" % (tempTimes + 1))
+            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.NAME, False):
                 popupPage.clickOnButton(u"是", ClickActivityKeywordsType.NAME)
                 break

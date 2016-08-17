@@ -56,10 +56,7 @@ class SquareParkingPaymentCases(TestCase):
         parkingPaymentPage = ParkingPaymentPage(self, self.driver, self.logger)
         parkingPaymentPage.validSelf()
         parkingPaymentPage.clickBackKey()
-
-        squareModulePage.validSelf()
         squareModulePage.clickBackKey()
-
         searchPage.clickBackKey()
 
 if __name__ == "__main__":

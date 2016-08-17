@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.search_page_configs import SearchPageConfigs
@@ -105,7 +107,7 @@ class SearchPage(SuperPage):
 
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         xpath, SearchPageConfigs.get_timeout)
-        print(tempText)
+        logging.info(tempText)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
 
     def inputKeywords(self, keywords):

@@ -51,7 +51,7 @@ class SquareSearchCases(TestCase):
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        searchPage.validSearchResult(u"北京通州店", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+        searchPage.validSearchResult(u"通州", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
         searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)

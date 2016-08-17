@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+import logging
+
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
 from com.qa.automation.appium.pages.ios.ffan.seat_picking_page_configs import SeatPickingPageConfigs
@@ -32,7 +34,7 @@ class SeatPickingPage(SuperPage):
         usage: verify whether the keyword is correct.
         '''
 
-        print("KEYWORDS: %s" % keywords)
+        logging.info("KEYWORDS: %s" % keywords)
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   keywords, SeatPickingPageConfigs.assert_view_timeout)
