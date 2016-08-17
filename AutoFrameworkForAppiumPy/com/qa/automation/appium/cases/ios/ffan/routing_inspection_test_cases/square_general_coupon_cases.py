@@ -15,6 +15,8 @@ from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.general_coupon_page import GeneralCouponPage
 from com.qa.automation.appium.pages.ios.ffan.receive_success_page import ReceiveSuccessPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
+from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
@@ -39,43 +41,40 @@ class SquareGeneralCouponCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
+        # 点击广场页
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
 
+        # 点击通用券
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
         squareModulePage.clickOnGeneralCoupon()
 
+        # 点击马上领取
         generalCouponPage = GeneralCouponPage(self, self.driver, self.logger)
         generalCouponPage.validSelf()
         generalCouponPage.clickOnImmediatelyToReceive()
 
+        # 点击获取券码
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
         receiveSuccessPage.waitBySeconds(2)
-#         tempText = receiveSuccessPage.getPrivilegeCouponCode()
-#         receiveSuccessPage.clickBackKey()
-#
-#         generalCouponPage.validSelf()
-#         generalCouponPage.clickBackKey()
-#
-#         squareModulePage.validSelf()
-#         squareModulePage.clickBackKey()
-#
-#         dashboardPage.validSelf()
-#         dashboardPage.clickOnMy()
-#
-#         myFfanPage = MyFfanPage(self, self.driver, self.logger)
-#         myFfanPage.validSelf()
-#         myFfanPage.clickOnMyTicket()
-#
-#         myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
-#         myFfanMyTicketPage.validSelf()
-# #         myFfanMyTicketPage.validCouponCode(tempText)
-#         myFfanMyTicketPage.clickBackKey()
-#
-#         myFfanPage.validSelf()
+        tempText = receiveSuccessPage.getPrivilegeCouponCode()
+
+        receiveSuccessPage.clickBackKey()
+        generalCouponPage.clickBackKey()
+        squareModulePage.clickBackKey()
+        dashboardPage.clickOnMy()
+
+        # 点击我的票券, 进入我的票券页面
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyTicket()
+
+        myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
+        myOrderNo = myTicketPage.getTicketNo()
+        myTicketPage.validSelf(tempText, myOrderNo)
 
 
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ class SquareModulePage(SuperPage):
         usage: 点击签到
     '''
     def clickOnSignOn(self):
-        API().click_view_by_resourceID(self.testcase, self.driver, self.logger,
+        API().clickElementByName(self.testcase, self.driver, self.logger,
                                        SquareModulePageConfigs.resource_id_sign_in_st,
                                        SquareModulePageConfigs.assert_view_timeout)
 
@@ -61,10 +61,10 @@ class SquareModulePage(SuperPage):
         usage: 点击美食汇
     '''
     def clickOnFood(self):
-        API().click_view_by_resourceID(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_food);
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SquareModulePageConfigs.text_food);
 
     '''
         usage: 点击爱购物
@@ -97,7 +97,7 @@ class SquareModulePage(SuperPage):
         usage: 点击达人推荐店
     '''
     def clickOnRecommmendStore(self):
-        API().click_view_by_xpath(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SquareModulePageConfigs.xpath_recommend_store)
@@ -203,8 +203,7 @@ class SquareModulePage(SuperPage):
         usage: click on the general coupon button.
         '''
 
-        for _ in range(10):
-            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
+        API().iosScrollToElement(self.driver, self.logger, '//UIAApplication[1]/UIAWindow[1]/UIATableView[1]', '通用券')
 
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SquareModulePageConfigs.xpath_general_coupon_button,

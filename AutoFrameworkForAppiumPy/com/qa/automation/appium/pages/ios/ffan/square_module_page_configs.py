@@ -55,7 +55,7 @@ class SquareModulePageConfigs():
 
     # General coupon button
     text_general_coupon_button = u"通用券"
-    xpath_general_coupon_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
+    xpath_general_coupon_button = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]"
 
     # Assert view time out
     assert_view_timeout = 10

@@ -18,11 +18,11 @@ class GeneralCouponPageConfigs(object):
     click_on_button_timeout = 10
 
     # General coupon title
-    resource_id_general_coupon_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
+    resource_id_general_coupon_title = u"通用券"
 
     # Immediately to receive
     text_immediately_to_receive = u"马上领取"
-    xpath_immediately_to_receive = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]"
+    xpath_immediately_to_receive = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[1]/UIAStaticText[1]"
 
     def __init__(self):
         pass
