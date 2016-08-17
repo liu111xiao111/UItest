@@ -9,7 +9,7 @@ class OpenCardPageConfigs():
     text_joint_card = u"一卡通飞凡联名卡"
     xpath_joint_card = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
 
-    verify_view_resourceId= u"我的市民/公交卡"
+    verify_view_resourceId= u"市民/公交卡"
     verify_view_timeout = 10
 
     def __init__(self):

@@ -11,8 +11,8 @@ class ChildCategoryPageConfigs():
     resource_id_ll_child_education_ll = u"儿童教育"
     # 亲子购物
     resource_id_ll_child_shopping_ll = u"亲子购物"
-    # 其它门店
-    resource_id_ll_other_store_ll = u"其他门店"
+    # 更多门店
+    resource_id_ll_other_store_ll = u"更多门店"
 
     #xpath
     # 亲自游乐 儿童教育 亲子购物 其他门店 点击进去后的listview 的第一个的xpath

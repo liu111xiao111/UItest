@@ -48,19 +48,19 @@ class FeiFanCardBillCases(TestCase):
 
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
-        for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
+        '''for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
             feifanCardBillPage.clickOnFilter()
             feifanCardBillPage.clickOnSubFilterByText(tempText)
             feifanCardBillPage.validSubFilterByText(tempText)
         feifanCardBillPage.clickBackKey()
 
-        feifanCardPage.validSelf()
+        feifanCardPage.validSelf()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardBillCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
     runner.run(suite)

@@ -67,7 +67,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardOpenCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='feifan-card-test',
                                            description='Result for test')
