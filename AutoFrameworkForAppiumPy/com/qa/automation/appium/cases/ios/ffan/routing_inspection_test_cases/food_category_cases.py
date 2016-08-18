@@ -55,7 +55,7 @@ class FoodCases(TestCase):
         dashboardPage.clickOnFood();
         foodPage.validSelf();
 
-        # 检查所有子界面入口
+        '''# 检查所有子界面入口
         foodPage.validModules();
 
         # 检查优惠打折
@@ -66,13 +66,18 @@ class FoodCases(TestCase):
         # 检查抢券
         foodPage.clickOnGrabCoupons();
         foodPage.validGrabCoupons();
+        dashboardPage.clickBackKey();
+
+        # 检查乐付
+        foodPage.clickOnLePay();
+        foodPage.validLePay();'''
 
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FoodCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')

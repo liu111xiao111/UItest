@@ -28,13 +28,73 @@ class FoodCategoryPage(SuperPage):
         '''
         usage: 点击美食主界面的所有入口并验证
         '''
-        restaurantList = API().get_views_by_resourceID(self.driver,
+        restaurantList = API().getElementsByClassName(self.driver,
                                                        self.logger,
                                                        FCPC.resource_id_bt_restaurant_bt)
         for restaurant in restaurantList:
             restaurant.click()
             self.validRestaurant()
             self.clickBackKey()
+
+    def validCoupon(self):
+        '''
+        usage : 进入优惠打折界面，根据餐饮的textview, 检查找优惠页面是否加载出来.
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCPC.resource_id_tv_restaurant_tv,
+                                        FCPC.verify_view_timeout)
+
+    def validGrabCoupons(self):
+        '''
+        usage: 进入抢券界面，根据餐饮的textview, 检查抢券界面是否加载出来.
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCPC.resource_id_tv_restaurant_tv,
+                                        FCPC.verify_view_timeout)
+
+    def validLePay(self):
+        '''
+        usage: 进入乐付界面，根据餐饮的textview, 检查抢券界面是否加载出来.
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCPC.resource_id_tv_restaurant_tv,
+                                        FCPC.verify_view_timeout)
+
+    def clickOnCoupon(self):
+        '''
+        usage : 点击优惠打折
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_coupon_bt,
+                                       FCPC.click_view_timeout)
+
+    def clickOnGrabCoupons(self):
+        '''
+        usage : 点击抢券
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_grab_bt,
+                                       FCPC.click_view_timeout)
+
+    def clickOnLePay(self):
+        '''
+        usage : 点击乐付
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_bt_pay_bt,
+                                       FCPC.click_view_timeout)
 
 if __name__ == '__main__':
     pass;

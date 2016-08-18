@@ -6,7 +6,7 @@ class FoodCategoryPageConfigs():
         *********************************iOS 控件name*****************************
 
     """
-    name_food_category_navigation_bar = "美食"
+    name_food_category_navigation_bar = "美食汇"
 
     """
         *********************************iOS 控件 xpath*****************************
