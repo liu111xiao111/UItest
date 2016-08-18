@@ -50,9 +50,9 @@ class HuiLifeResourceNicheCases(TestCase):
         huiLifePage.validSelf()
         huiLifePage.screenShot("hui_life_resource_niche")
 
-        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"自选股", u"话费充值",
-                     u"违章查询", u"首页", u"流量充值", u"QQ充值", u"音乐会",
-                     u"数码回收", u"加油", u"演唱会", u"话剧", u"亲子票务")
+        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"自选股", u"流量充值",
+                     u"违章查询", u"音乐会", u"首页", u"QQ充值", u"加油 Heading",
+                     u"话费充值", u"数码回收", u"演唱会", u"话剧", u"亲子票务")
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]" % (tempNum + 1), tempTuple[tempNum])
             huiLifePage.waitBySeconds(10)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(HuiLifeResourceNicheCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + '/' + 'Hui_life_resource_niche_' + now + '.html'
+    filename = os.path.join(reportpath + '/' + 'Hui_life_resource_niche_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

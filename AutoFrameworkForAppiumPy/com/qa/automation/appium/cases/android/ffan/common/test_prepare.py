@@ -53,9 +53,9 @@ class TestPrepare:
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
-        loginVerifyPage = LoginVerifyPage(self.testcase, self.driver, self.logger)
+        '''loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
         loginVerifyPage.validSelf()
-        loginVerifyPage.clickOnSkip()
+        loginVerifyPage.clickOnSkip()'''
         myFfanPage.validSelf()
         dashboardPage.waitBySeconds(seconds=2)
 
