@@ -2,6 +2,7 @@
 
 import os
 import time
+import logging
 import HTMLTestRunner
 
 from unittest import TestCase
@@ -63,27 +64,30 @@ class MyfeifanMyQueueCases(TestCase):
 
         # Click "排队取号"， load "排队取号" page.
         squarePage.clicOnQueue();
+
         queuePage.validSelf();
-
         # Click "取号"
-        queuePage.clicOnQueueNumber()
-        queuePage.waitBySeconds(10)
-        queuePage.inputNumberOfMeals()
-        queuePage.waitBySeconds(10)
-        queuePage.clicOnGetQueueNumber()
-        queuePage.validQueueSuccess()
-        queuePage.clickOnCancelQueue()
+        ret = queuePage.clicOnQueueNumber()
+        if ret:
+            queuePage.waitBySeconds(10)
+            queuePage.inputNumberOfMeals()
+            queuePage.waitBySeconds(10)
+            queuePage.clicOnGetQueueNumber()
+            queuePage.validQueueSuccess()
+            queuePage.clickOnCancelQueue()
 
-        myFfanPage.clickBackKey()
-        myFfanPage.clickBackKey()
-        myFfanPage.clickBackKey()
+            myFfanPage.clickBackKey()
+            myFfanPage.clickBackKey()
+            myFfanPage.clickBackKey()
 
-        # Click "我的排队"， load "我的排队" page.
-        dashboardPage.validSelf()
-        dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyQueue()
-        myQueuePage.validSelf()
+            # Click "我的排队"， load "我的排队" page.
+            dashboardPage.validSelf()
+            dashboardPage.clickOnMy()
+            myFfanPage.validSelf()
+            myFfanPage.clickOnMyQueue()
+            myQueuePage.validSelf()
+        else:
+            logging.info(u"没有可排队店铺!")
 
 
 if __name__ == "__main__":

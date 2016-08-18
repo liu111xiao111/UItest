@@ -72,15 +72,11 @@ class SmallAmountPasswordLessPaymentCases(TestCase):
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
         if smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
+
         smallAmountPasswordLessPaymentsPage.clickBackKey()
-
-        accountManagementPage.validSelf()
         accountManagementPage.clickBackKey()
-
-        settingPage.validSelf()
         settingPage.clickBackKey()
 
-        myFeiFanPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SmallAmountPasswordLessPaymentCases)

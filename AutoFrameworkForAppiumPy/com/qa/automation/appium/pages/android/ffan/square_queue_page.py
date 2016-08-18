@@ -38,11 +38,15 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 点击 "取号"
         '''
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SQPC.text_queue_number,
-                                 SQPC.verify_click_timeout)
+        if API().validElementByText(self.driver, self.logger, SQPC.text_queue_number):
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     SQPC.text_queue_number,
+                                     SQPC.verify_click_timeout)
+            return True
+        else:
+            return False
 
     def inputNumberOfMeals(self):
         '''

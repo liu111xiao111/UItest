@@ -55,17 +55,17 @@ class SalesPromotionPage(SuperPage):
 
     def clickOnCouponDetails(self):
         '''
-            usage : 获得活动列表的长度
+            usage : 点击活动列表
         '''
-        API().scrollToText(self.testcase,
-                           self.driver,
-                           self.logger,
-                           SPPC.text_special_store)
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SPPC.text_special_store,
-                                 20)
+        # API().scrollToText(self.testcase,
+        #                    self.driver,
+        #                    self.logger,
+        #                    SPPC.text_special_store)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPPC.xpath_special_store,
+                                  20)
 
     def getActiveListNumber(self):
         '''

@@ -26,7 +26,7 @@ class TestPrepare:
         usage: 测试前准备方法，移除更新和选择城市弹出框，并且根据选择判断是否需要登录
         '''
         self.closeOlympicTip()
-        self.updateVersion()
+        # self.updateVersion()
         self.switchCity()
 
         #self.closeHomeShakeTips()

@@ -81,14 +81,8 @@ class OneCardCases(TestCase):
         if smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
         smallAmountPasswordLessPaymentsPage.clickBackKey()
-
-        paymentsSettingsPage.validSelf()
         paymentsSettingsPage.clickBackKey()
-
-        myFeiFanCardPage.validSelf()
         myFeiFanCardPage.clickBackKey()
-
-        myFeiFanPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(OneCardCases)

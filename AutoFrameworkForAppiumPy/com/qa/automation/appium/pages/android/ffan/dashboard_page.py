@@ -195,15 +195,19 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"优惠"类目
         '''
-        API().scrollToText(self.testcase,
-                           self.driver,
-                           self.logger,
-                           DPC.text_sales)
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 DPC.text_sales,
-                                 DPC.click_on_button_timeout)
+        # API().scrollToText(self.testcase,
+        #                    self.driver,
+        #                    self.logger,
+        #                    DPC.text_sales)
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(6):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  DPC.xpath_sales,
+                                  DPC.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''

@@ -20,7 +20,7 @@ class PersonalInformationPageConfigs(object):
     resource_id_personal_information_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # Nickname button
-    text_nickname_button = u"ffan8742"
+    text_nickname_button = u"ffan6140"
 
     def __init__(self):
         pass

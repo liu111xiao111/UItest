@@ -15,7 +15,7 @@ class MyFeiFanPageConfigs(object):
     click_on_button_timeout = 10
 
     # My FeiFan title
-    resource_id_my_fei_fan_title = "com.wanda.app.wanhui:id/icon_user_head"
+    resource_id_my_fei_fan_title = "com.wanda.app.wanhui:id/image_icon_message_entry"
 
     # Login button
     resource_id_login_button = "com.wanda.app.wanhui:id/tv_login"
@@ -36,7 +36,7 @@ class MyFeiFanPageConfigs(object):
     text_login = u"登录"
 
     # My fei fan card
-    text_my_fei_fan_card = u"我的飞凡卡"
+    text_my_fei_fan_card = u"我的飞凡通"
 
     def __init__(self):
         pass

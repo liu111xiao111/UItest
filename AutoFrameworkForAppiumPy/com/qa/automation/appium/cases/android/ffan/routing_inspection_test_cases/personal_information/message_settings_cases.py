@@ -96,8 +96,6 @@ class MessageSettingsCases(TestCase):
         messageSettingsPage.validSelf()
         messageSettingsPage.clickOnActivityPush()
         messageSettingsPage.clickBackKey()
-
-        messageCentrePage.validSelf()
         messageCentrePage.clickBackKey()
 
 if __name__ == "__main__":
