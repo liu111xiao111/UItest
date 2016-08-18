@@ -71,7 +71,6 @@ class ChildCatergoryCases(TestCase):
             childPage.validKeywords(tempText)
             childPage.clickBackKey()
             childPage.clickBackKey()
-            childPage.clickBackKey()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ChildCatergoryCases)

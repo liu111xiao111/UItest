@@ -9,7 +9,7 @@ class DashboardPageConfigs():
     resource_id__tv_city__tv = "tv_city";
 
     # ffan logo图标
-    resource_id__iv_logo__iv = "iv_logo";
+    resource_id__iv_logo__iv = "com.wanda.app.wanhui:id/iv_center_tab";
 
     # 更多图标
     resource_id__iv_right_icon__iv = "iv_right_icon";

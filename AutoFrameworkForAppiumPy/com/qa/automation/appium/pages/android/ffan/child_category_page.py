@@ -39,12 +39,6 @@ class ChildCategoryPage(SuperPage):
                                   CCPC.xpath_store_list_1,
                                   CCPC.click_on_button_timeout)
 
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  CCPC.xpath_store_list_2,
-                                  CCPC.click_on_button_timeout)
-
         return tempText
 
     def clickOnChildPlay(self):
