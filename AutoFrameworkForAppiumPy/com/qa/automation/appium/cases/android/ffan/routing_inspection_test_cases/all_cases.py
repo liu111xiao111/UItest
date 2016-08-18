@@ -76,12 +76,16 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.s
 
 if __name__ == "__main__":
     build_num = sys.argv[1]
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/maguowei/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
+
+    #root_dir = os.path.dirname(
+    #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
     
     suite = TestSuite()
-    
+
+
     suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))  ## didi pages not display.
     suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
@@ -102,8 +106,8 @@ if __name__ == "__main__":
     suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SplashScreenHomePageCases("test_case"))
-    suite.addTest(SwitchCityCases("test_case_prepare"))
-    suite.addTest(SwitchCityCases("test_case"))
+    #suite.addTest(SwitchCityCases("test_case_prepare"))
+    #suite.addTest(SwitchCityCases("test_case"))
     suite.addTest(MyfeifanMyParkingPaymentCases("test_case"))
     suite.addTest(ParkingBindingsCatergoryCases("test_case"))
     suite.addTest(ParkingBundingCatergoryCases("test_case"))
