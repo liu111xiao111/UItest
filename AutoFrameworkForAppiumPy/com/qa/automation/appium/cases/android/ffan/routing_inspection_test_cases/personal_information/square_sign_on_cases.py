@@ -60,14 +60,8 @@ class SquareSignOnCases(TestCase):
 
         signOnPage.clickBackKey()
 
-        dashboardPage.validSelf()
         dashboardPage.clickOnSignOn()
 
-#         popupPage = PopupPage(self, self.driver, self.logger)
-#         if popupPage.validSelf("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[61]",
-#                                VerifyActivityKeywordsType.XPATH, False):
-#             popupPage.clickOnButton("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]",
-#                                     ClickActivityKeywordsType.XPATH)
         signOnPage.waitBySeconds(2)
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()

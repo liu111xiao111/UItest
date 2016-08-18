@@ -41,6 +41,6 @@ class SignOnPage(SuperPage):
         '''
         usage: 点击签到
         '''
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  SOPC.xpath_sign_in_button,
-                                  SOPC.assert_view_timeout)
+        API().clickElementByContentDesc(self.testcase, self.driver, self.logger,
+                                        SOPC.content_desc_sign_on,
+                                        SOPC.assert_view_timeout)

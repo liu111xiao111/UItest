@@ -25,6 +25,6 @@ class SearchResultStorePage(SuperPage):
         '''
         usage: 验证关键字
         '''
-        API().assertElementByText(self.testcase, self.driver, self.logger,
+        API().assertElementByContentDesc(self.testcase, self.driver, self.logger,
                                   keywords,
                                   SPC.assert_view_timeout)

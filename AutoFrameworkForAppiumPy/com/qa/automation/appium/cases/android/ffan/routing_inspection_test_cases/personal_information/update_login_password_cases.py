@@ -80,15 +80,8 @@ class UpdateLoginPasswordCases(TestCase):
         updateLoginPasswordPage.clickOnConfirm()
 
         accountManagementPage.waitBySeconds()
-        accountManagementPage.validSelf()
         accountManagementPage.clickBackKey()
-
-        settingPage.waitBySeconds()
-        settingPage.validSelf()
         settingPage.clickBackKey()
-
-        settingPage.waitBySeconds()
-        myFeiFanPage.validSelf()
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ class MyFeiFanPageConfigs(object):
     click_on_button_timeout = 10
 
     # My FeiFan title
-    resource_id_my_fei_fan_title = "com.wanda.app.wanhui:id/txt_title"
+    resource_id_my_fei_fan_title = "com.wanda.app.wanhui:id/icon_user_head"
 
     # Login button
     resource_id_login_button = "com.wanda.app.wanhui:id/tv_login"

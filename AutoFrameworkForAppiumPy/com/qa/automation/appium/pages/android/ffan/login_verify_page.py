@@ -18,10 +18,10 @@ class LoginVerifyPage(SuperPage):
         usage : 验证页,检查验证标题
         '''
         API().assertElementByText(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        LVPC.text_verify,
-                                        10)
+                                  self.driver,
+                                  self.logger,
+                                  LVPC.text_verify,
+                                  10)
 
     def clickOnSkip(self):
         '''

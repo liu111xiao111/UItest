@@ -61,11 +61,11 @@ class SquareSearchCases(TestCase):
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        searchPage.validSearchResult(u"北京通州店", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-        searchPage.clickOnSearchResultFirstItem()
+        searchPage.validSearchResult(u"通州", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
+        tempText = searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
-        searchResultStorePage.validSelf()
+        searchResultStorePage.validKeywords(tempText)
         searchResultStorePage.clickBackKey()
 
         searchPage.clickBackKey()
