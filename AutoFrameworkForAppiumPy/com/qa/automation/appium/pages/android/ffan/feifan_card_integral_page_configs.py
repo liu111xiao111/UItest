@@ -2,7 +2,7 @@
 
 class FeiFanCardIntegralPageConfigs():
     # Feifan card "积分主页"
-    resource_id_tv_integral_tv = "com.feifan.point:id/tv_my_point_hint"
+    text_tv_integral_tv = "飞凡积分"
         
     
     def __init__(self):

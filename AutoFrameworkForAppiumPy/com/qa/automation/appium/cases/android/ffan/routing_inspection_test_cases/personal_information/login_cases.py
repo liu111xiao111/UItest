@@ -9,6 +9,7 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -21,6 +22,7 @@ from com.qa.automation.appium.pages.android.ffan.login_page import LoginPage
 from com.qa.automation.appium.pages.android.ffan.login_verify_page import LoginVerifyPage
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.pages.android.ffan.settings_page import SettingsPage
 
 
 class LoginCases(TestCase):
@@ -53,18 +55,29 @@ class LoginCases(TestCase):
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
         dashboardPage.clickOnMy()
+        if myFfanPage.isLoginStatus():
+            myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
+            myFeiFanPage.clickOnSettings()
+
+            settingPage = SettingsPage(testcase=self, driver=self.driver, logger=self.logger)
+            dashboardPage.waitBySeconds()
+            settingPage.validSelf()
+            settingPage.clickOnQuitAccountBtn()
+
+            myFeiFanPage.waitBySeconds()
+            myFeiFanPage.validLogoutStatus()
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self, self.driver, self.logger)
         loginPage.validSelf()
         loginPage.switchToNormalLogin()
-        loginPage.inputUserName();
+        loginPage.inputUserName()
         loginPage.inputPassWord()
-        loginPage.clickOnLoginBtn();
-        loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
-        loginVerifyPage.validSelf()
-        loginVerifyPage.clickOnSkip()
+        loginPage.clickOnLoginBtn()
+        # loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
+        # loginVerifyPage.validSelf()
+        # loginVerifyPage.clickOnSkip()
         myFfanPage.validSelf()
-        dashboardPage.waitBySeconds(seconds=2);
+        dashboardPage.waitBySeconds(seconds=2)
 
 
 if __name__ == "__main__":

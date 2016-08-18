@@ -20,7 +20,7 @@ class MyMembershipCardPackagePageConfigs(object):
     resource_id_my_membership_card_package_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # LeHuoKa button
-    resource_id_le_huo_ka_button = "com.wanda.app.wanhui:id/rl_card"
+    resource_id_le_huo_ka_button = "com.wanda.app.wanhui:id/rl_card_logo"
 
     def __init__(self):
         pass

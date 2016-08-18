@@ -16,8 +16,8 @@ class FeiFanCardIntegralPage(SuperPage):
         '''
         usage : 验证积分主页
         '''
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        FeiFanCardIntegralPageConfigs.resource_id_tv_integral_tv,
-                                        10)
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FeiFanCardIntegralPageConfigs.text_tv_integral_tv,
+                                  10)
