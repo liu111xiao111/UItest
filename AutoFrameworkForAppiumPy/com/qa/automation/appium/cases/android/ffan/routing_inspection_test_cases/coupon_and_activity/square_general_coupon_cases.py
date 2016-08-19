@@ -61,10 +61,10 @@ class SquareGeneralCouponCases(TestCase):
         generalCouponPage = GeneralCouponPage(self, self.driver, self.logger)
         generalCouponPage.validSelf()
         generalCouponPage.clickOnImmediatelyToReceive()
-
+   
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
-
+   
         receiveSuccessPage.waitBySeconds(seconds=2)
 
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareGeneralCouponCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath + 'food-test_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
     runner.run(suite)

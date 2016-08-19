@@ -13,14 +13,14 @@ class SalesPromotionCouponDetailsPage(SuperPage):
     def __init__(self,testcase,driver,logger):
         super(SalesPromotionCouponDetailsPage, self).__init__(testcase, driver, logger)
 
-    def validSelf(self):
+    def validSelf(self, itemtext="default"):
         '''
-            usage : "优惠券" 页加载是否正确
+            usage : "优惠券"详情页加载是否正确
         '''
         API().assertElementByContentDesc(self.testcase,
                                          self.driver,
                                          self.logger,
-                                         SPCDPC.text_tv_coupon_details,
+                                         itemtext,
                                          10)
 
     def clickOnFreeOfChargeBtn(self):

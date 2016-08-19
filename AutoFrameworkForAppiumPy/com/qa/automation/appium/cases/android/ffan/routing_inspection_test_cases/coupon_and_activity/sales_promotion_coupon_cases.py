@@ -72,7 +72,7 @@ class SalesPromotionCouponCases(TestCase):
 
         # Click "优惠券" details, load "优惠券" details page
         salesPromotionPage.clickOnCouponDetails();
-        salesPromotionCouponDetailsPage.waitBySeconds(3);
+        salesPromotionCouponDetailsPage.waitBySeconds(5);
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn();
         salesPromotionCouponSuccessPage.validSelf();
         couponName = salesPromotionCouponSuccessPage.getCouponDetails();
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SalesPromotionCouponCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
+    filename = os.path.join(reportpath + 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
     runner.run(suite)

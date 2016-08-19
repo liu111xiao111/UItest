@@ -53,18 +53,28 @@ class SalesPromotionPage(SuperPage):
                                        SPPC.resource_id_tv_active_details_tv,
                                        10)
 
+    def clickOnCouponItem(self):
+        '''
+            usage : 点击优惠券详情
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SPPC.resource_id_tv_coupon_details_tv,
+                                       10)
+
     def clickOnCouponDetails(self):
         '''
             usage : 点击活动列表
         '''
-        # API().scrollToText(self.testcase,
-        #                    self.driver,
-        #                    self.logger,
-        #                    SPPC.text_special_store)
-        API().clickElementByXpath(self.testcase,
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           SPPC.test_special_store)
+        API().clickElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  SPPC.xpath_special_store,
+                                  SPPC.test_special_store,
                                   20)
 
     def getActiveListNumber(self):

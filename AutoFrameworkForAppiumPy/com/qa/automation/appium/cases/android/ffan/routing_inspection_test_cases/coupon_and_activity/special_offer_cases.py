@@ -15,10 +15,13 @@ from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.android.ffan.activity_details_page import ActivityDetailsPage
-from com.qa.automation.appium.pages.android.ffan.coupon_details_page import CouponDetailsPage
+#from com.qa.automation.appium.pages.android.ffan.activity_details_page import ActivityDetailsPage
+#from com.qa.automation.appium.pages.android.ffan.coupon_details_page import CouponDetailsPage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.hui_life_page import HuiLifePage
+#from com.qa.automation.appium.pages.android.ffan.hui_life_page import HuiLifePage
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_active_details_page import SalesPromotionActiveDetailsPage
+from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
@@ -49,10 +52,16 @@ class SpecialOfferCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
+        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        salesPromotionActiveDetailsPage = SalesPromotionActiveDetailsPage(self, self.driver, self.logger)
+        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSmartLife()
+        #dashboardPage.clickOnSmartLife()
+        dashboardPage.clickOnSalesPromotion()
+        salesPromotionPage.validSelf()
+        activeListItemName = salesPromotionPage.getItemName()
 
-        huiLifePage = HuiLifePage(self, self.driver, self.logger)
+        '''huiLifePage = HuiLifePage(self, self.driver, self.logger)
         huiLifePage.validSelf()
         huiLifePage.clickOnActivity()
         huiLifePage.clickOnSpecificActivity()
@@ -67,14 +76,25 @@ class SpecialOfferCases(TestCase):
 
         couponDetailsPage = CouponDetailsPage(self, self.driver, self.logger)
         couponDetailsPage.validSelf()
-        activityDetailsPage.clickBackKey()
+        activityDetailsPage.clickBackKey()'''
+        salesPromotionPage.clickOnActiveDetails()
+        salesPromotionActiveDetailsPage.waitBySeconds(2)
+        salesPromotionActiveDetailsPage.validSelf(activeListItemName)
+        salesPromotionActiveDetailsPage.clickBackKey()
+
+        salesPromotionPage.clickOnCouponTab()
+        salesPromotionPage.waitBySeconds(2)
+        couponListItemName = salesPromotionPage.getItemName();
+        salesPromotionPage.clickOnCouponItem()
+        salesPromotionCouponDetailsPage.validSelf(couponListItemName)
+        salesPromotionCouponDetailsPage.clickBackKey()
 
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SpecialOfferCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
+    filename = os.path.join(reportpath + 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
     runner.run(suite)

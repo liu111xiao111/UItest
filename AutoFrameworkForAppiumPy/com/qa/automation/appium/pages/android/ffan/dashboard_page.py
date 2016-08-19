@@ -127,7 +127,7 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击优惠按钮
         '''
-        API().scrollToText(self.testcase,
+        '''API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
                            DPC.text_privilege_button)
@@ -135,7 +135,16 @@ class DashboardPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  DPC.text_privilege_button,
-                                 DPC.click_on_button_timeout)
+                                 DPC.click_on_button_timeout)'''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(6):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  DPC.xpath_sales,
+                                  DPC.click_on_button_timeout)
 
     def clickOnShoppingMall(self):
         '''
@@ -181,7 +190,7 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"优惠活动"
         '''
-        API().scrollToText(self.testcase,
+        '''API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
                            DPC.text_sales_promotion)
@@ -189,7 +198,16 @@ class DashboardPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  DPC.text_sales_promotion,
-                                 DPC.click_on_button_timeout)
+                                 DPC.click_on_button_timeout)'''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(6):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  DPC.xpath_sales,
+                                  DPC.click_on_button_timeout)
 
     def clickOnSales(self):
         '''
