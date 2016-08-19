@@ -56,16 +56,17 @@ class SquareIndoorMapCases(TestCase):
         indoormapPage = SquareIndoorMapPage(self, self.driver, self.logger)
 
         # Load square page
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        squarePage.validSelf()
 
         # Click "室内地图", cancle bluetooth setting, load "室内地图" page.
-        squarePage.clicOnIndoorMap();
+        squarePage.clicOnIndoorMap()
         locationBluetoothPage.clickOnCancleBtn()
-        indoormapPage.validSelf();
-        indoormapPage.clickOnFoodMap();
-        indoormapPage.validSelfFood();
+        indoormapPage.validSelf()
+        indoormapPage.clickOnSwitchMap()
+        indoormapPage.clickOnFoodMap()
+        indoormapPage.validSelfFood()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)

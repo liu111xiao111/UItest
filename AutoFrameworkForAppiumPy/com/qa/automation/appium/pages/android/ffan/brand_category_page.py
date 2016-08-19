@@ -37,11 +37,11 @@ class BrandCategoryPage(SuperPage):
         '''
         usage : 点击品牌详情
         ''' 
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       BCPC.resource_id_tv_brand_details_tv,
-                                       BCPC.click_view_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.xpath_tv_brand_details_tv,
+                                  BCPC.click_view_timeout)
 
     def clickOnRecommendDetails(self):
         '''
@@ -61,55 +61,76 @@ class BrandCategoryPage(SuperPage):
                                        BCPC.resource_id_tv_recommend_details_tv,
                                        BCPC.click_view_timeout)
 
+    def clickOnWomenFasion(self):
+        '''
+        usage : 点击女装
+        '''
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.xpath_women_fasion,
+                                  BCPC.click_view_timeout)
+
     def clickOnMenFasion(self):
         '''
         usage : 点击男装
         '''
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 BCPC.text_men_fasion,
-                                 BCPC.click_view_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.xpath_men_fasion,
+                                  BCPC.click_view_timeout)
 
     def clickOnCatering(self):
         '''
         usage : 点击餐饮
         '''
-        API().clickElementByText(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 BCPC.text_catering,
+                                 BCPC.xpath_catering,
                                  BCPC.click_view_timeout)
 
     def clickOnLife(self):
         '''
         usage : 点击生活
         '''
-        API().clickElementByText(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 BCPC.text_life,
+                                 BCPC.xpath_life,
                                  BCPC.click_view_timeout)
 
     def clickOnSports(self):
         '''
         usage : 点击运动
         '''
-        API().clickElementByText(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 BCPC.text_sports,
+                                 BCPC.xpath_sports,
                                  BCPC.click_view_timeout)
 
     def clickOnCompetitiveProducts(self):
         '''
         usage : 点击精品
         '''
-        API().clickElementByText(self.testcase,
+        API().clickElementByXpath(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 BCPC.text_competitive_products,
+                                 BCPC.xpath_competitive_products,
                                  BCPC.click_view_timeout)
+
+    def validSelfWomenFasion(self):
+        '''
+        usage : 验证女装
+        '''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_women_fasion,
+                                  BCPC.assert_view_timeout)
+
 
     def validSelfMenFasion(self):
         '''

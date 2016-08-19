@@ -12,6 +12,8 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.android.ffan.parking_category_page import ParkingCategoryPage;
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_page import MyFfanMyParkingPaymentPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_more_page import MyFfanMyParkingPaymentMorePage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_unbunding_page import MyFfanMyParkingPaymentUnbundingPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_details_page import MyFfanMyParkingPaymentDetailsPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -54,6 +56,8 @@ class ParkingBindingsCatergoryCases(TestCase):
         parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(testcase = self,driver = self.driver,logger = self.logger)
 
         # Load parking page
         dashboardPage.validSelf();
@@ -68,6 +72,10 @@ class ParkingBindingsCatergoryCases(TestCase):
         parkingPaymentPage.inputVIN();
         parkingPaymentPage.clickOnNextBtn();
         parkingPaymentDetailsPage.validSelf();
+        parkingPaymentDetailsPage.clickOnMore();
+        parkingPaymentMorePage.clickOnUnbundingBtn();
+        parkingPaymentUnbundingPage.clickOnUnbundingBtn();
+        parkingPaymentPage.validSelf();
 
 
 if __name__ == "__main__":

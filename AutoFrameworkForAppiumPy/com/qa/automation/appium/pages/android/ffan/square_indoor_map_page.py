@@ -20,8 +20,18 @@ class SquareIndoorMapPage(SuperPage):
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SIMPC.resource_id_indoor_map,
+                                        SIMPC.resource_id_map,
                                         18)
+
+    def clickOnSwitchMap(self):
+        '''
+        usage : 点击 "选择地图"
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SIMPC.resource_id_map,
+                                       10)
 
     def clickOnFoodMap(self):
         '''
@@ -40,5 +50,5 @@ class SquareIndoorMapPage(SuperPage):
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SIMPC.resource_id_food_map,
+                                        SIMPC.resource_id_food_detail,
                                         18)

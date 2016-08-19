@@ -58,13 +58,11 @@ class FeiFanCardBillCases(TestCase):
 
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
-        '''for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
+        for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
             feifanCardBillPage.clickOnFilter()
             feifanCardBillPage.clickOnSubFilterByText(tempText)
             feifanCardBillPage.validSubFilterByText(tempText)
         feifanCardBillPage.clickBackKey()
-
-        feifanCardPage.validSelf()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardBillCases)

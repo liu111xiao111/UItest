@@ -17,7 +17,7 @@ class FamousDetailsCategoryPage(SuperPage):
         '''
         usage : 验证推荐详情页
         '''
-        texts = [FDCPC.text_dashboardpage, FDCPC.text_goods, FDCPC.text_store]
+        texts = [FDCPC.text_dashboardpage, FDCPC.text_store]
         API().assertElementsByTexts(self.testcase,
                                     self.driver,
                                     self.logger,

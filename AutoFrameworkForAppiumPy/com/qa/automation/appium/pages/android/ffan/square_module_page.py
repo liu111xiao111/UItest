@@ -17,16 +17,16 @@ class SquareModulePage(SuperPage):
         '''
         usage : 进入广场模块，检查是否加载出来
         '''
-        tempWidth = API().getWidthOfDevice(self.driver, self.logger)
-        tempHight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(10):
-            API().scroll(self.driver, self.logger,
-                         tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
-
-        API().scrollToText(self.testcase,
-                           self.driver,
-                           self.logger,
-                           SMPC.text_find_store)
+        # tempWidth = API().getWidthOfDevice(self.driver, self.logger)
+        # tempHight = API().getHeightOfDevice(self.driver, self.logger)
+        # for _ in range(10):
+        #     API().scroll(self.driver, self.logger,
+        #                  tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
+        #
+        # API().scrollToText(self.testcase,
+        #                    self.driver,
+        #                    self.logger,
+        #                    SMPC.text_find_store)
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
