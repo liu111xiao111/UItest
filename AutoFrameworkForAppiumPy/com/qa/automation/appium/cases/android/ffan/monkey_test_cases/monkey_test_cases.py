@@ -81,8 +81,8 @@ class MonkeyTestCases(TestCase):
         p = pexpect.spawn('%sadb shell' % self.resourcesDirectory)
         p.expect(r'^shell@', timeout=20)
         p.sendline('monkey -p %s --ignore-crashes --ignore-timeouts \
-                --ignore-security-exceptions --pct-touch 90 --pct-motion 4 \
-                --throttle 300 --monitor-native-crashes -v -v -v 130000 > %s &' %(appPackage_ffan, monkeyLogFile))
+                --ignore-security-exceptions --throttle 300 --monitor-native-crashes \
+                -v -v -v 200000 > %s &' %(appPackage_ffan, monkeyLogFile))
         p.expect(r'shell@', timeout=20)
         p.close()
 
