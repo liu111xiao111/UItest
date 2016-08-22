@@ -29,15 +29,11 @@ class MonkeyTestCases(TestCase):
 
     def setUp(self):
         global reportPath
-        self.monkeyLogName = 'Ios_monkey.log'
         self.reportPath = reportPath
-        self.resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                                os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
+        self.monkeyLogName = 'Ios_monkey.log'
 
     def test_case(self):
         self._monkeyTest()
-
-        self._getInstrumentsLog()
 
         # monkey测试结果收集与统计
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
@@ -45,7 +41,7 @@ class MonkeyTestCases(TestCase):
         f = open(monkeyLogFile)
         line = f.readline()
         while line:
-            if line.find("// CRASH") != -1:
+            if line.find("crash report") != -1:
                 crashNumber += 1
             line = f.readline()
         f.close()
@@ -55,14 +51,9 @@ class MonkeyTestCases(TestCase):
 
     def _monkeyTest(self):
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
-        command = "instruments -w %s -t %sAutomation.tracetemplate com.dianshang.wanhui \
-                    -e UIASCRIPT %sUIAutoMonkey.js > %s" \
-                    % (IDC.udid, self.resourcesDirectory, self.resourcesDirectory, monkeyLogFile)
+        command = "smart_monkey -a %s -w %s -d %s --drop-useless-img --detail-count 20 -t 16200 > %s" \
+                  % (IDC.bundleId, IDC.udid, self.reportPath, monkeyLogFile)
 
-        os.system(command)
-
-    def _getInstrumentsLog(self):
-        command = 'mv instruments* %s' % self.reportPath
         os.system(command)
 
 
@@ -105,11 +96,10 @@ def parse_command():
 if __name__ == "__main__":
     parse_command()
     mkLogDir()
-
     # HtmlTestRunner工具, 生成html测试结果报告
     suite = TestLoader().loadTestsFromTestCase(MonkeyTestCases)
     filename = os.path.join(reportPath, 'Feifan_ios_monkey_test_report.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_ios_monkey_test_report',
-                                           description='Result for test')
+                                           description = 'Result for test')
     runner.run(suite)
