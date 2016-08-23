@@ -11,7 +11,7 @@ from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 appPackage_meituan = 'com.sankuai.meituan'
 appPackage_dazhong = 'com.dianping.v1'
 appPackage_miaojie = 'com.taobao.shoppingstreets'
-now = time.strftime('%Y%m%d%H%M%S')
+
 resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
                                 os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
 
@@ -23,47 +23,30 @@ class FpsPerformanceTestCases(TestCase):
     '''
 
     def my001(self, logName):
-        #print(2)
         n = 0
         f = open(logName,"r")
+        time.sleep(1)
         mya = []
         lines = f.readlines()#读取全部内容[0-9]*
-        print("ddd")
-        print(lines)
         for line in lines:
             try:
-                print("gggg")
                 print(line)
-                repr(line)
-                print("AAAAAA")
-                print(re.findall(r'[0-9]+.[0-9]+',line))
-                print("BBBBB")
-                #a,b,c = re.findall(r'[0-9]+.[0-9]+',line)
-                a,b,c,d = re.findall(r'[0-9]+.[0-9]+',line)
-                print("hhh")
-                print(a)
-                print("iii")
-                a1 = float(a)
-                print("jjjj")
-                b1 = float(b)
-                c1 = float(c)
-                d1 = float(d)
-                myfps = a1
-                print("kkkk")
-                myfps = a1+b1+c1+d1
-                mya.append(myfps)
-                print("llll")
-                print(a1)
-                print(b1)
-                print(c1)
-                print("ccc")
-                print(mya)
+                if "View hierarchy:" in line:
+                    break
+                else:
+                    repr(line)
+                    print(re.findall(r'[0-9]+.[0-9]+',line))
+                    a,b,c = re.findall(r'[0-9]+.[0-9]+',line)
+                    a1 = float(a)
+                    b1 = float(b)
+                    c1 = float(c)
+                    myfps = a1+b1+c1
+                    mya.append(myfps)
+                    print(mya)
             except Exception:
                 pass
         j = len(mya)
-        print("aaa")
-        print(j)
-        for i in range(j-1):
+        '''for i in range(j-1):
             n = mya[i]+n
             print("bbbbbb")
             print(n)
@@ -82,24 +65,36 @@ class FpsPerformanceTestCases(TestCase):
         n1 = (j-1)/2
         print("eeee")
         print(j)
-        print(n1)
+        print(n1)'''
         f111 = open(r'FPS_performance_log.txt','a+')
-        f111.write(str(n1)+"\n")
+        for i in range(j):
+            #f111.write(u"\n完整显示一帧时间: " + str(mya[i]) + "\n")
+            f111.write("1 frame displayed time: " + str(mya[i]) + "ms\n")
+            n = mya[i] + n
+        if j != 0:
+            m = n/j
+            f111.write("\n1 Frame Average Time: " + str(m) + "ms\n")
+            if m > 16:
+                f111.write("1 Frame Average Time > 16ms!\n\n")
+            else:
+                f111.write("1 Frame Average Time < 16ms!\n\n")
+        time.sleep(1)
         f111.close()
         print(u"写入完成等待")
     def my002(self):#飞凡
         time.sleep(3)
         print(u"抓取数据")
+        now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_ffan, now)
         f1 = open(logName, "a")
         cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_ffan)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
-        pipe.stdout
+        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1).stdout
         f1.close()
         return logName
     def my003(self):
         time.sleep(3)
         print(u"抓取数据")
+        now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_meituan, now)
         f1 = open(logName, "a")
         cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_meituan)
@@ -110,6 +105,7 @@ class FpsPerformanceTestCases(TestCase):
     def my004(self):#大众点评
         time.sleep(3)
         print(u"抓取数据")
+        now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_dazhong, now)
         f1 = open(logName, "a")
         cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_dazhong)
@@ -120,6 +116,7 @@ class FpsPerformanceTestCases(TestCase):
     def my005(self):#喵街
         time.sleep(3)
         print(u"抓取数据")
+        now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_miaojie, now)
         f1 = open(logName, "a")
         cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_miaojie)

@@ -17,14 +17,14 @@ class WarmBootTimePerformanceTestCases(TestCase):
     '''
 
     def getWarmBootTime(self):
-    
+
         print("Start the WarmBoot test, please open the file until test complete")
         bootTime = "am start -W " + appPackage_ffan + "/" + appActivity_ffan + " | grep TotalTime"
         cmdam = "%sadb shell \"%s\"" % (resourcesDirectory, bootTime)
         keycode = "keyevent KEYCODE_BACK"
         cmdBack = "%sadb shell input %s" % (resourcesDirectory, keycode)
         f1 = open("WarmBootTime_" + appPackage_ffan + "_" + now + ".txt", "a")
-        for x in range(0,10):
+        for _ in range(0,10):
             os.system(cmdBack)
             time.sleep(0.3)
             os.system(cmdBack)
@@ -56,5 +56,3 @@ class WarmBootTimePerformanceTestCases(TestCase):
         time.sleep(1)
         f.close
         print("getWarmBootTime Test complete, go to " + logName + " and see the details")
-
-

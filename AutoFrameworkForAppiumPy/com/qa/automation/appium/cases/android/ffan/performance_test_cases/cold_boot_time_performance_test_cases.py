@@ -24,7 +24,7 @@ class ColdBootTimePerformanceTestCases(TestCase):
         kill = "am force-stop " + appPackage_ffan
         cmdKill = "%sadb shell \"%s\"" % (resourcesDirectory, kill)
         f1 = open("ColdBootTime_" + appPackage_ffan + "_" + now + ".txt", "a")
-        for x in range(0,10):
+        for _ in range(0,10):
             os.system(cmdKill)
             time.sleep(10)
             pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)
@@ -53,7 +53,4 @@ class ColdBootTimePerformanceTestCases(TestCase):
         f.write("Average Time: " + str(averageTime))
         time.sleep(1)
         f.close
-
         print("getColdBootTime Test complete, go to " + logName + " and see the details")
-
-

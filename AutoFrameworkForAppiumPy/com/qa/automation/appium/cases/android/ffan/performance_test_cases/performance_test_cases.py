@@ -43,5 +43,3 @@ class PerformanceTestCases(TestCase):
             performanceTest()
         else:
             print("选择不在性能测试范围内！")
-
-

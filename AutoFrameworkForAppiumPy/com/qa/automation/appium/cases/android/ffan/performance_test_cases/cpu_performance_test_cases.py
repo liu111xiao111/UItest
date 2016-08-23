@@ -36,14 +36,14 @@ class CpuPerformanceTestCases(TestCase):
         cpu = "dumpsys cpuinfo | grep " + pid
         cmdcpu = "%sadb shell \"%s\"" % (resourcesDirectory, cpu)
         f1 = open("CPU_" + appPackage_ffan + "_" + now + ".txt", "a")
-    
-        for x in range(0, 120):
+
+        for _ in range(0, 120):
         #while executeStatus: 
             pipe = subprocess.Popen(cmdcpu, shell=True, stdout = f1)
             pipe.stdout
             time.sleep(1)
             #get executeStatus
-    
+
         f1.close()
         f2 = open("CPU_" + appPackage_ffan + "_" + now + ".txt", "r")
         totalcpu = []
@@ -63,6 +63,3 @@ class CpuPerformanceTestCases(TestCase):
             time.sleep(1)
             f.close
         print("getCPU Test complete, go to " + logName + " and see the details")
-
-
-#getCPU()
