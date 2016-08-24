@@ -5,6 +5,7 @@ from com.qa.automation.appium.cases.android.ffan.performance_test_cases.memory_p
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.tcp_tx_rx_performance_test_cases import TcpTxRxPerformanceTestCases
 
 
 class PerformanceTestCases(TestCase):
@@ -26,6 +27,7 @@ class PerformanceTestCases(TestCase):
         print("App热启动时间：           3")
         print("App冷启动时间：           4")
         print("流畅度情况：              5")
+        print("网络上行速率:             6")
         performanceTestNo = input(u"\n请输入性能测试序号： ")
         print("*****************************\n")
         cpuStatus = CpuPerformanceTestCases()
@@ -33,11 +35,13 @@ class PerformanceTestCases(TestCase):
         warmBootTime = WarmBootTimePerformanceTestCases()
         coldBootTime = ColdBootTimePerformanceTestCases()
         fpsStatus = FpsPerformanceTestCases()
+        tcpTxRx = TcpTxRxPerformanceTestCases()
         dicts = {1: cpuStatus.getCPU,
                  2: memoryStatus.getMemory,
                  3: warmBootTime.getWarmBootTime,
                  4: coldBootTime.getColdBootTime,
-                 5: fpsStatus.getFps}
+                 5: fpsStatus.getFps,
+                 6: tcpTxRx.getTcpTxRx}
         if int(performanceTestNo) in dicts.keys():
             performanceTest = dicts.get(int(performanceTestNo))
             performanceTest()

@@ -30,19 +30,16 @@ class FpsPerformanceTestCases(TestCase):
         lines = f.readlines()#读取全部内容[0-9]*
         for line in lines:
             try:
-                print(line)
                 if "View hierarchy:" in line:
                     break
                 else:
                     repr(line)
-                    print(re.findall(r'[0-9]+.[0-9]+',line))
                     a,b,c = re.findall(r'[0-9]+.[0-9]+',line)
                     a1 = float(a)
                     b1 = float(b)
                     c1 = float(c)
                     myfps = a1+b1+c1
                     mya.append(myfps)
-                    print(mya)
             except Exception:
                 pass
         j = len(mya)
@@ -80,20 +77,21 @@ class FpsPerformanceTestCases(TestCase):
                 f111.write("1 Frame Average Time < 16ms!\n\n")
         time.sleep(1)
         f111.close()
-        print(u"写入完成等待")
+        print(u"写入完成等待...")
     def my002(self):#飞凡
         time.sleep(3)
-        print(u"抓取数据")
+        print(u"\n开始抓取数据...")
         now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_ffan, now)
         f1 = open(logName, "a")
         cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_ffan)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1).stdout
+        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
+        pipe.stdout
         f1.close()
         return logName
     def my003(self):
         time.sleep(3)
-        print(u"抓取数据")
+        print(u"\n开始抓取数据...")
         now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_meituan, now)
         f1 = open(logName, "a")
@@ -104,7 +102,7 @@ class FpsPerformanceTestCases(TestCase):
         return logName
     def my004(self):#大众点评
         time.sleep(3)
-        print(u"抓取数据")
+        print(u"\n开始抓取数据...")
         now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_dazhong, now)
         f1 = open(logName, "a")
@@ -115,7 +113,7 @@ class FpsPerformanceTestCases(TestCase):
         return logName
     def my005(self):#喵街
         time.sleep(3)
-        print(u"抓取数据")
+        print(u"\n开始抓取数据...")
         now = time.strftime('%Y%m%d%H%M%S')
         logName = "FPS_%s_%s.txt" % (appPackage_miaojie, now)
         f1 = open(logName, "a")
@@ -135,13 +133,11 @@ class FpsPerformanceTestCases(TestCase):
             pass
         i = 1
         #m = raw_input(u"开始选择")
-        m = input(u"开始选择")
+        m = input(u"开始选择 ")
         if m == "1":
             while i<2:
                 logName = self.my002()
                 self.my001(logName)
-                print("fff")
-                print(i)
         elif m == "2":
             while i<2:
                 logName = self.my003()
