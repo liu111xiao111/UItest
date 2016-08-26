@@ -60,29 +60,29 @@ class ParkingBindingsCatergoryCases(TestCase):
         parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(testcase = self,driver = self.driver,logger = self.logger)
 
         # Load parking page
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnParkingCategory()
-        parkingPage.validSelf();
+        parkingPage.validSelf()
 
         # Click "停车交费"， load parking payment.
-        parkingPage.clickOnParkingPayment();
-        parkingPaymentPage.validSelf();
-        
-        # Bunding VIN
-        parkingPaymentPage.inputVIN();
-        parkingPaymentPage.clickOnNextBtn();
-        parkingPaymentDetailsPage.validSelf();
-        parkingPaymentDetailsPage.clickOnMore();
-        parkingPaymentMorePage.clickOnUnbundingBtn();
-        parkingPaymentUnbundingPage.clickOnUnbundingBtn();
-        parkingPaymentPage.validSelf();
+        parkingPage.clickOnParkingPayment()
+        parkingPaymentPage.validSelf()
+
+        # Binding&Bunding VIN
+        parkingPaymentPage.inputVIN()
+        parkingPaymentPage.clickOnNextBtn()
+        parkingPaymentDetailsPage.validSelf()
+        parkingPaymentDetailsPage.clickOnMore()
+        parkingPaymentMorePage.clickOnUnbundingBtn()
+        parkingPaymentUnbundingPage.clickOnUnbundingBtn()
+        parkingPaymentPage.validSelf()
 
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ParkingBindingsCatergoryCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'
+    filename = os.path.join(reportpath + 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                            description='Result for test')

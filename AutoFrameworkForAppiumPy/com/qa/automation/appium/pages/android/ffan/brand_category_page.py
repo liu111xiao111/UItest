@@ -52,7 +52,7 @@ class BrandCategoryPage(SuperPage):
         API().scroll(self.driver, 
                      self.logger,
                      tempWidth / 2,
-                     tempHight / 2,
+                     4 * tempHight / 5,
                      tempWidth / 2,
                      tempHight / 3)
         API().clickElementByResourceId(self.testcase,

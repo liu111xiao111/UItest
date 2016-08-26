@@ -78,7 +78,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareRecommendCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath + 'food-test_' + now + '.html')
+    filename = os.path.join(reportpath + 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
     runner.run(suite)

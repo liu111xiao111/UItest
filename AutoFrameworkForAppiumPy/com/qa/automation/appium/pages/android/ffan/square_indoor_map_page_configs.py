@@ -2,7 +2,7 @@
 
 
 class SquareIndoorMapPageConfigs():
-    resource_id_map = "com.wanda.app.wanhui:id/map_mode_switcher"
+    resource_id_map = "com.wanda.app.wanhui:id/map_view"
     # "室内地图"
     resource_id_indoor_map = "com.wanda.app.wanhui:id/indoor"
     # "美食地图"

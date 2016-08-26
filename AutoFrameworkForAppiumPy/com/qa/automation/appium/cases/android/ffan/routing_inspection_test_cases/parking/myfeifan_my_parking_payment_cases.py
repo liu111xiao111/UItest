@@ -59,7 +59,7 @@ class MyfeifanMyParkingPaymentCases(TestCase):
         parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(self, self.driver, self.logger)
         parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(self, self.driver, self.logger)
 
-        # Click "我的排队"， load "我的排队" page.
+        # Click "停车交费"， load "我的排队" page.
         dashboardPage.validSelf();
         dashboardPage.clickOnMy();
         myFfanPage.validSelf();

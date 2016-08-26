@@ -67,10 +67,10 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 点击活动列表
         '''
-        API().scrollToText(self.testcase,
+        '''API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
-                           SPPC.test_special_store)
+                           SPPC.test_special_store)'''
         API().clickElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -119,3 +119,14 @@ class SalesPromotionPage(SuperPage):
                                         self.logger,
                                         SPPC.resource_id_tv_coupon_tv,
                                         10)
+
+    def getItemNameByXpath(self):
+        '''
+        usage : 获得活动标题名称
+        '''
+        itemName = API().getTextByXpath(self.testcase,
+                                        self.driver,
+                                        self.logger, 
+                                        SPPC.xpath_special_item,
+                                        10)
+        return itemName

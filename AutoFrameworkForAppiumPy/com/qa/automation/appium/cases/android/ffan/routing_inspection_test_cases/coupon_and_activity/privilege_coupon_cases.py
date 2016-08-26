@@ -64,10 +64,12 @@ class PrivilegeCouponCases(TestCase):
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
         salesPromotionPage.waitBySeconds(5)
+        couponListItemName = salesPromotionPage.getItemNameByXpath()
         salesPromotionPage.clickOnCouponDetails()
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
-        salesPromotionCouponDetailsPage.validSelf()
+        salesPromotionCouponDetailsPage.waitBySeconds(2)
+        salesPromotionCouponDetailsPage.validSelf(couponListItemName)
         salesPromotionCouponDetailsPage.waitBySeconds(5)
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
 
@@ -76,7 +78,7 @@ class PrivilegeCouponCases(TestCase):
         TempText = salesPromotionCouponSuccessPage.getCouponDetails()
         salesPromotionCouponSuccessPage.clickBackKey()
 
-        salesPromotionCouponDetailsPage.validSelf()
+        salesPromotionCouponDetailsPage.validSelf(couponListItemName)
         salesPromotionCouponDetailsPage.clickBackKey()
 
         salesPromotionPage.validSelf()
