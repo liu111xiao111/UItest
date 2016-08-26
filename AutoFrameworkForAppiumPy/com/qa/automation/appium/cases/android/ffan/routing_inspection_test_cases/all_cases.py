@@ -38,7 +38,7 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.f
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.foods.square_food_cases import SquareFoodCases
 
-from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.foods.square_queue_cases import SquareLefuPayCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.foods.square_queue_cases import SquareQueueCases
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.goods.brand_famous_category_cases import BrandFamousCatergoryCases
 
@@ -98,10 +98,10 @@ if __name__ == "__main__":
 #     suite.addTest(SpecialOfferCases("test_case")) ### 慧生活没有活动和优惠tab了，delete case
 
     suite.addTest(SquareGeneralCouponCases("test_case"))
-    suite.addTest(SquareRecommendCases("test_case"))
+    # suite.addTest(SquareRecommendCases("test_case"))   ## 达人推荐功能移除
     suite.addTest(FoodCases("test_case"))
     suite.addTest(SquareFoodCases("test_case"))
-    suite.addTest(SquareLefuPayCases("test_case"))
+    suite.addTest(SquareQueueCases("test_case"))
     suite.addTest(BrandFamousCatergoryCases("test_case"))
     suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))

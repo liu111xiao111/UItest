@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+import logging
+
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.android.common.super_page import SuperPage
 from com.qa.automation.appium.pages.android.ffan.hui_life_page_configs import HuiLifePageConfigs as HLPC
@@ -357,7 +359,7 @@ class HuiLifePage(SuperPage):
         usage: 点击一个控件，并验证是否点击正确。
         '''
 
-        print("KEYWORDS: %s" % validValue)
+        logging.info("KEYWORDS: %s" % validValue)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   viewXpath, HLPC.click_on_button_timeout)
         API().waitBySeconds(10)

@@ -2,6 +2,7 @@
 
 import os
 import time
+import logging
 from unittest import TestCase
 from unittest import TestLoader
 
@@ -41,7 +42,7 @@ class SwitchCityCases(TestCase):
     def test_case_step_1(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         for tempTimes in range(5):
-            print("ATTEMPTS: %d" % (tempTimes + 1))
+            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if switchCityPage.validSelf(False):
                 return
             switchCityPage.waitBySeconds(2)
@@ -57,7 +58,7 @@ class SwitchCityCases(TestCase):
     def test_case_step_2(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         for tempTimes in range(5):
-            print("ATTEMPTS: %d" % (tempTimes + 1))
+            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if switchCityPage.validSelf(False):
                 switchCityPage.cancelSwitchCity()
                 break

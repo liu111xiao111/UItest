@@ -2,6 +2,7 @@
 
 import os
 import time
+import logging
 import HTMLTestRunner
 
 from unittest import TestCase
@@ -68,7 +69,7 @@ class SquareMovieCases(TestCase):
         tempText = cinemaPage.clickOnBuyTicket()
 
         for tempTimes in range(3):
-            print ("ATTEMPTS: %d" % (tempTimes + 1))
+            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break

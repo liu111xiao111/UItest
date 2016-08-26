@@ -2,6 +2,7 @@
 
 import os
 import time
+import logging
 import HTMLTestRunner
 
 from unittest import TestCase
@@ -48,7 +49,7 @@ class VersionUpgradeCases(TestCase):
     def test_case(self):
         versionUpgradePage = VersionUpgradePage(self, self.driver, self.logger)
         for tempTimes in range(5):
-            print ("ATTEMPTS: %d" % (tempTimes + 1))
+            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if versionUpgradePage.validSelf(False):
                 versionUpgradePage.cancelVersionUpgrade()
                 break
