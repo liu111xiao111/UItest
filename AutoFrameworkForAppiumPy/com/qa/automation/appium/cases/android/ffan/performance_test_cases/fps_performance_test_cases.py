@@ -63,7 +63,8 @@ class FpsPerformanceTestCases(TestCase):
         print("eeee")
         print(j)
         print(n1)'''
-        f111 = open(r'FPS_performance_log.txt','a+')
+        f111 = open(logName,'a+')
+        f111.write("\nBelow is the FPS status: " + '\n')
         for i in range(j):
             #f111.write(u"\n完整显示一帧时间: " + str(mya[i]) + "\n")
             f111.write("1 frame displayed time: " + str(mya[i]) + "ms\n")

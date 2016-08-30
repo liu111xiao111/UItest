@@ -5,6 +5,9 @@ from com.qa.automation.appium.cases.android.ffan.performance_test_cases.memory_p
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.tx_performance_test_cases import TxPerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.rx_performance_test_cases import RxPerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.battery_temperature_performance_test_cases import BatteryTemperaturePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.tcp_tx_rx_performance_test_cases import TcpTxRxPerformanceTestCases
 
 
@@ -24,10 +27,13 @@ class PerformanceTestCases(TestCase):
         print("********** 性能测试：**********")
         print("CPU使用情况:             1")
         print("Memory使用情况:          2")
-        print("App热启动时间：           3")
-        print("App冷启动时间：           4")
+        print("APP热启动时间：           3")
+        print("APP冷启动时间：           4")
         print("流畅度情况：              5")
         print("网络上行速率:             6")
+        print("网络下行速率:             7")
+        print("电池温度情况:             8")
+        #print("电池电量情况:             9")
         performanceTestNo = input(u"\n请输入性能测试序号： ")
         print("*****************************\n")
         cpuStatus = CpuPerformanceTestCases()
@@ -35,13 +41,19 @@ class PerformanceTestCases(TestCase):
         warmBootTime = WarmBootTimePerformanceTestCases()
         coldBootTime = ColdBootTimePerformanceTestCases()
         fpsStatus = FpsPerformanceTestCases()
-        tcpTxRx = TcpTxRxPerformanceTestCases()
+        Tx = TxPerformanceTestCases()
+        Rx = RxPerformanceTestCases()
+        batteryTemperature = BatteryTemperaturePerformanceTestCases()
+        a = TcpTxRxPerformanceTestCases()
         dicts = {1: cpuStatus.getCPU,
                  2: memoryStatus.getMemory,
                  3: warmBootTime.getWarmBootTime,
                  4: coldBootTime.getColdBootTime,
                  5: fpsStatus.getFps,
-                 6: tcpTxRx.getTcpTxRx}
+                 6: Tx.getTxBytes,
+                 7: Rx.getRxBytes,
+                 8: batteryTemperature.getBatteryTemperature,
+                 0: a.getTcpTxRx}
         if int(performanceTestNo) in dicts.keys():
             performanceTest = dicts.get(int(performanceTestNo))
             performanceTest()

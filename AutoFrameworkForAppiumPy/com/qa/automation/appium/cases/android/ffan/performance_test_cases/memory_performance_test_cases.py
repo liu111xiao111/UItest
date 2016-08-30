@@ -40,7 +40,7 @@ class MemoryPerformanceTestCases(TestCase):
                 continue
         logName = "PSS_" + appPackage_ffan + "_" + now + ".txt"
         f = open(logName, "a")
-        f.write("Below is the memory(pss): " + '\n')
+        f.write("Below is the memory(pss):" + '\n')
         for i in range (len(totalHeapSize)):
             m = int(totalHeapSize[i])/1024
             f.write(str(m) + '\n')
