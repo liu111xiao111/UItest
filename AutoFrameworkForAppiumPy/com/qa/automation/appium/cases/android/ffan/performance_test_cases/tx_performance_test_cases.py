@@ -18,7 +18,7 @@ class TxPerformanceTestCases(TestCase):
     def getPid(self):
         now = time.strftime('%Y%m%d%H%M%S')
         pidFile = "pid_" + now + ".txt"
-        cmdpid = "%sadb shell ps | grep %s | awk '{print $2}' | head -n 1 > %s" % (resourcesDirectory, appPackage_ffan, pidFile)
+        cmdpid = "%sadb shell ps | grep ' %s\r' | awk '{print $2}' > %s" % (resourcesDirectory, appPackage_ffan, pidFile)
         os.system(cmdpid)
         f = open(pidFile)
         pid = f.readline()
@@ -100,4 +100,4 @@ class TxPerformanceTestCases(TestCase):
 
             print("\nNet Up Flow: " + str(currentTx) + "KB\n")
             time.sleep(1)
-        print("Net Up Flow Test complete, go to " + transmitData + " and see the details")
+        print("Net Up Flow Test complete, go to " + transmitData + " and see the details\n")

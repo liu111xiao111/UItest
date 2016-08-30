@@ -8,7 +8,6 @@ from com.qa.automation.appium.cases.android.ffan.performance_test_cases.fps_perf
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.tx_performance_test_cases import TxPerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.rx_performance_test_cases import RxPerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.battery_temperature_performance_test_cases import BatteryTemperaturePerformanceTestCases
-from com.qa.automation.appium.cases.android.ffan.performance_test_cases.tcp_tx_rx_performance_test_cases import TcpTxRxPerformanceTestCases
 
 
 class PerformanceTestCases(TestCase):
@@ -44,7 +43,6 @@ class PerformanceTestCases(TestCase):
         Tx = TxPerformanceTestCases()
         Rx = RxPerformanceTestCases()
         batteryTemperature = BatteryTemperaturePerformanceTestCases()
-        a = TcpTxRxPerformanceTestCases()
         dicts = {1: cpuStatus.getCPU,
                  2: memoryStatus.getMemory,
                  3: warmBootTime.getWarmBootTime,
@@ -52,8 +50,7 @@ class PerformanceTestCases(TestCase):
                  5: fpsStatus.getFps,
                  6: Tx.getTxBytes,
                  7: Rx.getRxBytes,
-                 8: batteryTemperature.getBatteryTemperature,
-                 0: a.getTcpTxRx}
+                 8: batteryTemperature.getBatteryTemperature}
         if int(performanceTestNo) in dicts.keys():
             performanceTest = dicts.get(int(performanceTestNo))
             performanceTest()

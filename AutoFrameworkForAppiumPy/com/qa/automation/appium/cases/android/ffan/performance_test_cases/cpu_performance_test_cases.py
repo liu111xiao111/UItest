@@ -19,7 +19,7 @@ class CpuPerformanceTestCases(TestCase):
     def getPid(self):
         #print("\nGet the PID by the package name")
         pidFile = "pid_" + now + ".txt"
-        cmdpid = "%sadb shell ps | grep %s | awk '{print $2}' | head -n 1 > %s" % (resourcesDirectory, appPackage_ffan, pidFile)
+        cmdpid = "%sadb shell ps | grep ' %s\r' | awk '{print $2}' > %s" % (resourcesDirectory, appPackage_ffan, pidFile)
         os.system(cmdpid)
         f = open(pidFile)
         pid = f.readline()
@@ -30,17 +30,17 @@ class CpuPerformanceTestCases(TestCase):
 
     def getCPU(self):
         #executeStatus = True
+        print("Start the CPU test, please run the app and keep operation until the Test complete")
         pid = self.getPid()
 
-        print("Start the CPU test, please run the app and keep operation until the Test complete")
         cpu = "dumpsys cpuinfo | grep " + pid
         cmdcpu = "%sadb shell \"%s\"" % (resourcesDirectory, cpu)
         f1 = open("CPU_" + appPackage_ffan + "_" + now + ".txt", "a")
-
         for _ in range(0, 120):
         #while executeStatus: 
             pipe = subprocess.Popen(cmdcpu, shell=True, stdout = f1)
             pipe.stdout
+            #os.system(cmdcpu)
             time.sleep(1)
             #get executeStatus
 
@@ -62,4 +62,4 @@ class CpuPerformanceTestCases(TestCase):
             f.write(totalcpu[i] + '\n')
             time.sleep(1)
             f.close
-        print("getCPU Test complete, go to " + logName + " and see the details")
+        print("getCPU Test complete, go to " + logName + " and see the details\n")

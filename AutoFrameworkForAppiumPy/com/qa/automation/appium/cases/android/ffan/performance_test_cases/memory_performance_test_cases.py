@@ -17,11 +17,9 @@ class MemoryPerformanceTestCases(TestCase):
     '''
 
     def getMemory(self):
-
         print("Start the Memory test, please run the app and keep operation until the Test complete")
         pss = "dumpsys meminfo " + appPackage_ffan + " | grep TOTAL"
         cmdpss = "%sadb shell \"%s\"" % (resourcesDirectory, pss)
-        #print(cmdpss)
         f1 = open("PSS_" + appPackage_ffan + "_" + now + ".txt", "a")
         for _ in range(0, 120):
             pipe = subprocess.Popen(cmdpss, shell=True, stdout = f1)
@@ -44,7 +42,6 @@ class MemoryPerformanceTestCases(TestCase):
         for i in range (len(totalHeapSize)):
             m = int(totalHeapSize[i])/1024
             f.write(str(m) + '\n')
-            #f.write(totalHeapSize[i] + '\n')
             time.sleep(1)
             f.close
         print("getMemory Test complete, go to " + logName + " and see the details\n")

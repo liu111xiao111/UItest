@@ -5,6 +5,7 @@ from unittest import TestCase
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 
+
 now = time.strftime('%Y%m%d%H%M%S')
 resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
                                 os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
@@ -17,7 +18,6 @@ class WarmBootTimePerformanceTestCases(TestCase):
     '''
 
     def getWarmBootTime(self):
-
         print("Start the WarmBoot test, please open the file until test complete")
         bootTime = "am start -W " + appPackage_ffan + "/" + appActivity_ffan + " | grep TotalTime"
         cmdam = "%sadb shell \"%s\"" % (resourcesDirectory, bootTime)
@@ -55,4 +55,4 @@ class WarmBootTimePerformanceTestCases(TestCase):
         f.write("Average Time: " + str(averageTime))
         time.sleep(1)
         f.close
-        print("getWarmBootTime Test complete, go to " + logName + " and see the details")
+        print("getWarmBootTime Test complete, go to " + logName + " and see the details\n")
