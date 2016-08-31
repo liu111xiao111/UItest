@@ -138,7 +138,7 @@ class DashboardPage(SuperPage):
                                  DPC.click_on_button_timeout)'''
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(6):
+        for _ in range(5):
             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
@@ -219,7 +219,7 @@ class DashboardPage(SuperPage):
         #                    DPC.text_sales)
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(6):
+        for _ in range(5):
             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
