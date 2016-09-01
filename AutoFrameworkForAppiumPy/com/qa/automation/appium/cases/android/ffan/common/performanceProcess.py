@@ -76,7 +76,7 @@ class PerformanceHandle:
             if (os.path.exists(txFilePath)):
                 self.txHandle(txFilePath)
 
-            self.createHtmlReport()
+            self.createHtmlReport(reportPath)
 
             self.removePerformanceFile(cpuFilePath)
             self.removePerformanceFile(memoryFilePath)
@@ -278,8 +278,9 @@ class PerformanceHandle:
 
         return performanceData
 
-    def createHtmlReport(self):
-        resultFile = open('test_performance_result.html', 'w+')
+    def createHtmlReport(self, reportPath):
+        report = os.path.join(reportPath, 'test_performance_result.html')
+        resultFile = open(report, 'w+')
         try:
             templateHtml = self.loadHtmlTemplate()
             cpuData = self.dataList['cpu']

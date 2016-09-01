@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Test Data</title>
+    <style type="text/css" media="screen">
+        body{font-family: verdana, arial, helvetica, sans-serif; font-size: 80%%; }
+        table{ font-size: 100%%; }
+        pre{ }
+        h1 {
+            font-size: 16pt;
+            color: gray;
+        }
+        .heading {
+            margin-top: 0ex;
+            margin-bottom: 1ex;
+        }
+        .heading .attribute {
+            margin-top: 1ex;
+            margin-bottom: 0;
+        }
+        .heading .description {
+            margin-top: 4ex;
+            margin-bottom: 6ex;
+        }
+        a.popup_link { }
+        a.popup_link:hover {
+            color: red;
+        }
+        .popup_window {
+            display: none;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            padding: 10px;
+            background-color: #E6E6D6;
+            font-family: "Lucida Console", "Courier New", Courier, monospace;
+            text-align: left;
+            font-size: 8pt;
+        }
+        #show_detail_line {
+            margin-top: 3ex;
+            margin-bottom: 1ex;
+        }
+        #result_table {
+            width: 80%%;
+            border-collapse: collapse;
+            border: 1px solid #777;
+        }
+        #header_row {
+            font-weight: bold;
+            color: white;
+            background-color: #777;
+        }
+        #result_table td {
+            border: 1px solid #777;
+            padding: 2px;
+        }
+        #total_row  { font-weight: bold; }
+        .passClass  { background-color: #6c6; }
+        .failClass  { background-color: #c60; }
+        .errorClass { background-color: #c00; }
+        .passCase   { color: #6c6; }
+        .failCase   { color: #c60; font-weight: bold; }
+        .errorCase  { color: #c00; font-weight: bold; }
+        .hiddenRow  { display: none; }
+        .testcase   { margin-left: 2em; }
+        #ending {}
+    </style>
+</head>
+<body>
+
+<div class='heading'>
+<h1>ffan_automation_test_report_performance</h1>
+<p class='attribute'><strong>Start Time:</strong> %s</p>
+<p class='attribute'><strong>End Time:</strong> %s</p>
+
+<h1>cpu</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>time</td>
+           <td>usage(%%)</td>
+           <td>time</td>
+           <td>usage(%%)</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>memory</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>time</td>
+           <td>usage(Mb)</td>
+           <td>time</td>
+           <td>usage(Mb)</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>FPS</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>date time</td>
+           <td>usage</td>
+           <td>date time</td>
+           <td>usage</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>cold boot time</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>times</td>
+           <td>boot times(ms)</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>warm boot time</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>times</td>
+           <td>boot times(ms)</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>network upstream rate</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>date time</td>
+           <td>usage(kb/s)</td>
+           <td>date time</td>
+           <td>usage(kb/s)</td>
+       </tr>
+       %s
+   </table>
+
+    <h1>network downstream rate</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>date time</td>
+           <td>usage(kb/s)</td>
+           <td>date time</td>
+           <td>usage(kb/s)</td>
+       </tr>
+       %s
+   </table>
+<div id='ending'>&nbsp;</div>
+</div>
+</body>
+</html>
