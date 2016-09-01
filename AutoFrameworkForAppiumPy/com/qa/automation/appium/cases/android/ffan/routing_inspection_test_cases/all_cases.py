@@ -3,6 +3,7 @@
 import sys,os
 
 import time
+import threading
 from unittest import TestCase
 from unittest import TestLoader
 
@@ -74,6 +75,20 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.p
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.dashboard_search_brand_cases import DashboardSearchBrandCases
 
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
+from com.qa.automation.appium.cases.android.ffan.common.performance import Performance
+from com.qa.automation.appium.cases.android.ffan.common.performanceProcess import PerformanceHandle
+
+
+def runPerformance(reportPath):
+    perf = Performance(reportPath)
+    while True:
+        perf.getCpu()
+        perf.getMemory()
+        perf.getTx()
+        perf.getRx()
+
 if __name__ == "__main__":
     build_num = sys.argv[1]
 
@@ -82,7 +97,7 @@ if __name__ == "__main__":
     reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
-    
+
     suite = TestSuite()
 
 
@@ -94,7 +109,7 @@ if __name__ == "__main__":
     suite.addTest(PrivilegeCouponCases("test_case"))  ###绑定“水云间满额赠礼活动”，强依赖特定数据
     suite.addTest(SalesPromotionActiveCases("test_case"))
     suite.addTest(SalesPromotionCouponCases("test_case"))
-    
+
 #     suite.addTest(SpecialOfferCases("test_case")) ### 慧生活没有活动和优惠tab了，delete case
 
     suite.addTest(SquareGeneralCouponCases("test_case"))
@@ -114,7 +129,7 @@ if __name__ == "__main__":
     suite.addTest(SquareParkingPaymentCases("test_case"))
     suite.addTest(FeiFanCardBillCases("test_case"))
     suite.addTest(FeiFanCardIntegralCases("test_case"))
-    
+
 #     suite.addTest(FeiFanCardOpenCases("test_case")) #新版本不再有这个入口，用例删除掉
 
     suite.addTest(LogoutCases("test_case"))
@@ -130,11 +145,22 @@ if __name__ == "__main__":
     suite.addTest(SquareSignOnCases("test_case"))
     suite.addTest(UpdateLoginPasswordCases("test_case"))
     suite.addTest(DashboardSearchBrandCases("test_case"))
-    
+
     now = time.strftime('%H_%M_%S')
-    
-    filename = reportpath + 'feifan_automation_test_report.html'
+
+    filename = os.path.join(reportpath, 'feifan_automation_test_report.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                            description='Result for test')
+
+    perfThread = threading.Thread(target=runPerformance, args=(reportpath,))
+    perfThread.setDaemon(True)
+    perfThread.start()
+    startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     runner.run(suite)
+
+    ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
+    WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
+    endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+
+    PerformanceHandle().Handle(startTime, endTime, reportpath)
