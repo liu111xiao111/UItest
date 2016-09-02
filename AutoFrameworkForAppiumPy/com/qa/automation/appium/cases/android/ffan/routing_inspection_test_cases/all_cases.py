@@ -3,6 +3,7 @@
 import sys,os
 
 import time
+import traceback
 import threading
 from unittest import TestCase
 from unittest import TestLoader
@@ -160,9 +161,13 @@ if __name__ == "__main__":
     startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     runner.run(suite)
 
-    ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
-    WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
-    FpsPerformanceTestCases().getFpsPerf(reportpath)
-    endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+    try:
+        ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
+        WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
+        FpsPerformanceTestCases().getFpsPerf(reportpath)
+    except:
+        raise traceback.format_exc()
+    finally:
+        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
 
-    PerformanceHandle().Handle(startTime, endTime, reportpath)
+        PerformanceHandle().Handle(startTime, endTime, reportpath)
