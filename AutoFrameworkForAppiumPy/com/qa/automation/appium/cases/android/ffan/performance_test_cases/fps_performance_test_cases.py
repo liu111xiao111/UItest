@@ -3,153 +3,128 @@
 import re
 import os
 import time
-import subprocess
-from unittest import TestCase
+from subprocess import Popen, PIPE
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.configs.driver_configs import deviceName_andr
+from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
+from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
+from com.qa.automation.appium.utility.logger import Logger
+
+class ParseError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
 
 
-appPackage_meituan = 'com.sankuai.meituan'
-appPackage_dazhong = 'com.dianping.v1'
-appPackage_miaojie = 'com.taobao.shoppingstreets'
-
-resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                                os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
-
-
-class FpsPerformanceTestCases(TestCase):
+class FpsPerformanceTestCases():
     '''
-    作者 刘涛
+    作者 宋波
     流畅度情况性能测试
     '''
+    def getFpsPerf(self, reportPath):
+        '''
+        获取fps draw性能信息
+        :param reportPath: 性能存储路径
+        :return: 无
+        '''
+        try:
+            self._setUp()
+            dashboardPage = DashboardPage(self, self.driver, self.logger)
+            tab_dict = {u'我的'  : dashboardPage.clickOnMy,
+                        u'爱逛街': dashboardPage.clickLikeShopping,
+                        u'惠生活': dashboardPage.clickOnSmartLife,
+                        u'飞凡通': dashboardPage.clickOnFeiFanCard,
+                        }
+            for key, clickFunc in tab_dict.items():
+                clickFunc()
+                self._clearLog()
+                time.sleep(30)
+                self._getFps(key, reportPath)
+        finally:
+            self._tearDown()
 
-    def my001(self, logName):
+    def _tearDown(self):
+        '''
+        释放appium client driver资源
+        :return: 无
+        '''
+        self.driver.quit()
+
+    def _setUp(self):
+        '''
+        初始化appium client driver, 跳出准备界面
+        :return: 无
+        '''
+        self.logger = Logger()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
+                                   driver_url).getDriver()
+        TestPrepare(self, self.driver, self.logger).prepare(False)
+
+    def _clearLog(self):
+        '''
+        清理fps和draw信息
+        :return: 无
+        '''
+        cmdFps = "adb shell dumpsys gfxinfo %s" % appPackage_ffan
+        Popen(cmdFps, shell=True, stdout=PIPE, stderr=PIPE)
+
+    def _getFps(self, tab, reportPath):
+        '''
+        获取获取fps和draw信息, 并保存生成日志文件
+        :return: 无
+        '''
+        cmdFps = "adb shell dumpsys gfxinfo %s" % appPackage_ffan
+        ret = Popen(cmdFps, shell=True, stdout=PIPE, stderr=PIPE)
+
+        fpsInfo, err = ret.communicate()
+        if err or not fpsInfo:
+            return
+
+        fpsInfo = fpsInfo.decode('utf-8')
+        draw, fps = self._parseFps(fpsInfo)
+
+        logName = "Fps_performance.txt"
+        logPath = os.path.join(reportPath, logName)
+        f = open(logPath, "a")
+        f.write("%s %s %s" % (tab, draw, fps) + "\n")
+        f.close()
+
+    def _parseFps(self, fpsInfo):
+        '''
+        解析Fps draw信息
+        :param fpsInfo: 系统信息
+        :return: draw and fps
+        '''
         n = 0
-        f = open(logName,"r")
-        time.sleep(1)
-        mya = []
-        lines = f.readlines()#读取全部内容[0-9]*
+        myFpss = []
+        myDraws = []
+        lines = fpsInfo.split('\n')
         for line in lines:
             try:
                 if "View hierarchy:" in line:
                     break
                 else:
-                    repr(line)
-                    a,b,c = re.findall(r'[0-9]+.[0-9]+',line)
-                    a1 = float(a)
-                    b1 = float(b)
-                    c1 = float(c)
-                    myfps = a1+b1+c1
-                    mya.append(myfps)
-            except Exception:
+                    draw, prepare, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
+                    draw = float(draw)
+                    prepare = float(prepare)
+                    process = float(process)
+                    execute = float(execute)
+                    mydraw = round(draw, 2)
+                    myfps = round(prepare + process + execute, 2)
+                    myFpss.append(myfps)
+                    myDraws.append(mydraw)
+            except Exception as e:
                 pass
-        j = len(mya)
-        '''for i in range(j-1):
-            n = mya[i]+n
-            print("bbbbbb")
-            print(n)
-            print("CCCCCCC")
-            print(i)
-            print(j)
-        if n <= 2000:
-            #print (j-1)/2,u"        使用时间",n,u"毫秒"
-            print((j-1)/2,u"        使用时间",n,u"毫秒")
-        else:
-            print(u"帧数超范")
-            n1 = "+2000"
-            f111 = open(r'FPS_performance_log.txt','a+')
-            f111.write(str(n1)+"\n")
-            f111.close()
-        n1 = (j-1)/2
-        print("eeee")
-        print(j)
-        print(n1)'''
-        f111 = open(logName,'a+')
-        f111.write("\nBelow is the FPS status: " + '\n')
-        for i in range(j):
-            #f111.write(u"\n完整显示一帧时间: " + str(mya[i]) + "\n")
-            f111.write("1 frame displayed time: " + str(mya[i]) + "ms\n")
-            n = mya[i] + n
-        if j != 0:
-            m = n/j
-            f111.write("\n1 Frame Average Time: " + str(m) + "ms\n")
-            if m > 16:
-                f111.write("1 Frame Average Time > 16ms!\n\n")
-            else:
-                f111.write("1 Frame Average Time < 16ms!\n\n")
-        time.sleep(1)
-        f111.close()
-        print(u"写入完成等待...")
-    def my002(self):#飞凡
-        time.sleep(3)
-        print(u"\n开始抓取数据...")
-        now = time.strftime('%Y%m%d%H%M%S')
-        logName = "FPS_%s_%s.txt" % (appPackage_ffan, now)
-        f1 = open(logName, "a")
-        cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_ffan)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
-        pipe.stdout
-        f1.close()
-        return logName
-    def my003(self):
-        time.sleep(3)
-        print(u"\n开始抓取数据...")
-        now = time.strftime('%Y%m%d%H%M%S')
-        logName = "FPS_%s_%s.txt" % (appPackage_meituan, now)
-        f1 = open(logName, "a")
-        cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_meituan)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
-        pipe.stdout
-        f1.close()
-        return logName
-    def my004(self):#大众点评
-        time.sleep(3)
-        print(u"\n开始抓取数据...")
-        now = time.strftime('%Y%m%d%H%M%S')
-        logName = "FPS_%s_%s.txt" % (appPackage_dazhong, now)
-        f1 = open(logName, "a")
-        cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_dazhong)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
-        pipe.stdout
-        f1.close()
-        return logName
-    def my005(self):#喵街
-        time.sleep(3)
-        print(u"\n开始抓取数据...")
-        now = time.strftime('%Y%m%d%H%M%S')
-        logName = "FPS_%s_%s.txt" % (appPackage_miaojie, now)
-        f1 = open(logName, "a")
-        cmdFps = "%sadb shell dumpsys gfxinfo %s" % (resourcesDirectory, appPackage_miaojie)
-        pipe = subprocess.Popen(cmdFps, shell=True, stdout = f1)
-        pipe.stdout
-        f1.close()
-        return logName
-    def getFps(self):
-        print(u"按1飞凡")
-        print(u"按2美团")
-        print(u"按3大众")
-        print(u"按4喵街")
-        try:
-            os.remove("FPS_performance_log.txt")
-        except Exception:
-            pass
-        i = 1
-        #m = raw_input(u"开始选择")
-        m = input(u"开始选择 ")
-        if m == "1":
-            while i<2:
-                logName = self.my002()
-                self.my001(logName)
-        elif m == "2":
-            while i<2:
-                logName = self.my003()
-                self.my001(logName)
-        elif m == "3":
-            while i<2:
-                logName = self.my004()
-                self.my001(logName)
-        elif m == "4":
-            while i<2:
-                logName = self.my005()
-                self.my001(logName)
-        else:
-            print(u"就不运行哈哈哈哈哈！！！！！！！")
+        if not len(myFpss) or not len(myDraws):
+            raise ParseError('Parse app draw and fps failed.')
+        AppDraw = round(sum(myDraws) / len(myDraws), 2)
+        AppFps = round(sum(myFpss) / len(myFpss), 2)
+        return AppDraw, AppFps

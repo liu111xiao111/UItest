@@ -79,6 +79,7 @@ from com.qa.automation.appium.cases.android.ffan.performance_test_cases.cold_boo
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
 from com.qa.automation.appium.cases.android.ffan.common.performance import Performance
 from com.qa.automation.appium.cases.android.ffan.common.performanceProcess import PerformanceHandle
+from com.qa.automation.appium.cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
 
 
 def runPerformance(reportPath):
@@ -161,6 +162,7 @@ if __name__ == "__main__":
 
     ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
     WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
+    FpsPerformanceTestCases().getFpsPerf(reportpath)
     endTime = time.strftime('%Y/%m/%d %H:%M:%S')
 
     PerformanceHandle().Handle(startTime, endTime, reportpath)

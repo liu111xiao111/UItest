@@ -5,6 +5,7 @@ Created on Aug 31, 2016
 '''
 
 import os
+import time
 
 class PerformanceHandle:
     def __init__(self):
@@ -161,7 +162,6 @@ class PerformanceHandle:
                 for line in performaceData:
                     value = str(line).split(':')
                     if(len(value) > 1):
-
                         rowContent = ("<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + int(value[1])
@@ -196,9 +196,15 @@ class PerformanceHandle:
 
     def fpsHandle(self, filePath):
         try:
+            htmlContent = ""
             if (filePath != ''):
                 performaceData = self.dataHandle(filePath)
-                self.dataList['fps'] = performaceData
+                for line in performaceData:
+                    value = str(line).split(' ')
+                    if(len(value) > 1):
+                        rowContent = ("<tr class='passClass'><td>%s</td><td>%s</td><td>%s</td></tr>" % (value[0], value[1], value[2]))
+                        htmlContent = htmlContent + rowContent
+                self.dataList['fps'] = htmlContent
         except Exception as e:
             print(str(e))
 
