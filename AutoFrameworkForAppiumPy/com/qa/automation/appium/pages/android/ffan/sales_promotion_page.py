@@ -63,13 +63,23 @@ class SalesPromotionPage(SuperPage):
                                        SPPC.resource_id_tv_coupon_details_tv,
                                        10)
 
+    def clickOnSquareCouponDetails(self):
+        '''
+            usage : 点击广场优惠券详情列表
+        '''
+        API().clickElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPPC.test_special_store,
+                                  20)
+
     def clickOnCouponDetails(self):
         '''
             usage : 点击活动列表
         '''
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(5):
+        for _ in range(6):
             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByText(self.testcase,
                                   self.driver,

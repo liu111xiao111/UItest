@@ -59,6 +59,7 @@ class ActivitySharingCases(TestCase):
         activityAndPrivilegeCouponPage.clickOnSpecificActivity()
 
         activityDetailsPage = ActivityDetailsPage(self, self.driver, self.logger)
+        activityDetailsPage.waitBySeconds(3)
         activityDetailsPage.validSelf()
         activityDetailsPage.clickOnSharing()
 

@@ -53,6 +53,7 @@ class SquareSignOnCases(TestCase):
         dashboardPage.clickOnSignOn()
 
         signOnPage = SignOnPage(self, self.driver, self.logger)
+        signOnPage.waitBySeconds(3)
         signOnPage.validSelf()
 
         if not signOnPage.validChickedInStatus(False):

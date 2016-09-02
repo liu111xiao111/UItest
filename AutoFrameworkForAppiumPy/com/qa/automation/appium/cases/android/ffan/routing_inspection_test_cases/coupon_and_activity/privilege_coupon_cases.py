@@ -72,7 +72,7 @@ class PrivilegeCouponCases(TestCase):
         salesPromotionPage.clickOnCouponTab()
         salesPromotionPage.waitBySeconds(5)
         couponListItemName = salesPromotionPage.getItemNameByXpath()
-        salesPromotionPage.clickOnCouponDetails()
+        salesPromotionPage.clickOnSquareCouponDetails()
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         salesPromotionCouponDetailsPage.waitBySeconds(2)

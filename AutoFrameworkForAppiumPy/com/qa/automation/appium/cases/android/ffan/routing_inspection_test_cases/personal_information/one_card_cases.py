@@ -63,6 +63,7 @@ class OneCardCases(TestCase):
         myFeiFanPage.clickOnMyFeiFanCard()
 
         myFeiFanCardPage = MyFeiFanCardPage(self, self.driver, self.logger)
+        myFeiFanCardPage.waitBySeconds(3)
         myFeiFanCardPage.validSelf()
         myFeiFanCardPage.clickOnTransactionRecord()
 
