@@ -66,7 +66,7 @@ class SalesPromotionActiveCases(TestCase):
         activeListItemName = salesPromotionPage.getItemName();
         # Click "活动", load "活动" details page
         salesPromotionPage.clickOnActiveDetails();
-        salesPromotionActiveDetailsPage.waitBySeconds(2);
+        salesPromotionActiveDetailsPage.waitBySeconds(10);
         salesPromotionActiveDetailsPage.validSelf(activeListItemName);
 
 

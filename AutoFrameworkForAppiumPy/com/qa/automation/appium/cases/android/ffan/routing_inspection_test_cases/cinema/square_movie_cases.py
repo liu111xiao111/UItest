@@ -23,6 +23,7 @@ from com.qa.automation.appium.pages.android.ffan.popup_page import PopupPage
 from com.qa.automation.appium.pages.android.ffan.popup_page import VerifyActivityKeywordsType
 from com.qa.automation.appium.pages.android.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
@@ -53,16 +54,22 @@ class SquareMovieCases(TestCase):
 
     def test_case(self):
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         popupPage = PopupPage(self , self.driver , self.logger)
         cinemaPage = CinemaPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
         squareModulePage.waitBySeconds(5)
+
         squareModulePage.clickOnMovie()
 
         cinemaPage.validSelf()

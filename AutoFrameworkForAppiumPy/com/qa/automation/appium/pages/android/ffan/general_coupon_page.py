@@ -27,8 +27,8 @@ class GeneralCouponPage(SuperPage):
         '''
         usage: 点击马上领取
         '''
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  GCPC.xpath_immediately_to_receive,
-                                  GCPC.click_on_button_timeout)
+        API().clickElementByContentDesc(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        GCPC.text_immediately_to_receive,
+                                        GCPC.click_on_button_timeout)

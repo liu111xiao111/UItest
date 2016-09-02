@@ -67,10 +67,10 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 点击活动列表
         '''
-        '''API().scrollToText(self.testcase,
-                           self.driver,
-                           self.logger,
-                           SPPC.test_special_store)'''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(5):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByText(self.testcase,
                                   self.driver,
                                   self.logger,

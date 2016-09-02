@@ -57,16 +57,29 @@ class MyFfanMyLikePage(SuperPage):
         '''
         usage : 验证商品
         '''
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        MLPC.verify_goods_view_resourceId,
-                                        MLPC.verify_view_timeout)
+        noData = API().validElementByResourceId(self.driver,
+                                                self.logger,
+                                                MLPC.verify_no_data_resourceId,
+                                                MLPC.verify_view_timeout)
+        if noData:
+            return
+        else:
+            API().assertElementByResourceId(self.testcase,
+                                            self.driver,
+                                            self.logger,
+                                            MLPC.verify_goods_view_resourceId,
+                                            MLPC.verify_view_timeout)
 
     def validSelfDissertation(self):
         '''
         usage : 验证专题
         '''
+        noData = API().validElementByResourceId(self.driver,
+                                                self.logger,
+                                                MLPC.verify_no_data_resourceId,
+                                                MLPC.verify_view_timeout)
+        if noData:
+            return
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
@@ -77,6 +90,12 @@ class MyFfanMyLikePage(SuperPage):
         '''
         usage : 验证品牌
         '''
+        noData = API().validElementByResourceId(self.driver,
+                                                self.logger,
+                                                MLPC.verify_no_data_resourceId,
+                                                MLPC.verify_view_timeout)
+        if noData:
+            return
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,

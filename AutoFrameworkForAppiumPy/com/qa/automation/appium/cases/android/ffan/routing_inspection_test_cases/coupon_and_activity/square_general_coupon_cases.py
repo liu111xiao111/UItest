@@ -19,6 +19,7 @@ from com.qa.automation.appium.pages.android.ffan.dashboard_page import Dashboard
 from com.qa.automation.appium.pages.android.ffan.general_coupon_page import GeneralCouponPage
 from com.qa.automation.appium.pages.android.ffan.receive_success_page import ReceiveSuccessPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
@@ -50,21 +51,29 @@ class SquareGeneralCouponCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
-        dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
+        searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.waitBySeconds(3)
+
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
+        squareModulePage.waitBySeconds(5)
+
         squareModulePage.clickOnGeneralCoupon()
 
         generalCouponPage = GeneralCouponPage(self, self.driver, self.logger)
         generalCouponPage.validSelf()
+        generalCouponPage.waitBySeconds(2)
         generalCouponPage.clickOnImmediatelyToReceive()
-   
+
         receiveSuccessPage = ReceiveSuccessPage(self, self.driver, self.logger)
         receiveSuccessPage.validSelf()
-   
+
         receiveSuccessPage.waitBySeconds(seconds=2)
 
 #         tempText = receiveSuccessPage.getPrivilegeCouponCode()

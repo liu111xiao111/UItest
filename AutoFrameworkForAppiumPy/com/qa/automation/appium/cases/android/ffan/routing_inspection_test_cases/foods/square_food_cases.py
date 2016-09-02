@@ -10,6 +10,7 @@ from unittest import TestLoader
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.android.ffan.square_food_category_page import SquareFoodPage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -52,12 +53,17 @@ class SquareFoodCases(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         squareFoodPage = SquareFoodPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
-
-        dashboardPage.clickOnSquareModule()
-        squarePage.waitBySeconds(5)
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
+        squarePage.waitBySeconds(5)
 
         squarePage.scrollToFood()
         squarePage.clickOnFood()

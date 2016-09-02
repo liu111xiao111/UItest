@@ -22,6 +22,7 @@ from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
 from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
@@ -52,12 +53,18 @@ class PrivilegeCouponCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
+        searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.waitBySeconds(3)
+
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
+        squareModulePage.waitBySeconds(5)
         squareModulePage.clickOnCoupon()
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
@@ -86,6 +93,8 @@ class PrivilegeCouponCases(TestCase):
 
         squareModulePage.validSelf()
         squareModulePage.clickBackKey()
+
+        searchPage.clickBackKey()
 
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
