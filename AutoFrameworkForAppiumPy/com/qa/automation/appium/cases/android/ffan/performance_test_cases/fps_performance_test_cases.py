@@ -37,10 +37,10 @@ class FpsPerformanceTestCases():
         try:
             self._setUp()
             dashboardPage = DashboardPage(self, self.driver, self.logger)
-            tab_dict = {u'我的'  : dashboardPage.clickOnMy,
-                        u'爱逛街': dashboardPage.clickLikeShopping,
-                        u'惠生活': dashboardPage.clickOnSmartLife,
-                        u'飞凡通': dashboardPage.clickOnFeiFanCard,
+            tab_dict = {'我的'  : dashboardPage.clickOnMy,
+                        '爱逛街': dashboardPage.clickLikeShopping,
+                        '惠生活': dashboardPage.clickOnSmartLife,
+                        '飞凡通': dashboardPage.clickOnFeiFanCard,
                         }
             for key, clickFunc in tab_dict.items():
                 clickFunc()
