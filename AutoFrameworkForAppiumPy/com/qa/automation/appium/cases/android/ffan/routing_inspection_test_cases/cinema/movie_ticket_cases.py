@@ -98,7 +98,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MovieTicketCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath + 'Feifan_automation_test_report_' + now + '.html')
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

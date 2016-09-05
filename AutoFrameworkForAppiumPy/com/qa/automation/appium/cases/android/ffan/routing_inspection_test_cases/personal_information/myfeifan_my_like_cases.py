@@ -73,7 +73,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MyfeifanMyLikeCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + caseName + now + '.html'
+    filename = os.path.join(reportpath, caseName + now + '.html')
     log.d("report file name ==== %s", filename)
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=caseName,

@@ -74,7 +74,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareSearchCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = reportpath + 'food-test_' + now + '.html'
+    filename = os.path.join(reportpath, 'food-test_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')
