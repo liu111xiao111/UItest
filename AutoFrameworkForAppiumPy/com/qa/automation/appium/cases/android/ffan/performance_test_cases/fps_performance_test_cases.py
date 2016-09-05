@@ -127,5 +127,3 @@ class FpsPerformanceTestCases():
         AppDraw = round(sum(myDraws) / len(myDraws), 2)
         AppFps = round(sum(myFpss) / len(myFpss), 2)
         return AppDraw, AppFps
-
-FpsPerformanceTestCases().getFpsPerf('.')
