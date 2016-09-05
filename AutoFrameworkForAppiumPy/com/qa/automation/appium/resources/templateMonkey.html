@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Test Data</title>
+    <style type="text/css" media="screen">
+        body{font-family: verdana, arial, helvetica, sans-serif; font-size: 80%%; }
+        table{ font-size: 100%%; }
+        pre{ }
+        p {
+            display: block;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
+        h1 {
+            font-size: 16pt;
+            color: gray;
+        }
+        .heading {
+            margin-top: 0ex;
+            margin-bottom: 1ex;
+        }
+        .heading .attribute {
+            margin-top: 1ex;
+            margin-bottom: 0;
+        }
+        .heading .description {
+            margin-top: 4ex;
+            margin-bottom: 6ex;
+        }
+        a.popup_link { }
+        a.popup_link:hover {
+            color: red;
+        }
+        .popup_window {
+            display: none;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            padding: 10px;
+            background-color: #E6E6D6;
+            font-family: "Lucida Console", "Courier New", Courier, monospace;
+            text-align: left;
+            font-size: 8pt;
+        }
+        #show_detail_line {
+            margin-top: 3ex;
+            margin-bottom: 1ex;
+        }
+        #result_table {
+            width: 80%%;
+            border-collapse: collapse;
+            border: 1px solid #777;
+        }
+        #header_row {
+            font-weight: bold;
+            color: white;
+            background-color: #777;
+        }
+        #result_table td {
+            border: 1px solid #777;
+            padding: 2px;
+        }
+        #total_row  { font-weight: bold; }
+        .passClass  { background-color: #6c6; }
+        .failClass  { background-color: #c60; }
+        .errorClass { background-color: #c00; }
+        .passCase   { color: #6c6; }
+        .failCase   { color: #c60; font-weight: bold; }
+        .errorCase  { color: #c00; font-weight: bold; }
+        .hiddenRow  { display: none; }
+        .testcase   { margin-left: 2em; }
+        #ending {}
+    </style>
+    <script type="text/javascript">
+        function showClassDetail(cid, count) {
+            var id_list = Array(count);
+            var toHide = 1;
+            for (var i = 0; i < count; i++) {
+                tid0 = 't' + cid.substr(1) + '.' + (i+1);
+                tid = 'f' + tid0;
+                tr = document.getElementById(tid);
+                if (!tr) {
+                    tid = 'p' + tid0;
+                    tr = document.getElementById(tid);
+                }
+                id_list[i] = tid;
+                if (tr.className) {
+                    toHide = 0;
+                }
+            }
+            for (var i = 0; i < count; i++) {
+                tid = id_list[i];
+                if (toHide) {
+                    document.getElementById(tid).className = 'hiddenRow';
+                }
+                else {
+                    document.getElementById(tid).className = '';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class='heading'>
+   <h1>ffan_automation_test_report_monkey</h1>
+    <p class='attribute'><strong>Start Time:</strong> %s</p>
+    <p class='attribute'><strong>End Time:</strong> %s</p>
+
+   <h1>cpu</h1>
+   <table id='result_table'>
+       <tr id='header_row'>
+           <td>No.</td>
+           <td>Result</td>
+           <td>View</td>
+       </tr>
+       %s
+   </table>
+<div id='ending'>&nbsp;</div>
+</div>
+</body>
+</html>

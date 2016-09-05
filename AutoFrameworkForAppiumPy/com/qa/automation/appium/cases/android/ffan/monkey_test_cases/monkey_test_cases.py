@@ -6,12 +6,11 @@ import time
 import pexpect
 import argparse
 import datetime
-import HTMLTestRunner
 
 from unittest import TestCase
-from unittest import TestLoader
 
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
+from com.qa.automation.appium.cases.android.ffan.common.monkey_process import MonkeyHandle
 
 # 测试结果目录
 reportPath = os.path.join(os.getcwd(), 'android_monkey_log/')
@@ -31,7 +30,7 @@ class MonkeyTestCases(TestCase):
         unittest资源释放回滚函数, 关闭测试应用
         :return: None
         '''
-        command = '%sadb shell am force-stop %s' % (self.resourcesDirectory, appPackage_ffan)
+        command = 'adb shell am force-stop %s' % appPackage_ffan
         os.system(command)
 
     def setUp(self):
@@ -42,8 +41,6 @@ class MonkeyTestCases(TestCase):
         self.monkeyLogName = 'Android_monkey.log'
         self.logcatLogName = 'Android_monkey_logcat.log'
         self.reportPath = reportPath
-        self.resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
-                                os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
 
     def test_case(self):
         '''
@@ -78,7 +75,7 @@ class MonkeyTestCases(TestCase):
 
         # 执行monkey稳定性测试, 并生成测试结果日志文件
         monkeyLogFile = os.path.join('/sdcard', self.monkeyLogName)
-        p = pexpect.spawn('%sadb shell' % self.resourcesDirectory)
+        p = pexpect.spawn('adb shell')
         p.expect(r'^shell@', timeout=20)
         p.sendline('monkey -p %s --ignore-crashes --ignore-timeouts \
                 --ignore-security-exceptions --throttle 300 --monitor-native-crashes \
@@ -89,7 +86,7 @@ class MonkeyTestCases(TestCase):
         time.sleep(4 * 60 * 60) # 睡眠等待4小时
         while True:
             time.sleep(5 * 60) # 每五分钟检查一次
-            p = pexpect.spawn('%sadb shell' % self.resourcesDirectory)
+            p = pexpect.spawn('adb shell')
             p.expect(r'^shell@', timeout=20)
             p.sendline('ps | grep monkey ')
             p.expect(r'shell@', timeout=20)
@@ -99,7 +96,7 @@ class MonkeyTestCases(TestCase):
                 continue
             else:
                 p.close()
-                cmd = '%sadb pull %s %s' % (self.resourcesDirectory, monkeyLogFile, self.reportPath)
+                cmd = 'adb pull %s %s' % (monkeyLogFile, self.reportPath)
                 os.system(cmd)
                 break
 
@@ -108,7 +105,7 @@ class MonkeyTestCases(TestCase):
         清理logcat缓存
         :return: None
         '''
-        command = '%sadb logcat -c' % self.resourcesDirectory
+        command = 'adb logcat -c'
         os.system(command)
 
     def _getLogcat(self):
@@ -117,7 +114,7 @@ class MonkeyTestCases(TestCase):
         :return: None
         '''
         logCatFile = os.path.join(self.reportPath, self.logcatLogName)
-        command = "%sadb logcat -d > %s" % (self.resourcesDirectory, logCatFile)
+        command = "adb logcat -d > %s" % logCatFile
         os.system(command)
 
 
@@ -161,10 +158,22 @@ if __name__ == "__main__":
     parse_command()
     mkLogDir()
 
-    # HtmlTestRunner工具, 生成html测试结果报告
-    suite = TestLoader().loadTestsFromTestCase(MonkeyTestCases)
-    filename = os.path.join(reportPath, 'Feifan_android_monkey_test_report.html')
-    fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_android_monkey_test_report',
-                                           description='Result for test')
-    runner.run(suite)
+    # # HtmlTestRunner工具, 生成html测试结果报告
+    # suite = TestLoader().loadTestsFromTestCase(MonkeyTestCases)
+    # filename = os.path.join(reportPath, 'Feifan_android_monkey_test_report.html')
+    # fp = open(filename, 'wb')
+    # runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_android_monkey_test_report',
+    #                                        description='Result for test')
+    # runner.run(suite)
+    startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+    monkeyTest = MonkeyTestCases()
+    try:
+        monkeyTest.setUp()
+        monkeyTest.test_case()
+    except CrashError as e:
+        raise CrashError(e)
+    finally:
+        monkeyTest.tearDown()
+        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        MonkeyHandle().Handle(startTime, endTime, reportPath)
+
