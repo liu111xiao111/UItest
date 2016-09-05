@@ -93,7 +93,7 @@ class FpsPerformanceTestCases():
 
         logName = "Fps_performance.txt"
         logPath = os.path.join(reportPath, logName)
-        f = open(logPath, "a")
+        f = open(logPath, mode='a', encoding='utf-8')
         f.write("%s %s %s" % (tab, draw, fps) + "\n")
         f.close()
 
@@ -112,13 +112,12 @@ class FpsPerformanceTestCases():
                 if "View hierarchy:" in line:
                     break
                 else:
-                    draw, prepare, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
+                    draw, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
                     draw = float(draw)
-                    prepare = float(prepare)
                     process = float(process)
                     execute = float(execute)
                     mydraw = round(draw, 2)
-                    myfps = round(prepare + process + execute, 2)
+                    myfps = round(draw + process + execute, 2)
                     myFpss.append(myfps)
                     myDraws.append(mydraw)
             except Exception as e:
@@ -128,3 +127,5 @@ class FpsPerformanceTestCases():
         AppDraw = round(sum(myDraws) / len(myDraws), 2)
         AppFps = round(sum(myFpss) / len(myFpss), 2)
         return AppDraw, AppFps
+
+FpsPerformanceTestCases().getFpsPerf('.')
