@@ -44,7 +44,7 @@ class PerformanceHandle:
         self.fileNameColdBootTime = 'ColdBootTime_performance.txt'
         self.fileNameWarmBootTime = 'WarmBootTime_performance.txt'
 
-    def Handle(self, startTime, endTime, reportPath='/Users/auto/Desktop/performance_data/'):
+    def Handle(self, startTime, endTime, reportPath=''):
         try:
             self.startTime = startTime
             self.endTime = endTime
@@ -94,6 +94,7 @@ class PerformanceHandle:
         try:
             htmlContent = ''
             totalNum = 0
+            listValues = []
             if(filePath != ''):
                 freq = 0
                 i = 1
@@ -108,14 +109,20 @@ class PerformanceHandle:
                             rowContent = (
                                 "<td>%s</td><td>%s</td></tr>" % (value[0].replace('_', ':'), value[1]))
                         htmlContent = htmlContent + rowContent
-                        totalNum = totalNum + float(value[1])
+
+                        totalNum = totalNum + int(value[1])
+
+                        listValues.append(float(value[1]))
                         freq = freq + 10
                         i = i + 1
 
                 average = totalNum / (i - 1)
                 if((i-1) % 2 == 1):
                     htmlContent = htmlContent + "<td></td><td></td></tr>"
-                avgRowContent = ("<tr id='total_row'><td>average</td><td colspan='3'>%s</td></tr>" % (average))
+                maxValue = max(listValues)
+                minValue = min(listValues)
+                avgRowContent = ("<tr id='total_row'><td>average/max/min</td><td colspan='3'>%s/%s/%s</td></tr>" % (
+                average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['cpu'] = htmlContent
         except Exception as e:
@@ -125,6 +132,7 @@ class PerformanceHandle:
         try:
             htmlContent = ''
             totalNum = 0
+            listValues = []
             if (filePath != ''):
                 freq = 0
                 i = 1
@@ -138,6 +146,7 @@ class PerformanceHandle:
                         else:
                             rowContent = (
                                 "<td>%s</td><td>%s</td></tr>" % (value[0].replace('_', ':'), value[1]))
+                        listValues.append(float(value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
                         freq = freq + 10
@@ -146,7 +155,10 @@ class PerformanceHandle:
                 average = totalNum / (i - 1)
                 if ((i - 1) % 2 == 1):
                     htmlContent = htmlContent + "<td></td><td></td></tr>"
-                avgRowContent = ("<tr id='total_row'><td>average</td><td colspan='3'>%s</td></tr>" % (average))
+                maxValue = max(listValues)
+                minValue = min(listValues)
+                avgRowContent = ("<tr id='total_row'><td>average/max/min</td><td colspan='3'>%s/%s/%s</td></tr>" % (
+                average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['memory'] = htmlContent
         except Exception as e:
@@ -156,18 +168,24 @@ class PerformanceHandle:
         try:
             htmlContent = ""
             totalNum = 0
+            listValue = []
             if (filePath != ''):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
                     value = str(line).split(':')
                     if(len(value) > 1):
-                        rowContent = ("<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
+                        rowContent = (
+                        "<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + int(value[1])
+                        listValue.append(int(value[1]))
                         i = i + 1
                 average = totalNum/10
-                avgRowContent = ("<tr id='total_row'><td>average</td><td>%s</td></tr>" % (average))
+                maxValue = max(listValue)
+                minValue = min(listValue)
+                avgRowContent = (
+                "<tr id='total_row'><td>average/max/min</td><td>%s/%s/%s</td></tr>" % (average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['coldBoot'] = htmlContent
         except Exception as e:
@@ -177,18 +195,24 @@ class PerformanceHandle:
         try:
             htmlContent = ""
             totalNum = 0
+            listValue = []
             if (filePath != ''):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
                     value = str(line).split(':')
                     if(len(value) > 1):
-                        rowContent = ("<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
+                        rowContent = (
+                        "<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + int(value[1])
+                        listValue.append(int(value[1]))
                         i = i + 1
                 average = totalNum/10
-                avgRowContent = ("<tr id='total_row'><td>average</td><td>%s</td></tr>" % (average))
+                maxValue = max(listValue)
+                minValue = min(listValue)
+                avgRowContent = (
+                "<tr id='total_row'><td>average/max/min</td><td>%s/%s/%s</td></tr>" % (average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['warmBoot'] = htmlContent
         except Exception as e:
@@ -202,7 +226,8 @@ class PerformanceHandle:
                 for line in performaceData:
                     value = str(line).split(' ')
                     if(len(value) > 1):
-                        rowContent = ("<tr class='passClass'><td>%s</td><td>%s</td><td>%s</td></tr>" % (value[0], value[1], value[2]))
+                        rowContent = (
+                        "<tr class='passClass'><td>%s</td><td>%s</td><td>%s</td></tr>" % (value[0], value[1], value[2]))
                         htmlContent = htmlContent + rowContent
                 self.dataList['fps'] = htmlContent
         except Exception as e:
@@ -212,6 +237,7 @@ class PerformanceHandle:
         try:
             htmlContent = ''
             totalNum = 0
+            listValue = []
             if (filePath != ''):
                 freq = 0
                 i = 1
@@ -227,13 +253,17 @@ class PerformanceHandle:
                                 "<td>%s</td><td>%s</td></tr>" % (value[0].replace('_', ':'), value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
+                        listValue.append(float(value[1]))
                         freq = freq + 10
                         i = i + 1
 
                 average = totalNum / (i - 1)
+                maxValue = max(listValue)
+                minValue = min(listValue)
                 if ((i - 1) % 2 == 1):
                     htmlContent = htmlContent + "<td></td><td></td></tr>"
-                avgRowContent = ("<tr id='total_row'><td>average</td><td colspan='3'>%s</td></tr>" % (average))
+                avgRowContent = ("<tr id='total_row'><td>average/max/min</td><td colspan='3'>%s/%s/%s</td></tr>" % (
+                average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['rx'] = htmlContent
         except Exception as e:
@@ -243,6 +273,7 @@ class PerformanceHandle:
         try:
             htmlContent = ''
             totalNum = 0
+            listValue = []
             if (filePath != ''):
                 freq = 0
                 i = 1
@@ -258,13 +289,17 @@ class PerformanceHandle:
                                 "<td>%s</td><td>%s</td></tr>" % (value[0].replace('_', ':'), value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
+                        listValue.append(float(value[1]))
                         freq = freq + 10
                         i = i + 1
 
                 average = totalNum / (i - 1)
+                maxValue = max(listValue)
+                minValue = min(listValue)
                 if ((i - 1) % 2 == 1):
                     htmlContent = htmlContent + "<td></td><td></td></tr>"
-                avgRowContent = ("<tr id='total_row'><td>average</td><td colspan='3'>%s</td></tr>" % (average))
+                avgRowContent = ("<tr id='total_row'><td>average/max/min</td><td colspan='3'>%s/%s/%s</td></tr>" % (
+                average, maxValue, minValue))
                 htmlContent = htmlContent + avgRowContent
                 self.dataList['tx'] = htmlContent
         except Exception as e:
