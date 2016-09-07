@@ -38,7 +38,7 @@ class MonkeyTestCases(TestCase):
         # monkey测试结果收集与统计
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
         crashNumber = 0
-        f = open(monkeyLogFile)
+        f = open(monkeyLogFile, mode='r', encoding='utf-8')
         line = f.readline()
         while line:
             if line.find("crash report") != -1:
@@ -51,7 +51,7 @@ class MonkeyTestCases(TestCase):
 
     def _monkeyTest(self):
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
-        command = "smart_monkey -a %s -w %s -d %s --drop-useless-img --detail-count 20 -t 16200 > %s" \
+        command = "smart_monkey -a %s -w %s -d %s -t 16200 --detail-count 20 --drop-useless-img > %s" \
                   % (IDC.bundleId, IDC.udid, self.reportPath, monkeyLogFile)
 
         os.system(command)
