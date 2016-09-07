@@ -59,13 +59,15 @@ class SquareSignOnCases(TestCase):
         if not signOnPage.validChickedInStatus(False):
             signOnPage.clickOnSignIn()
 
-        signOnPage.clickBackKey()
+            signOnPage.clickBackKey()
 
-        dashboardPage.clickOnSignOn()
+            dashboardPage.clickOnSignOn()
 
-        signOnPage.waitBySeconds(2)
-        signOnPage.validChickedInStatus()
-        signOnPage.clickBackKey()
+            signOnPage.waitBySeconds(2)
+            signOnPage.validChickedInStatus()
+            signOnPage.clickBackKey()
+        else:
+            signOnPage.clickBackKey()
 
 
 if __name__ == "__main__":
