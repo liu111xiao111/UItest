@@ -49,7 +49,7 @@ class BrandCategoryPage(SuperPage):
         '''
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(3):
+        for _ in range(10):
             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByResourceId(self.testcase,
                                        self.driver,

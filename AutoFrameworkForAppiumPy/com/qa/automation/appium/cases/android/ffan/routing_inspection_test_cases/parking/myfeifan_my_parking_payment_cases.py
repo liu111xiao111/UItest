@@ -12,9 +12,9 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_page import MyFfanMyParkingPaymentPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_details_page import MyFfanMyParkingPaymentDetailsPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_more_page import MyFfanMyParkingPaymentMorePage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_unbunding_page import MyFfanMyParkingPaymentUnbundingPage
+# from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_details_page import MyFfanMyParkingPaymentDetailsPage
+# from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_more_page import MyFfanMyParkingPaymentMorePage
+# from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_unbunding_page import MyFfanMyParkingPaymentUnbundingPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -54,9 +54,9 @@ class MyfeifanMyParkingPaymentCases(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         parkingPaymentPage = MyFfanMyParkingPaymentPage(self, self.driver, self.logger)
-        parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(self, self.driver, self.logger)
+        '''parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(self, self.driver, self.logger)
         parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(self, self.driver, self.logger)
-        parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(self, self.driver, self.logger)
+        parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(self, self.driver, self.logger)'''
 
         # Click "停车交费"， load "我的排队" page.
         dashboardPage.validSelf();
@@ -67,6 +67,7 @@ class MyfeifanMyParkingPaymentCases(TestCase):
 
         # Bunding VIN
         parkingPaymentPage.waitBySeconds(2);
+        '''parkingPaymentPage.clickOnBanding();
         parkingPaymentPage.inputVIN();
         parkingPaymentPage.clickOnNextBtn();
         parkingPaymentDetailsPage.validSelf();
@@ -76,7 +77,14 @@ class MyfeifanMyParkingPaymentCases(TestCase):
         parkingPaymentMorePage.waitBySeconds(2);
         parkingPaymentMorePage.clickOnUnbundingBtn();
         parkingPaymentUnbundingPage.clickOnUnbundingBtn();
-        parkingPaymentPage.validSelf();
+        parkingPaymentPage.validSelf();'''
+
+        #检查入口项目
+        itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
+        titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
+        for i in range(len(titleList)):
+            parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
+            parkingPaymentPage.waitBySeconds(2)
 
 if __name__ == "__main__":
     log = Logger()

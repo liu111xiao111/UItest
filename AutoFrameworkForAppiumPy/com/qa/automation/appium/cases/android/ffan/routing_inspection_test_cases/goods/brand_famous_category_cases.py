@@ -62,24 +62,30 @@ class BrandFamousCatergoryCases(TestCase):
         brandPage.clickOnBrand();
         brandPage.clickOnBrandDetails();
         famousDetailsPage.validSelf();
-        
+
         # Check "男装“、”餐饮“、”生活“、”运动“及”精品“ tab
         famousDetailsPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnWomenFasion();
         brandPage.validSelfWomenFasion();
         brandPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnMenFasion();
         brandPage.validSelfMenFasion();
         brandPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnCatering();
         brandPage.validSelfCertering();
         brandPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnLife();
         brandPage.validSelfLife();
         brandPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnSports();
         brandPage.validSelfSports();
         brandPage.clickBackKey();
+        brandPage.waitBySeconds(2);
         brandPage.clickOnCompetitiveProducts();
         brandPage.validSelfCompetitiveProducts();
 

@@ -30,11 +30,16 @@ class FoodCategoryPage(SuperPage):
         '''
         usage : 进入美食子页面，根据餐饮的textview, 检查找餐饮页面是否加载出来.
         '''
-        API().assertElementByResourceId(self.testcase,
+        '''API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         FCPC.resource_id_tv_restaurant_tv,
-                                        FCPC.verify_view_timeout)
+                                        FCPC.verify_view_timeout)'''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FCPC.view_text_tiltle,
+                                  FCPC.verify_view_timeout)
 
     def validCoupon(self):
         '''
@@ -60,13 +65,20 @@ class FoodCategoryPage(SuperPage):
         '''
         usage: 点击美食主界面的所有入口并验证
         '''
-        restaurantList = API().getElementsByResourceId(self.testcase,
+        '''restaurantList = API().getElementsByResourceId(self.testcase,
                                                        self.driver,
                                                        self.logger,
                                                        FCPC.resource_id_bt_restaurant_bt,
-                                                       FCPC.verify_view_timeout)
+                                                       FCPC.verify_view_timeout)'''
+        restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
+                          u"粤菜", u"云贵菜", u"日本料理", u"韩国料理", u"北京菜")
         for restaurant in restaurantList:
-            restaurant.click()
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     restaurant,
+                                     FCPC.click_view_timeout)
+            API().waitBySeconds(3)
             self.validRestaurant()
             self.clickBackKey()
 

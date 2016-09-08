@@ -61,6 +61,7 @@ class SalesPromotionCouponCases(TestCase):
         # Click "优惠活动"
         dashboardPage.validSelf();
         dashboardPage.clickOnSalesPromotion();
+        salesPromotionPage.waitBySeconds(3);
         salesPromotionPage.validSelf();
 
         # Click "优惠券", load "优惠券" details page

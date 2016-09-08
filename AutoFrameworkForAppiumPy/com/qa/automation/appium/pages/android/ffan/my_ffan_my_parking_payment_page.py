@@ -44,3 +44,20 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  self.logger,
                                  PPPC.text_next_btn,
                                  10)
+
+    def clickAndValidItems(self, item = "default", title = "default"):
+        '''
+        usage: 点击各入口项目
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 item,
+                                 10)
+        API().waitBySeconds(2)
+        API().assertElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 title,
+                                 10)
+        API().clickBackKeyForAndroid(self.driver, self.logger)
