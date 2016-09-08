@@ -79,13 +79,13 @@ class PerformanceHandle:
 
             self.createHtmlReport(reportPath)
 
-            self.removePerformanceFile(cpuFilePath)
-            self.removePerformanceFile(memoryFilePath)
-            self.removePerformanceFile(coldBootFilePath)
-            self.removePerformanceFile(warmBootFilePath)
-            self.removePerformanceFile(fpsFilePath)
-            self.removePerformanceFile(rxFilePath)
-            self.removePerformanceFile(txFilePath)
+            # self.removePerformanceFile(cpuFilePath)
+            # self.removePerformanceFile(memoryFilePath)
+            # self.removePerformanceFile(coldBootFilePath)
+            # self.removePerformanceFile(warmBootFilePath)
+            # self.removePerformanceFile(fpsFilePath)
+            # self.removePerformanceFile(rxFilePath)
+            # self.removePerformanceFile(txFilePath)
 
         except Exception as e:
             print(str(e))
@@ -110,7 +110,7 @@ class PerformanceHandle:
                                 "<td>%s</td><td>%s</td></tr>" % (value[0].replace('_', ':'), value[1]))
                         htmlContent = htmlContent + rowContent
 
-                        totalNum = totalNum + int(value[1])
+                        totalNum = totalNum + float(value[1])
 
                         listValues.append(float(value[1]))
                         freq = freq + 10
@@ -178,8 +178,8 @@ class PerformanceHandle:
                         rowContent = (
                         "<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
                         htmlContent = htmlContent + rowContent
-                        totalNum = totalNum + int(value[1])
-                        listValue.append(int(value[1]))
+                        totalNum = totalNum + float(value[1])
+                        listValue.append(float(value[1]))
                         i = i + 1
                 average = totalNum/10
                 maxValue = max(listValue)
@@ -205,8 +205,8 @@ class PerformanceHandle:
                         rowContent = (
                         "<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (self.numBootEn[i], value[1]))
                         htmlContent = htmlContent + rowContent
-                        totalNum = totalNum + int(value[1])
-                        listValue.append(int(value[1]))
+                        totalNum = totalNum + float(value[1])
+                        listValue.append(float(value[1]))
                         i = i + 1
                 average = totalNum/10
                 maxValue = max(listValue)
