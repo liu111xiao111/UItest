@@ -13,6 +13,7 @@ from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_queue_page import SquareQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -56,18 +57,25 @@ class MyfeifanMyQueueCases(TestCase):
         myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         # Load square page
-        dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
+        squarePage.validSelf()
 
         # Click "排队取号"， load "排队取号" page.
         squarePage.clicOnQueue();
 
         queuePage.validSelf();
+        queuePage.waitBySeconds(2);
         # Click "取号"
-        ret = queuePage.clicOnQueueNumber()
+        '''ret = queuePage.clicOnQueueNumber()
         if ret:
             queuePage.waitBySeconds(10)
             queuePage.inputNumberOfMeals()
@@ -87,7 +95,7 @@ class MyfeifanMyQueueCases(TestCase):
             myFfanPage.clickOnMyQueue()
             myQueuePage.validSelf()
         else:
-            logging.info(u"没有可排队店铺!")
+            logging.info(u"没有可排队店铺!")'''
 
 
 if __name__ == "__main__":
