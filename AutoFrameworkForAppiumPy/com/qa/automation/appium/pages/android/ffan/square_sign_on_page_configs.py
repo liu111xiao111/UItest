@@ -6,6 +6,7 @@ class SignOnPageConfigs():
 
 
     # text指明类型为text label,后面是文字的拼音
+    text_title_ttj = u"天天见"
     content_desc_sign_on = u"签到";
 
     # Assert view time out

@@ -17,8 +17,8 @@ class SignOnPage(SuperPage):
         '''
         usage : 进入广场模块，检查是否加载出来
         '''
-        API().assertElementByContentDesc(self.testcase, self.driver, self.logger,
-                                  SOPC.content_desc_sign_on,
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  SOPC.text_title_ttj,
                                   SOPC.assert_view_timeout)
 
     def validChickedInStatus(self, assertable=True):
