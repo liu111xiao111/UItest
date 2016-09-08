@@ -81,7 +81,19 @@ from com.qa.automation.appium.cases.android.ffan.performance_test_cases.warm_boo
 from com.qa.automation.appium.cases.android.ffan.common.performance import Performance
 from com.qa.automation.appium.cases.android.ffan.common.performanceProcess import PerformanceHandle
 from com.qa.automation.appium.cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
-
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.login_cases import LoginCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.dashboard_search_goods_cases import DashboardSearchGoodsCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.dashboard_search_store_cases import DashboardSearchStoreCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.hot_word_search_cases import HotWordSearchCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.square_find_store_search_cases import SquareFindStoreSearchCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.search.square_search_cases import SquareSearchCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.child_category_cases import ChildCatergoryCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.lefu_cancel_category_cases import LefuCancelCatergoryCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.lefu_pay_category_cases import LefuPayCatergoryCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.shopping_category_cases import ShoppingCatergoryCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.shopping_mall_cases import ShoppingMallCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.square_lefu_pay_cases import SquareLefuPayCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.square_shopping_cases import SquareShoppingCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -96,26 +108,25 @@ if __name__ == "__main__":
 
     #root_dir = os.path.dirname(
     #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/yiceyun/work", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
     suite = TestSuite()
 
-
-    suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))  ## didi pages not display.
+    suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
     suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
     suite.addTest(SquareMovieCases("test_case"))
-    suite.addTest(ActivitySharingCases("test_case"))
-    suite.addTest(PrivilegeCouponCases("test_case"))  ###绑定“水云间满额赠礼活动”，强依赖特定数据
-    suite.addTest(SalesPromotionActiveCases("test_case"))
-    suite.addTest(SalesPromotionCouponCases("test_case"))
+    # suite.addTest(ActivitySharingCases("test_case")) # 首页优惠活动相关
+    suite.addTest(PrivilegeCouponCases("test_case"))
+    # suite.addTest(SalesPromotionActiveCases("test_case")) # 首页优惠活动相关
+    # suite.addTest(SalesPromotionCouponCases("test_case")) # 首页优惠活动相关
 
-#     suite.addTest(SpecialOfferCases("test_case")) ### 慧生活没有活动和优惠tab了，delete case
+    # suite.addTest(SpecialOfferCases("test_case")) # 慧生活没有活动和优惠tab了
 
-    suite.addTest(SquareGeneralCouponCases("test_case"))
-    # suite.addTest(SquareRecommendCases("test_case"))   ## 达人推荐功能移除
+    # suite.addTest(SquareGeneralCouponCases("test_case")) # 通用券相关
+    # suite.addTest(SquareRecommendCases("test_case"))   # 达人推荐功能移除
     suite.addTest(FoodCases("test_case"))
     suite.addTest(SquareFoodCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
@@ -123,8 +134,7 @@ if __name__ == "__main__":
     suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SplashScreenHomePageCases("test_case"))
-    #suite.addTest(SwitchCityCases("test_case_prepare"))
-    #suite.addTest(SwitchCityCases("test_case"))
+    suite.addTest(SwitchCityCases("test_case_step_2"))
     suite.addTest(MyfeifanMyParkingPaymentCases("test_case"))
     suite.addTest(ParkingBindingsCatergoryCases("test_case"))
     suite.addTest(ParkingBundingCatergoryCases("test_case"))
@@ -134,12 +144,13 @@ if __name__ == "__main__":
 
 #     suite.addTest(FeiFanCardOpenCases("test_case")) #新版本不再有这个入口，用例删除掉
 
+    suite.addTest(LoginCases("test_case"))
     suite.addTest(LogoutCases("test_case"))
     suite.addTest(MembershipCardPackageCases("test_case"))
     suite.addTest(MessageSettingsCases("test_case"))
     suite.addTest(MyfeifanMyLikeCases("test_case"))
     suite.addTest(MyfeifanMyQueueCases("test_case"))
-    suite.addTest(MyfeifanMyTicketCases("test_case"))
+    # suite.addTest(MyfeifanMyTicketCases("test_case")) # 首页优惠活动相关
     suite.addTest(OneCardCases("test_case"))
     suite.addTest(PersonalInformationCases("test_case"))
     suite.addTest(SmallAmountPasswordLessPaymentCases("test_case"))
@@ -147,6 +158,18 @@ if __name__ == "__main__":
     suite.addTest(SquareSignOnCases("test_case"))
     suite.addTest(UpdateLoginPasswordCases("test_case"))
     suite.addTest(DashboardSearchBrandCases("test_case"))
+    suite.addTest(DashboardSearchGoodsCases("test_case"))
+    suite.addTest(DashboardSearchStoreCases("test_case"))
+    suite.addTest(HotWordSearchCases("test_case"))
+    # suite.addTest(SquareFindStoreSearchCases("test_case"))
+    # suite.addTest(SquareSearchCases("test_case"))
+    suite.addTest(ChildCatergoryCases("test_case"))
+    # suite.addTest(LefuCancelCatergoryCases("test_case"))
+    # suite.addTest(LefuPayCatergoryCases("test_case"))
+    # suite.addTest(ShoppingCatergoryCases("test_case"))
+    # suite.addTest(ShoppingMallCases("testCase"))
+    # suite.addTest(SquareLefuPayCases("test_case"))
+    # suite.addTest(SquareShoppingCases("test_case"))
 
     now = time.strftime('%H_%M_%S')
 

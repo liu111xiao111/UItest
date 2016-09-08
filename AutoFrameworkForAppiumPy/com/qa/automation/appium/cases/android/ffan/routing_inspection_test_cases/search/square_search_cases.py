@@ -51,13 +51,20 @@ class SquareSearchCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
-        squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.validSelf()
-        squareModulePage.clickOnSearch()
-
         searchPage = SearchPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
+        squareModulePage.validSelf()
+        squareModulePage.waitBySeconds(5)
+        squareModulePage.validSelf()
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
