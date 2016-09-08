@@ -63,8 +63,9 @@ class FpsPerformanceTestCases():
         :return: 无
         '''
         self.logger = Logger()
+        self.version = DeviceInfoUtil().getBuildVersion()
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
+                                   self.version, deviceName_andr,
                                    driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -112,12 +113,21 @@ class FpsPerformanceTestCases():
                 if "View hierarchy:" in line:
                     break
                 else:
-                    draw, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
-                    draw = float(draw)
-                    process = float(process)
-                    execute = float(execute)
-                    mydraw = round(draw, 2)
-                    myfps = round(draw + process + execute, 2)
+                    if int(self.version.split(".")[0]) < 5:
+                        draw, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
+                        draw = float(draw)
+                        process = float(process)
+                        execute = float(execute)
+                        mydraw = round(draw, 2)
+                        myfps = round(draw + process + execute, 2)
+                    else:
+                        draw, prepare, process, execute = re.findall(r'[0-9]+.[0-9]+', line)
+                        draw = float(draw)
+                        prepare = float(prepare)
+                        process = float(process)
+                        execute = float(execute)
+                        mydraw = round(draw, 2)
+                        myfps = round(draw + prepare + process + execute, 2)
                     myFpss.append(myfps)
                     myDraws.append(mydraw)
             except Exception as e:
@@ -127,4 +137,3 @@ class FpsPerformanceTestCases():
         AppDraw = round(sum(myDraws) / len(myDraws), 2)
         AppFps = round(sum(myFpss) / len(myFpss), 2)
         return AppDraw, AppFps
-FpsPerformanceTestCases().getFpsPerf('.')
