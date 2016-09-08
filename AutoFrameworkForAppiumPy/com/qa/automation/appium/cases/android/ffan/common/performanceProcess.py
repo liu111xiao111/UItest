@@ -101,7 +101,7 @@ class PerformanceHandle:
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
                     value = str(line).split(':')
-                    if (len(value) > 1):
+                    if (len(value) == 2):
                         if((i % self.columnNum) == 1):
                             rowContent = (
                             "<tr class='passClass'><td>%s</td><td>%s</td>" % (value[0].replace('_', ':'), value[1]))
