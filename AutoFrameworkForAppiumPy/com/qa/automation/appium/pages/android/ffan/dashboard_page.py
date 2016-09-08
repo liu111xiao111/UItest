@@ -265,3 +265,15 @@ class DashboardPage(SuperPage):
                                            self.logger,
                                            DPC.resource_id_iv_olympic_cancle_iv,
                                            DPC.click_on_button_timeout)
+
+    def scrollOnPage(self):
+        '''
+        usage: 页面内滑动
+        '''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for i in range(20):
+            if i % 2 == 0:
+                API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+            else:
+                API().scroll(self.driver, self.logger, width / 2, hight / 3, width / 2, hight / 2)

@@ -7,7 +7,8 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.pages.android.ffan.square_parking_payment_page import ParkingPaymentPage
+from com.qa.automation.appium.pages.android.ffan.my_ffan_my_parking_payment_page import MyFfanMyParkingPaymentPage
+from com.qa.automation.appium.pages.android.ffan.parking_category_page import ParkingCategoryPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -62,11 +63,15 @@ class SquareParkingPaymentCases(TestCase):
         squareModulePage.validSelf()
         squareModulePage.clickOnParking()
 
-        parkingPaymentPage = ParkingPaymentPage(self, self.driver, self.logger)
-        parkingPaymentPage.waitBySeconds(2)
-        parkingPaymentPage.clickBackKey()
-        squareModulePage.clickBackKey()
-        searchPage.clickBackKey()
+        parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
+        parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
+        parkingPage.waitBySeconds(2)
+        # 检查入口项目
+        itemList = (u"附近停车场", u"停车券", u"停车记录", u"帮助")
+        titleList = (u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
+        for i in range(len(titleList)):
+            parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
+            parkingPaymentPage.waitBySeconds(2)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareParkingPaymentCases)
