@@ -26,6 +26,8 @@ class SearchPageConfigs():
 
     text_store_detail = u"通州"
 
+    text_store_details = u"门店详情"
+
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 
     text_searching_store_name = u"北京通州店"

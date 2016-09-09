@@ -50,29 +50,31 @@ class SquareSearchCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.validSelf()
-        searchPage = SearchPage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(5)
         searchPage.clickOnSearchResultFirstItem()
-        squareModulePage.validSelf()
         squareModulePage.waitBySeconds(5)
         squareModulePage.validSelf()
+        squareModulePage.clickOnSearch()
+
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
         searchPage.validSearchResult(u"通州", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-        tempText = searchPage.clickOnSearchResultFirstItem()
+        #tempText = searchPage.clickOnSearchResultFirstItem()
+        searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
-        searchResultStorePage.validKeywords(tempText)
+        #searchResultStorePage.validKeywords(tempText)
+        searchResultStorePage.validSelf()
         searchResultStorePage.clickBackKey()
 
         searchPage.clickBackKey()

@@ -32,3 +32,13 @@ class SquareFindStorePage(SuperPage):
                                        self.logger,
                                        SFSC.resource_id_iv_search_iv,
                                        SFSC.verify_view_timeout)
+
+    def clickOnFirstItem(self):
+        '''
+        usage : 点击第一项商家
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       SFSC.resource_id_iv_item_iv,
+                                       SFSC.verify_view_timeout)

@@ -17,14 +17,17 @@ class SearchResultStorePage(SuperPage):
         '''
         usage : 检查是否加载出来
         '''
-        API().assertElementByContainsText(self.testcase, self.driver, self.logger,
+        '''API().assertElementByContainsText(self.testcase, self.driver, self.logger,
                                   SPC.text_store_detail,
+                                  SPC.assert_view_timeout)'''
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                  SPC.text_store_details,
                                   SPC.assert_view_timeout)
 
     def validKeywords(self, keywords):
         '''
         usage: 验证关键字
         '''
-        API().assertElementByContentDesc(self.testcase, self.driver, self.logger,
+        API().assertElementsByContentDescs(self.testcase, self.driver, self.logger,
                                   keywords,
                                   SPC.assert_view_timeout)

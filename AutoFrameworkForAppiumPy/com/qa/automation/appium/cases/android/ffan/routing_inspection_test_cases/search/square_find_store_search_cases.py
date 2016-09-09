@@ -70,11 +70,11 @@ class SquareFindStoreSearchCases(TestCase):
         squareFindStorePage.validSelf()
 
         # 检索门店
-        squareFindStorePage.clickOnSearch()
+        '''squareFindStorePage.clickOnSearch()
         searchPage.validSelf()
         searchPage.inputText("adidas")
-        searchPage.clickOnSearch()
-        searchPage.clickOnSearchResultFirstItem()
+        searchPage.clickOnSearch()'''
+        squareFindStorePage.clickOnFirstItem()
         searchResultStorePage.validSelf()
 
 

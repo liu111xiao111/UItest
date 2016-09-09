@@ -2,15 +2,15 @@
 
 import os
 import time
-import logging
+#import logging
 import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
 
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
+#from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
+#from com.qa.automation.appium.pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_queue_page import SquareQueuePage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
@@ -53,8 +53,8 @@ class MyfeifanMyQueueCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
+        #myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        #myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)

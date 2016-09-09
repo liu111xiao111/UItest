@@ -93,18 +93,18 @@ class SearchPage(SuperPage):
         '''
         usage : 点击搜索出来的结果list1
         '''
-        tempText = API().getTextByResourceId(self.testcase,
-                                             self.driver,
-                                             self.logger,
-                                             SPC.resource_id_specific_store_button,
-                                             10)
+        API().getTextByResourceId(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPC.resource_id_specific_store_button,
+                                  10)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SPC.xpath_search_result_first_item,
                                   10)
 
-        return tempText
+        #return tempText
 
     def clickOnMovie(self):
         '''
