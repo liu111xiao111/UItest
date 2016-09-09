@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     suite = TestSuite()
 
-    suite.addTest(ActivitySharingCases("test_case"))
+    # suite.addTest(ActivitySharingCases("test_case"))
     suite.addTest(BrandFamousCatergoryCases("test_case"))
     suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(ChildCatergoryCases("test_case"))
