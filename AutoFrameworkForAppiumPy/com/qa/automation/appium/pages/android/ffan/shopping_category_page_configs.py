@@ -7,8 +7,9 @@ class ShoppingCategoryPageConfigs():
 
     #  "商品" page
     text_goods = u"购物";
-    resource_id_tv_goods_details_tv = "com.wanda.app.wanhui:id/hot_brand_btn1"
-    
+    resource_id_tv_goods_details_tv = "com.wanda.app.wanhui:id/bt_gooods_item2"
+    xpath_goods_details = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[4]/android.widget.LinearLayout[2]/android.widget.LinearLayout[2]"
+    resource_id_tv_shopping_trolley_tv = "com.wanda.app.wanhui:id/shopping_cart_titile_bt"
     
     def __init__(self):
         pass;

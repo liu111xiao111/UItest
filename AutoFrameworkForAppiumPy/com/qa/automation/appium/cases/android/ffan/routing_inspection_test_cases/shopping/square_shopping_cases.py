@@ -18,6 +18,7 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.goods_details_page import GoodsDetailsPage
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.pages.android.ffan.square_shopping_category_page import SquareShoppingPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -50,12 +51,20 @@ class SquareShoppingCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        searchPage = SearchPage(self, self.driver, self.logger)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
 
-        squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.validSelf()
-        squareModulePage.clickOnBornToShop()
+        # 绑定北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
+        squarePage.validSelf()
+        squarePage.waitBySeconds(5)
+        squarePage.clickOnBornToShop()
 
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
         squareShoppingPage.validSelf()
@@ -63,16 +72,9 @@ class SquareShoppingCases(TestCase):
 
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
         goodsDetailsPage.validSelf()
+        goodsDetailsPage.waitBySeconds(5)
         goodsDetailsPage.validKeywords(tempText)
-        goodsDetailsPage.clickBackKey()
 
-        squareShoppingPage.validSelf()
-        squareShoppingPage.clickBackKey()
-
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
-
-        dashboardPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareShoppingCases)

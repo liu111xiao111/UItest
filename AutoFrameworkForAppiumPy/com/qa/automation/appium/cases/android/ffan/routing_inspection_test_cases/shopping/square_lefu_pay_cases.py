@@ -11,7 +11,9 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_detail_page import LefuPayDetailPage
 from com.qa.automation.appium.pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
+from com.qa.automation.appium.pages.android.ffan.lefu_pay_way_page import LefuPayWayPage
 from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
@@ -53,6 +55,8 @@ class SquareLefuPayCases(TestCase):
         squarePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
         lefuPayPage = SquareLefuPayPage(self, self.driver, self.logger)
+        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
+        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
 
         # 绑定北京通州万达广场
         dashboardPage.validSelf()
@@ -70,6 +74,15 @@ class SquareLefuPayCases(TestCase):
         lefuPayPage.waitBySeconds(5)
         lefuPayPage.validSelf()
         lefuPayPage.waitBySeconds(2)
+        # Click "乐付买单"， load detail pay page.
+        lefuPayPage.clickOnLefuPay();
+        lefuPayDetailPage.validSelf();
+
+        # Input money, click "确认买单".
+        lefuPayDetailPage.inputMoney();
+        lefuPayDetailPage.waitBySeconds(seconds=5)
+        lefuPayDetailPage.clickOnPay();
+        lefuPayWayPage.validSelf();
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareLefuPayCases)

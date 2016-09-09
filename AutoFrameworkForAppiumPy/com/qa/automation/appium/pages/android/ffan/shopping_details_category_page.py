@@ -18,7 +18,6 @@ class ShoppingDetailsCategoryPage(SuperPage):
         '''
         usage : 验证详情页
         '''
-        valid_text_list = [SDCPC.text_dashboard, SDCPC.text_goods, SDCPC.text_store]
-        API().assertElementsByTexts(self.testcase, self.driver, self.logger,
-                                    valid_text_list,
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                    SDCPC.text_goods,
                                     10)

@@ -228,10 +228,6 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击爱购物
         '''
-        '''API().scrollToText(self.testcase,
-                           self.driver,
-                           self.logger,
-                           SMPC.text_born_to_shop)'''
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
         API().scroll(self.driver, self.logger, width/2, hight/2, width/2, hight/3)

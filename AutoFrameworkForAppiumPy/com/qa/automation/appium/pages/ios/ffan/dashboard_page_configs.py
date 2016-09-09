@@ -15,7 +15,7 @@ class DashboardPageConfigs():
     """
         首页ffan logo图标name
     """
-    name_home_title_icon = "home_title_icon"
+    name_home_title_icon = "home_title_logo"
 
     """
         爱逛街icon name

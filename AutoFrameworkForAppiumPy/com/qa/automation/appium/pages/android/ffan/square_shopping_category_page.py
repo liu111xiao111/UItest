@@ -25,11 +25,11 @@ class SquareShoppingPage(SuperPage):
         '''
         usage: 点击商品
         '''
-        tempText = API().getTextByResourceId(self.testcase, self.driver, self.logger,
-                                             SSPC.resource_id_sub_commodity_button,
-                                             10)
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       SSPC.resource_id_sub_commodity_button,
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        SSPC.xpath_sub_commodity_button,
+                                        10)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                       SSPC.xpath_sub_commodity_button,
                                        SSPC.click_on_button_timeout)
 
         return tempText
