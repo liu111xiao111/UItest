@@ -67,6 +67,7 @@ class SquareShoppingCases(TestCase):
         squarePage.clickOnBornToShop()
 
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
+        squareShoppingPage.waitBySeconds(5)
         squareShoppingPage.validSelf()
         tempText = squareShoppingPage.clickOnSubCommodity()
 
