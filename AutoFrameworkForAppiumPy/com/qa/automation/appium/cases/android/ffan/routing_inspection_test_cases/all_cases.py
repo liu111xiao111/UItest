@@ -145,7 +145,7 @@ if __name__ == "__main__":
 #     suite.addTest(FeiFanCardOpenCases("test_case")) #新版本不再有这个入口，用例删除掉
 
     suite.addTest(LoginCases("test_case"))
-    suite.addTest(LogoutCases("test_case"))
+    #suite.addTest(LogoutCases("test_case"))
     suite.addTest(MembershipCardPackageCases("test_case"))
     suite.addTest(MessageSettingsCases("test_case"))
     suite.addTest(MyfeifanMyLikeCases("test_case"))

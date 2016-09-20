@@ -51,7 +51,7 @@ class HuiLifeResourceNicheCases(TestCase):
         huiLifePage.screenShot("hui_life_resource_niche")
 
         tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"违章查询", u"加油 Heading",
-                     u"话费充值", u"流量充值", u"QQ充值", u"网游充值", u"数码回收",
+                     u"话费充值", u"流量充值", u"Q币充值", u"网游充值", u"数码回收",
                      u"演唱会", u"音乐会", u"亲子票务", u"首页", u"自选股")
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]" % (tempNum + 1), tempTuple[tempNum])
