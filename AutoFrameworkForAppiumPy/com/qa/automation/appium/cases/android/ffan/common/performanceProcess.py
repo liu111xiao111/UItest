@@ -6,6 +6,7 @@ Created on Aug 31, 2016
 
 import os
 import time
+import xlsxwriter
 
 class PerformanceHandle:
     def __init__(self):
@@ -18,6 +19,15 @@ class PerformanceHandle:
         self.dataList['fps'] = ''
         self.dataList['rx'] = ''
         self.dataList['tx'] = ''
+
+        self.excelList = dict()
+        self.excelList['cpu'] = []
+        self.excelList['memory'] = []
+        self.excelList['coldBoot'] = []
+        self.excelList['warmBoot'] = []
+        self.excelList['fps'] = []
+        self.excelList['rx'] = []
+        self.excelList['tx'] = []
 
         self.columnNum = 2
 
@@ -78,6 +88,7 @@ class PerformanceHandle:
                 self.txHandle(txFilePath)
 
             self.createHtmlReport(reportPath)
+            self.createExcelReport(reportPath)
 
             # self.removePerformanceFile(cpuFilePath)
             # self.removePerformanceFile(memoryFilePath)
@@ -95,6 +106,7 @@ class PerformanceHandle:
             htmlContent = ''
             totalNum = 0
             listValues = []
+            excelValues = []
             if(filePath != ''):
                 freq = 0
                 i = 1
@@ -113,6 +125,7 @@ class PerformanceHandle:
                         totalNum = totalNum + float(value[1])
 
                         listValues.append(float(value[1]))
+                        self.excelList['cpu'].append(line)
                         freq = freq + 10
                         i = i + 1
 
@@ -149,6 +162,7 @@ class PerformanceHandle:
                         listValues.append(float(value[1]))
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
+                        self.excelList['memory'].append(line)
                         freq = freq + 10
                         i = i + 1
 
@@ -180,6 +194,7 @@ class PerformanceHandle:
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
                         listValue.append(float(value[1]))
+                        self.excelList['coldBoot'].append(line)
                         i = i + 1
                 average = totalNum/10
                 maxValue = max(listValue)
@@ -207,6 +222,7 @@ class PerformanceHandle:
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
                         listValue.append(float(value[1]))
+                        self.excelList['warmBoot'].append(line)
                         i = i + 1
                 average = totalNum/10
                 maxValue = max(listValue)
@@ -229,6 +245,7 @@ class PerformanceHandle:
                         rowContent = (
                         "<tr class='passClass'><td>%s</td><td>%s</td><td>%s</td></tr>" % (value[0], value[1], value[2]))
                         htmlContent = htmlContent + rowContent
+                        self.excelList['fps'].append(line)
                 self.dataList['fps'] = htmlContent
         except Exception as e:
             print(str(e))
@@ -254,6 +271,7 @@ class PerformanceHandle:
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
                         listValue.append(float(value[1]))
+                        self.excelList['rx'].append(line)
                         freq = freq + 10
                         i = i + 1
 
@@ -290,6 +308,7 @@ class PerformanceHandle:
                         htmlContent = htmlContent + rowContent
                         totalNum = totalNum + float(value[1])
                         listValue.append(float(value[1]))
+                        self.excelList['tx'].append(line)
                         freq = freq + 10
                         i = i + 1
 
@@ -342,8 +361,93 @@ class PerformanceHandle:
             resultFile.close()
 
 
-    def createExcelReport(self):
-        pass
+    def createExcelReport(self, reportPath):
+        report = os.path.join(reportPath, 'test_performance_result.xlsx')
+        workbook = xlsxwriter.Workbook(report)
+        try:
+            # 生成CPU perf sheet
+            worksheet = workbook.add_worksheet('CPU Performance')
+            worksheet.write(0, 0, 'time')
+            worksheet.write(0, 1, 'usage(%)')
+            row = 1
+            for line in self.excelList['cpu']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+
+            # 生成memory perf sheet
+            worksheet = workbook.add_worksheet('Memory Performance')
+            worksheet.write(0, 0, 'time')
+            worksheet.write(0, 1, 'usage(Mb)')
+            row = 1
+            for line in self.excelList['memory']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+
+            # 生成Fps perf sheet
+            worksheet = workbook.add_worksheet('Fps Performance')
+            worksheet.write(0, 0, 'Tab')
+            worksheet.write(0, 1, 'draw')
+            worksheet.write(0, 2, 'fps')
+            row = 1
+            for line in self.excelList['fps']:
+                value = str(line).split(' ')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 2, value[2])
+                row = row + 1
+
+            # 生成cold boot time perf sheet
+            worksheet = workbook.add_worksheet('Cold Boot Time Performance')
+            worksheet.write(0, 0, 'times')
+            worksheet.write(0, 1, 'boot times(ms)')
+            row = 1
+            for line in self.excelList['coldBoot']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, self.numBootEn[row])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+
+            # 生成warm boot time perf sheet
+            worksheet = workbook.add_worksheet('Warm Boot Time Performance')
+            worksheet.write(0, 0, 'times')
+            worksheet.write(0, 1, 'boot times(ms)')
+            row = 1
+            for line in self.excelList['warmBoot']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, self.numBootEn[row])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+
+            # 生成rx perf sheet
+            worksheet = workbook.add_worksheet('Upstream Rate Performance')
+            worksheet.write(0, 0, 'date time')
+            worksheet.write(0, 1, 'usage(KBps)')
+            row = 1
+            for line in self.excelList['rx']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+
+            # 生成tx perf sheet
+            worksheet = workbook.add_worksheet('Downstream Rate Performance')
+            worksheet.write(0, 0, 'date time')
+            worksheet.write(0, 1, 'usage(KBps)')
+            row = 1
+            for line in self.excelList['tx']:
+                value = str(line).split(':')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, value[1])
+                row = row + 1
+        except Exception as e:
+            print(str(e))
+        finally:
+            workbook.close()
+
 
     def loadHtmlTemplate(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
@@ -377,5 +481,5 @@ if (__name__ == "__main__"):
     # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
     # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = PerformanceHandle()
-    performance.Handle('2016/09/01 12:23', '2016/09/01 13:11', '/Users/auto/Desktop/performance_data')
+    performance.Handle('2016/09/21 11:58:28', '2016/09/21 13:16:51', '/Users/songbo/workspace/autotest/report/ffan/20160921/8')
     # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
