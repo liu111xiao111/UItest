@@ -137,7 +137,7 @@ if __name__ == "__main__":
     suite.addTest(SwitchCityCases("test_case_step_2"))
     suite.addTest(MyfeifanMyParkingPaymentCases("test_case"))
     suite.addTest(ParkingBindingsCatergoryCases("test_case"))
-    suite.addTest(ParkingBundingCatergoryCases("test_case"))
+    #suite.addTest(ParkingBundingCatergoryCases("test_case"))
     suite.addTest(SquareParkingPaymentCases("test_case"))
     suite.addTest(FeiFanCardBillCases("test_case"))
     suite.addTest(FeiFanCardIntegralCases("test_case"))
