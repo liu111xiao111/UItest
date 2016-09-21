@@ -373,7 +373,7 @@ class PerformanceHandle:
             for line in self.excelList['cpu']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
 
             # 生成memory perf sheet
@@ -384,7 +384,7 @@ class PerformanceHandle:
             for line in self.excelList['memory']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
 
             # 生成Fps perf sheet
@@ -396,8 +396,8 @@ class PerformanceHandle:
             for line in self.excelList['fps']:
                 value = str(line).split(' ')
                 worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, value[1])
-                worksheet.write(row, 2, value[2])
+                worksheet.write(row, 1, float(value[1]))
+                worksheet.write(row, 2, float(value[2]))
                 row = row + 1
 
             # 生成cold boot time perf sheet
@@ -408,7 +408,7 @@ class PerformanceHandle:
             for line in self.excelList['coldBoot']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, self.numBootEn[row])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
 
             # 生成warm boot time perf sheet
@@ -419,7 +419,7 @@ class PerformanceHandle:
             for line in self.excelList['warmBoot']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, self.numBootEn[row])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
 
             # 生成rx perf sheet
@@ -430,7 +430,7 @@ class PerformanceHandle:
             for line in self.excelList['rx']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
 
             # 生成tx perf sheet
@@ -441,7 +441,7 @@ class PerformanceHandle:
             for line in self.excelList['tx']:
                 value = str(line).split(':')
                 worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, value[1])
+                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
         except Exception as e:
             print(str(e))
