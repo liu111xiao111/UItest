@@ -358,11 +358,10 @@ class HuiLifePage(SuperPage):
         '''
         usage: 点击一个控件，并验证是否点击正确。
         '''
-
         logging.info("KEYWORDS: %s" % validValue)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   viewXpath, HLPC.click_on_button_timeout)
-        API().waitBySeconds(10)
+        API().waitBySeconds(20)
         if (viewXpath == HLPC.xpath_optional_stock or viewXpath == HLPC.xpath_come_on):
             API().assertElementByContentDesc(self.testcase,
                                              self.driver,
