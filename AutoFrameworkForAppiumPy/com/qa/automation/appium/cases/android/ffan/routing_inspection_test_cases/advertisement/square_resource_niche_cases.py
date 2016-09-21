@@ -17,6 +17,7 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -51,16 +52,23 @@ class SquareResourceNicheCases(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         resourceNicheDetailsPage = ResourceNicheDetailsPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(5)
+        searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
+        squareModulePage.waitBySeconds(5)
         dashboardPage.screenShot("square_resource_niche_square")
 
         squareModulePage.clickOnResourceNiche()
         resourceNicheDetailsPage.validSelf()
         squareModulePage.screenShot("square_resource_niche")
-        squareModulePage.waitBySeconds()
+        squareModulePage.waitBySeconds(2)
 
 
 if __name__ == "__main__":
