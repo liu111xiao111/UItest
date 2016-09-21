@@ -163,7 +163,7 @@ if __name__ == "__main__":
     suite.addTest(HotWordSearchCases("test_case"))
     suite.addTest(SquareFindStoreSearchCases("test_case"))
     suite.addTest(SquareSearchCases("test_case"))
-    suite.addTest(ChildCatergoryCases("test_case"))
+    #suite.addTest(ChildCatergoryCases("test_case"))
     suite.addTest(LefuPayCatergoryCases("test_case"))
     suite.addTest(ShoppingCatergoryCases("test_case"))
     # suite.addTest(ShoppingMallCases("testCase"))
