@@ -23,7 +23,8 @@ class SettingsPageConfigs():
     resource_id_setting_share_to_friend_rl = "setting_share_to_friend";
 
     # 退出当前账号textview
-    resource_id_setting_btn_logout_rl = "setting_btn_logout";
+    resource_id_setting_btn_logout_rl = "com.wanda.app.wanhui:id/setting_btn_logout";
+    text_exit_btn = u"退出当前账号";
 
     text_confirm_btn = u"确认";
 
