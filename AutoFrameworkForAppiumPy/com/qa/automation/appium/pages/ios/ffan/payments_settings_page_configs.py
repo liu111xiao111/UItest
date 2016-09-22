@@ -19,7 +19,7 @@ class PaymentsSettingsPageConfigs(object):
     resource_id_payments_settings_title_st = u"支付设置"
 
     # Transaction record button
-    resource_id_update_payments_password_st = u"支付密码管理"
+    resource_id_update_payments_password_st = u"修改支付密码"
 
     # Small amount password less payments button
     resource_id_small_amount_password_less_payments_st = u"小额免密支付"
