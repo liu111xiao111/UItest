@@ -65,7 +65,7 @@ class LefuCancelCatergoryCases(TestCase):
         myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
 
         # 首页点击乐付
-        dashboardPage.wait_by_seconds(seconds=1)
+        dashboardPage.waitBySeconds(seconds=1)
         dashboardPage.validSelf()
         dashboardPage.clickOnLePay()
         lePayPage.validSelf()

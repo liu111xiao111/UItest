@@ -44,9 +44,9 @@ class HuiLifeResourceNicheCases(TestCase):
         huiLifePage.validSelf()
         huiLifePage.screen_shot("hui_life_resource_niche")
 
-        tempTuple = (u"滴滴出行", u"滴滴出行", u"违章查询", u"自选股", u"首页",
-                     u"话费充值", u"流量充值", u"QQ充值", u"数码回收", u"有料",
-                     u"加油", u"演唱会", u"话剧", u"音乐会", u"亲子票务")
+        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"违章查询", u"加油",
+                     u"话费充值", u"流量充值", u"Q币充值", u"网游充值", u"数码回收",
+                     u"演唱会", u"音乐会", u"亲子票务", u"飞凡阅读", u"股票资讯")
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
             huiLifePage.waitBySeconds()

@@ -52,7 +52,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.squar
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_lefu_pay_cases import SquareLefuPayCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_movie_cases import SquareMovieCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_parking_payment_cases import SquareParkingPaymentCases
-from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_queue_cases import SquareLefuPayCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_queue_cases import SquareQueueCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_recommend_store_cases import SquareRecommendCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_resource_niche_cases import SquareResourceNicheCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_search_cases import SquareSearchCases

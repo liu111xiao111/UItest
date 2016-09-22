@@ -7,7 +7,8 @@ class BrandCategoryPageConfigs():
     # 品牌街－－推荐&大牌
     text_recommend = u"推荐"
     text_brand = u"大牌"
-    xpath_brand_details = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIACollectionView[1]/UIACollectionCell[1]/UIAImage[1]"
+    #xpath_brand_details = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIACollectionView[1]/UIACollectionCell[1]/UIAImage[1]"
+    xpath_brand_details = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIASegmentedControl[1]/UIAButton[2]"
     xpath_recommend_details = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[3]"
     xpath_women_fasion = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAImage[1]"
     xpath_men_fasion = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAImage[1]"

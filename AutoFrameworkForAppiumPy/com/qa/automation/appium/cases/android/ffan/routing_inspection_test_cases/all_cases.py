@@ -130,7 +130,7 @@ if __name__ == "__main__":
     suite.addTest(FoodCases("test_case"))
     suite.addTest(SquareFoodCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
-    suite.addTest(BrandFamousCatergoryCases("test_case"))
+    suite.addTest(BrandFamousCatergoryCases("test_ca††se"))
     suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SplashScreenHomePageCases("test_case"))
