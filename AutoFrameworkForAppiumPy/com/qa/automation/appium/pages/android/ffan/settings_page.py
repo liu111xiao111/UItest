@@ -32,6 +32,11 @@ class SettingsPage(SuperPage):
                                        self.logger,
                                        SPC.resource_id_setting_btn_logout_rl,
                                        SPC.assert_view_timeout)
+        '''API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SPC.text_exit_btn,
+                                 SPC.assert_view_timeout)'''
         if confirmQuit:
             API().clickElementByText(self.testcase,
                                      self.driver,
