@@ -58,7 +58,7 @@ class MyFfanMyOrderDetailsPage(SuperPage):
                                            self.driver,
                                            self.logger,
                                            MyFfanMyOrderDetailsPageConfigs.xpath_order_number)
-        return orderNumber;
+        return MyFfanMyOrderDetailsPageConfigs.name_order_number + orderNumber;
 
     def getMyFilmOrderNumber(self):
         '''
@@ -79,7 +79,7 @@ class MyFfanMyOrderDetailsPage(SuperPage):
                                            self.driver,
                                            self.logger,
                                            MyFfanMyOrderDetailsPageConfigs.xpath_le_pay_order_number)
-        return orderNumber;
+        return MyFfanMyOrderDetailsPageConfigs.name_order_number + orderNumber;
 
     def getMyCouponNumber(self):
         '''
