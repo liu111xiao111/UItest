@@ -90,7 +90,7 @@ class DashboardPageConfigs():
     resource_id_movieprivilege_st = u"优惠"
 
     # Square module
-    xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIAElement[1]"
+    xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]"
 
     # Main page
     xpath_main_page = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]"
