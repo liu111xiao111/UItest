@@ -13,7 +13,7 @@ class SearchPageConfigs():
     xpath_search_tf = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]"
 
     # xpath　搜索出来的店铺第一个
-    xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]"
+    xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]"
 
     # Click button time out
     click_on_button_timeout = 10
