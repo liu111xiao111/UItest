@@ -89,7 +89,7 @@ if __name__ == "__main__":
     suite.addTest(HotWordSearchCases("test_case"))
     #suite.addTest(HuiLifeResourceNicheCases("test_case"))
     suite.addTest(LefuCancelCatergoryCases("test_case"))
-    #suite.addTest(LoginCases("test_case"))
+    suite.addTest(LoginCases("test_case"))
     suite.addTest(LogoutCases("test_case"))
     suite.addTest(MembershipCardPackageCases("test_case"))
     suite.addTest(MessageSettingsCases("test_case"))
