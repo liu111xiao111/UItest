@@ -16,6 +16,7 @@ from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
 from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from com.qa.automation.appium.pages.ios.ffan.verification_page import VerificationPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.settings_page import SettingsPage
 
 
 class LoginCases(TestCase):
@@ -45,6 +46,16 @@ class LoginCases(TestCase):
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
+        if myFeiFanPage.validLoginStatus(False):
+            myFeiFanPage.clickOnSettings()
+
+            settingPage = SettingsPage(self, self.driver, self.logger)
+            settingPage.waitBySeconds()
+            settingPage.validSelf()
+            settingPage.clickOnQuitAccountBtn()
+
+            myFeiFanPage.waitBySeconds()
+            myFeiFanPage.validLogoutStatus()
         myFeiFanPage.clickOnLogin()
 
         loginPage = LoginPage(self, self.driver, self.logger)
@@ -54,12 +65,12 @@ class LoginCases(TestCase):
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
 
-        verificationPage = VerificationPage(self, self.driver, self.logger)
-        verificationPage.validSelf()
-        verificationPage.clickOnSkip()
+        #verificationPage = VerificationPage(self, self.driver, self.logger)
+        #verificationPage.validSelf()
+        #verificationPage.clickOnSkip()
 
         myFeiFanPage.waitBySeconds(5)
-        myFeiFanPage.validSelf()
+        myFeiFanPage.validLoginStatus()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(LoginCases)
