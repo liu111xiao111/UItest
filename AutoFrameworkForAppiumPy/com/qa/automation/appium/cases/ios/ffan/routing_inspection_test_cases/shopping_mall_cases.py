@@ -58,17 +58,17 @@ class ShoppingMallCases(TestCase):
         # 点击 “全部” tab
         shoppingMallPage.clickOnTotalTab()
         shoppingMallPage.validListView()
-        shoppingMallPage.validDistance()
+        #shoppingMallPage.validDistance()
 
         # 点击 “购物中心” tab
         shoppingMallPage.clickOnShoppingTab()
         shoppingMallPage.validListView()
-        shoppingMallPage.validDistance()
+        #shoppingMallPage.validDistance()
 
         # 点击 “百货” tab
         shoppingMallPage.clickOnGoodsTab()
         shoppingMallPage.validListView()
-        shoppingMallPage.validDistance()
+        #shoppingMallPage.validDistance()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ShoppingMallCases)
