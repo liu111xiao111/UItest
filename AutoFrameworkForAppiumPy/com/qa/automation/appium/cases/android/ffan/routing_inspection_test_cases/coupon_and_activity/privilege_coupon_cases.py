@@ -104,6 +104,7 @@ class PrivilegeCouponCases(TestCase):
         myFfanPage.clickOnMyTicket()
 
         myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
+        myFfanMyTicketPage.waitBySeconds(5)
         myFfanMyTicketPage.validSelf()
         myFfanMyTicketPage.validSelfTicketName(TempText)
         myFfanMyTicketPage.clickBackKey()
