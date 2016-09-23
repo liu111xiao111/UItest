@@ -21,7 +21,7 @@ class SquareModulePageConfigs():
     text_shopping = u"爱购物";
     text_find_store = u"找店";
     text_indoor_map = u"室内地图";
-    text_lefu_pay = u"乐付买单";
+    text_lefu_pay = u"买单";
     text_queue = u"排队取号";
     text_coupon = u"优惠券"
     text_flash_sales = u"限时抢购"
