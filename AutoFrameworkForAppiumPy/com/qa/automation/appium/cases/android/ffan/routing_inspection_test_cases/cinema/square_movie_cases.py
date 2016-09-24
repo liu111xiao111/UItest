@@ -71,7 +71,7 @@ class SquareMovieCases(TestCase):
         squareModulePage.waitBySeconds(5)
 
         squareModulePage.clickOnMovie()
-        cinemaPage.waitBySeconds(3)
+        cinemaPage.waitBySeconds(10)
         cinemaPage.validSelf()
         tempText = cinemaPage.clickOnBuyTicket()
 

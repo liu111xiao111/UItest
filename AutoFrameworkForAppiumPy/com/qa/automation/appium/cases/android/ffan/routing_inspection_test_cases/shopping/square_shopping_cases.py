@@ -73,7 +73,7 @@ class SquareShoppingCases(TestCase):
 
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
         goodsDetailsPage.validSelf()
-        goodsDetailsPage.waitBySeconds(5)
+        goodsDetailsPage.waitBySeconds(10)
         goodsDetailsPage.validKeywords(tempText)
 
 

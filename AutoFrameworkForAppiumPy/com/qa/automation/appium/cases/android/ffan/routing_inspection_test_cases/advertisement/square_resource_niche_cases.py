@@ -66,6 +66,7 @@ class SquareResourceNicheCases(TestCase):
         dashboardPage.screenShot("square_resource_niche_square")
 
         squareModulePage.clickOnResourceNiche()
+        resourceNicheDetailsPage.waitBySeconds(5)
         resourceNicheDetailsPage.validSelf()
         squareModulePage.screenShot("square_resource_niche")
         squareModulePage.waitBySeconds(2)

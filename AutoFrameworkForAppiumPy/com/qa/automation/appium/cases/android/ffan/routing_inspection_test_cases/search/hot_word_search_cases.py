@@ -59,6 +59,7 @@ class HotWordSearchCases(TestCase):
         searchPage.clickOnSpecificMovie()
 
         storeInfoPage = StoreInfoPage(self, self.driver, self.logger)
+        storeInfoPage.waitBySeconds(10)
         storeInfoPage.validSelf()
         storeInfoPage.clickBackKey()
 

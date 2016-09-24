@@ -63,7 +63,7 @@ class SmallAmountPasswordLessPaymentCases(TestCase):
         settingPage.clickOnAccountManagement()
 
         accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
-        accountManagementPage.waitBySeconds(2)
+        accountManagementPage.waitBySeconds(10)
         accountManagementPage.validSelf()
         accountManagementPage.clickOnSmallAmountPasswordLessPayments()
 

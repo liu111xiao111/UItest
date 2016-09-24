@@ -59,7 +59,7 @@ class SquareSearchCases(TestCase):
         searchPage.inputText("北京通州万达广场")
         searchPage.waitBySeconds(10)
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
         squareModulePage.waitBySeconds(5)
         squareModulePage.validSelf()

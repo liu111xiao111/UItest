@@ -65,13 +65,13 @@ class SquareParkingPaymentCases(TestCase):
 
         parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
-        parkingPage.waitBySeconds(2)
+        parkingPage.waitBySeconds(10)
         # 检查入口项目
         itemList = (u"附近停车场", u"停车券", u"停车记录", u"帮助")
         titleList = (u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
         for i in range(len(titleList)):
             parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
-            parkingPaymentPage.waitBySeconds(2)
+            parkingPaymentPage.waitBySeconds(10)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareParkingPaymentCases)
