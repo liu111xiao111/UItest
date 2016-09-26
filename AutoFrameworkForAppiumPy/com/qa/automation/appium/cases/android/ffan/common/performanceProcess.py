@@ -366,88 +366,94 @@ class PerformanceHandle:
         workbook = xlsxwriter.Workbook(report)
         try:
             # 生成CPU perf sheet
-            worksheet = workbook.add_worksheet('CPU Performance')
-            worksheet.write(0, 0, 'time')
-            worksheet.write(0, 1, 'usage(%)')
-            row = 1
-            for line in self.excelList['cpu']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('CPU Performance', workbook, 'cpu', 'time', 'usage(%)')
 
             # 生成memory perf sheet
-            worksheet = workbook.add_worksheet('Memory Performance')
-            worksheet.write(0, 0, 'time')
-            worksheet.write(0, 1, 'usage(Mb)')
-            row = 1
-            for line in self.excelList['memory']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('Memory Performance', workbook, 'memory', 'time', 'usage(Mb)')
 
             # 生成Fps perf sheet
-            worksheet = workbook.add_worksheet('Fps Performance')
-            worksheet.write(0, 0, 'Tab')
-            worksheet.write(0, 1, 'draw')
-            worksheet.write(0, 2, 'fps')
-            row = 1
-            for line in self.excelList['fps']:
-                value = str(line).split(' ')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                worksheet.write(row, 2, float(value[2]))
-                row = row + 1
+            self.generateExcelReport('Fps Performance', workbook, 'fps', 'Tab', 'draw', 'fps')
 
             # 生成cold boot time perf sheet
-            worksheet = workbook.add_worksheet('Cold Boot Time Performance')
-            worksheet.write(0, 0, 'times')
-            worksheet.write(0, 1, 'boot times(ms)')
-            row = 1
-            for line in self.excelList['coldBoot']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, self.numBootEn[row])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('Cold Boot Time Performance', workbook, 'coldBoot', 'times', 'boot times(ms)')
 
             # 生成warm boot time perf sheet
-            worksheet = workbook.add_worksheet('Warm Boot Time Performance')
-            worksheet.write(0, 0, 'times')
-            worksheet.write(0, 1, 'boot times(ms)')
-            row = 1
-            for line in self.excelList['warmBoot']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, self.numBootEn[row])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('Warm Boot Time Performance', workbook, 'warmBoot', 'times', 'boot times(ms)')
 
             # 生成rx perf sheet
-            worksheet = workbook.add_worksheet('Upstream Rate Performance')
-            worksheet.write(0, 0, 'date time')
-            worksheet.write(0, 1, 'usage(KBps)')
-            row = 1
-            for line in self.excelList['rx']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('Upstream Rate Performance', workbook, 'rx', 'date time', 'usage(KBps)')
 
             # 生成tx perf sheet
-            worksheet = workbook.add_worksheet('Downstream Rate Performance')
-            worksheet.write(0, 0, 'date time')
-            worksheet.write(0, 1, 'usage(KBps)')
-            row = 1
-            for line in self.excelList['tx']:
-                value = str(line).split(':')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+            self.generateExcelReport('Downstream Rate Performance', workbook, 'tx', 'date time', 'usage(KBps)')
         except Exception as e:
             print(str(e))
         finally:
             workbook.close()
 
+    def generateExcelReport(self, title, workbook, key, *args):
+        worksheet = workbook.add_worksheet(title)
+        if len(args) == 2 and 'Boot' not in key:
+            worksheet.write(0, 0, args[0])
+            worksheet.write(0, 1, args[1])
+            row = 1
+            for line in self.excelList[key]:
+                value = str(line).split(':')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, float(value[1]))
+                row = row + 1
+            chart = workbook.add_chart({'type': 'line'})
+            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
+                              'values' : '=%s!$B$2:$B$%s' % (title, row),
+                              'name'   : args[1]})
+            chart.set_title({
+                'name': title,
+            })
+            worksheet.insert_chart('D3', chart, {'x_scale': 2.5, 'y_scale': 2.5})
+
+        elif len(args) == 2 and 'Boot' in key:
+            worksheet.write(0, 0, args[0])
+            worksheet.write(0, 1, args[1])
+            row = 1
+            for line in self.excelList[key]:
+                value = str(line).split(':')
+                worksheet.write(row, 0, self.numBootEn[row])
+                worksheet.write(row, 1, float(value[1]))
+                row = row + 1
+            chart = workbook.add_chart({'type': 'column'})
+            chart.add_series({'categories' : '=%s!$A$2:$A$11' % title,
+                              'values': '=%s!$B$2:$B$11' % title,
+                              'name': args[1]})
+            chart.set_title({
+                'name': title,
+            })
+            worksheet.insert_chart('D3', chart)
+        else:
+            worksheet.write(0, 0, args[0])
+            worksheet.write(0, 1, args[1])
+            worksheet.write(0, 2, args[2])
+            row = 1
+            for line in self.excelList[key]:
+                value = str(line).split(' ')
+                worksheet.write(row, 0, value[0])
+                worksheet.write(row, 1, float(value[1]))
+                worksheet.write(row, 2, float(value[2]))
+                row = row + 1
+            chart = workbook.add_chart({'type': 'column'})
+            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
+                              'values': '=%s!$B$2:$B$%s' % (title, row),
+                              'name': args[1]})
+            chart.set_title({
+                'name': title,
+            })
+            worksheet.insert_chart('E3', chart)
+            chart = workbook.add_chart({'type': 'column'})
+            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
+                              'values': '=%s!$B$2:$B$%s' % (title, row),
+                              'name': args[2]})
+            chart.set_title({
+                'name': title,
+            })
+            worksheet.insert_chart('E20', chart)
 
     def loadHtmlTemplate(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
@@ -481,5 +487,5 @@ if (__name__ == "__main__"):
     # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
     # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = PerformanceHandle()
-    performance.Handle('2016/09/21 11:58:28', '2016/09/21 13:16:51', '/Users/songbo/workspace/autotest/report/ffan/20160921/8')
+    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20160926/13')
     # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
