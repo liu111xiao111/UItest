@@ -39,6 +39,8 @@ class GoodsDetailsPage(SuperPage):
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         GoodsDetailsPageConfigs.xpath_commodity_name_st,
                                         GoodsDetailsPageConfigs.assert_view_timeout)
+        #self.logger.d("window size keywords= s%" + keywords);
+        #self.logger.d("window size tempText= s%" + tempText);
         API().assertTrue(self.testcase, self.logger, keywords in tempText)
 
 

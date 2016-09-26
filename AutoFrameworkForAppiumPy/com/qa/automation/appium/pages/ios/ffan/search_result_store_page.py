@@ -19,7 +19,7 @@ class SearchResultStorePage(SuperPage):
     '''
     def validSelf(self):
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SearchResultStorePageConfigs.resource_id_store_details_st,
+                                  SearchResultStorePageConfigs.text_tongzhou,
                                   SearchResultStorePageConfigs.assert_view_timeout)
 
     def validKeywords(self, keywords):

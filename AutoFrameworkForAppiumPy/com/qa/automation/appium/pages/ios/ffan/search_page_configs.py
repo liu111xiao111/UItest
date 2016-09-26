@@ -13,7 +13,7 @@ class SearchPageConfigs():
     xpath_search_tf = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]"
 
     # xpath　搜索出来的店铺第一个
-    xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[5]"
+    xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]"
 
     # Click button time out
     click_on_button_timeout = 10
@@ -40,7 +40,7 @@ class SearchPageConfigs():
 
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 
-    text_searching_store_name = u"北京通州店"
+    text_searching_store_name = u"北京通州万达广场"
 
     text_searching_brand_name = "adidas"
 

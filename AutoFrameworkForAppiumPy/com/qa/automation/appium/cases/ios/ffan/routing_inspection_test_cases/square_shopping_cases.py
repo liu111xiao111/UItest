@@ -16,6 +16,8 @@ from com.qa.automation.appium.pages.ios.ffan.goods_details_page import GoodsDeta
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_shopping_category_page import SquareShoppingPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
+from com.qa.automation.appium.pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
 
 class SquareShoppingCases(TestCase):
@@ -41,7 +43,16 @@ class SquareShoppingCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSearchAll()
+        
+        searchPage = SearchPage(self, self.driver, self.logger)
+        searchPage.validSelf()
+        searchPage.inputStoreName()
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
+
+        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
+        searchResultStorePage.validSelf()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()

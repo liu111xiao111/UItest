@@ -41,17 +41,13 @@ class SquareSearchCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
-        squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.validSelf()
-        squareModulePage.clickOnSearch()
+        dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        searchPage.validSearchResult(u"通州", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+        #searchPage.validSearchResult(u"通州", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
         searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)

@@ -20,7 +20,7 @@ class GoodsDetailsPageConfigs(object):
     resource_id_reource_goods_details_title_st = u"商品详情"
 
     # Commodity name
-    xpath_commodity_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[4]"
+    xpath_commodity_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[5]"
 
     def __init__(self):
         pass
