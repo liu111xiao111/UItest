@@ -4,7 +4,7 @@
 class ParkingPaymentInputPlateNumberPageConfigs():
 
     # "停车交费"
-    name_parking_payment_title = u"停车交费";
+    name_parking_payment_title = u"停车";
     name_next_step = u"下一步"
     name_return = "Return"
     xpath_plate_number = "//UIAApplication[1]/UIAWindow[1]/UIATextField[1]"

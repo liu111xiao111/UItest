@@ -58,11 +58,11 @@ class BrandFamousCatergoryCases(TestCase):
 
         # 点击 "大牌"
         brandPage.clickOnBrand();
-        brandPage.clickOnBrandDetails();
-        famousDetailsPage.validSelf();
+        #brandPage.clickOnBrandDetails();
+        #famousDetailsPage.validSelf();
 
         # 点击 "男装“、”餐饮“、”生活“、”运动“及”精品“ tab
-        famousDetailsPage.clickBackKey();
+        #famousDetailsPage.clickBackKey();
         brandPage.clickOnWomenFasion();
         brandPage.validSelfWomenFasion();
         brandPage.clickOnMenFasion();
