@@ -100,7 +100,7 @@ if __name__ == "__main__":
     suite.addTest(OneCardCases("test_case"))
     suite.addTest(ParkingPaymentBindingsCases("test_case"))
     suite.addTest(ParkingPaymentCases("test_case"))
-    suite.addTest(ParkingPaymentUnbindingCases("test_case"))
+    #suite.addTest(ParkingPaymentUnbindingCases("test_case"))
     suite.addTest(PersonalInformationCases("test_case"))
     #suite.addTest(PrivilegeCouponCases("test_case"))
     #suite.addTest(SalesPromotionActiveCases("test_case"))

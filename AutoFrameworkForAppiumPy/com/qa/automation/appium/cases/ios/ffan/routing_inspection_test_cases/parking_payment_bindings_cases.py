@@ -61,27 +61,45 @@ class ParkingPaymentBindingsCases(TestCase):
         # 首页点击停车
         dashboard.waitBySeconds(seconds=1)
         dashboard.validSelf()
+        
         dashboard.clickOnParking()
         parkingPage.validSelf()
-
+        
+        parkingPage.clickOnZhaoche()
+        parkingPage.validZhaoche()
+        
+        parkingPage.clickBackKey()
+        
+        parkingPage.clickOnFujintingche()
+        parkingPage.validFujintingche()
+        
+        parkingPage.clickBackKey()
+        
+        parkingPage.clickOnTingchequan()
+        parkingPage.validTingchequan()
+        
+        parkingPage.clickBackKey()
+        
+        parkingPage.clickOnHelp()
+        parkingPage.validHelp()
         # 点击停车交费
-        parkingPage.clickOnParkingPayment()
-        parkingPaymentInputPlateNumberPage.validSelf()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+        #parkingPage.clickOnParkingPayment()
+        #parkingPaymentInputPlateNumberPage.validSelf()
+        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
 
         # 输入要绑定的车牌号
-        parkingPaymentInputPlateNumberPage.inputPlateNumber()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        parkingPaymentInputPlateNumberPage.clickOnNextStep()
-        parkingPaymentPage.validSelf()
+        #parkingPaymentInputPlateNumberPage.inputPlateNumber()
+        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+        #parkingPaymentInputPlateNumberPage.clickOnNextStep()
+        #parkingPaymentPage.validSelf()
 
         # 点击解除绑定
-        parkingPaymentPage.clickOnMore()
-        parkingPaymentMorePage.validSelf()
-        parkingPaymentMorePage.clickOnUnbundLicensePlate()
-        parkingPaymentUnboundConfirmPage.validSelf()
-        parkingPaymentUnboundConfirmPage.clickOnConfirm()
-        parkingPaymentInputPlateNumberPage.validSelf()
+        #parkingPaymentPage.clickOnMore()
+        #parkingPaymentMorePage.validSelf()
+        #parkingPaymentMorePage.clickOnUnbundLicensePlate()
+        #parkingPaymentUnboundConfirmPage.validSelf()
+        #parkingPaymentUnboundConfirmPage.clickOnConfirm()
+        #parkingPaymentInputPlateNumberPage.validSelf()
 
 
 if __name__ == "__main__":

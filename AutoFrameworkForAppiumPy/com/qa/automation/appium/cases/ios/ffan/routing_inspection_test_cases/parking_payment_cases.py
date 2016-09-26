@@ -69,18 +69,18 @@ class ParkingPaymentCases(TestCase):
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
 
         # 输入要绑定的车牌号
-        parkingPaymentInputPlateNumberPage.inputPlateNumber()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        parkingPaymentInputPlateNumberPage.clickOnNextStep()
-        parkingPaymentPage.validSelf()
+        #parkingPaymentInputPlateNumberPage.inputPlateNumber()
+        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
+        #parkingPaymentInputPlateNumberPage.clickOnNextStep()
+        #parkingPaymentPage.validSelf()
 
         # 解除绑定
-        parkingPaymentPage.clickOnMore()
-        parkingPaymentMorePage.validSelf()
-        parkingPaymentMorePage.clickOnUnbundLicensePlate()
-        parkingPaymentUnboundConfirmPage.validSelf()
-        parkingPaymentUnboundConfirmPage.clickOnConfirm()
-        parkingPaymentInputPlateNumberPage.validSelf()
+        #parkingPaymentPage.clickOnMore()
+        #parkingPaymentMorePage.validSelf()
+        #parkingPaymentMorePage.clickOnUnbundLicensePlate()
+        #parkingPaymentUnboundConfirmPage.validSelf()
+        #parkingPaymentUnboundConfirmPage.clickOnConfirm()
+        #parkingPaymentInputPlateNumberPage.validSelf()
 
 
 if __name__ == "__main__":

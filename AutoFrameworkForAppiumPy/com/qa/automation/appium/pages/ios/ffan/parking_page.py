@@ -30,6 +30,83 @@ class ParkingPage(SuperPage):
                                  driver = self.driver,
                                  logger = self.logger,
                                  name = ParkingPageConfigs.name_parking_payment)
+        
+    def clickOnZhaoche(self):
+        '''
+        usage: 点击"找车".
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  ParkingPageConfigs.xpath_tingchezhaoche,
+                                  ParkingPageConfigs.click_on_button_timeout)
+    
+    def validZhaoche(self):
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=navigation.get_attribute("name"),
+                          expectText=ParkingPageConfigs.name_zhaoche)
+        
+    def clickOnFujintingche(self):
+        '''
+        usage: 点击"附近停车场".
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  ParkingPageConfigs.xpath_fujintingchechang,
+                                  ParkingPageConfigs.click_on_button_timeout)
+    
+    def validFujintingche(self):
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=navigation.get_attribute("name"),
+                          expectText=ParkingPageConfigs.name_fujintingche)
+    
+    def clickOnTingchequan(self):
+        '''
+        usage: 点击"停车券".
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  ParkingPageConfigs.xpath_tingchequan,
+                                  ParkingPageConfigs.click_on_button_timeout)
+    def validTingchequan(self):
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=navigation.get_attribute("name"),
+                          expectText=ParkingPageConfigs.name_tingchequan)
+        
+    def clickOnTingchejilu(self):
+        '''
+        usage: 点击"停车记录".
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  ParkingPageConfigs.xpath_tingchejilu,
+                                  ParkingPageConfigs.click_on_button_timeout)
+    def validTingchejilu(self):
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=navigation.get_attribute("name"),
+                          expectText=ParkingPageConfigs.name_tingchejilu)
+    
+    def clickOnHelp(self):
+        '''
+        usage: 点击"帮助".
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  ParkingPageConfigs.xpath_bangzhu,
+                                  ParkingPageConfigs.click_on_button_timeout)
+    def validHelp(self):
+        navigation = API().validElementByIosUiautomation(driver=self.driver,
+                                                         logger=self.logger,uiaString=".navigationBars()[0]")
+        API().assertEqual(testCase=self.testcase,
+                          logger=self.logger,
+                          actualText=navigation.get_attribute("name"),
+                          expectText=ParkingPageConfigs.name_help)
 
 if __name__ == '__main__':
     pass;
