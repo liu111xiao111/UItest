@@ -112,7 +112,7 @@ if __name__ == "__main__":
     #suite.addTest(SplashScreenHomePageCases("test_case"))
     suite.addTest(SquareFindStoreSearchCases("test_case"))
     suite.addTest(SquareFoodCases("test_case"))
-    suite.addTest(SquareGeneralCouponCases("test_case"))
+    #suite.addTest(SquareGeneralCouponCases("test_case"))
     #suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SquareLefuPayCases("test_case"))
     #suite.addTest(SquareMovieCases("test_case"))

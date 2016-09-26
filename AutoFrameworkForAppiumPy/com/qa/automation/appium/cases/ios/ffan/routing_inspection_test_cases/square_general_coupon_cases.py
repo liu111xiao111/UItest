@@ -18,6 +18,8 @@ from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareMod
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
 from com.qa.automation.appium.pages.ios.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
+from com.qa.automation.appium.pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
 
 class SquareGeneralCouponCases(TestCase):
@@ -44,7 +46,16 @@ class SquareGeneralCouponCases(TestCase):
         # 点击广场页
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSearchAll()
+        
+        searchPage = SearchPage(self, self.driver, self.logger)
+        searchPage.validSelf()
+        searchPage.inputStoreName()
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
+
+        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
+        searchResultStorePage.validSelf()
 
         # 点击通用券
         squareModulePage = SquareModulePage(self, self.driver, self.logger)

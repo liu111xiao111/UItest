@@ -15,6 +15,8 @@ from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_food_category_page import SquareFoodPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
+from com.qa.automation.appium.pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
 
 class SquareFoodCases(TestCase):
@@ -53,8 +55,16 @@ class SquareFoodCases(TestCase):
 
         # 首页进入广场页
         dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        dashboardPage.clickOnSearchAll()
+        
+        searchPage = SearchPage(self, self.driver, self.logger)
+        searchPage.validSelf()
+        searchPage.inputStoreName()
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
+
+        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
+        searchResultStorePage.validSelf()
 
         # 点击 "美食汇"
         squarePage.clickOnFood()
