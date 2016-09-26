@@ -8,7 +8,7 @@ if __name__ == "__main__":
     file_name = "wanda_automation_env.pth"
 
     for path in sys.path:
-        if 'site-packages' in path:
+        if path.endswith('site-packages'):
             site_packages_dir = path
     if site_packages_dir:
         path = os.path.join(site_packages_dir, file_name)
@@ -25,8 +25,9 @@ if __name__ == "__main__":
         print("\r")
         print("If you experience permissions issues, please use the root user.")
     elif sys.argv[1] == "install":
-        fp = open(path, 'w')
+        fp = open(path, 'a')
         fp.write(BASE_DIR)
+        fp.write('\n')
         fp.close
         print("Set automation environment success.")
     elif sys.argv[1] == "uninstall":
