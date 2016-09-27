@@ -54,35 +54,41 @@ class OneCardCases(TestCase):
 
         myFeiFanCardPage = MyFeiFanCardPage(self, self.driver, self.logger)
         myFeiFanCardPage.validSelf()
-        myFeiFanCardPage.clickOnTransactionRecord()
-
-        transactionRecordPage = TransactionRecordPage(self, self.driver, self.logger)
-        transactionRecordPage.validSelf()
-        transactionRecordPage.clickBackKey()
-
-        myFeiFanCardPage.validSelf()
-        myFeiFanCardPage.clickOnPayemntsSettings()
-
-        paymentsSettingsPage = PaymentsSettingsPage(self, self.driver, self.logger)
-        paymentsSettingsPage.validSelf()
-        paymentsSettingsPage.clickOnPaymentsPasswordManagement()
-
-        paymentsPasswordManagementPage = PaymentsPasswordManagementPage(self, self.driver, self.logger)
-        paymentsPasswordManagementPage.validSelf()
-        paymentsPasswordManagementPage.clickBackKey()
-
-        paymentsSettingsPage.validSelf()
-        paymentsSettingsPage.clickOnSmallAmountPasswordLessPayments()
-
-        smallAmountPasswordLessPaymentsPage = SmallAmountPasswordLessPaymentsPage(self, self.driver, self.logger)
-        smallAmountPasswordLessPaymentsPage.validSelf()
-        if not smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
-            smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
-        if smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
-            smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
-        smallAmountPasswordLessPaymentsPage.clickBackKey()
-        paymentsSettingsPage.clickBackKey()
-        myFeiFanCardPage.clickBackKey()
+        
+        myFeiFanCardPage.clickOnLinghuaqian()
+        myFeiFanCardPage.validLinghuaqian()
+        
+        '''
+            myFeiFanCardPage.clickOnTransactionRecord()
+    
+            transactionRecordPage = TransactionRecordPage(self, self.driver, self.logger)
+            transactionRecordPage.validSelf()
+            transactionRecordPage.clickBackKey()
+    
+            myFeiFanCardPage.validSelf()
+            myFeiFanCardPage.clickOnPayemntsSettings()
+    
+            paymentsSettingsPage = PaymentsSettingsPage(self, self.driver, self.logger)
+            paymentsSettingsPage.validSelf()
+            paymentsSettingsPage.clickOnPaymentsPasswordManagement()
+    
+            paymentsPasswordManagementPage = PaymentsPasswordManagementPage(self, self.driver, self.logger)
+            paymentsPasswordManagementPage.validSelf()
+            paymentsPasswordManagementPage.clickBackKey()
+    
+            paymentsSettingsPage.validSelf()
+            paymentsSettingsPage.clickOnSmallAmountPasswordLessPayments()
+    
+            smallAmountPasswordLessPaymentsPage = SmallAmountPasswordLessPaymentsPage(self, self.driver, self.logger)
+            smallAmountPasswordLessPaymentsPage.validSelf()
+            if not smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
+                smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
+            if smallAmountPasswordLessPaymentsPage.validSmallAmountPasswordLessPaymentsStatus():
+                smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
+            smallAmountPasswordLessPaymentsPage.clickBackKey()
+            paymentsSettingsPage.clickBackKey()
+            myFeiFanCardPage.clickBackKey()
+        '''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(OneCardCases)

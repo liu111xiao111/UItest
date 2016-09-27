@@ -20,6 +20,8 @@ class MyFeiFanCardPageConfigs(object):
 
     # Transaction record button
     resource_id_transaction_record_st = u"交易记录"
+    
+    resource_id_linghuaqian_st = u"我的零花钱"
 
     # Payments settings button
     resource_id_payments_settings_st = u"支付设置"

@@ -35,6 +35,24 @@ class MyFeiFanCardPage(SuperPage):
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  MyFeiFanCardPageConfigs.resource_id_transaction_record_st,
                                  MyFeiFanCardPageConfigs.click_on_button_timeout)
+    
+    def clickOnLinghuaqian(self):
+        '''
+        usage: click on the transaction record button.
+        '''
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 MyFeiFanCardPageConfigs.resource_id_linghuaqian_st,
+                                 MyFeiFanCardPageConfigs.click_on_button_timeout)  
+        
+    def validLinghuaqian(self):
+        '''
+        usage: verify whether the current page is correct page.
+        '''
+
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  MyFeiFanCardPageConfigs.resource_id_linghuaqian_st,
+                                  MyFeiFanCardPageConfigs.assert_view_timeout)      
 
     def clickOnPayemntsSettings(self):
         '''
