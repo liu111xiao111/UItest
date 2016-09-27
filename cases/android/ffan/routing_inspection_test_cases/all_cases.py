@@ -15,6 +15,7 @@ from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_c
 from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
 
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
+from cases.android.ffan.routing_inspection_test_cases.dianYingPiao import DianYingPiaoTestCase
 
 
 def runPerformance(reportPath):
@@ -35,7 +36,9 @@ if __name__ == "__main__":
     # 添加测试用例
     suite = TestSuite()
 
-    suite.addTest(HuiShengHuoTestCase("testHuiShenghuo"))
+    suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活
+    suite.addTest(DianYingPiaoTestCase("testDianYingPiao")) # 电影票
+
 
 
     # 巡检及性能用例执行

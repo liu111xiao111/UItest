@@ -23,8 +23,8 @@ from utility.logger import Logger
 
 class HuiShengHuoTestCase(TestCase):
     '''
-    巡检checklist No.: 39
-    自动化测试case No.: 39
+    巡检 No.38
+    用例名: 惠生活
     首页-慧生活，惠生活截图，基本入口检查
     '''
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(HuiShengHuoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath, 'Hui_life_resource_niche_' + now + '.html')
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)
