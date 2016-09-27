@@ -19,7 +19,7 @@ class FeiFanCardBillPageConfigs():
     resource_id_filter_bt = u"筛选"
 
     # Pocket money bill
-    resource_id_pocket_money_bill_st = u"零花钱账单"
+    resource_id_pocket_money_bill_st = u"飞凡通账单"
 
     def __init__(self):
         pass;
