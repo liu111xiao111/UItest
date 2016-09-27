@@ -16,6 +16,11 @@ class DashboardPageConfigs():
         首页ffan logo图标name
     """
     name_home_title_icon = "home_title_icon"
+    
+    '''
+        左上角，北京市
+    '''
+    name_beijing = "北京市"
 
     """
         爱逛街icon name
@@ -73,6 +78,7 @@ class DashboardPageConfigs():
     text_huishenghuo = "慧生活";
     text_ffan_card = "飞凡卡";
     text_my = "我的";
+    text_valid_beijing = "北京"
 
     # Assert view time out
     assert_view_timeout = 10
@@ -83,6 +89,8 @@ class DashboardPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    get_timeout = 10
+    
     # Movie button
     resource_id_movie_st = "电影"
 
@@ -95,6 +103,12 @@ class DashboardPageConfigs():
     # Main page
     xpath_main_page = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]"
     xpath_sales_promotion = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAButton[3]"
+    
+    #Switch city
+    xpath_city = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
+    
+    #square
+    xpath_guangchang = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
 
     # Search all
     resource_id_search_all_tv = "全城搜索"

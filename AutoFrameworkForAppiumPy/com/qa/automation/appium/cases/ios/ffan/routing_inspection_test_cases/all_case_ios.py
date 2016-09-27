@@ -123,11 +123,10 @@ if __name__ == "__main__":
     suite.addTest(SquareSearchCases("test_case"))
     suite.addTest(SquareShoppingCases("test_case"))
     #suite.addTest(SquareSignOnCases("test_case"))
-    #suite.addTest(SwitchCityCases("test_case_step_1"))
-    #suite.addTest(SwitchCityCases("test_case_step_2"))
     suite.addTest(UpdateLoginPasswordCases("test_case"))
     suite.addTest(VersionUpgradeCases("test_case"))
     #suite.addTest(LefuPayCatergoryCases("test_case"))
+    suite.addTest(SwitchCityCases("test_case"))
 
 
 

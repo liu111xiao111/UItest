@@ -23,6 +23,26 @@ class DashboardPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.name_home_title_icon,
                                   DashboardPageConfigs.assert_view_timeout)
+    def validBeijing(self):
+        '''
+        usage:验证北京市
+        '''
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.name_beijing,
+                                  DashboardPageConfigs.assert_view_timeout)
+        
+    def validCityData(self, textContains="default", xpath="default"):
+        '''
+            usage: 验证切换城市后的数据是否为北京市的
+        '''
+        textContains = DashboardPageConfigs.text_valid_beijing
+        xpath = DashboardPageConfigs.xpath_guangchang
+
+        tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                        xpath, DashboardPageConfigs.get_timeout)
+        logging.info(tempText)
+        API().assertTrue(self.testcase, self.logger, textContains in tempText)
+        
 
     def clickOnBornToShop(self):
         """
@@ -181,6 +201,12 @@ class DashboardPage(SuperPage):
                                  DashboardPageConfigs.name_sign_in_st,
                                  DashboardPageConfigs.click_on_button_timeout)
 
-
+    def clickOnCity(self):
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.xpath_city,
+                                  DashboardPageConfigs.click_on_button_timeout)
+        
+    
+        
 if __name__ == '__main__':
     pass
