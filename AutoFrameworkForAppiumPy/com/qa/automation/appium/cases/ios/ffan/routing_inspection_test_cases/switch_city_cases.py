@@ -15,6 +15,8 @@ from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.love_shopping_page import LoveShoppingPage
 from com.qa.automation.appium.pages.ios.ffan.switch_city_page import SwitchCityPage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
+from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
 
 
 class SwitchCityCases(TestCase):
@@ -35,7 +37,28 @@ class SwitchCityCases(TestCase):
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
+        TestPrepare(self, self.driver, self.logger).prepare(False)
+        
+    def test_case(self):
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        switchCityPage = SwitchCityPage(self, self.driver, self.logger)
+        
+        dashboardPage.validSelf()
+        
+        dashboardPage.clickOnCity()
+        dashboardPage.waitBySeconds(2)
+        
+        switchCityPage.inputBeijing()
+        dashboardPage.waitBySeconds(2)
+        
+        switchCityPage.clickOnCityListFirst()
+        dashboardPage.waitBySeconds(2)
+        
+        dashboardPage.validBeijing()
+        
+        dashboardPage.validCityData()
+        
+    '''
     def test_case_step_1(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         for tempTimes in range(5):
@@ -61,6 +84,7 @@ class SwitchCityCases(TestCase):
                 break
             switchCityPage.waitBySeconds(2)
         switchCityPage.invalidSelf()
+    '''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SwitchCityCases)

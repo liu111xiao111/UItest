@@ -30,6 +30,14 @@ class SwitchCityPageConfigs(object):
 
     # Hint content
     xpath_hint_content_st = "//UIAApplication[1]/UIAWindow[5]/UIAAlert[1]/UIAScrollView[1]/UIAStaticText[2]"
+    
+    #Input for city
+    xpath_city_input = "//UIAApplication[1]/UIAWindow[1]/UIATextField[1]"
+    
+    #City list 1
+    xpath_city_list_one = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]"
+    
+    name_city_beijing = "北京市"
 
     def __init__(self):
         pass

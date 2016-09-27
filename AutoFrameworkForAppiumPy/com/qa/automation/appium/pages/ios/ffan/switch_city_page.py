@@ -55,7 +55,16 @@ class SwitchCityPage(SuperPage):
                           API().validElementByName(self.driver, self.logger,
                                                    SwitchCityPageConfigs.resource_id_switch_city_cancel_bt,
                                                    SwitchCityPageConfigs.assert_invalid_view_time))
-
+    
+    def inputBeijing(self):    
+        '''
+        usage:输入北京市
+        '''
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                SwitchCityPageConfigs.xpath_city_input,
+                                SwitchCityPageConfigs.name_city_beijing,
+                                SwitchCityPageConfigs.click_on_button_timeout)
+    
     def getCityOrientation(self):
         '''
         usage: 获取城市定位
@@ -63,4 +72,8 @@ class SwitchCityPage(SuperPage):
 
         return API().getTextByXpath(self.testcase, self.driver, self.logger,
                                     SwitchCityPageConfigs.xpath_hint_content_st,
-                                    SwitchCityPageConfigs.get_view_timeout).split(u"为")[1]
+                                    SwitchCityPageConfigs.get_view_timeout).split(u"为")[1]    
+    def clickOnCityListFirst(self):
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  SwitchCityPageConfigs.xpath_city_list_one,
+                                  SwitchCityPageConfigs.click_on_button_timeout)                
