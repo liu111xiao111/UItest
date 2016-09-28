@@ -64,16 +64,16 @@ class SquareLefuPayCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
-        squarePage.waitBySeconds(5)
+        squarePage.waitBySeconds(10)
 
         # Click "乐付买单"， load "乐付买单" page.
         squarePage.clicOnLefuPay()
-        lefuPayPage.waitBySeconds(5)
+        lefuPayPage.waitBySeconds(10)
         lefuPayPage.validSelf()
-        lefuPayPage.waitBySeconds(2)
+        lefuPayPage.waitBySeconds(5)
         # Click "乐付买单"， load detail pay page.
         lefuPayPage.clickOnLefuPay();
         lefuPayDetailPage.validSelf();
