@@ -65,26 +65,31 @@ class SquareMovieCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
+        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
-        squareModulePage.waitBySeconds(5)
+        squareModulePage.waitBySeconds(10)
 
         squareModulePage.clickOnMovie()
         cinemaPage.waitBySeconds(10)
         cinemaPage.validSelf()
-        tempText = cinemaPage.clickOnBuyTicket()
 
-        for tempTimes in range(3):
-            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
-            if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
-                popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
-                break
-            popupPage.waitBySeconds()
+        # 判断影片是否未上映
+        rtn = cinemaPage.validFilmRun()
+        if not rtn:
+            tempText = cinemaPage.clickOnBuyTicket()
 
-        seatPickingPage.validSelf()
-        seatPickingPage.validKeywords(tempText)
-        seatPickingPage.waitBySeconds(seconds=3)
+            for tempTimes in range(3):
+                logging.info("ATTEMPTS: %d" % (tempTimes + 1))
+                if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
+                    popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
+                    break
+                popupPage.waitBySeconds()
+
+            seatPickingPage.validSelf()
+            seatPickingPage.validKeywords(tempText)
+            seatPickingPage.waitBySeconds(seconds=2)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareMovieCases)

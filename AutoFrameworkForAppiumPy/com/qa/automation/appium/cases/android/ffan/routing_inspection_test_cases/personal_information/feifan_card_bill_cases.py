@@ -35,10 +35,11 @@ class FeiFanCardBillCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
+        self.platVersion = DeviceInfoUtil().getBuildVersion()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
+                                   self.platVersion, 
                                    deviceName_andr,
                                    driver_url).getDriver()
 
@@ -53,16 +54,19 @@ class FeiFanCardBillCases(TestCase):
         dashboardPage.clickOnFeiFanCard()
 
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
+        feifanCardPage.waitBySeconds(5)
         feifanCardPage.validSelf()
         feifanCardPage.clickOnBill()
 
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
+        feifanCardBillPage.waitBySeconds(5)
         feifanCardBillPage.validSelf()
-        for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
-            feifanCardBillPage.clickOnFilter()
-            feifanCardBillPage.clickOnSubFilterByText(tempText)
-            feifanCardBillPage.validSubFilterByText(tempText)
-        feifanCardBillPage.clickBackKey()
+        if int(self.platVersion.split(".")[0]) >= 5:
+            for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
+                feifanCardBillPage.clickOnFilter()
+                feifanCardBillPage.clickOnSubFilterByText(tempText)
+                feifanCardBillPage.validSubFilterByText(tempText)
+            feifanCardBillPage.clickBackKey()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardBillCases)

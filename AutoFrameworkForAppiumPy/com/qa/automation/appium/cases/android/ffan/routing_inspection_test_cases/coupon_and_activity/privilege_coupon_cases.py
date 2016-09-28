@@ -61,13 +61,15 @@ class PrivilegeCouponCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
+        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
-        squareModulePage.waitBySeconds(5)
+        squareModulePage.waitBySeconds(10)
         squareModulePage.clickOnCoupon()
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        salesPromotionPage.waitBySeconds(5)
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
         salesPromotionPage.waitBySeconds(5)
@@ -75,16 +77,18 @@ class PrivilegeCouponCases(TestCase):
         salesPromotionPage.clickOnSquareCouponDetails()
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
-        salesPromotionCouponDetailsPage.waitBySeconds(2)
+        salesPromotionCouponDetailsPage.waitBySeconds(20)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.waitBySeconds(5)
+        salesPromotionCouponDetailsPage.waitBySeconds(10)
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
 
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
+        salesPromotionCouponSuccessPage.waitBySeconds(5)
         salesPromotionCouponSuccessPage.validSelf()
         TempText = salesPromotionCouponSuccessPage.getCouponDetails()
         salesPromotionCouponSuccessPage.clickBackKey()
 
+        salesPromotionCouponDetailsPage.waitBySeconds(20)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
         salesPromotionCouponDetailsPage.clickBackKey()
 

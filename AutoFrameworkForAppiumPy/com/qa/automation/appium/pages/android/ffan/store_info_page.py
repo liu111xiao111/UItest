@@ -43,3 +43,13 @@ class StoreInfoPage(SuperPage):
                                   self.logger,
                                   SIPC.xpath_store_image_text_details_button,
                                   SIPC.click_on_button_timeout)
+
+    def validHotWordTitle(self, title = "default"):
+        '''
+        usage: 验证热词检索结果详细页标题
+        '''
+        API().assertElementByContentDesc(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         title,
+                                         SIPC.assert_view_timeout)

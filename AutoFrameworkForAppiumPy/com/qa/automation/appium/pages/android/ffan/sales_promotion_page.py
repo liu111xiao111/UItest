@@ -134,9 +134,6 @@ class SalesPromotionPage(SuperPage):
         '''
         usage : 获得活动标题名称
         '''
-        itemName = API().getTextByXpath(self.testcase,
-                                        self.driver,
-                                        self.logger, 
-                                        SPPC.xpath_special_item,
-                                        10)
+        itemName = SPPC.test_special_store
+
         return itemName

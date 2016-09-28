@@ -56,7 +56,7 @@ class BrandRecommendCatergoryCases(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnBrandCategory()
         brandPage.validSelf()
-        brandPage.waitBySeconds(2)
+        brandPage.waitBySeconds(10)
         brandPage.clickOnRecommendDetails()
         recommendDetailsPage.validSelf()
         recommendDetailsPage.waitBySeconds(5)

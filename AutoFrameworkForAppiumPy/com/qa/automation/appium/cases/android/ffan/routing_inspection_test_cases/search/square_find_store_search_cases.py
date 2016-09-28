@@ -63,6 +63,7 @@ class SquareFindStoreSearchCases(TestCase):
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
+        squarePage.waitBySeconds(10)
         squarePage.validSelf()
 
         # 点击找店

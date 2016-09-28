@@ -7,10 +7,11 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage;
-from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage;
-from com.qa.automation.appium.pages.android.ffan.square_indoor_map_page import SquareIndoorMapPage;
-from com.qa.automation.appium.pages.android.ffan.location_bluetooth_page import LocationBluetoothPage;
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
+from com.qa.automation.appium.pages.android.ffan.square_indoor_map_page import SquareIndoorMapPage
+from com.qa.automation.appium.pages.android.ffan.location_bluetooth_page import LocationBluetoothPage
+from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -54,11 +55,19 @@ class SquareIndoorMapCases(TestCase):
         squarePage = SquareModulePage(self, self.driver, self.logger)
         locationBluetoothPage = LocationBluetoothPage(self, self.driver, self.logger)
         indoormapPage = SquareIndoorMapPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         # Load square page
-        dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.waitBySeconds(10)
+        searchPage.clickOnSearchResultFirstItem()
+        squarePage.waitBySeconds(10)
+        squarePage.validSelf()
+        squarePage.waitBySeconds(5)
 
         # Click "室内地图", cancle bluetooth setting, load "室内地图" page.
         squarePage.clicOnIndoorMap();

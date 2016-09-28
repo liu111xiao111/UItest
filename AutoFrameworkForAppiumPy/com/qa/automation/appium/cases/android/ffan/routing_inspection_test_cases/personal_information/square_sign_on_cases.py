@@ -50,10 +50,11 @@ class SquareSignOnCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.waitBySeconds(10)
         dashboardPage.clickOnSignOn()
 
         signOnPage = SignOnPage(self, self.driver, self.logger)
-        signOnPage.waitBySeconds(3)
+        signOnPage.waitBySeconds(10)
         signOnPage.validSelf()
 
         if not signOnPage.validChickedInStatus(False):
@@ -63,7 +64,7 @@ class SquareSignOnCases(TestCase):
 
             dashboardPage.clickOnSignOn()
 
-            signOnPage.waitBySeconds(2)
+            signOnPage.waitBySeconds(10)
             signOnPage.validChickedInStatus()
             signOnPage.clickBackKey()
         else:

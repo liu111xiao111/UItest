@@ -19,6 +19,9 @@ class CinemaPageConfigs(object):
     # Cinema title
     resource_id_cinema_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
+    # 影片未上映
+    text_film_run = u"影片未上映"
+
     # Movie name
     resource_id_movie_name_button = "com.wanda.app.wanhui:id/tv_name_movie_home"
 

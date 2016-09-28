@@ -64,12 +64,15 @@ class MovieTicketCases(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnMovie()
 
+        moviePage.waitBySeconds(10)
         moviePage.validSelf()
         moviePage.clickOnSeatPickingAndBuyingTicket()
 
+        movieDetailsPage.waitBySeconds(20)
         movieDetailsPage.validSelf()
         movieDetailsPage.clickOnSubCinema()
 
+        cinemaPage.waitBySeconds(20)
         cinemaPage.validSelf()
         tempText = cinemaPage.clickOnBuyTicket()
 
@@ -78,7 +81,7 @@ class MovieTicketCases(TestCase):
             if popupPage.validSelf("android:id/alertTitle", VerifyActivityKeywordsType.RESOURCE_ID, False):
                 popupPage.clickOnButton("android:id/button1", ClickActivityKeywordsType.RESOURCE_ID)
                 break
-            popupPage.waitBySeconds()
+            popupPage.waitBySeconds(10)
 
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)

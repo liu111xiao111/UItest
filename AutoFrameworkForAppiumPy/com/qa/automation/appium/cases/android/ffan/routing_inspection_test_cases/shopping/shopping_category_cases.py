@@ -49,7 +49,7 @@ class ShoppingCatergoryCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
@@ -62,19 +62,21 @@ class ShoppingCatergoryCases(TestCase):
         # Load goods page
         dashboardPage.validSelf();
         dashboardPage.clickOnShoppingCategory()
+        shoppingPage.waitBySeconds(10)
         shoppingPage.validSelf();
 
         # Click goods details， load detail pay page.
         shoppingPage.clickOnGoodsDetails();
-        shoppingDetailsPage.waitBySeconds(2);
+        shoppingDetailsPage.waitBySeconds(10);
         shoppingDetailsPage.validSelf();
         shoppingDetailsPage.clickBackKey();
         shoppingPage.clickOnShoppingTrolley();
-        shoppingTrolleyPage.waitBySeconds(2);
+        shoppingTrolleyPage.waitBySeconds(10);
         shoppingTrolleyPage.validSelf();
         shoppingTrolleyPage.clickBackKey();
         shoppingPage.clickBackKey();
         dashboardPage.clickOnMy();
+        myFfanPage.waitBySeconds(10)
         myFfanPage.validSelf();
         myFfanPage.clickOnMyLike();
         myLikePage.validSelf();

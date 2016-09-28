@@ -116,6 +116,27 @@ class SearchPage(SuperPage):
                                  SPC.text_movie_button,
                                  SPC.click_on_button_timeout)
 
+    def clickOnShoppingMall(self):
+        '''
+        usage: 点击百货
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SPC.text_shopping_mall,
+                                 SPC.click_on_button_timeout)
+
+    def getHotWordListLength(self):
+        '''
+        usage: 取得检索出的百货列表长度
+        '''
+        elements = API().getElementsByResourceId(self.testcase,
+                                                 self.driver,
+                                                 self.logger,
+                                                 SPC.resource_id_first_item,
+                                                 SPC.get_view_timeout)
+        return len(elements)
+
     def clickOnSpecificMovie(self):
         '''
         usage: 点击特别推荐电影

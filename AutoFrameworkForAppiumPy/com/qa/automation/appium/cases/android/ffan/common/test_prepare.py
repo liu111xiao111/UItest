@@ -52,6 +52,7 @@ class TestPrepare:
         loginPage.switchToNormalLogin()
         loginPage.inputUserName()
         loginPage.inputPassWord()
+        loginPage.waitBySeconds(3)
         loginPage.clickOnLoginBtn()
         '''loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
         loginVerifyPage.validSelf()

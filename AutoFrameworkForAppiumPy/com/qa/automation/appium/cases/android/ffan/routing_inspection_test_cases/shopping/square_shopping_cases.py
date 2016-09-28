@@ -60,20 +60,20 @@ class SquareShoppingCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
+        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
-        squarePage.waitBySeconds(5)
+        squarePage.waitBySeconds(10)
         squarePage.clickOnBornToShop()
 
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
-        squareShoppingPage.waitBySeconds(5)
+        squareShoppingPage.waitBySeconds(10)
         squareShoppingPage.validSelf()
         tempText = squareShoppingPage.clickOnSubCommodity()
 
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
-        goodsDetailsPage.validSelf()
         goodsDetailsPage.waitBySeconds(10)
+        goodsDetailsPage.validSelf()
         goodsDetailsPage.validKeywords(tempText)
 
 

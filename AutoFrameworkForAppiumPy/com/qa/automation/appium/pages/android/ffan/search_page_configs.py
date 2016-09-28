@@ -18,6 +18,12 @@ class SearchPageConfigs():
     # Movie button
     text_movie_button = u"电影"
 
+    # 百货按钮
+    text_shopping_mall = u"百货"
+
+    # 检索出的百货列表中的第一项条目
+    resource_id_first_item = "com.wanda.app.wanhui:id/title"
+
     # Specific movie button
     resource_id_specific_movie_button = "com.wanda.app.wanhui:id/iv_icon"
 
@@ -51,6 +57,9 @@ class SearchPageConfigs():
     # Hot word module
     resource_id_hot_word_module_tv = "com.wanda.app.wanhui:id/tv_hot_word"
     xpath_hot_word_module_tv = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]/android.widget.TextView[1]"
+
+    # 期待列表长度
+    expectLenth = 0
 
 
     def __init__(self):
