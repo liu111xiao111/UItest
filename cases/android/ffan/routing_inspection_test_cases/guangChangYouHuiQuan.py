@@ -52,7 +52,7 @@ class GuangChangYouHuiQuanTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def test_case(self):
+    def testYouHuiQuan(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)

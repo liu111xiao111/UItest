@@ -17,6 +17,7 @@ from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_c
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
 from cases.android.ffan.routing_inspection_test_cases.dianYingPiao import DianYingPiaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangYouHuiQuan import GuangChangYouHuiQuanTestCase
 
 
 def runPerformance(reportPath):
@@ -40,6 +41,7 @@ if __name__ == "__main__":
     suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活
     suite.addTest(DianYingPiaoTestCase("testDianYingPiao")) # 电影票
     suite.addTest(GuangChangDianYingGuangTestCase("testDianYingGuang")) # 广场电影逛
+    suite.addTest(GuangChangYouHuiQuanTestCase("testYouHuiQuan")) # 广场优惠券
 
 
 
