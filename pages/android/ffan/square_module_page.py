@@ -156,11 +156,11 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击优惠券类目
         '''
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SMPC.text_coupon,
-                                 SMPC.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SMPC.xpath_coupon,
+                                  SMPC.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''
