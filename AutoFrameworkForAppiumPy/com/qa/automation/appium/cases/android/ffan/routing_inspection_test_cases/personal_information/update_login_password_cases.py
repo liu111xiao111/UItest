@@ -67,7 +67,7 @@ class UpdateLoginPasswordCases(TestCase):
         settingPage.clickOnAccountManagement()
 
         accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
-        accountManagementPage.waitBySeconds(10)
+        accountManagementPage.waitBySeconds(15)
         accountManagementPage.validSelf()
         accountManagementPage.clickOnUpdatePassword()
 

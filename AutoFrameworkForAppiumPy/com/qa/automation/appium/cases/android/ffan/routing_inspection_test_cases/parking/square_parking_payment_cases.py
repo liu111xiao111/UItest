@@ -71,7 +71,7 @@ class SquareParkingPaymentCases(TestCase):
         titleList = (u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
         for i in range(len(titleList)):
             parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
-            parkingPaymentPage.waitBySeconds(15)
+            parkingPaymentPage.waitBySeconds(20)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareParkingPaymentCases)
