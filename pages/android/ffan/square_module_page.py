@@ -146,11 +146,16 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击 "排队取号"
         '''
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SMPC.text_queue,
-                                 SMPC.click_on_button_timeout)
+        # API().clickElementByText(self.testcase,
+        #                          self.driver,
+        #                          self.logger,
+        #                          SMPC.text_queue,
+        #                          SMPC.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SMPC.xpath_queue,
+                                  SMPC.click_on_button_timeout)
 
     def clickOnCoupon(self):
         '''
