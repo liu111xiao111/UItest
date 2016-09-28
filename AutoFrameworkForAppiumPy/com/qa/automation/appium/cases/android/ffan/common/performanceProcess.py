@@ -366,25 +366,25 @@ class PerformanceHandle:
         workbook = xlsxwriter.Workbook(report)
         try:
             # 生成CPU perf sheet
-            self.generateExcelReport('CPU Performance', workbook, 'cpu', 'time', 'usage(%)')
+            self.generateExcelReport(u'CPU 性能', workbook, 'cpu', u'次数/10s', u'cpu使用率(%)')
 
             # 生成memory perf sheet
-            self.generateExcelReport('Memory Performance', workbook, 'memory', 'time', 'usage(Mb)')
+            self.generateExcelReport(u'内存性能', workbook, 'memory', u'次数/10s', u'内存(Mb)')
 
             # 生成Fps perf sheet
-            self.generateExcelReport('Fps Performance', workbook, 'fps', 'Tab', 'draw', 'fps')
+            self.generateExcelReport(u'OverDraw和FPS 性能', workbook, 'fps', 'Tab', 'OverDraw', 'FPS')
 
             # 生成cold boot time perf sheet
-            self.generateExcelReport('Cold Boot Time Performance', workbook, 'coldBoot', 'times', 'boot times(ms)')
+            self.generateExcelReport(u'冷启动性能', workbook, 'coldBoot', u'次数', u'启动时间(ms)')
 
             # 生成warm boot time perf sheet
-            self.generateExcelReport('Warm Boot Time Performance', workbook, 'warmBoot', 'times', 'boot times(ms)')
+            self.generateExcelReport(u'热启动性能', workbook, 'warmBoot', u'次数', u'启动时间(ms)')
 
             # 生成rx perf sheet
-            self.generateExcelReport('Upstream Rate Performance', workbook, 'rx', 'date time', 'usage(KBps)')
+            self.generateExcelReport(u'上行速率', workbook, 'rx', u'次数/10s', u'上行速率(KBps)')
 
             # 生成tx perf sheet
-            self.generateExcelReport('Downstream Rate Performance', workbook, 'tx', 'date time', 'usage(KBps)')
+            self.generateExcelReport(u'下行速率', workbook, 'tx', u'次数/10s', u'下行速率(KBps)')
         except Exception as e:
             print(str(e))
         finally:
@@ -392,68 +392,80 @@ class PerformanceHandle:
 
     def generateExcelReport(self, title, workbook, key, *args):
         worksheet = workbook.add_worksheet(title)
+
+        format_title = workbook.add_format()  # 定义format_title格式对象
+        format_title.set_border(1)  # 定义format_title对象单元格边框加粗(1像素)的格式
+        format_title.set_bg_color('#cccccc')  # 定义format_title对象单元格背景颜色为
+        # '#cccccc'的格式
+        format_title.set_align('center')  # 定义format_title对象单元格居中对齐的格式
+        format_title.set_bold()  # 定义format_title对象单元格内容加粗的格式
+
+        format_ave = workbook.add_format()  # 定义format_ave格式对象
+        format_ave.set_border(1)  # 定义format_ave对象单元格边框加粗(1像素)的格式
+
         if len(args) == 2 and 'Boot' not in key:
-            worksheet.write(0, 0, args[0])
-            worksheet.write(0, 1, args[1])
+            worksheet.write(1, 1, args[0], format_title)
+            worksheet.write(1, 2, args[1], format_title)
             row = 1
             for line in self.excelList[key]:
-                value = str(line).split(':')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
                 row = row + 1
+                value = str(line).split(':')
+                worksheet.write(row, 1, row-1, format_ave)
+                worksheet.write(row, 2, float(value[1]), format_ave)
             chart = workbook.add_chart({'type': 'line'})
-            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
-                              'values' : '=%s!$B$2:$B$%s' % (title, row),
+            chart.add_series({'categories' : '=%s!$B$3:$B$%s' % (title, row+1),
+                              'values' : '=%s!$C$3:$C$%s' % (title, row+1),
                               'name'   : args[1]})
             chart.set_title({
                 'name': title,
             })
-            worksheet.insert_chart('D3', chart, {'x_scale': 2.5, 'y_scale': 2.5})
+            worksheet.insert_chart('E4', chart, {'x_scale': 3.5, 'y_scale': 1.5})
 
         elif len(args) == 2 and 'Boot' in key:
-            worksheet.write(0, 0, args[0])
-            worksheet.write(0, 1, args[1])
+            worksheet.write(1, 1, args[0], format_title)
+            worksheet.write(1, 2, args[1], format_title)
             row = 1
             for line in self.excelList[key]:
+                row = row + 1
                 value = str(line).split(':')
-                worksheet.write(row, 0, self.numBootEn[row])
-                worksheet.write(row, 1, float(value[1]))
-                row = row + 1
+                worksheet.write(row, 1, self.numBootEn[row-1], format_ave)
+                worksheet.write(row, 2, float(value[1]), format_ave)
             chart = workbook.add_chart({'type': 'column'})
-            chart.add_series({'categories' : '=%s!$A$2:$A$11' % title,
-                              'values': '=%s!$B$2:$B$11' % title,
+            chart.add_series({'categories' : '=%s!$B$3:$B$12' % title,
+                              'values': '=%s!$C$3:$C$12' % title,
                               'name': args[1]})
             chart.set_title({
                 'name': title,
             })
-            worksheet.insert_chart('D3', chart)
+            worksheet.insert_chart('E3', chart, {'x_scale': 2, 'y_scale': 1.5})
         else:
-            worksheet.write(0, 0, args[0])
-            worksheet.write(0, 1, args[1])
-            worksheet.write(0, 2, args[2])
+            worksheet.write(1, 1, args[0], format_title)
+            worksheet.write(1, 2, args[1], format_title)
+            worksheet.write(1, 3, args[2], format_title)
             row = 1
             for line in self.excelList[key]:
-                value = str(line).split(' ')
-                worksheet.write(row, 0, value[0])
-                worksheet.write(row, 1, float(value[1]))
-                worksheet.write(row, 2, float(value[2]))
                 row = row + 1
+                value = str(line).split(' ')
+                worksheet.write(row, 1, value[0], format_ave)
+                worksheet.write(row, 2, float(value[1]), format_ave)
+                worksheet.write(row, 3, float(value[2]), format_ave)
             chart = workbook.add_chart({'type': 'column'})
-            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
-                              'values': '=%s!$B$2:$B$%s' % (title, row),
+            chart.add_series({'categories' : '=%s!$B$3:$B$%s' % (title, row+1),
+                              'values': '=%s!$C$3:$C$%s' % (title, row+1),
                               'name': args[1]})
             chart.set_title({
-                'name': title,
+                'name': 'OverDraw 性能',
             })
-            worksheet.insert_chart('E3', chart)
+            worksheet.insert_chart('F3', chart, {'x_scale': 2, 'y_scale': 1.5})
             chart = workbook.add_chart({'type': 'column'})
-            chart.add_series({'categories' : '=%s!$A$2:$A$%s' % (title, row),
-                              'values': '=%s!$B$2:$B$%s' % (title, row),
-                              'name': args[2]})
+            chart.add_series({'categories' : '=%s!$B$3:$B$%s' % (title, row+1),
+                              'values': '=%s!$D$3:$D$%s' % (title, row+1),
+                              'name': args[2],
+                              'fill': {'color': '#FF9900'}})
             chart.set_title({
-                'name': title,
+                'name': 'FPS 性能',
             })
-            worksheet.insert_chart('E20', chart)
+            worksheet.insert_chart('F30', chart, {'x_scale': 2, 'y_scale': 1.5})
 
     def loadHtmlTemplate(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
@@ -487,5 +499,5 @@ if (__name__ == "__main__"):
     # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
     # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = PerformanceHandle()
-    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20160926/13')
+    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20160927/1')
     # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
