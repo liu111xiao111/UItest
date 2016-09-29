@@ -21,6 +21,7 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangYouHuiQuan impor
 from cases.android.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangPaiDui import GuangChangPaiDuiTestCase
+from cases.android.ffan.routing_inspection_test_cases.pinPaiJieDaPai import PinPaiJieDaPaiTestCase
 
 
 def runPerformance(reportPath):
@@ -48,6 +49,7 @@ if __name__ == "__main__":
     suite.addTest(MeiShiHuiTestCase("testMeiShiHui")) # 美食汇
     suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇
     suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队
+    suite.addTest(PinPaiJieDaPaiTestCase("PinPaiJieDaPaiTestCase")) # 品牌街大牌
 
 
 
