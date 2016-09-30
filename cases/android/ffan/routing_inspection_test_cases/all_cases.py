@@ -9,6 +9,7 @@ import threading
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from cases.android.ffan.common.performance import Performance
+from cases.android.ffan.common.reportProcess import ReportHandle
 from cases.android.ffan.common.performanceProcess import PerformanceHandle
 from cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
 from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
@@ -90,3 +91,5 @@ if __name__ == "__main__":
     finally:
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         PerformanceHandle().Handle(startTime, endTime, reportpath)
+
+    ReportHandle().handle(reportpath)

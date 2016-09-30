@@ -9,6 +9,8 @@ from unittest import TestLoader
 import HTMLTestRunner
 from unittest.suite import TestSuite
 
+from com.qa.automation.appium.cases.ios.ffan.common.reportProcess import ReportHandle
+
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.activity_sharing_cases import ActivitySharingCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.brand_famous_category_cases import BrandFamousCatergoryCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.brand_recommend_category_cases import BrandRecommendCatergoryCases
@@ -137,3 +139,5 @@ if __name__ == "__main__":
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report_ios',
                                            description='Result for test')
     runner.run(suite)
+
+    ReportHandle().handle(reportpath)
