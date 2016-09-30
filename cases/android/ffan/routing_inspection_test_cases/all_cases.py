@@ -26,6 +26,9 @@ from cases.android.ffan.routing_inspection_test_cases.pinPaiJieTuiJian import Pi
 from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu import GuangChangShiNeiDiTuTestCase
 from cases.android.ffan.routing_inspection_test_cases.shanPingShouYe import ShanPingShouYeTestCase
 from cases.android.ffan.routing_inspection_test_cases.chengShiQieHuan import ChengShiQieHuanTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
+from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
 
 
 def runPerformance(reportPath):
@@ -57,7 +60,11 @@ if __name__ == "__main__":
     suite.addTest(PinPaiJieTuiJianTestCase("testPinPaiJieTuiJian")) # 品牌街推荐 No.8-1
     suite.addTest(GuangChangShiNeiDiTuTestCase("testShiNeiDiTu")) # 广场室内地图 No.27
     suite.addTest(ShanPingShouYeTestCase("testShanPingShouYe")) # 闪屏首页 No.1
-    suite.addTest(ChengShiQieHuanTestCase("testChengShiQieHuan_2")) #城市切换 No.2
+    suite.addTest(ChengShiQieHuanTestCase("testChengShiQieHuan_2")) # 城市切换 No.2
+    suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.57
+    suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.15
+    suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.28
+
 
 
 
