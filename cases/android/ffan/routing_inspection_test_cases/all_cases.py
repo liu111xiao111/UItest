@@ -22,6 +22,8 @@ from cases.android.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHui
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangPaiDui import GuangChangPaiDuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.pinPaiJieDaPai import PinPaiJieDaPaiTestCase
+from cases.android.ffan.routing_inspection_test_cases.pinPaiJieTuiJian import PinPaiJieTuiJianTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu import GuangChangShiNeiDiTuTestCase
 
 
 def runPerformance(reportPath):
@@ -49,7 +51,9 @@ if __name__ == "__main__":
     suite.addTest(MeiShiHuiTestCase("testMeiShiHui")) # 美食汇
     suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇
     suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队
-    suite.addTest(PinPaiJieDaPaiTestCase("PinPaiJieDaPaiTestCase")) # 品牌街大牌
+    suite.addTest(PinPaiJieDaPaiTestCase("testPinPaiJieDaPai")) # 品牌街大牌
+    suite.addTest(PinPaiJieTuiJianTestCase("testPinPaiJieTuiJian")) # 品牌街推荐
+    suite.addTest(GuangChangShiNeiDiTuTestCase("testShiNeiDiTu")) # 广场室内地图
 
 
 
