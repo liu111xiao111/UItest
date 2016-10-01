@@ -53,11 +53,11 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  item,
-                                 10)
+                                 20)
         API().waitBySeconds(2)
         API().assertElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  title,
-                                 10)
+                                 20)
         API().clickBackKeyForAndroid(self.driver, self.logger)

@@ -59,7 +59,6 @@ class SquareMemberCases(TestCase):
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(5)
         searchPage.clickOnSearchResultFirstItem()
-        squarePage.validSelf()
         squarePage.waitBySeconds(5)
         squarePage.validSelf()
 

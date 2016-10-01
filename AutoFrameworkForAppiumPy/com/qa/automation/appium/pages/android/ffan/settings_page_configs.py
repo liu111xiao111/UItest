@@ -34,7 +34,7 @@ class SettingsPageConfigs():
     resource_id_account_management = "com.wanda.app.wanhui:id/list_item_title"
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 30
 
     def __init__(self):
         pass;

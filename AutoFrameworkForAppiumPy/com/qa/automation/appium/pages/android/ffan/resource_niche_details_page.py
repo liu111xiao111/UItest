@@ -23,4 +23,4 @@ class ResourceNicheDetailsPage(SuperPage):
                                        self.driver,
                                        self.logger,
                                        RNDPC.class_name_android_webkit_WebView,
-                                       90)
+                                       100)
