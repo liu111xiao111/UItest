@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest.suite import TestSuite
 
 from com.qa.automation.appium.cases.ios.ffan.common.reportProcess import ReportHandle
+from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
 
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.activity_sharing_cases import ActivitySharingCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.brand_famous_category_cases import BrandFamousCatergoryCases
@@ -67,7 +68,11 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.versi
 
 
 if __name__ == "__main__":
+    sentMail = False
+    if len(sys.argv) > 2:
+        sentMail = True
     build_num = sys.argv[1]
+
 
     #root_dir = os.path.dirname(
     #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
@@ -141,3 +146,6 @@ if __name__ == "__main__":
     runner.run(suite)
 
     ReportHandle().handle(reportpath)
+
+    if sentMail:
+        sendTestResultMail(reportpath, 'ios')

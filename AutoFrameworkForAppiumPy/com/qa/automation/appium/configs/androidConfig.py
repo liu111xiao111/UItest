@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-appVersion = 'v4.8.0.0.16'
+appVersion = 'v4.8.0.0'
 phoneVersion = u'小米2s'
 
 caseList = {

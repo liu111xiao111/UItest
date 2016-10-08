@@ -9,7 +9,8 @@ from unittest import TestCase
 from unittest import TestLoader
 
 import HTMLTestRunner
-from unittest.suite import TestSuite 
+from unittest.suite import TestSuite
+from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
         
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_resource_niche_cases import HuiLifeResourceNicheCases
         
@@ -105,6 +106,9 @@ def runPerformance(reportPath):
         perf.getRx()
 
 if __name__ == "__main__":
+    sentMail = False
+    if len(sys.argv) > 2:
+        sentMail = True
     build_num = sys.argv[1]
 
     #root_dir = os.path.dirname(
@@ -196,3 +200,6 @@ if __name__ == "__main__":
         PerformanceHandle().Handle(startTime, endTime, reportpath)
 
     ReportHandle().handle(reportpath)
+
+    if sentMail:
+        sendTestResultMail(reportpath, 'android')

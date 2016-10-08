@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-appVersion = 'v4.8.0.0.16'
+appVersion = 'v4.8.0.0'
 phoneVersion = u'iPhone5c'
 
 caseList = {
@@ -31,7 +31,7 @@ caseList = {
     'SquareFoodCases'                       : u'广场美食汇',
     'SquareLefuPayCases'                    : u'广场买单',
     'SquareParkingPaymentCases'             : u'广场停车',
-    'SquareResourceNicheCases'                     : u'广场资源位',
+    'SquareResourceNicheCases'              : u'广场资源位',
     'SquareSearchCases'                     : u'广场搜索',
     'SquareShoppingCases'                   : u'广场爱购物',
     'UpdateLoginPasswordCases'              : u'我的设置(修改密码)',
