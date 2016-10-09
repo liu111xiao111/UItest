@@ -490,14 +490,5 @@ class PerformanceHandle:
 
 
 if (__name__ == "__main__"):
-    # filePath = dict()
-    # filePath['cpu']='/Users/auto/Desktop/performance_data/Cpu_performance.txt'
-    # filePath['memory']='/Users/auto/Desktop/performance_data/Mem_peformance.txt'
-    # filePath['coldboottime']='/Users/auto/Desktop/performance_data/ColdBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['warmboottime']='/Users/auto/Desktop/performance_data/WarmBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['fps']=''
-    # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
-    # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = PerformanceHandle()
-    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20160927/1')
-    # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
+    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20161009/1')

@@ -22,11 +22,12 @@ class TestResultParser(html_parser.HTMLParser):
         self.test_summary = {
             'start_time': None,
             'duration': None,
-            'passed': None,
-            'failed': None
+            'Pass': 0,
+            'Failure': 0,
+            'Error' : 0
         }
         self.failed_case = []
-        self.failed_case_detail = []
+        self.error_case = []
         self.passed_case = []
         self.filterContent = ['Start Time:', 'Duration:', 'Status:']
 
@@ -50,9 +51,16 @@ class TestResultParser(html_parser.HTMLParser):
                     if(att == 'class' and value == 'failClass'):
                         self.readContent = 'failed_case'
                         self.readed = True
-        if(tag == 'pre'):
-            self.readContent = 'failed_case_detail'
-            self.readed = True
+                        self.readStatus = False
+        if (tag == 'tr'):
+            if (len(attrs) == 0):
+                pass
+            else:
+                for (att, value) in attrs:
+                    if (att == 'class' and value == 'errorClass'):
+                        self.readContent = 'error_case'
+                        self.readed = True
+                        self.readStatus = True
         if (tag == 'tr'):
             if (len(attrs) == 0):
                 pass
@@ -70,7 +78,7 @@ class TestResultParser(html_parser.HTMLParser):
             self.readed = False
         if (tag == 'tr' and self.readContent == 'failed_case'):
             self.readed = False
-        if (tag == 'pre' and self.readContent == 'failed_case_detail'):
+        if (tag == 'tr' and self.readContent == 'error_case'):
             self.readed = False
         if (tag == 'tr' and self.readContent == 'passed_case'):
             self.readed = False
@@ -85,11 +93,17 @@ class TestResultParser(html_parser.HTMLParser):
                     self.test_summary['start_time'] = data
                 elif(self.test_summary['duration'] == None):
                     self.test_summary['duration'] = data
-                elif (self.test_summary['passed'] == None):
+                elif (self.test_summary['Pass'] == 0):
                     data = str(data).split(' ')
-                    if(len(data) == 5):
-                        self.test_summary['passed'] = data[2]
-                        self.test_summary['failed'] = data[4]
+                    if len(data) == 3:
+                        self.test_summary[data[1]] = data[2]
+                    elif len(data) == 5:
+                        self.test_summary[data[1]] = data[2]
+                        self.test_summary[data[3]] = data[4]
+                    elif len(data) == 7:
+                        self.test_summary[data[1]] = data[2]
+                        self.test_summary[data[3]] = data[4]
+                        self.test_summary[data[5]] = data[6]
                 else:
                     pass
                 # print('test_summary:' + str(self.test_summary))
@@ -97,9 +111,10 @@ class TestResultParser(html_parser.HTMLParser):
             if(len(str(data).strip()) > 1 and str(data).strip() != 'Detail'):
                 self.failed_case.append(data)
                 # print(self.failed_case)
-        if (self.readed == True and self.readContent == 'failed_case_detail'):
-            self.failed_case_detail.append(data)
-            # print(self.failed_case_detail)
+        if (self.readed == True and self.readContent == 'error_case'):
+            if(len(str(data).strip()) > 1 and str(data).strip() != 'Detail'):
+                self.error_case.append(data)
+                # print(self.failed_case)
         if (self.readed == True and self.readContent == 'passed_case'):
             if(len(str(data).strip()) > 1 and str(data).strip() != 'Detail'):
                 self.passed_case.append(data)
@@ -124,8 +139,8 @@ class TestResultParser(html_parser.HTMLParser):
     def getFailedCases(self):
         return self.failed_case
 
-    def getFailedCaseDetails(self):
-        return self.failed_case_detail
+    def getErrorCases(self):
+        return self.error_case
 
     def getPassedCases(self):
         return self.passed_case
@@ -162,7 +177,8 @@ class ReportHandle(object):
 
             self.startTime = reportSummary['start_time']
             self.duration = reportSummary['duration']
-            self.resultStatus = "<tr id='result_row'><td class='totalClass'>%s</td><td class='passClass'>%s</td><td class='failClass'>%s</td></tr>" % (int(reportSummary['passed'])+int(reportSummary['failed']), reportSummary['passed'], reportSummary['failed'])
+            self.resultStatus = "<tr id='result_row'><td class='totalClass'>%s</td><td class='passClass'>%s</td><td class='failClass'>%s</td><td class='errorClass'>%s</td></tr>"\
+                                % (int(reportSummary['Pass'])+int(reportSummary['Failure'])+int(reportSummary['Error']), reportSummary['Pass'], reportSummary['Failure'], reportSummary['Error'])
 
             self.dataHandle()
 
@@ -173,9 +189,14 @@ class ReportHandle(object):
 
     def dataHandle(self):
         failedCases = self.parser.getFailedCases()
-        failedCaseDetails = self.parser.getFailedCaseDetails()
+        errorCases = self.parser.getErrorCases()
         passedCases = self.parser.getPassedCases()
         htmlContent = ''
+
+        for count in range(0, len(errorCases)):
+            caseAutoName = errorCases[count].split('.')[-1]
+            caseName = errorCases[count].split('.')[-2]
+            htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Failed</td></tr>" % (self.caseList[caseAutoName], caseName)
 
         for count in range(0, len(failedCases)):
             caseAutoName = failedCases[count].split('.')[-1]
@@ -259,4 +280,4 @@ def sendTestResultMail(reportPath, deviceType):
 
 if (__name__ == "__main__"):
     reportPath = '/Users/songbo/'
-    sendTestResultMail(reportPath, 'ios')
+    sendTestResultMail(reportPath, 'android')
