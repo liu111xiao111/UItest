@@ -240,7 +240,7 @@ def sendTestResultMail(reportPath, deviceType):
     msg.attach(body)
 
     part = MIMEBase('application', 'octet-stream')
-    part.set_payload(open(reportFile, 'rb').read())
+    part.set_payload(open(os.path.join(reportPath, file), 'rb').read())
     encoders.encode_base64(part)
     part.add_header('content-disposition', 'attachment', filename=file)
     msg.attach(part)
