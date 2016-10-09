@@ -227,7 +227,7 @@ class ReportHandle(object):
 
     def generateReport(self, reportPath):
         report = os.path.join(reportPath, 'test_cases_report_android.html')
-        resultFile = open(report, 'w+')
+        resultFile = open(report, 'w+', encoding='utf-8')
         try:
             templateHtml = self.loadHtmlTemplate()
             startTime = self.startTime
@@ -249,7 +249,7 @@ class ReportHandle(object):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templateReport.html')
-        templateFile = open(file)
+        templateFile = open(file, encoding='utf-8')
         try:
             contents = templateFile.read()
         except Exception as e:

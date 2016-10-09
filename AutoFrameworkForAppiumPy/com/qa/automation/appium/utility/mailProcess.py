@@ -228,7 +228,7 @@ class ReportHandle(object):
     def loadHtmlTemplate(self):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templateMailReport.html')
-        templateFile = open(file)
+        templateFile = open(file, encoding='utf-8')
         try:
             contents = templateFile.read()
         except Exception as e:
