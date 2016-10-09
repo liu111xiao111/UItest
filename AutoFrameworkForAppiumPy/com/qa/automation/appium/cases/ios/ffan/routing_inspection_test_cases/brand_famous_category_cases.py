@@ -20,7 +20,7 @@ from com.qa.automation.appium.utility.logger import Logger
 class BrandFamousCatergoryCases(TestCase):
     '''
     作者 刘涛
-    巡检checklist #8
+    巡检checklist #8 品牌街
     自动化测试 #8-2
     首页进入品牌简单浏览品牌中推荐和大牌的内容，点击验证是否可以进入详情页，显示是否正常，能否喜欢订阅
     '''
@@ -44,7 +44,7 @@ class BrandFamousCatergoryCases(TestCase):
         self.reset.clearData()
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
-        testPrepare.prepare(False)
+        testPrepare.prepare(True)
 
     def test_case(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
@@ -56,8 +56,8 @@ class BrandFamousCatergoryCases(TestCase):
         dashboardPage.clickOnBrand()
         brandPage.validSelf();
 
-        # 点击 "大牌"
-        brandPage.clickOnBrand();
+        #点击 "大牌"
+        #brandPage.clickOnBrand();
         #brandPage.clickOnBrandDetails();
         #famousDetailsPage.validSelf();
 
@@ -65,16 +65,27 @@ class BrandFamousCatergoryCases(TestCase):
         #famousDetailsPage.clickBackKey();
         brandPage.clickOnWomenFasion();
         brandPage.validSelfWomenFasion();
+        brandPage.clickBackKey()
         brandPage.clickOnMenFasion();
         brandPage.validSelfMenFasion();
+        brandPage.clickBackKey()
         brandPage.clickOnCatering();
         brandPage.validSelfCertering();
+        brandPage.clickBackKey()
         brandPage.clickOnLife();
         brandPage.validSelfLife();
+        brandPage.clickBackKey()
         brandPage.clickOnSports();
         brandPage.validSelfSports();
+        brandPage.clickBackKey()
         brandPage.clickOnCompetitiveProducts();
         brandPage.validSelfCompetitiveProducts();
+        brandPage.clickBackKey()
+        
+        #点击大牌入驻
+        brandPage.clickOnDapairuzhu()
+        brandPage.validDapairuzhu()
+        
 
 
 if __name__ == "__main__":

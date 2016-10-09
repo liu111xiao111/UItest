@@ -31,6 +31,14 @@ class SquareFindStorePage(SuperPage):
                                   logger = self.logger,
                                   xpath = SFSC.xpath_iv_search_iv)
 
+    '''
+        usage :点击第一个门店
+    '''   
+    def clickFirstItem(self):
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = SFSC.xpath_store_first_item)
 
 if __name__ == '__main__':
     pass;

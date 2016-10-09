@@ -32,13 +32,17 @@ class CinemaPage(SuperPage):
         usage: click on the buy ticket button.
         '''
 
-        API().waitBySeconds(20)
-        self.scrollAsScreenPercent(0.5, 0.6, 0.5, 0.2)
+        #API().waitBySeconds(20)
+        #self.scrollAsScreenPercent(0.5, 0.6, 0.5, 0.2)
 
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         CinemaPageConfigs.xpath_movie_name_st,
                                         CinemaPageConfigs.get_timeout)
-
+        
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 CinemaPageConfigs.resource_id_buy_ticket_bt,
+                                 CinemaPageConfigs.click_on_button_timeout)
+        '''
         if API().validElementByXpath(self.driver, self.logger, CinemaPageConfigs.xpath_tomorrows_date_bt,
                                      CinemaPageConfigs.valid_timeout):
             API().clickElementByXpath(self.testcase, self.driver, self.logger,
@@ -48,7 +52,7 @@ class CinemaPage(SuperPage):
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  CinemaPageConfigs.resource_id_buy_ticket_bt,
                                  CinemaPageConfigs.click_on_button_timeout)
-
+        '''
         return tempText
 
 

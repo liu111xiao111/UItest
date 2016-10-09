@@ -45,6 +45,13 @@ class MoviePage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   MoviePageConfigs.xpath_seat_picking_and_buying_ticket_bt,
                                   MoviePageConfigs.click_on_button_timeout)
-
+        
+    def getFileName(self):
+        fileName = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                            MoviePageConfigs.xpath_film_name,
+                                            MoviePageConfigs.get_timeout)
+        print(fileName)
+        return fileName
+        
 if __name__ == '__main__':
     pass

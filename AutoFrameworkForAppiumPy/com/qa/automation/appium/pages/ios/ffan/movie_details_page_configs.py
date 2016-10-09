@@ -30,6 +30,7 @@ class MovieDetailsPageConfigs(object):
     # Sub-cinema button
     resource_id_sub_cinema_button = "com.wanda.app.wanhui:id/tv_name"
     xpath_sub_cinema_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
+    xpath_first_cinema = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]"
 
     def __init__(self):
         pass

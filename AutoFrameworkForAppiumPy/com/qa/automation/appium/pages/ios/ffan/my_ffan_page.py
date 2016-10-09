@@ -102,19 +102,14 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "停车交费" page， according to textview in "停车交费", check "停车交费" page whether load correctly.
         '''
-        start_x = API().getWidthOfDevice(self.driver, self.logger)/2
-        end_x = API().getWidthOfDevice(self.driver, self.logger)/2
-        start_y = API().getHeightOfDevice(self.driver, self.logger)/2
-        end_y = API().getHeightOfDevice(self.driver, self.logger)/5
+        for _ in range(3):
+            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
 
-        API().scroll(self.driver,
-                     self.logger,
-                     start_x, start_y, end_x, end_y)
-
-        API().clickElementByName(testCase = self.testcase,
-                                  driver = self.driver,
-                                  logger = self.logger,
-                                  name = MFPC.text_parking_payment)
+        API().clickElementByName(self.testcase, 
+                                 self.driver, 
+                                 self.logger,
+                                 MFPC.text_parking_payment,
+                                 MFPC.click_on_button_timeout)
 
 
 if __name__ == '__main__':

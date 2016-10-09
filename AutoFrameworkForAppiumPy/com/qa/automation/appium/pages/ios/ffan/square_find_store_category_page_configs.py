@@ -7,6 +7,9 @@ class SquareFindStoreConfigs():
     resource_id_tv_category_tv = u"找店"
     # 找店 search image view
     xpath_iv_search_iv = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]"
+    
+    #页面list第一个店
+    xpath_store_first_item = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]"
 
     verify_view_timeout = 10
 

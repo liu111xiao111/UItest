@@ -8,6 +8,7 @@ class SearchResultStorePageConfigs():
     text_store_info = u"门店信息";
     text_tongzhou = u"北京通州万达广场"
     resource_id_store_details_st = u"门店详情"
+    
 
     # Assert view time out
     assert_view_timeout = 10

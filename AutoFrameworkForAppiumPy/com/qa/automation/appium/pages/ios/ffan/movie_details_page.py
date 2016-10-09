@@ -42,6 +42,14 @@ class MovieDetailsPage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   MovieDetailsPageConfigs.xpath_sub_cinema_st,
                                   MovieDetailsPageConfigs.click_on_button_timeout)
-
+        
+    def clickFirstCinema(self):
+        '''
+        usage:click first cinema
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  MovieDetailsPageConfigs.xpath_first_cinema,
+                                  MovieDetailsPageConfigs.click_on_button_timeout)
+        
 if __name__ == '__main__':
     pass

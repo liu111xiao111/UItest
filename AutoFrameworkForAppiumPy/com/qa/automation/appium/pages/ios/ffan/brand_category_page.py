@@ -18,17 +18,14 @@ class BrandCategoryPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : 判断"推荐 & “大牌”显示是否正确
+        usage : 判断
         '''
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=BrandCategoryPageConfigs.text_recommend);
+                                  name=BrandCategoryPageConfigs.text_pinpaijie);
 
-        API().assertElementByName(testCase=self.testcase,
-                                  driver=self.driver,
-                                  logger=self.logger,
-                                  name=BrandCategoryPageConfigs.text_recommend);
+        
 
     def clickOnBrand(self):
         '''
@@ -110,6 +107,15 @@ class BrandCategoryPage(SuperPage):
                                   driver = self.driver,
                                   logger = self.logger,
                                   xpath = BrandCategoryPageConfigs.xpath_competitive_products)
+    
+    def clickOnDapairuzhu(self):
+        '''
+        usage : 点击 "精品" tab
+        '''
+        API().clickElementByXpath(testCase = self.testcase,
+                                  driver = self.driver,
+                                  logger = self.logger,
+                                  xpath = BrandCategoryPageConfigs.xpath_dapairuzhu)
 
     def validSelfWomenFasion(self):
         '''
@@ -164,7 +170,15 @@ class BrandCategoryPage(SuperPage):
                                   driver=self.driver,
                                   logger=self.logger,
                                   name = BrandCategoryPageConfigs.text_competitive_products);
-
+                                  
+    def validDapairuzhu(self):
+        '''
+        usage : 判断 "精品" tab显示是否正确
+        '''
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name = BrandCategoryPageConfigs.text_dapai);
 
 if __name__ == '__main__':
     pass;

@@ -26,6 +26,9 @@ class MyFfanPageConfigs():
     text_my_order = u"我的订单";
     text_my_like = u"我的喜欢";
     text_parking_payment = u"停车交费";
+    
+    # Click button time out
+    click_on_button_timeout = 10
 
     def __init__(self):
         pass;
