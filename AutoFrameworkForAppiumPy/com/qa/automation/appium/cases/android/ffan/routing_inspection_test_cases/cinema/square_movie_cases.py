@@ -65,14 +65,10 @@ class SquareMovieCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
-        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
-        squareModulePage.waitBySeconds(10)
 
         squareModulePage.clickOnMovie()
-        cinemaPage.waitBySeconds(10)
         cinemaPage.validSelf()
 
         # 判断影片是否未上映

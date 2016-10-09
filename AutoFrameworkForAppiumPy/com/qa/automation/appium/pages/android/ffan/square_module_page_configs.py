@@ -24,7 +24,7 @@ class SquareModulePageConfigs():
     text_flash_sales = u"限时抢购"
 
     # Click button time out
-    click_on_button_timeout = 20
+    click_on_button_timeout = 30
 
     # Movie button
     text_movie_button = u"电影逛"
@@ -43,7 +43,7 @@ class SquareModulePageConfigs():
     text_born_to_shop = u"爱购物"
 
     # Get view time out
-    get_view_timeout = 10
+    get_view_timeout = 30
 
     # Find store button
     xpath_find_store_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"

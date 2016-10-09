@@ -21,7 +21,7 @@ class FeiFanCardBillPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         FCBPC.resource_id_tv_bill_list_tv,
-                                        10)
+                                        30)
 
     def validSubFilterByText(self, text=u"全部"):
         '''

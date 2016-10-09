@@ -60,36 +60,28 @@ class SquareFoodCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
         squarePage.waitBySeconds(5)
 
         squarePage.scrollToFood()
         squarePage.clickOnFood()
-        squareFoodPage.waitBySeconds(5)
         squareFoodPage.validSelf()
 
         squareFoodPage.clickOnFindRestaurant()
-        squareFoodPage.waitBySeconds(2)
         squareFoodPage.validFindRestaurant()
         squareFoodPage.clickBackKey()
-        squareFoodPage.waitBySeconds(2)
 
         squareFoodPage.clickOnFindFavourable()
-        squareFoodPage.waitBySeconds(2)
         squareFoodPage.validFindFavourable()
         squareFoodPage.clickBackKey()
         squareFoodPage.waitBySeconds(2)
 
         squareFoodPage.clickOnQueue()
-        squareFoodPage.waitBySeconds(2)
         squareFoodPage.validQueue()
         squareFoodPage.clickBackKey()
-        squareFoodPage.waitBySeconds(2)
 
         squareFoodPage.clickOnStochastic()
-        squareFoodPage.waitBySeconds(2)
         squareFoodPage.validStochastic()
         squareFoodPage.clickBackKey()
 

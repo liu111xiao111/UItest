@@ -97,12 +97,12 @@ class SearchPage(SuperPage):
                                   self.driver,
                                   self.logger,
                                   SPC.resource_id_specific_store_button,
-                                  10)
+                                  30)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SPC.xpath_search_result_first_item,
-                                  10)
+                                  30)
 
         #return tempText
 

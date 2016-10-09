@@ -59,18 +59,14 @@ class SquareResourceNicheCases(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
-        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
         squareModulePage.waitBySeconds(5)
         dashboardPage.screenShot("square_resource_niche_square")
 
         squareModulePage.clickOnResourceNiche()
-        resourceNicheDetailsPage.waitBySeconds(5)
         resourceNicheDetailsPage.validSelf()
         squareModulePage.screenShot("square_resource_niche")
-        squareModulePage.waitBySeconds(2)
 
 
 if __name__ == "__main__":

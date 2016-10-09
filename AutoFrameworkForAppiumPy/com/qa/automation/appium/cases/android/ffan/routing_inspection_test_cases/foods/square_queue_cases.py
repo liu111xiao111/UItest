@@ -60,7 +60,6 @@ class SquareQueueCases(TestCase):
         # Load square page
         dashboardPage.validSelf();
         dashboardPage.clickOnSquareModule()
-        squarePage.waitBySeconds(10)
         squarePage.validSelf()
 
         # Click "排队取号"， load "排队取号" page.

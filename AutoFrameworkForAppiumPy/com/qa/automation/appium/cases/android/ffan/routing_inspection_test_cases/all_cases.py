@@ -45,7 +45,7 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.f
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.goods.brand_famous_category_cases import BrandFamousCatergoryCases
 
-from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.goods.brand_recommend_category_cases import BrandRecommendCatergoryCases
+#from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.goods.brand_recommend_category_cases import BrandRecommendCatergoryCases
 
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.map.square_indoor_map_cases import SquareIndoorMapCases
 
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     suite.addTest(SquareFoodCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
     suite.addTest(BrandFamousCatergoryCases("test_case"))
-    suite.addTest(BrandRecommendCatergoryCases("test_case"))
+    #suite.addTest(BrandRecommendCatergoryCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SplashScreenHomePageCases("test_case"))
     suite.addTest(SwitchCityCases("test_case_step_2"))

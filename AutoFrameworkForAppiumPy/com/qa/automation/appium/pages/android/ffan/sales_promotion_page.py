@@ -21,7 +21,7 @@ class SalesPromotionPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPPC.resource_id_tv_active_tv,
-                                        10)
+                                        30)
  
     def clickOnActiveTab(self):
         '''
@@ -71,7 +71,7 @@ class SalesPromotionPage(SuperPage):
                                   self.driver,
                                   self.logger,
                                   SPPC.test_special_store,
-                                  20)
+                                  30)
 
     def clickOnCouponDetails(self):
         '''

@@ -26,7 +26,7 @@ class ResourceNicheDetailsPageConfigs(object):
     """
         class name of web view
     """
-    class_name_android_webkit_WebView = "android.webkit.WebView"
+    class_name_android_webkit_WebView = "android.widget.RelativeLayout"
     
 
     def __init__(self):

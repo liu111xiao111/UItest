@@ -63,9 +63,8 @@ class OneCardCases(TestCase):
         myFeiFanPage.clickOnMyFeiFanCard()
 
         myFeiFanCardPage = MyFeiFanCardPage(self, self.driver, self.logger)
-        myFeiFanCardPage.waitBySeconds(10)
         myFeiFanCardPage.validSelf()
-        myFeiFanCardPage.clickOnTransactionRecord()
+        '''myFeiFanCardPage.clickOnTransactionRecord()
 
         transactionRecordPage = TransactionRecordPage(self, self.driver, self.logger)
         transactionRecordPage.validSelf()
@@ -93,7 +92,7 @@ class OneCardCases(TestCase):
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
         smallAmountPasswordLessPaymentsPage.clickBackKey()
         paymentsSettingsPage.clickBackKey()
-        myFeiFanCardPage.clickBackKey()
+        myFeiFanCardPage.clickBackKey()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(OneCardCases)

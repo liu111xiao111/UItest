@@ -71,7 +71,7 @@ class FoodCategoryPage(SuperPage):
                                                        FCPC.resource_id_bt_restaurant_bt,
                                                        FCPC.verify_view_timeout)'''
         restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
-                          u"粤菜", u"云贵菜", u"日本料理", u"韩国料理", u"北京菜")
+                          u"韩国料理", u"江浙菜", u"日本料理", u"烧烤", u"面包甜点")
         for restaurant in restaurantList:
             API().clickElementByText(self.testcase,
                                      self.driver,

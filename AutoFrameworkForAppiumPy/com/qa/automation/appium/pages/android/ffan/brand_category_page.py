@@ -117,6 +117,26 @@ class BrandCategoryPage(SuperPage):
                                  BCPC.xpath_competitive_products,
                                  BCPC.click_view_timeout)
 
+    def clickOnActivity(self):
+        '''
+        usage : 点击活动
+        '''
+        API().clickElementByXpath(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.xpath_activity,
+                                 BCPC.click_view_timeout)
+
+    def clickOnAllcategory(self):
+        '''
+        usage : 点击全部类别
+        '''
+        API().clickElementByXpath(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 BCPC.xpath_category,
+                                 BCPC.click_view_timeout)
+
     def validSelfWomenFasion(self):
         '''
         usage : 验证女装
@@ -176,4 +196,24 @@ class BrandCategoryPage(SuperPage):
                                   self.driver,
                                   self.logger,
                                   BCPC.text_competitive_products,
+                                  BCPC.assert_view_timeout)
+
+    def validSelfActivity(self):
+        '''
+        usage : 验证活动
+        '''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_activity,
+                                  BCPC.assert_view_timeout)
+
+    def validSelfAllCategory(self):
+        '''
+        usage : 验证全部分类
+        '''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  BCPC.text_all_category,
                                   BCPC.assert_view_timeout)

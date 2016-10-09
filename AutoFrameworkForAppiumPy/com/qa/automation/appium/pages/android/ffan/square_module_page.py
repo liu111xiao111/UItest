@@ -146,6 +146,10 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击 "排队取号"
         '''
+        API().scrollToText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_queue)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,

@@ -73,7 +73,6 @@ class MyfeifanMyQueueCases(TestCase):
         squarePage.clicOnQueue();
 
         queuePage.validSelf();
-        queuePage.waitBySeconds(2);
         # Click "取号"
         '''ret = queuePage.clicOnQueueNumber()
         if ret:

@@ -31,8 +31,8 @@ class SquareFoodPageConfigs():
     verify_stochastic_resourceID = "com.wanda.app.wanhui:id/layout_middle"
 
 
-    verify_assert_timeout = 10
-    click_child_module_timeout = 10
+    verify_assert_timeout = 30
+    click_child_module_timeout = 30
 
     def __init__(self):
         pass;

@@ -70,9 +70,9 @@ class FoodCases(TestCase):
         salesPromotionPage.clickBackKey()
 
         # 检查抢券
-        foodPage.clickOnGrabCoupons()
+        '''foodPage.clickOnGrabCoupons()
         salesPromotionPage.validSelfCoupon()
-        salesPromotionPage.clickBackKey()
+        salesPromotionPage.clickBackKey()'''
 
         # 检查乐付
         foodPage.clickOnLePay()

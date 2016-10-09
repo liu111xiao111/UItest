@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 appVersion = 'v4.8.0.0'
-phoneVersion = u'小米2s'
+phoneVersion = u'LG G2'
 
 caseList = {
-    'HuiLifeResourceNicheCases'             : u'惠生活',
+    'HuiLifeResourceNicheCases'             : u'慧生活资源位',
     'SquareResourceNicheCases'              : u'广场资源位',
     'MovieTicketCases'                      : u'电影',
     'SquareMovieCases'                      : u'广场电影逛',
@@ -12,8 +12,7 @@ caseList = {
     'FoodCases'                             : u'美食汇',
     'SquareFoodCases'                       : u'广场美食汇',
     'SquareQueueCases'                      : u'广场排队取号',
-    'BrandFamousCatergoryCases'             : u'品牌街(大牌)',
-    'BrandRecommendCatergoryCases'          : u'品牌街(推荐)',
+    'BrandFamousCatergoryCases'             : u'品牌街',
     'SquareIndoorMapCases'                  : u'广场室内地图',
     'SplashScreenHomePageCases'             : u'闪屏首页',
     'SwitchCityCases'                       : u'城市切换',
