@@ -19,6 +19,7 @@ class PerformanceHandle:
         self.dataList['fps'] = ''
         self.dataList['rx'] = ''
         self.dataList['tx'] = ''
+        self.dataList['traffic'] = ''
 
         self.excelList = dict()
         self.excelList['cpu'] = []
@@ -28,6 +29,7 @@ class PerformanceHandle:
         self.excelList['fps'] = []
         self.excelList['rx'] = []
         self.excelList['tx'] = []
+        self.excelList['traffic'] = []
 
         self.columnNum = 2
 
@@ -53,6 +55,7 @@ class PerformanceHandle:
         self.fileNameTx = 'Tx_performance.txt'
         self.fileNameColdBootTime = 'ColdBootTime_performance.txt'
         self.fileNameWarmBootTime = 'WarmBootTime_performance.txt'
+        self.fileNameTraffic = 'Traffic_performance.txt'
 
     def Handle(self, startTime, endTime, reportPath=''):
         try:
@@ -65,6 +68,7 @@ class PerformanceHandle:
             fpsFilePath = os.path.join(reportPath, self.fileNameFps)
             rxFilePath = os.path.join(reportPath, self.fileNameRx)
             txFilePath = os.path.join(reportPath, self.fileNameTx)
+            trafficFilePath = os.path.join(reportPath, self.fileNameTraffic)
 
             if(os.path.exists(cpuFilePath)):
                 self.cpuHandle(cpuFilePath)
@@ -86,6 +90,9 @@ class PerformanceHandle:
 
             if (os.path.exists(txFilePath)):
                 self.txHandle(txFilePath)
+
+            if (os.path.exists(trafficFilePath)):
+                self.trafficHandle(trafficFilePath)
 
             self.createHtmlReport(reportPath)
             self.createExcelReport(reportPath)
@@ -324,6 +331,22 @@ class PerformanceHandle:
         except Exception as e:
             print(str(e))
 
+    def trafficHandle(self, filePath):
+        try:
+            htmlContent = ''
+            totalNum = 0
+            if (filePath != ''):
+                freq = 0
+                performaceData = self.dataHandle(filePath)
+                for line in performaceData:
+                    value = str(line).split(':')
+                    if (len(value) > 1):
+                        htmlContent = "<tr class='passClass'><td>%s</td><td>%s</td></tr>" % (str(value[0]) + 's', str(value[1]))
+                        self.excelList['traffic'].append(line)
+                        self.dataList['traffic'] = htmlContent
+        except Exception as e:
+            print(str(e))
+
     def dataHandle(self, filePath):
         performanceData = []
         dataFile = open(filePath, mode='r', encoding='utf-8')
@@ -350,9 +373,10 @@ class PerformanceHandle:
             warmBootData = self.dataList['warmBoot']
             upstreamData = self.dataList['tx']
             downstreamData = self.dataList['rx']
+            trafficData = self.dataList['traffic']
 
             templateHtml = templateHtml % (
-            self.startTime, self.endTime, cpuData, memoryData, fpsData, coldBootData, warmBootData, upstreamData, downstreamData)
+            self.startTime, self.endTime, cpuData, memoryData, fpsData, coldBootData, warmBootData, upstreamData, downstreamData, trafficData)
 
             resultFile.write(templateHtml)
         except Exception as e:
@@ -385,6 +409,10 @@ class PerformanceHandle:
 
             # 生成tx perf sheet
             self.generateExcelReport(u'下行速率', workbook, 'tx', u'次数/10s', u'下行速率(KBps)')
+
+            # 生成traffic perf sheet
+            self.generateExcelReport(u'流量统计', workbook, 'traffic', u'持续时间(s)', u'流量统计(Mb)')
+
         except Exception as e:
             print(str(e))
         finally:
@@ -403,7 +431,7 @@ class PerformanceHandle:
         format_ave = workbook.add_format()  # 定义format_ave格式对象
         format_ave.set_border(1)  # 定义format_ave对象单元格边框加粗(1像素)的格式
 
-        if len(args) == 2 and 'Boot' not in key:
+        if len(args) == 2 and ('traffic' not in key and 'Boot' not in key):
             worksheet.write(1, 1, args[0], format_title)
             worksheet.write(1, 2, args[1], format_title)
             row = 1
@@ -420,7 +448,20 @@ class PerformanceHandle:
                 'name': title,
             })
             worksheet.insert_chart('E4', chart, {'x_scale': 3.5, 'y_scale': 1.5})
-
+        elif len(args) == 2 and 'traffic' in key:
+            worksheet.write(1, 1, args[0], format_title)
+            worksheet.write(1, 2, args[1], format_title)
+            for line in self.excelList[key]:
+                value = str(line).split(':')
+                worksheet.write(2, 1, value[0], format_ave)
+                worksheet.write(2, 2, float(value[1]), format_ave)
+            chart = workbook.add_chart({'type': 'column'})
+            chart.add_series({'values': '=%s!$C$3:$C$3' % title,
+                              'name': args[1]})
+            chart.set_title({
+                'name': title,
+            })
+            worksheet.insert_chart('E3', chart)
         elif len(args) == 2 and 'Boot' in key:
             worksheet.write(1, 1, args[0], format_title)
             worksheet.write(1, 2, args[1], format_title)

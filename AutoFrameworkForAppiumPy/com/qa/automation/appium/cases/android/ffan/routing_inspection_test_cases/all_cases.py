@@ -185,6 +185,8 @@ if __name__ == "__main__":
     perfThread = threading.Thread(target=runPerformance, args=(reportpath,))
     perfThread.setDaemon(True)
     perfThread.start()
+    perf = Performance(reportpath)
+    startTraffic, sTime = perf.getTraffic()
     startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     runner.run(suite)
 
@@ -196,6 +198,8 @@ if __name__ == "__main__":
         raise traceback.format_exc()
     finally:
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
 
         PerformanceHandle().Handle(startTime, endTime, reportpath)
 

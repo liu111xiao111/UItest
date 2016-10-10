@@ -75,6 +75,39 @@ class Performance(object):
         f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), mem) + "\n")
         f.close()
 
+    def getTraffic(self):
+        cmdTraffic = "adb shell cat /proc/net/xt_qtaguid/stats | grep rmnet0"
+        ret = Popen(cmdTraffic, shell=True, stdout=PIPE, stderr=PIPE)
+        trafficInfo, err = ret.communicate()
+        if err or not trafficInfo:
+            cmdTraffic = "adb shell cat /proc/net/xt_qtaguid/stats | grep wlan0"
+            ret = Popen(cmdTraffic, shell=True, stdout=PIPE, stderr=PIPE)
+            trafficInfo, err = ret.communicate()
+            if err or not trafficInfo:
+                return
+        rateLines = trafficInfo.decode('utf-8').split('\n')
+        totalTraffic = 0
+        for rateLine in rateLines:
+            try:
+                upTraffic = float(rateLine.split(' ')[7])
+                downTraffic = float(rateLine.split(' ')[5])
+            except:
+                break
+            totalTraffic = upTraffic + downTraffic + totalTraffic
+
+        getTime = time.time()
+
+        return totalTraffic, getTime
+
+    def parseTraffic(self, startTraffic, endTraffic, duration):
+        traffic = round((endTraffic - startTraffic) / 1024 / 1024, 2)
+
+        logName = "Traffic_performance.txt"
+        logPath = os.path.join(self.reportPath, logName)
+        f = open(logPath, "a")
+        f.write("%s:%s" % (duration, traffic) + "\n")
+        f.close()
+
     def getRx(self):
         '''
         获取应用下行速率
@@ -154,3 +187,4 @@ class Performance(object):
 
         uid = uidInfo.decode('utf-8').split('\t')[1]
         return uid
+
