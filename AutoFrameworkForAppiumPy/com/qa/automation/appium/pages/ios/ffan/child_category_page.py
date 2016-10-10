@@ -94,7 +94,8 @@ class ChildCategoryPage(SuperPage):
         itemName = API().getTextByXpath(self.testcase,
                                         driver=self.driver,
                                         logger=self.logger,
-                                        xpath=CCPC.xpath_store_title)
+                                        xpath=CCPC.xpath_store_title,
+                                        timeout=60)
         return itemName
 
         '''
