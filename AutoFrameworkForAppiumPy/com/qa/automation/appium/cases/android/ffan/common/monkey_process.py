@@ -9,6 +9,7 @@ import os
 class MonkeyHandle:
     def __init__(self,):
         self.dataMonkey = ""
+        self.resultMonkey = ""
 
         self.startTime = ''
         self.endTime = ''
@@ -37,20 +38,40 @@ class MonkeyHandle:
                 number = 1
                 monkeyData = self.dataHandle(filePath)
                 crashLogs = ''
+                exception = ''
+                exception_list = {'空指针异常'      : 0,
+                                  'debug异常'      : 0,
+                                  '低内存异常'      : 0,
+                                  '操作无响应异常'  : 0,
+                                  '其他异常'        : 0}
                 for line in monkeyData:
                     crashLog = "<p>%s</p>" % line
                     crashLogs = crashLogs + crashLog
+                    if 'NullPointerException' in line:
+                        exception = u'空指针异常'
+                    elif 'IllegalStateException' in line:
+                        exception = u'debug异常'
+                    elif 'OutOfMemoryError' in line:
+                        exception = u'低内存异常'
+                    elif 'NOT RESPONDING' in line:
+                        exception = u'操作无响应异常'
                     if line == '\n':
-                        htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>Crash Log</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (number, number)
-                        htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='errorCase'><div class='testcase'>Crash Log</div></td><td colspan='5'>%s</td></tr>" % (number, crashLogs)
+                        if exception == '':
+                            exception = u'其他异常'
+                        exception_list[exception] = exception_list[exception] + 1
+                        htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (exception, number)
+                        htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='errorCase'><div class='testcase'>异常信息</div></td><td colspan='5'>%s</td></tr>" % (number, crashLogs)
                         crashLogs = ''
                         number = number + 1
 
                 if not htmlContent:
                     htmlContent = "<tr class='passClass'><td>%s</td><td colspan='3'>Pass</td></tr>" % number
-                avgRowContent = ("<tr id='total_row'><td>total</td><td colspan='3'>%s Crash Infomation</td></tr>" % (number-1))
-                htmlContent = htmlContent + avgRowContent
                 self.dataMonkey = htmlContent
+
+                avgRowContent = ''
+                for key, value in exception_list.items():
+                    avgRowContent = avgRowContent + "<tr id='result_row'><td>%s</td><td colspan='3'>%s</td></tr>" % (key, value)
+                self.resultMonkey = avgRowContent
         except Exception as e:
             print(str(e))
 
@@ -61,9 +82,11 @@ class MonkeyHandle:
         try:
             allLines = dataFile.readlines()
             for line in allLines:
-                if line.startswith('// CRASH') or inseartValue == True:
-                    monkeyData.append(line)
+                if line.startswith('// CRASH') or line.startswith('// NOT RESPONDING') or inseartValue == True:
                     inseartValue = True
+                    if line == '\n':
+                        continue
+                    monkeyData.append(line)
                     if line.startswith('**'):
                         inseartValue = False
                         monkeyData.append('\n')
@@ -80,9 +103,10 @@ class MonkeyHandle:
         try:
             templateHtml = self.loadHtmlTemplate()
             monkeyData = self.dataMonkey
+            resultData = self.resultMonkey
 
             templateHtml = templateHtml % (
-            self.startTime, self.endTime, monkeyData)
+            self.startTime, self.endTime, monkeyData, resultData)
 
             resultFile.write(templateHtml)
         except Exception as e:
@@ -115,14 +139,5 @@ class MonkeyHandle:
 
 
 if (__name__ == "__main__"):
-    # filePath = dict()
-    # filePath['cpu']='/Users/auto/Desktop/performance_data/Cpu_performance.txt'
-    # filePath['memory']='/Users/auto/Desktop/performance_data/Mem_peformance.txt'
-    # filePath['coldboottime']='/Users/auto/Desktop/performance_data/ColdBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['warmboottime']='/Users/auto/Desktop/performance_data/WarmBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['fps']=''
-    # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
-    # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = MonkeyHandle()
-    performance.Handle('2016/09/01 12:23', '2016/09/01 13:11', '/Users/yiceyun/work/autotest/android_monkey_log')
-    # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
+    performance.Handle('2016/09/01 12:23', '2016/09/01 13:11', '/Users/songbo')

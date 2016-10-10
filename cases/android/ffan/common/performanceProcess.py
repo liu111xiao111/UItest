@@ -340,7 +340,7 @@ class PerformanceHandle:
 
     def createHtmlReport(self, reportPath):
         report = os.path.join(reportPath, 'test_performance_result.html')
-        resultFile = open(report, 'w+')
+        resultFile = open(report, 'w+', encoding='utf-8')
         try:
             templateHtml = self.loadHtmlTemplate()
             cpuData = self.dataList['cpu']
@@ -471,7 +471,7 @@ class PerformanceHandle:
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templatePerformance.html')
-        templateFile = open(file)
+        templateFile = open(file, mode='r', encoding='utf-8')
         try:
             contents = templateFile.read()
 
@@ -490,14 +490,5 @@ class PerformanceHandle:
 
 
 if (__name__ == "__main__"):
-    # filePath = dict()
-    # filePath['cpu']='/Users/auto/Desktop/performance_data/Cpu_performance.txt'
-    # filePath['memory']='/Users/auto/Desktop/performance_data/Mem_peformance.txt'
-    # filePath['coldboottime']='/Users/auto/Desktop/performance_data/ColdBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['warmboottime']='/Users/auto/Desktop/performance_data/WarmBootTime_com.wanda.app.wanhui_20160831110613.txt'
-    # filePath['fps']=''
-    # filePath['rx']='/Users/auto/Desktop/performance_data/Rx_performance.txt'
-    # filePath['tx']='/Users/auto/Desktop/performance_data/Tx_performance.txt'
     performance = PerformanceHandle()
-    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20160927/1')
-    # performance.removePerformanceFile('/Users/auto/Desktop/performance_data/Mem_com.wanda.app.wanhui_20160831173118.txt')
+    performance.Handle('2016/09/26 09:16:35', '2016/09/26 10:35:53', '/Users/songbo/workspace/autotest/report/ffan/20161009/1')
