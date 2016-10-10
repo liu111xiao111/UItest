@@ -1,7 +1,7 @@
 
 SYSTEM_NAME = 'automation'
 
-HEADR_NAME = u'%s自动化测试报告(%s)'
+PATROL_HEADR_NAME = u'%s巡检用例自动化测试报告(%s)'
 
 
 class Email():

@@ -266,7 +266,7 @@ def sendTestResultMail(reportPath, deviceType):
     part.add_header('content-disposition', 'attachment', filename=file)
     msg.attach(part)
 
-    msg['Subject'] = Header(constants.HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
+    msg['Subject'] = Header(constants.PATROL_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
     msg['From'] = (r"%s <" + fromAddress + ">") % Header(constants.SYSTEM_NAME, "utf-8")
     msg['To'] = ';'.join(toAddress)
 
