@@ -137,7 +137,7 @@ class TestResultParser(html_parser.HTMLParser):
                 # print(self.passed_case)
 
     def readHtmlContents(self, filePath):
-        resultFile = open(filePath)
+        resultFile = open(filePath, encoding='utf-8')
         try:
             resultContents = resultFile.read()
         except Exception as e:
@@ -259,4 +259,4 @@ class ReportHandle(object):
         return str(contents)
 
 if __name__ == "__main__":
-    ReportHandle().handle('/Users/songbo')
+    ReportHandle().handle('/Users/songbo/workspace/autotest/report/ffan/20161010/4')

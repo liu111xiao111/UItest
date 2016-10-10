@@ -340,7 +340,7 @@ class PerformanceHandle:
 
     def createHtmlReport(self, reportPath):
         report = os.path.join(reportPath, 'test_performance_result.html')
-        resultFile = open(report, 'w+')
+        resultFile = open(report, 'w+', encoding='utf-8')
         try:
             templateHtml = self.loadHtmlTemplate()
             cpuData = self.dataList['cpu']
@@ -471,7 +471,7 @@ class PerformanceHandle:
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templatePerformance.html')
-        templateFile = open(file)
+        templateFile = open(file, mode='r', encoding='utf-8')
         try:
             contents = templateFile.read()
 

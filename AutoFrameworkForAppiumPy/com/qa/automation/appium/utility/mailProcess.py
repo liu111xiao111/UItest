@@ -121,7 +121,7 @@ class TestResultParser(html_parser.HTMLParser):
                 # print(self.passed_case)
 
     def readHtmlContents(self, filePath):
-        resultFile = open(filePath)
+        resultFile = open(filePath, encoding='utf-8')
         try:
             resultContents = resultFile.read()
         except Exception as e:
@@ -278,6 +278,6 @@ def sendTestResultMail(reportPath, deviceType):
     s.quit()
 
 
-if (__name__ == "__main__"):
-    reportPath = '/Users/songbo/'
+if __name__ == "__main__":
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161010/4'
     sendTestResultMail(reportPath, 'android')
