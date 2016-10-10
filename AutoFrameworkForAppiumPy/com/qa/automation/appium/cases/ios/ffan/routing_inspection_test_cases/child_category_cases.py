@@ -53,7 +53,7 @@ class ChildCatergoryCases(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnChildCategory()
         childPage.validSelf()
-        childPage.screen_shot("child_category_cases")
+        #childPage.screen_shot("child_category_cases")
 
         # 检查亲子入口
         clickChildList = (childPage.clickOnChildPlay,
@@ -63,9 +63,9 @@ class ChildCatergoryCases(TestCase):
 
         for clickChild in clickChildList:
             clickChild()
-            childPage.waitBySeconds(20)
+            #childPage.waitBySeconds(20)
             tempText = childPage.clickListFirstItem()
-            childPage.waitBySeconds(20)
+            #childPage.waitBySeconds(20)
             itemName = childPage.getItemName()
             childPage.validKeywords(tempText, itemName)
             childPage.clickBackKey()
