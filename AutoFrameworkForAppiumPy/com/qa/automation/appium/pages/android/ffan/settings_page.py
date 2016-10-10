@@ -54,8 +54,8 @@ class SettingsPage(SuperPage):
         '''
         usage: 点击账户管理
         '''
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       SPC.resource_id_account_management,
-                                       SPC.assert_view_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SPC.text_account_management,
+                                 SPC.assert_view_timeout)

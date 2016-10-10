@@ -7,13 +7,13 @@ class AccountManagementPageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
     # Click button time out
-    click_on_button_timeout = 30
+    click_on_button_timeout = 120
 
     # Account management title
     resource_id_account_management_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"

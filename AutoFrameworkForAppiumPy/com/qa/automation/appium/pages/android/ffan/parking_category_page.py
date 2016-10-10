@@ -21,7 +21,7 @@ class ParkingCategoryPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         PCPC.resource_id_tv_parking_tv,
-                                        18)
+                                        30)
 
     def clickOnParkingLot(self):
         '''

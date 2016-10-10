@@ -77,13 +77,12 @@ class ParkingBindingsCatergoryCases(TestCase):
         parkingPaymentUnbundingPage.clickOnUnbundingBtn()
         parkingPaymentPage.validSelf()'''
 
-        parkingPaymentPage.waitBySeconds(10);
+        parkingPaymentPage.waitBySeconds(5);
         #检查入口项目
         itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
         titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
         for i in range(len(titleList)):
             parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
-            parkingPaymentPage.waitBySeconds(10)
 
 
 if __name__ == "__main__":

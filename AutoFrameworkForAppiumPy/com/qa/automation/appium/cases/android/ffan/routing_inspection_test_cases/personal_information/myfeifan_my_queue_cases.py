@@ -70,9 +70,9 @@ class MyfeifanMyQueueCases(TestCase):
         squarePage.validSelf()
 
         # Click "排队取号"， load "排队取号" page.
-        squarePage.clicOnQueue();
+        #squarePage.clicOnQueue();
 
-        queuePage.validSelf();
+        #queuePage.validSelf();
         # Click "取号"
         '''ret = queuePage.clicOnQueueNumber()
         if ret:
