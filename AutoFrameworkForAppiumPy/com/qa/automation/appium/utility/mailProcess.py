@@ -266,7 +266,12 @@ def sendTestResultMail(reportPath, deviceType):
     part.add_header('content-disposition', 'attachment', filename=file)
     msg.attach(part)
 
-    msg['Subject'] = Header(constants.PATROL_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
+    if deviceType == 'android':
+        msg['Subject'] = Header(constants.PATROL_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
+    elif deviceType == 'ios':
+        msg['Subject'] = Header(constants.PATROL_HEADR_NAME % ('IOS', time.strftime('%Y-%m-%d')), "utf-8")
+    else:
+        raise
     msg['From'] = (r"%s <" + fromAddress + ">") % Header(constants.SYSTEM_NAME, "utf-8")
     msg['To'] = ';'.join(toAddress)
 
