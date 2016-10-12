@@ -40,8 +40,6 @@ class MonkeyHandle(object):
             self.endTime = endTime
             monkeyFilePath = os.path.join(reportPath, self.fileNameMoneky)
             trafficFilePath = os.path.join(reportPath, self.fileNameTraffic)
-            print(monkeyFilePath)
-            print(trafficFilePath)
             if (os.path.exists(monkeyFilePath) and os.path.exists(trafficFilePath)):
                 self.monkeyHandle(monkeyFilePath)
                 self.trafficHandle(trafficFilePath)
