@@ -7,7 +7,7 @@ class MyFfanMyOrderPageConfigs():
     text_order_all = u"全部";
     text_order_no_pay = u"待付款";
     text_order_paid = u"已付款";
-    name_order_all = u"全部订单";
+    name_order_title = u"全部订单";
     name_order_film = u"电影娱乐";
     name_order_le_pay = u"乐付买单";
     name_order_parking_payment = u"停车缴费";

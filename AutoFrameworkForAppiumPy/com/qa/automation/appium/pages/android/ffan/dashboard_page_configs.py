@@ -27,6 +27,12 @@ class DashboardPageConfigs():
     # 广场模块
     xpath_square_module = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]";
 
+    # 城市名称
+    xpath_city_name = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"
+
+    # 城市名称输入框
+    type_inputbox_city_name = "com.wanda.app.wanhui:id/et_search"
+
     # text指明类型为text label,后面是文字的拼音
     text_aiguangjie = u"爱逛街";
     text_huishenghuo = u"慧生活";
@@ -62,6 +68,7 @@ class DashboardPageConfigs():
 
     # Click button time out
     click_on_button_timeout = 90
+    get_view_timeout = 90
 
     # Flash sales more button
     resource_id_flash_sales_more_button = "com.wanda.app.wanhui:id/tv_more"
@@ -72,6 +79,9 @@ class DashboardPageConfigs():
 
     # Shopping mall buttion
     text_shopping_mall_button = u"购物中心"
+
+    # 商超按钮
+    text_supermarket_button = u"商超"
 
     # Search all button
     resource_id_search_all_button = "com.wanda.app.wanhui:id/tv_text"

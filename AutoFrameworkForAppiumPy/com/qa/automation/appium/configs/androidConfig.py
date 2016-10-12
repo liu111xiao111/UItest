@@ -37,6 +37,8 @@ caseList = {
     'ChildCatergoryCases'                   : u'亲子',
     'DashboardSquareCases'                  : u'广场详情',
     'MyfeifanMyTicketCases'                 : u'我的票券',
+    'DashboardSquareCases'                  : u'商超',
+    'MyfeifanMyOrderCases'                 : u'我的订单',
     'MovieTicketCases'                      : u'电影',
     'SquareMovieCases'                      : u'广场电影逛',
     'PrivilegeCouponCases'                  : u'广场优惠',

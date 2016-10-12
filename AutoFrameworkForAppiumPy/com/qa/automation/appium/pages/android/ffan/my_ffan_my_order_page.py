@@ -39,6 +39,15 @@ class MyFfanMyOrderPage(SuperPage):
                                   logger = self.logger,
                                   xpath = MOPC.xpath_order_list)
 
+    def clickOnAllOrdersTitle(self):
+        '''
+        usage : 点击"全部订单"标题
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MOPC.name_order_title)
+
     def clickOnAllOrders(self):
         '''
         usage : 点击"全部订单"
@@ -46,7 +55,7 @@ class MyFfanMyOrderPage(SuperPage):
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 MOPC.name_order_all)
+                                 MOPC.name_order_title)
 
     def clickOnFilm(self):
         '''
