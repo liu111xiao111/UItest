@@ -40,7 +40,7 @@ class FpsPerformanceTestCases():
             tab_dict = {'我的'  : dashboardPage.clickOnMy,
                         '爱逛街': dashboardPage.clickLikeShopping,
                         '惠生活': dashboardPage.clickOnSmartLife,
-                        '飞凡卡': dashboardPage.clickOnFeiFanCard,
+                        '飞凡通': dashboardPage.clickOnFeiFanCard,
                         }
             for key, clickFunc in tab_dict.items():
                 clickFunc()
