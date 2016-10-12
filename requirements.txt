@@ -2,3 +2,5 @@ selenium>=2.47.0
 appium-python-client==0.22
 pexpect==4.2.1
 xlsxwriter==0.9.3
+numpy==1.11.2
+matplotlib==1.5.3
