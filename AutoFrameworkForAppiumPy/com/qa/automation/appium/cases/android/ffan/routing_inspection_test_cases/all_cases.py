@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
         PerformanceHandle().Handle(startTime, endTime, reportpath)
 
-    ReportHandle().handle(reportpath)
+        ReportHandle().handle(reportpath)
 
-    if sentMail:
-        sendTestResultMail(reportpath, 'android')
+        if sentMail:
+            sendTestResultMail(reportpath, 'android')
