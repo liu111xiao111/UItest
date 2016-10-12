@@ -18,7 +18,7 @@ class ChildCategoryPageConfigs():
 
     # 门店详情界面
     xpath_store_list_2 = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]"
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # text指明类型为text label,后面是文字的拼音
     text_chile_category = "儿童教育"

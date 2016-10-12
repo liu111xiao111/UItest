@@ -33,8 +33,10 @@ def getPhoneVersion():
 phoneVersion = getPhoneVersion()
 
 caseList = {
-    'HuiLifeResourceNicheCases'             : u'慧生活资源位',
-    'SquareResourceNicheCases'              : u'广场资源位',
+    'ShoppingMallCases'                     : u'购物中心',
+    'ChildCatergoryCases'                   : u'亲子',
+    'DashboardSquareCases'                  : u'广场详情',
+    'MyfeifanMyTicketCases'                 : u'我的票券',
     'MovieTicketCases'                      : u'电影',
     'SquareMovieCases'                      : u'广场电影逛',
     'PrivilegeCouponCases'                  : u'广场优惠',

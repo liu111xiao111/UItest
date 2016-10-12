@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import time
@@ -9,24 +9,24 @@ from unittest import TestLoader
 
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
-from com.qa.automation.appium.pages.android.ffan.shopping_mall_page import ShoppingMallPage
-from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
 from com.qa.automation.appium.configs.driver_configs import driver_url
+from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
+from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.android.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 
-class ShoppingMallCases(TestCase):
+class DashboardSquareCases(TestCase):
     '''
     作者 乔佳溪
-    巡检checklist No.: 05
-    自动化测试case No.: 05
-    爱逛街进入购物中心确认广场距离排序顺序以及广场信息
+    巡检checklist No.: 21
+    自动化测试case No.: 21
+    首页进入广场详情页
     '''
 
     def tearDown(self):
@@ -47,27 +47,17 @@ class ShoppingMallCases(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def testCase(self):
+    def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
 
-        # Verify Home Page
+        # 爱逛街首页在附近那点击任意广场，进入广场详情页，查看页面显示
         dashboardPage.validSelf()
-
-        # Enter Shopping Mall Page and Verify
-        dashboardPage.clickOnShoppingMall()
-        shoppingMallPage.validSelf()
-
-        tabNumberList = (1,    # Total
-                         2,    # Mall
-                         3)    # Department
-        for tabNumber in tabNumberList:
-            shoppingMallPage.clickOnTab(tabNumber)
-            shoppingMallPage.validListView()
-            shoppingMallPage.validDistance()
+        dashboardPage.clickOnSquareModule()
+        squarePage.validSelfDetails()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(ShoppingMallCases)
+    suite = TestLoader().loadTestsFromTestCase(DashboardSquareCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

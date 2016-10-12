@@ -21,7 +21,7 @@ class DashboardPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
-                                        30)
+                                        60)
 
     def clickOnMy(self):
         '''

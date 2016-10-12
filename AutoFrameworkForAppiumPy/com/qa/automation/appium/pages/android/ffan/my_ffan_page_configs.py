@@ -13,6 +13,9 @@ class MyFfanPageConfigs():
     # 个人中心 头像旁昵称的ID
     resource_id_txt_user_nick_name_tv = "txt_user_nick_name";
 
+    # 我的票券数量
+    resource_id_txt_ticket_number_tv = "com.wanda.app.wanhui:id/unpay_count"
+
     # text指明类型为text label
     text_my_ffan = u"我的飞凡";
     text_register = "注册";
@@ -27,6 +30,6 @@ class MyFfanPageConfigs():
     text_my_like = u"我的喜欢";
     text_parking_payment = u"停车交费";
 
-    verify_view_timeout = 10
+    verify_view_timeout = 90
 
     click_view_timeout = 10

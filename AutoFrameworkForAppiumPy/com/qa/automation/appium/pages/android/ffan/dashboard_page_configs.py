@@ -61,7 +61,7 @@ class DashboardPageConfigs():
     text_city_beijing = "北京市"
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # Flash sales more button
     resource_id_flash_sales_more_button = "com.wanda.app.wanhui:id/tv_more"

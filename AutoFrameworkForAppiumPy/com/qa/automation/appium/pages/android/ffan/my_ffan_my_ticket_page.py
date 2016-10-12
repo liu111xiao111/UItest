@@ -128,3 +128,44 @@ class MyFfanMyTicketPage(SuperPage):
                                  self.logger,
                                  text,
                                  couponCode)
+
+    def validTicketNumber(self, ticketNumber = 0):
+        '''
+        usage : 验证我的票券数是否正确
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_unused,
+                                 MMTPC.click_view_timeout)
+
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_used,
+                                 MMTPC.click_view_timeout)
+
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_out_of_date,
+                                 MMTPC.click_view_timeout)
+
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_return_refund,
+                                 MMTPC.click_view_timeout)
+
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMTPC.text_ticket_unused,
+                                 MMTPC.click_view_timeout)
+
+        if ticketNumber != 0:
+            API().validElementByResourceId(self.driver,
+                                           self.logger,
+                                           MMTPC.resource_ticket,
+                                           MMTPC.assert_view_timeout)
+            

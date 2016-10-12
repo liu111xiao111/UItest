@@ -33,6 +33,16 @@ class SquareModulePage(SuperPage):
                                   SMPC.text_find_store,
                                   SMPC.get_view_timeout)
 
+    def validSelfDetails(self):
+        '''
+        usage : 进入广场模块，检查是否加载出来
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SMPC.resource_id_title,
+                                        SMPC.get_view_timeout)
+
     def clickOnSignOn(self):
         '''
         usage: 点击签到

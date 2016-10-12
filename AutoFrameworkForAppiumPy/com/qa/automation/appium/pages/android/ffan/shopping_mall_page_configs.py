@@ -8,10 +8,10 @@ class ShoppingMallPageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 60
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 60
 
     # Shopping mall title
     resource_id_shopping_mall_title = "com.wanda.app.wanhui:id/txt_common_title"

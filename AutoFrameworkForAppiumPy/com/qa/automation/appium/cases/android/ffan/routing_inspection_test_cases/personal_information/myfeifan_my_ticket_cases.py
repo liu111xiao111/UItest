@@ -12,9 +12,9 @@ from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import Cl
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
 from com.qa.automation.appium.pages.android.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
-from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
-from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
-from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
+# from com.qa.automation.appium.pages.android.ffan.sales_promotion_page import SalesPromotionPage
+# from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
+# from com.qa.automation.appium.pages.android.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -27,6 +27,7 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class MyfeifanMyTicketCases(TestCase):
     '''
+    作者 乔佳溪
     巡检checklist #50
     自动化测试 #50
     查看我的票券里数据显示正常
@@ -52,14 +53,14 @@ class MyfeifanMyTicketCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
+        #salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        #salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
-        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
+        #salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
 
         # Click "优惠" and get ticket.
-        dashboardPage.validSelf()
+        '''dashboardPage.validSelf()
         dashboardPage.clickOnSales()
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
@@ -71,25 +72,22 @@ class MyfeifanMyTicketCases(TestCase):
         couponName = salesPromotionCouponSuccessPage.getCouponDetails()
         salesPromotionCouponSuccessPage.clickBackKey()
         salesPromotionCouponDetailsPage.clickBackKey()
-        salesPromotionPage.clickBackKey()
+        salesPromotionPage.clickBackKey()'''
 
         # Click "我的票券"
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
+        ticketNumber = myFfanPage.getTicketNumber()
         myFfanPage.clickOnMyTicket()
         myTicketPage.validSelf()
-        myTicketPage.validSelfTicketName(couponName)
-
+        myTicketPage.validTicketNumber(ticketNumber)
 
 if __name__ == "__main__":
-    log = Logger()
-    caseName = 'myfeifan_my_queue_cases'
     suite = TestLoader().loadTestsFromTestCase(MyfeifanMyTicketCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath, caseName + now + '.html')
-    log.d("report file name ==== %s", filename)
+    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=caseName,
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                            description='Result for test')
     runner.run(suite)

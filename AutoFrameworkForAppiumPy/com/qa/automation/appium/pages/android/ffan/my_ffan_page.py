@@ -127,3 +127,14 @@ class MyFfanPage(SuperPage):
                                  self.logger,
                                  MFPC.text_parking_payment,
                                  MFPC.verify_view_timeout)
+
+    def getTicketNumber(self):
+        '''
+        usage : 获取我的票券数量
+        '''
+        ticketNumber = API().getTextByResourceId(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.resource_id_txt_ticket_number_tv,
+                                 MFPC.verify_view_timeout)
+        return ticketNumber

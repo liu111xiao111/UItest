@@ -96,6 +96,7 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.s
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.shopping_mall_cases import ShoppingMallCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.square_lefu_pay_cases import SquareLefuPayCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.square_shopping_cases import SquareShoppingCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.dashboard_square_cases import DashboardSquareCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -119,8 +120,12 @@ if __name__ == "__main__":
 
     suite = TestSuite()
 
-    suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
-    suite.addTest(SquareResourceNicheCases("test_case"))
+    suite.addTest(ShoppingMallCases("testCase"))
+    suite.addTest(ChildCatergoryCases("test_case"))
+    suite.addTest(DashboardSquareCases("test_case"))
+    suite.addTest(MyfeifanMyTicketCases("test_case"))
+    # suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
+    # suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
     suite.addTest(SquareMovieCases("test_case"))
     # suite.addTest(ActivitySharingCases("test_case")) # 首页优惠活动相关
@@ -146,9 +151,7 @@ if __name__ == "__main__":
     suite.addTest(SquareParkingPaymentCases("test_case"))
     suite.addTest(FeiFanCardBillCases("test_case"))
     suite.addTest(FeiFanCardIntegralCases("test_case"))
-
-#     suite.addTest(FeiFanCardOpenCases("test_case")) #新版本不再有这个入口，用例删除掉
-
+    # suite.addTest(FeiFanCardOpenCases("test_case")) #新版本不再有这个入口，用例删除掉
     suite.addTest(LoginCases("test_case"))
     #suite.addTest(LogoutCases("test_case"))
     suite.addTest(MembershipCardPackageCases("test_case"))
