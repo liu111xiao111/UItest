@@ -16,7 +16,6 @@ class SquareModulePageConfigs():
     text_sign_on = u"签到";
     text_find_store = u"找店";
     text_parking = u"停车";
-    text_member = u"会员";
     text_food = u"美食汇";
     text_shopping = u"爱购物";
     text_find_store = u"找店";
@@ -26,6 +25,8 @@ class SquareModulePageConfigs():
     text_coupon = u"优惠券"
     text_flash_sales = u"限时抢购"
     text_xianchangyao = u"现场摇"
+    text_members = u"会员"
+    text_members_privilege = u"我的会员特权"
     # Click button time out
     click_on_button_timeout = 10
 

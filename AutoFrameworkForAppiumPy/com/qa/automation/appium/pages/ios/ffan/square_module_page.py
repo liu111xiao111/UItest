@@ -49,15 +49,6 @@ class SquareModulePage(SuperPage):
                                  SquareModulePageConfigs.click_on_button_timeout)
 
     '''
-        usage: 点击停车类目
-    '''
-    def clickOnMember(self):
-        API().click_view_by_text_android(self.testcase,
-                                         self.driver,
-                                         self.logger,
-                                         SquareModulePageConfigs.text_member);
-
-    '''
         usage: 点击美食汇
     '''
     def clickOnFood(self):
@@ -217,6 +208,24 @@ class SquareModulePage(SuperPage):
                                      self.driver,
                                      self.logger,
                                      SquareModulePageConfigs.text_xianchangyao)
+
+
+    def clickOnSquareMembers(self):
+        '''
+        usage:点击广场会员
+        '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SquareModulePageConfigs.text_members)
+    def validMembers(self):
+        '''
+        验证会员页面
+        '''
+        API().validElementByName(self.driver, self.logger,
+                                 SquareModulePageConfigs.text_members_privilege,
+                                 SquareModulePageConfigs.get_view_timeout)
+
 
 if __name__ == '__main__':
     pass;
