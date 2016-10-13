@@ -103,6 +103,16 @@ class DashboardPage(SuperPage):
                                        DPC.resource_id_iv_home_shake_tips,
                                        DPC.click_on_button_timeout)
 
+    def clickOnHomeShake(self):
+        '''
+        usage: 点击摇一摇图标
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       DPC.resource_id_iv_home_shake,
+                                       DPC.click_on_button_timeout)
+
     def clickOnLefuCategory(self):
         '''
         usage: 点击"乐付"类目

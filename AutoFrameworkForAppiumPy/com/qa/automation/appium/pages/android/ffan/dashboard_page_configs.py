@@ -20,6 +20,9 @@ class DashboardPageConfigs():
     # 首页摇一摇对话框
     resource_id_iv_home_shake_tips = "com.wanda.app.wanhui:id/iv_shake_off"
 
+    # 首页摇一摇
+    resource_id_iv_home_shake = "com.wanda.app.wanhui:id/iv_center_tab"
+
     # 全城搜索输入框
     resource_id_tv_search_tv = "com.wanda.app.wanhui:id/tv_text"
 
