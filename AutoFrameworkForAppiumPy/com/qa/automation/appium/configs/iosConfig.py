@@ -39,7 +39,8 @@ caseList = {
     'YaoyiyaoCases'                         : u'摇一摇',
     'SquareXianchangyaoCases'               : u'广场现场摇',
     'MyOrderCases'                          : u'我的订单',
+    'SquareMembersCases'                    : u'广场会员',
+    
     'SwitchCityCases'                       : u'城市切换',
-    'SquareMembersCases'                    : u'广场会员'
 
 }
