@@ -17,7 +17,7 @@ from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareMod
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class SquareParkingPaymentCases(TestCase):
+class SquareMembersCases(TestCase):
     '''
     作者 宋波
     巡检checklist #26
