@@ -36,6 +36,9 @@ caseList = {
     'SquareShoppingCases'                   : u'广场爱购物',
     'UpdateLoginPasswordCases'              : u'我的设置(修改密码)',
     'VersionUpgradeCases'                   : u'版本升级',
+    'YaoyiyaoCases'                         : u'摇一摇',
+    'SquareXianchangyaoCases'               : u'广场现场摇',
+    'MyOrderCases'                          : u'我的订单',
     'SwitchCityCases'                       : u'城市切换',
 
 }
