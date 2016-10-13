@@ -18,6 +18,11 @@ class HuiLifePageConfigs(object):
     # Activity button
     text_activity_button = u"活动"
 
+    # 精选
+    text_select_button = u"精选"
+    # 荐店
+    text_shop_button = u"荐店"
+
     # Privilege button
     text_privilege_button = u"优惠"
 
@@ -80,6 +85,8 @@ class HuiLifePageConfigs(object):
 
     xpath_come_on = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[4]"
 
+    resource_id_select = "com.wanda.app.wanhui:id/cms_img"
+    resource_id_select_details = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     def __init__(self):
         pass

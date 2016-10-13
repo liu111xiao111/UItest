@@ -99,6 +99,8 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.s
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.dashboard_square_cases import DashboardSquareCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.shopping.dashboard_supermarket_cases import DashboardSupermarketCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_order_cases import MyfeifanMyOrderCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_entrance_cases import HuiLifeEntranceCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_select_shop_cases import HuiLifeSelectShopCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -126,8 +128,9 @@ if __name__ == "__main__":
     suite.addTest(ChildCatergoryCases("test_case"))
     suite.addTest(DashboardSquareCases("test_case"))
     suite.addTest(MyfeifanMyTicketCases("test_case"))
-    suite.addTest(DashboardSupermarketCases("test_case"))
     suite.addTest(MyfeifanMyOrderCases("test_case"))
+    suite.addTest(HuiLifeEntranceCases("test_case"))
+    suite.addTest(HuiLifeSelectShopCases("test_case"))
     # suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
     # suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
@@ -181,6 +184,7 @@ if __name__ == "__main__":
     # suite.addTest(ShoppingMallCases("testCase"))
     suite.addTest(SquareLefuPayCases("test_case"))
     suite.addTest(SquareShoppingCases("test_case"))
+    suite.addTest(DashboardSupermarketCases("test_case"))
 
     now = time.strftime('%H_%M_%S')
 

@@ -37,8 +37,9 @@ caseList = {
     'ChildCatergoryCases'                   : u'亲子',
     'DashboardSquareCases'                  : u'广场详情',
     'MyfeifanMyTicketCases'                 : u'我的票券',
-    'DashboardSupermarketCases'             : u'商超',
     'MyfeifanMyOrderCases'                  : u'我的订单',
+    'HuiLifeEntranceCases'                  : u'慧生活入口',
+    'HuiLifeSelectShopCases'                : u'慧生活精选/荐店',
     'MovieTicketCases'                      : u'电影',
     'SquareMovieCases'                      : u'广场电影逛',
     'PrivilegeCouponCases'                  : u'广场优惠',
@@ -75,4 +76,5 @@ caseList = {
     'ShoppingCatergoryCases'                : u'名店优品',
     'SquareLefuPayCases'                    : u'广场买单',
     'SquareShoppingCases'                   : u'广场爱购物',
+    'DashboardSupermarketCases'             : u'商超',
 }
