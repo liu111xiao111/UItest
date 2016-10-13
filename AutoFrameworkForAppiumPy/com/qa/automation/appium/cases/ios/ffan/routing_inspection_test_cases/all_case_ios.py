@@ -64,7 +64,9 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.squar
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.switch_city_cases import SwitchCityCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.update_login_password_cases import UpdateLoginPasswordCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.version_upgrade_cases import VersionUpgradeCases
-
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.yao_yi_yao_cases import YaoyiyaoCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_xianchangyao_cases import SquareXianchangyaoCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.my_order_cases import MyOrderCases
 
 
 if __name__ == "__main__":
@@ -136,6 +138,9 @@ if __name__ == "__main__":
     #suite.addTest(SquareSignOnCases("test_case"))
     suite.addTest(UpdateLoginPasswordCases("test_case"))
     suite.addTest(VersionUpgradeCases("test_case"))
+    suite.addTest(YaoyiyaoCases("test_case"))
+    suite.addTest(SquareXianchangyaoCases("test_case"))
+    suite.addTest(MyOrderCases("test_case"))
     #suite.addTest(LefuPayCatergoryCases("test_case"))
     suite.addTest(SwitchCityCases("test_case"))
     
