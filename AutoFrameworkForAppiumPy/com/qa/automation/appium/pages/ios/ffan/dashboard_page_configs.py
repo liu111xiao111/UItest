@@ -110,6 +110,9 @@ class DashboardPageConfigs():
     #square
     xpath_guangchang = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
 
+    #摇一摇
+    xpath_yaoyiyao = "//UIAApplication[1]/UIAWindow[1]/UIATabBar[1]/UIAButton[1]"
+
     # Search all
     resource_id_search_all_tv = "全城搜索"
 

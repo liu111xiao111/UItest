@@ -25,7 +25,7 @@ class SquareModulePageConfigs():
     text_queue = u"排队取号";
     text_coupon = u"优惠券"
     text_flash_sales = u"限时抢购"
-
+    text_xianchangyao = u"现场摇"
     # Click button time out
     click_on_button_timeout = 10
 

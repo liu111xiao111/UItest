@@ -205,8 +205,11 @@ class DashboardPage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.xpath_city,
                                   DashboardPageConfigs.click_on_button_timeout)
-        
-    
+
+    def clickOnYaoyiyao(self):
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  DashboardPageConfigs.xpath_yaoyiyao,
+                                  DashboardPageConfigs.click_on_button_timeout)
         
 if __name__ == '__main__':
     pass

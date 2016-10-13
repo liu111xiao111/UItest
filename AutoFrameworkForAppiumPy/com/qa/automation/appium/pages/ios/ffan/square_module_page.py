@@ -209,5 +209,14 @@ class SquareModulePage(SuperPage):
                                   SquareModulePageConfigs.xpath_general_coupon_button,
                                   SquareModulePageConfigs.click_on_button_timeout)
 
+    def clickOnXianchangyao(self):
+        '''
+        usage:点击现场摇
+        '''
+        API().clickElementByName(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     SquareModulePageConfigs.text_xianchangyao)
+
 if __name__ == '__main__':
     pass;
