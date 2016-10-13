@@ -58,6 +58,12 @@ class MyOrderCases(TestCase):
         #点击我的订单
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()
+        myOrderPage.clickBackKey()
+
+        myOrderPage.clickOnDaifukuan()
+        myOrderPage.waitBySeconds(10)
+
+
 
 
 

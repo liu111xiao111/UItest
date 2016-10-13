@@ -77,5 +77,23 @@ class MyFfanMyOrderPage(SuperPage):
                                  self.logger,
                                  MyFfanMyOrderPageConfigs.name_order_parking_payment)
 
+    def clickOnDaifukuan(self):
+        '''
+        usage : 点击待付款
+        '''
+        '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MyFfanMyOrderPageConfigs.name_daifukuan)
+        '''
+        '''
+        API().clickElementByIosUiautomation(self.testcase, self.driver, self.logger,
+                                            MyFfanMyOrderPageConfigs.ios_uiautomation_daifukuan_bt,
+                                            MyFfanMyOrderPageConfigs.click_on_button_timeout)
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  MyFfanMyOrderPageConfigs.xpath_daifukuan,
+                                  MyFfanMyOrderPageConfigs.click_on_button_timeout)
 if __name__ == '__main__':
     pass;
