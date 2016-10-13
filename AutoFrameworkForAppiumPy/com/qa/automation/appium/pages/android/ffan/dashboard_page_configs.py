@@ -53,7 +53,7 @@ class DashboardPageConfigs():
     # 搜索框默认字段
     text_quanchengsousuo = u"全城搜索";
 
-    text_feifan_card = u"飞凡通"
+    text_feifan_card = u"飞凡卡"
 
     text_search_text = u"adidas"
 
