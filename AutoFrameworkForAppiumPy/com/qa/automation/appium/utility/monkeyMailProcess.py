@@ -53,6 +53,7 @@ class MonkeyHandle(object):
         try:
             if (filePath != ''):
                 performanceData = []
+                htmlContent = ''
                 dataFile = open(filePath, mode='r', encoding='utf-8')
                 allLines = dataFile.readlines()
                 for line in allLines:

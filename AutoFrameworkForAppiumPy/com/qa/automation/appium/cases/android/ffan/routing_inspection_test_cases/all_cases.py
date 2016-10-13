@@ -11,6 +11,7 @@ from unittest import TestLoader
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
+from com.qa.automation.appium.utility.performanceMailProcess import  sendPerformanceMail
         
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_resource_niche_cases import HuiLifeResourceNicheCases
         
@@ -222,3 +223,4 @@ if __name__ == "__main__":
 
         if sentMail:
             sendTestResultMail(reportpath, 'android')
+            sendPerformanceMail(startTime, endTime, reportpath, 'android')
