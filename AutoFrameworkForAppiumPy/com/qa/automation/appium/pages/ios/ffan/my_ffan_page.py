@@ -120,6 +120,11 @@ class MyFfanPage(SuperPage):
                                  MFPC.xpath_parking_paymeng,
                                  MFPC.text_parking_payment)
 
+    def validMyTicketsPage(self):
+        '''
+        usage: 验证我的票券页面是否加载出来
+        '''
+        API.validElementByXpath(self.driver,self.logger, MFPC.xpath_my_ticket_first_item,MFPC.valid_page_timeout)
 
 if __name__ == '__main__':
     pass;

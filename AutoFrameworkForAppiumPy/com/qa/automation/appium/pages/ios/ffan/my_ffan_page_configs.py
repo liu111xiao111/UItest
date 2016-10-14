@@ -5,6 +5,9 @@ class MyFfanPageConfigs():
     # Click button time out
     click_on_button_timeout = 10
 
+    #验证页面超时
+    valid_page_timeout = 10
+
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
     # 注册 textview
     resource_id_tv_registration_tv = "tv_registration";
@@ -31,7 +34,8 @@ class MyFfanPageConfigs():
     text_my_like = u"我的喜欢";
     text_parking_payment = u"停车缴费";
     
-    xpath_parking_paymeng = u"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[13]/UIAStaticText[1]"
+    xpath_parking_paymeng = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[13]/UIAStaticText[1]"
+    xpath_my_ticket_first_item = "//UIAApplication[1]/UIAWindow[1]/UIAImage[1]/UIAImage[2]"
 
     def __init__(self):
         pass;
