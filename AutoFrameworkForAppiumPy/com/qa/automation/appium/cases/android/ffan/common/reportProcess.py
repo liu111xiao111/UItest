@@ -206,6 +206,8 @@ class ReportHandle(object):
         passedCases = self.parser.getPassedCases()
         htmlContent = ''
 
+        count = 0
+
         for count in range(0, len(errorCases)):
             caseAutoName = errorCases[count].split('.')[-1]
             caseName = errorCases[count].split('.')[-2]
