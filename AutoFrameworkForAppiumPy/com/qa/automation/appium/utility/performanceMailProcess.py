@@ -352,7 +352,7 @@ class PeformanceDraw(object):
 
 def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
     fromAddress = constants.Email.mailAddress
-    toAddress = constants.Email.userMailAddress
+    toAddress = constants.Email.performanceMaillAddress
     smtpServer = constants.Email.smtpServer
     smtpUser = constants.Email.username
     smtpPassword = constants.Email.password
@@ -407,5 +407,5 @@ def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161012/1'
-    sendPerformanceMail('2016/09/01 12:23', '2016/09/01 13:11', reportPath, 'android')
+    reportPath = '/Users/songbo/20161014/10'
+    sendPerformanceMail('2016/10/14 09:26:01', '2016/10/14 11:15:08', reportPath, 'android')

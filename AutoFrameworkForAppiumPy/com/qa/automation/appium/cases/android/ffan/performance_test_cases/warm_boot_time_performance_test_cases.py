@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import time
 import subprocess
@@ -23,7 +25,7 @@ class WarmBootTimePerformanceTestCases(TestCase):
         keycode = "keyevent KEYCODE_BACK"
         cmdBack = "adb shell input %s" % keycode
         file = os.path.join(reportPath, "WarmBootTime_performance.txt")
-        f1 = open(file, "a")
+        f1 = open(file, mode="w", encoding='utf-8')
         for _ in range(0,10):
             os.system(cmdBack)
             time.sleep(0.3)

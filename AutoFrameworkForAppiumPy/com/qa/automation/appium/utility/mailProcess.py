@@ -239,7 +239,7 @@ class ReportHandle(object):
 
 def sendTestResultMail(reportPath, deviceType):
     fromAddress = constants.Email.mailAddress
-    toAddress = constants.Email.userMailAddress
+    toAddress = constants.Email.patrolMailAddress
     smtpServer = constants.Email.smtpServer
     smtpUser = constants.Email.username
     smtpPassword = constants.Email.password

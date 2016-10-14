@@ -150,7 +150,7 @@ class MonkeyHandle(object):
 
 def sendTestResultMail(startTime, endTime, reportPath, deviceType):
     fromAddress = constants.Email.mailAddress
-    toAddress = constants.Email.userMailAddress
+    toAddress = constants.Email.monkeyMaillAddress
     smtpServer = constants.Email.smtpServer
     smtpUser = constants.Email.username
     smtpPassword = constants.Email.password

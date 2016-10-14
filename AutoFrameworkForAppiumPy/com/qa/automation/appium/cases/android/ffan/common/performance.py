@@ -51,7 +51,7 @@ class Performance(object):
             cpuRate = cpuInfo.decode('utf-8').split("/" + appPackage_ffan + ":")[0].split("%")[0]
             logName = "Cpu_performance.txt"
             logPath = os.path.join(self.reportPath, logName)
-            f = open(logPath, "a")
+            f = open(logPath, "w")
             f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), cpuRate) + "\n")
             f.close()
 
@@ -71,7 +71,7 @@ class Performance(object):
         mem = int(memInfo.decode('utf-8').split("   ")[3])/1024
         logName = "Mem_peformance.txt"
         logPath = os.path.join(self.reportPath, logName)
-        f = open(logPath, "a")
+        f = open(logPath, "w")
         f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), mem) + "\n")
         f.close()
 
@@ -104,7 +104,7 @@ class Performance(object):
 
         logName = "Traffic_performance.txt"
         logPath = os.path.join(self.reportPath, logName)
-        f = open(logPath, "a")
+        f = open(logPath, "w")
         f.write("%s:%s" % (duration, traffic) + "\n")
         f.close()
 
@@ -119,7 +119,7 @@ class Performance(object):
 
         logName = "Rx_performance.txt"
         logPath = os.path.join(self.reportPath, logName)
-        f = open(logPath, "a")
+        f = open(logPath, "w")
         f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), currentRx) + "\n")
         f.close()
 
@@ -134,7 +134,7 @@ class Performance(object):
 
         logName = "Tx_performance.txt"
         logPath = os.path.join(self.reportPath, logName)
-        f = open(logPath, "a")
+        f = open(logPath, "w")
         f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), currentTx) + "\n")
         f.close()
 
