@@ -48,6 +48,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.shopp
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.small_amount_password_less_payments_cases import SmallAmountPasswordLessPaymentCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.special_offer_cases import SpecialOfferCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.splash_screen_home_page_cases import SplashScreenHomePageCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_details_cases import SquareDetailsCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_find_store_search_cases import SquareFindStoreSearchCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_food_cases import SquareFoodCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_general_coupon_cases import SquareGeneralCouponCases
@@ -56,6 +57,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.squar
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_members_cases import SquareMembersCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_movie_cases import SquareMovieCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_parking_payment_cases import SquareParkingPaymentCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_privilege_coupon_cases import SquarePrivilegeCouponCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_queue_cases import SquareQueueCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_recommend_store_cases import SquareRecommendCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_resource_niche_cases import SquareResourceNicheCases
@@ -63,6 +65,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.squar
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_shopping_cases import SquareShoppingCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_sign_on_cases import SquareSignOnCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_xianchangyao_cases import SquareXianchangyaoCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.stores_and_supermarkets_cases import StoresAndSupermarketsCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.switch_city_cases import SwitchCityCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.update_login_password_cases import UpdateLoginPasswordCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.version_upgrade_cases import VersionUpgradeCases
