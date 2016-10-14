@@ -54,7 +54,6 @@ class SquareParkingPaymentCases(TestCase):
         squareModulePage.clickOnSquareMembers()
         squareModulePage.validMembers()
 
-        squareModulePage.waitBySeconds(8)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareParkingPaymentCases)
