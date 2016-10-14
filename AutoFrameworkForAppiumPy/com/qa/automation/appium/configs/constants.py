@@ -5,6 +5,7 @@ PATROL_HEADR_NAME = u'%s巡检用例自动化测试报告(%s)'
 
 MONKEY_HEADR_NAME = u'%s稳定性自动化测试报告(%s)'
 
+PERFORMANCE_HEADR_NAME = u'%s性能自动化测试报告(%s)'
 
 class Email():
     mailAddress = 'yiceyun@neusoft.com'

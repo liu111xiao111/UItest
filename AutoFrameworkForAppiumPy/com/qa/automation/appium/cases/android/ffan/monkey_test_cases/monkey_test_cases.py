@@ -58,7 +58,7 @@ class MonkeyTestCases(TestCase):
         # monkey测试结果收集与统计
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
         crashNumber = 0
-        f = open(monkeyLogFile)
+        f = open(monkeyLogFile, mode='r', encoding='uft-8')
         line = f.readline()
         while line:
             if line.find("// CRASH") != -1:
