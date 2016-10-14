@@ -33,8 +33,7 @@ class DeviceInfoUtil:
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 
         out, err = p.communicate()
-        #return out.decode("utf-8").rstrip();
-        return '221a8c5761b2ac6c9871423b2c0a7957be2576ad'
+        return out.decode("utf-8").rstrip()
 
     """
 
@@ -43,9 +42,7 @@ class DeviceInfoUtil:
         cmd = 'ideviceinfo -k ProductVersion'
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
         out, err = p.communicate()
-        #return out.decode("utf-8").strip();
-        return '9.3'
-
+        return out.decode("utf-8").strip()
 
 
 if __name__ == '__main__':
