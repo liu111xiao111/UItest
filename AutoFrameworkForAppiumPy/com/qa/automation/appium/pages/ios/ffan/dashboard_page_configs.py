@@ -16,7 +16,7 @@ class DashboardPageConfigs():
         首页ffan logo图标name
     """
     name_home_title_icon = "home_title_icon"
-    
+
     '''
         左上角，北京市
     '''
@@ -49,7 +49,7 @@ class DashboardPageConfigs():
     name_parking = u"停车"
 
     # "购物"
-    name_shopping = u"购物"
+    name_shopping = u"名店优品"
 
     # "乐付"
     name_le_pay = u"买单";
@@ -90,9 +90,12 @@ class DashboardPageConfigs():
     click_on_button_timeout = 10
 
     get_timeout = 10
-    
+
     # Movie button
     resource_id_movie_st = "电影"
+
+    # Stores button
+    name_movie_st = "商超"
 
     # Privilege button
     resource_id_movieprivilege_st = u"优惠"
@@ -103,11 +106,11 @@ class DashboardPageConfigs():
     # Main page
     xpath_main_page = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]"
     xpath_sales_promotion = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIAButton[3]"
-    
-    #Switch city
+
+    # Switch city
     xpath_city = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
-    
-    #square
+
+    # square
     xpath_guangchang = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
 
     #摇一摇

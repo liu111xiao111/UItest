@@ -2,21 +2,21 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
+import HTMLTestRunner
+
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
-#from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
+from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
 
+# from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
 
 class SquareIndoorMapCases(TestCase):
     '''
@@ -44,7 +44,7 @@ class SquareIndoorMapCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
@@ -62,9 +62,9 @@ class SquareIndoorMapCases(TestCase):
         squarePage.clicOnIndoorMap()
         # locationBluetoothPage.clickOnOkBtn()
         indoormapPage.validSelf()
-        indoormapPage.clickOnMapAr()
-        indoormapPage.clickOnFoodMap()
-        indoormapPage.validSelfFood()
+#         indoormapPage.clickOnMapAr()
+#         indoormapPage.clickOnFoodMap()
+#         indoormapPage.validSelfFood()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareIndoorMapCases)

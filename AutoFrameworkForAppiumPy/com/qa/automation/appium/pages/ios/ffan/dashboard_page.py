@@ -30,7 +30,15 @@ class DashboardPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.name_beijing,
                                   DashboardPageConfigs.assert_view_timeout)
-        
+
+    def validCities(self, cityName):
+        '''
+        usage: Verify whether the current city is correct.
+        '''
+
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  cityName, DashboardPageConfigs.assert_view_timeout)
+
     def validCityData(self, textContains="default", xpath="default"):
         '''
             usage: 验证切换城市后的数据是否为北京市的
@@ -42,7 +50,6 @@ class DashboardPage(SuperPage):
                                         xpath, DashboardPageConfigs.get_timeout)
         logging.info(tempText)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
-        
 
     def clickOnBornToShop(self):
         """
@@ -96,6 +103,15 @@ class DashboardPage(SuperPage):
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.resource_id_movie_st,
+                                 DashboardPageConfigs.click_on_button_timeout)
+
+    def clickOnStores(self):
+        '''
+        usage: click on stores button
+        '''
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 DashboardPageConfigs.name_movie_st,
                                  DashboardPageConfigs.click_on_button_timeout)
 
     def clickOnPrivilege(self):
@@ -210,6 +226,7 @@ class DashboardPage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.xpath_yaoyiyao,
                                   DashboardPageConfigs.click_on_button_timeout)
-        
+
+
 if __name__ == '__main__':
     pass

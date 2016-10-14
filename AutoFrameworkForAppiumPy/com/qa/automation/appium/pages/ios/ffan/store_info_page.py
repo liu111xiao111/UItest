@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.store_info_page_configs import StoreInfoPageConfigs
+from com.qa.automation.appium.api.api_new import API
+from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.store_info_page_configs import StoreInfoPageConfigs
 
 
 class StoreInfoPage(SuperPage):
@@ -29,7 +29,8 @@ class StoreInfoPage(SuperPage):
 
         print("KEYWORDS: %s" % keywords)
 
-        API().assert_view_by_text_contains_android(self.testcase, self.driver, self.logger, keywords)
+        API().assertElementByName(self.testcase, self.driver, self.logger, keywords,
+                                  StoreInfoPageConfigs.assert_view_timeout)
 
     def clickOnStoreImageTextDetails(self):
         '''

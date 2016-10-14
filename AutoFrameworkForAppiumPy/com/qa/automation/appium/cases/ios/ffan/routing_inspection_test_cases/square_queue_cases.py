@@ -2,13 +2,13 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
+import HTMLTestRunner
+
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
@@ -43,34 +43,22 @@ class SquareQueueCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        queuePage = SquareQueuePage(self, self.driver, self.logger)
-
-        # 首页进入广场页
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
+
+        squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.validSelf()
-
-        # 点击 "排队取号"
         squarePage.clicOnQueue()
-        queuePage.validSelf()
 
-        # 点击 "取号"
-        queuePage.clicOnQueueNumber()
-        queuePage.waitBySeconds(10)
-        queuePage.inputNumberOfMeals()
-        queuePage.waitBySeconds(5)
-        queuePage.clicOnGetQueueNumber()
-        queuePage.waitBySeconds(20)
-        queuePage.validQueueSuccess()
-        queuePage.waitBySeconds(10)
-        queuePage.clickOnCancelQueue()
-        queuePage.waitBySeconds(2)
+        queuePage = SquareQueuePage(self, self.driver, self.logger)
+        queuePage.validSelf()
+        if queuePage.validKeyword(u"取号"):
+            pass
 
 
 if __name__ == "__main__":

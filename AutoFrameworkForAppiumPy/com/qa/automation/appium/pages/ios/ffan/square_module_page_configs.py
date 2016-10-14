@@ -82,5 +82,10 @@ class SquareModulePageConfigs():
     # Privilege coupon
     resource_id_privilege_coupon_st = u"优惠券"
 
+    name_privilege_st = u"优惠"
+    name_check_all_st = u"查看全部"
+    xpath_privilege_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAStaticText[1]"
+#     xpath_ckeck_all_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAButton[1]"
+    xpath_ckeck_all_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAStaticText[2]"
     def __init__(self):
         pass;

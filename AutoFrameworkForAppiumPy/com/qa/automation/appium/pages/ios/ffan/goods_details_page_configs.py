@@ -22,5 +22,8 @@ class GoodsDetailsPageConfigs(object):
     # Commodity name
     xpath_commodity_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[5]"
 
+    # Shopping trolley
+    xpath_shopping_trolley_st = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]"
+
     def __init__(self):
         pass

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.square_queue_page_configs import SquareQueuePageConfigs
 from com.qa.automation.appium.api.api_new import API
 from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from com.qa.automation.appium.pages.ios.ffan.square_queue_page_configs import SquareQueuePageConfigs
 
 SQPC = SquareQueuePageConfigs()
 
@@ -25,6 +25,17 @@ class SquareQueuePage(SuperPage):
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=SQPC.resource_id_queue)
+
+    def validKeyword(self, keyword):
+        '''
+        usage: Verify whether the keyword is in the list.
+        '''
+
+        for _ in range(10):
+            self.scrollAsScreenPercent(0.5, 0.6, 0.5, 0.4)
+            if API().validElementByName(self.driver, self.logger, keyword):
+                return True
+        return False
 
     def validQueueSuccess(self):
         '''
@@ -63,21 +74,21 @@ class SquareQueuePage(SuperPage):
         '''
         usage: 点击 "一键取号"
         '''
-        API().clickElementByXpath(testCase = self.testcase,
-                                  driver = self.driver,
-                                  logger = self.logger,
-                                  xpath = SQPC.xpath_get_queue_number,
-                                  timeout = SQPC.verify_click_timeout)
+        API().clickElementByXpath(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  xpath=SQPC.xpath_get_queue_number,
+                                  timeout=SQPC.verify_click_timeout)
 
     def clickOnCancelQueue(self):
         '''
             Usage: 点击 "取消排队"
         '''
-        API().clickElementByXpath(testCase = self.testcase,
-                                  driver = self.driver,
-                                  logger = self.logger,
-                                  xpath = SQPC.xpath_cancel_queue,
-                                  timeout = SQPC.verify_click_timeout)
+        API().clickElementByXpath(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  xpath=SQPC.xpath_cancel_queue,
+                                  timeout=SQPC.verify_click_timeout)
 
 if __name__ == '__main__':
     pass;

@@ -2,16 +2,17 @@
 
 import os
 import time
-import HTMLTestRunner
-
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
+import HTMLTestRunner
+
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
+# from com.qa.automation.appium.pages.ios.ffan.goods_details_page import GoodsDetailsPage
 from com.qa.automation.appium.pages.ios.ffan.shopping_category_page import ShoppingCategoryPage
 from com.qa.automation.appium.pages.ios.ffan.shopping_details_category_page import ShoppingDetailsCategoryPage
 from com.qa.automation.appium.utility.logger import Logger
@@ -43,23 +44,27 @@ class ShoppingCatergoryCases(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
+        testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        shoppingPage = ShoppingCategoryPage(self, self.driver, self.logger)
-        shoppingDetailsPage = ShoppingDetailsCategoryPage(self, self.driver, self.logger)
-
-        # 首页点击购物
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnShopping()
-        shoppingPage.validSelf();
 
-        # 点击商品，进入商品详情页
-        shoppingPage.clickOnGoodsDetails();
-        shoppingDetailsPage.validSelf();
+        shoppingCategoryPage = ShoppingCategoryPage(self, self.driver, self.logger)
+        shoppingCategoryPage.validSelf()
+        shoppingCategoryPage.clickOnGoodsDetails()
 
+        shoppingDetailsCategoryPage = ShoppingDetailsCategoryPage(self, self.driver, self.logger)
+        shoppingDetailsCategoryPage.validSelf()
+#         shoppingDetailsCategoryPage.waitBySeconds(3)
+#         shoppingDetailsCategoryPage.clickOnMyFavorite()
+#         shoppingDetailsCategoryPage.clickOnShop()
+#
+#         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
+#         goodsDetailsPage.validSelf()
+#         goodsDetailsPage.clickOnShoppingTrolley()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ShoppingCatergoryCases)
