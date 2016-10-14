@@ -55,30 +55,30 @@ class MyfeifanMyQueueCases(TestCase):
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
 
-        # 首页进入广场页
-        dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
-
-        # 点击 "排队取号"
-        squarePage.clicOnQueue();
-        queuePage.validSelf();
-
-        # 点击 "取号"
-        queuePage.waitBySeconds(10)
-        queuePage.clicOnQueueNumber()
-        queuePage.waitBySeconds(10)
-        queuePage.inputNumberOfMeals()
-        queuePage.waitBySeconds(5)
-        queuePage.clicOnGetQueueNumber()
-        queuePage.waitBySeconds(10)
-        queuePage.validQueueSuccess()
-        queuePage.waitBySeconds(10)
-        queuePage.clickOnCancelQueue()
-
-        myFfanPage.clickBackKey()
-        myFfanPage.clickBackKey()
-        myFfanPage.clickBackKey()
+        # # 首页进入广场页
+        # dashboardPage.validSelf();
+        # dashboardPage.clickOnSquareModule()
+        # squarePage.validSelf();
+        #
+        # # 点击 "排队取号"
+        # squarePage.clicOnQueue();
+        # queuePage.validSelf();
+        #
+        # # 点击 "取号"
+        # queuePage.waitBySeconds(10)
+        # queuePage.clicOnQueueNumber()
+        # queuePage.waitBySeconds(10)
+        # queuePage.inputNumberOfMeals()
+        # queuePage.waitBySeconds(5)
+        # queuePage.clicOnGetQueueNumber()
+        # queuePage.waitBySeconds(10)
+        # queuePage.validQueueSuccess()
+        # queuePage.waitBySeconds(10)
+        # queuePage.clickOnCancelQueue()
+        #
+        # myFfanPage.clickBackKey()
+        # myFfanPage.clickBackKey()
+        # myFfanPage.clickBackKey()
 
         # 点击 "我的排队"
         dashboardPage.validSelf()
@@ -86,6 +86,10 @@ class MyfeifanMyQueueCases(TestCase):
         myFfanPage.validSelf()
         myFfanPage.clickOnMyQueue()
         myQueuePage.validSelf()
+
+        myQueuePage.clickMoreRestaurant()
+
+        myQueuePage.waitBySeconds(9)
 
 
 if __name__ == "__main__":
