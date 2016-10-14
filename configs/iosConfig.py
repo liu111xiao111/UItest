@@ -37,5 +37,11 @@ caseList = {
     'UpdateLoginPasswordCases'              : u'我的设置(修改密码)',
     'VersionUpgradeCases'                   : u'版本升级',
     'SwitchCityCases'                       : u'城市切换',
-
+    'SquareSignOnCases':u'签到',
+    'StoresAndSupermarketsCases':u'商超',
+    'ShoppingCatergoryCases':u'名店优品',
+    'SquareDetailsCases':u'广场详情',
+    'SquarePrivilegeCouponCases':u'广场优惠券',
+    'SquareQueueCases':u'广场排队取号',
+    'SquareIndoorMapCases':u'广场室内地图',
 }
