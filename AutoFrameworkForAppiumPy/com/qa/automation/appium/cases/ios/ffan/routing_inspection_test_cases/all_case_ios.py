@@ -68,6 +68,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.yao_y
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_xianchangyao_cases import SquareXianchangyaoCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.my_order_cases import MyOrderCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_members_cases import SquareMembersCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_queue_cases import MyfeifanMyQueueCases
 
 
 if __name__ == "__main__":
@@ -144,6 +145,8 @@ if __name__ == "__main__":
     suite.addTest(MyOrderCases("test_case"))
     #suite.addTest(LefuPayCatergoryCases("test_case"))
     suite.addTest(SquareMembersCases("test_case"))
+    suite.addTest(MyfeifanMyQueueCases("test_case"))
+
     suite.addTest(SwitchCityCases("test_case"))
     
 

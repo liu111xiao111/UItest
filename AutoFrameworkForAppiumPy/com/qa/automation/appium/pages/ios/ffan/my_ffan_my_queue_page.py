@@ -25,6 +25,18 @@ class MyFfanMyQueuePage(SuperPage):
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=MQPC.resource_id_tv_registration_tv)
+    def clickMoreRestaurant(self):
+        '''
+        usage:点击更多餐厅
+        '''
+        API().clickElementByName(testCase=self.testcase,driver=self.driver,logger=self.logger,
+                                 name=MQPC.name_more_restauran)
+
+    def validMoreRestaurant(self):
+        '''
+        usage:验证更多餐厅页面
+        '''
+        API.validElementByName(driver=self.driver,logger=self.logger,name=MQPC.name_chafing)
 
 if __name__ == '__main__':
     pass;
