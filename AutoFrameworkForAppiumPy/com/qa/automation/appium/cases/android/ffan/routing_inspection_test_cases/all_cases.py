@@ -11,7 +11,7 @@ from unittest import TestLoader
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
-from com.qa.automation.appium.utility.performanceMailProcess import  sendPerformanceMail
+# from com.qa.automation.appium.utility.performanceMailProcess import  sendPerformanceMail
         
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_resource_niche_cases import HuiLifeResourceNicheCases
         
@@ -122,7 +122,7 @@ if __name__ == "__main__":
 
     #root_dir = os.path.dirname(
     #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/songbo/workspace/autotest", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
@@ -223,4 +223,5 @@ if __name__ == "__main__":
 
         if sentMail:
             sendTestResultMail(reportpath, 'android')
+            from com.qa.automation.appium.utility.performanceMailProcess import sendPerformanceMail
             sendPerformanceMail(startTime, endTime, reportpath, 'android')

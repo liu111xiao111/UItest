@@ -212,11 +212,13 @@ class ReportHandle(object):
             htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
             htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='errorCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (count+1, errorCaseDetails[count])
 
+        ftCount = count
+
         for count in range(0, len(failedCases)):
             caseAutoName = failedCases[count].split('.')[-1]
             caseName = failedCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
-            htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='failCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (count+1, failedCaseDetails[count])
+            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, ftCount+count+1)
+            htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='failCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (ftCount+count+1, failedCaseDetails[count])
 
         for count in range(0, len(passedCases)):
             caseAutoName = passedCases[count].split('.')[-1]
