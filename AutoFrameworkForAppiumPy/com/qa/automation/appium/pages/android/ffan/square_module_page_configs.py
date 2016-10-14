@@ -22,8 +22,10 @@ class SquareModulePageConfigs():
     text_find_store = u"找店";
     text_indoor_map = u"室内地图";
     text_lefu_pay = u"买单";
+    text_shake = u"现场摇";
     text_queue = u"排队取号";
     text_coupon = u"优惠券"
+    text_sales = u"优惠"
     text_flash_sales = u"限时抢购"
 
     # Click button time out

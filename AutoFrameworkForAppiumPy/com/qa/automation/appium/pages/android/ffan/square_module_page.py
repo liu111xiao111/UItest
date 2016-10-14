@@ -152,6 +152,16 @@ class SquareModulePage(SuperPage):
                                  SMPC.text_lefu_pay,
                                  SMPC.click_on_button_timeout)
 
+    def clicOnShake(self):
+        '''
+        usage: 点击"现场摇"
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_shake,
+                                 SMPC.click_on_button_timeout)
+
     def clicOnQueue(self):
         '''
         usage: 点击 "排队取号"
@@ -170,6 +180,20 @@ class SquareModulePage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  SMPC.text_coupon,
+                                 SMPC.click_on_button_timeout)
+
+    def clickOnSales(self):
+        '''
+        usage: 点击页面下方的优惠券
+        '''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(10):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_sales,
                                  SMPC.click_on_button_timeout)
 
     def clickOnMovie(self):

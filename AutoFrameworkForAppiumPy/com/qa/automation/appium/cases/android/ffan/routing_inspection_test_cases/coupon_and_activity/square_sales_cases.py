@@ -26,11 +26,12 @@ from com.qa.automation.appium.pages.android.ffan.search_page import SearchPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
-class PrivilegeCouponCases(TestCase):
+class SquareSalesCases(TestCase):
     '''
-    巡检checklist No.: 25
-    自动化测试case No.: 25
-    广场详情页点击优惠券可以进入优惠券列表，并可以成功领取通用券、进入详情页，在我的票券中显示
+    作者 乔佳溪
+    巡检checklist No.: 38
+    自动化测试case No.: 38
+    广场详情页点击优惠券可以进入优惠券并可以成功领取优惠券在我的票券中显示 
     '''
 
     def tearDown(self):
@@ -39,10 +40,11 @@ class PrivilegeCouponCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
+        self.platVersion = DeviceInfoUtil().getBuildVersion()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
+                                   self.platVersion, 
                                    deviceName_andr,
                                    driver_url).getDriver()
 
@@ -63,7 +65,7 @@ class PrivilegeCouponCases(TestCase):
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
-        squareModulePage.clickOnCoupon()
+        squareModulePage.clickOnSales()
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         salesPromotionPage.validSelf()
@@ -73,7 +75,10 @@ class PrivilegeCouponCases(TestCase):
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        if int(self.platVersion.split(".")[0]) >= 5:
+                salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        else:
+                salesPromotionCouponDetailsPage.clickOnFreeOfChargeLinkBtn()
 
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
         salesPromotionCouponSuccessPage.validSelf()
@@ -107,10 +112,11 @@ class PrivilegeCouponCases(TestCase):
         myFfanPage.validSelf()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(PrivilegeCouponCases)
+    suite = TestLoader().loadTestsFromTestCase(SquareSalesCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
+                                           description='Result for test')
     runner.run(suite)

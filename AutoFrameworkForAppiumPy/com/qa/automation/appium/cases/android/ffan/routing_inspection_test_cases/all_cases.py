@@ -101,6 +101,9 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.s
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_order_cases import MyfeifanMyOrderCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_entrance_cases import HuiLifeEntranceCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.advertisement.hui_life_select_shop_cases import HuiLifeSelectShopCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.square_sales_cases import SquareSalesCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.others.square_shake_cases import SquareShakeCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.others.dashboard_shake_cases import DashboardShakeCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -131,6 +134,9 @@ if __name__ == "__main__":
     suite.addTest(MyfeifanMyOrderCases("test_case"))
     suite.addTest(HuiLifeEntranceCases("test_case"))
     suite.addTest(HuiLifeSelectShopCases("test_case"))
+    suite.addTest(SquareSalesCases("test_case"))
+    suite.addTest(DashboardShakeCases("test_case"))
+    suite.addTest(SquareShakeCases("test_case"))
     # suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
     # suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
@@ -139,9 +145,7 @@ if __name__ == "__main__":
     suite.addTest(PrivilegeCouponCases("test_case"))
     # suite.addTest(SalesPromotionActiveCases("test_case")) # 首页优惠活动相关
     # suite.addTest(SalesPromotionCouponCases("test_case")) # 首页优惠活动相关
-
     # suite.addTest(SpecialOfferCases("test_case")) # 慧生活没有活动和优惠tab了
-
     # suite.addTest(SquareGeneralCouponCases("test_case")) # 通用券相关
     # suite.addTest(SquareRecommendCases("test_case"))   # 达人推荐功能移除
     suite.addTest(FoodCases("test_case"))
