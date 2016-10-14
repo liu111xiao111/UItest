@@ -150,7 +150,6 @@ if __name__ == "__main__":
     suite.addTest(SquareDetailsCases("test_case"))
     suite.addTest(SquarePrivilegeCouponCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
-    suite.addTest(("test_case"))
 
     now = time.strftime('%H_%M_%S')
 
