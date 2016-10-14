@@ -70,8 +70,7 @@ class MonkeyHandle(object):
 
     def monkeyHandle(self, filePath):
         try:
-            htmlContent = ''
-            if filePath != '':
+            if os.path.exists(filePath):
                 monkeyData = self.dataHandle(filePath)
                 exception = ''
                 exception_list = {'空指针异常': 0,
@@ -178,9 +177,11 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
     msg.attach(body)
 
     for file in attachmentFiles:
-        attach = MIMEApplication(open(os.path.join(reportPath, file), 'rb').read())
-        attach.add_header('Content-Disposition', 'attachment', filename=file)
-        msg.attach(attach)
+        filePath = os.path.join(reportPath, file)
+        if os.path.exists(filePath):
+            attach = MIMEApplication(open(filePath, 'rb').read())
+            attach.add_header('Content-Disposition', 'attachment', filename=file)
+            msg.attach(attach)
 
     if deviceType == 'android':
         msg['Subject'] = Header(constants.MONKEY_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")

@@ -107,7 +107,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if(filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -126,7 +126,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -145,7 +145,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -164,7 +164,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -183,7 +183,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -202,7 +202,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -221,7 +221,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -240,7 +240,7 @@ class PeformanceDraw(object):
         try:
             pngX = []
             pngY = []
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 i = 1
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -255,10 +255,9 @@ class PeformanceDraw(object):
             print(str(e))
 
     def trafficHandle(self):
-        file = 'Traffic_performance.txt'
-        filePath = os.path.join(self.reportPath, file)
+        filePath = os.path.join(self.reportPath, self.trafficUsageFile)
         try:
-            if (filePath != ''):
+            if os.path.exists(filePath):
                 htmlContent = ''
                 performaceData = self.dataHandle(filePath)
                 for line in performaceData:
@@ -378,22 +377,26 @@ def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
 
     attachmentFile = 'test_performance_result.xlsx'
 
-    attach = MIMEApplication(open(os.path.join(reportPath, attachmentFile), 'rb').read())
-    attach.add_header('Content-Disposition', 'attachment', filename=attachmentFile)
-    msgRoot.attach(attach)
+    attachmetPath = os.path.join(reportPath, attachmentFile)
+    if os.path.exists(attachmetPath):
+        attach = MIMEApplication(open(attachmetPath, 'rb').read())
+        attach.add_header('Content-Disposition', 'attachment', filename=attachmentFile)
+        msgRoot.attach(attach)
 
     # 指定图片为当前目录
     i = 1
     for png in ['cpuPerf.png', 'memoryUsagePerf.png', 'rxRatePerf.png', 'txRatePerf.png', 'coldBootPerf.png',
                 'warmBootPerf.png', 'fpsPerf.png', 'overDrawPerf.png']:
-        fp = open(os.path.join(reportPath, png), 'rb')
-        msgImage = MIMEImage(fp.read())
-        fp.close()
+        pngPath = os.path.join(reportPath, png)
+        if os.path.exists(pngPath):
+            fp = open(pngPath, 'rb')
+            msgImage = MIMEImage(fp.read())
+            fp.close()
 
-        # 定义图片 ID，在 HTML 文本中引用
-        msgImage.add_header('Content-ID', '<image%s>' % i)
-        msgRoot.attach(msgImage)
-        i += 1
+            # 定义图片 ID，在 HTML 文本中引用
+            msgImage.add_header('Content-ID', '<image%s>' % i)
+            msgRoot.attach(msgImage)
+            i += 1
 
     s = smtplib.SMTP(smtpServer, smtpPort)
     s.ehlo()
