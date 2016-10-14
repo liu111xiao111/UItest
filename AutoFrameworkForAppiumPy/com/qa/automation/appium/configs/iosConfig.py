@@ -41,6 +41,7 @@ caseList = {
     'MyOrderCases'                          : u'我的订单',
     'SquareMembersCases'                    : u'广场会员',
     'MyfeifanMyQueueCases'                  : u'我的排队',
+    'MyfeifanMyTicketCases'                 : u'我的票券',
     'SwitchCityCases'                       : u'城市切换',
 
 }
