@@ -23,8 +23,7 @@ from com.qa.automation.appium.utility.logger import Logger
 class ParkingPaymentCases(TestCase):
     '''
     作者 刘涛
-    巡检checklist #56
-    自动化测试 #56
+    我的停车缴费
     点击停车缴费，成功进入并显示正确数据
     '''
 
@@ -62,6 +61,7 @@ class ParkingPaymentCases(TestCase):
         dashboard.validSelf()
         dashboard.clickOnMy()
         myFfanPage.validSelf()
+
 
         # 点击停车交费
         myFfanPage.clickOnParkingPayment()

@@ -102,14 +102,23 @@ class MyFfanPage(SuperPage):
         '''
         usage : Load "停车交费" page， according to textview in "停车交费", check "停车交费" page whether load correctly.
         '''
-        for _ in range(3):
-            self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
+        # for _ in range(3):
+        #     self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
+        self.scrollToParking()
 
         API().clickElementByName(self.testcase, 
                                  self.driver, 
                                  self.logger,
                                  MFPC.text_parking_payment,
                                  MFPC.click_on_button_timeout)
+
+    def scrollToParking(self):
+        '''
+        usage: 滑动到停车缴费
+        '''
+        API().iosScrollToElement(self.driver, self.logger,
+                                 MFPC.xpath_parking_paymeng,
+                                 MFPC.text_parking_payment)
 
 
 if __name__ == '__main__':
