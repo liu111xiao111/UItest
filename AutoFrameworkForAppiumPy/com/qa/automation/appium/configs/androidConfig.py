@@ -33,6 +33,10 @@ def getPhoneVersion():
 phoneVersion = getPhoneVersion()
 
 caseList = {
+    'MyfeifanMyBillCases'                   : u'我的零花钱',
+    'FeiFanCardPaymentCases'                : u'飞凡通付款',
+    'FeiFanCardManagerCases'                : u'飞凡通卡管家',
+    'FeiFanCardChargeCases'                 : u'飞凡通零花钱',
     'ShoppingMallCases'                     : u'购物中心',
     'ChildCatergoryCases'                   : u'亲子',
     'DashboardSquareCases'                  : u'广场详情',
