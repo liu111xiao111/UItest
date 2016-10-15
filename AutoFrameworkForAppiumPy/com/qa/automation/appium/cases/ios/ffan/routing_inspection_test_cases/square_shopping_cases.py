@@ -42,17 +42,21 @@ class SquareShoppingCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
-        
-        searchPage = SearchPage(self, self.driver, self.logger)
-        searchPage.validSelf()
-        searchPage.inputStoreName()
+        searchPage.inputKeywords(u"北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.clickOnSearchResultFirstItem()
+        searchPage.clickOnSpecificSquare()
+        
+        # searchPage = SearchPage(self, self.driver, self.logger)
+        # searchPage.validSelf()
+        # searchPage.inputStoreName()
+        # searchPage.clickOnSearch()
+        # searchPage.clickOnSearchResultFirstItem()
 
-        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
-        searchResultStorePage.validSelf()
+        # searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
+        # searchResultStorePage.validSelf()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
@@ -63,11 +67,11 @@ class SquareShoppingCases(TestCase):
         tempText = squareShoppingPage.clickOnSubCommodity()
 
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
+        #5 second,wait Appium load page
+        goodsDetailsPage.waitBySeconds(5)
         goodsDetailsPage.validSelf()
         goodsDetailsPage.validKeywords(tempText)
-        goodsDetailsPage.clickBackKey()
-        squareShoppingPage.clickBackKey()
-        squareModulePage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(SquareShoppingCases)
