@@ -20,6 +20,7 @@ from com.qa.automation.appium.pages.ios.ffan.sales_promotion_coupon_success_page
 from com.qa.automation.appium.pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
 
 
 class SquarePrivilegeCouponCases(TestCase):
@@ -45,54 +46,61 @@ class SquarePrivilegeCouponCases(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        searchPage = SearchPage(self, self.driver, self.logger)
+        dashboardPage.validSelf()
+        # dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSearchAll()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
         squareModulePage.clickOnPrivilege()
 
-        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        salesPromotionPage.validSelf()
-        salesPromotionPage.clickOnCouponTab()
-        couponListItemName = salesPromotionPage.getItemName()
-        salesPromotionPage.clickOnCouponDetails()
-
-        salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
-        salesPromotionCouponDetailsPage.waitBySeconds(10)
-        salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
-
-        salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
-        salesPromotionCouponSuccessPage.validSelf()
-        salesPromotionCouponSuccessPage.clickOnCheckMyTicketBtn()
-
-        myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
-        myOrderDetailsPage.waitBySeconds(5)
-        couponNo = myOrderDetailsPage.getMyCouponNumber()
-        myOrderDetailsPage.clickBackKey()
-
-        salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.clickBackKey()
-
-        salesPromotionPage.validSelf()
-        salesPromotionPage.clickBackKey()
-
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
-
-        dashboardPage.validSelf()
-        dashboardPage.clickOnMy()
-
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyTicket()
-
-        myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
-        myOrderNo = myFfanMyTicketPage.getTicketNo()
-        myFfanMyTicketPage.validSelf(couponNo[3:], myOrderNo)
-        myFfanMyTicketPage.clickBackKey()
-
-        myFfanPage.validSelf()
+        squareModulePage.waitBySeconds(8)
+        # salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        # salesPromotionPage.validSelf()
+        # salesPromotionPage.clickOnCouponTab()
+        # couponListItemName = salesPromotionPage.getItemName()
+        # salesPromotionPage.clickOnCouponDetails()
+        #
+        # salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
+        # salesPromotionCouponDetailsPage.waitBySeconds(10)
+        # salesPromotionCouponDetailsPage.validSelf(couponListItemName)
+        # salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        #
+        # salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
+        # salesPromotionCouponSuccessPage.validSelf()
+        # salesPromotionCouponSuccessPage.clickOnCheckMyTicketBtn()
+        #
+        # myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
+        # myOrderDetailsPage.waitBySeconds(5)
+        # couponNo = myOrderDetailsPage.getMyCouponNumber()
+        # myOrderDetailsPage.clickBackKey()
+        #
+        # salesPromotionCouponDetailsPage.validSelf(couponListItemName)
+        # salesPromotionCouponDetailsPage.clickBackKey()
+        #
+        # salesPromotionPage.validSelf()
+        # salesPromotionPage.clickBackKey()
+        #
+        # squareModulePage.validSelf()
+        # squareModulePage.clickBackKey()
+        #
+        # dashboardPage.validSelf()
+        # dashboardPage.clickOnMy()
+        #
+        # myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        # myFfanPage.validSelf()
+        # myFfanPage.clickOnMyTicket()
+        #
+        # myFfanMyTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
+        # myOrderNo = myFfanMyTicketPage.getTicketNo()
+        # myFfanMyTicketPage.validSelf(couponNo[3:], myOrderNo)
+        # myFfanMyTicketPage.clickBackKey()
+        #
+        # myFfanPage.validSelf()
 
 
 if __name__ == "__main__":
