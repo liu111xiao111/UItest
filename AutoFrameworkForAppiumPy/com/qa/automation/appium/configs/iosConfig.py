@@ -50,4 +50,5 @@ caseList = {
     'SquarePrivilegeCouponCases'            : u'广场优惠券',
     'SquareQueueCases'                      : u'广场排队取号',
     'SquareIndoorMapCases'                  : u'广场室内地图',
+    'SquareMovieCases'                      : u'广场电影逛',
 }
