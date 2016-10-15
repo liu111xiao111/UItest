@@ -80,5 +80,7 @@ class HuiLifePageConfigs(object):
     '''
     class_name_android_widget_FrameLayout = "android.widget.FrameLayout"
 
+    xpath_jiayou = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
+
     def __init__(self):
         pass
