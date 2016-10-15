@@ -10,6 +10,9 @@ class ParkingPaymentInputPlateNumberPageConfigs():
     xpath_plate_number = "//UIAApplication[1]/UIAWindow[1]/UIATextField[1]"
     plate_number = u"QM9G29"
 
+    #轮播图片滚动条
+    xpath_lunbogundongtiao = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAPageIndicator[1]/UIAButton[8]"
+
 
     def __init__(self):
         pass;
