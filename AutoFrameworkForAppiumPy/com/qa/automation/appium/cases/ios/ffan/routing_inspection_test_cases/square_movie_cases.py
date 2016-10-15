@@ -20,6 +20,7 @@ from com.qa.automation.appium.pages.ios.ffan.popup_page import VerifyActivityKey
 from com.qa.automation.appium.pages.ios.ffan.seat_picking_page import SeatPickingPage
 from com.qa.automation.appium.pages.ios.ffan.square_module_page import SquareModulePage
 from com.qa.automation.appium.utility.logger import Logger
+from com.qa.automation.appium.pages.ios.ffan.search_page import SearchPage
 
 
 class SquareMovieCases(TestCase):
@@ -44,8 +45,13 @@ class SquareMovieCases(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+        #dashboardPage.clickOnSquareModule()
+        dashboardPage.clickOnSearchAll()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
@@ -57,7 +63,7 @@ class SquareMovieCases(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
+            self.logger.i("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.NAME, False):
                 popupPage.clickOnButton(u"是", ClickActivityKeywordsType.NAME)
                 break
