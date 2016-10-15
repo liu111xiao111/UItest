@@ -32,8 +32,6 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.movie
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.my_order_cases import MyOrderCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_like_cases import MyfeifanMyLikeCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_queue_cases import MyfeifanMyQueueCases
-from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_queue_cases import MyfeifanMyQueueCases
-from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_ticket_cases import MyfeifanMyTicketCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_ticket_cases import MyfeifanMyTicketCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.one_card_cases import OneCardCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.parking_payment_bindings_cases import ParkingPaymentBindingsCases
@@ -112,7 +110,6 @@ if __name__ == "__main__":
     suite.addTest(MessageSettingsCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))
     suite.addTest(MyfeifanMyLikeCases("test_case"))
-    # suite.addTest(MyfeifanMyQueueCases("test_case"))
     # suite.addTest(MyfeifanMyTicketCases("test_case"))
     suite.addTest(OneCardCases("test_case"))
     suite.addTest(ParkingPaymentBindingsCases("test_case"))
@@ -132,7 +129,7 @@ if __name__ == "__main__":
     # suite.addTest(SquareGeneralCouponCases("test_case"))
     suite.addTest(SquareIndoorMapCases("test_case"))
     suite.addTest(SquareLefuPayCases("test_case"))
-    # suite.addTest(SquareMovieCases("test_case"))
+    suite.addTest(SquareMovieCases("test_case"))
     suite.addTest(SquareParkingPaymentCases("test_case"))
     # suite.addTest(SquareRecommendCases("test_case"))
     suite.addTest(SquareResourceNicheCases("test_case"))
@@ -148,11 +145,12 @@ if __name__ == "__main__":
     suite.addTest(SquareMembersCases("test_case"))
     suite.addTest(MyfeifanMyQueueCases("test_case"))
     suite.addTest(MyfeifanMyTicketCases("test_case"))
-    suite.addTest(SwitchCityCases("test_case"))
     suite.addTest(StoresAndSupermarketsCases("test_case"))
     suite.addTest(SquareDetailsCases("test_case"))
     suite.addTest(SquarePrivilegeCouponCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
+    suite.addTest(SwitchCityCases("test_case"))
+
 
     now = time.strftime('%H_%M_%S')
 
