@@ -5,7 +5,13 @@ class FeiFanCardPageConfigs():
 
     # 开卡text
     text_tv_open_tv = u"市民/公交卡"
-    
+
+    # 飞凡通 付款
+    resource_id_tv_payment_tv = "com.wanda.app.wanhui:id/tv_payment_code"
+    # 飞凡通 卡管家
+    resource_id_tv_card_manager_tv = "com.wanda.app.wanhui:id/tv_bank_card"
+    # 飞凡通 零花钱
+    resource_id_tv_charge_tv = "com.wanda.app.wanhui:id/tv_feifan_change"
     # 飞凡卡　账单
     resource_id_tv_bill_tv = "com.wanda.app.wanhui:id/tv_feifan_change_detail"
 

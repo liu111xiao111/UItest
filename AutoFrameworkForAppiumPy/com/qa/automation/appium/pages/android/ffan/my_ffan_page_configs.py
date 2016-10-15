@@ -27,6 +27,7 @@ class MyFfanPageConfigs():
     text_my_queue = u"我的排队";
     text_my_ticket = u"我的票券";
     text_my_order = u"我的订单";
+    text_my_bill = u"零花钱";
     text_to_be_paid = u"待付款"
     text_use = u"可使用"
     text_comments = u"我的点评"

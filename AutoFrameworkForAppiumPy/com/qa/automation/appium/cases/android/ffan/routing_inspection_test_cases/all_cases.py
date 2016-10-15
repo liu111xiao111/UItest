@@ -105,6 +105,10 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.a
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.coupon_and_activity.square_sales_cases import SquareSalesCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.others.square_shake_cases import SquareShakeCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.others.dashboard_shake_cases import DashboardShakeCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_payment_cases import FeiFanCardPaymentCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_manager_cases import FeiFanCardManagerCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_charge_cases import FeiFanCardChargeCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_bill_cases import MyfeifanMyBillCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -128,6 +132,10 @@ if __name__ == "__main__":
 
     suite = TestSuite()
 
+    suite.addTest(MyfeifanMyBillCases("test_case"))
+    suite.addTest(FeiFanCardPaymentCases("test_case"))
+    suite.addTest(FeiFanCardManagerCases("test_case"))
+    suite.addTest(FeiFanCardChargeCases("test_case"))
     suite.addTest(ShoppingMallCases("testCase"))
     suite.addTest(ChildCatergoryCases("test_case"))
     suite.addTest(DashboardSquareCases("test_case"))
@@ -223,5 +231,3 @@ if __name__ == "__main__":
 
         if sentMail:
             sendTestResultMail(reportpath, 'android')
-            from com.qa.automation.appium.utility.performanceMailProcess import sendPerformanceMail
-            sendPerformanceMail(startTime, endTime, reportpath, 'android')

@@ -229,3 +229,13 @@ class MyFfanPage(SuperPage):
                                  MFPC.resource_id_txt_ticket_number_tv,
                                  MFPC.verify_view_timeout)
         return ticketNumber
+
+    def clickOnMyBill(self):
+        '''
+        usage : 点击我的零花钱
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_bill,
+                                 MFPC.click_view_timeout)
