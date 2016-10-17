@@ -24,6 +24,15 @@ class ParkingPaymentInputPlateNumberPage(SuperPage):
                                   logger=self.logger,
                                   name=ParkingPaymentInputPlateNumberPageConfigs.name_parking_payment_title);
 
+    def validLunbogundongtiao(self):
+        '''
+        usaage : 验证轮播滑动滚动条
+        '''
+        API().validElementByXpathTest(testCase=self.testcase,
+                                      driver = self.driver,
+                                      logger = self.logger,
+                                      xpath=ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao)
+
     def inputPlateNumber(self):
         '''
         usage : 输入要绑定的车牌号
