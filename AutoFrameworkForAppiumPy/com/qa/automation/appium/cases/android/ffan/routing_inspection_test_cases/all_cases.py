@@ -231,3 +231,5 @@ if __name__ == "__main__":
 
         if sentMail:
             sendTestResultMail(reportpath, 'android')
+            from com.qa.automation.appium.utility.performanceMailProcess import sendPerformanceMail
+            sendPerformanceMail(startTime, endTime, reportpath, 'android') 
