@@ -29,6 +29,14 @@ class AccountManagementPage(SuperPage):
                                  AMPC.text_update_login_password_button,
                                  AMPC.click_on_button_timeout)
 
+    def clickOnPaymentCodeSetting(self):
+        '''
+        usage: 点击支付密码管理
+        '''
+        API().clickElementByText(self.testcase, self.driver, self.logger, 
+                                 AMPC.text_payment_code_setting, 
+                                 AMPC.click_on_button_timeout)
+
     def clickOnSmallAmountPasswordLessPayments(self):
         '''
         usage: 点击小额免密支付

@@ -74,6 +74,26 @@ class FeiFanCardPage(SuperPage):
                                        FCPC.resource_id_tv_bill_tv,
                                        FCPC.verify_click_timeout)
 
+    def clickOnCodeIcon(self):
+        '''
+        usage : 点击扫码图标
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_code_icon_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnPaymentCode(self):
+        '''
+        usage : 点击付款码
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 FCPC.text_tv_payment_code_tv,
+                                 FCPC.verify_click_timeout)
+
     def clickOnPocketMoney(self):
         '''
         usage : 点击零花钱
