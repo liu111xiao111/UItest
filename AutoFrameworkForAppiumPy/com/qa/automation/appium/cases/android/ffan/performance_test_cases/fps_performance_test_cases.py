@@ -94,7 +94,7 @@ class FpsPerformanceTestCases():
 
         logName = "Fps_performance.txt"
         logPath = os.path.join(reportPath, logName)
-        f = open(logPath, mode='w', encoding='utf-8')
+        f = open(logPath, mode='a', encoding='utf-8')
         f.write("%s %s %s" % (tab, draw, fps) + "\n")
         f.close()
 
