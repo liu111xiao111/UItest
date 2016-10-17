@@ -68,6 +68,7 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.switc
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.update_login_password_cases import UpdateLoginPasswordCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.version_upgrade_cases import VersionUpgradeCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.yao_yi_yao_cases import YaoyiyaoCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.hui_life_resource_niche_cases import HuiLifePage
 from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
 
 
@@ -149,6 +150,7 @@ if __name__ == "__main__":
     suite.addTest(SquareDetailsCases("test_case"))
     suite.addTest(SquarePrivilegeCouponCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
+    suite.addTest(HuiLifePage("test_case"))
     suite.addTest(SwitchCityCases("test_case"))
 
 
