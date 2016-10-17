@@ -36,7 +36,14 @@ class HuiLifePage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger, viewXpath,
                                   HuiLifePageConfigs.click_on_button_timeout)
         API().waitBySeconds(10)
-        API().assertElementByName(self.testcase, self.driver, self.logger, validValue,
+        if u"加油" == validValue:
+            # API.assertElementByXpath(self.testcase,self.driver,self.logger,
+            #                          "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]")
+            API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                       HuiLifePageConfigs.xpath_jiayou,
+                                       HuiLifePageConfigs.assert_view_timeout)
+        else:
+            API().assertElementByName(self.testcase, self.driver, self.logger, validValue,
                                               HuiLifePageConfigs.assert_view_timeout)
         if u"滴滴出行" == validValue:
             tempXpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
