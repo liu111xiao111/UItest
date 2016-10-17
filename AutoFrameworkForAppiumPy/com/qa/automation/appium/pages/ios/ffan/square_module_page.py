@@ -143,12 +143,12 @@ class SquareModulePage(SuperPage):
 
         API().iosScrollToElement(self.driver, self.logger, '//UIAApplication[1]/UIAWindow[1]/UIATableView[1]', '优惠')
 #         API().waitBySeconds(3)
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  SquareModulePageConfigs.xpath_ckeck_all_st,
-                                  SquareModulePageConfigs.click_on_button_timeout)
-#         API().clickElementByName(self.testcase, self.driver, self.logger,
-#                                  SquareModulePageConfigs.name_privilege_st,
-#                                  SquareModulePageConfigs.click_on_button_timeout)
+#         API().clickElementByXpath(self.testcase, self.driver, self.logger,
+#                                   SquareModulePageConfigs.xpath_ckeck_all_st,
+#                                   SquareModulePageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SquareModulePageConfigs.name_privilege_st,
+                                 SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''
