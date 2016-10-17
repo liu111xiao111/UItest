@@ -124,7 +124,7 @@ if __name__ == "__main__":
     suite.addTest(ShoppingMallCases("testCase"))
     suite.addTest(SmallAmountPasswordLessPaymentCases("test_case"))
     # suite.addTest(SpecialOfferCases("test_case"))
-    # suite.addTest(SplashScreenHomePageCases("test_case"))
+    suite.addTest(SplashScreenHomePageCases("test_case"))
     suite.addTest(SquareFindStoreSearchCases("test_case"))
     suite.addTest(SquareFoodCases("test_case"))
     # suite.addTest(SquareGeneralCouponCases("test_case"))
