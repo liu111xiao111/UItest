@@ -21,6 +21,7 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 from com.qa.automation.appium.utility.logger import Logger
 
 TESTCITY = u"厦门市"
+DESCITY = u"北京市"
 
 class DashboardSupermarketCases(TestCase):
     '''
@@ -61,6 +62,9 @@ class DashboardSupermarketCases(TestCase):
         # 点击商超，进入商店超市页面
         dashboardPage.clickOnSupermarket()
         supermarketPage.validSelf()
+        supermarketPage.clickBackKey()
+        dashboardPage.clickOnSwithCith()
+        dashboardPage.switchCity(DESCITY)
 
 
 if __name__ == "__main__":
