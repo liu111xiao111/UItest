@@ -109,6 +109,7 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.p
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_manager_cases import FeiFanCardManagerCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_charge_cases import FeiFanCardChargeCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_bill_cases import MyfeifanMyBillCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_payment_code_cases import MyfeifanMyPaymentCodeCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -146,6 +147,7 @@ if __name__ == "__main__":
     suite.addTest(SquareSalesCases("test_case"))
     suite.addTest(DashboardShakeCases("test_case"))
     suite.addTest(SquareShakeCases("test_case"))
+    suite.addTest(MyfeifanMyPaymentCodeCases("test_case"))
     # suite.addTest(HuiLifeResourceNicheCases("testHuiLifeScreenShot"))
     # suite.addTest(SquareResourceNicheCases("test_case"))
     suite.addTest(MovieTicketCases("test_case"))

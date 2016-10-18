@@ -14,14 +14,18 @@ class FeiFanCardPageConfigs():
     resource_id_tv_charge_tv = "com.wanda.app.wanhui:id/tv_feifan_change"
     # 飞凡卡　账单
     resource_id_tv_bill_tv = "com.wanda.app.wanhui:id/tv_feifan_change_detail"
+    # 飞凡卡　扫码图标
+    resource_id_tv_code_icon_tv = "com.wanda.app.wanhui:id/iv_right_icon"
+    # 飞凡卡 付款码
+    text_tv_payment_code_tv = u"付    款"
 
     # 零花钱
     resource_id_tv_pocket_money_tv = "com.wanda.app.wanhui:id/tv_feifan_change"
     resource_id_tv_bill_tv = "com.wanda.app.wanhui:id/tv_feifan_change_detail"
     text_integral = u"积分"
 
-    verify_view_timeout = 10
-    verify_click_timeout = 10
+    verify_view_timeout = 90
+    verify_click_timeout = 90
 
     def __init__(self):
         pass;

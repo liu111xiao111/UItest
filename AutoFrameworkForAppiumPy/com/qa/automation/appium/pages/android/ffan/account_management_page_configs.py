@@ -21,6 +21,9 @@ class AccountManagementPageConfigs(object):
     # Change login password button
     text_update_login_password_button = u"修改登录密码";
 
+    # 支付密码管理
+    text_payment_code_setting = u"支付密码管理"
+
     # Small amount password less payment
     text_small_amount_password_less_payments = u"小额免密支付"
 

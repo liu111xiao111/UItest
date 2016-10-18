@@ -10,7 +10,7 @@ from unittest import TestLoader
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.my_ffan_page import MyFfanPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -22,12 +22,12 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 
 
-class MyfeifanMyBillCases(TestCase):
+class MyfeifanMyPaymentCodeCases(TestCase):
     '''
     作者 乔佳溪
-    巡检checklist #55
-    自动化测试 #55
-    点击付款码，显示付款码，点击零花钱，进入零花钱页面
+    巡检checklist #54
+    自动化测试 #54
+    我的付款码
     '''
 
     def tearDown(self):
@@ -36,11 +36,9 @@ class MyfeifanMyBillCases(TestCase):
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
-                                   appActivity_ffan,
-                                   platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr,
+        self.platVersion = DeviceInfoUtil().getBuildVersion()
+        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
+                                   self.platVersion, deviceName_andr,
                                    driver_url).getDriver()
 
         self.reset = ClearAppData(self.driver)
@@ -49,18 +47,20 @@ class MyfeifanMyBillCases(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnFeiFanCard()
 
-        # 查看我的订单状态
-        dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyBill()
-        feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
-        feifanCardBillPage.validSelf()
+        feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
+        feifanCardPage.validSelf()
+
+        feifanCardPage.clickOnCodeIcon()
+        if int(self.platVersion.split(".")[0]) >= 5:
+            feifanCardPage.clickOnPaymentCode()
+
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyBillCases)
+    suite = TestLoader().loadTestsFromTestCase(MyfeifanMyPaymentCodeCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

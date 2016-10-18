@@ -47,6 +47,7 @@ caseList = {
     'SquareSalesCases'                      : u'广场优惠',
     'DashboardShakeCases'                   : u'摇一摇',
     'SquareShakeCases'                      : u'广场现场摇',
+    'MyfeifanMyPaymentCodeCases'            : u'我的付款码',
     'MovieTicketCases'                      : u'电影',
     'SquareMovieCases'                      : u'广场电影逛',
     'PrivilegeCouponCases'                  : u'广场优惠券',
