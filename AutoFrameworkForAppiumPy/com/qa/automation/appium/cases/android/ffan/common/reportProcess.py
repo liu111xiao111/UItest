@@ -1,5 +1,4 @@
 import os
-import sys
 
 import html.parser as html_parser
 
@@ -27,6 +26,7 @@ class TestResultParser(html_parser.HTMLParser):
         self.error_case_detail = []
         self.passed_case = []
         self.filterContent = ['Start Time:', 'Duration:', 'Status:']
+        self.readDetail = False
         self.readStatus = False
 
     def handle_starttag(self, tag, attrs):
@@ -50,9 +50,12 @@ class TestResultParser(html_parser.HTMLParser):
                         self.readContent = 'failed_case'
                         self.readed = True
                         self.readStatus = False
-        if(tag == 'pre' and not self.readStatus):
+                        self.readDetail = True
+        if(tag == 'pre' and not self.readStatus and self.readDetail):
             self.readContent = 'failed_case_detail'
             self.readed = True
+            self.readStatus = False
+            self.readDetail = False
 
         if (tag == 'tr'):
             if (len(attrs) == 0):
@@ -63,9 +66,12 @@ class TestResultParser(html_parser.HTMLParser):
                         self.readContent = 'error_case'
                         self.readed = True
                         self.readStatus = True
-        if (tag == 'pre' and self.readStatus):
+                        self.readDetail = True
+        if (tag == 'pre' and self.readStatus and self.readDetail):
             self.readContent = 'error_case_detail'
             self.readed = True
+            self.readStatus = False
+            self.readDetail = False
 
         if (tag == 'tr'):
             if (len(attrs) == 0):
@@ -125,7 +131,7 @@ class TestResultParser(html_parser.HTMLParser):
             self.failed_case_detail.append(data)
             # print(self.failed_case_detail)
         if (self.readed == True and self.readContent == 'error_case'):
-            if(len(str(data).strip()) > 1 and str(data).strip() != 'Detail'):
+            if (len(str(data).strip()) > 1 and str(data).strip() != 'Detail'):
                 self.error_case.append(data)
                 # print(self.failed_case)
         if (self.readed == True and self.readContent == 'error_case_detail'):

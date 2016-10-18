@@ -27,6 +27,7 @@ class TestResultParser(html_parser.HTMLParser):
         self.error_case_detail = []
         self.passed_case = []
         self.filterContent = ['Start Time:', 'Duration:', 'Status:']
+        self.readDetail = False
         self.readStatus = False
 
     def handle_starttag(self, tag, attrs):
@@ -49,9 +50,14 @@ class TestResultParser(html_parser.HTMLParser):
                     if(att == 'class' and value == 'failClass'):
                         self.readContent = 'failed_case'
                         self.readed = True
-        if(tag == 'pre'):
+                        self.readStatus = False
+                        self.readDetail = True
+        if(tag == 'pre' and not self.readStatus and self.readDetail):
             self.readContent = 'failed_case_detail'
             self.readed = True
+            self.readStatus = False
+            self.readDetail = False
+
         if (tag == 'tr'):
             if (len(attrs) == 0):
                 pass
@@ -61,9 +67,13 @@ class TestResultParser(html_parser.HTMLParser):
                         self.readContent = 'error_case'
                         self.readed = True
                         self.readStatus = True
-        if (tag == 'pre' and self.readStatus):
+                        self.readDetail = True
+        if (tag == 'pre' and self.readStatus and self.readDetail):
             self.readContent = 'error_case_detail'
             self.readed = True
+            self.readStatus = False
+            self.readDetail = False
+
         if (tag == 'tr'):
             if (len(attrs) == 0):
                 pass
@@ -103,7 +113,6 @@ class TestResultParser(html_parser.HTMLParser):
                 elif (self.test_summary['Pass'] == 0):
                     data = str(data).split(' ')
                     if len(data) == 3:
-                        print(data[1])
                         self.test_summary[data[1]] = data[2]
                     elif len(data) == 5:
                         self.test_summary[data[1]] = data[2]
@@ -135,7 +144,7 @@ class TestResultParser(html_parser.HTMLParser):
                 # print(self.passed_case)
 
     def readHtmlContents(self, filePath):
-        resultFile = open(filePath, mode='r', encoding='utf-8')
+        resultFile = open(filePath, encoding='utf-8')
         try:
             resultContents = resultFile.read()
         except Exception as e:
@@ -204,17 +213,21 @@ class ReportHandle(object):
         passedCases = self.parser.getPassedCases()
         htmlContent = ''
 
+        count = 0
+
         for count in range(0, len(errorCases)):
             caseAutoName = errorCases[count].split('.')[-1]
             caseName = errorCases[count].split('.')[-2]
             htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
             htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='errorCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (count+1, errorCaseDetails[count])
 
+        ftCount = count + 1
+
         for count in range(0, len(failedCases)):
             caseAutoName = failedCases[count].split('.')[-1]
             caseName = failedCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
-            htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='failCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (count+1, failedCaseDetails[count])
+            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, ftCount+count+1)
+            htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='failCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (ftCount+count+1, failedCaseDetails[count])
 
         for count in range(0, len(passedCases)):
             caseAutoName = passedCases[count].split('.')[-1]
@@ -247,7 +260,7 @@ class ReportHandle(object):
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templateReport.html')
-        templateFile = open(file, mode='r', encoding='utf-8')
+        templateFile = open(file, encoding='utf-8')
         try:
             contents = templateFile.read()
         except Exception as e:
