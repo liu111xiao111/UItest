@@ -16,7 +16,7 @@ class LoginPageConfigs():
     text_normal_login = u"普通登录";
     text_forget_password = "忘记密码?"
 
-    account_name = "18624264849"
+    account_name = "13591822125"
     account_passwd = "Neu1234!"
 
     def __init__(self):

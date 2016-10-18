@@ -110,6 +110,7 @@ from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.p
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.feifan_card_charge_cases import FeiFanCardChargeCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_bill_cases import MyfeifanMyBillCases
 from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.myfeifan_my_payment_code_cases import MyfeifanMyPaymentCodeCases
+from com.qa.automation.appium.cases.android.ffan.routing_inspection_test_cases.personal_information.payment_password_setting_cases import PaymentPasswordSettingCases
 
 def runPerformance(reportPath):
     perf = Performance(reportPath)
@@ -183,6 +184,7 @@ if __name__ == "__main__":
     # suite.addTest(MyfeifanMyTicketCases("test_case")) # 首页优惠活动相关
     suite.addTest(OneCardCases("test_case"))
     suite.addTest(PersonalInformationCases("test_case"))
+    suite.addTest(PaymentPasswordSettingCases("test_case"))
     suite.addTest(SmallAmountPasswordLessPaymentCases("test_case"))
     suite.addTest(SquareMemberCases("test_case"))
     suite.addTest(SquareSignOnCases("test_case"))

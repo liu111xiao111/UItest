@@ -11,6 +11,7 @@ from com.qa.automation.appium.cases.android.ffan.common.test_prepare import Test
 from com.qa.automation.appium.cases.android.ffan.common.clear_app_data import ClearAppData
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_payment_page import FeiFanCardPaymentPage
 from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
 from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
 from com.qa.automation.appium.configs.driver_configs import deviceName_andr
@@ -19,7 +20,6 @@ from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
-from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 
 
 class MyfeifanMyPaymentCodeCases(TestCase):
@@ -55,9 +55,13 @@ class MyfeifanMyPaymentCodeCases(TestCase):
         feifanCardPage.validSelf()
 
         feifanCardPage.clickOnCodeIcon()
+
         if int(self.platVersion.split(".")[0]) >= 5:
             feifanCardPage.clickOnPaymentCode()
-
+            feifanCardPaymentPage = FeiFanCardPaymentPage(self , self.driver , self.logger)
+            feifanCardPaymentPage.validSelf()
+            feifanCardPaymentPage.clickBackKey()
+        feifanCardPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MyfeifanMyPaymentCodeCases)

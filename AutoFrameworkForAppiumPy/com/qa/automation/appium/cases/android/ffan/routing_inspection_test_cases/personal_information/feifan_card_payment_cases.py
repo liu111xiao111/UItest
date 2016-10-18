@@ -16,7 +16,7 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_payment_page import FeiFanCardPaymentPage
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -24,6 +24,7 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class FeiFanCardPaymentCases(TestCase):
     '''
+    作者 乔佳溪
     巡检checklist No.: 42
     自动化测试case No.: 42
     首页-飞凡通查看付款，确认付款码正常显示，使用商户APP进行扫码支付，功能正常，扫码支付成功并且生成相应订单
@@ -56,6 +57,8 @@ class FeiFanCardPaymentCases(TestCase):
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.validSelf()
         feifanCardPage.clickOnPayment()
+        feifanCardPaymentPage = FeiFanCardPaymentPage(self , self.driver , self.logger)
+        feifanCardPaymentPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardPaymentCases)
