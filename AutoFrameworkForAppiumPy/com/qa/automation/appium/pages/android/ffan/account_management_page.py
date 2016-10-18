@@ -29,7 +29,7 @@ class AccountManagementPage(SuperPage):
                                  AMPC.text_update_login_password_button,
                                  AMPC.click_on_button_timeout)
 
-    def clickOnPaymentCodeSetting(self):
+    def clickOnPaymentPasswordSetting(self):
         '''
         usage: 点击支付密码管理
         '''

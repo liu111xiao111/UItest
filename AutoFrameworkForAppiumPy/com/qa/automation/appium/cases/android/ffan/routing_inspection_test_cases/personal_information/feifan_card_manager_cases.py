@@ -16,7 +16,7 @@ from com.qa.automation.appium.configs.driver_configs import driver_url
 from com.qa.automation.appium.configs.driver_configs import platformName_andr
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from com.qa.automation.appium.pages.android.ffan.feifan_card_manager_page import FeiFanCardManagerPage
 from com.qa.automation.appium.pages.android.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.utility.logger import Logger
 from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
@@ -24,6 +24,7 @@ from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
 class FeiFanCardManagerCases(TestCase):
     '''
+    作者 乔佳溪
     巡检checklist No.: 43
     自动化测试case No.: 43
     首页-飞凡通查看卡管家，确认我的银行卡信息显示正确，并可以添加和删除银行卡
@@ -56,6 +57,8 @@ class FeiFanCardManagerCases(TestCase):
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.validSelf()
         feifanCardPage.clickOnCardManager()
+        feifanCardManagerPage = FeiFanCardManagerPage(self , self.driver , self.logger)
+        feifanCardManagerPage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanCardManagerCases)
