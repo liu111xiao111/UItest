@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>自动化巡检用例测试报告</title>
+    <title>自动化巡检测试报告</title>
     <style type="text/css" media="screen">
         body{font-family: verdana, arial, helvetica, sans-serif; font-size: 80%%; }
         table{ font-size: 100%%; }
@@ -85,43 +85,15 @@
         .testcase   { margin-left: 2em; }
         #ending {}
     </style>
-    <script type="text/javascript">
-        function showClassDetail(cid, count) {
-            var id_list = Array(count);
-            var toHide = 1;
-            for (var i = 0; i < count; i++) {
-                tid0 = 't' + cid.substr(1) + '.' + (i+1);
-                tid = 'f' + tid0;
-                tr = document.getElementById(tid);
-                if (!tr) {
-                    tid = 'p' + tid0;
-                    tr = document.getElementById(tid);
-                }
-                id_list[i] = tid;
-                if (tr.className) {
-                    toHide = 0;
-                }
-            }
-            for (var i = 0; i < count; i++) {
-                tid = id_list[i];
-                if (toHide) {
-                    document.getElementById(tid).className = 'hiddenRow';
-                }
-                else {
-                    document.getElementById(tid).className = '';
-                }
-            }
-        }
-    </script>
+
 </head>
 <body>
 
 <div class='heading'>
-    <h1>自动化用例测试报告</h1>
-    <p class='attribute'><strong>设备型号:</strong> %s</p>
-    <p class='attribute'><strong>应用版本:</strong> %s</p>
-    <p class='attribute'><strong>开始时间:</strong> %s</p>
-    <p class='attribute'><strong>持续时间:</strong> %s</p>
+    <h3 class='attribute'><strong>设备型号:</strong> %s</h3>
+    <h3 class='attribute'><strong>应用版本:</strong> %s</h3>
+    <h3 class='attribute'><strong>开始时间:</strong> %s</h3>
+    <h3 class='attribute'><strong>持续时间:</strong> %s</h3>
     <h1>结果统计:</h1>
     <table id='statistical_table'>
         <tr id='header_row'>
@@ -139,11 +111,9 @@
             <td>用例名</td>
             <td>用例脚本</td>
             <td>测试结果</td>
-            <td>详细信息</td>
         </tr>
         %s
     </table>
-<div id='ending'>&nbsp;</div>
 </div>
 </body>
 </html>

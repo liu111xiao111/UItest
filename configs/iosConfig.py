@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-appVersion = 'v4.8.0.0.16'
+appVersion = 'v4.8.0.0'
 phoneVersion = u'iPhone5c'
 
 caseList = {
@@ -31,17 +31,26 @@ caseList = {
     'SquareFoodCases'                       : u'广场美食汇',
     'SquareLefuPayCases'                    : u'广场买单',
     'SquareParkingPaymentCases'             : u'广场停车',
-    'SquareResourceNicheCases'                     : u'广场资源位',
+    'SquareResourceNicheCases'              : u'广场资源位',
     'SquareSearchCases'                     : u'广场搜索',
     'SquareShoppingCases'                   : u'广场爱购物',
     'UpdateLoginPasswordCases'              : u'我的设置(修改密码)',
     'VersionUpgradeCases'                   : u'版本升级',
+    'YaoyiyaoCases'                         : u'摇一摇',
+    'SquareXianchangyaoCases'               : u'广场现场摇',
+    'MyOrderCases'                          : u'我的订单',
+    'SquareMembersCases'                    : u'广场会员',
+    'MyfeifanMyQueueCases'                  : u'我的排队',
+    'MyfeifanMyTicketCases'                 : u'我的票券',
     'SwitchCityCases'                       : u'城市切换',
-    'SquareSignOnCases':u'签到',
-    'StoresAndSupermarketsCases':u'商超',
-    'ShoppingCatergoryCases':u'名店优品',
-    'SquareDetailsCases':u'广场详情',
-    'SquarePrivilegeCouponCases':u'广场优惠券',
-    'SquareQueueCases':u'广场排队取号',
-    'SquareIndoorMapCases':u'广场室内地图',
+    'SquareSignOnCases'                     : u'签到',
+    'StoresAndSupermarketsCases'            : u'商超',
+    'ShoppingCatergoryCases'                : u'名店优品',
+    'SquareDetailsCases'                    : u'广场详情',
+    'SquarePrivilegeCouponCases'            : u'广场优惠券',
+    'SquareQueueCases'                      : u'广场排队取号',
+    'SquareIndoorMapCases'                  : u'广场室内地图',
+    'SquareMovieCases'                      : u'广场电影逛',
+    'HuiLifePage'                           : u'慧生活入口',
+    'SplashScreenHomePageCases'             : u"闪屏首页"
 }

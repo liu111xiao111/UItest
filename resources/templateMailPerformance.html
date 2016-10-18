@@ -7,6 +7,13 @@
         body{font-family: verdana, arial, helvetica, sans-serif; font-size: 80%%; }
         table{ font-size: 100%%; }
         pre{ }
+        p {
+            display: block;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+        }
         h1 {
             font-size: 16pt;
             color: gray;
@@ -45,7 +52,7 @@
         #result_table {
             width: 80%%;
             border-collapse: collapse;
-            border: 1px solid #777;
+            border: 1px solid black;
         }
         #header_row {
             font-weight: bold;
@@ -53,13 +60,24 @@
             background-color: #777;
         }
         #result_table td {
-            border: 1px solid #777;
+            border: 1px solid black;
+            padding: 2px;
+        }
+
+        #statistical_table{
+            width: 10%%;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        #statistical_table td {
+            border: 1px solid black;
             padding: 2px;
         }
         #total_row  { font-weight: bold; }
         .passClass  { background-color: #6c6; }
         .failClass  { background-color: #c60; }
         .errorClass { background-color: #c00; }
+        .totalClass { background-color: dodgerblue}
         .passCase   { color: #6c6; }
         .failCase   { color: #c60; font-weight: bold; }
         .errorCase  { color: #c00; font-weight: bold; }
@@ -71,91 +89,35 @@
 <body>
 
 <div class='heading'>
-<h1>ffan_automation_test_report_performance</h1>
-<p class='attribute'><strong>Start Time:</strong> %s</p>
-<p class='attribute'><strong>End Time:</strong> %s</p>
-
-<h1>cpu</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>time</td>
-           <td>usage(%%)</td>
-           <td>time</td>
-           <td>usage(%%)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>memory</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>time</td>
-           <td>usage(Mb)</td>
-           <td>time</td>
-           <td>usage(Mb)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>FPS</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>Tab</td>
-           <td>draw</td>
-           <td>fps</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>cold boot time</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>times</td>
-           <td>boot times(ms)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>warm boot time</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>times</td>
-           <td>boot times(ms)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>network upstream rate</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>date time</td>
-           <td>usage(KBps)</td>
-           <td>date time</td>
-           <td>usage(KBps)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>network downstream rate</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>date time</td>
-           <td>usage(KBps)</td>
-           <td>date time</td>
-           <td>usage(KBps)</td>
-       </tr>
-       %s
-   </table>
-
-    <h1>total traffic</h1>
-   <table id='result_table'>
-       <tr id='header_row'>
-           <td>duration</td>
-           <td>total(Mb)</td>
-       </tr>
-       %s
-   </table>
-<div id='ending'>&nbsp;</div>
+    <h3 class='attribute'><strong>设备型号:</strong> %s</h3>
+    <h3 class='attribute'><strong>应用版本:</strong> %s</h3>
+    <h3 class='attribute'><strong>开始时间:</strong> %s</h3>
+    <h3 class='attribute'><strong>结束时间:</strong> %s</h3>
+    <h1>流量统计:</h1>
+    <table id='statistical_table'>
+        <tr id='header_row'>
+            <td>持续时间</td>
+            <td>流量消耗</td>
+        </tr>
+        %s
+    </table>
+    <h1>性能测试结果:</h1>
+    <div>
+        <img src="cid:image1">
+        <img src="cid:image2">
+    </div>
+    <div>
+        <img src="cid:image3">
+        <img src="cid:image4">
+    </div>
+    <div>
+        <img src="cid:image5">
+        <img src="cid:image6">
+    </div>
+    <div>
+        <img src="cid:image7">
+        <img src="cid:image8">
+    </div>
 </div>
 </body>
 </html>

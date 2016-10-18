@@ -25,7 +25,7 @@ class ColdBootTimePerformanceTestCases(TestCase):
         kill = "am force-stop " + appPackage_ffan
         cmdKill = "adb shell \"%s\"" % kill
         file = os.path.join(reportPath, "ColdBootTime_performance.txt")
-        f1 = open(file, "a")
+        f1 = open(file, mode="a", encoding='utf-8')
         for _ in range(0,10):
             os.system(cmdKill)
             time.sleep(10)

@@ -8,6 +8,7 @@ import threading
 
 import HTMLTestRunner
 from unittest.suite import TestSuite
+from utility.mailProcess import sendTestResultMail
 from cases.android.ffan.common.performance import Performance
 from cases.android.ffan.common.reportProcess import ReportHandle
 from cases.android.ffan.common.performanceProcess import PerformanceHandle
@@ -42,8 +43,11 @@ def runPerformance(reportPath):
 
 if __name__ == "__main__":
     # 生成Report目录
+    sentMail = False
+    if len(sys.argv) > 2:
+        sentMail = True
     build_num = sys.argv[1]
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/songbo/workspace/autotest", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
@@ -71,6 +75,7 @@ if __name__ == "__main__":
 
     # 巡检及性能用例执行
     now = time.strftime('%H_%M_%S')
+
     filename = os.path.join(reportpath, 'feifan_automation_test_report.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
@@ -79,6 +84,8 @@ if __name__ == "__main__":
     perfThread = threading.Thread(target=runPerformance, args=(reportpath,))
     perfThread.setDaemon(True)
     perfThread.start()
+    perf = Performance(reportpath)
+    startTraffic, sTime = perf.getTraffic()
     startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     runner.run(suite)
 
@@ -90,6 +97,14 @@ if __name__ == "__main__":
         raise traceback.format_exc()
     finally:
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
+
         PerformanceHandle().Handle(startTime, endTime, reportpath)
 
-    ReportHandle().handle(reportpath)
+        ReportHandle().handle(reportpath)
+
+        if sentMail:
+            sendTestResultMail(reportpath, 'android')
+            from utility.performanceMailProcess import sendPerformanceMail
+            sendPerformanceMail(startTime, endTime, reportpath, 'android')

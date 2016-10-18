@@ -8,22 +8,26 @@ import os
 
 class MonkeyHandle:
     def __init__(self,):
-        self.dataMonkey = ""
-        self.resultMonkey = ""
+        self.dataMonkey = ''
+        self.resultMonkey = ''
+        self.resultTraffic = ''
 
         self.startTime = ''
         self.endTime = ''
 
         self.fileNameMoneky = 'Android_monkey.log'
+        self.fileNameTraffic = 'Traffic_performance.txt'
 
     def Handle(self, startTime, endTime, reportPath='/Users/auto/Desktop/performance_data/'):
         try:
             self.startTime = startTime
             self.endTime = endTime
             monkeyFilePath = os.path.join(reportPath, self.fileNameMoneky)
+            trafficFilePath = os.path.join(reportPath, self.fileNameTraffic)
 
-            if(os.path.exists(monkeyFilePath)):
+            if(os.path.exists(monkeyFilePath) and os.path.exists(trafficFilePath)):
                 self.monkeyHandle(monkeyFilePath)
+                self.trafficHandle(trafficFilePath)
 
             self.createHtmlReport(reportPath)
 
@@ -65,7 +69,7 @@ class MonkeyHandle:
                         number = number + 1
 
                 if not htmlContent:
-                    htmlContent = "<tr class='passClass'><td>%s</td><td colspan='3'>Pass</td></tr>" % number
+                    htmlContent = "<tr class='passClass'><td>无</td><td colspan='3'>Pass</td></tr>"
                 self.dataMonkey = htmlContent
 
                 avgRowContent = ''
@@ -74,6 +78,24 @@ class MonkeyHandle:
                 self.resultMonkey = avgRowContent
         except Exception as e:
             print(str(e))
+
+    def trafficHandle(self, filePath):
+        try:
+            if (filePath != ''):
+                performanceData = []
+                dataFile = open(filePath, mode='r', encoding='utf-8')
+                allLines = dataFile.readlines()
+                for line in allLines:
+                    performanceData.append(line)
+                for line in performanceData:
+                    value = str(line).split(':')
+                    if (len(value) > 1):
+                        htmlContent = "<tr><td>%s</td><td>%s</td></tr>" % (str(value[0]) + 's', str(value[1]) + 'Mb')
+                        self.resultTraffic = htmlContent
+        except Exception as e:
+            print(str(e))
+        finally:
+            dataFile.close()
 
     def dataHandle(self, filePath):
         monkeyData = []
@@ -99,14 +121,15 @@ class MonkeyHandle:
 
     def createHtmlReport(self, reportPath):
         report = os.path.join(reportPath, 'test_monkey_result.html')
-        resultFile = open(report, 'w+')
+        resultFile = open(report, mode='w+', encoding='utf-8')
         try:
             templateHtml = self.loadHtmlTemplate()
             monkeyData = self.dataMonkey
             resultData = self.resultMonkey
+            trafficData = self.resultTraffic
 
             templateHtml = templateHtml % (
-            self.startTime, self.endTime, monkeyData, resultData)
+            self.startTime, self.endTime, trafficData, resultData, monkeyData)
 
             resultFile.write(templateHtml)
         except Exception as e:
@@ -121,7 +144,7 @@ class MonkeyHandle:
         resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
         file = os.path.join(resourcesDirectory, 'templateMonkey.html')
-        templateFile = open(file)
+        templateFile = open(file, encoding='utf-8')
         try:
             contents = templateFile.read()
         except Exception as e:

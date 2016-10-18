@@ -11,9 +11,12 @@ from unittest import TestCase
 
 from configs.driver_configs import appPackage_ffan
 from cases.android.ffan.common.monkey_process import MonkeyHandle
+from cases.android.ffan.common.performance import Performance
+from utility.monkeyMailProcess import sendTestResultMail
 
 # 测试结果目录
 reportPath = os.path.join(os.getcwd(), 'android_monkey_log/')
+sentMail = False
 
 
 class CrashError(Exception):
@@ -56,7 +59,7 @@ class MonkeyTestCases(TestCase):
         # monkey测试结果收集与统计
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
         crashNumber = 0
-        f = open(monkeyLogFile)
+        f = open(monkeyLogFile, mode='r', encoding='utf-8')
         line = f.readline()
         while line:
             if line.find("// CRASH") != -1:
@@ -146,11 +149,15 @@ def parse_command():
     解析日志路径命令行参数
     '''
     global reportPath
+    global sentMail
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--log_path', action='store', default='.',
                         dest='log_path', help='Setup log path, default is current execution directory.')
+    parser.add_argument('-s', '--sent_mail', action='store_true', default=False, dest='sent_mail',
+                        help='Sent mail.')
     args = parser.parse_args()
     logDir = os.path.abspath(args.log_path)
+    sentMail = args.sent_mail
     reportPath = os.path.join(logDir, 'android_monkey_log/')
 
 
@@ -167,7 +174,9 @@ if __name__ == "__main__":
     # runner.run(suite)
     startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     monkeyTest = MonkeyTestCases()
+    perf = Performance(reportPath)
     try:
+        startTraffic, sTime = perf.getTraffic()
         monkeyTest.setUp()
         monkeyTest.test_case()
     except CrashError as e:
@@ -175,5 +184,8 @@ if __name__ == "__main__":
     finally:
         monkeyTest.tearDown()
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
         MonkeyHandle().Handle(startTime, endTime, reportPath)
-
+        if sentMail:
+            sendTestResultMail(startTime, endTime, reportPath, 'android')
