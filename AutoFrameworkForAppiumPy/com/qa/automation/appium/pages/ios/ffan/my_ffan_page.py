@@ -126,5 +126,45 @@ class MyFfanPage(SuperPage):
         '''
         API.validElementByXpath(self.driver,self.logger, MFPC.xpath_my_ticket_first_item,MFPC.valid_page_timeout)
 
+
+    def gotoWodefeifantong(self):
+        '''
+        usage: 进入我的飞凡通
+        '''
+        API().iosScrollToElement(self.driver, self.logger,
+                                 MFPC.xpath_myfeitongtong,
+                                 MFPC.text_parking_payment)
+
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_wodefeifantong,
+                                 MFPC.click_on_button_timeout)
+
+    def validLinghuaqian(self):
+        '''
+        usage: 验证零花钱
+        '''
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  xpath = MFPC.xpath_linghuaqian)
+
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=MFPC.text_linghuaqianyue)
+
+
+    def validFukuaima(self):
+        '''
+        usage: 验证付款码
+        '''
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  xpath=MFPC.xpath_fukuanma)
+
+
 if __name__ == '__main__':
     pass;

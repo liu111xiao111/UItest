@@ -46,25 +46,68 @@ class FeiFanCardPage(SuperPage):
                                             FeiFanCardPageConfigs.ios_uiautomation_bill_bt,
                                             FeiFanCardPageConfigs.click_on_button_timeout)
 
-    '''
-        usage : 点击零花钱
-    '''
+
     def clickOnPocketMoney(self):
+        '''
+        usage : 点击零花钱
+        '''
         API().click_view_by_resourceID(self.testcase,
                                        self.driver,
                                        self.logger,
                                        FCPC.resource_id_tv_pocket_money_tv)
 
-    '''
-        usage : 点击积分
-    '''
+
     def clickOnIntegral(self):
+        '''
+            usage : 点击积分
+        '''
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
                                  FCPC.text_integral,
                                  FCPC.verify_click_timeout);
 
+
+    def validFeiFanTongOtherEntrance(self,otherEntrancePageName, otherEntranceName):
+        '''
+        点击飞凡通其它入口并验证
+        :param viewXpath:
+        :param validValue:
+        :return:
+        '''
+        print("KEYWORDS: %s" % otherEntranceName)
+
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 otherEntranceName,
+                                 FCPC.verify_click_timeout);
+
+        # API().clickElementByXpath(self.testcase, self.driver, self.logger, viewXpath,
+        #                           FCPC.click_on_button_timeout)
+
+        API().assertElementByName(self.testcase, self.driver, self.logger, otherEntrancePageName,
+                                  FCPC.assert_view_timeout)
+
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 u"返回",
+                                 FCPC.verify_click_timeout);
+
+
+
+    def validFeifantongZiyuanwei(self):
+        '''
+        验证资源位
+        '''
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  FCPC.xpath_ziyuanwei,
+                                  FCPC.click_on_button_timeout)
+
+        API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                   FCPC.xpath_ziyuanwei_page,
+                                   FCPC.assert_view_timeout)
 
 if __name__ == '__main__':
     pass;

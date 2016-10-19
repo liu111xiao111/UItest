@@ -8,8 +8,10 @@ import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
+import logging
 
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
+from com.qa.automation.appium.utility.logger import Logger
 
 # 测试结果目录
 reportPath = os.path.join(os.getcwd(), 'ios_monkey_log/')
@@ -18,6 +20,7 @@ reportPath = os.path.join(os.getcwd(), 'ios_monkey_log/')
 class CrashError(Exception):
     def __init__(self, value):
         self.value = value
+
 
     def __str__(self):
         return repr(self.value)
@@ -30,7 +33,10 @@ class MonkeyTestCases(TestCase):
     def setUp(self):
         global reportPath
         self.reportPath = reportPath
+        self.logger = Logger()
         self.monkeyLogName = 'Ios_monkey.log'
+        self.resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+                                       os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
 
     def test_case(self):
         self._monkeyTest()
@@ -52,7 +58,16 @@ class MonkeyTestCases(TestCase):
     def _monkeyTest(self):
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
         command = "smart_monkey -a %s -w %s -d %s -t 16200 --detail-count 20 --drop-useless-img > %s" \
-                  % (IDC.bundleId, IDC.udid, self.reportPath, monkeyLogFile)
+                   % (IDC.bundleId, IDC.udid, self.reportPath, monkeyLogFile)
+
+
+        # command = "instruments -w %s -t %sAutomation.tracetemplate com.dianshang.wanhui \
+        #                     -e UIASCRIPT %sUIAutoMonkey.js > %s" \
+        #             % (IDC.udid, self.resourcesDirectory, self.resourcesDirectory, monkeyLogFile)
+
+
+
+        self.logger.d("report file name ==== %s", command)
 
         os.system(command)
 

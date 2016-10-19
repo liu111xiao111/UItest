@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import time
@@ -12,15 +12,17 @@ from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrep
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
 from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.hui_life_page import HuiLifePage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class HuiLifeResourceNicheCases(TestCase):
+class FeiOtherEntranceCasess(TestCase):
     '''
-    巡检checklist No.: 39
-    自动化测试case No.: 39
-    首页-慧生活，惠生活截图，基本入口检查
+    作者 宋波
+    巡检checklist #43
+    自动化测试 #43
+    首页-飞凡卡查看账单，确认显示零花钱账单页面
     '''
 
     def tearDown(self):
@@ -33,27 +35,29 @@ class HuiLifeResourceNicheCases(TestCase):
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnHuiLife()
+        dashboardPage.clickOnFeiFanCard()
 
-        huiLifePage = HuiLifePage(self, self.driver, self.logger)
-        huiLifePage.validSelf()
-        #huiLifePage.screen_shot("hui_life_resource_niche")
+        feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
+        feifanCardPage.validSelf()
 
-        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"加油", u"数码回收",
-                     u"演唱会", u"亲子票务", u"自选股", u"违章查询", u"有料")
-        for tempNum in range(15):
-            huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
-
+        otherEntranceName = (u"零花钱充值", u"零花钱提现", u"积分", u"市民/公交卡", u"飞凡贷",
+                     u"快易花", u"快利来", u"预约理财")
+        otherEntrancePageName = (u"零花钱现金充值", u"零花钱现金提现", u"我的飞凡积分", u"市民/公交卡", u"飞凡贷",
+                             u"快易花", u"快利来", u"预约理财")
+        count = 0;
+        for tempNum in range(8):
+            count = count + 1
+            feifanCardPage.validFeiFanTongOtherEntrance(otherEntrancePageName[count], otherEntranceName[count])
 
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(HuiLifeResourceNicheCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiOtherEntranceCasess)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

@@ -19,8 +19,11 @@ class StoreInfoPage(SuperPage):
     '''
 
     def validSelf(self):
-        API().assert_view_by_resourceID_Until(self.testcase, self.driver, self.logger,
-                                              StoreInfoPageConfigs.text_store_detail)
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  StoreInfoPageConfigs.text_store_detail,
+                                  StoreInfoPageConfigs.click_on_button_timeout)
 
     def validKeywords(self, keywords):
         '''
