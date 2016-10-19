@@ -150,15 +150,17 @@ class ReportHandle(object):
     def __init__(self, deviceType):
 
         if deviceType == 'android':
-            from com.qa.automation.appium.configs.androidConfig import caseList, appVersion, phoneVersion
+            from com.qa.automation.appium.configs.androidConfig import caseList, appVersion, phoneVersion, buildVersion, deviceID
         elif deviceType == 'ios':
-            from com.qa.automation.appium.configs.iosConfig import caseList, appVersion, phoneVersion
+            from com.qa.automation.appium.configs.iosConfig import caseList, appVersion, phoneVersion, buildVersion, deviceID
         else:
             raise
 
         self.caseList = caseList
         self.appVersion = appVersion
         self.phoneVersion = phoneVersion
+        self.buildVersion = buildVersion
+        self.deviceID = deviceID
 
         self.reportName = ""
         self.parser = TestResultParser()
@@ -219,7 +221,7 @@ class ReportHandle(object):
 
             resultData = self.htmlContents
 
-            templateHtml = templateHtml % (self.phoneVersion, self.appVersion, startTime, duration, resultStatus, resultData)
+            templateHtml = templateHtml % (self.phoneVersion, self.deviceID, self.buildVersion, self.appVersion, startTime, duration, resultStatus, resultData)
 
             return templateHtml
         except Exception as e:
@@ -284,5 +286,5 @@ def sendTestResultMail(reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161010/4'
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
     sendTestResultMail(reportPath, 'android')

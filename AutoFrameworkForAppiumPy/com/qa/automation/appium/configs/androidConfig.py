@@ -1,36 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from subprocess import Popen, PIPE
+from com.qa.automation.appium.utility.device_info_util import DeviceInfoUtil
 
-def getAppVersion():
-    version = ''
-    versionCmd = 'adb shell dumpsys package com.wanda.app.wanhui | grep versionName'
-    ret = Popen(versionCmd, shell=True, stdout=PIPE, stderr=PIPE)
-    out, err = ret.communicate()
-    if out:
-        version = out.decode('utf-8').split('=')[1].split('\r\n')[0]
+appVersion = DeviceInfoUtil().getAppVersion()
 
-    return version
+phoneVersion = DeviceInfoUtil().getPhoneVersion()
 
-appVersion = getAppVersion()
+buildVersion = DeviceInfoUtil().getBuildVersion()
 
-def getPhoneVersion():
-    brand = ''
-    mode = ''
-    brandCmd = 'adb shell cat /system/build.prop | grep "product.brand"'
-    modeCmd = 'adb shell cat /system/build.prop | grep "product.mode"'
-    ret = Popen(brandCmd, shell=True, stdout=PIPE, stderr=PIPE)
-    out, err = ret.communicate()
-    if out:
-        brand = out.decode('utf-8').split('=')[1].split('\r\n')[0]
-    ret = Popen(modeCmd, shell=True, stdout=PIPE, stderr=PIPE)
-    out, err = ret.communicate()
-    if out:
-        mode = out.decode('utf-8').split('=')[1].split('\r\n')[0]
-
-    return brand.upper() + ' ' + mode.upper()
-
-phoneVersion = getPhoneVersion()
+deviceID = DeviceInfoUtil().getDeviceID()
 
 caseList = {
     'MyfeifanMyBillCases'                   : u'我的零花钱',

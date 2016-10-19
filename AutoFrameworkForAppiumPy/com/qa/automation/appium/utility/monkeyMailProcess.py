@@ -2,12 +2,10 @@
 import os
 import time
 import smtplib
-import html.parser as html_parser
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
-from email import encoders
 
 from com.qa.automation.appium.configs import constants
 
@@ -16,14 +14,16 @@ class MonkeyHandle(object):
     def __init__(self, deviceType):
 
         if deviceType == 'android':
-            from com.qa.automation.appium.configs.androidConfig import appVersion, phoneVersion
+            from com.qa.automation.appium.configs.androidConfig import appVersion, phoneVersion, buildVersion, deviceID
         elif deviceType == 'ios':
-            from com.qa.automation.appium.configs.iosConfig import appVersion, phoneVersion
+            from com.qa.automation.appium.configs.iosConfig import appVersion, phoneVersion, buildVersion, deviceID
         else:
             raise
 
         self.appVersion = appVersion
         self.phoneVersion = phoneVersion
+        self.buildVersion = buildVersion
+        self.deviceID = deviceID
 
         self.startTime = ''
         self.endTime = ''
@@ -130,7 +130,7 @@ class MonkeyHandle(object):
             trafficResult = self.resultTraffic
             resultMonkey = self.resultMonkey
 
-            templateHtml = templateHtml % (self.phoneVersion, self.appVersion, startTime, endTime, trafficResult, resultMonkey)
+            templateHtml = templateHtml % (self.phoneVersion, self.deviceID, self.buildVersion, self.appVersion, startTime, endTime, trafficResult, resultMonkey)
 
             return templateHtml
         except Exception as e:

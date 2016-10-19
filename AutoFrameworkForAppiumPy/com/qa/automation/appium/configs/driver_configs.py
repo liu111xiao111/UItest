@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
-platformName_andr = 'Android';
+platformName_andr = 'Android'
 
-platformVersion = '4.4';
+platformVersion = '4.4'
 
-deviceName_andr = 'Android';
+deviceName_andr = 'Android'
 
-appPackage_ffan = 'com.wanda.app.wanhui';
-appPackage_bp = 'com.feifan.bp.test';
+appPackage_ffan = 'com.wanda.app.wanhui'
+appPackage_bp = 'com.feifan.bp.test'
 
-appActivity_ffan = 'com.feifan.o2o.business.launch.LauncherActivity';
+appActivity_ffan = 'com.feifan.o2o.business.launch.LauncherActivity'
 
-appActivity_bp = 'com.feifan.bp.SplashActivity';
+appActivity_bp = 'com.feifan.bp.SplashActivity'
 
-driver_url = 'http://localhost:4723/wd/hub';
+driver_url = 'http://localhost:4723/wd/hub'
 
 bundle_id = "com.dianshang.wanhui"

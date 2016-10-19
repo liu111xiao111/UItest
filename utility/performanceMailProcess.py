@@ -23,14 +23,16 @@ class PeformanceDraw(object):
 
     def __init__(self, deviceType):
         if deviceType == 'android':
-            from configs.androidConfig import appVersion, phoneVersion
+            from configs.androidConfig import appVersion, phoneVersion, buildVersion, deviceID
         elif deviceType == 'ios':
-            from configs.iosConfig import appVersion, phoneVersion
+            from configs.iosConfig import appVersion, phoneVersion, buildVersion, deviceID
         else:
             raise
 
         self.appVersion = appVersion
         self.phoneVersion = phoneVersion
+        self.buildVersion = buildVersion
+        self.deviceID = deviceID
 
         self.reportPath = ''
         self.startTime = ''
@@ -331,7 +333,7 @@ class PeformanceDraw(object):
             endTime = self.endTime
             trafficResult = self.resultTraffic
 
-            templateHtml = templateHtml % (self.phoneVersion, self.appVersion, startTime, endTime, trafficResult)
+            templateHtml = templateHtml % (self.phoneVersion, self.deviceID, self.buildVersion, self.appVersion, startTime, endTime, trafficResult)
 
             return templateHtml
         except Exception as e:
@@ -407,5 +409,5 @@ def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/2'
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
     sendPerformanceMail('2016/10/14 09:26:01', '2016/10/14 11:15:08', reportPath, 'android')

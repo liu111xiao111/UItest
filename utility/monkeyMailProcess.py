@@ -14,14 +14,16 @@ class MonkeyHandle(object):
     def __init__(self, deviceType):
 
         if deviceType == 'android':
-            from configs.androidConfig import appVersion, phoneVersion
+            from configs.androidConfig import appVersion, phoneVersion, buildVersion, deviceID
         elif deviceType == 'ios':
-            from configs.iosConfig import appVersion, phoneVersion
+            from configs.iosConfig import appVersion, phoneVersion, buildVersion, deviceID
         else:
             raise
 
         self.appVersion = appVersion
         self.phoneVersion = phoneVersion
+        self.buildVersion = buildVersion
+        self.deviceID = deviceID
 
         self.startTime = ''
         self.endTime = ''
@@ -128,7 +130,7 @@ class MonkeyHandle(object):
             trafficResult = self.resultTraffic
             resultMonkey = self.resultMonkey
 
-            templateHtml = templateHtml % (self.phoneVersion, self.appVersion, startTime, endTime, trafficResult, resultMonkey)
+            templateHtml = templateHtml % (self.phoneVersion, self.deviceID, self.buildVersion, self.appVersion, startTime, endTime, trafficResult, resultMonkey)
 
             return templateHtml
         except Exception as e:

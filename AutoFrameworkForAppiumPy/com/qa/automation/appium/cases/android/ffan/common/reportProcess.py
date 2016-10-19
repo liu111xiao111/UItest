@@ -2,7 +2,7 @@ import os
 
 import html.parser as html_parser
 
-from com.qa.automation.appium.configs.androidConfig import caseList, appVersion, phoneVersion
+from com.qa.automation.appium.configs.androidConfig import caseList, appVersion, phoneVersion, buildVersion, deviceID
 
 
 class TestResultParser(html_parser.HTMLParser):
@@ -246,7 +246,7 @@ class ReportHandle(object):
 
             resultData = self.htmlContents
 
-            templateHtml = templateHtml % (phoneVersion, appVersion, startTime, duration, resultStatus, resultData)
+            templateHtml = templateHtml % (phoneVersion, deviceID, buildVersion, appVersion, startTime, duration, resultStatus, resultData)
 
             resultFile.write(templateHtml)
         except Exception as e:
@@ -269,4 +269,4 @@ class ReportHandle(object):
         return str(contents)
 
 if __name__ == "__main__":
-    ReportHandle().handle('/Users/songbo/workspace/autotest/report/ffan/20161010/4')
+    ReportHandle().handle('/Users/songbo/workspace/autotest/report/ffan/20161018/1')
