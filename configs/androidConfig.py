@@ -31,6 +31,7 @@ caseList = {
     'GuangChangTingCheTestCase'       : u'广场停车',
     'GuangChangDianYingGuangTestCase' : u'广场电影逛',
     'GuangChangMeiShiHuiTestCase'     : u'广场美食汇',
+    'GuangChangAiGouWuTestCase'       : u'广场爱购物',
 
 
 

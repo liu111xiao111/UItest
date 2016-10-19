@@ -37,6 +37,7 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu impor
 from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangAiGouWu import GuangChangAiGouWuTestCase
 
 
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
@@ -88,6 +89,7 @@ if __name__ == "__main__":
     suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.29
     suite.addTest(GuangChangDianYingGuangTestCase("testGuangChangDianYingGuang")) # 广场电影逛 No.32
     suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇 No.33
+    suite.addTest(GuangChangAiGouWuTestCase("testGuangChangAiGouWu")) # 广场爱购物 No.34
 
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
