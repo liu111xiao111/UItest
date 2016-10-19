@@ -9,7 +9,7 @@ from unittest import TestLoader
 from utility.logger import Logger
 from driver.appium_driver import AppiumDriver
 from cases.ios.ffan.common.clearAppData import ClearAppData
-from configs.ios_driver_configs import IosDriverConfigs as IDC
+from configs.iosDriverConfig import IosDriverConfigs as IDC
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.my_ffan_page import MyFfanPage
 from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage

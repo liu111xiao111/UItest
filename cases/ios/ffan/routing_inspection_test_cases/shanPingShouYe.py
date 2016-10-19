@@ -8,7 +8,7 @@ from unittest import TestLoader
 import HTMLTestRunner
 
 from cases.ios.ffan.common.clearAppData import ClearAppData
-from configs.ios_driver_configs import IosDriverConfigs as IDC
+from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.splash_screen_home_page import SplashScreenHomePage
 from utility.logger import Logger

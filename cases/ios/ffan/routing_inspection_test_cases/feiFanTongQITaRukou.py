@@ -9,7 +9,7 @@ import HTMLTestRunner
 
 from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from configs.ios_driver_configs import IosDriverConfigs as IDC
+from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.feifan_card_page import FeiFanCardPage
