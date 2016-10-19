@@ -45,6 +45,7 @@ from cases.android.ffan.routing_inspection_test_cases.woDeGeRenXinXi import WoDe
 from cases.android.ffan.routing_inspection_test_cases.woDePiaoQuan import WoDePiaoQuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeDingDan import WoDeDingDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeHuiYuanKaBao import WoDeHuiYuanKaBaoTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeFeiFanTong import WoDeFeiFanTongTestCase
 
 
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
@@ -108,6 +109,7 @@ if __name__ == "__main__":
     suite.addTest(WoDePiaoQuanTestCase("testWoDePiaoQuan")) # 我的票券 No.51
     suite.addTest(WoDeDingDanTestCase("testWoDeDingDanTestCase")) # 我的订单 No.52
     suite.addTest(WoDeHuiYuanKaBaoTestCase("testWoDeHuiYuanKaBao")) # 我的会员卡包 No.53
+    suite.addTest(WoDeFeiFanTongTestCase("testWoDeFeiFanTong")) # 我的飞凡通 No.56
 
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
