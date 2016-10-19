@@ -23,6 +23,7 @@ caseList = {
     'MingDianYouPinTestCase'          : u'名店优品',
     'ShouYeTingCheTestCase'           : u'首页停车',
     'MaiDanTestCase'                  : u'买单',
+    'GuangChangXiangQingTestCase'     : u'广场详情',
 
 
 

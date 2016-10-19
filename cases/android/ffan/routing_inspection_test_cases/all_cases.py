@@ -29,6 +29,7 @@ from cases.android.ffan.routing_inspection_test_cases.shangChao import ShangChao
 from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import MingDianYouPinTestCase
 from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.maiDan import MaiDanTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangXiangQing import GuangChangXiangQingTestCase
 
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
@@ -77,6 +78,8 @@ if __name__ == "__main__":
     suite.addTest(MingDianYouPinTestCase("testMingDianYouPin")) # 名店优品 No.14
     suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.16
     suite.addTest(MaiDanTestCase("testMaiDan")) # 买单 No.17
+    suite.addTest(GuangChangXiangQingTestCase("testGuangChangXiangQing")) # 广场详情 No.21
+
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
     suite.addTest(FeiFanTongFuKuanTestCase("testFeiFanTongFuKuan")) # 飞凡通付款 No.42
