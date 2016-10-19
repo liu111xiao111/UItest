@@ -25,6 +25,7 @@ from cases.android.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHui
 from cases.android.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJieTestCase
 from cases.android.ffan.routing_inspection_test_cases.qinZi import QinZiTestCase
 from cases.android.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase
+from cases.android.ffan.routing_inspection_test_cases.shangChao import ShangChaoTestCase
 
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
@@ -70,6 +71,7 @@ if __name__ == "__main__":
     suite.addTest(PinPaiJieTestCase("testPinPaiJie")) # 品牌街 No.8
     suite.addTest(QinZiTestCase("testQinZi")) # 亲子 No.9
     suite.addTest(QianDaoTestCase("testQiandao")) # 签到 No.10
+    suite.addTest(ShangChaoTestCase("testShangChao")) # 商超 No.11
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
     suite.addTest(FeiFanTongFuKuanTestCase("testFeiFanTongFuKuan")) # 飞凡通付款 No.42

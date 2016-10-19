@@ -19,6 +19,7 @@ caseList = {
     'PinPaiJieTestCase'               : u'品牌街',
     'QinZiTestCase'                   : u'亲子',
     'QianDaoTestCase'                 : u'签到',
+    'ShangChaoTestCase'               : u'商超',
 
 
 
