@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.android.common.super_page import SuperPage
-from com.qa.automation.appium.pages.android.ffan.feifan_card_payment_page_configs \
+from api.api import API
+from pages.android.common.super_page import SuperPage
+from pages.android.ffan.feifan_card_payment_page_configs \
 import FeiFanCardPaymentPageConfigs as FCPPC
 
 

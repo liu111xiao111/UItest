@@ -42,4 +42,9 @@ caseList = {
     'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
     'FeiFanTongLingHuaQianTestCase'   : u'飞凡通零花钱',
     'HuiShengHuoTestCase'             : u'惠生活',
+    'QuanChengSouSuoPinPaiTestCase'   : u'全城搜索(品牌)',
+    'QuanChengSouSuoShangPinTestCase' : u'全城搜索(商品)',
+    'QuanChengSouSuoMenDianTestCase'  : u'全城搜索(门店)',
+    'GouWuZhongXinTestCase'           : u'购物中心',
+    'GuangChangZhaoDianTestCase'      : u'广场找店',
 }

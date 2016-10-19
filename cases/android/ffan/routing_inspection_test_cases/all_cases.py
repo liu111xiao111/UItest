@@ -46,6 +46,11 @@ from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoD
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongLingHuaQian import FeiFanTongLingHuaQianTestCase
+from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoPinPai import QuanChengSouSuoPinPaiTestCase
+from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoShangPin import QuanChengSouSuoShangPinTestCase
+from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
+from cases.android.ffan.routing_inspection_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangZhaoDian import GuangChangZhaoDianTestCase
 
 
 def runPerformance(reportPath):
@@ -98,7 +103,11 @@ if __name__ == "__main__":
     suite.addTest(FeiFanTongLingHuaQianTestCase("testFeiFanTongLingHuaQian")) # 飞凡通零花钱 No.44
     suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活 No.38
     suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.57
-
+    suite.addTest(QuanChengSouSuoPinPaiTestCase("testQuanChengSouSuoPinPai")) # 全城搜索品牌 No.3
+    suite.addTest(QuanChengSouSuoShangPinTestCase("testQuanChengSouSuoShangPin")) # 全城搜索商品 No.3
+    suite.addTest(QuanChengSouSuoMenDianTestCase("testQuanChengSouSuoMenDian")) # 全城搜索品牌 No.3
+    suite.addTest(GouWuZhongXinTestCase("testGouWuZhongXin")) # 购物中心 No.5
+    suite.addTest(GuangChangZhaoDianTestCase("testGuangChangZhaoDian")) # 广场找店 No.21
 
 
 
