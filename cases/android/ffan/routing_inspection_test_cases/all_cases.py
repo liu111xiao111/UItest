@@ -90,9 +90,9 @@ if __name__ == "__main__":
     runner.run(suite)
 
     try:
+        FpsPerformanceTestCases().getFpsPerf(reportpath)
         ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
         WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
-        FpsPerformanceTestCases().getFpsPerf(reportpath)
     except:
         raise traceback.format_exc()
     finally:
