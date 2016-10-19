@@ -20,12 +20,13 @@ caseList = {
     'QinZiTestCase'                   : u'亲子',
     'QianDaoTestCase'                 : u'签到',
     'ShangChaoTestCase'               : u'商超',
+    'MingDianYouPinTestCase'          : u'名店优品',
+    'ShouYeTingCheTestCase'           : u'首页停车',
 
 
 
 
     'WoDeTingCheJiaoFeiTestCase'      : u'我的停车缴费',
-    'ShouYeTingCheTestCase'           : u'首页停车',
     'GuangChangTingCheTestCase'       : u'广场停车',
     'WoDeLingHuaQianFeiTestCase'      : u'我的零花钱',
     'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',

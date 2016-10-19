@@ -26,6 +26,8 @@ from cases.android.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJie
 from cases.android.ffan.routing_inspection_test_cases.qinZi import QinZiTestCase
 from cases.android.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.shangChao import ShangChaoTestCase
+from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import MingDianYouPinTestCase
+from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
@@ -34,7 +36,6 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import
 from cases.android.ffan.routing_inspection_test_cases.guangChangPaiDui import GuangChangPaiDuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu import GuangChangShiNeiDiTuTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
-from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
@@ -72,6 +73,8 @@ if __name__ == "__main__":
     suite.addTest(QinZiTestCase("testQinZi")) # 亲子 No.9
     suite.addTest(QianDaoTestCase("testQiandao")) # 签到 No.10
     suite.addTest(ShangChaoTestCase("testShangChao")) # 商超 No.11
+    suite.addTest(MingDianYouPinTestCase("testMingDianYouPin")) # 名店优品 No.14
+    suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.16
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
     suite.addTest(FeiFanTongFuKuanTestCase("testFeiFanTongFuKuan")) # 飞凡通付款 No.42
@@ -84,7 +87,6 @@ if __name__ == "__main__":
     suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队 No.26
     suite.addTest(GuangChangShiNeiDiTuTestCase("testShiNeiDiTu")) # 广场室内地图 No.27
     suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.57
-    suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.15
     suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.28
 
 
