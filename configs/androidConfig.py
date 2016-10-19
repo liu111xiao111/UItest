@@ -40,11 +40,14 @@ caseList = {
     'WoDeDingDanTestCase'             : u'我的订单',
     'WoDeHuiYuanKaBaoTestCase'        : u'我的会员卡包',
     'WoDeFeiFanTongTestCase'          : u'我的飞凡通',
-
-
-
-
+    'WoDePaiDuiTestCase'              : u'我的排队',
     'WoDeTingCheJiaoFeiTestCase'      : u'我的停车缴费',
+    'WoDeXiaoXiZhongXinTestCase'      : u'我的消息中心',
+    'WoDeTuiChuTestCase'              : u'我的退出',
+
+
+
+
     'WoDeLingHuaQianFeiTestCase'      : u'我的零花钱',
     'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',
     'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
