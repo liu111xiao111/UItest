@@ -37,6 +37,8 @@ caseList = {
     'WoDeDengLuTestCase'              : u'我的登录',
     'WoDeGeRenXinXiTestCase'          : u'我的个人信息',
     'WoDePiaoQuanTestCase'            : u'我的票券',
+    'WoDeDingDanTestCase'             : u'我的订单',
+    'WoDeHuiYuanKaBaoTestCase'        : u'我的会员卡包',
 
 
 

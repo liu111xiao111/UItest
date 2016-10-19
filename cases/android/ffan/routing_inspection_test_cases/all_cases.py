@@ -43,6 +43,8 @@ from cases.android.ffan.routing_inspection_test_cases.huiShengHuoJingXuan import
 from cases.android.ffan.routing_inspection_test_cases.woDeDengLu import WoDeDengLuTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeGeRenXinXi import WoDeGeRenXinXiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDePiaoQuan import WoDePiaoQuanTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeDingDan import WoDeDingDanTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeHuiYuanKaBao import WoDeHuiYuanKaBaoTestCase
 
 
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
@@ -104,6 +106,8 @@ if __name__ == "__main__":
     suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
     suite.addTest(WoDeGeRenXinXiTestCase("testWoDeGeRenXinXi")) # 我的个人信息 No.50
     suite.addTest(WoDePiaoQuanTestCase("testWoDePiaoQuan")) # 我的票券 No.51
+    suite.addTest(WoDeDingDanTestCase("testWoDeDingDanTestCase")) # 我的订单 No.52
+    suite.addTest(WoDeHuiYuanKaBaoTestCase("testWoDeHuiYuanKaBao")) # 我的会员卡包 No.53
 
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
