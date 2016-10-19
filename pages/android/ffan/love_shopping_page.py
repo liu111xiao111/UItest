@@ -12,7 +12,7 @@ class LoveShoppingPage(SuperPage):
     '''
 
     def __init__(self, testcase, driver, logger):
-        super(LoveShoppingPage, self).__init__(testcase, driver, logger)
+        super(LoveShoppingPage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
         '''

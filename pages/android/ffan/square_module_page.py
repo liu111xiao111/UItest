@@ -33,6 +33,16 @@ class SquareModulePage(SuperPage):
                                   SMPC.text_find_store,
                                   SMPC.get_view_timeout)
 
+    def validSelfDetails(self):
+        '''
+        usage : 进入广场模块，检查是否加载出来
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SMPC.resource_id_title,
+                                        SMPC.get_view_timeout)
+
     def clickOnSignOn(self):
         '''
         usage: 点击签到
@@ -142,30 +152,49 @@ class SquareModulePage(SuperPage):
                                  SMPC.text_lefu_pay,
                                  SMPC.click_on_button_timeout)
 
+    def clicOnShake(self):
+        '''
+        usage: 点击"现场摇"
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_shake,
+                                 SMPC.click_on_button_timeout)
+
     def clicOnQueue(self):
         '''
         usage: 点击 "排队取号"
         '''
-        # API().clickElementByText(self.testcase,
-        #                          self.driver,
-        #                          self.logger,
-        #                          SMPC.text_queue,
-        #                          SMPC.click_on_button_timeout)
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SMPC.xpath_queue,
-                                  SMPC.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_queue,
+                                 SMPC.click_on_button_timeout)
 
     def clickOnCoupon(self):
         '''
         usage: 点击优惠券类目
         '''
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SMPC.xpath_coupon,
-                                  SMPC.click_on_button_timeout)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_coupon,
+                                 SMPC.click_on_button_timeout)
+
+    def clickOnSales(self):
+        '''
+        usage: 点击页面下方的优惠券
+        '''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(10):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_sales,
+                                 SMPC.click_on_button_timeout)
 
     def clickOnMovie(self):
         '''

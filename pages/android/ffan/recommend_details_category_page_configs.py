@@ -14,5 +14,5 @@ class RecommendDetailsCategoryPageConfigs():
     desc_unlike_button = "heartSelect@2x"
 
     def __init__(self):
-        pass
+        pass;
 

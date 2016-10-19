@@ -375,3 +375,87 @@ class HuiLifePage(SuperPage):
                                       validValue,
                                       HLPC.assert_view_timeout)
         API().clickBackKeyForAndroid(self.driver, self.logger)
+
+    def clickOnSelect(self):
+        '''
+        usage: 点击精选
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.text_select_button,
+                                 HLPC.click_on_button_timeout)
+
+    def validSelfSelect(self):
+        '''
+        usage: 验证精选
+        '''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(2):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        HLPC.resource_id_select,
+                                        HLPC.assert_view_timeout)
+
+    def clickOnSelectDetails(self):
+        '''
+        usage: 点击精选详细
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       HLPC.resource_id_select,
+                                       HLPC.click_on_button_timeout)
+
+    def validSelfSelectDetails(self):
+        '''
+        usage: 验证精选详细页
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        HLPC.resource_id_select_details,
+                                        HLPC.assert_view_timeout)
+
+    def clickOnShop(self):
+        '''
+        usage: 点击荐店
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 HLPC.text_shop_button,
+                                 HLPC.click_on_button_timeout)
+
+    def validSelfShop(self):
+        '''
+        usage: 验证荐店
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        HLPC.resource_id_select,
+                                        HLPC.assert_view_timeout)
+
+    def clickOnShopDetails(self):
+        '''
+        usage: 点击荐店详细
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       HLPC.resource_id_select,
+                                       HLPC.click_on_button_timeout)
+
+    def validSelfShopDetails(self):
+        '''
+        usage: 验证荐店详细页
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        HLPC.resource_id_select_details,
+                                        HLPC.assert_view_timeout)

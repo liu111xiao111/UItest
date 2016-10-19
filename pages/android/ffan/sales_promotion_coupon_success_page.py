@@ -21,7 +21,7 @@ class SalesPromotionCouponSuccessPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPCSPC.resource_id_tv_coupon_success_title_tv,
-                                        10)
+                                        30)
 
     def getCouponDetails(self):
         '''

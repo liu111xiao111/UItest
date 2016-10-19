@@ -9,6 +9,9 @@ class MyFfanPage(SuperPage):
     作者 刘涛
     首页=>我的页面
     '''
+    def __init__(self, testcase, driver, logger):
+        super(MyFfanPage, self).__init__(testcase, driver, logger)
+
     def validSelf(self):
         '''
         usage : 进入到应用首页,检查ffan logo

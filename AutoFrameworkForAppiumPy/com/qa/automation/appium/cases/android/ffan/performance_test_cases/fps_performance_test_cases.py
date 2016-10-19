@@ -2,7 +2,6 @@
 # coding:utf-8
 import re
 import os
-import time
 from subprocess import Popen, PIPE
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare

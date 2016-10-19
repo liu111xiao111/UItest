@@ -11,7 +11,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
     首页=>停车=>停车交费
     '''
     def __init__(self,testcase,driver,logger):
-        super(MyFfanMyParkingPaymentPage, self).__init__(testcase, driver, logger)
+        super(MyFfanMyParkingPaymentPage, self).__init__(testcase, driver, logger);
 
 
     def validSelf(self):
@@ -53,11 +53,11 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  item,
-                                 10)
+                                 60)
         API().waitBySeconds(2)
         API().assertElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  title,
-                                 10)
+                                 60)
         API().clickBackKeyForAndroid(self.driver, self.logger)

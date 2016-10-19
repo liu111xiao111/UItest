@@ -21,7 +21,7 @@ class DashboardPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
-                                        30)
+                                        60)
 
     def clickOnMy(self):
         '''
@@ -103,6 +103,16 @@ class DashboardPage(SuperPage):
                                        DPC.resource_id_iv_home_shake_tips,
                                        DPC.click_on_button_timeout)
 
+    def clickOnHomeShake(self):
+        '''
+        usage: 点击摇一摇图标
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       DPC.resource_id_iv_home_shake,
+                                       DPC.click_on_button_timeout)
+
     def clickOnLefuCategory(self):
         '''
         usage: 点击"乐付"类目
@@ -154,6 +164,16 @@ class DashboardPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  DPC.text_shopping_mall_button,
+                                 DPC.click_on_button_timeout)
+
+    def clickOnSupermarket(self):
+        '''
+        usage: 点击商超按钮
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 DPC.text_supermarket_button,
                                  DPC.click_on_button_timeout)
 
     def clickOnSearchAll(self):
@@ -265,6 +285,24 @@ class DashboardPage(SuperPage):
                                            self.logger,
                                            DPC.resource_id_iv_olympic_cancle_iv,
                                            DPC.click_on_button_timeout)
+
+    def getCityName(self):
+        return API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    DPC.xpath_city_name, DPC.get_view_timeout)
+
+    def clickOnSwithCith(self):
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  DPC.xpath_city_name, DPC.click_on_button_timeout)
+
+    def switchCity(self, cityName):
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           cityName)
+
+        API().waitBySeconds(2)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                 cityName, DPC.click_on_button_timeout)
 
     def scrollOnPage(self):
         '''

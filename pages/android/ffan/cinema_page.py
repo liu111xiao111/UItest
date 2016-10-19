@@ -55,14 +55,13 @@ class CinemaPage(SuperPage):
 
         return tempText
 
-
     def validFilmRun(self):
         '''
         usage: 判断影片是否未上映
         '''
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().scroll(self.driver, self.logger, width/2, hight/2, width/2, hight/3)
         rtn = API().validElementByText(self.driver,
                                        self.logger,
                                        CPC.text_film_run,

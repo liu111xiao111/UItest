@@ -21,7 +21,7 @@ class SalesPromotionCouponDetailsPage(SuperPage):
                                          self.driver,
                                          self.logger,
                                          itemtext,
-                                         10)
+                                         60)
 
     def clickOnFreeOfChargeBtn(self):
         '''
@@ -31,4 +31,14 @@ class SalesPromotionCouponDetailsPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPCDPC.text_receive_free_button,
-                                        10)
+                                        30)
+
+    def clickOnFreeOfChargeLinkBtn(self):
+        '''
+            usage : 点击 "免费领取 Link"
+        '''
+        API().clickElementByContentDesc(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SPCDPC.text_receive_free_link_button,
+                                        30)

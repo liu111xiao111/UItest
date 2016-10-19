@@ -18,6 +18,7 @@ from com.qa.automation.appium.utility.monkeyMailProcess import sendTestResultMai
 reportPath = os.path.join(os.getcwd(), 'android_monkey_log/')
 sentMail = False
 
+
 class CrashError(Exception):
     def __init__(self, value):
         self.value = value
@@ -187,5 +188,4 @@ if __name__ == "__main__":
         perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
         MonkeyHandle().Handle(startTime, endTime, reportPath)
         if sentMail:
-            print(reportPath)
             sendTestResultMail(startTime, endTime, reportPath, 'android')

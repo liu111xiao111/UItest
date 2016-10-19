@@ -30,7 +30,7 @@ class MyFeiFanPageConfigs(object):
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"
 
     # Settings button
-    text_settings = u"设置"
+    text_settings = u"设置";
 
     # Login button
     text_login = u"登录"

@@ -11,4 +11,4 @@ class SquareIndoorMapPageConfigs():
     resource_id_food_detail = "com.wanda.app.wanhui:id/rl_detail"
     
     def __init__(self):
-        pass
+        pass;

@@ -7,4 +7,4 @@ class MyFfanMyQueuePageConfigs():
     resource_id_tv_certain_tv = "android:id/button2"
 
     def __init__(self):
-        pass
+        pass;

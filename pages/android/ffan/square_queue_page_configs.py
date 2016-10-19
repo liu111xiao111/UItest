@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 class SquareQueuePageConfigs():
     # "排队取号"
     resource_id_queue = "com.wanda.app.wanhui:id/common_title_view_layout_title"
@@ -21,4 +20,4 @@ class SquareQueuePageConfigs():
     verify_click_timeout = 10
 
     def __init__(self):
-        pass
+        pass;

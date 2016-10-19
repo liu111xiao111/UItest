@@ -11,7 +11,7 @@ class ParkingCategoryPage(SuperPage):
     首页=>停车
     '''
     def __init__(self,testcase,driver,logger):
-        super(ParkingCategoryPage, self).__init__(testcase, driver, logger)
+        super(ParkingCategoryPage, self).__init__(testcase, driver, logger);
 
     def validSelf(self):
         '''
@@ -21,7 +21,7 @@ class ParkingCategoryPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         PCPC.resource_id_tv_parking_tv,
-                                        18)
+                                        30)
 
     def clickOnParkingLot(self):
         '''

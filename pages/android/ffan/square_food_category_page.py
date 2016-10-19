@@ -11,7 +11,7 @@ class SquareFoodPage(SuperPage):
     首页=>广场=>美食汇
     '''
     def __init__(self, testcase, driver, logger):
-        super(SquareFoodPage, self).__init__(testcase, driver, logger)
+        super(SquareFoodPage, self).__init__(testcase, driver, logger);
 
     def clickOnFindRestaurant(self):
         '''

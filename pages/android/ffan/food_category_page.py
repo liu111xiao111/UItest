@@ -84,7 +84,7 @@ class FoodCategoryPage(SuperPage):
 
     def clickOnCoupon(self):
         '''
-        usage : 点击优惠活动
+        usage : 点击优惠打折
         '''
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
@@ -104,7 +104,7 @@ class FoodCategoryPage(SuperPage):
 
     def clickOnLePay(self):
         '''
-        usage : 点击买单
+        usage : 点击乐付
         '''
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
