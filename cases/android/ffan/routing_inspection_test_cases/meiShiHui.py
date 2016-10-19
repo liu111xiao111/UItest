@@ -25,10 +25,10 @@ from cases.android.ffan.common.clear_app_data import ClearAppData
 
 class MeiShiHuiTestCase(TestCase):
     '''
-    作者 刘涛
     巡检 NO.7
     用例名: 美食汇
     首页进入美食正常进入找餐厅找优惠，数据显示正常可点击进入
+    备注：由于版本变化，页面元素缺失，case无法通过
     '''
 
     def tearDown(self):
@@ -63,17 +63,17 @@ class MeiShiHuiTestCase(TestCase):
         # 检查所有子界面入口
         foodPage.validModules()
 
-        # 检查优惠活动
+        # 检查优惠打折
         foodPage.clickOnCoupon()
         salesPromotionPage.validSelf()
         salesPromotionPage.clickBackKey()
 
-        # # 检查抢券
-        # foodPage.clickOnGrabCoupons()
-        # salesPromotionPage.validSelfCoupon()
-        # salesPromotionPage.clickBackKey()
+        # 检查抢券
+        '''foodPage.clickOnGrabCoupons()
+        salesPromotionPage.validSelfCoupon()
+        salesPromotionPage.clickBackKey()'''
 
-        # 检查买单
+        # 检查乐付
         foodPage.clickOnLePay()
         lefuPage.validSelf()
 

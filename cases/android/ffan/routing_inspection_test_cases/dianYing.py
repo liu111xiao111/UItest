@@ -28,10 +28,10 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 
 
-class DianYingPiaoTestCase(TestCase):
+class DianYingTestCase(TestCase):
     '''
     巡检用例 No.06
-    用例名: 电影票
+    用例名: 电影
     首页进入电影模块，检查数据正常并可以进入选座页面
     '''
 
@@ -53,7 +53,7 @@ class DianYingPiaoTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def testDianYingPiao(self):
+    def testDianYing(self):
         movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
         dashboardPage = DashboardPage(self , self.driver , self.logger)
@@ -95,7 +95,7 @@ class DianYingPiaoTestCase(TestCase):
         moviePage.clickBackKey()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(DianYingPiaoTestCase)
+    suite = TestLoader().loadTestsFromTestCase(DianYingTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
