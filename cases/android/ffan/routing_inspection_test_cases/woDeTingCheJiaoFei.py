@@ -27,8 +27,7 @@ from utility.device_info_util import DeviceInfoUtil
 
 class WoDeTingCheJiaoFeiTestCase(TestCase):
     '''
-    作者 刘涛
-    巡检 No.57
+    巡检 No.59
     用例名: 我的停车缴费
     点击停车缴费，成功进入并显示正确数据
     '''
@@ -60,14 +59,14 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
         parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(self, self.driver, self.logger)'''
 
         # Click "停车交费"， load "我的排队" page.
-        dashboardPage.validSelf()
-        dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        myFfanPage.clickOnParkingPayment()
-        parkingPaymentPage.validSelf()
+        dashboardPage.validSelf();
+        dashboardPage.clickOnMy();
+        myFfanPage.validSelf();
+        myFfanPage.clickOnParkingPayment();
+        parkingPaymentPage.validSelf();
 
         # Bunding VIN
-        parkingPaymentPage.waitBySeconds(2)
+        parkingPaymentPage.waitBySeconds(2);
         '''parkingPaymentPage.clickOnBanding();
         parkingPaymentPage.inputVIN();
         parkingPaymentPage.clickOnNextBtn();

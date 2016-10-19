@@ -39,11 +39,15 @@ caseList = {
     'WoDePiaoQuanTestCase'            : u'我的票券',
     'WoDeDingDanTestCase'             : u'我的订单',
     'WoDeHuiYuanKaBaoTestCase'        : u'我的会员卡包',
-
-
-
-
+    'WoDeFeiFanTongTestCase'          : u'我的飞凡通',
+    'WoDePaiDuiTestCase'              : u'我的排队',
     'WoDeTingCheJiaoFeiTestCase'      : u'我的停车缴费',
+    'WoDeXiaoXiZhongXinTestCase'      : u'我的消息中心',
+    'WoDeTuiChuTestCase'              : u'我的退出',
+
+
+
+
     'WoDeLingHuaQianFeiTestCase'      : u'我的零花钱',
     'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',
     'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
@@ -53,4 +57,15 @@ caseList = {
     'QuanChengSouSuoMenDianTestCase'  : u'全城搜索(门店)',
     'GouWuZhongXinTestCase'           : u'购物中心',
     'GuangChangZhaoDianTestCase'      : u'广场找店',
+    'GuangChangXianChangYaoTestCase'  : u'广场现场摇',
+    'GuangChangMaiDanTestCase'        : u'广场买单',
+    'GuangChangHuiYuanTestCase'       : u'广场会员',
+    'GuangChangYouHuiTestCase'        : u'广场优惠',
+    'FeiFanTongZhangDanTestCase'      : u'飞凡通账单',
+    'FeiFanTongQiTaKuaiJieRuKouTestCase'        : u'飞凡通其他快捷入口',
+    'YaoYiYaoTestCase'                          : u'摇一摇',
+    'WoDeFuKuanMaTestCase'                      : u'我的付款码',
+    'WoDeSheZhiXiuGaiDengLuMiMaTestCase'        : u'我的设置(修改登录密码)',
+    'WoDeSheZhiXiuGaiZhiFuMiMaTestCase'         : u'我的设置(修改支付密码)',
+    'WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase'  : u'我的设置(修改小额免密支付支付)',
 }
