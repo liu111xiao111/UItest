@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.login_page import LoginPage
-from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
-from com.qa.automation.appium.pages.ios.ffan.switch_city_page import SwitchCityPage
-from com.qa.automation.appium.pages.ios.ffan.version_upgrade_page import VersionUpgradePage
+from pages.ios.ffan.dashboard_page import DashboardPage
+from pages.ios.ffan.login_page import LoginPage
+from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
+from pages.ios.ffan.switch_city_page import SwitchCityPage
+from pages.ios.ffan.version_upgrade_page import VersionUpgradePage
 
 
 class TestPrepare:

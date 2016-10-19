@@ -57,7 +57,7 @@ class MonkeyTestCases(TestCase):
 
     def _monkeyTest(self):
         monkeyLogFile = os.path.join(self.reportPath, self.monkeyLogName)
-        command = "smart_monkey -a %s -w %s -d %s -t 16200 --detail-count 20 --drop-useless-img > %s" \
+        command = "smart_monkey -a %s -w %s -d %s -t 10 --detail-count 20 --drop-useless-img > %s" \
                    % (IDC.bundleId, IDC.udid, self.reportPath, monkeyLogFile)
 
 
