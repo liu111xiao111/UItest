@@ -2,6 +2,7 @@
 # coding:utf-8
 import re
 import os
+from unittest import TestCase
 from subprocess import Popen, PIPE
 from com.qa.automation.appium.pages.android.ffan.dashboard_page import DashboardPage
 from com.qa.automation.appium.cases.android.ffan.common.test_prepare import TestPrepare
@@ -22,7 +23,7 @@ class ParseError(Exception):
         return repr(self.value)
 
 
-class FpsPerformanceTestCases():
+class FpsPerformanceTestCases(TestCase):
     '''
     作者 宋波
     流畅度情况性能测试
