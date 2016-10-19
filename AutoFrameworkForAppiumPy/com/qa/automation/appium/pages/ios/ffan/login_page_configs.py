@@ -17,8 +17,8 @@ class LoginPageConfigs():
     text_normal_login = u"普通登录";
     text_forget_password = "忘记密码?"
 
-    account_name = "13601138742"
-    account_passwd = "9875321mgw"
+    # account_name = "13601138742"
+    # account_passwd = "9875321mgw"
 
     # Assert view time out
     assert_view_timeout = 10
@@ -41,11 +41,11 @@ class LoginPageConfigs():
 
     # Mobile number
     xpath_mobile_number_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]"
-    text_mobile_number = u"13585776140"
+    text_mobile_number = u"15840985905"
 
     # Password
     xpath_password_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIASecureTextField[1]"
-    text_password = "hupi123456"
+    text_password = "liutao-123qwe"
 
     # Login
     xpath_login_bt = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"

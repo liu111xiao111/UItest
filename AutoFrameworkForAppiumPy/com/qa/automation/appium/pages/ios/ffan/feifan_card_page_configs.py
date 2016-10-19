@@ -32,5 +32,19 @@ class FeiFanCardPageConfigs():
     # Bill
     ios_uiautomation_bill_bt = ".buttons()[3]"
 
+    name_linghuaqian_chongzhi = u"零花钱充值"
+    name_linghuaqian_tixian = u"零花钱提现"
+    name_jifen = u"积分"
+    name_gongjiaoka = u"市民/公交卡"
+    name_feifandai = u"飞凡贷"
+    name_kuaiyihua = u"快易花"
+    name_kuaililai = u"快利来"
+    name_yuyuelicai = u"预约理财"
+
+    #资源位
+    xpath_ziyuanwei = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionView[1]"
+    #资源位page
+    xpath_ziyuanwei_page = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]"
+
     def __init__(self):
         pass;

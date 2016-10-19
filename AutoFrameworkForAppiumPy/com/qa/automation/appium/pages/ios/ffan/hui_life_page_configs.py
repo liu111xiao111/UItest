@@ -41,6 +41,9 @@ class HuiLifePageConfigs(object):
     text_philharmonic = u"音乐会"
     text_illegal_inquiry = u"违章查询"
 
+    name_jingxuan = u"精选"
+    name_jiandian = u"荐店"
+
     # Verify modules entry
     verify_resource_didi_travel = "com.wanda.app.wanhui:id/didi_webview_title"  # 滴滴出行
     verify_text_stock_information = u"自选股"
@@ -81,6 +84,10 @@ class HuiLifePageConfigs(object):
     class_name_android_widget_FrameLayout = "android.widget.FrameLayout"
 
     xpath_jiayou = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
+    #精选title
+    xpath_jingxuan_title = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAImage[1]"
+    # 荐店title
+    xpath_jiandian_title = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAImage[1]"
 
     def __init__(self):
         pass

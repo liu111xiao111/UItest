@@ -16,13 +16,10 @@ from com.qa.automation.appium.pages.ios.ffan.hui_life_page import HuiLifePage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class HuiLifeResourceNicheCases(TestCase):
+class HuiLifeJingXuanCases(TestCase):
     '''
-    巡检checklist No.: 39
-    自动化测试case No.: 39
-    首页-慧生活，惠生活截图，基本入口检查
+    慧生活精选/荐店
     '''
-
     def tearDown(self):
         self.reset.clearData()
         self.driver.quit()
@@ -35,28 +32,26 @@ class HuiLifeResourceNicheCases(TestCase):
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def test_case(self):
+    def testHuiLifeScreenShot(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnHuiLife()
 
         huiLifePage = HuiLifePage(self, self.driver, self.logger)
         huiLifePage.validSelf()
-        #huiLifePage.screen_shot("hui_life_resource_niche")
 
-        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"加油", u"数码回收",
-                     u"演唱会", u"亲子票务", u"自选股", u"违章查询", u"有料")
-        for tempNum in range(15):
-            huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
+        huiLifePage.clickOnJingxuan()
+        huiLifePage.clickOnJiandian()
+
 
 
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(HuiLifeResourceNicheCases)
+    suite = TestLoader().loadTestsFromTestCase(HuiLifeJingXuanCases)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
+    filename = reportpath + '/' + 'Hui_life_resource_niche_' + now + '.html'
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

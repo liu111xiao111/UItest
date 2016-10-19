@@ -68,8 +68,12 @@ from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.switc
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.update_login_password_cases import UpdateLoginPasswordCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.version_upgrade_cases import VersionUpgradeCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.yao_yi_yao_cases import YaoyiyaoCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.hui_life_jingxuan_cases import HuiLifeJingXuanCases
 from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.hui_life_resource_niche_cases import HuiLifePage
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_linghuaqian_cases import MyLinghuaqianCases
+from com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_fukuaima_cases import MyFukuanmaCases
 from com.qa.automation.appium.utility.mailProcess import sendTestResultMail
+
 
 
 if __name__ == "__main__":
@@ -91,19 +95,13 @@ if __name__ == "__main__":
     # suite.addTest(ActivitySharingCases("test_case"))
     suite.addTest(BrandFamousCatergoryCases("test_case"))
     # suite.addTest(BrandRecommendCatergoryCases("test_case"))
-
     suite.addTest(ChildCatergoryCases("test_case"))
-
-    suite.addTest(DashboardSearchBrandCases("test_case"))
-
-    suite.addTest(DashboardSearchGoodsCases("test_case"))
-    suite.addTest(DashboardSearchStoreCases("test_case"))
     suite.addTest(FeiFanCardBillCases("test_case"))
     suite.addTest(FeiFanCardIntegralCases("test_case"))
     suite.addTest(FeiFanCardOpenCases("test_case"))
     suite.addTest(FoodCases("test_case"))
     suite.addTest(HotWordSearchCases("test_case"))
-    # suite.addTest(HuiLifeResourceNicheCases("test_case"))
+    suite.addTest(HuiLifeResourceNicheCases("test_case"))
     suite.addTest(LefuCancelCatergoryCases("test_case"))
     suite.addTest(LoginCases("test_case"))
     suite.addTest(LogoutCases("test_case"))
@@ -150,7 +148,11 @@ if __name__ == "__main__":
     suite.addTest(SquareDetailsCases("test_case"))
     suite.addTest(SquarePrivilegeCouponCases("test_case"))
     suite.addTest(SquareQueueCases("test_case"))
-    suite.addTest(HuiLifePage("test_case"))
+    suite.addTest(MyFukuanmaCases("test_case"))
+    suite.addTest(MyLinghuaqianCases("test_case"))
+    suite.addTest(DashboardSearchBrandCases("test_case"))
+    suite.addTest(DashboardSearchGoodsCases("test_case"))
+    suite.addTest(DashboardSearchStoreCases("test_case"))
     suite.addTest(SwitchCityCases("test_case"))
 
 

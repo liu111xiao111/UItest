@@ -12,7 +12,7 @@ class IosDriverConfigs(object):
 
     platformVersion = DeviceInfoUtil().get_product_version()
 
-    deviceName = "iPhone"
+    deviceName = "iPhone5c"
 
     bundleId = "com.dianshang.wanhui"
 

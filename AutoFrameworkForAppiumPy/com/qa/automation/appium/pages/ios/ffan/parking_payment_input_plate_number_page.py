@@ -28,10 +28,9 @@ class ParkingPaymentInputPlateNumberPage(SuperPage):
         '''
         usaage : 验证轮播滑动滚动条
         '''
-        API().validElementByXpathTest(testCase=self.testcase,
-                                      driver = self.driver,
-                                      logger = self.logger,
-                                      xpath=ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao)
+        API().assertElementByXpath(self.testcase, self.driver, self.logger,
+                                   ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao,
+                                   ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao)
 
     def inputPlateNumber(self):
         '''

@@ -33,9 +33,18 @@ class MyFfanPageConfigs():
     text_my_order = u"我的订单";
     text_my_like = u"我的喜欢";
     text_parking_payment = u"停车缴费";
-    
+    text_wodefeifantong = u"我的飞凡通"
+    text_linghuaqian = u"我的零花钱"
+    text_linghuaqianyue = u"零花钱余额"
+
     xpath_parking_paymeng = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[13]/UIAStaticText[1]"
     xpath_my_ticket_first_item = "//UIAApplication[1]/UIAWindow[1]/UIAImage[1]/UIAImage[2]"
+    #我的飞凡通
+    xpath_myfeitongtong = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[11]/UIAStaticText[1]"
+    #我的零花钱
+    xpath_linghuaqian = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]"
+    #付款码
+    xpath_fukuanma = "// UIAApplication[1] / UIAWindow[1] / UIATableView[1] / UIAButton[1]"
 
     def __init__(self):
         pass;

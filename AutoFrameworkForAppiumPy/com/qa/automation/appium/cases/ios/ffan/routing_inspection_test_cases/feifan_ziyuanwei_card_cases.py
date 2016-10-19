@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import time
@@ -8,15 +8,18 @@ from unittest import TestLoader
 import HTMLTestRunner
 
 from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
+from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
 from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
 from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.ios.ffan.splash_screen_home_page import SplashScreenHomePage
+from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from com.qa.automation.appium.pages.ios.ffan.feifan_card_page import FeiFanCardPage
 from com.qa.automation.appium.utility.logger import Logger
 
 
-class SplashScreenHomePageCases(TestCase):
+class FeiOtherEntranceCasess(TestCase):
     '''
-    闪屏首页
+    飞凡通资源位
     '''
 
     def tearDown(self):
@@ -28,15 +31,26 @@ class SplashScreenHomePageCases(TestCase):
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
+        self.reset.clearData()
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
-        SplashScreenHomePage(self, self.driver, self.logger).validSelf()
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.clickOnFeiFanCard()
+
+        feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
+        feifanCardPage.validSelf()
+        feifanCardPage.waitBySeconds(30)
+        feifanCardPage.validFeifantongZiyuanwei()
+
+
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(SplashScreenHomePageCases)
+    suite = TestLoader().loadTestsFromTestCase(FeiOtherEntranceCasess)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(fp, 'Feifan_automation_test_report', 'Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(fp, 'food-test', 'Result for test')
     runner.run(suite)

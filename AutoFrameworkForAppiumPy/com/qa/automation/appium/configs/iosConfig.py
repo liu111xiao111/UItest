@@ -51,6 +51,8 @@ caseList = {
     'SquareQueueCases'                      : u'广场排队取号',
     'SquareIndoorMapCases'                  : u'广场室内地图',
     'SquareMovieCases'                      : u'广场电影逛',
-    'HuiLifePage'                           : u'慧生活入口',
-    'SplashScreenHomePageCases'             : u"闪屏首页"
+    'HuiLifeResourceNicheCases'             : u'慧生活入口',
+    'SplashScreenHomePageCases'             : u"闪屏首页",
+    'MyLinghuaqianCases'                    : u"我的零花钱",
+    'MyFukuanmaCases'                       : u"我的付款码"
 }

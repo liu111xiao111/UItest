@@ -24,10 +24,10 @@ function UIAutoMonkey() {
 		
 	this.config = {
 		//run either by minutesToRun or numberOfEvents. Only one of these can set. (To use minutes you can use config.numberOfEvents = 0)
-		minutesToRun : 60 * 5, //sample to run for 5 hours.
-		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used.
-		// numberOfEvents: 100,
-		delayBetweenEvents: 0.3,    // In seconds
+		//minutesToRun = 60 * 8; //sample to run for 8 hours.
+		//checkTimeEvery = 60; //how often to check (in events) if minutesToRun has is used. 
+		numberOfEvents: 100,
+		delayBetweenEvents: 0.05,    // In seconds
 		
 		/**
 		* Sometimes the monkey can fall into UI Holes from which it it is hard to escape. The monkey may then spend an inordinate
@@ -83,11 +83,16 @@ function UIAutoMonkey() {
 		// If you want to add your own "events", check out the event method
 		// definitions below.
 		eventWeights: {
-			tap: 90,
+			tap: 500,
 			drag: 1,
 			flick: 1,
+			orientation: 1,
 			clickVolumeUp: 1,
-			clickVolumeDown: 1
+			clickVolumeDown: 1,
+			lock: 1,
+			pinchClose: 10,
+			pinchOpen: 10,
+			shake: 1
 		},
 
 		// Probability that touch events will have these different properties
@@ -456,7 +461,7 @@ UIAutoMonkey.prototype.takeScreenShotIfItIsTime = function() {
 // as set in SetGlobals.js, but due to Apple's javascript implementation you cannot simply set it before you import UIAutoMonkey.js.
 //
 if (typeof UIAutoMonkeyClientWillReleaseTheMonkey == 'undefined' || !UIAutoMonkeyClientWillReleaseTheMonkey) {
-	// the variable is not defined or it's defined and false
+	// the variable is not defined or it's defined and false`
 	UIALogger.logDebug("Releasing the monkey directly from UIAutoMonkey"); //explain why it was released to aid in problem resolution.
 	(new UIAutoMonkey()).RELEASE_THE_MONKEY();
 }

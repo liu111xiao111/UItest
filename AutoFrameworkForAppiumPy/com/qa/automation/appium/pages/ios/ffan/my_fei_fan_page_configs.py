@@ -31,7 +31,7 @@ class MyFeiFanPageConfigs(object):
 
     # Nickname
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"
-    resource_id_nickname_st = "ffan6140"
+    resource_id_nickname_st = "ffan5905"
 
     # Settings button
     resource_id_settings_st = u"设置"
