@@ -31,6 +31,10 @@ from cases.android.ffan.routing_inspection_test_cases.chengShiQieHuan import Che
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianFeiTestCase
+from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
+from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
+from cases.android.ffan.routing_inspection_test_cases.feiFanTongLingHuaQian import FeiFanTongLingHuaQianTestCase
 
 
 def runPerformance(reportPath):
@@ -54,6 +58,10 @@ if __name__ == "__main__":
     # 添加测试用例
     suite = TestSuite()
 
+    suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
+    suite.addTest(FeiFanTongFuKuanTestCase("testFeiFanTongFuKuan")) # 飞凡通付款 No.42
+    suite.addTest(FeiFanTongKaGuanJiaTestCase("testFeiFanTongKaGuanJia")) # 飞凡通卡管家 No.43
+    suite.addTest(FeiFanTongLingHuaQianTestCase("testFeiFanTongLingHuaQian")) # 飞凡通零花钱 No.44
     suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活 No.38
     suite.addTest(DianYingPiaoTestCase("testDianYingPiao")) # 电影票 No.06
     suite.addTest(GuangChangDianYingGuangTestCase("testDianYingGuang")) # 广场电影逛 No.31

@@ -1,0 +1,115 @@
+# -*- coding: utf-8 -*-
+
+from com.qa.automation.appium.pages.android.ffan.feifan_card_page_configs import FeiFanCardPageConfigs
+from com.qa.automation.appium.api.api_new import API
+from com.qa.automation.appium.pages.android.common.super_page import SuperPage
+
+FCPC = FeiFanCardPageConfigs()
+
+class FeiFanCardPage(SuperPage):
+    '''
+    作者：刘涛
+    首页=>飞凡卡
+    '''
+    def __init__(self, testcase, driver, logger):
+        super(FeiFanCardPage, self).__init__(testcase, driver, logger);
+
+    def validSelf(self):
+        '''
+        usage : 检查飞凡卡界面
+        '''
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCPC.resource_id_tv_bill_tv,
+                                        FCPC.verify_view_timeout)
+
+    def clickOnOpenCard(self):
+        '''
+        usage: 点击市民/公交卡
+        '''
+        API().clickElementByText(self.testcase,
+                                self.driver,
+                                self.logger,
+                                FCPC.text_tv_open_tv,
+                                FCPC.verify_click_timeout)
+
+    def clickOnPayment(self):
+        '''
+        usage : 点击付款
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_payment_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnCardManager(self):
+        '''
+        usage : 点击卡管家
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_card_manager_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnCharge(self):
+        '''
+        usage : 点击零花钱
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_charge_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnBill(self):
+        '''
+        usage : 点击账单
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_bill_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnCodeIcon(self):
+        '''
+        usage : 点击扫码图标
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_code_icon_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnPaymentCode(self):
+        '''
+        usage : 点击付款码
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 FCPC.text_tv_payment_code_tv,
+                                 FCPC.verify_click_timeout)
+
+    def clickOnPocketMoney(self):
+        '''
+        usage : 点击零花钱
+        '''
+        API().clickElementByResourceId(self.testcase,
+                                       self.driver,
+                                       self.logger,
+                                       FCPC.resource_id_tv_pocket_money_tv,
+                                       FCPC.verify_click_timeout)
+
+    def clickOnIntegral(self):
+        '''
+        usage : 点击积分
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 FCPC.text_integral,
+                                 FCPC.verify_click_timeout)

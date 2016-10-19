@@ -33,6 +33,10 @@ def getPhoneVersion():
 phoneVersion = getPhoneVersion()
 
 caseList = {
+    'WoDeLingHuaQianFeiTestCase'      : u'我的零花钱',
+    'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',
+    'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
+    'FeiFanTongLingHuaQianTestCase'   : u'飞凡通零花钱',
     'HuiShengHuoTestCase'             : u'惠生活',
     'DianYingPiaoTestCase'            : u'电影',
     'GuangChangDianYingGuangTestCase' : u'广场电影逛',
