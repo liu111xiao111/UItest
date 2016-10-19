@@ -29,7 +29,7 @@ from utility.device_info_util import DeviceInfoUtil
 
 class GuangChangDianYingGuangTestCase(TestCase):
     '''
-    巡检 No.31
+    巡检 No.32
     用例名: 广场电影逛
     广场详情页点击进入电影模块，检查数据正常并可以成功进入选座页面
     '''
@@ -52,7 +52,7 @@ class GuangChangDianYingGuangTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testDianYingGuang(self):
+    def testGuangChangDianYingGuang(self):
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
         seatPickingPage = SeatPickingPage(self, self.driver, self.logger)
@@ -65,14 +65,10 @@ class GuangChangDianYingGuangTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
-        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
-        squareModulePage.waitBySeconds(10)
 
         squareModulePage.clickOnMovie()
-        cinemaPage.waitBySeconds(10)
         cinemaPage.validSelf()
 
         # 判断影片是否未上映

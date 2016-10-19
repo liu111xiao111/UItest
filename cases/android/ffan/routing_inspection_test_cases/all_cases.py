@@ -30,15 +30,17 @@ from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import Ming
 from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.maiDan import MaiDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangXiangQing import GuangChangXiangQingTestCase
-
-from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangSouSuo import GuangChangSouSuoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangYouHuiQuan import GuangChangYouHuiQuanTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangPaiDui import GuangChangPaiDuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu import GuangChangShiNeiDiTuTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
+
+
+from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
@@ -79,6 +81,13 @@ if __name__ == "__main__":
     suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.16
     suite.addTest(MaiDanTestCase("testMaiDan")) # 买单 No.17
     suite.addTest(GuangChangXiangQingTestCase("testGuangChangXiangQing")) # 广场详情 No.21
+    suite.addTest(GuangChangSouSuoTestCase("testGuangChangSouSuo")) # 广场搜索 No.22
+    suite.addTest(GuangChangYouHuiQuanTestCase("testGuangChangYouHuiQuan")) # 广场优惠券 No.25
+    suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队取号 No.27
+    suite.addTest(GuangChangShiNeiDiTuTestCase("testGuangChangShiNeiDiTu")) # 广场室内地图 No.28
+    suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.29
+    suite.addTest(GuangChangDianYingGuangTestCase("testGuangChangDianYingGuang")) # 广场电影逛 No.32
+    suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇 No.33
 
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
@@ -86,13 +95,7 @@ if __name__ == "__main__":
     suite.addTest(FeiFanTongKaGuanJiaTestCase("testFeiFanTongKaGuanJia")) # 飞凡通卡管家 No.43
     suite.addTest(FeiFanTongLingHuaQianTestCase("testFeiFanTongLingHuaQian")) # 飞凡通零花钱 No.44
     suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活 No.38
-    suite.addTest(GuangChangDianYingGuangTestCase("testDianYingGuang")) # 广场电影逛 No.31
-    suite.addTest(GuangChangYouHuiQuanTestCase("testYouHuiQuan")) # 广场优惠券 No.37
-    suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇 No.32
-    suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队 No.26
-    suite.addTest(GuangChangShiNeiDiTuTestCase("testShiNeiDiTu")) # 广场室内地图 No.27
     suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.57
-    suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.28
 
 
 

@@ -24,20 +24,21 @@ caseList = {
     'ShouYeTingCheTestCase'           : u'首页停车',
     'MaiDanTestCase'                  : u'买单',
     'GuangChangXiangQingTestCase'     : u'广场详情',
+    'GuangChangSouSuoTestCase'        : u'广场搜索',
+    'GuangChangYouHuiQuanTestCase'    : u'广场优惠券',
+    'GuangChangPaiDuiTestCase'        : u'广场排队取号',
+    'GuangChangShiNeiDiTuTestCase'    : u'广场室内地图',
+    'GuangChangTingCheTestCase'       : u'广场停车',
+    'GuangChangDianYingGuangTestCase' : u'广场电影逛',
+    'GuangChangMeiShiHuiTestCase'     : u'广场美食汇',
 
 
 
 
     'WoDeTingCheJiaoFeiTestCase'      : u'我的停车缴费',
-    'GuangChangTingCheTestCase'       : u'广场停车',
     'WoDeLingHuaQianFeiTestCase'      : u'我的零花钱',
     'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',
     'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
     'FeiFanTongLingHuaQianTestCase'   : u'飞凡通零花钱',
     'HuiShengHuoTestCase'             : u'惠生活',
-    'GuangChangDianYingGuangTestCase' : u'广场电影逛',
-    'GuangChangYouHuiQuanTestCase'    : u'广场优惠',
-    'GuangChangMeiShiHuiTestCase'     : u'广场美食汇',
-    'GuangChangPaiDuiTestCase'        : u'广场排队取号',
-    'GuangChangShiNeiDiTuTestCase'    : u'广场室内地图',
 }

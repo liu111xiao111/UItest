@@ -26,8 +26,7 @@ from cases.android.ffan.common.clear_app_data import ClearAppData
 
 class GuangChangPaiDuiTestCase(TestCase):
     '''
-    作者 刘涛
-    巡检 No.26
+    巡检 No.27
     用例名: 广场排队取号
     广场详情页点击排队取号进入排队取号页面，可以成功排队
     '''
@@ -58,9 +57,8 @@ class GuangChangPaiDuiTestCase(TestCase):
         queuePage = SquareQueuePage(self, self.driver, self.logger)
 
         # Load square page
-        dashboardPage.validSelf()
+        dashboardPage.validSelf();
         dashboardPage.clickOnSquareModule()
-        squarePage.waitBySeconds(10)
         squarePage.validSelf()
 
         # Click "排队取号"， load "排队取号" page.
@@ -68,7 +66,7 @@ class GuangChangPaiDuiTestCase(TestCase):
         queuePage.validSelf()
 
         # Click "取号"
-        if queuePage.validGetQueue():
+        if (queuePage.validGetQueue()):
             queuePage.clicOnQueueNumber()
             queuePage.waitBySeconds(10)
             queuePage.inputNumberOfMeals()

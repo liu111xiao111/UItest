@@ -26,8 +26,7 @@ from cases.android.ffan.common.clear_app_data import ClearAppData
 
 class GuangChangShiNeiDiTuTestCase(TestCase):
     '''
-    作者 刘涛
-	巡检 No.27
+	巡检 No.28
 	用例名: 广场室内地图
 	广场详情页点击室内地图，正常进入室内地图模块
     '''
@@ -50,7 +49,7 @@ class GuangChangShiNeiDiTuTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def testShiNeiDiTu(self):
+    def testGuangChangShiNeiDiTu(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         locationBluetoothPage = LocationBluetoothPage(self, self.driver, self.logger)
@@ -70,9 +69,9 @@ class GuangChangShiNeiDiTuTestCase(TestCase):
         squarePage.waitBySeconds(5)
 
         # Click "室内地图", cancle bluetooth setting, load "室内地图" page.
-        squarePage.clicOnIndoorMap()
+        squarePage.clicOnIndoorMap();
         locationBluetoothPage.clickOnCancleBtn()
-        indoormapPage.validSelf()
+        indoormapPage.validSelf();
         '''indoormapPage.clickOnFoodMap();
         indoormapPage.validSelfFood();'''
 

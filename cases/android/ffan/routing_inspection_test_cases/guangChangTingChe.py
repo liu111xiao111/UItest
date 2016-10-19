@@ -26,8 +26,7 @@ from utility.device_info_util import DeviceInfoUtil
 
 class GuangChangTingCheTestCase(TestCase):
     '''
-    作者 刘涛
-    巡检 No.28
+    巡检 No.29
     用例名: 广场停车
     点击停车缴费，成功进入并显示正确数据
     '''
@@ -70,8 +69,8 @@ class GuangChangTingCheTestCase(TestCase):
         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
         parkingPage.waitBySeconds(10)
         # 检查入口项目
-        itemList = (u"附近停车场", u"停车券", u"停车记录", u"帮助")
-        titleList = (u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
+        itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
+        titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
         for i in range(len(titleList)):
             parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
             parkingPaymentPage.waitBySeconds(20)

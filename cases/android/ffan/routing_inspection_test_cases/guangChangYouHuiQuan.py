@@ -29,7 +29,7 @@ from utility.device_info_util import DeviceInfoUtil
 
 class GuangChangYouHuiQuanTestCase(TestCase):
     '''
-    巡检 No.37
+    巡检 No.25
     用例名: 广场优惠券
     广场详情页点击优惠券可以进入通用券并可以成功领取优惠券在我的票券中显示
     '''
@@ -52,7 +52,7 @@ class GuangChangYouHuiQuanTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testYouHuiQuan(self):
+    def testGuangChangYouHuiQuan(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
@@ -62,34 +62,25 @@ class GuangChangYouHuiQuanTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
-        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
-        squareModulePage.waitBySeconds(10)
         squareModulePage.clickOnCoupon()
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        salesPromotionPage.waitBySeconds(5)
         salesPromotionPage.validSelf()
         salesPromotionPage.clickOnCouponTab()
-        salesPromotionPage.waitBySeconds(5)
         couponListItemName = salesPromotionPage.getItemNameByXpath()
         salesPromotionPage.clickOnSquareCouponDetails()
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
-        salesPromotionCouponDetailsPage.waitBySeconds(20)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.waitBySeconds(10)
         salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
 
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
-        salesPromotionCouponSuccessPage.waitBySeconds(5)
         salesPromotionCouponSuccessPage.validSelf()
         TempText = salesPromotionCouponSuccessPage.getCouponDetails()
         salesPromotionCouponSuccessPage.clickBackKey()
 
-        salesPromotionCouponDetailsPage.waitBySeconds(20)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
         salesPromotionCouponDetailsPage.clickBackKey()
 
