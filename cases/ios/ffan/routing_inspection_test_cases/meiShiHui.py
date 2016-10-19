@@ -7,12 +7,12 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from com.qa.automation.appium.cases.ios.ffan.common.test_prepare import TestPrepare
-from com.qa.automation.appium.cases.ios.ffan.common.clear_app_data import ClearAppData
-from com.qa.automation.appium.configs.ios_driver_configs import IosDriverConfigs as IDC
-from com.qa.automation.appium.driver.appium_driver import AppiumDriver
-from com.qa.automation.appium.pages.ios.ffan.dashboard_page import DashboardPage
-from com.qa.automation.appium.pages.ios.ffan.food_category_page import FoodCategoryPage
+from cases.ios.ffan.common.testPrepare import TestPrepare
+from cases.ios.ffan.common.clearAppData import ClearAppData
+from configs.ios_driver_configs import IosDriverConfigs as IDC
+from driver.appium_driver import AppiumDriver
+from pages.ios.ffan.dashboard_page import DashboardPage
+from pages.ios.ffan.food_category_page import FoodCategoryPage
 from utility.logger import Logger
 
 
