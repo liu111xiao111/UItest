@@ -38,9 +38,12 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import G
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangAiGouWu import GuangChangAiGouWuTestCase
-
-
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
+from cases.android.ffan.routing_inspection_test_cases.huiShengHuoJingXuan import HuiShengHuoJingXuanTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeDengLu import WoDeDengLuTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeGeRenXinXi import WoDeGeRenXinXiTestCase
+
+
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
@@ -95,13 +98,16 @@ if __name__ == "__main__":
     suite.addTest(GuangChangDianYingGuangTestCase("testGuangChangDianYingGuang")) # 广场电影逛 No.32
     suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇 No.33
     suite.addTest(GuangChangAiGouWuTestCase("testGuangChangAiGouWu")) # 广场爱购物 No.34
+    suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活入口 No.39
+    suite.addTest(HuiShengHuoJingXuanTestCase("testHuiShengHuoJingXuan")) # 惠生活精选/荐店 No.41
+    suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
+    suite.addTest(WoDeGeRenXinXiTestCase("testWoDeGeRenXinXi")) # 我的个人信息 No.50
 
 
     suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.55
     suite.addTest(FeiFanTongFuKuanTestCase("testFeiFanTongFuKuan")) # 飞凡通付款 No.42
     suite.addTest(FeiFanTongKaGuanJiaTestCase("testFeiFanTongKaGuanJia")) # 飞凡通卡管家 No.43
     suite.addTest(FeiFanTongLingHuaQianTestCase("testFeiFanTongLingHuaQian")) # 飞凡通零花钱 No.44
-    suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活 No.38
     suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.57
     suite.addTest(QuanChengSouSuoPinPaiTestCase("testQuanChengSouSuoPinPai")) # 全城搜索品牌 No.3
     suite.addTest(QuanChengSouSuoShangPinTestCase("testQuanChengSouSuoShangPin")) # 全城搜索商品 No.3

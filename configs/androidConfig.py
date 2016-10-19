@@ -32,6 +32,10 @@ caseList = {
     'GuangChangDianYingGuangTestCase' : u'广场电影逛',
     'GuangChangMeiShiHuiTestCase'     : u'广场美食汇',
     'GuangChangAiGouWuTestCase'       : u'广场爱购物',
+    'HuiShengHuoTestCase'             : u'惠生活入口',
+    'HuiShengHuoJingXuanTestCase'     : u'惠生活精选/荐店',
+    'WoDeDengLuTestCase'              : u'我的登录',
+    'WoDeGeRenXinXiTestCase'          : u'我的个人信息',
 
 
 
@@ -41,7 +45,6 @@ caseList = {
     'FeiFanTongFuKuanTestCase'        : u'飞凡通付款',
     'FeiFanTongKaGuanJiaTestCase'     : u'飞凡通卡管家',
     'FeiFanTongLingHuaQianTestCase'   : u'飞凡通零花钱',
-    'HuiShengHuoTestCase'             : u'惠生活',
     'QuanChengSouSuoPinPaiTestCase'   : u'全城搜索(品牌)',
     'QuanChengSouSuoShangPinTestCase' : u'全城搜索(商品)',
     'QuanChengSouSuoMenDianTestCase'  : u'全城搜索(门店)',
