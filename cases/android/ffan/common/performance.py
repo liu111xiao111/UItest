@@ -170,7 +170,10 @@ class Performance(object):
             time.sleep(1)
 
         currentRate = round((currentRateList[1] - currentRateList[0]) / 1024, 2)
-        return currentRate
+        if currentRate < 0:
+            return 0
+        else:
+            return currentRate
 
     def _getUid(self, pid):
         '''
