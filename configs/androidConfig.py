@@ -17,6 +17,8 @@ caseList = {
     'DianYingTestCase'                : u'电影',
     'MeiShiHuiTestCase'               : u'美食汇',
     'PinPaiJieTestCase'               : u'品牌街',
+    'QinZiTestCase'                   : u'亲子',
+
 
 
 
