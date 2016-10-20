@@ -54,6 +54,7 @@ class FoodCases(TestCase):
         dashboardPage.validSelf();
         dashboardPage.clickOnFood();
         foodPage.validSelf();
+        foodPage.waitBySeconds(8)
 
         '''# 检查所有子界面入口
         foodPage.validModules();

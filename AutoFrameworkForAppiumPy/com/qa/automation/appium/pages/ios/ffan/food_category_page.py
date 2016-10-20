@@ -17,12 +17,17 @@ class FoodCategoryPage(SuperPage):
         super(FoodCategoryPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=FoodCategoryPageConfigs.name_food_category_navigation_bar)
+        # navigation = API().validElementByIosUiautomation(driver=self.driver,
+        #                                                  logger=self.logger,uiaString=".navigationBars()[0]")
+        # API().assertEqual(testCase=self.testcase,
+        #                   logger=self.logger,
+        #                   actualText=navigation.get_attribute("name"),
+        #                   expectText=FoodCategoryPageConfigs.name_food_category_navigation_bar)
+
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FoodCategoryPageConfigs.name_food_category_navigation_bar)
 
     def validModules(self):
         '''
