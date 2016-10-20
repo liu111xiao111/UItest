@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from api.api import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.store_info_page_configs import StoreInfoPageConfigs
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.store_info_page_configs import StoreInfoPageConfigs
 
 
 class StoreInfoPage(SuperPage):
