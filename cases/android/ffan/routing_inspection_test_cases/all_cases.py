@@ -38,7 +38,7 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import G
 from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangAiGouWu import GuangChangAiGouWuTestCase
-from cases.android.ffan.routing_inspection_test_cases.huiShengHuo import HuiShengHuoTestCase
+from cases.android.ffan.routing_inspection_test_cases.huiShengHuoRuKou import HuiShengHuoRuKouTestCase
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuoJingXuan import HuiShengHuoJingXuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeDengLu import WoDeDengLuTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeGeRenXinXi import WoDeGeRenXinXiTestCase
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     suite.addTest(GuangChangDianYingGuangTestCase("testGuangChangDianYingGuang")) # 广场电影逛 No.32
     suite.addTest(GuangChangMeiShiHuiTestCase("testGuangChangMeiShiHui")) # 广场美食汇 No.33
     suite.addTest(GuangChangAiGouWuTestCase("testGuangChangAiGouWu")) # 广场爱购物 No.34
-    suite.addTest(HuiShengHuoTestCase("testHuiShenghuo")) # 惠生活入口 No.39
+    suite.addTest(HuiShengHuoRuKouTestCase("testHuiShengHuoRuKou")) # 惠生活入口 No.39
     suite.addTest(HuiShengHuoJingXuanTestCase("testHuiShengHuoJingXuan")) # 惠生活精选/荐店 No.41
     suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
     suite.addTest(WoDeGeRenXinXiTestCase("testWoDeGeRenXinXi")) # 我的个人信息 No.50

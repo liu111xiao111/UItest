@@ -32,7 +32,7 @@ caseList = {
     'GuangChangDianYingGuangTestCase' : u'广场电影逛',
     'GuangChangMeiShiHuiTestCase'     : u'广场美食汇',
     'GuangChangAiGouWuTestCase'       : u'广场爱购物',
-    'HuiShengHuoTestCase'             : u'惠生活入口',
+    'HuiShengHuoRuKouTestCase'        : u'惠生活入口',
     'HuiShengHuoJingXuanTestCase'     : u'惠生活精选/荐店',
     'WoDeDengLuTestCase'              : u'我的登录',
     'WoDeGeRenXinXiTestCase'          : u'我的个人信息',

@@ -21,7 +21,7 @@ from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
 
 
-class HuiShengHuoTestCase(TestCase):
+class HuiShengHuoRuKouTestCase(TestCase):
     '''
     巡检 No.39
     用例名: 惠生活入口
@@ -41,7 +41,7 @@ class HuiShengHuoTestCase(TestCase):
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testHuiShenghuo(self):
+    def testHuiShengHuoRuKou(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnSmartLife()
@@ -51,13 +51,13 @@ class HuiShengHuoTestCase(TestCase):
         #huiLifePage.screenShot("hui_life_resource_niche")
 
         tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"加油 Heading", u"数码回收",
-                     u"演唱会", u"亲子票务", u"自选股", u"违章查询", u"有料")
+                     u"演唱会", u"亲子票务", u"自选股", u"有料", u"违章查询")
         for tempNum in range(10):
             huiLifePage.clickOnAndValidByXpathAndName("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[%d]" % (tempNum + 1), tempTuple[tempNum])
             huiLifePage.waitBySeconds(10)
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(HuiShengHuoTestCase)
+    suite = TestLoader().loadTestsFromTestCase(HuiShengHuoRuKouTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
