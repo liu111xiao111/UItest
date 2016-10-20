@@ -76,7 +76,7 @@ if __name__ == "__main__":
     # root_dir = os.path.dirname(
     #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
     # reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/auto/workspace_pycharm/autotest", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     suite.addTest(HuiShengHuoRuKouTestCase("test_case"))
     suite.addTest(HuiYuanTestCase("test_case"))
     suite.addTest(LingHuaQianTestCase("test_case"))
-    suite.addTest(MaiDanTestCase("testCase"))
+    suite.addTest(MaiDanTestCase("test_case"))
     suite.addTest(MeiShiHuiTestCase("test_case"))
     suite.addTest(MingPinYouDianTestCase("test_case"))
     suite.addTest(PaiDuiTestCase("test_case"))
