@@ -17,7 +17,7 @@ from pages.ios.ffan.settings_page import SettingsPage
 from utility.logger import Logger
 
 
-class woDeTuiChuTestCase(TestCase):
+class WoDeTuiChuTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #59
