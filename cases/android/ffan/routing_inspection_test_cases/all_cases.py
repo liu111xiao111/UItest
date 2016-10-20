@@ -61,6 +61,17 @@ from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoShangPin im
 from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
 from cases.android.ffan.routing_inspection_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangZhaoDian import GuangChangZhaoDianTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangXianChangYao import GuangChangXianChangYaoTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangMaiDan import GuangChangMaiDanTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangHuiYuan import GuangChangHuiYuanTestCase
+from cases.android.ffan.routing_inspection_test_cases.guangChangYouHui import GuangChangYouHuiTestCase
+from cases.android.ffan.routing_inspection_test_cases.feiFanTongZhangDan import FeiFanTongZhangDanTestCase
+from cases.android.ffan.routing_inspection_test_cases.feiFanTongQiTaKuaiJieRuKou import FeiFanTongQiTaKuaiJieRuKouTestCase
+from cases.android.ffan.routing_inspection_test_cases.yaoYiYao import YaoYiYaoTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeFuKuanMa import WoDeFuKuanMaTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiDengLuMiMa import WoDeSheZhiXiuGaiDengLuMiMaTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiZhiFuMiMa import WoDeSheZhiXiuGaiZhiFuMiMaTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiXiaoEMianMiZhiFu import WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase
 
 
 def runPerformance(reportPath):
@@ -128,7 +139,17 @@ if __name__ == "__main__":
     suite.addTest(QuanChengSouSuoMenDianTestCase("testQuanChengSouSuoMenDian")) # 全城搜索品牌 No.3
     suite.addTest(GouWuZhongXinTestCase("testGouWuZhongXin")) # 购物中心 No.5
     suite.addTest(GuangChangZhaoDianTestCase("testGuangChangZhaoDian")) # 广场找店 No.21
-
+    suite.addTest(GuangChangXianChangYaoTestCase("testGuangChangXianChangYao")) # 广场现场摇 No.26
+    suite.addTest(GuangChangMaiDanTestCase("testGuangChangMaiDan")) # 广场买单 No.27
+    suite.addTest(GuangChangHuiYuanTestCase("testGuangChangHuiYuan")) # 广场会员 No.28
+    suite.addTest(GuangChangYouHuiTestCase("testGuangChangYouHui")) # 广场优惠 No.38
+    suite.addTest(FeiFanTongZhangDanTestCase("testFeiFanTongZhangDan")) # 飞凡通账单 No.43
+    suite.addTest(FeiFanTongQiTaKuaiJieRuKouTestCase("testFeiFanTongQiTaKuaiJieRuKou")) # 飞凡通其他快捷入口 No.45
+    suite.addTest(YaoYiYaoTestCase("testYaoYiYao")) # 摇一摇 No.48
+    suite.addTest(WoDeFuKuanMaTestCase("testWoDeFuKuanMa")) # 我的付款码 No.54
+    suite.addTest(WoDeSheZhiXiuGaiDengLuMiMaTestCase("testWoDeSheZhiXiuGaiDengLuMiMa")) # 我的设置(修改登录密码) No.57
+    suite.addTest(WoDeSheZhiXiuGaiZhiFuMiMaTestCase("testWoDeSheZhiXiuGaiZhiFuMiMa")) # 我的设置(修改支付密码) No.57
+    suite.addTest(WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase("testWoDeSheZhiXiuGaiXiaoEMianMiZhiFu")) # 我的设置(修改小额免密支付) No.57
 
 
     # 巡检及性能用例执行
