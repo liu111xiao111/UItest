@@ -44,7 +44,7 @@ class GouWuZhongXinTestCase(TestCase):
         
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def testCase(self):
+    def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
 
