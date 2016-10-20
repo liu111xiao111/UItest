@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.parent_children_page_configs import ParentChildrenPageConfigs
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from pages.ios.ffan.parent_children_page_configs import ParentChildrenPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
 
 
 #   首页 亲子

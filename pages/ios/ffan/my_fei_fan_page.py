@@ -2,9 +2,9 @@
 
 import logging
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs
 
 
 class MyFeiFanPage(SuperPage):

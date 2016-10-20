@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.ffan.parking_page_configs import ParkingPageConfigs
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from api.api import API
+from pages.ios.ffan.parking_page_configs import ParkingPageConfigs
+from pages.ios.common.superPage import SuperPage
 
 
 class ParkingPage(SuperPage):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.brand_page_configs import BrandPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.brand_page_configs import BrandPageConfigs
 
 
 #   电影选择页面,入口:首页 -> 品牌

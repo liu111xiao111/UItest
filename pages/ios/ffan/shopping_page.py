@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.shopping_page_configs import ShoppingPageConfigs
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.ios_super_page import IosSuperPage
+from pages.ios.ffan.shopping_page_configs import ShoppingPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
 
 
 #   首页点击 购物
-class ShoppingPage(IosSuperPage):
+class ShoppingPage(SuperPage):
 
     def __init__(self, testcase, driver, logger):
         super(ShoppingPage, self).__init__(testcase=testcase, driver=driver, logger=logger);

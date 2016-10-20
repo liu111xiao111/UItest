@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.le_pay_way_page_configs import LePayWayPageConfigs
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from pages.ios.ffan.le_pay_way_page_configs import LePayWayPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
 
 class LePayWayPage(SuperPage):
     '''

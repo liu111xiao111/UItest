@@ -3,9 +3,9 @@
 import operator
 import logging
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.shopping_mall_page_configs import ShoppingMallPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.shopping_mall_page_configs import ShoppingMallPageConfigs
 
 SMP = ShoppingMallPageConfigs()
 

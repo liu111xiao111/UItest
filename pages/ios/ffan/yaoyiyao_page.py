@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.yaoyiyaop_page_configs import YaoyiyaoPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.yaoyiyaop_page_configs import YaoyiyaoPageConfigs
 
 
 class YaoyiyaoPage(SuperPage):

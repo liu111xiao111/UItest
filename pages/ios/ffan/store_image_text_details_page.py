@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.store_image_text_details_page_configs import StoreImageTextDetailsPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.store_image_text_details_page_configs import StoreImageTextDetailsPageConfigs
 
 
 class StoreImageTextDetailsPage(SuperPage):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
+from pages.ios.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
 
 
 class MyFfanMyOrderPage(SuperPage):

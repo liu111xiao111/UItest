@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.brand_activity_page_configs import BrandActivityPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.brand_activity_page_configs import BrandActivityPageConfigs
 
 
 class BrandActivityPage(SuperPage):

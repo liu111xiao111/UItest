@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.my_ffan_page_configs import MyFfanPageConfigs as MFPC
 
 
 class MyFfanPage(SuperPage):

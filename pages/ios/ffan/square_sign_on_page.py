@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from selenium.common.exceptions import TimeoutException
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.square_sign_on_page_configs import SignOnPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.square_sign_on_page_configs import SignOnPageConfigs
 
 
 class SignOnPage(SuperPage):

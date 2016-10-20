@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from com.qa.automation.appium.api.api_new import API
-from com.qa.automation.appium.pages.ios.common.super_page import SuperPage
-from com.qa.automation.appium.pages.ios.ffan.parking_payment_input_plate_number_page_configs import ParkingPaymentInputPlateNumberPageConfigs
+from api.api import API
+from pages.ios.common.superPage import SuperPage
+from pages.ios.ffan.parking_payment_input_plate_number_page_configs import ParkingPaymentInputPlateNumberPageConfigs
 
 
 class ParkingPaymentInputPlateNumberPage(SuperPage):
