@@ -82,7 +82,6 @@ if __name__ == "__main__":
 
     suite = TestSuite()
 
-    suite.addTest(AiGouWuTestCase("test_case"))
     suite.addTest(BanBenShengJiTestCase("test_case"))
     suite.addTest(DianYingTestCase("test_case"))
     suite.addTest(FeiFanTongQitaRukouTestCase("test_case"))
@@ -131,6 +130,7 @@ if __name__ == "__main__":
     suite.addTest(QuanChengSouSuoPinPaiTestCase("test_case"))
     suite.addTest(QuanChengSouSuoShangPinTestCase("test_case"))
     suite.addTest(QuanChengSouSuoMenDianTestCase("test_case"))
+    suite.addTest(AiGouWuTestCase("test_case"))
     suite.addTest(YouHuiQuanTestCase("test_case"))
     suite.addTest(ChenShiQieHuanTestCase("test_case"))
 
