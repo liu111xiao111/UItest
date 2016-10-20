@@ -17,7 +17,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
 
 
-class HuiYuan(TestCase):
+class HuiYuanTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #26
@@ -56,7 +56,7 @@ class HuiYuan(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(HuiYuan)
+    suite = TestLoader().loadTestsFromTestCase(HuiYuanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

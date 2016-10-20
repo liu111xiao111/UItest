@@ -19,7 +19,7 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.dashboard_page import DashboardPage
 
 
-class ChenShiQieHuan(TestCase):
+class ChenShiQieHuanTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #2
@@ -88,7 +88,7 @@ class ChenShiQieHuan(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(ChenShiQieHuan)
+    suite = TestLoader().loadTestsFromTestCase(ChenShiQieHuanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

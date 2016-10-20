@@ -22,7 +22,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
 
 
-class GuangChangXiangQing(TestCase):
+class GuangChangXiangQingTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #Anonymous
@@ -55,7 +55,7 @@ class GuangChangXiangQing(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQing)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQingTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

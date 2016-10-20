@@ -17,7 +17,7 @@ from pages.ios.ffan.square_queue_page import SquareQueuePage
 from utility.logger import Logger
 
 
-class PaiDuiQuHao(TestCase):
+class PaiDuiQuHaoTestCase(TestCase):
     '''
     作者 刘涛
     巡检checklist: No.24
@@ -62,7 +62,7 @@ class PaiDuiQuHao(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(PaiDuiQuHao)
+    suite = TestLoader().loadTestsFromTestCase(PaiDuiQuHaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

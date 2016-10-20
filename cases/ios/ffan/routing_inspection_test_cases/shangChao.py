@@ -19,7 +19,7 @@ from pages.ios.ffan.switch_city_page import SwitchCityPage
 from utility.logger import Logger
 
 
-class ShangChao(TestCase):
+class ShangChaoTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #Anonymous
@@ -72,7 +72,7 @@ class ShangChao(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(ShangChao)
+    suite = TestLoader().loadTestsFromTestCase(ShangChaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

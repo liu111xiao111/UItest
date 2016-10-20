@@ -19,7 +19,7 @@ from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
 
-class GuangChangMeiShiHui(TestCase):
+class GuangChangMeiShiHuiTestCase(TestCase):
     '''
     作者 刘涛
     巡检checklist #31
@@ -93,7 +93,7 @@ class GuangChangMeiShiHui(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GuangChangMeiShiHui)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangMeiShiHuiTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

@@ -20,7 +20,7 @@ from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
 
-class AiGouWu(TestCase):
+class AiGouWuTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #32
@@ -74,7 +74,7 @@ class AiGouWu(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(AiGouWu)
+    suite = TestLoader().loadTestsFromTestCase(AiGouWuTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

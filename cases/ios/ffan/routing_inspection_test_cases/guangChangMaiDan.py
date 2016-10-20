@@ -18,7 +18,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
 
 
-class GuangChangMaiDan(TestCase):
+class GuangChangMaiDanTestCase(TestCase):
     '''
     作者 刘涛
     巡检checklist #27
@@ -72,7 +72,7 @@ class GuangChangMaiDan(TestCase):
         lePayPage.clickOnConfirmCancel()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GuangChangMaiDan)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangMaiDanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

@@ -18,7 +18,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
 
 
-class GuangChangSouSuo(TestCase):
+class GuangChangSouSuoTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #19
@@ -57,7 +57,7 @@ class GuangChangSouSuo(TestCase):
         searchPage.clickBackKey()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GuangChangSouSuo)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangSouSuoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

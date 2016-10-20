@@ -21,7 +21,7 @@ from pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from utility.logger import Logger
 
 
-class PiaoQuan(TestCase):
+class PiaoQuanTestCase(TestCase):
     '''
     作者 刘涛
     巡检checklist #50
@@ -99,7 +99,7 @@ class PiaoQuan(TestCase):
 if __name__ == "__main__":
     log = Logger()
     caseName = 'myfeifan_my_queue_cases'
-    suite = TestLoader().loadTestsFromTestCase(PiaoQuan)
+    suite = TestLoader().loadTestsFromTestCase(PiaoQuanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + caseName + now + '.html'

@@ -16,7 +16,7 @@ from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
 from pages.ios.ffan.dashboard_page import DashboardPage
 
 
-class FuKuanMa(TestCase):
+class FuKuanMaTestCase(TestCase):
     '''
     作者 刘涛
     我的订单
@@ -66,7 +66,7 @@ class FuKuanMa(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(FuKuanMa)
+    suite = TestLoader().loadTestsFromTestCase(FuKuanMaTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

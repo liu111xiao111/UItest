@@ -16,7 +16,7 @@ from pages.ios.ffan.version_upgrade_page import VersionUpgradePage
 from utility.logger import Logger
 
 
-class BanBenShengJi(TestCase):
+class BanBenShengJiTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #60
@@ -47,7 +47,7 @@ class BanBenShengJi(TestCase):
         versionUpgradePage.invalidSelf()
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(BanBenShengJi)
+    suite = TestLoader().loadTestsFromTestCase(BanBenShengJiTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

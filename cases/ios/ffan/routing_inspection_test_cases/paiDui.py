@@ -19,7 +19,7 @@ from pages.ios.ffan.my_ffan_page import MyFfanPage
 from utility.logger import Logger
 
 
-class PaiDui(TestCase):
+class PaiDuiTestCase(TestCase):
     '''
     作者 刘涛
     巡检checklist: No.55
@@ -94,7 +94,7 @@ class PaiDui(TestCase):
 
 if __name__ == "__main__":
     caseName = 'myfeifan_my_queue_cases'
-    suite = TestLoader().loadTestsFromTestCase(PaiDui)
+    suite = TestLoader().loadTestsFromTestCase(PaiDuiTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, caseName + now + '.html')

@@ -16,7 +16,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.xianchangyao_page import XianchangyaoPage
 from utility.logger import Logger
 
-class XianChangYao(TestCase):
+class XianChangYaoTestCase(TestCase):
     '''
     作者 刘涛
     广场现场摇
@@ -60,7 +60,7 @@ class XianChangYao(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(XianChangYao)
+    suite = TestLoader().loadTestsFromTestCase(XianChangYaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'food-test_' + now + '.html'

@@ -15,7 +15,7 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 
 
-class YaoYiYao(TestCase):
+class YaoYiYaoTestCase(TestCase):
     '''
     作者 刘涛
     摇一摇
@@ -61,7 +61,7 @@ class YaoYiYao(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(YaoYiYao)
+    suite = TestLoader().loadTestsFromTestCase(YaoYiYaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

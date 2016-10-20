@@ -16,7 +16,7 @@ from pages.ios.ffan.search_page import SearchPage
 from utility.logger import Logger
 
 
-class QuanChengSouSuoPinPai(TestCase):
+class QuanChengSouSuoPinPaiTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #3
@@ -49,7 +49,7 @@ class QuanChengSouSuoPinPai(TestCase):
         searchPage.validSearchResult(u"adidas", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoPinPai)
+    suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoPinPaiTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

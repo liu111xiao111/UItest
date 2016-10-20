@@ -23,7 +23,7 @@ from utility.logger import Logger
 from pages.ios.ffan.search_page import SearchPage
 
 
-class GuangChangDianYingGuang(TestCase):
+class GuangChangDianYingGuangTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #30
@@ -75,7 +75,7 @@ class GuangChangDianYingGuang(TestCase):
         seatPickingPage.waitBySeconds(3)
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GuangChangDianYingGuang)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangDianYingGuangTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

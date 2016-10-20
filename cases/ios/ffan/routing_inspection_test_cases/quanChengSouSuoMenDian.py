@@ -16,7 +16,7 @@ from driver.appium_driver import AppiumDriver;
 from utility.logger import Logger;
 
 
-class QuanChengSouSuoMenDian(TestCase):
+class QuanChengSouSuoMenDianTestCase(TestCase):
     '''
     作者 宋波
     巡检checklist #3
@@ -49,7 +49,7 @@ class QuanChengSouSuoMenDian(TestCase):
         searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoMenDian)
+    suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoMenDianTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
