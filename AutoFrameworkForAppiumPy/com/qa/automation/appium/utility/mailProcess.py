@@ -286,5 +286,5 @@ def sendTestResultMail(reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161020/1'
     sendTestResultMail(reportPath, 'android')

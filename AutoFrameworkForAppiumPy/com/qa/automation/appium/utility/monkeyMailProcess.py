@@ -201,5 +201,5 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/android_monkey_log'
-    sendTestResultMail('2016/09/01 12:23', '2016/09/01 13:11', reportPath, 'android')
+    reportPath = '/Users/songbo/workspace/autotest/monkey/android_monkey_log'
+    sendTestResultMail('2016/10/20 03:01:00', '2016/10/20 07:06:05', reportPath, 'android')

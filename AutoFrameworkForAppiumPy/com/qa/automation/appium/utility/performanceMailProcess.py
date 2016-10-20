@@ -409,5 +409,5 @@ def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
-    sendPerformanceMail('2016/10/14 09:26:01', '2016/10/14 11:15:08', reportPath, 'android')
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161020/1'
+    sendPerformanceMail('2016/10/20 01:01:05', '2016/10/20 02:49:28', reportPath, 'android')
