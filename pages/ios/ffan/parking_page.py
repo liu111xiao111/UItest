@@ -15,12 +15,8 @@ class ParkingPage(SuperPage):
         super(ParkingPage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_parking_navigation_bar)
+        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
+                                             , uiaString=".navigationBars()[0]")
 
     def clickOnParkingPayment(self):
         '''
@@ -40,12 +36,8 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.click_on_button_timeout)
     
     def validZhaoche(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_zhaoche)
+        API().assertElementByIosUiautomation(self.testcase,self.driver,self.logger
+                                             ,uiaString=".navigationBars()[0]")
         
     def clickOnFujintingche(self):
         '''
@@ -56,12 +48,8 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.click_on_button_timeout)
     
     def validFujintingche(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_fujintingche)
+        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
+                                             , uiaString=".navigationBars()[0]")
     
     def clickOnTingchequan(self):
         '''
@@ -71,12 +59,8 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.xpath_tingchequan,
                                   ParkingPageConfigs.click_on_button_timeout)
     def validTingchequan(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_tingchequan)
+        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
+                                             , uiaString=".navigationBars()[0]")
         
     def clickOnTingchejilu(self):
         '''
@@ -86,12 +70,8 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.xpath_tingchejilu,
                                   ParkingPageConfigs.click_on_button_timeout)
     def validTingchejilu(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_tingchejilu)
+        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
+                                             , uiaString=".navigationBars()[0]")
     
     def clickOnHelp(self):
         '''
@@ -101,12 +81,8 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.xpath_bangzhu,
                                   ParkingPageConfigs.click_on_button_timeout)
     def validHelp(self):
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger,uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=ParkingPageConfigs.name_help)
+        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
+                                             , uiaString=".navigationBars()[0]")
 
 if __name__ == '__main__':
     pass;

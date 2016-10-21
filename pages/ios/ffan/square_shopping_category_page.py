@@ -30,6 +30,7 @@ class SquareShoppingPage(SuperPage):
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         SquareShoppingPageConfigs.xpath_sub_commodity_st,
                                         SquareShoppingPageConfigs.get_timeout)
+
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SquareShoppingPageConfigs.xpath_sub_commodity_st,
                                   SquareShoppingPageConfigs.click_on_button_timeout)

@@ -19,7 +19,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 class FuKuanMaTestCase(TestCase):
     '''
     作者 刘涛
-    我的订单
+    我的付款码
     '''
 
     def tearDown(self):

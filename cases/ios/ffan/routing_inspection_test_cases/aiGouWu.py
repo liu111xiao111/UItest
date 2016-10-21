@@ -23,9 +23,7 @@ from pages.ios.ffan.search_result_store_page import SearchResultStorePage
 class AiGouWuTestCase(TestCase):
     '''
     作者 宋波
-    巡检checklist #32
-    自动化测试 #32
-    广场详情页点击爱购物，进入购物模块，数据显示正常
+    广场爱购物
     '''
 
     def tearDown(self):
@@ -65,7 +63,7 @@ class AiGouWuTestCase(TestCase):
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
         squareShoppingPage.validSelf()
         tempText = squareShoppingPage.clickOnSubCommodity()
-
+        self.logger.i("tempText: " + tempText)
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
         # 5 second,wait Appium load page
         goodsDetailsPage.waitBySeconds(5)

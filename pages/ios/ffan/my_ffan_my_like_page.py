@@ -22,12 +22,8 @@ class MyFfanMyLikePage(SuperPage):
         '''
         usage : 判断“我的喜欢”navigation bar显示是否正确
         '''
-        navigation = API().validElementByIosUiautomation(driver=self.driver,
-                                                         logger=self.logger, uiaString=".navigationBars()[0]")
-        API().assertEqual(testCase=self.testcase,
-                          logger=self.logger,
-                          actualText=navigation.get_attribute("name"),
-                          expectText=MyFfanMyLikePageConfigs.name_tv_my_like_tv)
+        API().assertElementByIosUiautomation(self.testcase,self.driver,self.logger,
+                                    uiaString = ".navigationBars()[0]")
 
     def clickOnLikeGoods(self):
         '''
