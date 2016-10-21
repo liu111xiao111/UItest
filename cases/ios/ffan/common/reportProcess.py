@@ -2,7 +2,7 @@ import os
 
 import html.parser as html_parser
 
-from configs.iosConfig import caseList, appVersion, phoneVersion
+from configs.iosConfig import caseList, appVersion, phoneVersion, deviceID, buildVersion
 
 
 class TestResultParser(html_parser.HTMLParser):
@@ -246,7 +246,7 @@ class ReportHandle(object):
 
             resultData = self.htmlContents
 
-            templateHtml = templateHtml % (phoneVersion, appVersion, startTime, duration, resultStatus, resultData)
+            templateHtml = templateHtml % (phoneVersion, deviceID, buildVersion, appVersion, startTime, duration, resultStatus, resultData)
 
             resultFile.write(templateHtml)
         except Exception as e:
