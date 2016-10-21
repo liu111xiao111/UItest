@@ -22,6 +22,17 @@ class SquareFindStorePage(SuperPage):
                                   SFSC.resource_id_tv_category_tv,
                                   SFSC.verify_view_timeout)
 
+    def validStorePage(self):
+        '''
+        验证找店详情页
+        '''
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SFSC.name_store_page,
+                                  SFSC.verify_view_timeout)
+
+
     '''
         usage : 点击search
     '''

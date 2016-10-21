@@ -62,15 +62,18 @@ class GuangChangZhaoDianTestCase(TestCase):
 
         # 广场页点击找店
         squarePage.clicOnFindStore()
-        squareFindStorePage.validSelf()
-        squareFindStorePage.clickOnSearch()
-
-        searchPage.validSelf()
-        searchPage.inputKeywords("北京通州万达广场")
-        searchPage.clickOnSearch()
-        searchPage.clickOnSearchResultFirstItem()
-
-        searchResultStorePage.validSelf()
+        # squareFindStorePage.validSelf()
+        # squareFindStorePage.clickOnSearch()
+        #
+        # searchPage.validSelf()
+        # searchPage.inputKeywords("北京通州万达广场")
+        # searchPage.clickOnSearch()
+        # searchPage.clickOnSearchResultFirstItem()
+        #
+        # searchResultStorePage.validSelf()
+        squareFindStorePage.clickFirstItem()
+        squareFindStorePage.validStorePage()
+        squareFindStorePage.waitBySeconds(8)
 
 
 if __name__ == "__main__":

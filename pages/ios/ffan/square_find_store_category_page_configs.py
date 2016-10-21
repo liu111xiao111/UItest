@@ -5,6 +5,9 @@ class SquareFindStoreConfigs():
 
     # 全部分类text id
     resource_id_tv_category_tv = u"找店"
+
+    name_store_page = u"门店详情"
+
     # 找店 search image view
     xpath_iv_search_iv = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]"
     

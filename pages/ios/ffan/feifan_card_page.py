@@ -77,23 +77,20 @@ class FeiFanCardPage(SuperPage):
         '''
         print("KEYWORDS: %s" % otherEntranceName)
 
-        API().clickElementByName(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 otherEntranceName,
-                                 FCPC.verify_click_timeout);
+        # API().clickElementByName(self.testcase,
+        #                          self.driver,
+        #                          self.logger,
+        #                          otherEntranceName,
+        #                          FCPC.verify_click_timeout);
 
-        # API().clickElementByXpath(self.testcase, self.driver, self.logger, viewXpath,
-        #                           FCPC.click_on_button_timeout)
-
-        API().assertElementByName(self.testcase, self.driver, self.logger, otherEntrancePageName,
+        API().assertElementByName(self.testcase, self.driver, self.logger, otherEntranceName,
                                   FCPC.assert_view_timeout)
 
-        API().clickElementByName(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 u"返回",
-                                 FCPC.verify_click_timeout);
+        # API().clickElementByName(self.testcase,
+        #                          self.driver,
+        #                          self.logger,
+        #                          u"返回",
+        #                          FCPC.verify_click_timeout);
 
 
 
