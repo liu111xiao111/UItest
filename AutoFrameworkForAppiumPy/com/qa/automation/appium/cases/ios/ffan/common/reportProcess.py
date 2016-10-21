@@ -218,7 +218,7 @@ class ReportHandle(object):
         for count in range(0, len(errorCases)):
             caseAutoName = errorCases[count].split('.')[-1]
             caseName = errorCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Failed</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
+            htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Error</td><td><a href=\"javascript:showClassDetail('c%s',1)\">Detail</a></td></tr>" % (caseList[caseAutoName], caseName, count+1)
             htmlContent = htmlContent + "<tr id='ft%s.1' class='none hiddenRow'><td class='errorCase'><div class='testcase'>失败信息</div></td><td colspan='3'><pre>%s</pre></td></tr>" % (count+1, errorCaseDetails[count])
 
         ftCount = count + 1
