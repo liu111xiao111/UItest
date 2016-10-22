@@ -40,10 +40,11 @@ class GuangChangYouHuiQuanTestCase(TestCase):
 
     def setUp(self):
         self.logger = Logger()
+        self.platVersion = DeviceInfoUtil().getBuildVersion()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
+                                   self.platVersion, 
                                    deviceName_andr,
                                    driver_url).getDriver()
 
@@ -68,7 +69,7 @@ class GuangChangYouHuiQuanTestCase(TestCase):
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         salesPromotionPage.validSelf()
-        salesPromotionPage.clickOnCouponTab()
+        #salesPromotionPage.clickOnCouponTab()
         couponListItemName = salesPromotionPage.getItemNameByXpath()
         salesPromotionPage.clickOnSquareCouponDetails()
 

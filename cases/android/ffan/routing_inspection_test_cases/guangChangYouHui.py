@@ -69,7 +69,7 @@ class GuangChangYouHuiTestCase(TestCase):
 
         salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         salesPromotionPage.validSelf()
-        salesPromotionPage.clickOnCouponTab()
+        #salesPromotionPage.clickOnCouponTab()
         couponListItemName = salesPromotionPage.getItemNameByXpath()
         salesPromotionPage.clickOnSquareCouponDetails()
 

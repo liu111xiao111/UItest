@@ -189,7 +189,7 @@ class SquareModulePage(SuperPage):
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
         for _ in range(10):
-            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 4)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
