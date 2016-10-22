@@ -74,7 +74,10 @@ class GuangChangYouHuiQuanTestCase(TestCase):
 
         salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
         salesPromotionCouponDetailsPage.validSelf(couponListItemName)
-        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        if int(self.platVersion.split(".")[0]) >= 5:
+            salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
+        else:
+            salesPromotionCouponDetailsPage.clickOnFreeOfChargeLinkBtn()
 
         salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
         salesPromotionCouponSuccessPage.validSelf()

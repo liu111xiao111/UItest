@@ -101,7 +101,7 @@ if __name__ == "__main__":
     suite.addTest(DianYingTestCase("testDianYing")) # 电影 No.06
     suite.addTest(MeiShiHuiTestCase("testMeiShiHui")) # 美食汇 NO.7
     suite.addTest(PinPaiJieTestCase("testPinPaiJie")) # 品牌街 No.8
-    suite.addTest(QinZiTestCase("testQinZi")) # 亲子 No.9
+    #suite.addTest(QinZiTestCase("testQinZi")) # 亲子 No.9
     suite.addTest(QianDaoTestCase("testQiandao")) # 签到 No.10
     suite.addTest(ShangChaoTestCase("testShangChao")) # 商超 No.11
     suite.addTest(MingDianYouPinTestCase("testMingDianYouPin")) # 名店优品 No.14

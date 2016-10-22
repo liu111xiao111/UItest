@@ -20,12 +20,12 @@ class SquareLefuPayPage(SuperPage):
         '''
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         SLPPC.resource_id_lefu_pay_title,
-                                        18)
+                                        90)
         elementList = API().getElementsByContainsText(self.testcase,
                                                       self.driver,
                                                       self.logger,
                                                       SLPPC.view_text_distance,
-                                                      10)
+                                                      90)
         
         plaza_number = len(elementList)
         if plaza_number > 1:

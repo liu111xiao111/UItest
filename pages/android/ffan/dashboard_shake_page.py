@@ -22,3 +22,4 @@ class DashboardShakePage(SuperPage):
                                         self.logger,
                                         DSPC.resource_id_shake,
                                         DSPC.verify_element_timeout)
+        

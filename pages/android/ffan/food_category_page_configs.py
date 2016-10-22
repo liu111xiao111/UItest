@@ -6,11 +6,12 @@ class FoodCategoryPageConfigs():
     # 餐厅
     resource_id_bt_restaurant_bt = "com.wanda.app.wanhui:id/food_home_gridview_item"
     # 优惠打折
-    resource_id_bt_coupon_bt = "com.wanda.app.wanhui:id/coupon_campaign"
+    resource_id_bt_coupon_bt = "com.wanda.app.wanhui:id/coupon_campaign_container"
     # 抢券
     resource_id_bt_grab_bt = "com.wanda.app.wanhui:id/food_home_coupon"
     # 乐付
-    resource_id_bt_pay_bt = "com.wanda.app.wanhui:id/pay_bill"
+    resource_id_bt_pay_bt = "com.wanda.app.wanhui:id/pic"
+    xpath_maidan = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]"
 
     resource_id_tv_restaurant_tv = "com.wanda.app.wanhui:id/multiple_headers_dropdown_listview_header_item_text"
 

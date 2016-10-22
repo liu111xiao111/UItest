@@ -31,7 +31,7 @@ class SalesPromotionCouponDetailsPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPCDPC.text_receive_free_button,
-                                        30)
+                                        60)
 
     def clickOnFreeOfChargeLinkBtn(self):
         '''
@@ -41,4 +41,4 @@ class SalesPromotionCouponDetailsPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPCDPC.text_receive_free_link_button,
-                                        30)
+                                        60)

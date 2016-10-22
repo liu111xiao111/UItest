@@ -15,12 +15,12 @@ from configs.driver_configs import deviceName_andr
 from configs.driver_configs import driver_url
 from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
-from pages.android.ffan.account_management_page import AccountManagementPage
+from pages.android.ffan.payment_management_page import PaymentManagementPage
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.settings_page import SettingsPage
 from pages.android.ffan.payment_password_setting_page import PaymentPasswordSettingPage
-from pages.android.ffan.change_payment_password_page import ChangePaymentPasswordPage
+#from pages.android.ffan.change_payment_password_page import ChangePaymentPasswordPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 
@@ -61,18 +61,18 @@ class WoDeSheZhiXiuGaiZhiFuMiMaTestCase(TestCase):
 
         settingPage = SettingsPage(self, self.driver, self.logger)
         settingPage.validSelf()
-        settingPage.clickOnAccountManagement()
+        settingPage.clickOnPaymentManagement()
 
-        accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
-        accountManagementPage.validSelf()
-        accountManagementPage.clickOnPaymentPasswordSetting()
+        paymentManagementPage = PaymentManagementPage(self, self.driver, self.logger)
+        paymentManagementPage.validSelf()
+        paymentManagementPage.clickOnUpdatePassword()
 
         paymentPasswordSettingPage = PaymentPasswordSettingPage(self, self.driver, self.logger)
         paymentPasswordSettingPage.validSelf()
-        paymentPasswordSettingPage.clickOnChangePaymentPassword()
+        '''paymentPasswordSettingPage.clickOnChangePaymentPassword()
         changePaymentPasswordPage = ChangePaymentPasswordPage(self, self.driver, self.logger)
         changePaymentPasswordPage.validSelf()
-        '''changePaymentPasswordPage.inputOriPaymentPassword()
+        changePaymentPasswordPage.inputOriPaymentPassword()
         changePaymentPasswordPage.waitBySeconds(30)
         changePaymentPasswordPage.inputNewPaymentPassword()
         changePaymentPasswordPage.waitBySeconds(30)

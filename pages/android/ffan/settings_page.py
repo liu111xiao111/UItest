@@ -59,3 +59,13 @@ class SettingsPage(SuperPage):
                                  self.logger,
                                  SPC.text_account_management,
                                  SPC.assert_view_timeout)
+
+    def clickOnPaymentManagement(self):
+        '''
+        usage: 点击支付设置
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SPC.text_payment_management,
+                                 SPC.assert_view_timeout)

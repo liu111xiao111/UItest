@@ -27,11 +27,11 @@ class SquareModulePage(SuperPage):
         #                    self.driver,
         #                    self.logger,
         #                    SMPC.text_find_store)
-        API().assertElementByText(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SMPC.text_find_store,
-                                  SMPC.get_view_timeout)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        SMPC.resource_id_square_title,
+                                        SMPC.get_view_timeout)
 
     def validSelfDetails(self):
         '''

@@ -286,6 +286,17 @@ class DashboardPage(SuperPage):
                                            DPC.resource_id_iv_olympic_cancle_iv,
                                            DPC.click_on_button_timeout)
 
+    def ClickDoubleElevenCancleBtn(self):
+        '''
+        usage: 判断是否存在双十一抽奖页面
+        '''
+        if (API().validElementByResourceId(self.driver, self.logger, DPC.resource_id_iv_double_eleven_iv)):
+            API().clickElementByResourceId(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           DPC.resource_id_iv_double_eleven_cancle_iv,
+                                           DPC.click_on_button_timeout)
+
     def getCityName(self):
         return API().getTextByXpath(self.testcase, self.driver, self.logger,
                                     DPC.xpath_city_name, DPC.get_view_timeout)

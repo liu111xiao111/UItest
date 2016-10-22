@@ -14,7 +14,7 @@ class ShoppingMallPageConfigs(object):
     click_on_button_timeout = 60
 
     # Shopping mall title
-    resource_id_shopping_mall_title = "com.wanda.app.wanhui:id/txt_common_title"
+    resource_id_shopping_mall_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
     
     # Plaza view id
     resource_id_plaza_id = "com.wanda.app.wanhui:id/txt_item_name"

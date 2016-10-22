@@ -16,7 +16,7 @@ class SquareFoodPageConfigs():
     resource_id_ll_stochastic_id = "com.wanda.app.wanhui:id/home_enter_stochastic"
 
     # 验证美食主界面id
-    verify_food_home_page_resourceID = "com.wanda.app.wanhui:id/layout_top_title"
+    verify_food_home_page_resourceID = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # 验证找餐厅界面id
     verify_find_restaurant_resourceID = "com.wanda.app.wanhui:id/pic"
@@ -31,7 +31,7 @@ class SquareFoodPageConfigs():
     verify_stochastic_resourceID = "com.wanda.app.wanhui:id/layout_middle"
 
 
-    verify_assert_timeout = 30
+    verify_assert_timeout = 90
     click_child_module_timeout = 30
 
     def __init__(self):

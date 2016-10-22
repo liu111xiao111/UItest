@@ -106,8 +106,8 @@ class FoodCategoryPage(SuperPage):
         '''
         usage : 点击乐付
         '''
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       FCPC.resource_id_bt_pay_bt,
-                                       FCPC.click_view_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FCPC.xpath_maidan,
+                                  FCPC.click_view_timeout)

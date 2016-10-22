@@ -361,7 +361,7 @@ class HuiLifePage(SuperPage):
         logging.info("KEYWORDS: %s" % validValue)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   viewXpath, HLPC.click_on_button_timeout)
-        API().waitBySeconds(20)
+        API().waitBySeconds(10)
         if (viewXpath == HLPC.xpath_optional_stock or viewXpath == HLPC.xpath_come_on):
             API().assertElementByContentDesc(self.testcase,
                                              self.driver,

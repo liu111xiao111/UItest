@@ -5,7 +5,7 @@ class SquareModulePageConfigs():
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
 
     # 广场详细页标题
-    resource_id_title = "com.wanda.app.wanhui:id/txt_common_title"
+    resource_id_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # 搜索按钮
     resource_id_iv_search_iv = "com.wanda.app.wanhui:id/iv_search_entry"
@@ -15,6 +15,7 @@ class SquareModulePageConfigs():
     # text指明类型为text label,后面是文字的拼音
     text_sign_on = u"签到";
     text_find_store = u"找店";
+    resource_id_square_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
     text_parking = u"停车";
     text_member = u"会员";
     text_food = u"美食汇";
@@ -29,7 +30,7 @@ class SquareModulePageConfigs():
     text_flash_sales = u"限时抢购"
 
     # Click button time out
-    click_on_button_timeout = 30
+    click_on_button_timeout = 60
 
     # Movie button
     text_movie_button = u"电影逛"
@@ -48,7 +49,7 @@ class SquareModulePageConfigs():
     text_born_to_shop = u"爱购物"
 
     # Get view time out
-    get_view_timeout = 60
+    get_view_timeout = 90
 
     # Find store button
     xpath_find_store_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"

@@ -20,7 +20,7 @@ class SalesPromotionPage(SuperPage):
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SPPC.resource_id_tv_active_tv,
+                                        SPPC.resource_id_tv_coupon_tv,
                                         30)
  
     def clickOnActiveTab(self):

@@ -101,6 +101,12 @@ class DashboardPageConfigs():
     #Olympic cancle button
     resource_id_iv_olympic_cancle_iv = "com.wanda.app.wanhui:id/iv_close_rio_olympic"
 
+    #双十一
+    resource_id_iv_double_eleven_iv = "com.wanda.app.wanhui:id/iv_nov11_page_bg"
+
+    #双十一取消按钮
+    resource_id_iv_double_eleven_cancle_iv = "com.wanda.app.wanhui:id/iv_nov11_close"
+
     def __init__(self):
         pass;
 
