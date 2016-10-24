@@ -67,7 +67,7 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
         myFfanPage.clickOnParkingPayment()
         parkingPaymentInputPlateNumberPage.validSelf()
         parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        parkingPaymentInputPlateNumberPage.validLunbogundongtiao()
+        #parkingPaymentInputPlateNumberPage.validLunbogundongtiao()
 
         # 输入要绑定的车牌号
         #parkingPaymentInputPlateNumberPage.inputPlateNumber()

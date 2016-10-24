@@ -46,7 +46,7 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
         searchPage.inputGoodsName()
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(10)
-        searchPage.validSearchResult(u"MU8600", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+        searchPage.validSearchResult(u"MU8600", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[2]")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoShangPinTestCase)

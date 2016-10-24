@@ -34,7 +34,7 @@ class QianDaoTestCase(TestCase):
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-        TestPrepare(self, self.driver, self.logger).prepare()
+        TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
@@ -47,11 +47,11 @@ class QianDaoTestCase(TestCase):
         if not signOnPage.validChickedInStatus(False):
             signOnPage.clickOnSignIn()
 
-            popupPage = PopupPage(self, self.driver, self.logger)
-            if popupPage.validSelf("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[61]",
-                                   VerifyActivityKeywordsType.XPATH, False):
-                popupPage.clickOnButton("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]",
-                                        ClickActivityKeywordsType.XPATH)
+            # popupPage = PopupPage(self, self.driver, self.logger)
+            # if popupPage.validSelf("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[61]",
+            #                        VerifyActivityKeywordsType.XPATH, False):
+            #     popupPage.clickOnButton("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]",
+            #                             ClickActivityKeywordsType.XPATH)
 
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()
