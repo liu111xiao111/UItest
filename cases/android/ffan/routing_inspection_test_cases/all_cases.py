@@ -23,7 +23,7 @@ from cases.android.ffan.routing_inspection_test_cases.reCiSouSuo import ReCiSouS
 from cases.android.ffan.routing_inspection_test_cases.dianYing import DianYingTestCase
 from cases.android.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJieTestCase
-from cases.android.ffan.routing_inspection_test_cases.qinZi import QinZiTestCase
+#from cases.android.ffan.routing_inspection_test_cases.qinZi import QinZiTestCase
 from cases.android.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.shangChao import ShangChaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import MingDianYouPinTestCase
@@ -68,7 +68,7 @@ from cases.android.ffan.routing_inspection_test_cases.guangChangYouHui import Gu
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongZhangDan import FeiFanTongZhangDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongQiTaKuaiJieRuKou import FeiFanTongQiTaKuaiJieRuKouTestCase
 from cases.android.ffan.routing_inspection_test_cases.yaoYiYao import YaoYiYaoTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeFuKuanMa import WoDeFuKuanMaTestCase
+#from cases.android.ffan.routing_inspection_test_cases.woDeFuKuanMa import WoDeFuKuanMaTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiDengLuMiMa import WoDeSheZhiXiuGaiDengLuMiMaTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiZhiFuMiMa import WoDeSheZhiXiuGaiZhiFuMiMaTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiXiaoEMianMiZhiFu import WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     suite.addTest(FeiFanTongZhangDanTestCase("testFeiFanTongZhangDan")) # 飞凡通账单 No.43
     suite.addTest(FeiFanTongQiTaKuaiJieRuKouTestCase("testFeiFanTongQiTaKuaiJieRuKou")) # 飞凡通其他快捷入口 No.45
     suite.addTest(YaoYiYaoTestCase("testYaoYiYao")) # 摇一摇 No.48
-    suite.addTest(WoDeFuKuanMaTestCase("testWoDeFuKuanMa")) # 我的付款码 No.54
+    #suite.addTest(WoDeFuKuanMaTestCase("testWoDeFuKuanMa")) # 我的付款码 No.54
     suite.addTest(WoDeSheZhiXiuGaiDengLuMiMaTestCase("testWoDeSheZhiXiuGaiDengLuMiMa")) # 我的设置(修改登录密码) No.57
     suite.addTest(WoDeSheZhiXiuGaiZhiFuMiMaTestCase("testWoDeSheZhiXiuGaiZhiFuMiMa")) # 我的设置(修改支付密码) No.57
     suite.addTest(WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase("testWoDeSheZhiXiuGaiXiaoEMianMiZhiFu")) # 我的设置(修改小额免密支付) No.57
