@@ -17,12 +17,17 @@ class SalesPromotionPage(SuperPage):
         '''
             usage : 判断 "优惠活动" 页显示是否正确
         '''
-        API().assertElementByResourceId(self.testcase,
+        '''API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SPPC.resource_id_tv_coupon_tv,
-                                        60)
- 
+                                        60)'''
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPPC.test_coupon_title,
+                                  SPPC.verify_element_timeout)
+
     def clickOnActiveTab(self):
         '''
             usage : 点击优惠券tab

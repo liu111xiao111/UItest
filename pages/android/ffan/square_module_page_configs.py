@@ -30,7 +30,7 @@ class SquareModulePageConfigs():
     text_flash_sales = u"限时抢购"
 
     # Click button time out
-    click_on_button_timeout = 60
+    click_on_button_timeout = 90
 
     # Movie button
     text_movie_button = u"电影逛"

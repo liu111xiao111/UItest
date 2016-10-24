@@ -22,7 +22,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         PPPC.resource_id_tv_parking_payment_tv,
-                                        10)
+                                        90)
 
     def inputVIN(self):
         '''

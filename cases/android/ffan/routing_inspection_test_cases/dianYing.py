@@ -81,6 +81,7 @@ class DianYingTestCase(TestCase):
             popupPage.waitBySeconds()
 
         seatPickingPage.validSelf()
+        seatPickingPage.waitBySeconds(3)
         seatPickingPage.validKeywords(tempText)
         seatPickingPage.clickBackKey()
 
