@@ -65,7 +65,6 @@ class MaiDanTestCase(TestCase):
         myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
 
         # 首页点击乐付
-        dashboardPage.waitBySeconds(seconds=1)
         dashboardPage.validSelf()
         dashboardPage.clickOnLePay()
         lePayPage.validSelf()
@@ -75,62 +74,10 @@ class MaiDanTestCase(TestCase):
         lePayDetailPage.validSelf()
 
         # 下单
-        lePayDetailPage.waitBySeconds(seconds=2)
         lePayDetailPage.inputMoney()
         lePayDetailPage.waitBySeconds(seconds=5)
         lePayDetailPage.clickOnPay()
         lePayWayPage.validSelf()
-        lePayWayPage.waitBySeconds(2)
-
-        # 获取订单号
-        lePayOrderNumber = lePayWayPage.getOrderNumber()
-
-        # 取消订单
-        lePayWayPage.clickOnCancelIcon()
-        lePayCancelOrderPage.waitBySeconds(seconds=1)
-        lePayCancelOrderPage.clickOnConfirmBtn()
-        lePayDetailPage.clickBackKey()
-        lePayPage.clickBackKey()
-
-        # 查看我的订单状态
-        dashboardPage.clickOnMy()
-        myFfanPage.validSelf()
-        myFfanPage.clickOnMyOrder()
-        myOrderPage.validSelf()
-
-        # 查看我的订单 -- 全部订单状态
-        myOrderPage.waitBySeconds(seconds=3)
-        myOrderPage.clickOnOrderDetails()
-        myOrderDetailsPage.waitBySeconds(seconds=5)
-        myAllOrderNumber = myOrderDetailsPage.getMyOrderNumber();
-        myOrderDetailsPage.validSelfAllOrders(lePayOrderNumber, myAllOrderNumber)
-
-        # 查看我的订单 -- 电影娱乐订单状态
-        myOrderDetailsPage.clickBackKey()
-        myOrderPage.clickOnOrderList()
-        myOrderPage.clickOnFilm()
-        myOrderPage.clickOnOrderDetails()
-        myOrderDetailsPage.waitBySeconds(seconds=5)
-        myFilmOrderNumber = myOrderDetailsPage.getMyFilmOrderNumber();
-        myOrderDetailsPage.validSelfFilmOrders(lePayOrderNumber, myFilmOrderNumber)
-
-        # 查看我的订单 -- 乐付买单订单状态
-        myOrderDetailsPage.clickBackKey()
-        myOrderPage.clickOnOrderList()
-        myOrderPage.clickOnLePay()
-        myOrderPage.clickOnOrderDetails()
-        myOrderDetailsPage.waitBySeconds(seconds=5)
-        myLePayOrderNumber = myOrderDetailsPage.getMyLePayOrderNumber();
-        myOrderDetailsPage.validSelfLePayOrders(lePayOrderNumber, myLePayOrderNumber)
-
-        # 查看我的订单 -- 停车缴费订单状态
-        '''myOrderDetailsPage.clickBackKey()
-        myOrderPage.clickOnAllOrders()
-        myOrderPage.clickOnParkingPayment()
-        myOrderPage.clickOnOrderDetails()
-        myOrderDetailsPage.waitBySeconds(seconds=2)
-        myParkingPaymentOrderNumber = myOrderDetailsPage.getMyParkingPaymentOrderNumber();
-        myOrderDetailsPage.validSelfParkingPaymentOrders(lePayOrderNumber, myParkingPaymentOrderNumber)'''
 
 
 if __name__ == "__main__":

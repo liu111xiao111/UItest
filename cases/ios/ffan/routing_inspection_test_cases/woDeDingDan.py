@@ -60,8 +60,8 @@ class WoDeDingDanTestCase(TestCase):
         myOrderPage.validSelf()
         myOrderPage.clickBackKey()
 
-        myOrderPage.clickOnDaifukuan()
-        myOrderPage.waitBySeconds(10)
+        #myOrderPage.clickOnDaifukuan()
+
 
 
 

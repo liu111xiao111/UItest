@@ -46,7 +46,7 @@ class QuanChengSouSuoMenDianTestCase(TestCase):
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(10)
-        searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+        searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[2]")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoMenDianTestCase)

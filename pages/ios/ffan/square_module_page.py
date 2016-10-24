@@ -236,9 +236,9 @@ class SquareModulePage(SuperPage):
         '''
         验证会员页面
         '''
-        API().validElementByName(self.driver, self.logger,
-                                 SquareModulePageConfigs.text_members_privilege,
-                                 SquareModulePageConfigs.get_view_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  SquareModulePageConfigs.text_members_privilege,
+                                  SquareModulePageConfigs.assert_view_timeout)
 
 
 if __name__ == '__main__':

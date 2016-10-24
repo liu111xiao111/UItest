@@ -41,14 +41,14 @@ class FeiFanTongQitaRukouTestCase(TestCase):
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.validSelf()
 
-        otherEntranceName = (u"零花钱充值", u"零花钱提现", u"积分", u"市民/公交卡", u"飞凡贷",
-                     u"快易花", u"快利来", u"预约理财")
+        otherEntranceName = (u"零花钱充值", u"零花钱提现", u"积分", u"市民/公交卡",
+                                u"快易花", u"快利来", u"预约理财",u"意外险")
         otherEntrancePageName = (u"零花钱现金充值", u"零花钱现金提现", u"我的飞凡积分", u"市民/公交卡", u"飞凡贷",
                              u"快易花", u"快利来", u"预约理财")
         count = 0;
         for tempNum in range(8):
-            count = count + 1
             feifanCardPage.validFeiFanTongOtherEntrance(otherEntrancePageName[count], otherEntranceName[count])
+            count = count + 1
 
 
 

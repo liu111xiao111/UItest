@@ -61,9 +61,9 @@ class WoDeSheZhiMiMaTestCase(TestCase):
         updateLoginPasswordPage = UpdateLoginPasswordPage(self, self.driver, self.logger)
         updateLoginPasswordPage.waitBySeconds()
         updateLoginPasswordPage.validSelf()
-        updateLoginPasswordPage.inputOldLoginPassword("hupi123456")
-        updateLoginPasswordPage.inputNewLoginPassword("hupi123456")
-        updateLoginPasswordPage.inputNewLoginPasswordAgain("hupi123456")
+        updateLoginPasswordPage.inputOldLoginPassword("liutao-123qwe")
+        updateLoginPasswordPage.inputNewLoginPassword("liutao-123qwe")
+        updateLoginPasswordPage.inputNewLoginPasswordAgain("liutao-123qwe")
         updateLoginPasswordPage.clickOnConfirm()
 
         accountManagementPage.waitBySeconds()
