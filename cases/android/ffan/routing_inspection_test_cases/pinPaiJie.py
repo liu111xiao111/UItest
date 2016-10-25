@@ -50,7 +50,7 @@ class PinPaiJieTestCase(TestCase):
     def testPinPaiJie(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
         brandPage = BrandCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
-        famousDetailsPage = FamousDetailsCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
+        #famousDetailsPage = FamousDetailsCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
 
         # Load "推荐" page
         dashboardPage.validSelf();

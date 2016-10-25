@@ -186,10 +186,12 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击页面下方的优惠券
         '''
-        width = API().getWidthOfDevice(self.driver, self.logger)
-        hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(8):
-            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 4)
+        tempWidth = API().getWidthOfDevice(self.driver, self.logger)
+        tempHight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(7):
+            API().scroll(self.driver, self.logger, tempWidth / 2,
+                         tempHight * 4 / 5, tempWidth / 2, tempHight / 5)
+
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
@@ -262,14 +264,17 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击爱购物
         '''
-        width = API().getWidthOfDevice(self.driver, self.logger)
-        hight = API().getHeightOfDevice(self.driver, self.logger)
-        API().scroll(self.driver, self.logger, width/2, hight/2, width/2, hight/3)
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SMPC.text_born_to_shop,
-                                 SMPC.click_on_button_timeout)
+        '''tempWidth = API().getWidthOfDevice(self.driver, self.logger)
+        tempHight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(3):
+            API().scroll(self.driver, self.logger, tempWidth / 2,
+                         tempHight * 4 / 5, tempWidth / 2, tempHight / 5)'''
+
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SMPC.xpath_liking_shopping,
+                                  SMPC.click_on_button_timeout)
 
     def clickOnGeneralCoupon(self):
         '''
