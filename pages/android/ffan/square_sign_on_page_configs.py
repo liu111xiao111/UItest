@@ -10,10 +10,10 @@ class SignOnPageConfigs():
     content_desc_sign_on = u"签到";
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # Sign in button
     xpath_sign_in_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[2]/android.view.View[2]"

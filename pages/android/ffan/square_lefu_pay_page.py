@@ -26,7 +26,7 @@ class SquareLefuPayPage(SuperPage):
                                                       self.logger,
                                                       SLPPC.view_text_distance,
                                                       90)
-        
+
         plaza_number = len(elementList)
         if plaza_number > 1:
             for i in range(1, plaza_number):

@@ -21,7 +21,7 @@ class DashboardPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
-                                        60)
+                                        90)
 
     def clickOnMy(self):
         '''
@@ -271,7 +271,6 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击签到
         '''
-
         API().clickElementByText(self.testcase, self.driver, self.logger,
                                  DPC.text_sign_in_tv, DPC.click_on_button_timeout)
 
