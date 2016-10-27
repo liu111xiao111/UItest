@@ -33,6 +33,10 @@ class SettingsPageConfigs():
     resource_id_account_management = "com.wanda.app.wanhui:id/list_item_title"
     resource_id_account_management_st = u"账号管理"
 
+    name_pay_settings = u"支付设置"
+
+    name_mianmi_page_settings = u"免密支付"
+
     # Assert view time out
     assert_view_timeout = 10
 

@@ -51,11 +51,16 @@ class WoDeSheZhiXiaoEMianMiTestCase(TestCase):
 
         settingPage = SettingsPage(self, self.driver, self.logger)
         settingPage.validSelf()
-        settingPage.clickOnAccountManagement()
+        #settingPage.clickOnAccountManagement()
+        #点击支付设置
+        settingPage.clickOnPaySettings()
+        #点击免支付密
+        settingPage.clickOnMianmiPaySettings()
 
-        accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
-        accountManagementPage.validSelf()
-        accountManagementPage.clickOnSmallAmountPasswordLessPayments()
+
+        # accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
+        # accountManagementPage.validSelf()
+        # accountManagementPage.clickOnSmallAmountPasswordLessPayments()
 
         smallAmountPasswordLessPaymentsPage = SmallAmountPasswordLessPaymentsPage(self, self.driver, self.logger)
         smallAmountPasswordLessPaymentsPage.validSelf()
@@ -65,8 +70,8 @@ class WoDeSheZhiXiaoEMianMiTestCase(TestCase):
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
         smallAmountPasswordLessPaymentsPage.clickBackKey()
 
-        accountManagementPage.validSelf()
-        accountManagementPage.clickBackKey()
+        #accountManagementPage.validSelf()
+        settingPage.clickBackKey()
 
         settingPage.validSelf()
         settingPage.clickBackKey()

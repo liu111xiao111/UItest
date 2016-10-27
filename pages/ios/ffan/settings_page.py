@@ -41,6 +41,21 @@ class SettingsPage(SuperPage):
                                  SettingsPageConfigs.resource_id_account_management_st,
                                  SettingsPageConfigs.assert_view_timeout)
 
+    def clickOnPaySettings(self):
+        '''
+        usage:点击支付设置
+        '''
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SettingsPageConfigs.name_pay_settings,
+                                 SettingsPageConfigs.click_on_button_timeout)
 
+    def clickOnMianmiPaySettings(self):
+        '''
+        usage: click on the small account password-less payments button.
+        '''
+
+        API().clickElementByName(self.testcase, self.driver, self.logger,
+                                 SettingsPageConfigs.name_mianmi_page_settings,
+                                 SettingsPageConfigs.click_on_button_timeout)
 if __name__ == '__main__':
     pass;
