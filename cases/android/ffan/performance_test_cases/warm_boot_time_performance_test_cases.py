@@ -3,7 +3,6 @@
 import os
 import time
 import subprocess
-from unittest import TestCase
 from configs.driver_configs import appPackage_ffan
 from configs.driver_configs import appActivity_ffan
 
@@ -13,7 +12,7 @@ resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dir
                                 os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
 
 
-class WarmBootTimePerformanceTestCases(TestCase):
+class WarmBootTimePerformanceTestCases():
     '''
     作者 刘涛
     热启动时间情况性能测试
@@ -26,7 +25,10 @@ class WarmBootTimePerformanceTestCases(TestCase):
         cmdBack = "adb shell input %s" % keycode
         file = os.path.join(reportPath, "WarmBootTime_performance.txt")
         f1 = open(file, mode="a", encoding='utf-8')
+        os.system('adb shell "am start -W "' + appPackage_ffan + '/' + appActivity_ffan )
         for _ in range(0,10):
+            os.system(cmdBack)
+            time.sleep(0.3)
             os.system(cmdBack)
             time.sleep(0.3)
             os.system(cmdBack)
@@ -34,27 +36,9 @@ class WarmBootTimePerformanceTestCases(TestCase):
             pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)
             pipe.stdout
             time.sleep(5)
+        os.system(cmdBack)
+        time.sleep(0.3)
+        os.system(cmdBack)
+        time.sleep(0.3)
+        os.system(cmdBack)
         f1.close()
-        # f2 = open("WarmBootTime_" + appPackage_ffan + "_" + now + ".txt", "r")
-        # allTime = []
-        # originals = f2.readlines()
-        # f2.close
-        # for contents in originals:
-        #     try:
-        #         total = contents.split(" ")[1]
-        #         allTime.append(total)
-        #         time.sleep(1)
-        #     except:
-        #         continue
-        # finalTime = 0
-        # for i in range (len(allTime)):
-        #     finalTime = int (allTime[i]) + finalTime
-        #     time.sleep(1)
-        # averageTime = finalTime/10
-        # logName = "WarmBootTime_" + appPackage_ffan + "_" + now + ".txt"
-        # f = open(logName, "a")
-        # f.write("\nTotal Time: " + str(finalTime) + "\n")
-        # f.write("Average Time: " + str(averageTime))
-        # time.sleep(1)
-        # f.close
-        # print("getWarmBootTime Test complete, go to " + logName + " and see the details\n")

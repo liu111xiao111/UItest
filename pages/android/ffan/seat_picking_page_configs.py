@@ -8,13 +8,13 @@ class SeatPickingPageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Assert invalid view time out
-    assert_invalid_view_time = 3
+    assert_invalid_view_time = 30
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # SeatPicking title
     resource_id_seat_picking_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"

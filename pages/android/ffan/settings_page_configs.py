@@ -33,6 +33,7 @@ class SettingsPageConfigs():
     # Account management button
     resource_id_account_management = "com.wanda.app.wanhui:id/list_item_title"
     text_account_management = u"账号管理"
+    text_payment_management = u"支付设置"
 
     # Assert view time out
     assert_view_timeout = 30

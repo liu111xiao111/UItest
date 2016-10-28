@@ -8,13 +8,13 @@ class GoodsDetailsPageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # Flash Sales Square title
     resource_id_reource_goods_details_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"

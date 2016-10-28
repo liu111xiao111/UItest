@@ -19,7 +19,7 @@ class SquareShoppingPage(SuperPage):
         '''
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         SSPC.resource_id_iv_find_iv,
-                                        10)
+                                        90)
 
     def clickOnSubCommodity(self):
         '''
@@ -27,7 +27,7 @@ class SquareShoppingPage(SuperPage):
         '''
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         SSPC.xpath_sub_commodity_button,
-                                        10)
+                                        90)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                        SSPC.xpath_sub_commodity_button,
                                        SSPC.click_on_button_timeout)

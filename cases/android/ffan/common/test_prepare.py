@@ -26,6 +26,7 @@ class TestPrepare:
         usage: 测试前准备方法，移除更新和选择城市弹出框，并且根据选择判断是否需要登录
         '''
         self.closeOlympicTip()
+        self.closeDoubleElevenTip()
         # self.updateVersion()
         self.switchCity()
 
@@ -117,5 +118,11 @@ class TestPrepare:
         usage: 点击取消奥运抽奖
         '''
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
-        dashboardPage.waitBySeconds(10)
         dashboardPage.ClickOlympicCancleBtn()
+
+    def closeDoubleElevenTip(self):
+        '''
+        usage: 点击取消双十一抽奖
+        '''
+        dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
+        dashboardPage.ClickDoubleElevenCancleBtn()

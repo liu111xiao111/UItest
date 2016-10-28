@@ -52,7 +52,8 @@ class Performance(object):
             logName = "Cpu_performance.txt"
             logPath = os.path.join(self.reportPath, logName)
             f = open(logPath, "a")
-            f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), cpuRate) + "\n")
+            if len(cpuRate.strip().split(' ')) == 1:
+                f.write("%s:%s" % (time.strftime("%Y/%m/%d %H_%M_%S"), cpuRate) + "\n")
             f.close()
 
     def getMemory(self):
@@ -191,3 +192,4 @@ class Performance(object):
         uid = uidInfo.decode('utf-8').split('\t')[1]
         return uid
 
+Performance('/Users/songbo/').getCpu()

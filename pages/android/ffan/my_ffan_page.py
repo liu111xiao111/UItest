@@ -139,12 +139,6 @@ class MyFfanPage(SuperPage):
                                   self.logger,
                                   MFPC.text_use,
                                   MFPC.verify_view_timeout)
-        network = API().validElementByXpath(self.driver,
-                                            self.logger,
-                                            MFPC.text_use,
-                                            MFPC.verify_view_timeout)
-        if not network:
-            API().assertTrue(self.testcase, self.logger, False)
 
     def clickOnComments(self):
         '''

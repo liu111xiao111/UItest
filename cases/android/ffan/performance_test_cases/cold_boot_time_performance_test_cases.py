@@ -32,27 +32,5 @@ class ColdBootTimePerformanceTestCases(TestCase):
             pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)
             pipe.stdout
             time.sleep(10)
+        os.system(cmdKill)
         f1.close()
-        # f2 = open("ColdBootTime_performance.txt", "r")
-        # allTime = []
-        # originals = f2.readlines()
-        # f2.close
-        # for contents in originals:
-        #     try:
-        #         total = contents.split(" ")[1]
-        #         allTime.append(total)
-        #         time.sleep(1)
-        #     except:
-        #         continue
-        # finalTime = 0
-        # for i in range (len(allTime)):
-        #     finalTime = int (allTime[i]) + finalTime
-        #     time.sleep(1)
-        # averageTime = finalTime/10
-        # logName = "ColdBootTime_" + appPackage_ffan + "_" + now + ".txt"
-        # f = open(logName, "a")
-        # f.write("\nTotal Time: " + str(finalTime) + "\n")
-        # f.write("Average Time: " + str(averageTime))
-        # time.sleep(1)
-        # f.close
-        # print("getColdBootTime Test complete, go to " + logName + " and see the details\n")

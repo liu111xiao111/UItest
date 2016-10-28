@@ -20,6 +20,8 @@ from pages.android.ffan.square_sign_on_page import SignOnPage
 from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
 
+TESTCITY = u"沈阳市"
+DESCITY = u"北京市"
 
 class QianDaoTestCase(TestCase):
     '''
@@ -49,11 +51,15 @@ class QianDaoTestCase(TestCase):
     def testQiandao(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.waitBySeconds(10)
+        tempCityName = dashboardPage.getCityName()
+        if tempCityName != TESTCITY:
+            dashboardPage.clickOnSwithCith()
+            dashboardPage.switchCity(TESTCITY)
+        dashboardPage.waitBySeconds(2)
         dashboardPage.clickOnSignOn()
 
         signOnPage = SignOnPage(self, self.driver, self.logger)
-        signOnPage.waitBySeconds(10)
+        signOnPage.waitBySeconds(2)
         signOnPage.validSelf()
 
         if not signOnPage.validChickedInStatus(False):
@@ -63,11 +69,13 @@ class QianDaoTestCase(TestCase):
 
             dashboardPage.clickOnSignOn()
 
-            signOnPage.waitBySeconds(10)
+            signOnPage.waitBySeconds(2)
             signOnPage.validChickedInStatus()
             signOnPage.clickBackKey()
         else:
             signOnPage.clickBackKey()
+        dashboardPage.clickOnSwithCith()
+        dashboardPage.switchCity(DESCITY)
 
 
 if __name__ == "__main__":

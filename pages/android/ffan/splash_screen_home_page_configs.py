@@ -8,7 +8,7 @@ class SplashScreenHomePageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 20
 
     # Verify view time out
     verify_view_timeout = 10

@@ -15,7 +15,7 @@ from configs.driver_configs import deviceName_andr
 from configs.driver_configs import driver_url
 from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
-from pages.android.ffan.account_management_page import AccountManagementPage
+from pages.android.ffan.payment_management_page import PaymentManagementPage
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.settings_page import SettingsPage
@@ -60,11 +60,11 @@ class WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase(TestCase):
 
         settingPage = SettingsPage(self, self.driver, self.logger)
         settingPage.validSelf()
-        settingPage.clickOnAccountManagement()
+        settingPage.clickOnPaymentManagement()
 
-        accountManagementPage = AccountManagementPage(self, self.driver, self.logger)
-        accountManagementPage.validSelf()
-        accountManagementPage.clickOnSmallAmountPasswordLessPayments()
+        paymentManagementPage = PaymentManagementPage(self, self.driver, self.logger)
+        paymentManagementPage.validSelf()
+        paymentManagementPage.clickOnNoPasswordPyament()
 
         smallAmountPasswordLessPaymentsPage = SmallAmountPasswordLessPaymentsPage(self, self.driver, self.logger)
         smallAmountPasswordLessPaymentsPage.validSelf()
@@ -74,7 +74,7 @@ class WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase(TestCase):
             smallAmountPasswordLessPaymentsPage.clickOnSmallAmountPasswordLessPaymentsSwitch()
 
         smallAmountPasswordLessPaymentsPage.clickBackKey()
-        accountManagementPage.clickBackKey()
+        paymentManagementPage.clickBackKey()
         settingPage.clickBackKey()
 
 

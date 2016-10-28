@@ -52,7 +52,7 @@ class GuangChangAiGouWuTestCase(TestCase):
     def testGuangChangAiGouWu(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
 
         # 绑定北京通州万达广场
         dashboardPage.validSelf()
@@ -60,19 +60,15 @@ class GuangChangAiGouWuTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputText("北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
         searchPage.clickOnSearchResultFirstItem()
-        squarePage.validSelf()
-        squarePage.waitBySeconds(10)
-        squarePage.clickOnBornToShop()
+        squareModulePage.validSelf()
+        squareModulePage.clickOnBornToShop()
 
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
-        squareShoppingPage.waitBySeconds(10)
         squareShoppingPage.validSelf()
         tempText = squareShoppingPage.clickOnSubCommodity()
 
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
-        goodsDetailsPage.waitBySeconds(10)
         goodsDetailsPage.validSelf()
         goodsDetailsPage.validKeywords(tempText)
 
@@ -83,5 +79,6 @@ if __name__ == "__main__":
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
+                                           description='Result for test')
     runner.run(suite)

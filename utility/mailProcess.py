@@ -198,17 +198,17 @@ class ReportHandle(object):
         for count in range(0, len(errorCases)):
             caseAutoName = errorCases[count].split('.')[-1]
             caseName = errorCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>Error</td></tr>" % (self.caseList[caseAutoName], caseName)
+            htmlContent = htmlContent + "<tr class='errorClass'><td>%s</td><td>%s</td><td>%s</td><td>Error</td></tr>" % (self.caseList[caseAutoName][1], self.caseList[caseAutoName][0], caseName)
 
         for count in range(0, len(failedCases)):
             caseAutoName = failedCases[count].split('.')[-1]
             caseName = failedCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>Failed</td></tr>" % (self.caseList[caseAutoName], caseName)
+            htmlContent = htmlContent + "<tr class='failClass'><td>%s</td><td>%s</td><td>%s</td><td>Failed</td></tr>" % (self.caseList[caseAutoName][1], self.caseList[caseAutoName][0], caseName)
 
         for count in range(0, len(passedCases)):
             caseAutoName = passedCases[count].split('.')[-1]
             caseName = passedCases[count].split('.')[-2]
-            htmlContent = htmlContent + "<tr class='passClass'><td>%s</td><td>%s</td><td>Passed</td></tr>" % (self.caseList[caseAutoName], caseName)
+            htmlContent = htmlContent + "<tr class='passClass'><td>%s</td><td>%s</td><td>%s</td><td>Passed</td></tr>" % (self.caseList[caseAutoName][1], self.caseList[caseAutoName][0], caseName)
 
         self.htmlContents = htmlContent
 
@@ -286,5 +286,5 @@ def sendTestResultMail(reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
-    sendTestResultMail(reportPath, 'android')
+    reportPath = '/Users/songbo/'
+    sendTestResultMail(reportPath, 'ios')

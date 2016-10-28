@@ -72,15 +72,15 @@ class PeformanceDraw(object):
         }
 
         self.titleDict = {
-            'cpu'    : u'CPU 性能(%)',
-            'cold'   : u'冷启动性能(ms)',
-            'warm'   : u'热启动性能(ms)',
-            'traffic': u'流量使用',
-            'draw'   : u'Draw 性能',
-            'fps'    : u'Fps 性能',
-            'memory' : u'内存性能(Mb)',
-            'rx'     : u'上行速率',
-            'tx'     : u'下行速率'
+            'cpu'    : u'CPU Performance(%)',
+            'cold'   : u'Cold Boot Performance(ms)',
+            'warm'   : u'Warm Boot Performance(ms)',
+            'traffic': u'Traffic Performance(Mb)',
+            'draw'   : u'Draw Performance',
+            'fps'    : u'Fps Performance',
+            'memory' : u'Memory Performance(Mb)',
+            'rx'     : u'Upstream Rate(KBps)',
+            'tx'     : u'Downstream Rate(KBps)'
         }
 
 
@@ -409,5 +409,5 @@ def sendPerformanceMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161018/1'
+    reportPath = '/Users/songbo/workspace/autotest/report/ffan/20161026/2'
     sendPerformanceMail('2016/10/14 09:26:01', '2016/10/14 11:15:08', reportPath, 'android')

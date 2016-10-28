@@ -87,7 +87,7 @@ class SearchPage(SuperPage):
                                        self.driver,
                                        self.logger,
                                        SPC.resource_tv_search_tv,
-                                       10)
+                                       90)
 
     def clickOnSearchResultFirstItem(self):
         '''
@@ -97,12 +97,12 @@ class SearchPage(SuperPage):
                                   self.driver,
                                   self.logger,
                                   SPC.resource_id_specific_store_button,
-                                  30)
+                                  90)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SPC.xpath_search_result_first_item,
-                                  30)
+                                  90)
 
         #return tempText
 
