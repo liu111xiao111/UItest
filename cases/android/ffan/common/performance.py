@@ -191,5 +191,3 @@ class Performance(object):
 
         uid = uidInfo.decode('utf-8').split('\t')[1]
         return uid
-
-Performance('/Users/songbo/').getCpu()
