@@ -17,6 +17,7 @@ class TestPrepare:
     def prepare(self, needLogin=True):
 #         self.updateVersion()
         self.switchCity()
+        self.dealActivities()
 
         if needLogin:
             self.login()
@@ -62,6 +63,16 @@ class TestPrepare:
     def closeHomeShakeTips(self):
         dashboardPage = DashboardPage(testcase=self.testcase , driver=self.driver , logger=self.logger)
         dashboardPage.clickOnHomeShakeTips()
+
+
+    def dealActivities(self):
+        '''
+         处理主页出现的活动页面,如果有活动页面将其删除
+        :return:
+        '''
+        dashboardPage = DashboardPage(testcase=self.testcase, driver=self.driver, logger=self.logger)
+        dashboardPage.dealAcitivities()
+
 
 if __name__ == '__main__':
     pass
