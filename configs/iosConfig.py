@@ -2,9 +2,9 @@
 
 from utility.device_info_util import DeviceInfoUtil
 
-appVersion = '4.8.0.0'
+appVersion = '4.9.2.0'
 
-phoneVersion = 'iPhone5c'
+phoneVersion = 'iPhone6s'
 
 buildVersion = '9.3.2'
 

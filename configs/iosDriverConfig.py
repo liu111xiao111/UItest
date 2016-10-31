@@ -14,9 +14,9 @@ class IosDriverConfigs(object):
 
     deviceName = "iPhone6s"
 
-    #bundleId = "com.dianshang.wanhui"
+    bundleId = "com.dianshang.wanhui"
 
-    bundleId = "com.dianshang.feifanbp"
+    #bundleId = "com.dianshang.feifanbp"
 
     #bundleId = "com.app.yaocaibao"
 
