@@ -40,7 +40,7 @@ class DianYingTestCase(TestCase):
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
