@@ -60,6 +60,6 @@ caseList = {
     'WoDeSheZhiMiMaTestCase'                        : [u'我的设置(修改密码)', '59-2'],
     'WoDeXiaoXiZhongXinTestCase'                    : [u'我的消息中心', '60'],
     'WoDeTuiChuTestCase'                            : [u'我的退出', '61'],
-    'FeiFanTongShiminGongjiaokaTestCase'            : [u'飞凡同市民/公交卡', '62'],
+    'FeiFanTongShiminGongjiaokaTestCase'            : [u'飞凡通市民/公交卡', '62'],
     'BanBenShengJiTestCase'                         : [u'版本升级', '63'],
 }

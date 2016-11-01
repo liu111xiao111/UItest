@@ -38,3 +38,10 @@ class HomePage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger, Name.userIdentity)
         API().assertElementByName(self.testcase, self.driver, self.logger, Name.userStore)
         API().assertElementByName(self.testcase, self.driver, self.logger, Text.phoneNumber)
+
+   def clickOnEmployeeModule(self):
+       '''
+       点击员工管理模块
+       :return:
+       '''
+       API().clickElementByName(self.testcase, self.driver, self.logger, Name.employeeManager)
