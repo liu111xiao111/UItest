@@ -42,13 +42,13 @@ class ShangChaoTestCase(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        dashboardPage.clickOnCity()
+        #dashboardPage.clickOnCity()
 
-        switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-        switchCityPage.inputCities(u"厦门市")
-        switchCityPage.clickOnCityListFirst()
+        #switchCityPage = SwitchCityPage(self, self.driver, self.logger)
+        #switchCityPage.inputCities(u"厦门市")
+        #switchCityPage.clickOnCityListFirst()
 
-        dashboardPage.validCities(u"厦门市")
+        #dashboardPage.validCities(u"厦门市")
         dashboardPage.clickOnStores()
 
         storesAndSupermarketsPage = StoresAndSupermarketsPage(self, self.driver, self.logger)
@@ -62,13 +62,13 @@ class ShangChaoTestCase(TestCase):
         storesAndSupermarketsPage.validSelf()
         storesAndSupermarketsPage.clickBackKey()
 
-        dashboardPage.validSelf()
-        dashboardPage.clickOnCity()
+        #dashboardPage.validSelf()
+        #dashboardPage.clickOnCity()
 
-        switchCityPage.inputCities(u"北京市")
-        switchCityPage.clickOnCityListFirst()
+        #switchCityPage.inputCities(u"北京市")
+        #switchCityPage.clickOnCityListFirst()
 
-        dashboardPage.validCities(u"北京市")
+        #dashboardPage.validCities(u"北京市")
 
 
 if __name__ == "__main__":
