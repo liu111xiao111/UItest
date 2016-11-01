@@ -228,5 +228,12 @@ class DashboardPage(SuperPage):
                                   DashboardPageConfigs.click_on_button_timeout)
 
 
+
+    def dealAcitivities(self):
+        hasActivities = API().validElementByName(self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
+        if hasActivities:
+            API().clickElementByName(self.testcase,self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
+
+
 if __name__ == '__main__':
     pass
