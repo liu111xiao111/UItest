@@ -122,5 +122,9 @@ class DashboardPageConfigs():
     # Sign in
     name_sign_in_st = u"签到"
 
+
+    name_activities_deleate_icon = "pop delete"
+
+
     def __init__(self):
         pass;
