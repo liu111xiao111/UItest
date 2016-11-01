@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import os
-import time
 from unittest import TestCase
-from unittest import TestLoader
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from pages.ios.shanghu.dengLuPage import DengLuPage
 from pages.ios.shanghu.homePage import HomePage
 
-import HTMLTestRunner
 
 class DenggLuCase(TestCase):
     '''
@@ -43,8 +39,6 @@ class DenggLuCase(TestCase):
 
         homePage.clickOnPersonalInfo()
         homePage.validPersonalInfo()
-
-        dengLuPage.waitBySeconds(20)
 
 
     def tearDown(self):
