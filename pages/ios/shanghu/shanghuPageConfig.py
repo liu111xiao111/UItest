@@ -18,6 +18,7 @@ class Xpath:
 
 
 
+
 class Name:
     login = u"登录"
     settings = u"设置"
@@ -33,6 +34,8 @@ class Name:
 class Text:
     phoneNumber = u"15624958068"
     password = u"wanda123"
+    #密码框初始文字
+    initial_password = u"请输入密码(长度8-20位)"
 
 
 
