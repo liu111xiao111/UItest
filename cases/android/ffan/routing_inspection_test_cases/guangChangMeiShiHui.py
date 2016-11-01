@@ -61,9 +61,9 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         searchPage.clickOnSearch()
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
-        squarePage.waitBySeconds(5)
+        #squarePage.waitBySeconds(20)
 
-        squarePage.scrollToFood()
+        #squarePage.scrollToFood()
         squarePage.clickOnFood()
         squareFoodPage.validSelf()
 

@@ -46,13 +46,13 @@ class SearchPageConfigs():
     resource_id_specific_store_button = "com.wanda.app.wanhui:id/title"
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Valid view time out
-    valid_view_timeout = 10
+    valid_view_timeout = 90
 
     # Get view time out
-    get_view_timeout = 10
+    get_view_timeout = 90
 
     # Hot word module
     resource_id_hot_word_module_tv = "com.wanda.app.wanhui:id/tv_hot_word"

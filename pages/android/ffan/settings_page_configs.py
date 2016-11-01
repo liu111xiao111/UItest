@@ -36,7 +36,7 @@ class SettingsPageConfigs():
     text_payment_management = u"支付设置"
 
     # Assert view time out
-    assert_view_timeout = 30
+    assert_view_timeout = 90
 
     def __init__(self):
         pass;
