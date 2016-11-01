@@ -6,6 +6,11 @@ from pages.ios.shanghu.homePage import HomePage
 
 class Prepare:
 
+    def __init__(self, testcase, driver, logger):
+        self.testcase = testcase
+        self.driver = driver
+        self.logger = logger
+
     def login(self):
         dengLuPage = DengLuPage(self, self.driver, self.logger)
         homePage = HomePage(self, self.driver, self.logger)

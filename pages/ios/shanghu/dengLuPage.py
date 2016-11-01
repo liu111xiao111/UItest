@@ -81,3 +81,15 @@ class DengLuPage(SuperPage):
         :return:
         '''
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.logout)
+
+
+    def validPassWord(self):
+        '''
+        验证密码框内容,如果为'请输入密码(长度8-20位)',则退出登录状态
+        :return:
+        '''
+        text_password = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.password)
+        self.logger.i(text_password)
+        isLogoutStatus = (text_password == Text.initial_password)
+        self.logger.i(isLogoutStatus)
+        API().assertTrue(self.testcase,self.logger,isLogoutStatus)
