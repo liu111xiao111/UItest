@@ -39,5 +39,7 @@ class SwitchCityPageConfigs(object):
     
     name_city_beijing = "北京市"
 
+    name_city_shenyang = "沈阳市"
+
     def __init__(self):
         pass

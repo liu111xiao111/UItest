@@ -34,9 +34,6 @@ class Xpath:
     new_employee_input_phone_name = "//UIAApplication[1]/UIAWindow[1]/UIATextField[3]"
 
 
-
-
-
 class Name:
     login = u"登录"
     settings = u"设置"

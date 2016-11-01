@@ -65,6 +65,15 @@ class SwitchCityPage(SuperPage):
                                 SwitchCityPageConfigs.name_city_beijing,
                                 SwitchCityPageConfigs.click_on_button_timeout)
 
+    def inputShenyang(self):
+        '''
+        usage:输入北京市
+        '''
+        API().inputStringByXpath(self.testcase, self.driver, self.logger,
+                                SwitchCityPageConfigs.xpath_city_input,
+                                SwitchCityPageConfigs.name_city_shenyang,
+                                SwitchCityPageConfigs.click_on_button_timeout)
+
     def inputCities(self, cityName):
         '''
         usage: input the city.
