@@ -12,11 +12,9 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
-from pages.ios.ffan.popup_page import ClickActivityKeywordsType
-from pages.ios.ffan.popup_page import PopupPage
-from pages.ios.ffan.popup_page import VerifyActivityKeywordsType
 from pages.ios.ffan.square_sign_on_page import SignOnPage
 from utility.logger import Logger
+from pages.ios.ffan.switch_city_page import SwitchCityPage
 
 
 class QianDaoTestCase(TestCase):
@@ -38,7 +36,14 @@ class QianDaoTestCase(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
+        switchCityPage = SwitchCityPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+
+        #签到,此版本只有沈阳城市可以签到,故先切换城市到沈阳,签到后,再切换城市回北京
+        dashboardPage.clickOnCity()
+        switchCityPage.inputShenyang()
+        switchCityPage.clickOnCityListFirst()
+
         dashboardPage.clickOnSignOn()
 
         signOnPage = SignOnPage(self, self.driver, self.logger)
@@ -55,6 +60,11 @@ class QianDaoTestCase(TestCase):
 
         signOnPage.validChickedInStatus()
         signOnPage.clickBackKey()
+
+        #签到结束后切换到北京
+        dashboardPage.clickOnCity()
+        switchCityPage.inputBeijing()
+        switchCityPage.clickOnCityListFirst()
 
 
 if __name__ == "__main__":
