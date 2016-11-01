@@ -2,6 +2,7 @@
 
 import time
 
+from api.logger import logger
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -1066,6 +1067,7 @@ class API(object):
             timeout : 超时时间,单位秒,默认十秒。
         '''
         try:
+            logger.info('Get element by resource id.')
             self._findElementByResourceId(driver, logger, resourceId, timeout)
         except TimeoutException:
             testCase.assertTrue(False, "Get element by resource id [%s] timeout" % (resourceId))
