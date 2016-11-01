@@ -83,8 +83,8 @@ class PinPaiJieTestCase(TestCase):
         brandPage.clickBackKey()
         
         #点击大牌入驻
-        brandPage.clickOnDapairuzhu()
-        brandPage.validDapairuzhu()
+        #brandPage.clickOnDapairuzhu()
+        #brandPage.validDapairuzhu()
         
 
 

@@ -44,8 +44,7 @@ class HuiShengHuoRuKouTestCase(TestCase):
         huiLifePage.validSelf()
         #huiLifePage.screen_shot("hui_life_resource_niche")
 
-        tempTuple = (u"火车票", u"滴滴出行", u"滴滴出行", u"加油", u"数码回收",
-                     u"演唱会", u"亲子票务", u"自选股", u"违章查询", u"有料")
+        tempTuple = (u"火车票", u"加油", u"演唱会",u"股票资讯", u"违章查询")
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
 

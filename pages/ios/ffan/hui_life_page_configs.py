@@ -22,7 +22,7 @@ class HuiLifePageConfigs(object):
     text_privilege_button = u"优惠"
 
     # TakingTaxi
-    resource_id_taking_taxi_st = u"打车"
+    resource_id_taking_taxi_st = u"火车票"
 
     # Modules entry
     text_taxi = u"打车"
