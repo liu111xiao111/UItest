@@ -14,7 +14,7 @@ class DongJieYuanGong(TestCase):
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId_sh, IDC.udid).getDriver()
 
         prepare = Prepare(self, self.driver, self.logger)
         prepare.login()

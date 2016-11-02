@@ -16,7 +16,7 @@ class DenggLuCase(TestCase):
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId_sh, IDC.udid).getDriver()
 
     def test_case(self):
         dengLuPage = DengLuPage(self,self.driver,self.logger)
