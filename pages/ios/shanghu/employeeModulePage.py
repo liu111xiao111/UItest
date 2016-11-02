@@ -5,6 +5,7 @@ from api.api import API
 from pages.ios.shanghu.shanghuPageConfig import Xpath
 from pages.ios.shanghu.shanghuPageConfig import Name
 from pages.ios.shanghu.shanghuPageConfig import Text
+from utility.logger import Logger
 
 
 class EmployeeModulePage(SuperPage):
@@ -98,7 +99,6 @@ class EmployeeModulePage(SuperPage):
         #点击弹出的Dialog的确定button
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
 
-        self.logger.i(name)
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
 
 
@@ -120,7 +120,7 @@ class EmployeeModulePage(SuperPage):
         #点击冻结状态,查看是否冻结成功
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.dongjiezhuangtai)
 
-        self.logger.i(name)
+        self.logger.info(name)
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
 
 
@@ -135,8 +135,6 @@ class EmployeeModulePage(SuperPage):
         #检查是否存在冻结员工,如果不存在,冻结一个员工
         isExist = API().validElementByName(self.driver, self.logger,
                                                   Name.jiedong_button)
-
-        self.logger.i(isExist)
 
         if not isExist:
             API().clickElementByName(self.testcase, self.driver, self.logger, Name.zhengchangzhuangtai)
@@ -159,8 +157,23 @@ class EmployeeModulePage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
 
 
+    def deleteEmployee(self):
+        '''
+        删除员工
+        :return:
+        '''
+        #取得删除员工名字
+        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.dongjie_employee_name)
 
+        #删除员工
+        API().clickElementByName(self.testcase, self.driver, self.logger, Name.delete_button)
+        #点击确定
+        API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
 
+        isExist = API().validElementByName(self.driver, self.logger,name)
+
+        #如果不存在则删除成功
+        API().assertFalse(self.testcase, self.logger,isExist)
 
 
 

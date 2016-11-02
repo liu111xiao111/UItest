@@ -16,7 +16,6 @@ class ShoppingCenterPage(SuperPage):
         验证购物中心页面navigation bar name是否正确
     """
     def validSelf(self):
-        self.logger.d("shopping center navigation bar name is %s",ShoppingCenterPageConfigs.name_shopping_center_navigation_bar)
         API().assert_view_by_resourceID_Until(testcase=self.testcase,
                                                       driver=self.driver,
                                                       logger=self.logger,

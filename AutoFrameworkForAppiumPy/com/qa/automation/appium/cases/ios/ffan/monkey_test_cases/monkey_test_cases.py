@@ -67,8 +67,6 @@ class MonkeyTestCases(TestCase):
 
 
 
-        self.logger.d("report file name ==== %s", command)
-
         os.system(command)
 
 

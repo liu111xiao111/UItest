@@ -10,6 +10,9 @@ from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
 
 class BianJiYuanGong(TestCase):
+    '''
+    编辑员工检查
+    '''
 
     def setUp(self):
         self.logger = Logger()

@@ -89,7 +89,5 @@ class DengLuPage(SuperPage):
         :return:
         '''
         text_password = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.password)
-        self.logger.i(text_password)
         isLogoutStatus = (text_password == Text.initial_password)
-        self.logger.i(isLogoutStatus)
         API().assertTrue(self.testcase,self.logger,isLogoutStatus)

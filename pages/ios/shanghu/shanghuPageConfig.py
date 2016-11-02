@@ -68,6 +68,7 @@ class Name:
 
     dongjie_button = u"冻结"
     jiedong_button = u"解冻"
+    delete_button = u"删除"
 
     store_manager = u"商户店长角色"
 

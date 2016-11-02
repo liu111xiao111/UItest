@@ -63,7 +63,6 @@ class GuangChangDianYingGuangTestCase(TestCase):
 
         popupPage = PopupPage(self , self.driver , self.logger)
         for tempTimes in range(3):
-            self.logger.i("ATTEMPTS: %d" % (tempTimes + 1))
             if popupPage.validSelf(u"提示", VerifyActivityKeywordsType.NAME, False):
                 popupPage.clickOnButton(u"是", ClickActivityKeywordsType.NAME)
                 break
