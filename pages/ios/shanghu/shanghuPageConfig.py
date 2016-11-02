@@ -45,6 +45,14 @@ class Xpath:
     dongjie_employee_name = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
 
 
+    #角色管理,列表中,第一个item,名字
+    role_management_name = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
+    # 角色管理,列表中,第一个item,创建人,
+    role_management_creator = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[2]"
+    # 角色管理,列表中,第一个item,修改日期
+    role_management_date = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[3]"
+
+
 
 class Name:
     login = u"登录"
@@ -57,6 +65,7 @@ class Name:
     userIdentity = u"QA线上验证专用权限组"
     userStore = u"QA线上测试用普通商户"
     employeeManager = u"员工管理"
+    role_management = u"角色管理"
 
     add_new_employee = u"新增员工"
 

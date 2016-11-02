@@ -45,3 +45,10 @@ class HomePage(SuperPage):
        :return:
        '''
        API().clickElementByName(self.testcase, self.driver, self.logger, Name.employeeManager)
+
+   def clickOnRoleManagement(self):
+       '''
+       点击角色管理
+       :return:
+       '''
+       API().clickElementByName(self.testcase, self.driver, self.logger, Name.role_management)
