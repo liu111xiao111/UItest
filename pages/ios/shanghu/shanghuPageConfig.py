@@ -33,6 +33,18 @@ class Xpath:
     #新增加员工,输入电话号
     new_employee_input_phone_name = "//UIAApplication[1]/UIAWindow[1]/UIATextField[3]"
 
+    #编辑员工, 点击选择角色按钮
+    edit_employee_select_role = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]"
+    #编辑员工, 选择商户店长角色Radio button
+    edit_employee_select_store_manager_radio_button = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[9]/UIAButton[1]"
+    #编辑员工, 输入姓名
+    edit_employee_name = "//UIAApplication[1]/UIAWindow[1]/UIATextField[2]"
+
+
+    #冻结员工
+    dongjie_employee_name = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
+
+
 
 class Name:
     login = u"登录"
@@ -52,6 +64,22 @@ class Name:
     save_button = u"保存"
     please_input_name = u"请输入姓名"
 
+    edit_button = u"编辑"
+
+    dongjie_button = u"冻结"
+    jiedong_button = u"解冻"
+
+    store_manager = u"商户店长角色"
+
+    #键盘,删除键
+    keyboard_delete = u"delete"
+
+    confirm_button = u"确定"
+
+    dongjiezhuangtai = u"冻结状态"
+
+    zhengchangzhuangtai = u"正常状态"
+
 class Text:
     phoneNumber = u"15624958068"
     password = u"wanda123"
@@ -64,6 +92,7 @@ class Text:
     new_employee_name = u"王Test"
     new_employee_phone = "13504286090"
 
+    edit_employee_name_text = u"t"
 
 
 
