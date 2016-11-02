@@ -18,8 +18,6 @@ class IosDriverConfigs(object):
 
     #bundleId = "com.dianshang.feifanbp"
 
-    #bundleId = "com.app.yaocaibao"
-
     udid = DeviceInfoUtil().getUdid()
 
     driverUrl = "http://localhost:4723/wd/hub"
