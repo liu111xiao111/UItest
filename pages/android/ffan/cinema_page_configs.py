@@ -8,13 +8,13 @@ class CinemaPageConfigs(object):
     '''
 
     # Assert view time out
-    assert_view_timeout = 30
+    assert_view_timeout = 60
 
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 60
 
     # Cinema title
     resource_id_cinema_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"

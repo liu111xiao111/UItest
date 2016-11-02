@@ -9,16 +9,16 @@ class MovieDetailsPageConfigs(object):
 
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 90
 
     # Verify view time out
-    verify_view_timeout = 10
+    verify_view_timeout = 90
 
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 90
 
     # Movie details title
     resource_id_movie_details_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"

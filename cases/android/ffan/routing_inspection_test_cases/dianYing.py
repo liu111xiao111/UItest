@@ -51,7 +51,7 @@ class DianYingTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def testDianYing(self):
         movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)

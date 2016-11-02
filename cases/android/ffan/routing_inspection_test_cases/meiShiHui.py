@@ -63,19 +63,19 @@ class MeiShiHuiTestCase(TestCase):
         # 检查所有子界面入口
         foodPage.validModules()
 
-        # 检查优惠打折
+        '''# 检查优惠打折
         foodPage.clickOnCoupon()
         salesPromotionPage.validSelf()
         salesPromotionPage.clickBackKey()
 
         # 检查抢券
-        '''foodPage.clickOnGrabCoupons()
+        oodPage.clickOnGrabCoupons()
         salesPromotionPage.validSelfCoupon()
-        salesPromotionPage.clickBackKey()'''
+        salesPromotionPage.clickBackKey()
 
         # 检查乐付
         foodPage.clickOnLePay()
-        lefuPage.validSelf()
+        lefuPage.validSelf()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MeiShiHuiTestCase)

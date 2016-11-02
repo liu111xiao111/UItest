@@ -9,16 +9,16 @@ class MoviePageConfigs(object):
 
 
     # Assert view time out
-    assert_view_timeout = 10
+    assert_view_timeout = 60
 
     # Verify view time out
-    verify_view_timeout = 10
+    verify_view_timeout = 60
 
     # Assert invalid view time out
     assert_invalid_view_time = 3
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 60
 
     # Movie title
     text_movie_title = u"电影"
