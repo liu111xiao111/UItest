@@ -64,3 +64,13 @@ class ShouYePage(SuperPage):
                                  self.logger,
                                  SYPC.text_member_manager,
                                  SYPC.verify_timeout)
+
+    def clickOnRoleManager(self):
+        '''
+        usage: 点击角色管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_role_manager,
+                                 SYPC.verify_timeout)

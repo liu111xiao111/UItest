@@ -22,11 +22,11 @@ from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 
 
-class DongJieYuanGongTestCase(TestCase):
+class JieDongYuanGongTestCase(TestCase):
     '''
-    巡检 No.6
-    用例名 冻结员工
-    冻结员工检查
+    巡检 No.7
+    用例名 解冻员工检查
+    解冻员工检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -44,7 +44,7 @@ class DongJieYuanGongTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-    def testDongJieYuanGong(self):
+    def testJieDongYuanGong(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         login = shouYePage.validLogin()
 
@@ -68,16 +68,19 @@ class DongJieYuanGongTestCase(TestCase):
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
-        memberInfo = yuanGongGuanLiPage.getMemberInfo()
-        yuanGongGuanLiPage.clickOnFreeze()
-        yuanGongGuanLiPage.waitBySeconds(2)
         yuanGongGuanLiPage.clickOnFreezeStatus()
-        yuanGongGuanLiPage.waitBySeconds(2)
-        yuanGongGuanLiPage.validFreezeMemberInfo(memberInfo)
+        freezeData = yuanGongGuanLiPage.validFreezeData()
+        if freezeData:
+            memberInfo = yuanGongGuanLiPage.getFreezeMemberInfo()
+            yuanGongGuanLiPage.clickOnUnfreeze()
+            yuanGongGuanLiPage.waitBySeconds(2)
+            yuanGongGuanLiPage.clickOnNormalStatus()
+            yuanGongGuanLiPage.waitBySeconds(2)
+            yuanGongGuanLiPage.validNormalMemberInfo(memberInfo)
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(DongJieYuanGongTestCase)
+    suite = TestLoader().loadTestsFromTestCase(JieDongYuanGongTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

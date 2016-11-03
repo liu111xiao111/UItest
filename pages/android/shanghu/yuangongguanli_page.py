@@ -84,6 +84,16 @@ class YuanGongGuanLiPage(SuperPage):
                                       YGGLPC.resource_id_create_time,
                                       YGGLPC.verify_timeout)
 
+    def clickOnNormalStatus(self):
+        '''
+        usage: 点击正常状态
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 YGGLPC.text_normal_status,
+                                 YGGLPC.verify_timeout)
+
     def clickOnFreezeStatus(self):
         '''
         usage: 点击冻结状态
@@ -91,7 +101,7 @@ class YuanGongGuanLiPage(SuperPage):
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 YGGLPC.text_freeze,
+                                 YGGLPC.text_freeze_status,
                                  YGGLPC.verify_timeout)
 
     def clickOnAddMember(self):
@@ -176,6 +186,22 @@ class YuanGongGuanLiPage(SuperPage):
                                  YGGLPC.text_freeze_confirm,
                                  YGGLPC.verify_timeout)
 
+    def clickOnUnfreeze(self):
+        '''
+        usage: 点击解冻
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 YGGLPC.text_unfreeze,
+                                 YGGLPC.verify_timeout)
+        API().waitBySeconds(2)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 YGGLPC.text_freeze_confirm,
+                                 YGGLPC.verify_timeout)
+
     def getMemberInfo(self):
         '''
         usage: 获得员工信息
@@ -189,11 +215,42 @@ class YuanGongGuanLiPage(SuperPage):
 
     def validFreezeMemberInfo(self, memerInfo = "defult"):
         '''
-        usage : 进入到员工管理页（正常状态），验证正常状态
+        usage : 进入到员工管理页（冻结状态），验证冻结状态
         '''
         name = API().getElementsByResourceId(self.testcase,
                                              self.driver,
                                              self.logger,
-                                             YGGLPC.resource_id_name,
+                                             YGGLPC.resource_id_freeze_name,
                                              YGGLPC.verify_timeout)
         API().assertEqual(self.testcase, self.logger, name, memerInfo)
+
+    def getFreezeMemberInfo(self):
+        '''
+        usage: 获得需要解冻的员工信息
+        '''
+        memberInfo = API().getTextByResourceId(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  YGGLPC.resource_id_freeze_name,
+                                  YGGLPC.verify_timeout)
+        return memberInfo
+
+    def validNormalMemberInfo(self, memerInfo = "defult"):
+        '''
+        usage : 进入到员工管理页（正常状态），验证正常状态
+        '''
+        API().getElementsByText(self.testcase,
+                                self.driver,
+                                self.logger,
+                                memerInfo,
+                                YGGLPC.verify_timeout)
+
+    def validFreezeData(self):
+        '''
+        usage : 验证冻结状态tab是否存在数据
+        '''
+        data = API().validElementByResourceId(self.driver,
+                                              self.logger,
+                                              YGGLPC.resource_id_freeze_name,
+                                              YGGLPC.verify_timeout)
+        return data

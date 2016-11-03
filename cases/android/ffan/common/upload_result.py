@@ -53,7 +53,7 @@ def upload():
                     testCase.assertTrue(False, 'Click element by resource id [%s] timeout' % (resourceId))\
                     AssertionError: False is not true : Click element by resource id [com.wanda.app.wanhui:id/food_circle_item_text] timeout", #错误信息路径
         "stepfroerr": "", #发生错误的步骤
-        "errcounts":'{"timeout": 1}', #错误数目统计
+        "errcounts": '{"crashed": 0, "ANR": 0}', #错误数目统计
         "stacktrace":""
     }
 
