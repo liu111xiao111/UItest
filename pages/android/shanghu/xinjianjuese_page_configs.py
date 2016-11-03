@@ -2,7 +2,7 @@
 
 
 class XinJianJueSePageConfigs():
-    type_role = "com.feifan.bp:id/role_auth_choose_checkbox"
+    type_role = "android.widget.CheckBox"
     resource_id_choose = "com.feifan.bp:id/role_operation_authority"
     resource_id_role = "com.feifan.bp:id/tv_role_name"
     resource_id_name = "com.feifan.bp:id/role_operation_name"
