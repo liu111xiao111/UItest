@@ -11,6 +11,8 @@ class ShouYePageConfigs():
     text_member_manager = u"员工管理"
     text_role_manager = u"角色管理"
     text_order_manager = u"订单管理"
+    text_lefu_bill = u"乐付账单"
+    text_message = u"消息"
 
     verify_timeout = 30
 
