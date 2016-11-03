@@ -15,6 +15,7 @@ class YuanGongGuanLiPageConfigs():
     text_edit = u"编辑"
     text_freeze = u"冻结"
     text_unfreeze = u"解冻"
+    text_delete = u"删除"
     text_freeze_confirm = u"确定"
     resource_id_freeze_name = "com.feifan.bp:id/tv_status_name"
 
