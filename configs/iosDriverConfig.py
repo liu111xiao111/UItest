@@ -16,7 +16,8 @@ class IosDriverConfigs(object):
 
     bundleId = "com.dianshang.wanhui"
 
-    #bundleId = "com.dianshang.feifanbp"
+    #商户
+    bundleId_sh = "com.dianshang.feifanbp"
 
     udid = DeviceInfoUtil().getUdid()
 
