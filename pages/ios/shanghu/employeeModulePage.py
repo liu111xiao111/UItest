@@ -5,8 +5,6 @@ from api.api import API
 from pages.ios.shanghu.shanghuPageConfig import Xpath
 from pages.ios.shanghu.shanghuPageConfig import Name
 from pages.ios.shanghu.shanghuPageConfig import Text
-from utility.logger import Logger
-
 
 class EmployeeModulePage(SuperPage):
 
@@ -165,15 +163,20 @@ class EmployeeModulePage(SuperPage):
         #取得删除员工名字
         name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.dongjie_employee_name)
 
+        print(name)
+
         #删除员工
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.delete_button)
         #点击确定
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
 
+        API().waitBySeconds(10)
+
         isExist = API().validElementByName(self.driver, self.logger,name)
+        print(isExist)
 
         #如果不存在则删除成功
-        API().assertFalse(self.testcase, self.logger,isExist)
+        API().assertFalse(self.testcase, self.logger, isExist)
 
 
 
