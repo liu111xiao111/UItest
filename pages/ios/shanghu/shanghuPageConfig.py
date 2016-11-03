@@ -51,6 +51,14 @@ class Xpath:
     role_management_creator = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[2]"
     # 角色管理,列表中,第一个item,修改日期
     role_management_date = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[3]"
+    #新建角色页面,角色名称EditText
+    new_role_name = "//UIAApplication[1]/UIAWindow[1]/UIATextField[1]"
+    #选择权限Button
+    new_role_select_permissions_button = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
+    #权限列表,第一个RadioButton
+    new_role_permissions_first_item = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
+    #角色说明
+    new_role_explanation = "//UIAApplication[1]/UIAWindow[1]/UIATextView[1]"
 
 
 
@@ -65,9 +73,10 @@ class Name:
     userIdentity = u"QA线上验证专用权限组"
     userStore = u"QA线上测试用普通商户"
     employeeManager = u"员工管理"
-    role_management = u"角色管理"
-
     add_new_employee = u"新增员工"
+
+    role_management = u"角色管理"
+    add_new_role_button = u"新增角色"
 
 
     save_button = u"保存"
@@ -104,5 +113,9 @@ class Text:
 
     edit_employee_name_text = u"t"
 
+    #新增加角色名字
+    new_role_name = "iOSRoleTest"
+    #新增加角色说明
+    new_role_explanation_context = "role explanation context"
 
 
