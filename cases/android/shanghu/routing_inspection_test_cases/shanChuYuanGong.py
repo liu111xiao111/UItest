@@ -19,15 +19,14 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
-from pages.android.shanghu.xinjianjuese_page import XinJianJueSePage
+from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 
 
-class XinZengJueSeTestCase(TestCase):
+class ShanChuYuanGongTestCase(TestCase):
     '''
-    巡检 No.10
-    用例名 新增角色
-    新增角色检查
+    巡检 No.8
+    用例名 删除员工
+    删除员工检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -45,7 +44,7 @@ class XinZengJueSeTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-    def testXinZengJueSe(self):
+    def testShanChuYuanGong(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         login = shouYePage.validLogin()
 
@@ -65,23 +64,17 @@ class XinZengJueSeTestCase(TestCase):
             xuanZeMenDianPage.clickOnConfirmBtn()
 
         shouYePage.validSelf()
-        shouYePage.clickOnRoleManager()
+        shouYePage.clickOnMemberManager()
 
-        jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
-        jueSeGuanLiPage.clickOnAddRole()
-
-        xinJianJueSePage = XinJianJueSePage(self , self.driver , self.logger)
-        xinJianJueSePage.waitBySeconds(2)
-        xinJianJueSePage.inputUserName()
-        xinJianJueSePage.clickOnChooseRole()
-        xinJianJueSePage.clickOnSave()
-        xinJianJueSePage.validChooseRole()
-        xinJianJueSePage.inputRoleInstruction()
-        xinJianJueSePage.clickOnSave()
+        yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
+        yuanGongGuanLiPage.validNormalStatus()
+        memberInfo = yuanGongGuanLiPage.getMemberInfo()
+        yuanGongGuanLiPage.clickOnDelete()
+        yuanGongGuanLiPage.validDeleteMember(memberInfo)
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(XinZengJueSeTestCase)
+    suite = TestLoader().loadTestsFromTestCase(ShanChuYuanGongTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

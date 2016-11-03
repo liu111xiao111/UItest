@@ -254,3 +254,30 @@ class YuanGongGuanLiPage(SuperPage):
                                               YGGLPC.resource_id_freeze_name,
                                               YGGLPC.verify_timeout)
         return data
+
+    def clickOnDelete(self):
+        '''
+        usage: 点击删除
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 YGGLPC.text_delete,
+                                 YGGLPC.verify_timeout)
+        API().waitBySeconds(2)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 YGGLPC.text_freeze_confirm,
+                                 YGGLPC.verify_timeout)
+
+    def validDeleteMember(self, memberInfo = "default"):
+        '''
+        usage : 验证删除员工信息是否已删除
+        '''
+        deleteMember = API().validElementByText(self.driver,
+                                                self.logger,
+                                                memberInfo,
+                                                YGGLPC.verify_timeout)
+        if not deleteMember:
+            API().assertTrue(self.testcase, self.logger, False)

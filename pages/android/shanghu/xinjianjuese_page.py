@@ -24,30 +24,14 @@ class XinJianJueSePage(SuperPage):
                                        XJJSPC.verify_timeout)
         API().waitBySeconds(2)
 
-
-        for i in range(4):
-            xpath_checkbox_role_order = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.CheckBox[%s]" % (i+1)
+        for i in range(10):
+            xpath_checkbox_role_order = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[%s]/android.widget.RelativeLayout[1]/android.widget.CheckBox[1]" % (i+1)
 
             API().clickElementByXpath(self.testcase,
                                       self.driver,
                                       self.logger,
                                       xpath_checkbox_role_order,
                                       XJJSPC.verify_timeout)
-
-        for j in range(4):
-            xpath_checkbox_role_other = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.CheckBox[%s]" % (j+1)
-
-            API().clickElementByXpath(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      xpath_checkxpath_checkbox_role_orderbox_role,
-                                      XJJSPC.verify_timeout)
-
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       XJJSPC.resource_id_save,
-                                       XJJSPC.verify_timeout)
 
     def validChooseRole(self):
         '''

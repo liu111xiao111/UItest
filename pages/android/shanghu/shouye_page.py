@@ -74,3 +74,13 @@ class ShouYePage(SuperPage):
                                  self.logger,
                                  SYPC.text_role_manager,
                                  SYPC.verify_timeout)
+
+    def clickOnOrderManager(self):
+        '''
+        usage: 点击订单管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_order_manager,
+                                 SYPC.verify_timeout)
