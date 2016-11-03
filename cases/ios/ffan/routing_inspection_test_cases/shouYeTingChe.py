@@ -66,9 +66,9 @@ class ShouYeTingCheTestCase(TestCase):
         parkingPage.validSelf()
         
         parkingPage.clickOnZhaoche()
+
+
         parkingPage.validZhaoche()
-        
-        parkingPage.clickBackKey()
         
         parkingPage.clickOnFujintingche()
         parkingPage.validFujintingche()
