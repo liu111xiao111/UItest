@@ -17,7 +17,6 @@ class Prepare:
 
         # 检查是否登录,如果已经登录,点击退出登录
         loginStatus = dengLuPage.validLoginStatus()
-        # self.logger.i(loginStatus)
         if not loginStatus:
             pass
         else:

@@ -63,7 +63,6 @@ class AiGouWuTestCase(TestCase):
         squareShoppingPage = SquareShoppingPage(self, self.driver, self.logger)
         squareShoppingPage.validSelf()
         tempText = squareShoppingPage.clickOnSubCommodity()
-        self.logger.i("tempText: " + tempText)
         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
         # 5 second,wait Appium load page
         goodsDetailsPage.waitBySeconds(5)

@@ -10,6 +10,9 @@ from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
 
 class ShanChuYuanGong(TestCase):
+    '''
+    删除员工检查
+    '''
 
     def setUp(self):
         self.logger = Logger()
@@ -26,7 +29,8 @@ class ShanChuYuanGong(TestCase):
 
         homePage.clickOnEmployeeModule()
 
-        employeeModulePage.dongjieEmployee()
+        #删除员工,判断是否存在
+        employeeModulePage.deleteEmployee()
 
 
 

@@ -10,7 +10,9 @@ from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
 
 class DongJieYuanGong(TestCase):
-
+    '''
+    冻结员工检查
+    '''
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
