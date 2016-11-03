@@ -35,6 +35,8 @@ class MonkeyTestCases(TestCase):
         '''
         command = 'adb shell am force-stop %s' % appPackage_ffan
         os.system(command)
+        command = 'adb shell am force-stop org.thisisafactory.simiasque'
+        os.system(command)
 
     def setUp(self):
         '''
@@ -44,6 +46,17 @@ class MonkeyTestCases(TestCase):
         self.monkeyLogName = 'Android_monkey.log'
         self.logcatLogName = 'Android_monkey_logcat.log'
         self.reportPath = reportPath
+        self._installSimiasque()
+
+    def _installSimiasque(self):
+        resourcesDirectory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
+            os.path.dirname(os.path.abspath(__file__)))))) + "/resources/"
+        installCmd = 'adb install ' + os.path.join(resourcesDirectory, 'simiasque-debug.apk')
+        os.system(installCmd)
+        time.sleep(5)
+        startCmd = 'adb shell am start org.thisisafactory.simiasque/org.thisisafactory.simiasque.MyActivity_'
+        os.system(startCmd)
+        time.sleep(5)
 
     def test_case(self):
         '''
@@ -70,12 +83,18 @@ class MonkeyTestCases(TestCase):
         if crashNumber:
             raise CrashError('Monkey running failed with [[%s]] crash error.' % crashNumber)
 
+    def _simiasqueoOption(self, option='False'):
+        cmd = 'adb shell am broadcast -a org.thisisafactory.simiasque.SET_OVERLAY --ez enable ' + option
+        os.system(cmd)
+        time.sleep(5)
+
     def _monkeyTest(self):
         '''
         monkey稳定性测试
         :return: None
         '''
 
+        self._simiasqueoOption('True')
         # 执行monkey稳定性测试, 并生成测试结果日志文件
         monkeyLogFile = os.path.join('/sdcard', self.monkeyLogName)
         p = pexpect.spawn('adb shell')
@@ -86,7 +105,6 @@ class MonkeyTestCases(TestCase):
         p.expect(r'shell@', timeout=20)
         p.close()
 
-        time.sleep(4 * 60 * 60) # 睡眠等待4小时
         while True:
             time.sleep(5 * 60) # 每五分钟检查一次
             p = pexpect.spawn('adb shell')
@@ -102,6 +120,7 @@ class MonkeyTestCases(TestCase):
                 cmd = 'adb pull %s %s' % (monkeyLogFile, self.reportPath)
                 os.system(cmd)
                 break
+        self._simiasqueoOption('False')
 
     def _clearLogcat(self):
         '''
