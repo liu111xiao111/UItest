@@ -15,9 +15,10 @@ class SupermarketPageConfigs(object):
 
     # 商店超市页面（tab）标题
     text_supermarket_tab_title = u"便利店"
+    text_supermarket_tab_beijing_title = u"超市"
 
     # 商店超市列表数量
-    SUPERMARKETNUMBER = 1
+    SUPERMARKETNUMBER = 15
 
     # 商店超市列表项目
     type_supermarket = "android.widget.RelativeLayout"

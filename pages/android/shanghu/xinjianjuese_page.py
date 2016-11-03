@@ -24,18 +24,24 @@ class XinJianJueSePage(SuperPage):
                                        XJJSPC.verify_timeout)
         API().waitBySeconds(2)
 
-        roleList = API().getElementsByType(self.testcase,
-                                           self.driver,
-                                           self.logger,
-                                           XJJSPC.type_role,
-                                           XJJSPC.verify_timeout)
-        print(len(roleList))
-        for _ in range(len(roleList)):
-            API().clickElementByType(self.testcase,
-                                     self.driver,
-                                     self.logger,
-                                     XJJSPC.type_role,
-                                     XJJSPC.verify_timeout)
+
+        for i in range(4):
+            xpath_checkbox_role_order = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.CheckBox[%s]" % (i+1)
+
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      xpath_checkbox_role_order,
+                                      XJJSPC.verify_timeout)
+
+        for j in range(4):
+            xpath_checkbox_role_other = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.CheckBox[%s]" % (j+1)
+
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      xpath_checkxpath_checkbox_role_orderbox_role,
+                                      XJJSPC.verify_timeout)
 
         API().clickElementByResourceId(self.testcase,
                                        self.driver,

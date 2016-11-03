@@ -26,7 +26,7 @@ class SupermarketPage(SuperPage):
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  SMPC.text_supermarket_tab_title,
+                                  SMPC.text_supermarket_tab_beijing_title,
                                   SMPC.assert_view_timeout)
 
         listNumber = len(API().getElementsByType(testCase=self.testcase,
