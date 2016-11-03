@@ -17,9 +17,12 @@ class ParkingPageConfigs():
     name_tingchejilu = "停车记录"
     
     name_zhaoche_yanzheng = u""
-    
+    name_not_gps_square = u"没有定位到您当前所在广场"
+    name_know_text = u"知道了"
     # Click button time out
     click_on_button_timeout = 10
+
+    name_find_car = "park find car button"
 
     """
         *********************************iOS 控件 xpath*****************************
