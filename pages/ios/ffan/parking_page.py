@@ -36,8 +36,13 @@ class ParkingPage(SuperPage):
                                   ParkingPageConfigs.click_on_button_timeout)
     
     def validZhaoche(self):
-        API().assertElementByIosUiautomation(self.testcase,self.driver,self.logger
-                                             ,uiaString=".navigationBars()[0]")
+        notFindGpsSquare = API().validElementByName(self.driver, self.logger, ParkingPageConfigs.name_not_gps_square)
+        if notFindGpsSquare == False:
+            API().assertElementByIosUiautomation(self.testcase,self.driver,self.logger
+                 ,uiaString=".navigationBars()[0]")
+            self.clickBackKey()
+        else:
+            API().clickElementByName(self.testcase, self.driver, self.logger, ParkingPageConfigs.name_know_text)
         
     def clickOnFujintingche(self):
         '''
