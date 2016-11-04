@@ -84,3 +84,23 @@ class ShouYePage(SuperPage):
                                  self.logger,
                                  SYPC.text_order_manager,
                                  SYPC.verify_timeout)
+
+    def clickOnLefuBill(self):
+        '''
+        usage: 点击乐付账单
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_lefu_bill,
+                                 SYPC.verify_timeout)
+
+    def clickOnXiaoXiZhongXin(self):
+        '''
+        usage: 点击消息
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_message,
+                                 SYPC.verify_timeout)
