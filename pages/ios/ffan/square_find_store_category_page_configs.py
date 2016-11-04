@@ -14,7 +14,7 @@ class SquareFindStoreConfigs():
     #页面list第一个店
     xpath_store_first_item = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]"
 
-    verify_view_timeout = 10
+    verify_view_timeout = 20
 
 
     def __init__(self):
