@@ -13,6 +13,8 @@ class ShouYePageConfigs():
     text_order_manager = u"订单管理"
     text_lefu_bill = u"乐付账单"
     text_message = u"消息"
+    text_business_college = u"商学院"
+    text_goods_manager = u"商品管理"
 
     verify_timeout = 30
 

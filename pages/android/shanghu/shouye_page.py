@@ -95,6 +95,16 @@ class ShouYePage(SuperPage):
                                  SYPC.text_lefu_bill,
                                  SYPC.verify_timeout)
 
+    def clickOnShangXueYuan(self):
+        '''
+        usage: 点击商学院
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_business_college,
+                                 SYPC.verify_timeout)
+
     def clickOnXiaoXiZhongXin(self):
         '''
         usage: 点击消息
@@ -103,4 +113,14 @@ class ShouYePage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  SYPC.text_message,
+                                 SYPC.verify_timeout)
+
+    def clickOnShangPinGuanLi(self):
+        '''
+        usage: 点击商品管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_goods_manager,
                                  SYPC.verify_timeout)

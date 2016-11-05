@@ -18,7 +18,7 @@ class SupermarketPageConfigs(object):
     text_supermarket_tab_beijing_title = u"超市"
 
     # 商店超市列表数量
-    SUPERMARKETNUMBER = 15
+    SUPERMARKETNUMBER = 1
 
     # 商店超市列表项目
     type_supermarket = "android.widget.RelativeLayout"
