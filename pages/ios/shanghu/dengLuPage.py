@@ -26,8 +26,11 @@ class DengLuPage(SuperPage):
 
         #获取焦点
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.username)
-        #点击清楚用户名button
-        API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.clearUserName)
+        #判断是否存在清除用户名按钮
+        isClearUserButtonExist = API().validElementByXpath(self.driver, self.logger, Xpath.clearUserName)
+        if isClearUserButtonExist:
+            #点击清除用户名button
+            API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.clearUserName)
 
 
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
