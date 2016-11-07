@@ -27,14 +27,23 @@ class RoleManagementPage(SuperPage):
         新增加角色
         :return:
         '''
-        API().clickElementByName(self.testcase, self.driver, self.logger, Name.add_new_role_button)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.add_new_role_button)
 
         #输入名字,角色说明
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.new_role_name,Text.new_role_name)
+        #得到输入的名字
+        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.new_role_name)
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.new_role_explanation, Text.new_role_explanation_context)
 
         #点击请选择
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.new_role_select_permissions_button)
         # 选择第一个RadioButton
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.new_role_permissions_first_item)
+        # 点击保存
+        API().clickElementByName(self.testcase, self.driver, self.logger,Name.save_button)
+
+        #新建角色页面点击保存
+        API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
+        #检查是否添加角色成功
+        API().assertElementByName(self.testcase, self.driver, self.logger, name)
 
