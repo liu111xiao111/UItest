@@ -19,14 +19,14 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
+from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
 
 
-class DongJieYuanGongTestCase(TestCase):
+class JueSeLieBiaoTestCase(TestCase):
     '''
-    巡检 No.6
-    用例名 冻结员工
-    冻结员工检查
+    巡检 No.9
+    用例名 角色列表
+    角色列表检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -44,7 +44,7 @@ class DongJieYuanGongTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-    def testDongJieYuanGong(self):
+    def testJueSeLieBiao(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         login = shouYePage.validLogin()
 
@@ -64,20 +64,14 @@ class DongJieYuanGongTestCase(TestCase):
             xuanZeMenDianPage.clickOnConfirmBtn()
 
         shouYePage.validSelf()
-        shouYePage.clickOnMemberManager()
+        shouYePage.clickOnRoleManager()
 
-        yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
-        yuanGongGuanLiPage.validNormalStatus()
-        memberInfo = yuanGongGuanLiPage.getMemberInfo()
-        yuanGongGuanLiPage.clickOnFreeze()
-        yuanGongGuanLiPage.waitBySeconds(2)
-        yuanGongGuanLiPage.clickOnFreezeStatus()
-        yuanGongGuanLiPage.waitBySeconds(2)
-        yuanGongGuanLiPage.validFreezeMemberInfo(memberInfo)
+        jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
+        jueSeGuanLiPage.validSelf()
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(DongJieYuanGongTestCase)
+    suite = TestLoader().loadTestsFromTestCase(JueSeLieBiaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

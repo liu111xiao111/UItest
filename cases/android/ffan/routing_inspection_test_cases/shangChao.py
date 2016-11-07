@@ -54,17 +54,17 @@ class ShangChaoTestCase(TestCase):
 
         # 切换到测试城市（厦门市）
         dashboardPage.validSelf()
-        tempCityName = dashboardPage.getCityName()
+        '''tempCityName = dashboardPage.getCityName()
         if tempCityName != TESTCITY:
             dashboardPage.clickOnSwithCith()
-            dashboardPage.switchCity(TESTCITY)
+            dashboardPage.switchCity(TESTCITY)'''
 
         # 点击商超，进入商店超市页面
         dashboardPage.clickOnSupermarket()
         supermarketPage.validSelf()
-        supermarketPage.clickBackKey()
+        '''supermarketPage.clickBackKey()
         dashboardPage.clickOnSwithCith()
-        dashboardPage.switchCity(DESCITY)
+        dashboardPage.switchCity(DESCITY)'''
 
 
 if __name__ == "__main__":

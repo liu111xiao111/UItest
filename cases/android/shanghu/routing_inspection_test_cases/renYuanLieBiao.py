@@ -44,7 +44,7 @@ class RenYuanLieBiaoTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-    def testDengLu(self):
+    def testRenYuanLieBiao(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         login = shouYePage.validLogin()
 

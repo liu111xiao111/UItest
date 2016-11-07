@@ -64,3 +64,63 @@ class ShouYePage(SuperPage):
                                  self.logger,
                                  SYPC.text_member_manager,
                                  SYPC.verify_timeout)
+
+    def clickOnRoleManager(self):
+        '''
+        usage: 点击角色管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_role_manager,
+                                 SYPC.verify_timeout)
+
+    def clickOnOrderManager(self):
+        '''
+        usage: 点击订单管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_order_manager,
+                                 SYPC.verify_timeout)
+
+    def clickOnLefuBill(self):
+        '''
+        usage: 点击乐付账单
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_lefu_bill,
+                                 SYPC.verify_timeout)
+
+    def clickOnShangXueYuan(self):
+        '''
+        usage: 点击商学院
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_business_college,
+                                 SYPC.verify_timeout)
+
+    def clickOnXiaoXiZhongXin(self):
+        '''
+        usage: 点击消息
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_message,
+                                 SYPC.verify_timeout)
+
+    def clickOnShangPinGuanLi(self):
+        '''
+        usage: 点击商品管理
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SYPC.text_goods_manager,
+                                 SYPC.verify_timeout)
