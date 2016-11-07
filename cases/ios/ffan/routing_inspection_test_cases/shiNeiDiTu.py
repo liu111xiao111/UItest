@@ -15,8 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
-
-# from com.qa.automation.appium.pages.ios.ffan.location_bluetooth_page import LocationBluetoothPage
+from pages.ios.ffan.search_page import SearchPage
 
 class ShiNeiDiTuTestCase(TestCase):
     '''
@@ -50,22 +49,26 @@ class ShiNeiDiTuTestCase(TestCase):
     def test_case(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
         squarePage = SquareModulePage(testcase=self, driver=self.driver, logger=self.logger)
-        # locationBluetoothPage = LocationBluetoothPage(testcase=self, driver=self.driver, logger=self.logger)
         indoormapPage = SquareIndoorMapPage(testcase=self, driver=self.driver, logger=self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
 
         # 首页进入广场页
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf()
+        # 首页选择北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchAll()
+        searchPage.validSelf()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
+        squareModulePage.validSelf()
 
         # 点击室内地图
         squarePage.clicOnIndoorMap()
-        # locationBluetoothPage.clickOnOkBtn()
         squarePage.waitBySeconds(10)
         indoormapPage.validSelf()
-#         indoormapPage.clickOnMapAr()
-#         indoormapPage.clickOnFoodMap()
-#         indoormapPage.validSelfFood()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ShiNeiDiTuTestCase)
