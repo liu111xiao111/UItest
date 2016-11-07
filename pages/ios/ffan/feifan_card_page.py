@@ -32,11 +32,13 @@ class FeiFanCardPage(SuperPage):
         usage: 点击开卡
     '''
     def clickOnOpenCard(self):
-        API().clickElementByName(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 FCPC.text_tv_open_tv,
-                                 FCPC.verify_click_timeout)
+        # API().clickElementByName(self.testcase,
+        #                          self.driver,
+        #                          self.logger,
+        #                          FCPC.text_tv_open_tv,
+        #                          FCPC.verify_click_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,"//UIAApplication[1]/UIAWindow[1]/UIAButton[4]")
+
 
     '''
         usage : 点击账单
