@@ -58,6 +58,7 @@ class ChenShiQieHuanTestCase(TestCase):
 
         dashboardPage.validCityData()
 
+
     '''
     def test_case_step_1(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
