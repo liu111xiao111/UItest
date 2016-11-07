@@ -52,3 +52,16 @@ class HomePage(SuperPage):
        :return:
        '''
        API().clickElementByName(self.testcase, self.driver, self.logger, Name.role_management)
+
+   def clickOnOrderFormManagement(self):
+       '''
+       点击订单管理
+       :return:
+       '''
+       API().clickElementByName(self.testcase, self.driver, self.logger, Name.order_form_management)
+
+   def clickOnBusinessSchool(self):
+       '''
+       点击商学院
+       '''
+       API().clickElementByName(self.testcase, self.driver, self.logger, Name.bussinessSchool)
