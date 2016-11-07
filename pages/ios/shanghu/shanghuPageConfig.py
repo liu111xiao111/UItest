@@ -62,6 +62,11 @@ class Xpath:
     #新增角色,新增角色按钮
     add_new_role_button = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
 
+    #商品管理,限时抢购,待审核
+    commodity_management_sale_check_pending = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[2]"
+    #商品管理,限时抢购,已通过
+    commodity_management_sale_passing = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
+
 class Name:
     back_icon = "back icon"
 
@@ -80,7 +85,7 @@ class Name:
     role_management = u"角色管理"
     add_new_role_button = u"新增角色"
     order_form_management = u"订单管理"
-
+    commodity_management_text = u"商品管理"
 
     save_button = u"保存"
     please_input_name = u"请输入姓名"
@@ -105,6 +110,10 @@ class Name:
     bussiness_school_common_questions = "常见问题"
     bussiness_school_newer_guide = "新手指南"
     bussiness_school_seller_notices = "商家须知"
+
+    commodity_management_pending = "待审核"
+    commodity_management_passing = "已通过"
+
 
 class Text:
     phoneNumber = u"15624958068"
