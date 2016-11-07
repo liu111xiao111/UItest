@@ -279,5 +279,6 @@ class YuanGongGuanLiPage(SuperPage):
                                                 self.logger,
                                                 memberInfo,
                                                 YGGLPC.verify_timeout)
-        if not deleteMember:
+
+        if deleteMember:
             API().assertTrue(self.testcase, self.logger, False)

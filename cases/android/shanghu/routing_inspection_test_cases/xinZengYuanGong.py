@@ -16,6 +16,7 @@ from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.shanghu.common.clear_app_data import ClearAppData
+from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
@@ -46,24 +47,12 @@ class XinZengYuanGongTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
+        TestPrepare(self, self.driver, self.logger).prepare()
+
     def testXinZengYuanGong(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
-        login = shouYePage.validLogin()
-
-        if not login:
-            dengLuPage = DengLuPage(self , self.driver , self.logger)
-            dengLuPage.validSelf()
-
-            dengLuPage.inputUserName()
-            dengLuPage.inputPassWord()
-            dengLuPage.clickOnLoginBtn()
-
-            xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
-            xuanZeMenDianPage.waitBySeconds(2)
-            xuanZeMenDianPage.validSelf()
-            xuanZeMenDianPage.waitBySeconds(2)
-            xuanZeMenDianPage.clickOnStore()
-            xuanZeMenDianPage.clickOnConfirmBtn()
+        dengLuPage = DengLuPage(self , self.driver , self.logger)
+        xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
         shouYePage.clickOnMemberManager()
