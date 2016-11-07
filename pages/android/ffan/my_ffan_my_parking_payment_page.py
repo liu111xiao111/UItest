@@ -33,7 +33,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                       self.logger,
                                       PPPC.resource_id_tv_VIN_tv,
                                       PPPC.input_VIN,
-                                      10)
+                                      60)
 
     def clickOnNextBtn(self):
         '''
@@ -43,7 +43,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  PPPC.text_next_btn,
-                                 10)
+                                 60)
 
     def clickAndValidItems(self, item = "default", title = "default"):
         '''
@@ -55,9 +55,17 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  item,
                                  60)
         API().waitBySeconds(2)
-        API().assertElementByText(self.testcase,
+        notice = API().validElementByXpath(self.driver, self.logger, PPPC.xpath_notice, 30)
+        if not notice:
+            API().assertElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  title,
                                  60)
-        API().clickBackKeyForAndroid(self.driver, self.logger)
+            API().clickBackKeyForAndroid(self.driver, self.logger)
+        else:
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     PPPC.text_know,
+                                     60)

@@ -17,6 +17,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_module_page import SquareModulePage
+from pages.android.ffan.search_page import SearchPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 
@@ -47,13 +48,24 @@ class GuangChangXiangQingTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangXiangQing(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        '''dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
 
         # 爱逛街首页在附近那点击任意广场，进入广场详情页，查看页面显示
         dashboardPage.validSelf()
         dashboardPage.clickOnSquareModule()
-        squarePage.validSelfDetails()
+        squarePage.validSelfDetails()'''
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
+        squareModulePage.validSelf()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQingTestCase)

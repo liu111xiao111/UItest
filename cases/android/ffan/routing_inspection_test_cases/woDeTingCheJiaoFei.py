@@ -66,8 +66,8 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
         parkingPaymentPage.validSelf();
 
         # Bunding VIN
-        parkingPaymentPage.waitBySeconds(2);
-        '''parkingPaymentPage.clickOnBanding();
+        '''parkingPaymentPage.waitBySeconds(2);
+        parkingPaymentPage.clickOnBanding();
         parkingPaymentPage.inputVIN();
         parkingPaymentPage.clickOnNextBtn();
         parkingPaymentDetailsPage.validSelf();

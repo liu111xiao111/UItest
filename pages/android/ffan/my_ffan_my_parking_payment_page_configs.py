@@ -9,6 +9,8 @@ class MyFfanMyParkingPaymentPageConfigs():
     
     input_VIN = "QM9G29"
     text_next_btn = u"下一步"
+    xpath_notice = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
+    text_know = u"知道了"
 
     def __init__(self):
         pass;

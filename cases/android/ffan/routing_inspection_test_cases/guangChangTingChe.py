@@ -58,22 +58,21 @@ class GuangChangTingCheTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputKeywords(u"北京通州万达广场")
         searchPage.clickOnSearch()
-        searchPage.clickOnSpecificSquare()
+        searchPage.clickOnSearchResultFirstItem()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.waitBySeconds(10)
         squareModulePage.validSelf()
         squareModulePage.clickOnParking()
 
         parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
-        parkingPage.waitBySeconds(10)
+        parkingPage.waitBySeconds(5)
         # 检查入口项目
         itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
         titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
         for i in range(len(titleList)):
             parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
-            parkingPaymentPage.waitBySeconds(20)
+            parkingPaymentPage.waitBySeconds(10)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangTingCheTestCase)
