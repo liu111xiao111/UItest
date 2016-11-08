@@ -67,6 +67,9 @@ class Xpath:
     #商品管理,限时抢购,已通过
     commodity_management_sale_passing = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
 
+    #全部订单查询,List中第一个item
+    order_management_first_item = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAElement[1]"
+
 class Name:
     back_icon = "back icon"
 
