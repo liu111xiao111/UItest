@@ -8,7 +8,6 @@ from cases.ios.shanghu.common.prepare import Prepare
 from pages.ios.shanghu.homePage import HomePage
 from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
-
 class DongJieYuanGong(TestCase):
     '''
     冻结员工检查
