@@ -117,6 +117,9 @@ class Name:
     commodity_management_pending = "待审核"
     commodity_management_passing = "已通过"
 
+    all_order_status = "全部状态"
+    trading_closed_status = "交易关闭"
+
 
 class Text:
     phoneNumber = u"15624958068"
