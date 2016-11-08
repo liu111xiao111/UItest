@@ -54,6 +54,7 @@ class BianJiYuanGongTestCase(TestCase):
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
+        memberInfo = yuanGongGuanLiPage.getMemberInfo()
         yuanGongGuanLiPage.clickOnEdit()
 
         xinZengYuanGongPage = XinZengYuanGongPage(self , self.driver , self.logger)
@@ -63,7 +64,7 @@ class BianJiYuanGongTestCase(TestCase):
         xinZengYuanGongPage.waitBySeconds(2)
         xinZengYuanGongPage.clickOnSave()
 
-        yuanGongGuanLiPage.validNormalStatus()
+        yuanGongGuanLiPage.validEditMember(memberInfo)
 
 
 if __name__ == "__main__":

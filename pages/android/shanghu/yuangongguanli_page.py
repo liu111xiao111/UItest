@@ -282,3 +282,13 @@ class YuanGongGuanLiPage(SuperPage):
 
         if deleteMember:
             API().assertTrue(self.testcase, self.logger, False)
+
+    def validEditMember(self, memberInfo = "default"):
+        '''
+        usage : 验证编辑后的员工信息
+        '''
+        API().getElementsByContainsText(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      memberInfo,
+                                      YGGLPC.verify_timeout)
