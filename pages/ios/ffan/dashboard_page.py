@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-
-import logging
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.dashboard_page_configs import DashboardPageConfigs
-
+from pages.logger import logger
 
 class DashboardPage(SuperPage):
     '''
@@ -19,10 +17,13 @@ class DashboardPage(SuperPage):
         '''
         usage: 进入到应用首页,检查ffan logo
         '''
+        logger.info("Check 爱逛街页面 begin")
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.name_home_title_icon,
                                   DashboardPageConfigs.assert_view_timeout)
+        logger.info("Check 爱逛街页面 end")
+
     def validBeijing(self):
         '''
         usage:验证北京市
@@ -94,10 +95,11 @@ class DashboardPage(SuperPage):
         '''
         usage: click on search in city.
         '''
-
+        logger.info("Click 全城搜索 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.resource_id_search_all_tv,
                                  DashboardPageConfigs.click_on_button_timeout)
+        logger.info("Click 全城搜索 end")
 
     def clickOnMovie(self):
         '''
@@ -130,7 +132,6 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"广场"
         '''
-        logging.info("Click on square module.")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.xpath_square_module_st,
                                   DashboardPageConfigs.click_on_button_timeout)
@@ -184,7 +185,6 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"购物中心"
         '''
-        logging.info('Click on shopping mall.')
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.name_shopping_mall,
                                  DashboardPageConfigs.click_on_button_timeout)
@@ -193,7 +193,6 @@ class DashboardPage(SuperPage):
         '''
          usage: 点击"优惠活动"
         '''
-        logging.info('Click on sales promotion.')
         API().iosScrollToElement(self.driver, self.logger,
                                  DashboardPageConfigs.xpath_main_page,
                                  DashboardPageConfigs.name_sales_promotion)
