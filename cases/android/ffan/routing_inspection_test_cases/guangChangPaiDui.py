@@ -12,6 +12,7 @@ from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.square_queue_page import SquareQueuePage
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
+from pages.android.ffan.search_page import SearchPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -55,10 +56,15 @@ class GuangChangPaiDuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
 
         # Load square page
-        dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchView()
+        searchPage.validSelf()
+        searchPage.inputText("北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
 
         # Click "排队取号"， load "排队取号" page.

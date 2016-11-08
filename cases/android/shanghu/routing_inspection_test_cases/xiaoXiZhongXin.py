@@ -6,7 +6,6 @@ import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
-from cases.android.shanghu.common.test_prepare import TestPrepare
 
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appPackage_bp
@@ -17,6 +16,7 @@ from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.shanghu.common.clear_app_data import ClearAppData
+from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.xiaoxizhongxin_page import XiaoXiZhongXinPage
 
