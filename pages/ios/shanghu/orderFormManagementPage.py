@@ -49,7 +49,7 @@ class OrderFormManagementPage(SuperPage):
         :return:
         '''
 
-        orderInfoArr = (orderFormNumber, orderFormStatus, orderFormBuyer, orderFormDate, orderFormTotal, amountPaid)
+        orderInfoArr = (orderFormNumber, orderFormStatus, orderFormBuyer, orderFormDate )
         # 获取订单详情页, 各个item内容
         orderFormNumberTemp = API().getTextByXpath(self.testcase,
                                                    self.driver,
@@ -73,17 +73,19 @@ class OrderFormManagementPage(SuperPage):
                                                   self.logger,
                                                   "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[8]")
         amountPaidTemp = API().getTextByXpath(self.testcase,
-                                                  self.driver,
-                                                  self.logger,
-                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
+                                              self.driver,
+                                              self.logger,
+                                               "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
         # 截取得电话号后四位
         orderFormBuyerTemp = orderFormBuyerTemp[7:11]
 
         orderFormTotalTemp = orderFormTotalTemp[1:]
+        # print(orderFormTotalTemp)
+        # print(orderFormTotal)
 
         amountPaidTemp = amountPaidTemp[1:]
 
-        orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormBuyerTemp, orderFormDateTemp, orderFormTotalTemp, amountPaidTemp)
+        orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormBuyerTemp, orderFormDateTemp)
 
         for index in range(len(orderInfoArr)):
             print(orderInfoArr[index].strip())
@@ -93,4 +95,22 @@ class OrderFormManagementPage(SuperPage):
 
 
 
+    def clickAllOrderStatusButton(self):
+        '''
+        点击全部状态按钮
+        :return:
+        '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 Name.all_order_status)
 
+    def clickTradingClosedButton(self):
+        '''
+        点击交易关闭按钮
+        :return:
+        '''
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 Name.trading_closed_status)
