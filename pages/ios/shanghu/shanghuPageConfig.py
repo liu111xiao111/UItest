@@ -59,10 +59,12 @@ class Xpath:
     new_role_permissions_first_item = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
     #角色说明
     new_role_explanation = "//UIAApplication[1]/UIAWindow[1]/UIATextView[1]"
-
-
+    #新增角色,新增角色按钮
+    add_new_role_button = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
 
 class Name:
+    back_icon = "back icon"
+
     login = u"登录"
     settings = u"设置"
     logout = u"退出登录"
@@ -77,6 +79,7 @@ class Name:
 
     role_management = u"角色管理"
     add_new_role_button = u"新增角色"
+    order_form_management = u"订单管理"
 
 
     save_button = u"保存"
@@ -96,8 +99,12 @@ class Name:
     confirm_button = u"确定"
 
     dongjiezhuangtai = u"冻结状态"
-
     zhengchangzhuangtai = u"正常状态"
+
+    bussinessSchool = u"商学院"
+    bussiness_school_common_questions = "常见问题"
+    bussiness_school_newer_guide = "新手指南"
+    bussiness_school_seller_notices = "商家须知"
 
 class Text:
     phoneNumber = u"15624958068"
