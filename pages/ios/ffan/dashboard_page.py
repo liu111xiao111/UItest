@@ -48,7 +48,8 @@ class DashboardPage(SuperPage):
 
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         xpath, DashboardPageConfigs.get_timeout)
-        logging.info(tempText)
+        print(tempText)
+        print(textContains)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
 
     def clickOnBornToShop(self):
