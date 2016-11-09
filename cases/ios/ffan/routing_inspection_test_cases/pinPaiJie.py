@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.brand_category_page import BrandCategoryPage
 from pages.ios.ffan.famous_details_category_page import FamousDetailsCategoryPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class PinPaiJieTestCase(TestCase):
@@ -30,7 +30,7 @@ class PinPaiJieTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -39,9 +39,10 @@ class PinPaiJieTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare(True)

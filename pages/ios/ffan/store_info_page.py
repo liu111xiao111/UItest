@@ -3,7 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.store_info_page_configs import StoreInfoPageConfigs
-
+from pages.logger import logger
 
 class StoreInfoPage(SuperPage):
     '''
@@ -19,11 +19,14 @@ class StoreInfoPage(SuperPage):
     '''
 
     def validSelf(self):
+        logger.info("Check 门店信息 begin")
         API().assertElementByName(self.testcase,
                                   self.driver,
                                   self.logger,
                                   StoreInfoPageConfigs.text_store_detail,
                                   StoreInfoPageConfigs.click_on_button_timeout)
+        logger.info("Check 门店信息 begin")
+        API().screenShot(self.driver, "menDianXiangQing")
 
     def validKeywords(self, keywords):
         '''

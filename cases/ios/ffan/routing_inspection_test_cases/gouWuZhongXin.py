@@ -13,7 +13,7 @@ from pages.ios.ffan.shopping_mall_page import ShoppingMallPage
 from pages.ios.ffan.dashboard_page import DashboardPage
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class GouWuZhongXinTestCase(TestCase):
@@ -29,7 +29,7 @@ class GouWuZhongXinTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -38,9 +38,10 @@ class GouWuZhongXinTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
         
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
