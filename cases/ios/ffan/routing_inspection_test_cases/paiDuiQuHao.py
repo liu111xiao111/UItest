@@ -15,6 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_queue_page import SquareQueuePage
 from utility.logger import Logger
+from pages.ios.ffan.search_page import SearchPage
 
 
 class PaiDuiQuHaoTestCase(TestCase):
@@ -48,8 +49,19 @@ class PaiDuiQuHaoTestCase(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
+        searchPage = SearchPage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
+
         dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
+
+        # 首页选择北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchAll()
+        searchPage.validSelf()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
+        squareModulePage.validSelf()
 
         squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.validSelf()
