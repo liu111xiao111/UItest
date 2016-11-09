@@ -72,7 +72,8 @@ class API(object):
             driver: appium driver
             pictureName: 截图名称
         '''
-        driver.save_screenshot(pictureName + ".png")
+        currentTime = time.strftime('%Y%m%d%H%M%S')
+        driver.save_screenshot(currentTime + "_" + pictureName + ".png")
 
     def inputStringByXpath(self, testCase, driver, logger, xpath, string, timeout=10):
         '''
