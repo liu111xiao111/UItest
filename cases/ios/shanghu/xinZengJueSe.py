@@ -30,9 +30,7 @@ class XinZengJueSe(TestCase):
 
         roleManagementPage.createNewRole()
 
-
-
-
+        roleManagementPage.waitBySeconds(10)
 
 
     def tearDown(self):
