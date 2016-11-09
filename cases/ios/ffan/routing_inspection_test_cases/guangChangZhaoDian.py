@@ -15,7 +15,6 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_find_store_category_page import SquareFindStorePage
 from pages.ios.ffan.search_page import SearchPage;
-from pages.ios.ffan.search_result_store_page import SearchResultStorePage
 from utility.logger import Logger
 
 
@@ -50,27 +49,24 @@ class GuangChangZhaoDianTestCase(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
         squareFindStorePage = SquareFindStorePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
-        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
 
         # 首页进入广场页
         dashboardPage.validSelf();
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelf();
 
-        # 广场页点击找店
-        squarePage.clicOnFindStore()
-        # squareFindStorePage.validSelf()
-        # squareFindStorePage.clickOnSearch()
-        #
-        # searchPage.validSelf()
-        # searchPage.inputKeywords("北京通州万达广场")
-        # searchPage.clickOnSearch()
-        # searchPage.clickOnSearchResultFirstItem()
-        #
-        # searchResultStorePage.validSelf()
+        # 首页选择北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchAll()
+        searchPage.validSelf()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
+        squareModulePage.validSelf()
+
+        squareModulePage.clicOnFindStore()
+
         squareFindStorePage.clickFirstItem()
         squareFindStorePage.validStorePage()
         squareFindStorePage.waitBySeconds(8)
