@@ -11,7 +11,7 @@ from pages.ios.shanghu.orderFormManagementPage import OrderFormManagementPage
 
 class JiaoYiGuanBiDingDan(TestCase):
     '''
-    全部订单状态检查
+    交易关闭,订单状态检查
     '''
     def setUp(self):
         self.logger = Logger()
