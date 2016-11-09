@@ -187,8 +187,10 @@ class API(object):
             xpath : 页面返回按钮的 xpath属性
             timeout : 超时时间,单位秒,默认十秒。
         '''
+        logger.info("Click back key, begin")
         self.clickElementByXpath(testCase, driver, logger, xpath, timeout)
         time.sleep(2)
+        logger.info("Click back key, end")
 
     def iosScrollToElement(self, driver, logger, elementFullXpath, elementName, direction='down'):
         '''

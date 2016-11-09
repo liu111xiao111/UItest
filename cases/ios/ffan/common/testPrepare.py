@@ -24,6 +24,7 @@ class TestPrepare:
             self.backToDashBoard()
 
     def login(self):
+        self.logger.info("Begin login")
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.clickOnMy()
@@ -43,6 +44,7 @@ class TestPrepare:
         loginPage.waitBySeconds(5)
 
         myFeiFanPage.validSelf()
+        self.logger.info("End login")
 
     def updateVersion(self):
         versionUpgradePage = VersionUpgradePage(self.testcase, self.driver, self.logger)
@@ -51,10 +53,12 @@ class TestPrepare:
             versionUpgradePage.waitBySeconds()
 
     def switchCity(self):
+        self.logger.info("Cancel 城市切换 begin")
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
         if switchCityPage.validSelf(False):
             switchCityPage.cancelSwitchCity()
             switchCityPage.waitBySeconds()
+        self.logger.info("Cancel 城市切换 end")
 
     def backToDashBoard(self):
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)

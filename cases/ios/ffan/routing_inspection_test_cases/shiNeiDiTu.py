@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
 from pages.ios.ffan.square_module_page import SquareModulePage
-from utility.logger import Logger
+from cases.logger import logger
 from pages.ios.ffan.search_page import SearchPage
 
 class ShiNeiDiTuTestCase(TestCase):
@@ -30,7 +30,7 @@ class ShiNeiDiTuTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -39,9 +39,10 @@ class ShiNeiDiTuTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)

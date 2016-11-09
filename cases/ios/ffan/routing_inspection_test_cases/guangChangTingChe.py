@@ -15,7 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_parking_payment_page import ParkingPaymentPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class GuangChangTingCheTestCase(TestCase):
@@ -31,11 +31,13 @@ class GuangChangTingCheTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):

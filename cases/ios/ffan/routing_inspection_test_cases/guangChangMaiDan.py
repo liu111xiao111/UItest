@@ -15,7 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.le_pay_page import LePayPage
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.square_module_page import SquareModulePage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class GuangChangMaiDanTestCase(TestCase):
@@ -31,7 +31,7 @@ class GuangChangMaiDanTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,

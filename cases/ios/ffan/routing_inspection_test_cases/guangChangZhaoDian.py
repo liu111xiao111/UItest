@@ -15,7 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_find_store_category_page import SquareFindStorePage
 from pages.ios.ffan.search_page import SearchPage;
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class GuangChangZhaoDianTestCase(TestCase):
@@ -31,7 +31,7 @@ class GuangChangZhaoDianTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -40,9 +40,11 @@ class GuangChangZhaoDianTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare(False)
