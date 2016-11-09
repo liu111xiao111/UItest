@@ -4,7 +4,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.brand_category_page_configs import BrandCategoryPageConfigs
-
+from pages.logger import logger
 
 class BrandCategoryPage(SuperPage):
     '''
@@ -20,6 +20,7 @@ class BrandCategoryPage(SuperPage):
         '''
         usage : 判断
         '''
+
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,

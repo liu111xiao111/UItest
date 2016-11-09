@@ -3,9 +3,6 @@ from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.dashboard_page_configs import DashboardPageConfigs
 from pages.logger import logger
-import time
-
-nowSrceenShot = time.strftime('%Y%m%d%H%M%S')
 
 class DashboardPage(SuperPage):
     '''
@@ -25,7 +22,7 @@ class DashboardPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   DashboardPageConfigs.name_home_title_icon,
                                   DashboardPageConfigs.assert_view_timeout)
-        API().screenShot(self.driver, ("%s_aiGuangJie") % nowSrceenShot)
+        API().screenShot(self.driver, "aiGuangJie")
         logger.info("Check 爱逛街页面 end")
 
     def validBeijing(self):
@@ -171,10 +168,11 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"品牌"
         '''
-
+        logger.info("Click 品牌 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.name_brand,
                                  DashboardPageConfigs.click_on_button_timeout)
+        logger.info("Click 品牌 end")
 
     def clickOnFood(self):
         '''
@@ -189,9 +187,11 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"购物中心"
         '''
+        logger.info("Click 购物中心 bengin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  DashboardPageConfigs.name_shopping_mall,
                                  DashboardPageConfigs.click_on_button_timeout)
+        logger.info("Click 购物中心 end")
 
     def clickOnSalesPromotion(self):
         '''
