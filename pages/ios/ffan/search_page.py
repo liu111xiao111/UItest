@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import logging
-
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.search_page_configs import SearchPageConfigs
-
+from pages.logger import logger
 
 class SearchPage(SuperPage):
     '''
@@ -21,9 +19,11 @@ class SearchPage(SuperPage):
     '''
 
     def validSelf(self):
+        logger.info("Check 搜索界面 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.resource_id_search_bt,
                                   SearchPageConfigs.assert_view_timeout)
+        logger.info("Check 搜索界面 end")
 
     def inputText(self, text):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
@@ -107,7 +107,6 @@ class SearchPage(SuperPage):
 
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         xpath, SearchPageConfigs.get_timeout)
-        logging.info(tempText)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
 
     def inputKeywords(self, keywords):
