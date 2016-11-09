@@ -12,14 +12,9 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
-from pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
-from pages.ios.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
-from pages.ios.ffan.my_ffan_page import MyFfanPage
-from pages.ios.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
-from pages.ios.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
-from pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
+from pages.ios.ffan.search_page import SearchPage
 
 
 class GuangChangXiangQingTestCase(TestCase):
@@ -44,14 +39,17 @@ class GuangChangXiangQingTestCase(TestCase):
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
-        squareModulePage.validSelf()
-        squareModulePage.clickBackKey()
-
+        searchPage = SearchPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        # 首页选择北京通州万达广场
+        dashboardPage.validSelf()
+        dashboardPage.clickOnSearchAll()
+        searchPage.validSelf()
+        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.clickOnSearch()
+        searchPage.clickOnSpecificSquare()
+        squareModulePage.validSelf()
 
 
 if __name__ == "__main__":
