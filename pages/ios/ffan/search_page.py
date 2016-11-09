@@ -4,6 +4,9 @@ from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.search_page_configs import SearchPageConfigs
 from pages.logger import logger
+import time
+
+nowSrceenShot = time.strftime('%Y%m%d%H%M%S')
 
 class SearchPage(SuperPage):
     '''
@@ -23,6 +26,7 @@ class SearchPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.resource_id_search_bt,
                                   SearchPageConfigs.assert_view_timeout)
+        API().screenShot(self.driver, "%s_sousuojiemian" % nowSrceenShot)
         logger.info("Check 搜索界面 end")
 
     def inputText(self, text):
@@ -44,11 +48,13 @@ class SearchPage(SuperPage):
         '''
         usage ： 输入品牌名称
         '''
-
+        logger.info("Input adidas begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.xpath_search_tf,
                                  SearchPageConfigs.text_searching_brand_name,
                                  SearchPageConfigs.input_timeout)
+        API().screenShot(self.driver,"%s_shuRuPinPai" % nowSrceenShot)
+        logger.info("Input adidas end")
 
     def inputGoodsName(self):
         '''
@@ -68,10 +74,11 @@ class SearchPage(SuperPage):
         '''
         usage: click on the search button.
         '''
-
+        logger.info("Click 搜索按钮 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.name_search_bt,
                                  SearchPageConfigs.click_on_button_timeout)
+        logger.info("Click 搜索按钮 end")
 
     '''
         usage : 点击搜索出来的结果list1
@@ -104,10 +111,12 @@ class SearchPage(SuperPage):
         '''
             usage: 验证搜索结果
         '''
-
+        logger.info("Check 搜索结果页面 begin")
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         xpath, SearchPageConfigs.get_timeout)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
+        API().screenShot(self.driver,("%s_souSuoJieGuo") % nowSrceenShot)
+        logger.info("Check 搜索结果页面 end")
 
     def inputKeywords(self, keywords):
         '''
