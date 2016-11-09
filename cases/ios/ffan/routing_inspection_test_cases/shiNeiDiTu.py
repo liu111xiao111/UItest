@@ -61,6 +61,7 @@ class ShiNeiDiTuTestCase(TestCase):
         # 点击室内地图
         squarePage.clicOnIndoorMap()
         # locationBluetoothPage.clickOnOkBtn()
+        squarePage.waitBySeconds(10)
         indoormapPage.validSelf()
 #         indoormapPage.clickOnMapAr()
 #         indoormapPage.clickOnFoodMap()
