@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from api.api import API
+from api.logger import logger
 
 
 class SuperPage(object):
@@ -25,7 +26,9 @@ class SuperPage(object):
         '''
         usage: 点击backkey方法
         '''
+        logger.info("Click 返回 begin")
         API().clickBackKeyForAndroid(self.driver, self.logger)
+        logger.info("Click 返回 end")
         
     def scrollAsScreenPercent(self,start_x_percent,start_y_percent,end_x_percent,end_y_percent,duration=800):
         '''

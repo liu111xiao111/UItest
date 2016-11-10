@@ -19,6 +19,7 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
+from cases.logger import logger
 
 
 class JueSeLieBiaoTestCase(TestCase):
@@ -39,9 +40,11 @@ class JueSeLieBiaoTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -49,10 +52,12 @@ class JueSeLieBiaoTestCase(TestCase):
         shouYePage = ShouYePage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnRoleManager()
 
         jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
         jueSeGuanLiPage.validSelf()
+        jueSeGuanLiPage.screenShot("jueSeGuanLi")
 
 
 if __name__ == "__main__":

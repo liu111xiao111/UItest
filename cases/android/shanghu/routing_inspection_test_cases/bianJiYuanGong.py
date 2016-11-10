@@ -20,6 +20,7 @@ from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 from pages.android.shanghu.xinzengyuangong_page import XinZengYuanGongPage
+from cases.logger import logger
 
 
 class BianJiYuanGongTestCase(TestCase):
@@ -40,9 +41,11 @@ class BianJiYuanGongTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -50,21 +53,27 @@ class BianJiYuanGongTestCase(TestCase):
         shouYePage = ShouYePage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnMemberManager()
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
+        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
         memberInfo = yuanGongGuanLiPage.getMemberInfo()
         yuanGongGuanLiPage.clickOnEdit()
 
         xinZengYuanGongPage = XinZengYuanGongPage(self , self.driver , self.logger)
+        xinZengYuanGongPage.screenShot("bianJiYuanGong")
         xinZengYuanGongPage.clickOnChangeRole()
         xinZengYuanGongPage.waitBySeconds(2)
+        xinZengYuanGongPage.screenShot("bianJiYuanGong")
         xinZengYuanGongPage.inputEditName()
         xinZengYuanGongPage.waitBySeconds(2)
+        xinZengYuanGongPage.screenShot("bianJiXingMing")
         xinZengYuanGongPage.clickOnSave()
 
         yuanGongGuanLiPage.validEditMember(memberInfo)
+        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
 
 
 if __name__ == "__main__":

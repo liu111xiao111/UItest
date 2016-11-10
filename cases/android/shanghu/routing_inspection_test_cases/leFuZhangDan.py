@@ -19,6 +19,7 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.lefuzhangdan_page import LeFuZhangDanPage
+from cases.logger import logger
 
 
 class LeFuZhangDanTestCase(TestCase):
@@ -39,23 +40,29 @@ class LeFuZhangDanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testLeFuZhangDan(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnLefuBill()
 
         leFuZhangDanPage = LeFuZhangDanPage(self , self.driver , self.logger)
+        leFuZhangDanPage.screenShot("leFuZhangDan")
         leFuZhangDanPage.clickOnUserDefined()
         leFuZhangDanPage.validCalendar()
+        leFuZhangDanPage.screenShot("leFuZhangDan")
         startDate = leFuZhangDanPage.clickOnStartDate()
         leFuZhangDanPage.validSeachDate(startDate)
         leFuZhangDanPage.validOrderInfo()
+        leFuZhangDanPage.screenShot("leFuZhangDan")
 
 
 if __name__ == "__main__":
