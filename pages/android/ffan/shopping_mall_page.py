@@ -39,7 +39,7 @@ class ShoppingMallPage(SuperPage):
         elif tab_number == 3:
             logger.info("Click 百货 tab begin")
         else:
-            logger.info("Click %s tab begin") % tab_number
+            logger.info("Click %s tab begin" % tab_number)
 
         viewList = API().getElementsByResourceId(self.testcase,
                                                  self.driver,
@@ -55,7 +55,7 @@ class ShoppingMallPage(SuperPage):
         elif tab_number == 3:
             logger.info("Click 百货 tab end")
         else:
-            logger.info("Click %s tab end") % tab_number
+            logger.info("Click %s tab end" % tab_number)
 
     def validListView(self):
         '''

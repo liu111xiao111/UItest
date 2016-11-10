@@ -77,7 +77,7 @@ class FoodCategoryPage(SuperPage):
         restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
                           u"韩国料理", u"江浙菜", u"日本料理", u"烧烤", u"面包甜点")
         for restaurant in restaurantList:
-            logger.info("Check 入口(%s) begin") % restaurant
+            logger.info("Check 入口(%s) begin" % restaurant)
             API().clickElementByText(self.testcase,
                                      self.driver,
                                      self.logger,
@@ -85,10 +85,10 @@ class FoodCategoryPage(SuperPage):
                                      FCPC.click_view_timeout)
             API().waitBySeconds(3)
             self.validRestaurant()
-            API().screenShot("%s") % (restaurant)
+            API().screenShot(self.driver, "meiShiHuiRuKou")
             self.clickBackKey()
-            API().screenShot("meiShiHui")
-            logger.info("Check 入口(%s) end") % restaurant
+            API().screenShot(self.driver, "meiShiHui")
+            logger.info("Check 入口(%s) end" % restaurant)
 
     def clickOnCoupon(self):
         '''

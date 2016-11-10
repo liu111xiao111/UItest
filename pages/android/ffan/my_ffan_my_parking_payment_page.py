@@ -60,7 +60,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  item,
                                  60)
         API().waitBySeconds(2)
-        API().screenShot("tingCheRuKou")
+        API().screenShot(self.driver, "tingCheRuKou")
         notice = API().validElementByXpath(self.driver, self.logger, PPPC.xpath_notice, 30)
         if not notice:
             API().assertElementByText(self.testcase,
@@ -69,7 +69,7 @@ class MyFfanMyParkingPaymentPage(SuperPage):
                                  title,
                                  60)
             API().clickBackKeyForAndroid(self.driver, self.logger)
-            API().screenShot("tingChe")
+            API().screenShot(self.driver, "tingChe")
         else:
             API().clickElementByText(self.testcase,
                                      self.driver,
