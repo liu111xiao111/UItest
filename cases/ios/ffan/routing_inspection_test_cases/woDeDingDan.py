@@ -6,7 +6,7 @@ import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
-from utility.logger import Logger
+from cases.logger import logger
 from driver.appium_driver import AppiumDriver
 from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
@@ -27,7 +27,7 @@ class WoDeDingDanTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -36,12 +36,11 @@ class WoDeDingDanTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()

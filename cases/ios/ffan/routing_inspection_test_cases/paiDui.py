@@ -16,7 +16,7 @@ from pages.ios.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_queue_page import SquareQueuePage
 from pages.ios.ffan.my_ffan_page import MyFfanPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class PaiDuiTestCase(TestCase):
@@ -32,7 +32,7 @@ class PaiDuiTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -41,9 +41,10 @@ class PaiDuiTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()

@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.ios.ffan.settings_page import SettingsPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeTuiChuTestCase(TestCase):
@@ -30,11 +30,13 @@ class WoDeTuiChuTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -59,7 +61,7 @@ class WoDeTuiChuTestCase(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(woDeTuiChuTestCase)
+    suite = TestLoader().loadTestsFromTestCase(WoDeTuiChuTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + 'Feifan_automation_test_report_' + now + '.html'

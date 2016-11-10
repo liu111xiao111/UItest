@@ -3,7 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.parking_payment_input_plate_number_page_configs import ParkingPaymentInputPlateNumberPageConfigs
-
+from pages.logger import logger
 
 class ParkingPaymentInputPlateNumberPage(SuperPage):
     '''
@@ -19,10 +19,13 @@ class ParkingPaymentInputPlateNumberPage(SuperPage):
         '''
         usage : 判断"停车交费"标题显示是否正确 
         '''
+        logger.info("Check 停车缴费 begin")
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=ParkingPaymentInputPlateNumberPageConfigs.name_parking_payment_title);
+        logger.info("Check 停车缴费 end")
+        API().screenShot(self.driver,"tingCheJiaoFei")
 
     def validLunbogundongtiao(self):
         '''

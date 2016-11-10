@@ -3,7 +3,7 @@
 from pages.ios.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs
 from api.api import API
 from pages.ios.common.superPage import SuperPage
-
+from pages.logger import logger
 
 class MyFfanMyOrderPage(SuperPage):
     '''
@@ -18,10 +18,13 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 判断"全部订单"标题显示是否正确
         '''
+        logger.info("Check 我的订单 begin")
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=MyFfanMyOrderPageConfigs.name_order_all)
+        logger.info("Check 我的订单 end")
+        API().screenShot(self.driver, "myOrderForm")
 
     def clickOnOrderDetails(self):
         '''

@@ -3,7 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.message_centre_page_configs import MessageCentrePageConfigs
-
+from pages.logger import logger
 
 class MessageCentrePage(SuperPage):
     '''
@@ -22,10 +22,12 @@ class MessageCentrePage(SuperPage):
         '''
         usage: verify whether the current page is the version upgrade page.
         '''
-
+        logger.info("Check 消息中心 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   MessageCentrePageConfigs.resource_id_message_centre_title_st,
                                   MessageCentrePageConfigs.assert_view_timeout)
+        logger.info("Check 消息中心 end")
+        API().screenShot(self.driver, "message")
 
     def clickOnSettings(self):
         '''
