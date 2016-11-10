@@ -22,6 +22,7 @@ from configs.driver_configs import driver_url
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GuangChangZhaoDianTestCase(TestCase):
@@ -43,9 +44,11 @@ class GuangChangZhaoDianTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -58,17 +61,23 @@ class GuangChangZhaoDianTestCase(TestCase):
 
         # 绑定北京通州万达广场
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.waitBySeconds(10)
         squarePage.validSelf()
+        squarePage.screenShot("guangChang")
 
         # 点击找店
         squarePage.clicOnFindStore()
         squareFindStorePage.validSelf()
+        squareFindStorePage.screenShot("zhaoDian")
 
         # 检索门店
         '''squareFindStorePage.clickOnSearch()
@@ -77,6 +86,7 @@ class GuangChangZhaoDianTestCase(TestCase):
         searchPage.clickOnSearch()'''
         squareFindStorePage.clickOnFirstItem()
         searchResultStorePage.validSelf()
+        searchResultStorePage.screenShot("zhaoDianJieGuo")
 
 
 if __name__ == "__main__":

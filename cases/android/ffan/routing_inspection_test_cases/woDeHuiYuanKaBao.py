@@ -21,6 +21,7 @@ from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class WoDeHuiYuanKaBaoTestCase(TestCase):
@@ -42,31 +43,39 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeHuiYuanKaBao(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
+        myFeiFanPage.screenShot("woDe")
         myFeiFanPage.clickOnMembershipCardPackage()
 
         myMembershipCardPackagePage = MyMembershipCardPackagePage(self, self.driver, self.logger)
         myMembershipCardPackagePage.waitBySeconds(2)
         myMembershipCardPackagePage.validSelf()
+        myMembershipCardPackagePage.screenShot("huiYuanKaBao")
         myMembershipCardPackagePage.clickOnLeHuoKa()
 
         feiFanMembershipPage = FeiFanMembershipPage(self, self.driver, self.logger)
         feiFanMembershipPage.validSelf()
+        feiFanMembershipPage.screenShot("leHuoKa")
         feiFanMembershipPage.clickBackKey()
+        myMembershipCardPackagePage.screenShot("huiYuanKaBao")
 
         myMembershipCardPackagePage.clickBackKey()
+        myFeiFanPage.screenShot("woDe")
 
 
 if __name__ == "__main__":

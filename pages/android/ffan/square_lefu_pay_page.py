@@ -4,6 +4,7 @@ import operator
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.square_lefu_pay_page_configs import SquareLefuPayPageConfigs as SLPPC
+from pages.logger import logger
 
 
 class SquareLefuPayPage(SuperPage):
@@ -18,6 +19,7 @@ class SquareLefuPayPage(SuperPage):
         '''
         usage : 验证乐付买单
         '''
+        logger.info("Check 买单 begin")
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         SLPPC.resource_id_lefu_pay_title,
                                         90)
@@ -34,11 +36,14 @@ class SquareLefuPayPage(SuperPage):
                 prev_plaza_distance = elementList[i-1].text.split(" ")[0]
                 if operator.gt(prev_plaza_distance, current_plaza_distance):
                     API().assertTrue(self.testcase, self.logger, False)
+        logger.info("Check 买单 end")
 
     def clickOnLefuPay(self):
         '''
         usage : 点击 "乐付买单"
         '''
+        logger.info("Click 买单 button begin")
         API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        SLPPC.resource_id_lefu_pay,
                                        18)
+        logger.info("Click 买单 button end")

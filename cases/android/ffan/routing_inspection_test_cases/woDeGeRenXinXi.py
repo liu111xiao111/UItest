@@ -20,6 +20,7 @@ from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.personal_information_page import PersonalInformationPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class WoDeGeRenXinXiTestCase(TestCase):
@@ -41,24 +42,30 @@ class WoDeGeRenXinXiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeGeRenXinXi(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
+        myFeiFanPage.screenShot("woDe")
         myFeiFanPage.clickOnNickname()
 
         personalInformationPage = PersonalInformationPage(self, self.driver, self.logger)
         personalInformationPage.validSelf()
+        personalInformationPage.screenShot("geRenZhiLiao")
         personalInformationPage.clickBackKey()
+        myFeiFanPage.screenShot("woDe")
 
 
 if __name__ == "__main__":

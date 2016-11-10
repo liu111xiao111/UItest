@@ -21,6 +21,7 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GuangChangSouSuoTestCase(TestCase):
@@ -42,9 +43,11 @@ class GuangChangSouSuoTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -54,30 +57,41 @@ class GuangChangSouSuoTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.waitBySeconds(10)
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(10)
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squareModulePage.waitBySeconds(5)
         squareModulePage.validSelf()
+        squareModulePage.screenShot("guangChang")
         squareModulePage.clickOnSearch()
 
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputStoreName()
+        searchPage.screenShot("shuRuMenDian")
         searchPage.clickOnSearch()
         searchPage.validSearchResult(u"通州", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
         #tempText = searchPage.clickOnSearchResultFirstItem()
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
         #searchResultStorePage.validKeywords(tempText)
         searchResultStorePage.validSelf()
+        searchResultStorePage.screenShot("souSuoJieGuoXiangXi")
         searchResultStorePage.clickBackKey()
+        searchResultStorePage.screenShot("guangChang")
 
         searchPage.clickBackKey()
+        searchPage.screenShot("aiGuangJie")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangSouSuoTestCase)

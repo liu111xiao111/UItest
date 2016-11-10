@@ -19,6 +19,7 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GouWuZhongXinTestCase(TestCase):
@@ -41,9 +42,11 @@ class GouWuZhongXinTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -53,10 +56,12 @@ class GouWuZhongXinTestCase(TestCase):
 
         # Verify Home Page
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
 
         # Enter Shopping Mall Page and Verify
         dashboardPage.clickOnShoppingMall()
         shoppingMallPage.validSelf()
+        shoppingMallPage.screenShot("gouWuZhongXin")
 
         tabNumberList = (1,    # Total
                          2,    # Mall
@@ -65,6 +70,7 @@ class GouWuZhongXinTestCase(TestCase):
             shoppingMallPage.clickOnTab(tabNumber)
             shoppingMallPage.validListView()
             shoppingMallPage.validDistance()
+            shoppingMallPage.screenShot("gouWuZhongXinXiangXi")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GouWuZhongXinTestCase)

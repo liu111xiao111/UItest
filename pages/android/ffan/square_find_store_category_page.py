@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.square_find_store_category_page_configs import SquareFindStoreConfigs as SFSC
+from api.logger import logger
 
 
 class SquareFindStorePage(SuperPage):
@@ -37,8 +38,10 @@ class SquareFindStorePage(SuperPage):
         '''
         usage : 点击第一项商家
         '''
+        logger.info("Click 第一项商家 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SFSC.resource_id_iv_item_iv,
                                        SFSC.verify_view_timeout)
+        logger.info("Click 第一项商家 end")

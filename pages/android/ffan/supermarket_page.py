@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.supermarket_page_configs import SupermarketPageConfigs as SMPC
+from pages.logger import logger
 
 
 class SupermarketPage(SuperPage):
@@ -17,6 +18,7 @@ class SupermarketPage(SuperPage):
         '''
         usage: 验证商超页面
         '''
+        logger.info("Check 商超页面 begin")
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -38,3 +40,4 @@ class SupermarketPage(SuperPage):
                                  logger=self.logger,
                                  listLength=listNumber,
                                  expectNum=SMPC.SUPERMARKETNUMBER)
+        logger.info("Check 商超页面 end")

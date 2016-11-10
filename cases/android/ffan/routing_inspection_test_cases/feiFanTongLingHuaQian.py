@@ -21,6 +21,7 @@ from pages.android.ffan.feifan_card_page import FeiFanCardPage
 from pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class FeiFanTongLingHuaQianTestCase(TestCase):
@@ -44,25 +45,31 @@ class FeiFanTongLingHuaQianTestCase(TestCase):
                                    self.platVersion, 
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testFeiFanTongLingHuaQian(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnFeiFanCard()
 
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.validSelf()
+        feifanCardPage.screenShot("feiFanTong")
         feifanCardPage.clickOnCharge()
         feifanCardChargePage = FeiFanCardChargePage(self , self.driver , self.logger)
         feifanCardChargePage.validSelf()
+        feifanCardChargePage.screenShot("lingHuaQian")
         feifanCardChargePage.clickOnBill()
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
+        feifanCardBillPage.screenShot("zhangDan")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanTongLingHuaQianTestCase)

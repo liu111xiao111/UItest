@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.settings_page_configs import SettingsPageConfigs as SPC
+from pages.logger import logger
 
 
 class SettingsPage(SuperPage):
@@ -17,16 +18,19 @@ class SettingsPage(SuperPage):
         '''
         usage: 验证设置页面
         '''
+        logger.info("Check 设置页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SPC.resource_id_setting_account_management_rl,
                                         SPC.assert_view_timeout)
+        logger.info("Check 设置页面 end")
 
     def clickOnQuitAccountBtn(self, confirmQuit=True):
         '''
         usage: 点击退出当前账号
         '''
+        logger.info("Click 退出当前账号 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
@@ -49,6 +53,7 @@ class SettingsPage(SuperPage):
                                      self.logger,
                                      SPC.text_cancel_btn,
                                      SPC.assert_view_timeout)
+        logger.info("Click 退出当前账号 end")
 
     def clickOnAccountManagement(self):
         '''

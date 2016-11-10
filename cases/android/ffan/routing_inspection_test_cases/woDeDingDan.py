@@ -20,6 +20,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class WoDeDingDanTestCase(TestCase):
@@ -41,9 +42,11 @@ class WoDeDingDanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -55,29 +58,39 @@ class WoDeDingDanTestCase(TestCase):
         # 查看我的订单状态
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
+        myFfanPage.screenShot("woDe")
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()
+        myOrderPage.screenShot("woDeDingDan")
         myOrderPage.clickBackKey()
         myFfanPage.validSelf()
+        myFfanPage.screenShot("woDe")
 
         # 查看我的订单 -- 点击我的订单待付款
         myFfanPage.clickOnToBePaid()
         myFfanPage.validSelfToBePaid()
+        myFfanPage.screenShot("woDeDaiFuKuan")
         myFfanPage.clickBackKey()
+        myFfanPage.screenShot("woDe")
 
         # 查看我的订单 -- 点击我的订单可使用
         myFfanPage.clickOnUse()
         myFfanPage.validSelfUse()
+        myFfanPage.screenShot("woDeKeShiYong")
         myFfanPage.clickBackKey()
+        myFfanPage.screenShot("woDe")
 
         # 查看我的订单 -- 点击我的订单我的点评
         myFfanPage.clickOnComments()
         myFfanPage.validSelfCommets()
+        myFfanPage.screenShot("woDeDianPing")
         myFfanPage.clickBackKey()
+        myFfanPage.screenShot("woDe")
 
         # 查看我的订单 -- 点击我的订单退货退款
         myFfanPage.clickOnReturnRefund()
         myFfanPage.validSelfReturnRefund()
+        myFfanPage.screenShot("woDeTuiHuoTuiKuan")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeDingDanTestCase)

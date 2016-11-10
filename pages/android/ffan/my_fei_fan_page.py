@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.my_fei_fan_page_configs import MyFeiFanPageConfigs as MFPC
+from pages.logger import logger
 
 
 class MyFeiFanPage(SuperPage):
@@ -17,11 +18,13 @@ class MyFeiFanPage(SuperPage):
         '''
         usage: 验证我的飞凡
         '''
+        logger.info("Check 我的页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         MFPC.resource_id_my_fei_fan_title,
                                         MFPC.assert_view_timeout)
+        logger.info("Check 我的页面 end")
 
     def validLoginStatus(self):
         '''
@@ -61,6 +64,7 @@ class MyFeiFanPage(SuperPage):
         '''
         usage: 点击设置
         '''
+        logger.info("Click 设置 begin")
         API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
@@ -70,36 +74,43 @@ class MyFeiFanPage(SuperPage):
                                  self.logger,
                                  MFPC.text_settings,
                                  MFPC.click_on_button_timeout)
+        logger.info("Click 设置 end")
 
     def clickOnMessageCentre(self):
         '''
         usage: 点击消息中心
         '''
+        logger.info("Click 消息中心 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        MFPC.resource_id_message_centre_button,
                                        MFPC.click_on_button_timeout)
+        logger.info("Click 消息中心 end")
 
     def clickOnMembershipCardPackage(self):
         '''
         usage: 点击会员卡包
         '''
+        logger.info("Click 会员卡包 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  MFPC.text_membership_card_package_button,
                                  MFPC.click_on_button_timeout)
+        logger.info("Click 会员卡包 end")
 
     def clickOnNickname(self):
         '''
         usage: 点击昵称
         '''
+        logger.info("Click 昵称 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        MFPC.resource_id_nickname_button,
                                        MFPC.click_on_button_timeout)
+        logger.info("Click 昵称 end")
 
     def clickOnMyFeiFanCard(self):
         '''

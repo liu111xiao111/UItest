@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.message_centre_page_configs import MessageCentrePageConfigs as MCPC
+from pages.logger import logger
 
 
 class MessageCentrePage(SuperPage):
@@ -18,11 +19,13 @@ class MessageCentrePage(SuperPage):
         '''
         usage: 验证消息中心
         '''
+        logger.info("Check 消息中心页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         MCPC.resource_id_message_centre_title,
                                         MCPC.assert_view_timeout)
+        logger.info("Check 消息中心页面 end")
 
     def clickOnSettings(self):
         '''

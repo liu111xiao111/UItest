@@ -17,7 +17,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.search_page import SearchPage
-from pages.android.ffan.store_info_page import StoreInfoPage
+#from pages.android.ffan.store_info_page import StoreInfoPage
 from pages.android.ffan.search_result_store_page import SearchResultStorePage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
@@ -52,13 +52,15 @@ class ReCiSouSuoTestCase(TestCase):
     def testReCiSouSuo(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
-        storeInfoPage = StoreInfoPage(self, self.driver, self.logger)
+        #storeInfoPage = StoreInfoPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.waitBySeconds(10)
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         '''searchPage.clickOnMovie()
         searchPage.validSearchResult(u"电影", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
         searchPage.clickOnSpecificMovie()
@@ -76,6 +78,7 @@ class ReCiSouSuoTestCase(TestCase):
         # 获取检索热词的结果列表长度
         length = searchPage.getHotWordListLength()
         searchResultStorePage.validHotWords(length)
+        searchResultStorePage.screenShot("reChiJianSuoJieGuo")
         # 获取检索热词的结果列表第一项条目标题
         '''item = searchResultStorePage.getShoppingMallListItemTitle()
         if int(self.platVersion.split(".")[0]) < 5:

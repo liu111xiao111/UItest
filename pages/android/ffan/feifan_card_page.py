@@ -3,6 +3,7 @@
 from pages.android.ffan.feifan_card_page_configs import FeiFanCardPageConfigs
 from api.api import API
 from pages.android.common.super_page import SuperPage
+from pages.logger import logger
 
 FCPC = FeiFanCardPageConfigs()
 
@@ -18,11 +19,13 @@ class FeiFanCardPage(SuperPage):
         '''
         usage : 检查飞凡卡界面
         '''
+        logger.info("Check 飞凡通 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         FCPC.resource_id_tv_bill_tv,
                                         FCPC.verify_view_timeout)
+        logger.info("Check 飞凡通 end")
 
     def clickOnOpenCard(self):
         '''
@@ -58,21 +61,25 @@ class FeiFanCardPage(SuperPage):
         '''
         usage : 点击零花钱
         '''
+        logger.info("Click 零花钱 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        FCPC.resource_id_tv_charge_tv,
                                        FCPC.verify_click_timeout)
+        logger.info("Click 零花钱 end")
 
     def clickOnBill(self):
         '''
         usage : 点击账单
         '''
+        logger.info("Click 账单 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        FCPC.resource_id_tv_bill_tv,
                                        FCPC.verify_click_timeout)
+        logger.info("Click 账单 end")
 
     def clickOnCodeIcon(self):
         '''

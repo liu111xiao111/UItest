@@ -22,6 +22,7 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
+from cases.logger import logger
 
 
 class GuangChangShiNeiDiTuTestCase(TestCase):
@@ -43,9 +44,11 @@ class GuangChangShiNeiDiTuTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -58,20 +61,26 @@ class GuangChangShiNeiDiTuTestCase(TestCase):
 
         # Load square page
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(10)
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.waitBySeconds(10)
         squarePage.validSelf()
+        squarePage.screenShot("guangChang")
         squarePage.waitBySeconds(5)
 
         # Click "室内地图", cancle bluetooth setting, load "室内地图" page.
         squarePage.clicOnIndoorMap();
         locationBluetoothPage.clickOnCancleBtn()
         indoormapPage.validSelf();
+        indoormapPage.screenShot("shiNeiDiTu")
         '''indoormapPage.clickOnFoodMap();
         indoormapPage.validSelfFood();'''
 

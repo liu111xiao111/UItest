@@ -22,6 +22,7 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GuangChangTingCheTestCase(TestCase):
@@ -43,30 +44,39 @@ class GuangChangTingCheTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testGuangChangTingChe(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
 
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
+        squareModulePage.screenShot("guangChang")
         squareModulePage.clickOnParking()
 
         parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
         parkingPage.waitBySeconds(5)
+        parkingPage.validSelf()
+        parkingPage.screenShot("tingChe")
         # 检查入口项目
         itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
         titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")

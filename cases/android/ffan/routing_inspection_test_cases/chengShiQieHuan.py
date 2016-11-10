@@ -19,6 +19,7 @@ from pages.android.ffan.love_shopping_page import LoveShoppingPage
 from pages.android.ffan.switch_city_page import SwitchCityPage
 from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
+from cases.logger import logger
 
 
 class ChengShiQieHuanTestCase(TestCase):
@@ -37,6 +38,7 @@ class ChengShiQieHuanTestCase(TestCase):
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(), deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
 
     def testChengShiQieHuan_1(self):
@@ -60,10 +62,12 @@ class ChengShiQieHuanTestCase(TestCase):
         for tempTimes in range(5):
             logging.info("ATTEMPTS: %d" % (tempTimes + 1))
             if switchCityPage.validSelf(False):
+                switchCityPage.screenShot("chengShiQieHuan")
                 switchCityPage.cancelSwitchCity()
                 break
             switchCityPage.waitBySeconds(2)
         switchCityPage.invalidSelf()
+        switchCityPage.screenShot("chengShiQieHuan")
 
 
 if __name__ == "__main__":
