@@ -18,7 +18,7 @@ from pages.ios.ffan.my_ffan_page import MyFfanPage
 from pages.ios.ffan.sales_promotion_coupon_details_page import SalesPromotionCouponDetailsPage
 from pages.ios.ffan.sales_promotion_coupon_success_page import SalesPromotionCouponSuccessPage
 from pages.ios.ffan.sales_promotion_page import SalesPromotionPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class PiaoQuanTestCase(TestCase):
@@ -34,7 +34,7 @@ class PiaoQuanTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -43,10 +43,10 @@ class PiaoQuanTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
-
+        logger.info("Clear data completed")
         testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare()
 

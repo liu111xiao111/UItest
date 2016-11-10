@@ -6,7 +6,6 @@ import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
-from utility.logger import Logger
 from driver.appium_driver import AppiumDriver
 from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
@@ -14,6 +13,7 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.my_ffan_page import MyFfanPage
 from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
 from pages.ios.ffan.dashboard_page import DashboardPage
+from cases.logger import logger
 
 
 class LingHuaQianTestCase(TestCase):
@@ -27,7 +27,7 @@ class LingHuaQianTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -36,12 +36,11 @@ class LingHuaQianTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()

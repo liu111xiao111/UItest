@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.ios.ffan.personal_information_page import PersonalInformationPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeGeRenXinXiTestCase(TestCase):
@@ -30,10 +30,12 @@ class WoDeGeRenXinXiTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
+        logger.info("Clear data completed")
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 

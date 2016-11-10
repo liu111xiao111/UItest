@@ -26,17 +26,17 @@ class TestPrepare:
     def login(self):
         self.logger.info("Begin login")
         dashboardPage = DashboardPage(self.testcase, self.driver, self.logger)
-        dashboardPage.validSelf()
+        #dashboardPage.validSelf()
         dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self.testcase, self.driver, self.logger)
-        myFeiFanPage.validSelf()
+        #myFeiFanPage.validSelf()
         if myFeiFanPage.validLoginStatus(False):
             return
         myFeiFanPage.clickOnLogin()
 
         loginPage = LoginPage(self.testcase, self.driver, self.logger)
-        loginPage.validSelf()
+        #loginPage.validSelf()
         loginPage.switchToNormalLogin()
         loginPage.inputUserName()
         loginPage.inputPassWord()

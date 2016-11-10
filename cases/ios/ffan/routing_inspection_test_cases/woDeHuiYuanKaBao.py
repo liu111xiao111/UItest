@@ -15,8 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.fei_fan_membership_page import FeiFanMembershipPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.ios.ffan.my_membership_card_package_page import MyMembershipCardPackagePage
-from utility.logger import Logger
-
+from cases.logger import logger
 
 class WoDeHuiYuanKaBaoTestCase(TestCase):
     '''
@@ -31,11 +30,13 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):

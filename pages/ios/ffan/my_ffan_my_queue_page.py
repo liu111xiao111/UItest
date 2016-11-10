@@ -3,6 +3,7 @@
 from pages.ios.ffan.my_ffan_my_queue_page_configs import MyFfanMyQueuePageConfigs
 from api.api import API
 from pages.ios.common.superPage import SuperPage
+from pages.logger import logger
 
 MQPC = MyFfanMyQueuePageConfigs()
 
@@ -21,10 +22,15 @@ class MyFfanMyQueuePage(SuperPage):
         '''
         usage : Click "我的排队" in my Feifan page， and load "我的排队" page correctly. 
         '''
+        logger.info("Check 我的排队 begin")
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=MQPC.resource_id_tv_registration_tv)
+        logger.info("Check 我的排队 end")
+
+        API().screenShot(self.driver, "woDePaidui")
+
     def clickMoreRestaurant(self):
         '''
         usage:点击更多餐厅

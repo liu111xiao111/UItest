@@ -17,7 +17,7 @@ from pages.ios.ffan.parking_payment_page import ParkingPaymentPage
 from pages.ios.ffan.parking_payment_more_page import ParkingPaymentMorePage
 from pages.ios.ffan.parking_payment_unbound_confirm_page import ParkingPaymentUnboundConfirmPage
 from pages.ios.ffan.my_ffan_page import MyFfanPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeTingCheJiaoFeiTestCase(TestCase):
@@ -32,7 +32,7 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -41,9 +41,10 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
-
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
