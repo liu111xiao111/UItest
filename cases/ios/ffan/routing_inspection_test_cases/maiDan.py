@@ -19,7 +19,7 @@ from pages.ios.ffan.le_pay_cancel_order_page import LePayCancelOrderPage
 from pages.ios.ffan.my_ffan_page import MyFfanPage
 from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
 from pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class MaiDanTestCase(TestCase):
@@ -35,7 +35,7 @@ class MaiDanTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
@@ -44,9 +44,11 @@ class MaiDanTestCase(TestCase):
                                    IDC.driverUrl,
                                    IDC.bundleId,
                                    IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()

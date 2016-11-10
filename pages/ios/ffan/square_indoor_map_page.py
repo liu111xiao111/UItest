@@ -3,7 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.square_indoor_map_page_configs import SquareIndoorMapPageConfigs as SIMPC
-
+from pages.logger import logger
 
 class SquareIndoorMapPage(SuperPage):
     '''
@@ -17,11 +17,14 @@ class SquareIndoorMapPage(SuperPage):
         '''
         usage : 判断"室内地图"显示是否正常
         '''
+        logger.info("Check 室内地图 begin")
         API().assertElementByName(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SIMPC.name_verify_indoor,
                                   18)
+        logger.info("Check 室内地图 end")
+        API().screenShot(self.driver, "shiNeiDiTu")
 
     def clickOnMapAr(self):
         '''

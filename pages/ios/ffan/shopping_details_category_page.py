@@ -3,7 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.shopping_details_category_page_configs import ShoppingDetailsCategoryPageConfigs as SDCPC
-
+from pages.logger import logger
 
 class ShoppingDetailsCategoryPage(SuperPage):
     '''
@@ -18,7 +18,7 @@ class ShoppingDetailsCategoryPage(SuperPage):
         '''
         usage : 判断商品详情页中“首页”、“商品”、“门店”显示是否正确
         '''
-
+        logger.info("Check 商品 begin")
 #         API().assertElementByName(testCase=self.testcase,
 #                                   driver=self.driver,
 #                                   logger=self.logger,
@@ -30,6 +30,8 @@ class ShoppingDetailsCategoryPage(SuperPage):
 #                                   driver=self.driver,
 #                                   logger=self.logger,
 #                                   name=ShoppingDetailsCategoryPageConfigs.text_store)
+        logger.info("Check 商品 end")
+        API().screenShot(self.driver, "shangPinXiangQing")
 
     def clickOnMyFavorite(self):
         '''

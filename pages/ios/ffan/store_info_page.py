@@ -32,11 +32,13 @@ class StoreInfoPage(SuperPage):
         '''
         usage: verify whether the keyword is correct.
         '''
-
+        API().screenShot(self.driver, "shangChao")
+        logger.info("Check keywords begin")
         print("KEYWORDS: %s" % keywords)
 
         API().assertElementByName(self.testcase, self.driver, self.logger, keywords,
                                   StoreInfoPageConfigs.assert_view_timeout)
+        logger.info("Check keywords end")
 
     def clickOnStoreImageTextDetails(self):
         '''

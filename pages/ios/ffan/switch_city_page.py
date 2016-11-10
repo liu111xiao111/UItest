@@ -3,7 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.ios.ffan.switch_city_page_configs import SwitchCityPageConfigs
-
+from pages.logger import logger
 
 class SwitchCityPage(SuperPage):
     '''
@@ -60,10 +60,14 @@ class SwitchCityPage(SuperPage):
         '''
         usage:输入北京市
         '''
+        API().screenShot(self.driver, "shuRuChengShi")
+        logger.info("Input 北京市 begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                 SwitchCityPageConfigs.xpath_city_input,
                                 SwitchCityPageConfigs.name_city_beijing,
                                 SwitchCityPageConfigs.click_on_button_timeout)
+        logger.info("Input 北京市 end")
+        API().screenShot(self.driver, "shuRuChengShi")
 
     def inputShenyang(self):
         '''
@@ -92,6 +96,8 @@ class SwitchCityPage(SuperPage):
                                     SwitchCityPageConfigs.xpath_hint_content_st,
                                     SwitchCityPageConfigs.get_view_timeout).split(u"为")[1]
     def clickOnCityListFirst(self):
+        logger.info("Click 第一个城市 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SwitchCityPageConfigs.xpath_city_list_one,
                                   SwitchCityPageConfigs.click_on_button_timeout)
+        logger.info("Click 第一个城市 end")

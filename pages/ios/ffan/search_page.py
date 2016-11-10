@@ -23,8 +23,8 @@ class SearchPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.resource_id_search_bt,
                                   SearchPageConfigs.assert_view_timeout)
-        API().screenShot(self.driver, "sousuojiemian")
         logger.info("Check 搜索界面 end")
+        API().screenShot(self.driver, "sousuojiemian")
 
     def inputText(self, text):
         API().input_view_by_resourceID_android(driver=self.driver, logger=self.logger,
@@ -35,23 +35,25 @@ class SearchPage(SuperPage):
         '''
         usage ： 输入商家名
         '''
-
+        logger.info("Input " + SearchPageConfigs.text_searching_store_name + " begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.xpath_search_tf,
                                  SearchPageConfigs.text_searching_store_name,
                                  SearchPageConfigs.input_timeout)
+        logger.info("Input " + SearchPageConfigs.text_searching_store_name + " end")
+        API().screenShot(self.driver, "shuRuShangJia")
 
     def inputBrandName(self):
         '''
         usage ： 输入品牌名称
         '''
-        logger.info("Input adidas begin")
+        logger.info("Input " + SearchPageConfigs.text_searching_brand_name + " begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.xpath_search_tf,
                                  SearchPageConfigs.text_searching_brand_name,
                                  SearchPageConfigs.input_timeout)
-        API().screenShot(self.driver,"shuRuPinPai")
-        logger.info("Input adidas end")
+        logger.info("Input " + SearchPageConfigs.text_searching_brand_name + " end")
+        API().screenShot(self.driver, "shuRuPinPai")
 
     def inputGoodsName(self):
         '''
@@ -84,9 +86,11 @@ class SearchPage(SuperPage):
     '''
 
     def clickOnSearchResultFirstItem(self):
+        logger.info("Click 第一个搜索结果 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_search_result_first_item_tv,
                                   SearchPageConfigs.click_on_button_timeout)
+        logger.info("Click 第一个搜索结果 end")
 
     def clickOnMovie(self):
         '''
@@ -103,12 +107,12 @@ class SearchPage(SuperPage):
         '''
         usage: click on the specific movie button
         '''
-        logger.info("Click 某一个电影 begin")
+        logger.info("Click 电影 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_specific_movie_st,
                                   SearchPageConfigs.click_on_button_timeout)
 
-        logger.info("Click 某一个电影 end")
+        logger.info("Click 电影 end")
 
     def validSearchResult(self, textContains="default", xpath="default"):
         '''
@@ -125,19 +129,22 @@ class SearchPage(SuperPage):
         '''
         usage: input keywords.
         '''
-
+        logger.info("Input " + keywords + " begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.xpath_search_tf, keywords,
                                  SearchPageConfigs.input_timeout)
+        logger.info("Input " + keywords + " end")
+        API().screenShot(self.driver, "shuRu")
 
     def clickOnSpecificSquare(self):
         '''
         usage: click on the specific square button
         '''
-
+        logger.info("Click 特定广场 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_specific_square_st,
                                   SearchPageConfigs.click_on_button_timeout)
+        logger.info("Click 特定广场 end")
 
 if __name__ == '__main__':
     pass;

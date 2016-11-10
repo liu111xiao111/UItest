@@ -3,6 +3,7 @@
 from api.api import API
 from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.square_queue_page_configs import SquareQueuePageConfigs
+from pages.logger import logger
 
 SQPC = SquareQueuePageConfigs()
 
@@ -21,21 +22,28 @@ class SquareQueuePage(SuperPage):
         '''
         usage : Click "排队取号" in square page, and load "排队取号" correctly.
         '''
+        logger.info("Check " + SQPC.resource_id_queue + " begin")
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
                                   name=SQPC.resource_id_queue)
+        logger.info("Check " + SQPC.resource_id_queue + " end")
+        API().screenShot(self.driver, "paiDuiQuHao")
 
     def validKeyword(self, keyword):
         '''
         usage: Verify whether the keyword is in the list.
         '''
-
+        logger.info("Check " + keyword + " begin")
         for _ in range(10):
             self.scrollAsScreenPercent(0.5, 0.6, 0.5, 0.4)
             if API().validElementByName(self.driver, self.logger, keyword):
                 return True
         return False
+
+        logger.info("Check " + keyword + " end")
+        API().screenShot(self.driver, "quHao")
+
 
     def validQueueSuccess(self):
         '''

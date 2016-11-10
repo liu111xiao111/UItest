@@ -13,8 +13,8 @@ from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_module_page import SquareModulePage
-from utility.logger import Logger
 from pages.ios.ffan.search_page import SearchPage
+from cases.logger import logger
 
 
 class GuangChangXiangQingTestCase(TestCase):
@@ -30,10 +30,12 @@ class GuangChangXiangQingTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
                                    IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
+        logger.info("Clear data completed")
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -43,7 +45,6 @@ class GuangChangXiangQingTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         # 首页选择北京通州万达广场
-        dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
         searchPage.validSelf()
         searchPage.inputKeywords(u"北京通州万达广场")

@@ -14,9 +14,9 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_food_category_page import SquareFoodPage
-from utility.logger import Logger
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.search_result_store_page import SearchResultStorePage
+from cases.logger import logger
 
 
 class GuangChangMeiShiHuiTestCase(TestCase):
@@ -32,7 +32,7 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         self.driver.quit()
 
     def setUp(self):
-        self.logger = Logger()
+        self.logger = logger
         self.driver = AppiumDriver(None,
                                    None,
                                    IDC.platformName,
