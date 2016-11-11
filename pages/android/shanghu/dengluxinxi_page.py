@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.shanghu.dengluxinxi_page_configs import DengLuXinXiPageConfigs as DLXXPC
+from pages.logger import logger
 
 
 class DengLuXinXiPage(SuperPage):
@@ -17,6 +18,7 @@ class DengLuXinXiPage(SuperPage):
         '''
         usage : 进入到登录信息页
         '''
+        logger.info("Check 登录信息页面 begin")
         user = API().getTextByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
@@ -45,3 +47,4 @@ class DengLuXinXiPage(SuperPage):
                                         DLXXPC.resource_id_businessman,
                                         DLXXPC.assert_timeout)
         API().assertEqual(self.testcase, self.logger, businessman, DLXXPC.test_businessman)
+        logger.info("Check 登录信息页面 end")

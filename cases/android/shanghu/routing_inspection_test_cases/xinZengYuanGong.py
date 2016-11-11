@@ -23,6 +23,7 @@ from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 from pages.android.shanghu.xinzengyuangong_page import XinZengYuanGongPage
 from pages.android.shanghu.shezhi_page import SheZhiPage
+from cases.logger import logger
 
 
 class XinZengYuanGongTestCase(TestCase):
@@ -43,9 +44,11 @@ class XinZengYuanGongTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -55,33 +58,46 @@ class XinZengYuanGongTestCase(TestCase):
         xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnMemberManager()
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
+        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
         yuanGongGuanLiPage.clickOnAddMember()
 
         xinZengYuanGongPage = XinZengYuanGongPage(self , self.driver , self.logger)
+        xinZengYuanGongPage.screenShot("xinZengYuanGong")
         xinZengYuanGongPage.clickOnChooseRole()
         xinZengYuanGongPage.waitBySeconds(2)
+        xinZengYuanGongPage.screenShot("xinZengYuanGong")
         xinZengYuanGongPage.inputUserName()
+        xinZengYuanGongPage.screenShot("shuRuXingMing")
         xinZengYuanGongPage.inputPhone()
         xinZengYuanGongPage.waitBySeconds(2)
+        xinZengYuanGongPage.screenShot("shuRuShouJiHao")
         xinZengYuanGongPage.clickOnSave()
 
         yuanGongGuanLiPage.validAddMember()
+        yuanGongGuanLiPage.screenShot("renYuanGuanLi")
         yuanGongGuanLiPage.clickBackKey()
 
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnSetting()
 
         sheZhiPage = SheZhiPage(self , self.driver , self.logger)
         sheZhiPage.validSelf()
+        sheZhiPage.screenShot("sheZhi")
         sheZhiPage.clickOnLogout()
+        dengLuPage.screenShot("dengLu")
 
         dengLuPage.inputMemberPhoneNumber()
+        dengLuPage.screenShot("shuRuShouJiHao")
         dengLuPage.inputMemberDefaultPassword()
+        dengLuPage.screenShot("shuRuMiMa")
         dengLuPage.clickOnLoginBtn()
         xuanZeMenDianPage.waitBySeconds(2)
         xuanZeMenDianPage.validSelf()
+        xuanZeMenDianPage.screenShot("xuanZeMenDian")
 
 
 if __name__ == "__main__":

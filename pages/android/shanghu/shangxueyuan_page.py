@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.shanghu.shangxueyuan_page_configs import ShangXueYuanPageConfigs as SXYPC
+from pages.logger import logger
 
 
 class ShangXueYuanPage(SuperPage):
@@ -27,36 +28,43 @@ class ShangXueYuanPage(SuperPage):
         '''
         usage: 点击常见问题
         '''
+        logger.info("Click 常见问题 begin")
         API().clickElementByText(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SXYPC.text_question,
                                        SXYPC.assert_timeout)
+        logger.info("Click 常见问题 end")
 
     def clickOnGuide(self):
         '''
         usage: 点击新手指南
         '''
+        logger.info("Click 新手指南 begin")
         API().clickElementByText(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SXYPC.text_guide,
                                        SXYPC.assert_timeout)
+        logger.info("Click 新手指南 end")
 
     def clickOnNotice(self):
         '''
         usage: 点击商家须知
         '''
+        logger.info("Click 商家须知 begin")
         API().clickElementByText(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SXYPC.text_notice,
                                        SXYPC.assert_timeout)
+        logger.info("Click 商家须知 end")
 
     def validQuestionDetails(self):
         '''
         usage : 验证常见问题
         '''
+        logger.info("Check 常见问题 begin")
         title = []
 
         for i in range(5):
@@ -82,11 +90,13 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
+            logger.info("Check 常见问题 end")
 
     def validGuideDetails(self):
         '''
         usage : 验证新手指南
         '''
+        logger.info("Check 新手指南 begin")
         title = []
 
         for i in range(4):
@@ -112,11 +122,13 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
+            logger.info("Check 新手指南 end")
 
     def validNoticeDetails(self):
         '''
         usage : 验证商家须知
         '''
+        logger.info("Check 商家须知 begin")
         title = []
 
         for i in range(5):
@@ -143,4 +155,5 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
+            logger.info("Check 商家须知 end")
 
