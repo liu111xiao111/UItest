@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.my_ffan_my_ticket_page_configs import MyFfanMyTicketPageConfigs as MMTPC
+from api.logger import logger
 
 
 class MyFfanMyTicketPage(SuperPage):
@@ -133,6 +134,7 @@ class MyFfanMyTicketPage(SuperPage):
         '''
         usage : 验证我的票券数是否正确
         '''
+        logger.info("Check 我的票券数量 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
@@ -168,3 +170,4 @@ class MyFfanMyTicketPage(SuperPage):
                                            self.logger,
                                            MMTPC.resource_ticket,
                                            MMTPC.assert_view_timeout)
+        logger.info("Check 我的票券数量 end")

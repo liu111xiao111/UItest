@@ -9,8 +9,8 @@ from unittest import TestLoader
 
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.food_category_page import FoodCategoryPage
-from pages.android.ffan.sales_promotion_page import SalesPromotionPage
-from pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
+#from pages.android.ffan.sales_promotion_page import SalesPromotionPage
+#from pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -21,6 +21,7 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
+from cases.logger import logger
 
 
 class MeiShiHuiTestCase(TestCase):
@@ -43,22 +44,26 @@ class MeiShiHuiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testMeiShiHui(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
-        salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
+        #salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
+        #lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
 
         dashboardPage.clickOnFood()
         foodPage.validFoodHomePage()
+        foodPage.screenShot("meiShiHui")
 
         # 检查所有子界面入口
         foodPage.validModules()

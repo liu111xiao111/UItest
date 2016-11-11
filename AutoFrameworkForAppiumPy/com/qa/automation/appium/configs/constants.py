@@ -1,7 +1,7 @@
 
 SYSTEM_NAME = 'automation'
 
-PATROL_HEADR_NAME = u'%s巡检用例自动化测试报告(%s)'
+PATROL_HEADR_NAME = u'飞凡APP自动化回归测试-%s版(%s)'
 
 MONKEY_HEADR_NAME = u'%s稳定性自动化测试报告(%s)'
 

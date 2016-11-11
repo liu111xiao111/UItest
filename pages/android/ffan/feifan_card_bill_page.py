@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.feifan_card_bill_page_configs import FeiFanCardBillPageConfigs as FCBPC
+from pages.logger import logger
 
 
 class FeiFanCardBillPage(SuperPage):
@@ -17,11 +18,13 @@ class FeiFanCardBillPage(SuperPage):
         '''
         usage : 检查是否加载出来
         '''
+        logger.info("Check 账单页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         FCBPC.resource_id_tv_bill_list_tv,
                                         30)
+        logger.info("Check 账单页面 end")
 
     def validSubFilterByText(self, text=u"全部"):
         '''

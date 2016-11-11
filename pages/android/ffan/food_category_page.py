@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import time
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.food_category_page_configs import FoodCategoryPageConfigs as FCPC
+from pages.logger import logger
 
 
 class FoodCategoryPage(SuperPage):
@@ -20,11 +22,13 @@ class FoodCategoryPage(SuperPage):
         '''
         usage: 美食主界面，根据美食种类button入口，检查美食主页面是否加载出来.
         '''
+        logger.info("Check 美食汇页面 begin")
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
                                   FCPC.view_text_tiltle,
                                   FCPC.verify_view_timeout)
+        logger.info("Check 美食汇页面 end")
 
     def validRestaurant(self):
         '''
@@ -73,6 +77,7 @@ class FoodCategoryPage(SuperPage):
         restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
                           u"韩国料理", u"江浙菜", u"日本料理", u"烧烤", u"面包甜点")
         for restaurant in restaurantList:
+            logger.info("Check 入口(%s) begin") % restaurant
             API().clickElementByText(self.testcase,
                                      self.driver,
                                      self.logger,
@@ -80,7 +85,10 @@ class FoodCategoryPage(SuperPage):
                                      FCPC.click_view_timeout)
             API().waitBySeconds(3)
             self.validRestaurant()
+            API().screenShot("%s") % (restaurant)
             self.clickBackKey()
+            API().screenShot("meiShiHui")
+            logger.info("Check 入口(%s) end") % restaurant
 
     def clickOnCoupon(self):
         '''

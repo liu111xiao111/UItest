@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.my_ffan_my_order_page_configs import MyFfanMyOrderPageConfigs as MOPC
+from pages.logger import logger
 
 
 class MyFfanMyOrderPage(SuperPage):
@@ -17,9 +18,11 @@ class MyFfanMyOrderPage(SuperPage):
         '''
         usage : 验证我的订单
         '''
+        logger.info("Check 我的订单页面 begin")
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         MOPC.resource_id_tv_my_order_tv,
                                         10)
+        logger.info("Check 我的订单页面 end")
 
     def clickOnOrderDetails(self):
         '''

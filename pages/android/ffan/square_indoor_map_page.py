@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.square_indoor_map_page_configs import SquareIndoorMapPageConfigs as SIMPC
+from pages.logger import logger
 
 
 class SquareIndoorMapPage(SuperPage):
@@ -17,11 +18,13 @@ class SquareIndoorMapPage(SuperPage):
         '''
         usage : 验证室内地图页面
         '''
+        logger.info("Check 室内地图页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SIMPC.resource_id_map,
                                         18)
+        logger.info("Check 室内地图页面 end")
 
     def clickOnSwitchMap(self):
         '''

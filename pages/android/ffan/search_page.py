@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.search_page_configs import SearchPageConfigs as SPC
+from pages.logger import logger
 
 
 class Ranking(object):
@@ -27,72 +28,86 @@ class SearchPage(SuperPage):
 
     def validSelf(self):
         '''
-        usage : 搜索界面，检查是否加载出来
+        usage : 搜索页面，检查是否加载出来
         '''
+        logger.info("Check 搜索页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SPC.resource_tv_search_tv,
                                         10)
+        logger.info("Check 搜索页面 end")
 
     def inputText(self, text):
         '''
         usage : 输入文本值
         '''
+        logger.info("Input 文本 begin")
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       text,
                                       10)
+        logger.info("Input 文本 end")
 
     def inputStoreName(self):
         '''
         usage : 输入商家名
         '''
+        logger.info("Input 门店名称 begin")
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_store_name,
                                       10)
+        #API().screenShot(self.driver, "souSuo")
+        logger.info("Input 门店名称 end")
 
     def inputBrandName(self):
         '''
         usage ： 输入品牌名称
         '''
+        logger.info("Input 品牌名称 begin")
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_brand_name,
                                       10)
+        logger.info("Input 品牌名称 end")
 
     def inputGoodsName(self):
         '''
         usage ：输入商品
         '''
+        logger.info("Input 商品名称 begin")
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_goods_name,
                                       10)
+        logger.info("Input 商品名称 end")
 
     def clickOnSearch(self):
         '''
         usage ： 点击搜索
         '''
+        logger.info("Click 搜索 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SPC.resource_tv_search_tv,
                                        90)
+        logger.info("Click 搜索 end")
 
     def clickOnSearchResultFirstItem(self):
         '''
         usage : 点击搜索出来的结果list1
         '''
+        logger.info("Click 搜索列表第一项 begin")
         API().getTextByResourceId(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -105,6 +120,7 @@ class SearchPage(SuperPage):
                                   90)
 
         #return tempText
+        logger.info("Click 搜索列表第一项 end")
 
     def clickOnMovie(self):
         '''
@@ -120,21 +136,25 @@ class SearchPage(SuperPage):
         '''
         usage: 点击百货
         '''
+        logger.info("Click 百货 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SPC.text_shopping_mall,
                                  SPC.click_on_button_timeout)
+        logger.info("Click 百货 end")
 
     def getHotWordListLength(self):
         '''
         usage: 取得检索出的百货列表长度
         '''
+        logger.info("Get 检索出的列表长度 begin")
         elements = API().getElementsByResourceId(self.testcase,
                                                  self.driver,
                                                  self.logger,
                                                  SPC.resource_id_first_item,
                                                  SPC.get_view_timeout)
+        logger.info("Get 检索出的列表长度 end")
         return len(elements)
 
     def clickOnSpecificMovie(self):
@@ -151,6 +171,7 @@ class SearchPage(SuperPage):
         '''
         usage: 验证搜索结果
         '''
+        logger.info("Check 搜索结果 begin")
         text = API().getTextByXpath(self.testcase,
                              self.driver,
                              self.logger,
@@ -159,6 +180,7 @@ class SearchPage(SuperPage):
         API().assertTrue(self.testcase,
                          self.logger,
                          textContains in text)
+        logger.info("Check 搜索结果 end")
 
     def inputKeywords(self, keywords):
         '''

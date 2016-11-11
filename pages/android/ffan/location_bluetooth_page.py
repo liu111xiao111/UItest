@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.location_bluetooth_page_configs import LocationBluetoothPageConfigs as LBPC
+from pages.logger import logger
 
 class LocationBluetoothPage(SuperPage):
     '''
@@ -16,11 +17,12 @@ class LocationBluetoothPage(SuperPage):
         '''
         usage : 点击 "取消"
         '''
-
+        logger.info("Click (蓝牙未开启)取消 begin")
         cancel_btn = API().validElementByResourceId(self.driver,
                                                     self.logger,
                                                     LBPC.resource_id_cancle_button,
                                                     10)
         if cancel_btn:
             cancel_btn.click()
+        logger.info("Click (蓝牙未开启)取消 end")
 

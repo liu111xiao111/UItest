@@ -20,6 +20,7 @@ from pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from pages.android.ffan.feifan_card_page import FeiFanCardPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class FeiFanTongZhangDanTestCase(TestCase):
@@ -42,24 +43,29 @@ class FeiFanTongZhangDanTestCase(TestCase):
                                    self.platVersion, 
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testFeiFanTongZhangDan(self):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnFeiFanCard()
 
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.waitBySeconds(5)
         feifanCardPage.validSelf()
+        feifanCardPage.screenShot("feiFanTong")
         feifanCardPage.clickOnBill()
 
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
+        feifanCardBillPage.screenShot("zhangDan")
         '''if int(self.platVersion.split(".")[0]) >= 5:
             for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
                 feifanCardBillPage.clickOnFilter()
