@@ -24,11 +24,12 @@ class SwitchCityPage(SuperPage):
             API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                             SCPC.resource_id_switch_city_cancel_button,
                                             SCPC.assert_view_timeout)
+            logger.info("Check 切换城市 end")
         else:
+            logger.info("Check 切换城市 end")
             return API().validElementByResourceId(self.driver, self.logger,
                                                   SCPC.resource_id_switch_city_cancel_button,
                                                   SCPC.verify_view_timeout)
-        logger.info("Check 切换城市 end")
 
     def cancelSwitchCity(self):
         '''
