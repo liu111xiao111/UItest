@@ -57,36 +57,38 @@ class YuanGongGuanLiPage(SuperPage):
         usage : 进入到员工管理页（冻结状态），验证冻结状态
         '''
         logger.info("Check 冻结状态 begin")
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_name,
-                                      YGGLPC.verify_timeout)
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_store,
-                                      YGGLPC.verify_timeout)
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_role,
-                                      YGGLPC.verify_timeout)
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_phone,
-                                      YGGLPC.verify_timeout)
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_creator,
-                                      YGGLPC.verify_timeout)
-        API().getElementsByResourceId(self.testcase,
-                                      self.driver,
-                                      self.logger,
-                                      YGGLPC.resource_id_create_time,
-                                      YGGLPC.verify_timeout)
+        freezeData = self.validFreezeData()
+        if freezeData:
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_name,
+                                          YGGLPC.verify_timeout)
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_store,
+                                          YGGLPC.verify_timeout)
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_role,
+                                          YGGLPC.verify_timeout)
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_phone,
+                                          YGGLPC.verify_timeout)
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_creator,
+                                          YGGLPC.verify_timeout)
+            API().getElementsByResourceId(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          YGGLPC.resource_id_create_time,
+                                          YGGLPC.verify_timeout)
         logger.info("Check 冻结状态 end")
 
     def clickOnNormalStatus(self):
@@ -154,7 +156,7 @@ class YuanGongGuanLiPage(SuperPage):
         phone = API().getTextByResourceId(self.testcase,
                                           self.driver,
                                           self.logger,
-                                          YGGLPC.resource_id_name,
+                                          YGGLPC.resource_id_phone,
                                           YGGLPC.verify_timeout)
         API().assertEqual(self.testcase, self.logger, phone, XZYGPC.account_phone)
 
@@ -165,11 +167,11 @@ class YuanGongGuanLiPage(SuperPage):
                                             YGGLPC.verify_timeout)
         API().assertEqual(self.testcase, self.logger, creator, XZYGPC.text_creator)
 
-        API().getElementsByResourceId(self.testcase,
+        '''API().getElementsByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       YGGLPC.resource_id_create_time,
-                                      YGGLPC.verify_timeout)
+                                      YGGLPC.verify_timeout)'''
         logger.info("Check 新增员工 end")
 
     def clickOnEdit(self):
@@ -238,12 +240,11 @@ class YuanGongGuanLiPage(SuperPage):
         usage : 进入到员工管理页（冻结状态），验证冻结状态
         '''
         logger.info("Check 冻结员工信息 begin")
-        name = API().getElementsByResourceId(self.testcase,
-                                             self.driver,
-                                             self.logger,
-                                             YGGLPC.resource_id_freeze_name,
-                                             YGGLPC.verify_timeout)
-        API().assertEqual(self.testcase, self.logger, name, memerInfo)
+        API().getElementsByText(self.testcase,
+                                self.driver,
+                                self.logger,
+                                memerInfo,
+                                YGGLPC.verify_timeout)
         logger.info("Check 冻结员工信息 end")
 
     def getFreezeMemberInfo(self):

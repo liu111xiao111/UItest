@@ -59,10 +59,8 @@ class RenYuanLieBiaoTestCase(TestCase):
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("zhengChangZhuangTai")
         yuanGongGuanLiPage.clickOnFreezeStatus()
+        yuanGongGuanLiPage.validFreezeStatus()
         yuanGongGuanLiPage.screenShot("dongJieZhuangTai")
-        freezeData = yuanGongGuanLiPage.validFreezeData()
-        if freezeData:
-            yuanGongGuanLiPage.validFreezeStatus()
 
 
 if __name__ == "__main__":

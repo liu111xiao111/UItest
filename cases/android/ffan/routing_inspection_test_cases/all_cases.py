@@ -52,7 +52,7 @@ from cases.android.ffan.routing_inspection_test_cases.woDeXiaoXiZhongXin import 
 from cases.android.ffan.routing_inspection_test_cases.woDeTuiChu import WoDeTuiChuTestCase
 
 
-from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianFeiTestCase
+from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongLingHuaQian import FeiFanTongLingHuaQianTestCase
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     suite.addTest(WoDePiaoQuanTestCase("testWoDePiaoQuan")) # 我的票券 No.51
     suite.addTest(WoDeDingDanTestCase("testWoDeDingDanTestCase")) # 我的订单 No.52
     suite.addTest(WoDeHuiYuanKaBaoTestCase("testWoDeHuiYuanKaBao")) # 我的会员卡包 No.53
-    suite.addTest(WoDeLingHuaQianFeiTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.54
+    suite.addTest(WoDeLingHuaQianTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.54
     #suite.addTest(WoDeFeiFanTongTestCase("testWoDeFeiFanTong")) # 我的飞凡通 No.56
     suite.addTest(WoDePaiDuiTestCase("testWoDePaiDui")) # 我的排队 No.57
     suite.addTest(WoDeTingCheJiaoFeiTestCase("testWoDeTingCheJiaoFei")) # 我的停车缴费 No.58

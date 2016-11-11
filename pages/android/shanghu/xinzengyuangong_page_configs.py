@@ -14,7 +14,7 @@ class XinZengYuanGongPageConfigs():
     text_add_member = u"新增员工"
     text_save = u"保存"
     text_store = u"QA线上测试购物类门店1(快易花专用)_10011651"
-    text_creator = u"QA线上测试用普通商户"
+    text_creator = u"商户下的员工"
     text_edit_role = u"商户店长角色"
 
     verify_timeout = 30

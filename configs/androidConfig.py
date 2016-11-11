@@ -55,7 +55,7 @@ caseList = {
     'WoDeDingDanTestCase'                       : [u'我的订单', '52'],
     'WoDeHuiYuanKaBaoTestCase'                  : [u'我的会员卡包', '53'],
     'WoDeFuKuanMaTestCase'                      : [u'我的付款码', '0'],
-    'WoDeLingHuaQianFeiTestCase'                : [u'我的零花钱', '54'],
+    'WoDeLingHuaQianTestCase   '                : [u'我的零花钱', '54'],
     'WoDeFeiFanTongTestCase'                    : [u'我的飞凡通', '55'],
     'WoDePaiDuiTestCase'                        : [u'我的排队', '57'],
     'WoDeTingCheJiaoFeiTestCase'                : [u'我的停车缴费', '58'],

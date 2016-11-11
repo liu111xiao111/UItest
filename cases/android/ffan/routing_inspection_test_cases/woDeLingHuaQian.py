@@ -23,7 +23,7 @@ from pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from cases.logger import logger
 
 
-class WoDeLingHuaQianFeiTestCase(TestCase):
+class WoDeLingHuaQianTestCase(TestCase):
     '''
     作者 乔佳溪
     巡检checklist #55
@@ -65,7 +65,7 @@ class WoDeLingHuaQianFeiTestCase(TestCase):
         feifanCardBillPage.screenShot("woDeLingHuaQian")
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(WoDeLingHuaQianFeiTestCase)
+    suite = TestLoader().loadTestsFromTestCase(WoDeLingHuaQianTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

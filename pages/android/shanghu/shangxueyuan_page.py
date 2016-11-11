@@ -90,7 +90,7 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
-            logger.info("Check 常见问题 end")
+        logger.info("Check 常见问题 end")
 
     def validGuideDetails(self):
         '''
@@ -122,7 +122,7 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
-            logger.info("Check 新手指南 end")
+        logger.info("Check 新手指南 end")
 
     def validNoticeDetails(self):
         '''
@@ -155,5 +155,5 @@ class ShangXueYuanPage(SuperPage):
                                       SXYPC.assert_timeout)
 
             API().clickBackKeyForAndroid(self.driver, self.logger)
-            logger.info("Check 商家须知 end")
+        logger.info("Check 商家须知 end")
 

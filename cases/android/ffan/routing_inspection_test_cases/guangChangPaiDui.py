@@ -88,14 +88,15 @@ class GuangChangPaiDuiTestCase(TestCase):
             queuePage.clicOnGetQueueNumber()
             queuePage.validQueueSuccess()
 
-            for _ in range(3):
+            # 取消排队
+            '''for _ in range(3):
                 queuePage.clickBackKey()
 
             dashboardPage.clickOnMy()
             myFfanPage.validSelf()
             myFfanPage.clickOnMyQueue()
             myQueuePage.validSelf()
-            myQueuePage.clickOnCancelQueue()
+            myQueuePage.clickOnCancelQueue()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangPaiDuiTestCase)
