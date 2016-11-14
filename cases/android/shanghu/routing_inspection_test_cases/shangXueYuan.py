@@ -19,6 +19,7 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.shangxueyuan_page import ShangXueYuanPage
+from cases.logger import logger
 
 
 class ShangXueYuanTestCase(TestCase):
@@ -39,26 +40,35 @@ class ShangXueYuanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testShangXueYuan(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnShangXueYuan()
 
         shangXueYuanPage = ShangXueYuanPage(self , self.driver , self.logger)
+        shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnQuestion()
         shangXueYuanPage.validQuestionDetails()
+        shangXueYuanPage.screenShot("changJianWenTi")
         shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnGuide()
         shangXueYuanPage.validGuideDetails()
+        shangXueYuanPage.screenShot("xinShouZhiNan")
         shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnNotice()
         shangXueYuanPage.validNoticeDetails()
+        shangXueYuanPage.screenShot("shangJiaXuZhi")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ShangXueYuanTestCase)

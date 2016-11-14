@@ -55,7 +55,7 @@ caseList = {
     'WoDeDingDanTestCase'                       : [u'我的订单', '52'],
     'WoDeHuiYuanKaBaoTestCase'                  : [u'我的会员卡包', '53'],
     'WoDeFuKuanMaTestCase'                      : [u'我的付款码', '0'],
-    'WoDeLingHuaQianFeiTestCase'                : [u'我的零花钱', '54'],
+    'WoDeLingHuaQianTestCase'                   : [u'我的零花钱', '54'],
     'WoDeFeiFanTongTestCase'                    : [u'我的飞凡通', '55'],
     'WoDePaiDuiTestCase'                        : [u'我的排队', '57'],
     'WoDeTingCheJiaoFeiTestCase'                : [u'我的停车缴费', '58'],
@@ -64,5 +64,16 @@ caseList = {
     'WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase'  : [u'我的设置(修改小额免密支付支付)', '59-3'],
     'WoDeXiaoXiZhongXinTestCase'                : [u'我的消息中心', '60'],
     'WoDeTuiChuTestCase'                        : [u'我的退出', '61'],
-
+    'DengLuTestCase'                            : [u'登录', '1'],
+    'TuiChuDengLuTestCase'                      : [u'退出登录', '2'],
+    'RenYuanLieBiaoTestCase'                    : [u'人员列表', '3'],
+    'XinZengYuanGongTestCase'                   : [u'新增员工', '4'],
+    'BianJiYuanGongTestCase'                    : [u'编辑员工', '5'],
+    'DongJieYuanGongTestCase'                   : [u'冻结员工', '6'],
+    'JieDongYuanGongTestCase'                   : [u'解冻员工', '7'],
+    'ShanChuYuanGongTestCase'                   : [u'删除员工', '8'],
+    'JueSeLieBiaoTestCase'                      : [u'角色列表', '9'],
+    'XinZengJueSeTestCase'                      : [u'新增角色', '10'],
+    'LeFuZhangDanTestCase'                      : [u'乐付账单', '13'],
+    'ShangXueYuanTestCase'                      : [u'商学院', '19']
 }

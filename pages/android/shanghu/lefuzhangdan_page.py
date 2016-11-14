@@ -4,6 +4,7 @@ import datetime
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.shanghu.lefuzhangdan_page_configs import LeFuZhangDanPageConfigs as LFZDPC
+from pages.logger import logger
 
 
 class LeFuZhangDanPage(SuperPage):
@@ -18,16 +19,19 @@ class LeFuZhangDanPage(SuperPage):
         '''
         usage: 点击自定义
         '''
+        logger.info("Click 自定义 begin")
         API().clickElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
                                         LFZDPC.text_user_defined,
                                         LFZDPC.verify_timeout)
+        logger.info("Click 自定义 end")
 
     def validCalendar(self):
         '''
         usage: 验证日历
         '''
+        logger.info("Check 日历 begin")
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -39,11 +43,13 @@ class LeFuZhangDanPage(SuperPage):
                                   self.logger,
                                   LFZDPC.text_calendar_end,
                                   LFZDPC.verify_timeout)
+        logger.info("Check 日历 end")
 
     def clickOnStartDate(self):
         '''
         usage: 选择当前日期的前一天
         '''
+        logger.info("Click 当前日期的前一天 begin")
         date = time.strftime('%Y-%m-%d').split('-')
         yesDate = datetime.datetime.now() - datetime.timedelta(days = 1)
         beforeDate = yesDate.strftime('%Y-%m-%d').split('-')
@@ -92,6 +98,7 @@ class LeFuZhangDanPage(SuperPage):
                                         self.logger,
                                         LFZDPC.text_confirm,
                                         LFZDPC.verify_timeout)
+        logger.info("Click 当前日期的前一天 end")
 
         return startDate
 
@@ -99,6 +106,7 @@ class LeFuZhangDanPage(SuperPage):
         '''
         usage: 验证查询日期
         '''
+        logger.info("Check 查询日期 begin")
         searchDate = API().getTextByResourceId(self.testcase,
                                                self.driver,
                                                self.logger,
@@ -113,11 +121,13 @@ class LeFuZhangDanPage(SuperPage):
                           self.logger,
                           searchDate,
                           searchContent)
+        logger.info("Check 查询日期 end")
 
     def validOrderInfo(self):
         '''
         usage: 验证订单信息
         '''
+        logger.info("Check 订单信息 begin")
         data = API().validElementByText(self.driver,
                                         self.logger,
                                         LFZDPC.text_pay_type,
@@ -130,3 +140,4 @@ class LeFuZhangDanPage(SuperPage):
                                                     LFZDPC.resource_id_type,
                                                     LFZDPC.verify_timeout)
             API().assertEqual(self.testcase, self.logger, payType, LFZDPC.text_lefu_pay)
+        logger.info("Check 订单信息 end")

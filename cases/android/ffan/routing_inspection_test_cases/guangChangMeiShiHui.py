@@ -21,6 +21,7 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
+from cases.logger import logger
 
 
 class GuangChangMeiShiHuiTestCase(TestCase):
@@ -42,9 +43,11 @@ class GuangChangMeiShiHuiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -55,34 +58,48 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
+        squarePage.screenShot("guangChang")
         #squarePage.waitBySeconds(20)
 
         #squarePage.scrollToFood()
         squarePage.clickOnFood()
         squareFoodPage.validSelf()
+        squareFoodPage.screenShot("meiShiHui")
 
         squareFoodPage.clickOnFindRestaurant()
         squareFoodPage.validFindRestaurant()
+        squareFoodPage.screenShot("zhaoCanTing")
         squareFoodPage.clickBackKey()
+        squareFoodPage.screenShot("meiShiHui")
 
         squareFoodPage.clickOnFindFavourable()
         squareFoodPage.validFindFavourable()
+        squareFoodPage.screenShot("zhaoYouHui")
         squareFoodPage.clickBackKey()
         squareFoodPage.waitBySeconds(2)
+        squareFoodPage.screenShot("meiShiHui")
 
         squareFoodPage.clickOnQueue()
         squareFoodPage.validQueue()
+        squareFoodPage.screenShot("zhiNengPaiDui")
         squareFoodPage.clickBackKey()
+        squareFoodPage.screenShot("meiShiHui")
 
         squareFoodPage.clickOnStochastic()
         squareFoodPage.validStochastic()
+        squareFoodPage.screenShot("bangNiTiao")
         squareFoodPage.clickBackKey()
+        squareFoodPage.screenShot("meiShiHui")
 
 
 if __name__ == "__main__":

@@ -20,9 +20,10 @@ from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
+from cases.logger import logger
 
 
-class WoDeLingHuaQianFeiTestCase(TestCase):
+class WoDeLingHuaQianTestCase(TestCase):
     '''
     作者 乔佳溪
     巡检checklist #55
@@ -42,9 +43,11 @@ class WoDeLingHuaQianFeiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -55,12 +58,14 @@ class WoDeLingHuaQianFeiTestCase(TestCase):
         # 查看我的订单状态
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
+        myFfanPage.screenShot("woDe")
         myFfanPage.clickOnMyBill()
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
+        feifanCardBillPage.screenShot("woDeLingHuaQian")
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(WoDeLingHuaQianFeiTestCase)
+    suite = TestLoader().loadTestsFromTestCase(WoDeLingHuaQianTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')

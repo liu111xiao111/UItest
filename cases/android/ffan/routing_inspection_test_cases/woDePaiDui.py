@@ -7,10 +7,12 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_queue_page import SquareQueuePage
 from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.search_page import SearchPage
+from pages.android.ffan.my_ffan_page import MyFfanPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -21,6 +23,7 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
+from cases.logger import logger
 
 
 class WoDePaiDuiTestCase(TestCase):
@@ -42,56 +45,58 @@ class WoDePaiDuiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDePaiDui(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        #myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        #myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         squarePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
 
         # Load square page
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(5)
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
+        squarePage.screenShot("guangChang")
 
         # Click "排队取号"， load "排队取号" page.
-        #squarePage.clicOnQueue();
+        squarePage.clicOnQueue()
+        queuePage.validSelf()
+        queuePage.screenShot("paiDuiQuHao")
 
-        #queuePage.validSelf();
         # Click "取号"
-        '''ret = queuePage.clicOnQueueNumber()
-        if ret:
+        if (queuePage.validGetQueue()):
+            queuePage.clicOnQueueNumber()
             queuePage.waitBySeconds(10)
             queuePage.inputNumberOfMeals()
-            queuePage.waitBySeconds(10)
             queuePage.clicOnGetQueueNumber()
             queuePage.validQueueSuccess()
-            queuePage.clickOnCancelQueue()
 
-            myFfanPage.clickBackKey()
-            myFfanPage.clickBackKey()
-            myFfanPage.clickBackKey()
+            for _ in range(3):
+                queuePage.clickBackKey()
 
-            # Click "我的排队"， load "我的排队" page.
-            dashboardPage.validSelf()
             dashboardPage.clickOnMy()
             myFfanPage.validSelf()
             myFfanPage.clickOnMyQueue()
             myQueuePage.validSelf()
-        else:
-            logging.info(u"没有可排队店铺!")'''
+            myQueuePage.clickOnCancelQueue()
 
 
 if __name__ == "__main__":

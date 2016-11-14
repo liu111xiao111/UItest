@@ -20,6 +20,7 @@ from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.dengluxinxi_page import DengLuXinXiPage
+from cases.logger import logger
 
 
 class DengLuTestCase(TestCase):
@@ -40,9 +41,11 @@ class DengLuTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
     def testDengLu(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
@@ -51,23 +54,30 @@ class DengLuTestCase(TestCase):
         if not login:
             dengLuPage = DengLuPage(self , self.driver , self.logger)
             dengLuPage.validSelf()
+            dengLuPage.screenShot("dengLu")
 
             dengLuPage.inputUserName()
+            dengLuPage.screenShot("yongHuMing")
             dengLuPage.inputPassWord()
+            dengLuPage.screenShot("miMa")
             dengLuPage.clickOnLoginBtn()
 
             xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
             xuanZeMenDianPage.waitBySeconds(2)
             xuanZeMenDianPage.validSelf()
             xuanZeMenDianPage.waitBySeconds(2)
+            xuanZeMenDianPage.screenShot("xuanZeMenDian")
             xuanZeMenDianPage.clickOnStore()
+            xuanZeMenDianPage.screenShot("xuanZeMenDian")
             xuanZeMenDianPage.clickOnConfirmBtn()
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnUser()
 
         dengLuXinXiPage = DengLuXinXiPage(self , self.driver , self.logger)
         dengLuXinXiPage.validSelf()
+        dengLuXinXiPage.screenShot("dengLuXinXi")
 
 
 if __name__ == "__main__":

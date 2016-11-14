@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.search_page_configs import SearchPageConfigs as SPC
+from pages.logger import logger
 
 
 class SearchResultStorePage(SuperPage):
@@ -20,9 +21,11 @@ class SearchResultStorePage(SuperPage):
         '''API().assertElementByContainsText(self.testcase, self.driver, self.logger,
                                   SPC.text_store_detail,
                                   SPC.assert_view_timeout)'''
+        logger.info("Check 搜索结果店详情页面 begin")
         API().assertElementByText(self.testcase, self.driver, self.logger,
                                   SPC.text_store_details,
                                   SPC.assert_view_timeout)
+        logger.info("Check 搜索结果店详情页面 end")
 
     def validKeywords(self, keywords):
         '''
@@ -36,9 +39,11 @@ class SearchResultStorePage(SuperPage):
         '''
         usage: 验证热词检索列表长度及检索出的条目包含热词内容
         '''
+        logger.info("Check 检索出的条目包含热词内容 begin")
         API().assertGreaterEqual(self.testcase, self.logger, length, SPC.expectLenth)
         API().assertElementsByContainsTexts(self.testcase, self.driver, self.logger,
                                             SPC.text_shopping_mall, SPC.assert_view_timeout)
+        logger.info("Check 检索出的条目包含热词内容 end")
 
     def getShoppingMallListItemTitle(self):
         '''

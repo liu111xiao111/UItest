@@ -5,6 +5,7 @@ import logging
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.hui_life_page_configs import HuiLifePageConfigs as HLPC
+from pages.logger import logger
 
 
 class HuiLifePage(SuperPage):
@@ -17,11 +18,12 @@ class HuiLifePage(SuperPage):
 
     def validSelf(self):
         '''
-        usage: 验证惠生活界面
+        usage: 验证慧生活界面
         '''
-
+        logger.info("Check 慧生活页面 begin")
         API().assertElementsByTexts(self.testcase, self.driver, self.logger,
                                     HLPC.text_valid_content, HLPC.assert_view_timeout)
+        logger.info("Check 慧生活页面 end")
 
     def clickOnActivity(self):
         '''
@@ -380,16 +382,19 @@ class HuiLifePage(SuperPage):
         '''
         usage: 点击精选
         '''
+        logger.info("Click 精选 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  HLPC.text_select_button,
                                  HLPC.click_on_button_timeout)
+        logger.info("Click 精选 end")
 
     def validSelfSelect(self):
         '''
         usage: 验证精选
         '''
+        logger.info("Check 精选 begin")
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
         for _ in range(2):
@@ -399,63 +404,76 @@ class HuiLifePage(SuperPage):
                                         self.logger,
                                         HLPC.resource_id_select,
                                         HLPC.assert_view_timeout)
+        logger.info("Check 精选 end")
 
     def clickOnSelectDetails(self):
         '''
         usage: 点击精选详细
         '''
+        logger.info("Click 精选详细内容 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        HLPC.resource_id_select,
                                        HLPC.click_on_button_timeout)
+        logger.info("Click 精选详细内容 end")
 
     def validSelfSelectDetails(self):
         '''
         usage: 验证精选详细页
         '''
+        logger.info("Check 精选详细内容 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         HLPC.resource_id_select_details,
                                         HLPC.assert_view_timeout)
+        logger.info("Check 精选详细内容 end")
 
     def clickOnShop(self):
         '''
         usage: 点击荐店
         '''
+        logger.info("Click 荐店 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  HLPC.text_shop_button,
                                  HLPC.click_on_button_timeout)
+        logger.info("Click 荐店 end")
 
     def validSelfShop(self):
         '''
         usage: 验证荐店
         '''
+        logger.info("Check 荐店 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         HLPC.resource_id_select,
                                         HLPC.assert_view_timeout)
+        logger.info("Check 荐店 end")
 
     def clickOnShopDetails(self):
         '''
         usage: 点击荐店详细
         '''
+        logger.info("Click 荐店详细内容 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        HLPC.resource_id_select,
                                        HLPC.click_on_button_timeout)
+        logger.info("Click 荐店详细内容 end")
 
     def validSelfShopDetails(self):
         '''
         usage: 验证荐店详细页
         '''
+        logger.info("Check 荐店详细内容 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         HLPC.resource_id_select_details,
                                         HLPC.assert_view_timeout)
+        logger.info("Check 荐店详细内容 end")

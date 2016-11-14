@@ -19,8 +19,8 @@ class FoodCategoryPageConfigs():
 
     view_text_tiltle = u"美食汇"
 
-    verify_view_timeout = 90
-    click_view_timeout = 90
+    verify_view_timeout = 120
+    click_view_timeout = 120
 
     def __init__(self):
         pass

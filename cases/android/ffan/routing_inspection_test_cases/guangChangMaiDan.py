@@ -23,6 +23,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GuangChangMaiDanTestCase(TestCase):
@@ -44,9 +45,11 @@ class GuangChangMaiDanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -60,29 +63,38 @@ class GuangChangMaiDanTestCase(TestCase):
 
         # 绑定北京通州万达广场
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(10)
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.validSelf()
         squarePage.waitBySeconds(10)
+        squarePage.screenShot("guangChang")
 
         # Click "乐付买单"， load "乐付买单" page.
         squarePage.clicOnLefuPay()
         lefuPayPage.waitBySeconds(10)
         lefuPayPage.validSelf()
         lefuPayPage.waitBySeconds(5)
+        lefuPayPage.screenShot("maiDan")
         # Click "乐付买单"， load detail pay page.
         lefuPayPage.clickOnLefuPay();
         lefuPayDetailPage.validSelf();
+        lefuPayDetailPage.screenShot("maiDanXiangXi")
 
         # Input money, click "确认买单".
         lefuPayDetailPage.inputMoney();
         lefuPayDetailPage.waitBySeconds(seconds=5)
+        lefuPayDetailPage.screenShot("maiDanXiangXi")
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
+        lefuPayWayPage.screenShot("maiDanFangShi")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangMaiDanTestCase)

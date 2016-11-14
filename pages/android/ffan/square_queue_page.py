@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.square_queue_page_configs import SquareQueuePageConfigs as SQPC
+from pages.logger import logger
 
 
 class SquareQueuePage(SuperPage):
@@ -17,11 +18,13 @@ class SquareQueuePage(SuperPage):
         '''
         usage : 点击 "排队取号"
         '''
+        logger.info("Check 排队取号页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SQPC.resource_id_queue,
                                         18)
+        logger.info("Check 排队取号页面 end")
 
     def validQueueSuccess(self):
         '''

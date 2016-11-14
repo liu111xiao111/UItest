@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.lefu_pay_way_page_configs import LefuPayWayPageConfigs as LPWPC
+from pages.logger import logger
 
 
 class LefuPayWayPage(SuperPage):
@@ -17,9 +18,11 @@ class LefuPayWayPage(SuperPage):
         '''
         usage : 验证支付方式页
         '''
+        logger.info("Check 支付方式页面 begin")
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         LPWPC.resource_id_pay_way,
                                         18)
+        logger.info("Check 支付方式页面 end")
 
     def getOrderNumber(self):
         '''

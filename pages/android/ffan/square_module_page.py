@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.square_module_page_configs import SquareModulePageConfigs as SMPC
+from pages.logger import logger
 
 
 class SquareModulePage(SuperPage):
@@ -27,11 +28,13 @@ class SquareModulePage(SuperPage):
         #                    self.driver,
         #                    self.logger,
         #                    SMPC.text_find_store)
+        logger.info("Check 广场页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         SMPC.resource_id_square_title,
                                         SMPC.get_view_timeout)
+        logger.info("Check 广场页面 end")
 
     def validSelfDetails(self):
         '''
@@ -57,31 +60,37 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击停车类目
         '''
+        logger.info("Click 停车 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_parking,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 停车 end")
 
     def clickOnMember(self):
         '''
         usage: 点击会员类目
         '''
+        logger.info("Click 会员 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_member,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 会员 end")
 
     def clickOnFood(self):
         '''
         usage: 点击美食汇
         '''
+        logger.info("Click 美食汇 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_food,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 美食汇 end")
 
     def clickOnShopping(self):
         '''
@@ -97,21 +106,25 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击找店
         '''
+        logger.info("Click 找店 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_find_store,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 找店 end")
 
     def clickOnSearch(self):
         '''
         usage: 点击搜索
         '''
+        logger.info("Click 搜索 icon begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        SMPC.resource_id_iv_search_iv,
                                        SMPC.click_on_button_timeout)
+        logger.info("Click 搜索 icon end")
 
     def clickOnRecommmendStore(self):
         '''
@@ -136,21 +149,25 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击"室内地图"
         '''
+        logger.info("Click 室内地图 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_indoor_map,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 室内地图 end")
 
     def clicOnLefuPay(self):
         '''
         usage: 点击"乐付买单"
         '''
+        logger.info("Click 买单 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_lefu_pay,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 买单 end")
 
     def clicOnShake(self):
         '''
@@ -166,11 +183,13 @@ class SquareModulePage(SuperPage):
         '''
         usage: 点击 "排队取号"
         '''
+        logger.info("Click 排队取号 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  SMPC.text_queue,
                                  SMPC.click_on_button_timeout)
+        logger.info("Click 排队取号 end")
 
     def clickOnCoupon(self):
         '''

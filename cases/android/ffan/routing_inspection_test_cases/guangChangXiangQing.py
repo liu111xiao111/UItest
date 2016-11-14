@@ -20,6 +20,7 @@ from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.search_page import SearchPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class GuangChangXiangQingTestCase(TestCase):
@@ -41,9 +42,11 @@ class GuangChangXiangQingTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -60,12 +63,17 @@ class GuangChangXiangQingTestCase(TestCase):
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squareModulePage.validSelf()
+        squareModulePage.screenShot("guangChang")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQingTestCase)

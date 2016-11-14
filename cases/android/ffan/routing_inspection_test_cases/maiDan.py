@@ -21,6 +21,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class MaiDanTestCase(TestCase):
@@ -42,9 +43,11 @@ class MaiDanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -56,18 +59,23 @@ class MaiDanTestCase(TestCase):
 
         # Load square page
         dashboardPage.validSelf();
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnLefuCategory()
         lefuPage.validSelf();
+        lefuPage.screenShot("maiDan")
 
         # Click "乐付买单"， load detail pay page.
         lefuPage.clickOnLefuPay();
         lefuPayDetailPage.validSelf();
+        lefuPayDetailPage.screenShot("maiDanFuKuan")
 
         # Input money, click "确认买单".
         lefuPayDetailPage.inputMoney();
+        lefuPayDetailPage.screenShot("maiDanFuKuan")
         lefuPayDetailPage.waitBySeconds(seconds=5)
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
+        lefuPayWayPage.screenShot("maiDanFuKuanFangShi")
 
 
 if __name__ == "__main__":

@@ -19,6 +19,8 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver;
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
+
 
 class QuanChengSouSuoPinPaiTestCase(TestCase):
     '''
@@ -39,22 +41,28 @@ class QuanChengSouSuoPinPaiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testQuanChengSouSuoPinPai(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputBrandName()
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
         searchPage.validSearchResult(u"adidas", u"//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickBackKey()
 
 if __name__ == "__main__":

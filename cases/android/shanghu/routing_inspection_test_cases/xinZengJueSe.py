@@ -20,6 +20,7 @@ from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
 from pages.android.shanghu.xinjianjuese_page import XinJianJueSePage
+from cases.logger import logger
 
 
 class XinZengJueSeTestCase(TestCase):
@@ -40,9 +41,11 @@ class XinZengJueSeTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -50,20 +53,27 @@ class XinZengJueSeTestCase(TestCase):
         shouYePage = ShouYePage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnRoleManager()
 
         jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
+        jueSeGuanLiPage.screenShot("jueSeGuanLi")
         jueSeGuanLiPage.clickOnAddRole()
 
         xinJianJueSePage = XinJianJueSePage(self , self.driver , self.logger)
         xinJianJueSePage.waitBySeconds(2)
+        xinJianJueSePage.screenShot("xinJianJueSe")
         xinJianJueSePage.inputUserName()
-        xinJianJueSePage.clickOnChooseRole()
+        xinJianJueSePage.screenShot("jueSeMingCheng")
+        xinJianJueSePage.clickOnFunctionalAutority()
         xinJianJueSePage.waitBySeconds(2)
         xinJianJueSePage.clickOnSave()
-        xinJianJueSePage.validChooseRole()
+        xinJianJueSePage.validFunctionalAutority()
+        xinJianJueSePage.screenShot("xinJianJueSe")
         xinJianJueSePage.inputRoleInstruction()
+        xinJianJueSePage.screenShot("xinJianJueSe")
         xinJianJueSePage.clickOnSave()
+        jueSeGuanLiPage.screenShot("jueSeGuanLi")
 
 
 if __name__ == "__main__":

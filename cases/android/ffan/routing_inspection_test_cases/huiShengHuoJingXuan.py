@@ -19,6 +19,7 @@ from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.hui_life_page import HuiLifePage
 from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
+from cases.logger import logger
 
 
 class HuiShengHuoJingXuanTestCase(TestCase):
@@ -37,30 +38,40 @@ class HuiShengHuoJingXuanTestCase(TestCase):
         self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(), deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testHuiShengHuoJingXuan(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSmartLife()
 
         huiLifePage = HuiLifePage(self, self.driver, self.logger)
         huiLifePage.validSelf()
+        huiLifePage.screenShot("huiShengHuo")
 
         # 精选
         huiLifePage.clickOnSelect()
         huiLifePage.validSelfSelect()
         huiLifePage.clickOnSelectDetails()
         huiLifePage.validSelfSelectDetails()
+        huiLifePage.screenShot("jingXuanXiangXi")
         huiLifePage.clickBackKey()
+        huiLifePage.screenShot("jingXuan")
 
         # 荐店
         huiLifePage.clickOnShop()
         huiLifePage.validSelfShop()
+        huiLifePage.screenShot("jianDian")
         huiLifePage.clickOnShopDetails()
         huiLifePage.validSelfShopDetails()
+        huiLifePage.screenShot("jianDianXiangXi")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(HuiShengHuoJingXuanTestCase)

@@ -21,6 +21,7 @@ from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
+from cases.logger import logger
 
 
 class GuangChangHuiYuanTestCase(TestCase):
@@ -40,9 +41,11 @@ class GuangChangHuiYuanTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -53,17 +56,23 @@ class GuangChangHuiYuanTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
 
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnSearchView()
         searchPage.validSelf()
+        searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
+        searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
         searchPage.waitBySeconds(5)
+        searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
         squarePage.waitBySeconds(5)
         squarePage.validSelf()
+        squarePage.screenShot("guangChang")
 
         squarePage.clickOnMember()
         memberPage.validSelf()
+        memberPage.screenShot("huiYuan")
 
 
 if __name__ == "__main__":

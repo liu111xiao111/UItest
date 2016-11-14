@@ -21,6 +21,8 @@ from pages.android.ffan.message_settings_page import MessageSettingsPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
+
 
 class WoDeXiaoXiZhongXinTestCase(TestCase):
     '''
@@ -41,23 +43,28 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeXiaoXiZhongXin(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
+        myFeiFanPage.screenShot("woDe")
         myFeiFanPage.validSelf()
         myFeiFanPage.clickOnMessageCentre()
 
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
         messageCentrePage.validSelf()
+        messageCentrePage.screenShot("xiaoXiZhongXin")
         '''
         messageCentrePage.clickOnFeiFanActivity()
 

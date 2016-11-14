@@ -23,6 +23,7 @@ from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class WoDeTingCheJiaoFeiTestCase(TestCase):
@@ -44,9 +45,11 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -60,10 +63,13 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
 
         # Click "停车交费"， load "我的排队" page.
         dashboardPage.validSelf();
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy();
         myFfanPage.validSelf();
+        myFfanPage.screenShot("woDe")
         myFfanPage.clickOnParkingPayment();
         parkingPaymentPage.validSelf();
+        parkingPaymentPage.screenShot("tingChe")
 
         # Bunding VIN
         '''parkingPaymentPage.waitBySeconds(2);

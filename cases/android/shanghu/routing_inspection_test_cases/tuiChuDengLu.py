@@ -20,6 +20,7 @@ from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.shezhi_page import SheZhiPage
+from cases.logger import logger
 
 
 class TuiChuDengLuTestCase(TestCase):
@@ -40,9 +41,11 @@ class TuiChuDengLuTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -51,14 +54,17 @@ class TuiChuDengLuTestCase(TestCase):
         dengLuPage = DengLuPage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnSetting()
 
         sheZhiPage = SheZhiPage(self , self.driver , self.logger)
         sheZhiPage.validSelf()
+        sheZhiPage.screenShot("sheZhi")
         sheZhiPage.clickOnLogout()
 
         dengLuPage.waitBySeconds(2)
         dengLuPage.validPassword()
+        dengLuPage.screenShot("dengLu")
 
 
 if __name__ == "__main__":

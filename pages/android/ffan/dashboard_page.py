@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.dashboard_page_configs import DashboardPageConfigs as DPC
+from pages.logger import logger
 
 
 class DashboardPage(SuperPage):
@@ -17,41 +18,49 @@ class DashboardPage(SuperPage):
         '''
         usage : 进入到应用首页,检查ffan logo
         '''
+        logger.info("Check 爱逛街页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
                                         90)
+        logger.info("Check 爱逛街页面 end")
 
     def clickOnMy(self):
         '''
         usage： 点击我的个人信息
         '''
+        logger.info("Click 我的 begin")
         API().clickElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
                                   DPC.text_mine,
                                   DPC.click_on_button_timeout)
+        logger.info("Click 我的 end")
 
     def clickOnSmartLife(self):
         '''
-        usage: 点击惠生活
+        usage: 点击慧生活
         '''
+        logger.info("Click 慧生活 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_huishenghuo,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 慧生活 end")
 
     def clickOnFood(self):
         '''
         usage: 点击美食类目
         '''
+        logger.info("Click 美食汇 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_food,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 美食汇 end")
 
     def clickOnChildCategory(self):
         '''
@@ -77,11 +86,13 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击飞凡卡
         '''
+        logger.info("Click 飞凡通 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_feifan_card,
                                  DPC.verify_view_timeout)
+        logger.info("Click 飞凡通 end")
 
     def clickLikeShopping(self):
         '''
@@ -160,41 +171,49 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击购物中心按钮
         '''
+        logger.info("Click 购物中心 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_shopping_mall_button,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 购物中心 end")
 
     def clickOnSupermarket(self):
         '''
-        usage: 点击商超按钮
+        usage: 点击商超
         '''
+        logger.info("Click 商超 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_supermarket_button,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 商超 end")
 
     def clickOnSearchAll(self):
         '''
         usage: 点击搜索按钮
         '''
+        logger.info("Click 搜索 icon begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        DPC.resource_id_search_all_button,
                                        DPC.click_on_button_timeout)
+        logger.info("Click 搜索 icon end")
 
     def clickOnSearchView(self):
         '''
         usage:点击全城搜索
         '''
+        logger.info("Click 全城搜索 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        DPC.resource_id_tv_search_tv,
                                        DPC.click_on_button_timeout)
+        logger.info("Click 全城搜索 end")
 
     def clickOnBrandCategory(self):
         '''

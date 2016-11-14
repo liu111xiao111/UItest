@@ -19,6 +19,7 @@ from cases.android.shanghu.common.clear_app_data import ClearAppData
 from cases.android.shanghu.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
+from cases.logger import logger
 
 
 class RenYuanLieBiaoTestCase(TestCase):
@@ -39,23 +40,27 @@ class RenYuanLieBiaoTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
+
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testRenYuanLieBiao(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
         shouYePage.clickOnMemberManager()
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
+        yuanGongGuanLiPage.screenShot("zhengChangZhuangTai")
         yuanGongGuanLiPage.clickOnFreezeStatus()
-        freezeData = yuanGongGuanLiPage.validFreezeData()
-        if freezeData:
-            yuanGongGuanLiPage.validFreezeStatus()
+        yuanGongGuanLiPage.validFreezeStatus()
+        yuanGongGuanLiPage.screenShot("dongJieZhuangTai")
 
 
 if __name__ == "__main__":

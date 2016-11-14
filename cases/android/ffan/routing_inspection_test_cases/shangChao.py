@@ -19,6 +19,8 @@ from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.supermarket_page import SupermarketPage
 from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
+from cases.logger import logger
+
 
 TESTCITY = u"厦门市"
 DESCITY = u"北京市"
@@ -43,8 +45,10 @@ class ShangChaoTestCase(TestCase):
                                    deviceName_andr,
                                    driver_url).getDriver()
 
+        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -54,6 +58,7 @@ class ShangChaoTestCase(TestCase):
 
         # 切换到测试城市（厦门市）
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         '''tempCityName = dashboardPage.getCityName()
         if tempCityName != TESTCITY:
             dashboardPage.clickOnSwithCith()
@@ -62,6 +67,7 @@ class ShangChaoTestCase(TestCase):
         # 点击商超，进入商店超市页面
         dashboardPage.clickOnSupermarket()
         supermarketPage.validSelf()
+        supermarketPage.screenShot("shangChao")
         '''supermarketPage.clickBackKey()
         dashboardPage.clickOnSwithCith()
         dashboardPage.switchCity(DESCITY)'''

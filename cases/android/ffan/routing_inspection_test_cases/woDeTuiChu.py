@@ -20,6 +20,7 @@ from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.settings_page import SettingsPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class WoDeTuiChuTestCase(TestCase):
@@ -41,9 +42,11 @@ class WoDeTuiChuTestCase(TestCase):
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
+        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
+        logger.info("Clear data completed")
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
@@ -51,21 +54,25 @@ class WoDeTuiChuTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.waitBySeconds()
         dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.waitBySeconds()
         myFeiFanPage.validSelf()
+        myFeiFanPage.screenShot("woDe")
         myFeiFanPage.validLoginStatus()
         myFeiFanPage.clickOnSettings()
 
         settingPage = SettingsPage(testcase=self, driver=self.driver, logger=self.logger)
         dashboardPage.waitBySeconds()
         settingPage.validSelf()
+        settingPage.screenShot("sheZhi")
         settingPage.clickOnQuitAccountBtn()
 
         myFeiFanPage.waitBySeconds()
         myFeiFanPage.validLogoutStatus()
+        myFeiFanPage.screenShot("woDe")
 
 
 if __name__ == "__main__":
