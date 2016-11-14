@@ -4,9 +4,9 @@ from utility.device_info_util import DeviceInfoUtil
 
 appVersion = '4.9.2.0'
 
-phoneVersion = 'iPhone6s'
+phoneVersion = DeviceInfoUtil().getIPhoneType()
 
-buildVersion = '9.3.2'
+buildVersion = DeviceInfoUtil().getIProductVersion()
 
 deviceID = DeviceInfoUtil().getUdid()
 
