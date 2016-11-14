@@ -26,6 +26,7 @@ class BussinessSchoolPage(SuperPage):
         logger.info("Click " + Name.bussiness_school_common_questions + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.bussiness_school_common_questions)
         logger.info("Click " + Name.bussiness_school_common_questions + ' end')
+        API().screenShot(self.driver,'commonQuestions')
 
     def checkCommonQuestionsItems(self):
         '''
@@ -45,6 +46,7 @@ class BussinessSchoolPage(SuperPage):
             logger.info('Check ' + commonText )
             #进入问题页面验证,问题文本
             API().assertElementByName(self.testcase, self.driver, self.logger,commonText)
+            API().screenShot(self.driver,'questionContent')
 
             self.back()
 
@@ -56,6 +58,7 @@ class BussinessSchoolPage(SuperPage):
         logger.info("Click " +Name.bussiness_school_newer_guide + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.bussiness_school_newer_guide)
         logger.info("Click " + Name.bussiness_school_newer_guide + ' end')
+        API().screenShot(self.driver, 'newerGuide')
 
     def checkNewergudieItems(self):
         '''
@@ -76,6 +79,7 @@ class BussinessSchoolPage(SuperPage):
             logger.info('Check ' + commonText)
             #进入问题页面验证,问题文本
             API().assertElementByName(self.testcase, self.driver, self.logger,commonText)
+            API().screenShot(self.driver, 'newerGuideContent')
 
             self.back()
 
@@ -87,13 +91,13 @@ class BussinessSchoolPage(SuperPage):
         logger.info("Click " + Name.bussiness_school_newer_guide + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.bussiness_school_seller_notices)
         logger.info("Click " + Name.bussiness_school_newer_guide + ' end')
+        API().screenShot(self.driver, 'sellerNotices')
 
     def checkSellerNoticesItems(self):
         '''
         验证常见问题前5个,点击进入,检查内容
         :return:
         '''
-
         for count in range(4):
             commonText = API().getTextByXpath(self.testcase,
                                               self.driver,
@@ -107,5 +111,6 @@ class BussinessSchoolPage(SuperPage):
             API().assertElementByName(self.testcase, self.driver, self.logger, commonText)
             #进入问题页面验证,问题文本
             API().assertElementByName(self.testcase, self.driver, self.logger,commonText)
+            API().screenShot(self.driver, 'sellerNoticesContent')
 
             self.back()

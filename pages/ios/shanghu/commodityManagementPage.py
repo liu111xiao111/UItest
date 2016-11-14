@@ -26,6 +26,7 @@ class CommodityManagement(SuperPage):
         logger.info("Click " + Name.commodity_management_text + ' begin')
         API().clickElementByName(self.testcase,self.driver,self.logger,Name.commodity_management_text)
         logger.info("Click " + Name.commodity_management_text + ' end')
+        API().screenShot(self.driver, 'managementModule')
 
 
     def clickCheckPendingButton(self):
@@ -36,6 +37,7 @@ class CommodityManagement(SuperPage):
         logger.info("Click " + Name.commodity_management_pending + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_pending)
         logger.info("Click " + Name.commodity_management_pending + ' end')
+        API().screenShot(self.driver, 'check')
 
     def checkCheckPendingItem(self):
         '''
@@ -50,6 +52,7 @@ class CommodityManagement(SuperPage):
         commodityNameTemp = API().getTextByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]")
         logger.info('Check ' + commodityNameTemp)
         API().assertTrue(self.testcase,self.logger,commodityName == commodityNameTemp)
+        API().screenShot(self.driver, 'checkContent')
 
         self.back()
         self.back()
@@ -63,6 +66,7 @@ class CommodityManagement(SuperPage):
         logger.info("Click " + Name.commodity_management_passing + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_passing)
         logger.info("Click " + Name.commodity_management_passing + ' end')
+        API().screenShot(self.driver, 'pass')
 
     def checkCheckPassingItem(self):
         '''
@@ -79,6 +83,7 @@ class CommodityManagement(SuperPage):
                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]")
         logger.info('Check ' + commodityNameTemp)
         API().assertTrue(self.testcase, self.logger, commodityName == commodityNameTemp)
+        API().screenShot(self.driver, 'passContent')
 
         self.back()
         self.back()
