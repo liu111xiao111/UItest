@@ -22,7 +22,7 @@ class YaoYiYaoTestCase(TestCase):
     '''
 
     def tearDown(self):
-        self.reset.clearData()
+        #self.reset.clearData()
         self.driver.quit()
 
 
@@ -38,13 +38,10 @@ class YaoYiYaoTestCase(TestCase):
                                    IDC.udid).getDriver()
 
         self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
+       #self.reset.clearData()
 
         testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
-        testPrepare.prepare(False)
+        testPrepare.prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(testcase=self, driver=self.driver, logger=self.logger)
