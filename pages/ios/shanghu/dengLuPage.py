@@ -5,6 +5,7 @@ from api.api import API
 from pages.ios.shanghu.shanghuPageConfig import Xpath
 from pages.ios.shanghu.shanghuPageConfig import Name
 from pages.ios.shanghu.shanghuPageConfig import Text
+from pages.logger import logger
 
 class DengLuPage(SuperPage):
 
@@ -15,8 +16,10 @@ class DengLuPage(SuperPage):
 
 
     def validSelf(self):
+        logger.info('Check ' + Name.login + " begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   Name.login)
+        logger.info('Check ' + Name.login + " end")
 
 
     def inputUserName(self):
@@ -32,10 +35,11 @@ class DengLuPage(SuperPage):
             #点击清除用户名button
             API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.clearUserName)
 
-
+        logger.info('Input ' +  Text.phoneNumber + ' begin')
         API().inputStringByXpath(self.testcase, self.driver, self.logger,
                                Xpath.username,
                                Text.phoneNumber)
+        logger.info('Input ' + Text.phoneNumber + ' end')
 
 
     def inputPassword(self):
@@ -43,7 +47,9 @@ class DengLuPage(SuperPage):
         输入密码
         :return:
         '''
+        logger.info('Input ' + Text.password + ' begin')
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.password, Text.password)
+        logger.info('Input ' + Text.password + ' end')
 
 
 
@@ -52,7 +58,9 @@ class DengLuPage(SuperPage):
         点击登录
         :return:
         '''
+        logger.info("Click 登录 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.login)
+        logger.info("Click 登录 end")
 
 
     def clickOnTestStoreItem(self):
@@ -60,8 +68,10 @@ class DengLuPage(SuperPage):
         点击测试门店
         :return:
         '''
+        logger.info("Click " + Name.test_store_name + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger,Name.test_store_name)
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.button_select_store_submit)
+        logger.info("Click " + Name.test_store_name + ' end')
 
 
     def validLoginStatus(self):
@@ -76,14 +86,18 @@ class DengLuPage(SuperPage):
         点击设置
         :return:
         '''
+        logger.info("Click " + Name.settings + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.settings)
+        logger.info("Click " + Name.settings + ' end')
 
     def clickOnLogout(self):
         '''
         点击退出登录
         :return:
         '''
+        logger.info('Click 退出登录 begin')
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.logout)
+        logger.info('Click 退出登录 end')
 
 
     def validPassWord(self):
@@ -91,6 +105,8 @@ class DengLuPage(SuperPage):
         验证密码框内容,如果为'请输入密码(长度8-20位)',则退出登录状态
         :return:
         '''
+        logger.info('Check 密码框内容 begin')
         text_password = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.password)
         isLogoutStatus = (text_password == Text.initial_password)
         API().assertTrue(self.testcase,self.logger,isLogoutStatus)
+        logger.info('Check 密码框内容 end')

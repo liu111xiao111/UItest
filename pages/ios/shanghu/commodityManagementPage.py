@@ -5,6 +5,7 @@ from api.api import API
 from pages.ios.shanghu.shanghuPageConfig import Xpath
 from pages.ios.shanghu.shanghuPageConfig import Name
 from pages.ios.shanghu.shanghuPageConfig import Text
+from pages.logger import logger
 
 class CommodityManagement(SuperPage):
 
@@ -13,14 +14,18 @@ class CommodityManagement(SuperPage):
         返回动作
         :return:
         '''
+        logger.info("Click back key, begin")
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.back_icon)
+        logger.info("Click back key, end")
 
     def enterCommodityManagementModule(self):
         '''
         进入商品管理模块
         :return:
         '''
+        logger.info("Click " + Name.commodity_management_text + ' begin')
         API().clickElementByName(self.testcase,self.driver,self.logger,Name.commodity_management_text)
+        logger.info("Click " + Name.commodity_management_text + ' end')
 
 
     def clickCheckPendingButton(self):
@@ -28,7 +33,9 @@ class CommodityManagement(SuperPage):
         点击待审核
         :return:
         '''
+        logger.info("Click " + Name.commodity_management_pending + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_pending)
+        logger.info("Click " + Name.commodity_management_pending + ' end')
 
     def checkCheckPendingItem(self):
         '''
@@ -41,7 +48,7 @@ class CommodityManagement(SuperPage):
         API().clickElementByXpath(self.testcase,self.driver, self.logger,Xpath.commodity_management_sale_check_pending)
 
         commodityNameTemp = API().getTextByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]")
-
+        logger.info('Check ' + commodityNameTemp)
         API().assertTrue(self.testcase,self.logger,commodityName == commodityNameTemp)
 
         self.back()
@@ -53,7 +60,9 @@ class CommodityManagement(SuperPage):
         点击通过
         :return:
         '''
+        logger.info("Click " + Name.commodity_management_passing + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_passing)
+        logger.info("Click " + Name.commodity_management_passing + ' end')
 
     def checkCheckPassingItem(self):
         '''
@@ -68,7 +77,7 @@ class CommodityManagement(SuperPage):
 
         commodityNameTemp = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]")
-
+        logger.info('Check ' + commodityNameTemp)
         API().assertTrue(self.testcase, self.logger, commodityName == commodityNameTemp)
 
         self.back()
