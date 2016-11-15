@@ -319,6 +319,7 @@ class YuanGongGuanLiPage(SuperPage):
         usage : 验证编辑后的员工信息
         '''
         logger.info("Check 编辑后的员工信息 begin")
+        memberInfo = "ceshi"
         API().getElementsByContainsText(self.testcase,
                                       self.driver,
                                       self.logger,

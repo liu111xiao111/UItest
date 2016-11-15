@@ -122,6 +122,8 @@ class XinZengYuanGongPage(SuperPage):
                                          XZYGPC.verify_timeout)
 
         name = name + "ceshi"
+        if len(name) > 20:
+            name = "ceshi"
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
