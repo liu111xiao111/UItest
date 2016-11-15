@@ -20,6 +20,7 @@ class DengLuPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   Name.login)
         logger.info('Check ' + Name.login + " end")
+        API().screenShot(self.driver, "login")
 
 
     def inputUserName(self):
@@ -40,6 +41,7 @@ class DengLuPage(SuperPage):
                                Xpath.username,
                                Text.phoneNumber)
         logger.info('Input ' + Text.phoneNumber + ' end')
+        API().screenShot(self.driver, 'inputUsername')
 
 
     def inputPassword(self):
@@ -50,6 +52,7 @@ class DengLuPage(SuperPage):
         logger.info('Input ' + Text.password + ' begin')
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.password, Text.password)
         logger.info('Input ' + Text.password + ' end')
+        API().screenShot(self.driver, 'inputPassword')
 
 
 
@@ -61,6 +64,7 @@ class DengLuPage(SuperPage):
         logger.info("Click 登录 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.login)
         logger.info("Click 登录 end")
+        API().screenShot(self.driver, 'clickLoginButton')
 
 
     def clickOnTestStoreItem(self):
@@ -70,8 +74,10 @@ class DengLuPage(SuperPage):
         '''
         logger.info("Click " + Name.test_store_name + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger,Name.test_store_name)
+        API().screenShot(self.driver, 'testStore')
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.button_select_store_submit)
         logger.info("Click " + Name.test_store_name + ' end')
+        API().screenShot(self.driver, 'enterStore')
 
 
     def validLoginStatus(self):
@@ -89,6 +95,7 @@ class DengLuPage(SuperPage):
         logger.info("Click " + Name.settings + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.settings)
         logger.info("Click " + Name.settings + ' end')
+        API().screenShot(self.driver, 'setting')
 
     def clickOnLogout(self):
         '''
@@ -98,6 +105,7 @@ class DengLuPage(SuperPage):
         logger.info('Click 退出登录 begin')
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.logout)
         logger.info('Click 退出登录 end')
+        API().screenShot(self.driver, 'logout')
 
 
     def validPassWord(self):
@@ -110,3 +118,4 @@ class DengLuPage(SuperPage):
         isLogoutStatus = (text_password == Text.initial_password)
         API().assertTrue(self.testcase,self.logger,isLogoutStatus)
         logger.info('Check 密码框内容 end')
+        API().screenShot(self.driver, 'validLogout')

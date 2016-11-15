@@ -30,6 +30,7 @@ class EmployeeModulePage(SuperPage):
         API().assertTrue(self.testcase, self.logger, not chuangjianren is None)
         API().assertTrue(self.testcase, self.logger, not date is None)
         logger.info('Check 工列表,员工姓名,手机号 end')
+        API().screenShot(self.driver, 'employeeList')
 
     def clickAddEmployeeButton(self):
         '''
@@ -39,6 +40,7 @@ class EmployeeModulePage(SuperPage):
         logger.info('Click ' + Name.add_new_employee + ' begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.add_new_employee)
         logger.info('Click ' + Name.add_new_employee + ' end')
+        API().screenShot(self.driver, 'addEmployee')
 
     def selectRole(self):
         '''
@@ -49,8 +51,10 @@ class EmployeeModulePage(SuperPage):
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_please_selected_role)
         #选择店长角色
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_select_role_radio_button)
+        API().screenShot(self.driver, 'selectStoreManagerRole')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
         logger.info('Select 角色 end')
+        API().screenShot(self.driver, 'selectRole')
 
     def inputUserNameAndPassword(self):
         '''
