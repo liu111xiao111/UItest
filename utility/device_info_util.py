@@ -2,19 +2,15 @@
 
 from subprocess import Popen, PIPE
 
-'''
-    usage :  进入应用的首页
-'''
-
 
 class DeviceInfoUtil:
     def __init__(self):
         pass
 
-    '''
-        获取安卓设备系统版本号
-    '''
     def getBuildVersion(self):
+        '''
+        获取安卓设备系统版本号
+        '''
         cmd = 'adb shell getprop ro.build.version.release'
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 
@@ -24,10 +20,11 @@ class DeviceInfoUtil:
         # print(out.decode("utf-8").rstrip(), err.rstrip())
         return out.decode("utf-8").rstrip();
 
-    '''
-        获取安卓设备APP版本信息
-    '''
+
     def getAppVersion(self):
+        '''
+        获取安卓设备APP版本信息
+        '''
         version = ''
         versionCmd = 'adb shell dumpsys package com.wanda.app.wanhui | grep versionName'
         ret = Popen(versionCmd, shell=True, stdout=PIPE, stderr=PIPE)
@@ -37,10 +34,11 @@ class DeviceInfoUtil:
 
         return version
 
-    '''
-        获取安卓设备型号信息
-    '''
+
     def getPhoneVersion(self):
+        '''
+        获取安卓设备型号信息
+        '''
         brand = ''
         mode = ''
         brandCmd = 'adb shell cat /system/build.prop | grep "product.brand"'
@@ -56,10 +54,11 @@ class DeviceInfoUtil:
 
         return brand.upper() + ' ' + mode.upper()
 
-    '''
-        获取Android设备ID信息
-    '''
+
     def getDeviceID(self):
+        '''
+        获取Android设备ID信息
+        '''
         id = ''
         versionCmd = 'adb devices'
         ret = Popen(versionCmd, shell=True, stdout=PIPE, stderr=PIPE)
@@ -69,25 +68,55 @@ class DeviceInfoUtil:
 
         return version
 
-    """
-        获取iOS设备UDID,需要安装ideviceinstaller才能调用
-    """
 
     def getUdid(self):
+        """
+        获取iOS设备UDID,需要安装ideviceinstaller才能调用
+        """
         cmd = 'idevice_id -l'
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 
         out, err = p.communicate()
         return out.decode("utf-8").rstrip()
 
-    """
 
-    """
-    def get_product_version(self):
+    def getIProductVersion(self):
+        '''
+        获取iOS设备系统版本号
+        :return:
+        '''
         cmd = 'ideviceinfo -k ProductVersion'
         p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
         out, err = p.communicate()
         return out.decode("utf-8").strip()
+
+    def getIPhoneType(self):
+        '''
+        获取 iphone 型号
+        :return:
+        '''
+        iTypeDic = {'iPhone3,1':'iPhone 4',
+                    'iPhone3,2':'iPhone 4',
+                    'iPhone4,1':'iPhone 4S',
+                    'iPhone5,1':'iPhone 5',
+                    'iPhone5,2':'iPhone 5',
+                    'iPhone5,3':'iPhone 5C',
+                    'iPhone5,4':'iPhone 5C',
+                    'iPhone6,2':'iPhone 5S',
+                    'iPhone7,2':'iPhone 6',
+                    'iPhone8,1':'iPhone 6S',
+                    'iPhone7,1':'iPhone 6 Plus',
+                    'iPhone8,2':'iPhone 6S Plus'}
+
+        cmd = 'ideviceinfo -k ProductType'
+        p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+        out, err = p.communicate()
+        try:
+            __type = iTypeDic[out.decode("utf-8").strip()]
+        except KeyError:
+            __type = 'iPhone 8*'
+        print(__type)
+        return __type
 
 
 if __name__ == '__main__':
