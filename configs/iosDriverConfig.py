@@ -10,7 +10,7 @@ class IosDriverConfigs(object):
 
     platformName = "iOS"
 
-    platformVersion = DeviceInfoUtil().get_product_version()
+    platformVersion = DeviceInfoUtil().getIProductVersion()
 
     deviceName = "iPhone6s"
 
