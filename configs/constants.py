@@ -22,7 +22,8 @@ class Email():
                        'fengzc@neusoft.com', 'zh-ying@neusoft.com', 'cui.yue@neusoft.com', 'zhao.xu_neu@neusoft.com',
                        'w.xin_neu@neusoft.com', 'wang-jinpeng@neusoft.com', 'jiangw-neu@neusoft.com',
                        'li_ys@neusoft.com', 'zhangshihao@neusoft.com', 'shang.jj@neusoft.com', 'huang.shuo@neusoft.com',
-                       'yang.hch@neusoft.com', 'zhaocj@neusoft.com', 'luxiangyang@neusoft.com', 'mulihui@wanda.cn']
+                       'yang.hch@neusoft.com', 'zhaocj@neusoft.com', 'luxiangyang@neusoft.com', 'mulihui@wanda.cn',
+                         'zhuying34@wanda.cn', 'zhangpeiying@wanda.cn']
 
     performanceMaillAddress =['sunkai31@wanda.cn', 'chencheng@neusoft.com', 'tl@neusoft.com',
                               'song_b@neusoft.com', 'qiaojx@neusoft.com']
