@@ -108,6 +108,15 @@ class Performance(object):
         f = open(logPath, "a")
         f.write("%s:%s" % (duration, traffic) + "\n")
         f.close()
+        
+    def parseTrafficData(self, startTraffic, endTraffic, duration, perfFileName):
+        traffic = round((endTraffic - startTraffic) / 1024 / 1024, 2)
+
+        logName = perfFileName
+        logPath = os.path.join(self.reportPath, logName)
+        f = open(logPath, "a")
+        f.write("%s:%s" % (duration, traffic) + "\n")
+        f.close()
 
     def getRx(self):
         '''

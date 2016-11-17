@@ -3,49 +3,49 @@
 import sys,os
 
 import time
-import traceback
-import threading
+# import traceback
+# import threading
 
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from utility.mailProcess import sendTestResultMail
-from cases.android.ffan.common.performance import Performance
+# from cases.android.ffan.common.performance import Performance
 from cases.android.ffan.common.reportProcess import ReportHandle
-from cases.android.ffan.common.performanceProcess import PerformanceHandle
-from cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
-from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
-from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
+# from cases.android.ffan.common.performanceProcess import PerformanceHandle
+# from cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
+# from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
+# from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
 
 
-from cases.android.ffan.routing_inspection_test_cases.shanPingShouYe import ShanPingShouYeTestCase
+# from cases.android.ffan.routing_inspection_test_cases.shanPingShouYe import ShanPingShouYeTestCase
 from cases.android.ffan.routing_inspection_test_cases.chengShiQieHuan import ChengShiQieHuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.reCiSouSuo import ReCiSouSuoTestCase
-from cases.android.ffan.routing_inspection_test_cases.dianYing import DianYingTestCase
+# from cases.android.ffan.routing_inspection_test_cases.dianYing import DianYingTestCase
 from cases.android.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHuiTestCase
-from cases.android.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJieTestCase
+# from cases.android.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJieTestCase
 #from cases.android.ffan.routing_inspection_test_cases.qinZi import QinZiTestCase
-from cases.android.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase
+# from cases.android.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.shangChao import ShangChaoTestCase
-from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import MingDianYouPinTestCase
+# from cases.android.ffan.routing_inspection_test_cases.mingDianYouPin import MingDianYouPinTestCase
 from cases.android.ffan.routing_inspection_test_cases.shouYeTingChe import ShouYeTingCheTestCase
 from cases.android.ffan.routing_inspection_test_cases.maiDan import MaiDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangXiangQing import GuangChangXiangQingTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangSouSuo import GuangChangSouSuoTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangYouHuiQuan import GuangChangYouHuiQuanTestCase
+# from cases.android.ffan.routing_inspection_test_cases.guangChangYouHuiQuan import GuangChangYouHuiQuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangPaiDui import GuangChangPaiDuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangShiNeiDiTu import GuangChangShiNeiDiTuTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
+# from cases.android.ffan.routing_inspection_test_cases.guangChangDianYingGuang import GuangChangDianYingGuangTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangAiGouWu import GuangChangAiGouWuTestCase
-from cases.android.ffan.routing_inspection_test_cases.huiShengHuoRuKou import HuiShengHuoRuKouTestCase
+# from cases.android.ffan.routing_inspection_test_cases.guangChangAiGouWu import GuangChangAiGouWuTestCase
+# from cases.android.ffan.routing_inspection_test_cases.huiShengHuoRuKou import HuiShengHuoRuKouTestCase
 from cases.android.ffan.routing_inspection_test_cases.huiShengHuoJingXuan import HuiShengHuoJingXuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeDengLu import WoDeDengLuTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeGeRenXinXi import WoDeGeRenXinXiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDePiaoQuan import WoDePiaoQuanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeDingDan import WoDeDingDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeHuiYuanKaBao import WoDeHuiYuanKaBaoTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeFeiFanTong import WoDeFeiFanTongTestCase
+# from cases.android.ffan.routing_inspection_test_cases.woDeFeiFanTong import WoDeFeiFanTongTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDePaiDui import WoDePaiDuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeTingCheJiaoFei import WoDeTingCheJiaoFeiTestCase
 from cases.android.ffan.routing_inspection_test_cases.woDeXiaoXiZhongXin import WoDeXiaoXiZhongXinTestCase
@@ -53,34 +53,34 @@ from cases.android.ffan.routing_inspection_test_cases.woDeTuiChu import WoDeTuiC
 
 
 from cases.android.ffan.routing_inspection_test_cases.woDeLingHuaQian import WoDeLingHuaQianTestCase
-from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
-from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
+# from cases.android.ffan.routing_inspection_test_cases.feiFanTongFuKuan import FeiFanTongFuKuanTestCase
+# from cases.android.ffan.routing_inspection_test_cases.feiFanTongKaGuanJia import FeiFanTongKaGuanJiaTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongLingHuaQian import FeiFanTongLingHuaQianTestCase
 from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoPinPai import QuanChengSouSuoPinPaiTestCase
 from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoShangPin import QuanChengSouSuoShangPinTestCase
 from cases.android.ffan.routing_inspection_test_cases.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
 from cases.android.ffan.routing_inspection_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangZhaoDian import GuangChangZhaoDianTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangXianChangYao import GuangChangXianChangYaoTestCase
+# from cases.android.ffan.routing_inspection_test_cases.guangChangXianChangYao import GuangChangXianChangYaoTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangMaiDan import GuangChangMaiDanTestCase
 from cases.android.ffan.routing_inspection_test_cases.guangChangHuiYuan import GuangChangHuiYuanTestCase
-from cases.android.ffan.routing_inspection_test_cases.guangChangYouHui import GuangChangYouHuiTestCase
+# from cases.android.ffan.routing_inspection_test_cases.guangChangYouHui import GuangChangYouHuiTestCase
 from cases.android.ffan.routing_inspection_test_cases.feiFanTongZhangDan import FeiFanTongZhangDanTestCase
-from cases.android.ffan.routing_inspection_test_cases.feiFanTongQiTaKuaiJieRuKou import FeiFanTongQiTaKuaiJieRuKouTestCase
-from cases.android.ffan.routing_inspection_test_cases.yaoYiYao import YaoYiYaoTestCase
+# from cases.android.ffan.routing_inspection_test_cases.feiFanTongQiTaKuaiJieRuKou import FeiFanTongQiTaKuaiJieRuKouTestCase
+# from cases.android.ffan.routing_inspection_test_cases.yaoYiYao import YaoYiYaoTestCase
 #from cases.android.ffan.routing_inspection_test_cases.woDeFuKuanMa import WoDeFuKuanMaTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiDengLuMiMa import WoDeSheZhiXiuGaiDengLuMiMaTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiZhiFuMiMa import WoDeSheZhiXiuGaiZhiFuMiMaTestCase
-from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiXiaoEMianMiZhiFu import WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase
+# from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiDengLuMiMa import WoDeSheZhiXiuGaiDengLuMiMaTestCase
+# from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiZhiFuMiMa import WoDeSheZhiXiuGaiZhiFuMiMaTestCase
+# from cases.android.ffan.routing_inspection_test_cases.woDeSheZhiXiuGaiXiaoEMianMiZhiFu import WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase
 
 
-def runPerformance(reportPath):
-    perf = Performance(reportPath)
-    while True:
-        perf.getCpu()
-        perf.getMemory()
-        perf.getTx()
-        perf.getRx()
+# def runPerformance(reportPath):
+#     perf = Performance(reportPath)
+#     while True:
+#         perf.getCpu()
+#         perf.getMemory()
+#         perf.getTx()
+#         perf.getRx()
 
 if __name__ == "__main__":
     # 生成Report目录
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     #suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
     suite.addTest(WoDeGeRenXinXiTestCase("testWoDeGeRenXinXi")) # 我的个人信息 No.50
     suite.addTest(WoDePiaoQuanTestCase("testWoDePiaoQuan")) # 我的票券 No.51
-    suite.addTest(WoDeDingDanTestCase("testWoDeDingDanTestCase")) # 我的订单 No.52
+    suite.addTest(WoDeDingDanTestCase("testWoDeDingDan")) # 我的订单 No.52
     suite.addTest(WoDeHuiYuanKaBaoTestCase("testWoDeHuiYuanKaBao")) # 我的会员卡包 No.53
     suite.addTest(WoDeLingHuaQianTestCase("testWoDeLingHuaQian")) # 我的零花钱 No.54
     #suite.addTest(WoDeFeiFanTongTestCase("testWoDeFeiFanTong")) # 我的飞凡通 No.56
@@ -160,30 +160,30 @@ if __name__ == "__main__":
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                            description='Result for test')
 
-    perfThread = threading.Thread(target=runPerformance, args=(reportpath,))
-    perfThread.setDaemon(True)
-    perfThread.start()
-    perf = Performance(reportpath)
-    startTraffic, sTime = perf.getTraffic()
-    startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+#     perfThread = threading.Thread(target=runPerformance, args=(reportpath,))
+#     perfThread.setDaemon(True)
+#     perfThread.start()
+#     perf = Performance(reportpath)
+#     startTraffic, sTime = perf.getTraffic()
+#     startTime = time.strftime('%Y/%m/%d %H:%M:%S')
     runner.run(suite)
 
-    try:
-        FpsPerformanceTestCases().getFpsPerf(reportpath)
-        ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
-        WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
-    except:
-        raise traceback.format_exc()
-    finally:
-        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
-        endTraffic, eTime = perf.getTraffic()
-        perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
+#     try:
+#         FpsPerformanceTestCases().getFpsPerf(reportpath)
+#         ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
+#         WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
+#     except:
+#         raise traceback.format_exc()
+#     finally:
+#         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+#         endTraffic, eTime = perf.getTraffic()
+#         perf.parseTraffic(startTraffic, endTraffic, round(eTime-sTime))
+# 
+#         PerformanceHandle().Handle(startTime, endTime, reportpath)
 
-        PerformanceHandle().Handle(startTime, endTime, reportpath)
+    ReportHandle().handle(reportpath)
 
-        ReportHandle().handle(reportpath)
-
-        if sentMail:
-            sendTestResultMail(reportpath, 'android')
-            from utility.performanceMailProcess import sendPerformanceMail
-            sendPerformanceMail(startTime, endTime, reportpath, 'android')
+    if sentMail:
+        sendTestResultMail(reportpath, 'android')
+#             from utility.performanceMailProcess import sendPerformanceMail
+#             sendPerformanceMail(startTime, endTime, reportpath, 'android')

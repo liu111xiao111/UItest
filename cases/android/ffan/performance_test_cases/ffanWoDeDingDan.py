@@ -2,6 +2,8 @@
 
 import os
 import time
+import datetime
+from subprocess import Popen, PIPE
 import HTMLTestRunner
 
 from unittest import TestCase
@@ -23,7 +25,7 @@ from utility.device_info_util import DeviceInfoUtil
 from cases.logger import logger
 
 
-class WoDeDingDanTestCase(TestCase):
+class FFanWoDeDingDanTestCase(TestCase):
     '''
     巡检 No.52
     用例名 我的订单
@@ -50,50 +52,81 @@ class WoDeDingDanTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testWoDeDingDan(self):
+    def testFFanWoDeDingDan(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
 
+        deviceID = DeviceInfoUtil().getDeviceID()
+        #cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        cmdBroadcastStart = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
+
         # 查看我的订单状态
+#         timeList = []
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()
         myOrderPage.screenShot("woDeDingDan")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         myOrderPage.clickBackKey()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
 
         # 查看我的订单 -- 点击我的订单待付款
         myFfanPage.clickOnToBePaid()
         myFfanPage.validSelfToBePaid()
         myFfanPage.screenShot("woDeDaiFuKuan")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         myFfanPage.clickBackKey()
         myFfanPage.screenShot("woDe")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
 
         # 查看我的订单 -- 点击我的订单可使用
         myFfanPage.clickOnUse()
         myFfanPage.validSelfUse()
         myFfanPage.screenShot("woDeKeShiYong")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         myFfanPage.clickBackKey()
         myFfanPage.screenShot("woDe")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
 
         # 查看我的订单 -- 点击我的订单我的点评
         myFfanPage.clickOnComments()
         myFfanPage.validSelfCommets()
         myFfanPage.screenShot("woDeDianPing")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
         myFfanPage.clickBackKey()
         myFfanPage.screenShot("woDe")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
 
         # 查看我的订单 -- 点击我的订单退货退款
         myFfanPage.clickOnReturnRefund()
         myFfanPage.validSelfReturnRefund()
         myFfanPage.screenShot("woDeTuiHuoTuiKuan")
+#         timeList.append(datetime.datetime.now().strftime('%Y%m%d%H%M%S.%f'))
+
+        #cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
+        cmdBroadcastEnd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
+        Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
+
+        # 取得performance.xml文件
+        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml ~/Desktop/"
+        Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
+#         print(timeList)
+#         print(len(timeList))
+#         pageDisplayTime = []
+#         for i in range(1, len(timeList)):
+#             pageDisplayTime.append(float(timeList[i]) - float(timeList[i-1]))
+#         print(pageDisplayTime)
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(WoDeDingDanTestCase)
+    suite = TestLoader().loadTestsFromTestCase(FFanWoDeDingDanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
