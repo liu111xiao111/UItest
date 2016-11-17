@@ -62,4 +62,25 @@ caseList = {
      'WoDeTuiChuTestCase'                            : [u'我的退出', '61'],
     # 'FeiFanTongShiminGongjiaokaTestCase'            : [u'飞凡通市民/公交卡', '62'],
     # 'BanBenShengJiTestCase'                         : [u'版本升级', '63'],
+
+
+
+
+     # 商户 case
+     'BianJiYuanGong'    :    [u'编辑员工','1'],
+     'DenggLuCase'    :    [u'登录','2'],
+     'DongJieYuanGong'    :    [u'冻结员工','3'],
+     'JiaoYiGuanBiDingDan'    :    [u'交易关闭订单','4'],
+     'JieDongYuanGong'    :    [u'解冻员工','5'],
+     'JueSeLieBiao'    :    [u'角色列表','6'],
+     'QuanBuDingDanZhuangTai'    :    [u'全部订单状态','7'],
+     'RenYuanLieBiao'    :    [u'人员列表','8'],
+     'ShanChuYuanGong'    :    [u'删除员工','9'],
+     'TuiChuDengLuCase'    :    [u'退出登录','10'],
+     'XianShiQiangGouXiangXi'    :    [u'限时抢购详细','11'],
+     'XinZengJueSe'    :    [u'新增角色','12'],
+     'XinZengYuanGongCase'    :    [u'新增员工','13'],
+     'ShangXueYuanRuKou'    :    [u'商学院入口','14'],
+
+
 }

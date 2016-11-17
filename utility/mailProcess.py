@@ -257,7 +257,12 @@ def sendTestResultMail(reportPath, deviceType):
             raise
     elif deviceType == 'ios':
         file = 'test_cases_report_ios.html'
-        reportFile = os.path.join(reportPath, 'feifan_automation_test_report_ios.html')
+        if (os.path.exists(os.path.join(reportPath, 'feifan_automation_test_report_ios.html'))):
+            reportFile = os.path.join(reportPath, 'feifan_automation_test_report_ios.html')
+        elif (os.path.exists(os.path.join(reportPath, 'shanghu_automation_test_report_ios.html'))):
+            reportFile = os.path.join(reportPath, 'shanghu_automation_test_report_ios.html')
+        else:
+            raise
     else:
         raise
 
@@ -279,7 +284,11 @@ def sendTestResultMail(reportPath, deviceType):
         else:
             msg['Subject'] = Header(constants.PATROL_SHANGHU_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
     elif deviceType == 'ios':
-        msg['Subject'] = Header(constants.PATROL_HEADR_NAME % ('IOS', time.strftime('%Y-%m-%d')), "utf-8")
+        if (os.path.exists(os.path.join(reportPath, 'feifan_automation_test_report_ios.html'))):
+            msg['Subject'] = Header(constants.PATROL_HEADR_NAME % ('IOS', time.strftime('%Y-%m-%d')), "utf-8")
+        else:
+            msg['Subject'] = Header(constants.PATROL_SHANGHU_HEADR_NAME % ('IOS', time.strftime('%Y-%m-%d')), "utf-8")
+
     else:
         raise
     msg['From'] = (r"%s <" + fromAddress + ">") % Header(constants.SYSTEM_NAME, "utf-8")

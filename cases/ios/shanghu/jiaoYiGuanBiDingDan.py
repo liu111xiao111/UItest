@@ -39,8 +39,5 @@ class JiaoYiGuanBiDingDan(TestCase):
         #检查全部订单信息
         orderFormManagementPage.checkAllOrderDetail()
 
-        homePage.waitBySeconds(10)
-
-
     def tearDown(self):
         self.driver.quit()

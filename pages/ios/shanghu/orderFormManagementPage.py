@@ -5,7 +5,7 @@ from api.api import API
 from pages.ios.shanghu.shanghuPageConfig import Xpath
 from pages.ios.shanghu.shanghuPageConfig import Name
 from pages.ios.shanghu.shanghuPageConfig import Text
-
+from pages.logger import logger
 
 class OrderFormManagementPage(SuperPage):
 
@@ -15,7 +15,6 @@ class OrderFormManagementPage(SuperPage):
         :return:
         '''
         itemContext = API().getTextByXpath(self.testcase,self.driver,self.logger,Xpath.order_management_first_item)
-        print(itemContext)
 
         global orderFormNumber
         global orderFormStatus
@@ -40,7 +39,10 @@ class OrderFormManagementPage(SuperPage):
         点击第一个订单,进入订单详情
         :return:
         '''
+        logger.info('Click 第一个订单 begin')
         API().clickElementByXpath(self.testcase,self.driver,self.logger,Xpath.order_management_first_item)
+        logger.info('Click 第一个订单 end')
+        API().screenShot(self.driver,'firstOrder')
 
 
     def checkAllOrderDetail(self):
@@ -48,7 +50,7 @@ class OrderFormManagementPage(SuperPage):
         检查全部订单信息
         :return:
         '''
-
+        logger.info('check 订单信息 begin')
         orderInfoArr = (orderFormNumber, orderFormStatus, orderFormBuyer, orderFormDate )
         # 获取订单详情页, 各个item内容
         orderFormNumberTemp = API().getTextByXpath(self.testcase,
@@ -60,10 +62,7 @@ class OrderFormManagementPage(SuperPage):
                                                    self.driver,
                                                    self.logger,
                                                    "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[2]")
-        orderFormBuyerTemp = API().getTextByXpath(self.testcase,
-                                                  self.driver,
-                                                  self.logger,
-                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[27]")
+
         orderFormDateTemp = API().getTextByXpath(self.testcase,
                                                   self.driver,
                                                   self.logger,
@@ -76,6 +75,17 @@ class OrderFormManagementPage(SuperPage):
                                               self.driver,
                                               self.logger,
                                                "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
+        #滑动显示电话号码,再获取value
+        logger.info('Scroll to 电话号码 begin')
+        API().iosScrollToElement(self.driver,self.logger,"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[35]",
+                                 '18612819429')
+        orderFormBuyerTemp = API().getTextByXpath(self.testcase,
+                                                  self.driver,
+                                                  self.logger,
+                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[35]")
+        logger.info('Scroll to 电话号码 begin')
+        print('debug order %s' % orderFormBuyerTemp)
+
         # 截取得电话号后四位
         orderFormBuyerTemp = orderFormBuyerTemp[7:11]
 
@@ -88,10 +98,12 @@ class OrderFormManagementPage(SuperPage):
         orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormBuyerTemp, orderFormDateTemp)
 
         for index in range(len(orderInfoArr)):
-            print(orderInfoArr[index].strip())
-            print(orderInfoArrTemp[index].strip())
+            logger.info('order info: ' + orderInfoArr[index].strip())
 
             API().assertTrue(self.testcase,self.logger,orderInfoArrTemp[index].strip() == orderInfoArr[index].strip())
+        logger.info('check 订单信息 end')
+
+        API().screenShot(self.driver,'orderInfo')
 
 
 
@@ -100,17 +112,23 @@ class OrderFormManagementPage(SuperPage):
         点击全部状态按钮
         :return:
         '''
+        logger.info('Click 全部状态 begin')
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
                                  Name.all_order_status)
+        logger.info('Click 全部状态 end')
+        API().screenShot(self.driver,'allStatus')
 
     def clickTradingClosedButton(self):
         '''
         点击交易关闭按钮
         :return:
         '''
+        logger.info('Click 关闭状态 begin')
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
                                  Name.trading_closed_status)
+        logger.info('Click 关闭状态 end')
+        API().screenShot(self.driver,'closedStatus')
