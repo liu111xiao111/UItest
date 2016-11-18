@@ -65,7 +65,7 @@ class EmployeeModulePage(SuperPage):
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_input_name, Text.new_employee_name)
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_input_phone_name,Text.new_employee_phone)
         logger.info('Input 姓名,电话号 end')
-
+        API().screenShot(self.driver,'inputUser&password')
         logger.info('Click 保存 begin')
         #保存
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
@@ -81,6 +81,7 @@ class EmployeeModulePage(SuperPage):
 
         API().assertTrue(self.testcase, self.logger, name==Text.new_employee_name)
         logger.info('Check 添加新员工 end')
+        API().screenShot(self.driver,'checkUser')
 
 
     def editEmployee(self):
@@ -91,9 +92,11 @@ class EmployeeModulePage(SuperPage):
         '''
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.edit_button)
         logger.info('Click 选择角色 begin')
+
         #点击选择角色按钮
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.edit_employee_select_role)
         logger.info('Click 选择角色 end')
+        API().screenShot(self.driver, 'clickSelectRole')
 
         logger.info('Click 商户店长 begin')
         #点击商户店长角色
@@ -114,6 +117,7 @@ class EmployeeModulePage(SuperPage):
         #输入姓名
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.edit_employee_name,
                                   Text.edit_employee_name_text)
+        API().screenShot(self.driver, 'inputName')
 
         # 获取编辑员工页面中,姓名
         name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.edit_employee_name)
@@ -121,7 +125,7 @@ class EmployeeModulePage(SuperPage):
         #点击保存
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
         logger.info('Click 保存 end')
-
+        API().screenShot(self.driver, 'save')
         logger.info('Click Dialog确定, begin')
         #点击弹出的Dialog的确定button
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
@@ -149,7 +153,7 @@ class EmployeeModulePage(SuperPage):
         #点击冻结Button
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.dongjie_button)
         logger.info('Click 冻结 end')
-
+        API().screenShot(self.driver, 'blocked')
         logger.info('Click 确定 begin')
         #确定
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
@@ -165,6 +169,7 @@ class EmployeeModulePage(SuperPage):
         logger.info('Check 冻结状态 begin')
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
         logger.info('Check 冻结状态 end')
+        API().screenShot(self.driver, 'checkBlocked')
 
         logger.info('Begin 冻结员工 ' + name)
 
@@ -174,32 +179,43 @@ class EmployeeModulePage(SuperPage):
         解冻员工
         :return:
         '''
-        
+        logger.info('Click 冻结状态 begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.dongjiezhuangtai)
-
+        logger.info('Click 冻结状态 end')
+        API().screenShot(self.driver, 'blockedStatus')
         #检查是否存在冻结员工,如果不存在,冻结一个员工
+        logger.info('Check 是否存在冻结员工 begin')
         isExist = API().validElementByName(self.driver, self.logger,
                                                   Name.jiedong_button)
+        logger.info('Check 是否存在冻结员工 end')
+        #logger.info('isExist' + isExist)
 
         if not isExist:
+            logger.info('Check 冻结员工不存在,冻结一个员工 begin')
             API().clickElementByName(self.testcase, self.driver, self.logger, Name.zhengchangzhuangtai)
             self.dongjieEmployee()
             API().clickElementByName(self.testcase, self.driver, self.logger, Name.dongjiezhuangtai)
+            logger.info('Check 冻结员工不存在,冻结一个员工 end')
 
         # 取得被冻结员工名字
         name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.dongjie_employee_name)
 
         #点击解冻
+        logger.info('Click 解冻 begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.jiedong_button)
+        API().screenShot(self.driver, 'releaseEmployee')
+        logger.info('Click 解冻 end')
 
         #点击确定
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
 
         API().waitBySeconds(10)
-
+        logger.info('Click  正常状态 begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.zhengchangzhuangtai)
+        logger.info('Click  正常状态 end')
 
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
+        API().screenShot(self.driver, 'checkRelease')
 
 
     def deleteEmployee(self):
@@ -208,26 +224,24 @@ class EmployeeModulePage(SuperPage):
         :return:
         '''
         #取得删除员工名字
+        logger.info('Click 取得删除员工名字 begin')
         name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.dongjie_employee_name)
-
-        print(name)
+        logger.info('Click 取得删除员工名字 end')
 
         #删除员工
+        logger.info('Click 删除 begin')
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.delete_button)
+        API().screenShot(self.driver, 'delete')
         #点击确定
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
+        logger.info('Click 删除 begin')
 
         API().waitBySeconds(10)
 
         isExist = API().validElementByName(self.driver, self.logger,name)
-        print(isExist)
 
         #如果不存在则删除成功
+        logger.info('Check 删除 begin')
         API().assertFalse(self.testcase, self.logger, isExist)
-
-
-
-
-
-
-
+        logger.info('Check 删除 begin')
+        API().screenShot(self.driver, 'deleteStatus')

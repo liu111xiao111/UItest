@@ -38,8 +38,6 @@ class XinZengYuanGongCase(TestCase):
         #检查是否添加员工成功
         employeeModulePage.checkNewUserStatus()
 
-        employeeModulePage.waitBySeconds(10)
-
 
     def tearDown(self):
         self.driver.quit()

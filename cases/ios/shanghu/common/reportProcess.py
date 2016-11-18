@@ -143,9 +143,12 @@ class TestResultParser(html_parser.HTMLParser):
                 # print(self.passed_case)
 
     def readHtmlContents(self, filePath):
+        print('readhtmlcontent')
+        print(filePath)
         resultFile = open(filePath, encoding='utf-8')
         try:
             resultContents = resultFile.read()
+            print(resultContents)
         except Exception as e:
             print(str(e))
         finally:
@@ -176,7 +179,7 @@ class TestResultParser(html_parser.HTMLParser):
 
 class ReportHandle(object):
     def __init__(self):
-        self.reportName = "feifan_automation_test_report_ios.html"
+        self.reportName = "shanghu_automation_test_report_ios.html"
         self.parser = TestResultParser()
         self.startTime = ''
         self.duration = ''
@@ -184,9 +187,13 @@ class ReportHandle(object):
         self.htmlContents = ''
 
     def handle(self, reportPath):
+        print('begin handle...')
+        print(reportPath)
         try:
             report = os.path.join(reportPath, self.reportName)
+            print(report)
             htmlContents = self.parser.readHtmlContents(report)
+            #print('htmlContents')
             self.parser.feed(htmlContents)
             self.parser.close()
 
@@ -196,9 +203,10 @@ class ReportHandle(object):
             self.duration = reportSummary['duration']
             self.resultStatus = "<tr id='result_row'><td class='totalClass'>%s</td><td class='passClass'>%s</td><td class='failClass'>%s</td><td class='errorClass'>%s</td></tr>"\
                                 % (int(reportSummary['Pass'])+int(reportSummary['Failure'])+int(reportSummary['Error']), reportSummary['Pass'], reportSummary['Failure'], reportSummary['Error'])
-
+            print('resultStatus')
+            print(self.resultStatus)
             self.dataHandle()
-
+            print('begin generateReport')
             self.generateReport(reportPath)
 
         except Exception as e:
@@ -236,7 +244,9 @@ class ReportHandle(object):
         self.htmlContents = htmlContent
 
     def generateReport(self, reportPath):
+        print('generateReport')
         report = os.path.join(reportPath, 'test_cases_report_ios.html')
+        print(report)
         resultFile = open(report, 'w+', encoding='utf-8')
         try:
             templateHtml = self.loadHtmlTemplate()
@@ -269,4 +279,4 @@ class ReportHandle(object):
         return str(contents)
 
 if __name__ == "__main__":
-    ReportHandle().handle('/Users/songbo/')
+    ReportHandle().handle('/Users/auto/workspace_pycharm/autotest/report/shanghu/20161114/10/')
