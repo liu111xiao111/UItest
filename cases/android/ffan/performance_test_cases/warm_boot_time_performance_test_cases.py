@@ -3,8 +3,6 @@
 import os
 import time
 import subprocess
-from configs.driver_configs import appPackage_ffan
-from configs.driver_configs import appActivity_ffan
 
 
 now = time.strftime('%Y%m%d%H%M%S')
@@ -18,15 +16,15 @@ class WarmBootTimePerformanceTestCases():
     热启动时间情况性能测试
     '''
 
-    def getWarmBootTime(self, reportPath):
-        bootTime = "am start -W " + appPackage_ffan + "/" + appActivity_ffan + " | grep TotalTime"
+    def getWarmBootTime(self, reportPath, pkName, actiName):
+        bootTime = "am start -W " + pkName + "/" + actiName + " | grep TotalTime"
         cmdam = "adb shell \"%s\"" % bootTime
         keycode = "keyevent KEYCODE_BACK"
         cmdBack = "adb shell input %s" % keycode
-        file = os.path.join(reportPath, "WarmBootTime_performance.txt")
+        file = os.path.join(reportPath, "boottime.txt")
         f1 = open(file, mode="a", encoding='utf-8')
-        os.system('adb shell "am start -W "' + appPackage_ffan + '/' + appActivity_ffan )
-        for _ in range(0,10):
+        os.system('adb shell "am start -W "' + pkName + '/' + actiName )
+        for _ in range(0,2):
             os.system(cmdBack)
             time.sleep(0.3)
             os.system(cmdBack)

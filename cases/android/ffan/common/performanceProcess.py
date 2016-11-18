@@ -50,12 +50,12 @@ class PerformanceHandle:
 
         self.fileNameCpu = 'Cpu_performance.txt'
         self.fileNameMemory = 'Mem_peformance.txt'
-        self.fileNameFps = 'Fps_performance.txt'
+        self.fileNameFps = 'fps.txt'
         self.fileNameRx = 'Rx_performance.txt'
         self.fileNameTx = 'Tx_performance.txt'
-        self.fileNameColdBootTime = 'ColdBootTime_performance.txt'
-        self.fileNameWarmBootTime = 'WarmBootTime_performance.txt'
-        self.fileNameTraffic = 'Traffic_performance.txt'
+        self.fileNameColdBootTime = 'boottime.txt'
+        self.fileNameWarmBootTime = 'boottime.txt'
+        self.fileNameTraffic = 'traffic.txt'
 
     def Handle(self, startTime, endTime, reportPath=''):
         try:

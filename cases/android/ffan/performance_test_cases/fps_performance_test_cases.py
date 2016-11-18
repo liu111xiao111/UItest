@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # coding:utf-8
 import re
-import os
+import sys,os
+import time
 from unittest import TestCase
 from subprocess import Popen, PIPE
-from pages.android.ffan.dashboard_page import DashboardPage
+from pages.android.ffan.dashboard_page import DashboardPage as FFANDP
+from pages.android.meituan.dashboard_page import DashboardPage as MTUANDP
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
+from configs.driver_configs import appPackage_meituan
+from configs.driver_configs import appActivity_meituan
 from configs.driver_configs import deviceName_andr
 from configs.driver_configs import driver_url
 from configs.driver_configs import platformName_andr
@@ -28,7 +32,7 @@ class FpsPerformanceTestCases(TestCase):
     作者 宋波
     流畅度情况性能测试
     '''
-    def getFpsPerf(self, reportPath):
+    def getFpsPerf(self):
         '''
         获取fps draw性能信息
         :param reportPath: 性能存储路径
@@ -36,7 +40,11 @@ class FpsPerformanceTestCases(TestCase):
         '''
         try:
             self._setUp()
-            dashboardPage = DashboardPage(self, self.driver, self.logger)
+            build_num = sys.argv[1]
+            reportPath = "%s/report/perf/%s/%s/ffan/fps" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+            if not os.path.exists(reportPath):
+                os.makedirs(reportPath)
+            dashboardPage = FFANDP(self, self.driver, self.logger)
             tab_dict = {'Mine'  : dashboardPage.clickOnMy,
                         'LoveShopping': dashboardPage.clickLikeShopping,
                         'BenefitsLife': dashboardPage.clickOnSmartLife,
@@ -46,7 +54,31 @@ class FpsPerformanceTestCases(TestCase):
                 clickFunc()
                 self._clearLog()
                 dashboardPage.scrollOnPage()
-                self._getFps(key, reportPath)
+                self._getFps(key, reportPath, appPackage_ffan)
+        finally:
+            self._tearDown()
+
+    def getFpsPerfJingpin(self):
+        '''
+        获取fps draw性能信息
+        :param reportPath: 性能存储路径
+        :return: 无
+        '''
+        try:
+            self._setUpJingpin()
+            build_num = sys.argv[1]
+            reportPath = "%s/report/perf/%s/%s/mtuan/fps" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+            if not os.path.exists(reportPath):
+                os.makedirs(reportPath)
+            dashboardPage = MTUANDP(self, self.driver, self.logger)
+            tab_dict = {'Mine'  : dashboardPage.clickOnMy,
+                        'Dashboard': dashboardPage.clickOnDashboard,
+                        }
+            for key, clickFunc in tab_dict.items():
+                clickFunc()
+                self._clearLog()
+                dashboardPage.scrollOnPage()
+                self._getFps(key, reportPath, appPackage_meituan)
         finally:
             self._tearDown()
 
@@ -69,6 +101,17 @@ class FpsPerformanceTestCases(TestCase):
                                    driver_url).getDriver()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
+    def _setUpJingpin(self):
+        '''
+        初始化appium client driver, 跳出准备界面
+        :return: 无
+        '''
+        self.logger = Logger()
+        self.version = DeviceInfoUtil().getBuildVersion()
+        self.driver = AppiumDriver(appPackage_meituan, appActivity_meituan, platformName_andr,
+                                   self.version, deviceName_andr,
+                                   driver_url).getDriver()
+
     def _clearLog(self):
         '''
         清理fps和draw信息
@@ -77,7 +120,28 @@ class FpsPerformanceTestCases(TestCase):
         cmdFps = "adb shell dumpsys gfxinfo %s" % appPackage_ffan
         Popen(cmdFps, shell=True, stdout=PIPE, stderr=PIPE)
 
-    def _getFps(self, tab, reportPath):
+    def _getFps(self, tab, reportPath, pkName):
+        '''
+        获取获取fps和draw信息, 并保存生成日志文件
+        :return: 无
+        '''
+        cmdFps = "adb shell dumpsys gfxinfo %s" % pkName
+        ret = Popen(cmdFps, shell=True, stdout=PIPE, stderr=PIPE)
+
+        fpsInfo, err = ret.communicate()
+        if err or not fpsInfo:
+            return
+
+        fpsInfo = fpsInfo.decode('utf-8')
+        draw, fps = self._parseFps(fpsInfo)
+
+        logName = "fps.txt"
+        logPath = os.path.join(reportPath, logName)
+        f = open(logPath, mode='a', encoding='utf-8')
+        f.write("%s %s %s" % (tab, draw, fps) + "\n")
+        f.close()
+
+    def _getFpsLogName(self, tab, reportPath, logName = "default"):
         '''
         获取获取fps和draw信息, 并保存生成日志文件
         :return: 无
@@ -92,7 +156,7 @@ class FpsPerformanceTestCases(TestCase):
         fpsInfo = fpsInfo.decode('utf-8')
         draw, fps = self._parseFps(fpsInfo)
 
-        logName = "Fps_performance.txt"
+        logName = logName
         logPath = os.path.join(reportPath, logName)
         f = open(logPath, mode='a', encoding='utf-8')
         f.write("%s %s %s" % (tab, draw, fps) + "\n")
