@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import time
-import datetime
+#import datetime
 from subprocess import Popen, PIPE
 import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
+
+from cases.android.ffan.common.performance import Performance
 
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
@@ -53,6 +56,14 @@ class FFanWoDeDingDanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testFFanWoDeDingDan(self):
+        build_num = sys.argv[1]
+        reportPath = "%s/report/perf/%s/%s/ffan/wodedingdan" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if not os.path.exists(reportPath):
+            os.makedirs(reportPath)
+        perf = Performance(reportPath)
+        startTraffic, sTime = perf.getTraffic()
+        #startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
@@ -116,8 +127,12 @@ class FFanWoDeDingDanTestCase(TestCase):
         Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
 
         # 取得performance.xml文件
-        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml ~/Desktop/"
-        Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
+        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
+
+        #endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
 #         print(timeList)
 #         print(len(timeList))
 #         pageDisplayTime = []

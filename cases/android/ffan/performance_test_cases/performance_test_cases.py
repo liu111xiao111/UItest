@@ -6,6 +6,7 @@ import time
 import traceback
 import threading
 
+
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from subprocess import Popen, PIPE
@@ -16,73 +17,106 @@ from cases.android.ffan.common.performanceProcess import PerformanceHandle
 from cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
 from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
 from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
-
-
+from configs.driver_configs import appPackage_ffan
+from configs.driver_configs import appActivity_ffan
+from configs.driver_configs import appPackage_meituan
+from configs.driver_configs import appActivity_meituan
 from cases.android.ffan.performance_test_cases.ffanDianYing import FFanDianYingTestCase
 from cases.android.ffan.performance_test_cases.ffanMeiShiHui import FFanMeiShiHuiTestCase
 from cases.android.ffan.performance_test_cases.ffanWoDeDengLu import FFanWoDeDengLuTestCase
 from cases.android.ffan.performance_test_cases.ffanWoDeDingDan import FFanWoDeDingDanTestCase
+from cases.android.ffan.performance_test_cases.mtuanWoDeDingDan import MTuanWoDeDingDanTestCase
 
-def cmdPullFile(reportPath, caseName):
-    cmdPullFile = "adb pull /sdcard/YCY/performance.xml %s" % reportPath
-    Popen(cmdPullFile, shell=True, stdout=PIPE, stderr=PIPE)
-    fileName = os.path.join(reportPath, 'performance.xml')
-    fileNameNew = reportPath + "performance_" + caseName + ".xml"
-    if (os.path.exists(fileName)):
-        cmdChangeName = "mv performance.xml %s %s" % (fileName, fileNameNew)
-        Popen(cmdChangeName, shell=True, stdout=PIPE, stderr=PIPE)
 
 if __name__ == "__main__":
-    # 生成Report目录
-    sentMail = False
-    if len(sys.argv) > 2:
-        sentMail = True
+
+    # 通过参数却分每日多次执行版本
     build_num = sys.argv[1]
-    #reportpath = "%s/report/ffan/%s/%s/" % ("/Users/songbo/workspace/autotest", time.strftime("%Y%m%d"), build_num)
-    reportpath = "%s/report/perf/%s/%s/" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
-    if not os.path.exists(reportpath):
-        os.makedirs(reportpath)
+
+    # 飞凡数据存放路径
+    reportpath_ffan = "%s/report/perf/%s/%s/ffan/" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_ffan):
+        os.makedirs(reportpath_ffan)
+
+    reportpath_ffan_coldboot = "%s/report/perf/%s/%s/ffan/coldboot" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_ffan_coldboot):
+        os.makedirs(reportpath_ffan_coldboot)
+
+    reportpath_ffan_warmboot = "%s/report/perf/%s/%s/ffan/warmboot" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_ffan_warmboot):
+        os.makedirs(reportpath_ffan_warmboot)
+
+    # 竞品数据存放路径
+    reportpath_mtuan = "%s/report/perf/%s/%s/mtuan/" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_mtuan):
+        os.makedirs(reportpath_mtuan)
+
+    reportpath_mtuan_coldboot = "%s/report/perf/%s/%s/mtuan/coldboot" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_mtuan_coldboot):
+        os.makedirs(reportpath_mtuan_coldboot)
+
+    reportpath_mtuan_warmboot = "%s/report/perf/%s/%s/mtuan/warmboot" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+    if not os.path.exists(reportpath_mtuan_warmboot):
+        os.makedirs(reportpath_mtuan_warmboot)
 
     # 添加测试用例
     suite = TestSuite()
-
 #     suite.addTest(FFanDianYingTestCase("testFFanDianYing")) # 电影 No.06
 #     suite.addTest(FFanMeiShiHuiTestCase("testFFanMeiShiHui")) # 美食汇 NO.7
     suite.addTest(FFanWoDeDingDanTestCase("testFFanWoDeDingDan")) # 我的订单 No.52
-    cmdPullFile(reportpath, "wodedingdan")
+    suite.addTest(MTuanWoDeDingDanTestCase("testMTuanWoDeDingDan")) # 我的订单 No.52
 #     suite.addTest(FFanWoDeDengLuTestCase("testFFanWoDeDengLu")) # 我的登录 No.49
 
-    # 巡检及性能用例执行
+    # 用例执行
     now = time.strftime('%H_%M_%S')
-
-    filename = os.path.join(reportpath, 'feifan_automation_test_report.html')
+    filename = os.path.join(reportpath_ffan, 'feifan_automation_test_report.html')
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
                                            description='Result for test')
 
     try:
-        perf = Performance(reportpath)
-        startTraffic, sTime = perf.getTraffic()
-        startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        # 巡检用例执行
         runner.run(suite)
-        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
-        endTraffic, eTime = perf.getTraffic()
-        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'Traffic_performance_testcase.txt')
-#         FpsPerformanceTestCases().getFpsPerf(reportpath)
-        perf = Performance(reportpath)
+
+        # 流畅度用例执行
+        FpsPerformanceTestCases().getFpsPerf()
+        FpsPerformanceTestCases().getFpsPerfJingpin()
+
+        # 飞凡APP冷启动用例及流量统计执行
+        perf = Performance(reportpath_ffan_coldboot)
         startTraffic, sTime = perf.getTraffic()
         startTime = time.strftime('%Y/%m/%d %H:%M:%S')
-        ColdBootTimePerformanceTestCases().getColdBootTime(reportpath)
+        ColdBootTimePerformanceTestCases().getColdBootTime(reportpath_ffan_coldboot, appPackage_ffan, appActivity_ffan)
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
-        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'Traffic_performance_coldboottime.txt')
-        perf = Performance(reportpath)
+        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
+
+        # 飞凡APP热启动用例及流量统计执行
+        perf = Performance(reportpath_ffan_warmboot)
         startTraffic, sTime = perf.getTraffic()
         startTime = time.strftime('%Y/%m/%d %H:%M:%S')
-        WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath)
+        WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath_ffan_warmboot, appPackage_ffan, appActivity_ffan)
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
-        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'Traffic_performance_warmboottime.txt')
+        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
+
+        # 美团APP冷启动用例及流量统计执行
+        perf = Performance(reportpath_mtuan_coldboot)
+        startTraffic, sTime = perf.getTraffic()
+        startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        ColdBootTimePerformanceTestCases().getColdBootTime(reportpath_mtuan_coldboot, appPackage_meituan, appActivity_meituan)
+        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
+
+        # 美团APP热启动用例及流量统计执行
+        perf = Performance(reportpath_mtuan_warmboot)
+        startTraffic, sTime = perf.getTraffic()
+        startTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        WarmBootTimePerformanceTestCases().getWarmBootTime(reportpath_mtuan_warmboot, appPackage_meituan, appActivity_meituan)
+        endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+        endTraffic, eTime = perf.getTraffic()
+        perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
     except:
         raise traceback.format_exc()
     finally:

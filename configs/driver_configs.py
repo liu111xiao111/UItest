@@ -16,3 +16,6 @@ appActivity_bp = 'com.feifan.bp.business.launch.LaunchActivity'
 driver_url = 'http://localhost:4723/wd/hub'
 
 bundle_id = "com.dianshang.wanhui"
+
+appPackage_meituan = 'com.sankuai.meituan'
+appActivity_meituan = '.activity.MainActivity'

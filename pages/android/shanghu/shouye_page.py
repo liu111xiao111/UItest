@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.shanghu.shouye_page_configs import ShouYePageConfigs as SYPC
+from pages.android.shanghu.shezhi_page import SheZhiPage
 from pages.logger import logger
 
 
@@ -48,6 +49,17 @@ class ShouYePage(SuperPage):
                                              self.logger,
                                              SYPC.resource_id_title,
                                              SYPC.verify_timeout)
+        if rtn:
+            title = API().getTextByResourceId(self.testcase,
+                                              self.driver,
+                                              self.logger,
+                                              SYPC.resource_id_title,
+                                              SYPC.verify_timeout)
+            print(title)
+            if title != SYPC.text_store:
+                self.clickOnSetting()
+                SheZhiPage.clickOnLogout(self)
+                rtn = False
         return rtn
 
     def clickOnSetting(self):
