@@ -89,10 +89,8 @@ class API(object):
         try:
             inputField = self._findElementByXpath(driver, logger, xpath, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by xpath [%s] timeout" % (xpath))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
 
         inputField.click()
@@ -127,10 +125,8 @@ class API(object):
                 'new UiScrollable(new UiSelector().scrollable(true).instance(0)).'
                 'scrollIntoView(new UiSelector().text("%s").instance(0))' % (text))
         except NoSuchElementException:
-            driver.quit()
             testCase.assertTrue(False, "Scroll to element by text [%s] failed." % (text))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not scroll to element by text [%s]." % (text))
 
     def inputStringByResourceId(self, testCase, driver, logger, resourceId, string, timeout=10):
@@ -147,10 +143,8 @@ class API(object):
         try:
             inputField = self._findElementByResourceId(driver, logger, resourceId, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by resource id [%s] timeout" % (resourceId))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by resource id [%s]" % (resourceId))
 
         inputField.click()
@@ -170,10 +164,8 @@ class API(object):
         try:
             inputField = self._findElementByClassName(driver, logger, className, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by class name [%s] timeout" % (className))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by class name [%s]" % (className))
 
         inputField.click()
@@ -236,10 +228,8 @@ class API(object):
         try:
             inputField = self._findElementByResourceId(driver, logger, name, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by name [%s]" % (name))
 
         inputField.click()
@@ -259,12 +249,9 @@ class API(object):
         try:
             inputField = self._findElementByClassName(driver, logger, elementType, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by element type [%s] timeout" % (elementType))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by element type [%s]" % (elementType))
-
 
         inputField.click()
         inputField.send_keys(string)
@@ -289,10 +276,8 @@ class API(object):
         try:
             return self._findElementsByResourceId(driver, logger, resourceId, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by resource id [%s] timeout" % (resourceId))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by resource id [%s]" % (resourceId))
 
     def getElementsByClassName(self, testCase, driver, logger, className="default", timeout=10):
@@ -309,10 +294,8 @@ class API(object):
         try:
             return self._findElementsByClassName(driver, logger, className, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by class name [%s] timeout" % (className))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by class name [%s]" % (className))
 
     def getElementsByText(self, testCase, driver, logger, text="default", timeout=10):
@@ -329,10 +312,8 @@ class API(object):
         try:
             return self._findElementsByText(driver, logger, text, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by text [%s] timeout" % (text))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by text [%s]" % (text))
 
     def getElementsByContentDesc(self, testCase, driver, logger, contentDesc="default", timeout=10):
@@ -349,10 +330,8 @@ class API(object):
         try:
             return self._findElementsByContentDesc(driver, logger, contentDesc, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by content description [%s] timeout" % (contentDesc))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by content description [%s]" % (contentDesc))
 
     def getElementsByContainsText(self, testCase, driver, logger, containsText="default", timeout=10):
@@ -369,10 +348,8 @@ class API(object):
         try:
             return self._findElementsByContainsText(driver, logger, containsText, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by contains text [%s] timeout" % (containsText))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by contains text [%s]" % (containsText))
 
     def getElementsByTextStartWith(self, testCase, driver, logger, textStartWith="default", timeout=10):
@@ -389,10 +366,8 @@ class API(object):
         try:
             return self._findElementsByTextStartWith(driver, logger, textStartWith, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by text start with [%s] timeout" % (textStartWith))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by text start with [%s]" % (textStartWith))
 
 
@@ -415,10 +390,8 @@ class API(object):
         try:
             return self._findElementsByResourceId(driver, logger, name, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by name [%s] timeout" % (name))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by name [%s]" % (name))
 
     def getElementsByType(self, testCase, driver, logger, elementType="default", timeout=10):
@@ -435,10 +408,8 @@ class API(object):
         try:
             return self._findElementsByClassName(driver, logger, elementType, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by element type [%s] timeout" % (elementType))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by element type [%s]" % (elementType))
 
     def getElementsByIosUiautomation(self, testCase, driver, logger, uiaString="default", timeout=10):
@@ -455,10 +426,8 @@ class API(object):
         try:
             return self._findElementsByIosUiautomation(driver, logger, uiaString, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get elements by uia string [%s] timeout" % (uiaString))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get elements by uia string [%s]" % (uiaString))
 
 
@@ -481,12 +450,9 @@ class API(object):
         try:
             return self._findElementByXpath(driver, logger, xpath, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by xpath [%s] timeout" % (xpath))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by xpath [%s]" % (xpath))
-
 
 
     '''
@@ -508,12 +474,9 @@ class API(object):
         try:
             return self._findElementByResourceId(driver, logger, resourceId, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by resource id [%s] timeout" % (resourceId))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by resource id [%s]" % (resourceId))
-
 
     def getTextByClassName(self, testCase, driver, logger, className="default", timeout=10):
         '''
@@ -529,10 +492,8 @@ class API(object):
         try:
             return self._findElementByClassName(driver, logger, className, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by class name [%s] timeout" % (className))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by class name [%s]" % (className))
 
     def getTextByContainsText(self, testCase, driver, logger, containsText="default", timeout=10):
@@ -549,10 +510,8 @@ class API(object):
         try:
             return self._findElementByContainsText(driver, logger, containsText, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by contains text [%s] timeout" % (containsText))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by contains text [%s]" % (containsText))
 
     def getTextByTextStartWith(self, testCase, driver, logger, textStartWith="default", timeout=10):
@@ -569,10 +528,8 @@ class API(object):
         try:
             return self._findElementByTextStartWith(driver, logger, textStartWith, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by text start with [%s] timeout" % (textStartWith))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by text start with [%s]" % (textStartWith))
 
 
@@ -595,12 +552,9 @@ class API(object):
         try:
             return self._findElementByClassName(driver, logger, elementType, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by element type [%s] timeout" % (elementType))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by element type [%s]" % (elementType))
-
 
     def getTextByIosUiautomation(self, testCase, driver, logger, uiaString="default", timeout=10):
         '''
@@ -616,10 +570,8 @@ class API(object):
         try:
             return self._findElementByIosUiautomation(driver, logger, uiaString, timeout).text
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element text by uia string [%s] timeout" % (uiaString))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element text by uia string [%s]" % (uiaString))
 
 
@@ -641,10 +593,8 @@ class API(object):
         try:
             self._findElementByXpath(driver, logger, xpath, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by xpath [%s]" % (xpath))
 
 
@@ -666,10 +616,8 @@ class API(object):
         try:
             self._findElementByResourceId(driver, logger, resourceId, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by resource id [%s] timeout" % (resourceId))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by resource id [%s]" % (resourceId))
 
     def clickElementByClassName(self, testCase, driver, logger, className, timeout=10):
@@ -685,10 +633,8 @@ class API(object):
         try:
             self._findElementByClassName(driver, logger, className, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by class name [%s] timeout" % (className))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by class name [%s]" % (className))
 
     def clickElementByText(self, testCase, driver, logger, text, timeout=10):
@@ -704,10 +650,8 @@ class API(object):
         try:
             self._findElementByText(driver, logger, text, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by text [%s] timeout" % (text))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by text [%s]" % (text))
 
     def clickElementByContentDesc(self, testCase, driver, logger, contentDesc, timeout=10):
@@ -723,10 +667,8 @@ class API(object):
         try:
             self._findElementByContentDesc(driver, logger, contentDesc, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by content description [%s] timeout" % (contentDesc))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by content description [%s]" % (contentDesc))
 
     def clickElementByContainsText(self, testCase, driver, logger, containsText, timeout=10):
@@ -742,10 +684,8 @@ class API(object):
         try:
             self._findElementByContainsText(driver, logger, containsText, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by contains text [%s] timeout" % (containsText))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by contains text [%s]" % (containsText))
 
     def clickElementByTextStartWith(self, testCase, driver, logger, textStartWith, timeout=10):
@@ -761,12 +701,9 @@ class API(object):
         try:
             self._findElementByTextStartWith(driver, logger, textStartWith, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by text start with [%s] timeout" % (textStartWith))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by text start with [%s]" % (textStartWith))
-
 
 
     '''
@@ -787,10 +724,8 @@ class API(object):
         try:
             self._findElementByResourceId(driver, logger, name, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by name [%s] timeout" % (name))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
 
     def clickElementByType(self, testCase, driver, logger, elementType, timeout=10):
@@ -806,10 +741,8 @@ class API(object):
         try:
             self._findElementByClassName(driver, logger, elementType, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by element type [%s] timeout" % (elementType))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by element type [%s]" % (elementType))
 
     def clickElementByIosUiautomation(self, testCase, driver, logger, uiaString, timeout=10):
@@ -825,10 +758,8 @@ class API(object):
         try:
             self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not click element by uia string [%s]" % (uiaString))
 
 
@@ -1022,10 +953,8 @@ class API(object):
         try:
             self._findElementByXpath(driver, logger, xpath, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by xpath [%s] timeout" % (xpath))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
 
 
@@ -1144,10 +1073,8 @@ class API(object):
             logger.info('Get element by resource id.')
             self._findElementByResourceId(driver, logger, resourceId, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by resource id [%s] timeout" % (resourceId))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by resource id [%s]" % (resourceId))
 
     def assertElementByClassName(self, testCase, driver, logger, className="default", timeout=10):
@@ -1163,10 +1090,8 @@ class API(object):
         try:
             self._findElementByClassName(driver, logger, className, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by class name [%s] timeout" % (className))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by class name [%s]" % (className))
 
     def assertElementByText(self, testCase, driver, logger, text="default", timeout=10):
@@ -1182,10 +1107,8 @@ class API(object):
         try:
             self._findElementByText(driver, logger, text, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by text [%s] timeout" % (text))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by text [%s]" % (text))
 
     def assertElementByContentDesc(self, testCase, driver, logger, contentDesc="default", timeout=10):
@@ -1201,10 +1124,8 @@ class API(object):
         try:
             self._findElementByContentDesc(driver, logger, contentDesc, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by content description [%s] timeout" % (contentDesc))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by content description [%s]" % (contentDesc))
 
     def assertElementByContainsText(self, testCase, driver, logger, containsText="default", timeout=10):
@@ -1220,10 +1141,8 @@ class API(object):
         try:
             self._findElementByContainsText(driver, logger, containsText, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by contains text [%s] timeout" % (containsText))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by contains text [%s]" % (containsText))
 
     def assertElementByTextStartWith(self, testCase, driver, logger, textStartWith="default", timeout=10):
@@ -1239,10 +1158,8 @@ class API(object):
         try:
             self._findElementByTextStartWith(driver, logger, textStartWith, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by text start with [%s] timeout" % (textStartWith))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by text start with [%s]" % (textStartWith))
 
 
@@ -1401,10 +1318,8 @@ class API(object):
         try:
             self._findElementByResourceId(driver, logger, name, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by name [%s]" % (name))
 
     def assertElementByType(self, testCase, driver, logger, elementType="default", timeout=10):
@@ -1420,10 +1335,8 @@ class API(object):
         try:
             self._findElementByClassName(driver, logger, elementType, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by element type [%s] timeout" % (elementType))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by element type [%s]" % (elementType))
 
     def assertElementByIosUiautomation(self, testCase, driver, logger, uiaString="default", timeout=10):
@@ -1439,10 +1352,8 @@ class API(object):
         try:
             self._findElementByIosUiautomation(driver, logger, uiaString, timeout)
         except TimeoutException:
-            driver.quit()
             testCase.assertTrue(False, "Get element by uia string [%s] timeout" % (uiaString))
         except:
-            driver.quit()
             testCase.assertTrue(False, "Can not get element by uia string [%s]" % (uiaString))
 
 
