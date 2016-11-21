@@ -182,22 +182,26 @@ class Handler(object):
         self._mkReportDir()
         try:
             for testCase in CASE_LIST:
-                report = os.path.join(self.reportPath, EXCEL_REPORT_FILE % CASE_FOLDER_LIST[testCase])
-                self.workbook = xlsxwriter.Workbook(report)
-                if testCase == CASE_FPS:
-                    self._fpsHandle(testCase)
-                else:
-                    self._trafficHandle(testCase)
-                    if testCase == CASE_WARM_BOOT:
-                        self._warmBootHandle(testCase)
-                    elif testCase == CASE_COLD_BOOT:
-                        self._coldBootHandle(testCase)
+                if os.path.exists(os.path.join(os.path.join(self.rsPath, FFAN), CASE_FOLDER_LIST[testCase])) and \
+                        os.path.exists(os.path.join(os.path.join(self.rsPath, MTUAN), CASE_FOLDER_LIST[testCase])):
+                    report = os.path.join(self.reportPath, EXCEL_REPORT_FILE % CASE_FOLDER_LIST[testCase])
+                    self.workbook = xlsxwriter.Workbook(report)
+                    if testCase == CASE_FPS:
+                        self._fpsHandle(testCase)
                     else:
-                        self._cpuHandle(testCase)
-                        self._memoryHandle(testCase)
-                        self._rxHandle(testCase)
-                        self._txHandle(testCase)
-                        self._temperatureHandle(testCase)
+                        self._trafficHandle(testCase)
+                        if testCase == CASE_WARM_BOOT:
+                            self._warmBootHandle(testCase)
+                        elif testCase == CASE_COLD_BOOT:
+                            self._coldBootHandle(testCase)
+                        else:
+                            self._cpuHandle(testCase)
+                            self._memoryHandle(testCase)
+                            self._rxHandle(testCase)
+                            self._txHandle(testCase)
+                            self._temperatureHandle(testCase)
+                else:
+                    print('Missing %s test cases in result path.' % testCase)
         except Exception as e:
             print(e)
         finally:
