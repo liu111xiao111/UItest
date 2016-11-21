@@ -23,5 +23,5 @@ class YaoyiyaoPage(SuperPage):
         usage: 进入到应用首页,检查ffan logo
         '''
 
-        API().assertElementByXpath(self.driver, self.logger,
+        API().assertElementByXpath(self.testcase, self.driver, self.logger,
                                             YaoyiyaoPageConfigs.xpath_title, YaoyiyaoPageConfigs.assert_view_timeout)
