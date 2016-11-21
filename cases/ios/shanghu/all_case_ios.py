@@ -55,7 +55,7 @@ if __name__ == "__main__":
     suite.addTest(JueSeLieBiao("test_case"))
     suite.addTest(QuanBuDingDanZhuangTai("test_case"))
     suite.addTest(RenYuanLieBiao("test_case"))
-    suite.addTest(ShanChuYuanGong("test_case"))
+    #suite.addTest(ShanChuYuanGong("test_case"))
     suite.addTest(TuiChuDengLuCase("test_case"))
     suite.addTest(XianShiQiangGouXiangXi("test_case"))
     suite.addTest(XinZengJueSe("test_case"))
