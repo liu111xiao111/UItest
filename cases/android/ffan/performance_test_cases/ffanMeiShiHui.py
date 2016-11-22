@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import time
 import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
 
+from subprocess import Popen, PIPE
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.food_category_page import FoodCategoryPage
 #from pages.android.ffan.sales_promotion_page import SalesPromotionPage
@@ -53,20 +55,42 @@ class FFanMeiShiHuiTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testFFanMeiShiHui(self):
+        build_num = sys.argv[1]
+        reportPath = "%s/report/perf/%s/%s/ffan/meishihui" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if not os.path.exists(reportPath):
+            os.makedirs(reportPath)
+
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
         #salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         #lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
 
+        deviceID = DeviceInfoUtil().getDeviceID()
+        #cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        cmdBroadcastStart = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
+
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+        filename = "%s/logPortion.txt" % reportPath
+        #logcat_file = open(filename, 'w')
+        logcmd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
+        #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
+        Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
 
         dashboardPage.clickOnFood()
         foodPage.validFoodHomePage()
         foodPage.screenShot("meiShiHui")
 
         # 检查所有子界面入口
-        foodPage.validModules()
+#         foodPage.validModules()
+
+        cmdBroadcastEnd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
+        Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
+
+        # 取得performance.xml文件
+        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
 
         '''# 检查优惠打折
         foodPage.clickOnCoupon()

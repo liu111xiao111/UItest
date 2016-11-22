@@ -101,7 +101,7 @@ class Performance(object):
         return totalTraffic, getTime
 
     def parseTraffic(self, startTraffic, endTraffic, duration):
-        traffic = round((endTraffic - startTraffic) / 1024 / 1024, 2)
+        traffic = round((endTraffic - startTraffic) / 1024, 2)
 
         logName = "Traffic_performance.txt"
         logPath = os.path.join(self.reportPath, logName)
@@ -110,7 +110,7 @@ class Performance(object):
         f.close()
         
     def parseTrafficData(self, startTraffic, endTraffic, duration, perfFileName):
-        traffic = round((endTraffic - startTraffic) / 1024 / 1024, 2)
+        traffic = round((endTraffic - startTraffic) / 1024, 2)
 
         logName = perfFileName
         logPath = os.path.join(self.reportPath, logName)

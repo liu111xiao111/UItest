@@ -17,7 +17,7 @@ class DengLuPageConfigs():
     account_name = "15624958068"
     account_passwd = "wanda123"
     default_passwd = ""
-    member_phone = "15642668143"
+    member_phone = "13591822125"
     member_password = "Abc123456"
 
     assert_timeout = 90

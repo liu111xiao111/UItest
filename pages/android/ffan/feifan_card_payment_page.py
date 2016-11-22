@@ -4,6 +4,7 @@ from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.feifan_card_payment_page_configs \
 import FeiFanCardPaymentPageConfigs as FCPPC
+from pages.logger import logger
 
 
 class FeiFanCardPaymentPage(SuperPage):
@@ -18,8 +19,10 @@ class FeiFanCardPaymentPage(SuperPage):
         '''
         usage : 检查是否加载出来
         '''
+        logger.info("Check 付款页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         FCPPC.resource_id_tv_payment_list_tv,
                                         FCPPC.verify_button_timeout)
+        logger.info("Check 付款页面 begin")

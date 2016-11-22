@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import time
 import HTMLTestRunner
 
 from unittest import TestCase
 from unittest import TestLoader
 
+from subprocess import Popen, PIPE
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
@@ -19,7 +21,6 @@ from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from pages.android.ffan.login_page import LoginPage
-#from pages.android.ffan.login_verify_page import LoginVerifyPage
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.settings_page import SettingsPage
@@ -53,8 +54,26 @@ class FFanWoDeDengLuTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testFFanWoDeDengLu(self):
+        build_num = sys.argv[1]
+        reportPath = "%s/report/perf/%s/%s/ffan/wodedenglu" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if not os.path.exists(reportPath):
+            os.makedirs(reportPath)
+#         perf = Performance(reportPath)
+#         startTraffic, sTime = perf.getTraffic()
+
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
+
+        deviceID = DeviceInfoUtil().getDeviceID()
+        #cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        cmdBroadcastStart = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
+
+        filename = "%s/logPortion.txt" % reportPath
+        #logcat_file = open(filename, 'w')
+        logcmd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
+        #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
+        Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
 
         dashboardPage.clickOnMy()
         myFfanPage.screenShot("woDe")
@@ -82,12 +101,19 @@ class FFanWoDeDengLuTestCase(TestCase):
         loginPage.inputPassWord()
         loginPage.screenShot("shuRuMiMa")
         loginPage.clickOnLoginBtn()
-        # loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
-        # loginVerifyPage.validSelf()
-        # loginVerifyPage.clickOnSkip()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
-        dashboardPage.waitBySeconds(seconds=2)
+
+        cmdBroadcastEnd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
+        Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
+
+        # 取得performance.xml文件
+        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
+
+        #endTime = time.strftime('%Y/%m/%d %H:%M:%S')
+#         endTraffic, eTime = perf.getTraffic()
+#         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
 
 
 if __name__ == "__main__":

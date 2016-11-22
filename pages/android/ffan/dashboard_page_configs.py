@@ -86,6 +86,9 @@ class DashboardPageConfigs():
     # 商超按钮
     text_supermarket_button = u"商超"
 
+    # text_payment_button = u"付    款"
+    text_payment_button = u"付 款"
+
     # Search all button
     resource_id_search_all_button = "com.wanda.app.wanhui:id/tv_text"
 
@@ -106,6 +109,8 @@ class DashboardPageConfigs():
 
     #双十一取消按钮
     resource_id_iv_double_eleven_cancle_iv = "com.wanda.app.wanhui:id/iv_nov11_close"
+
+    resource_id_two_bar_code_icon = "com.wanda.app.wanhui:id/iv_right_icon"
 
     def __init__(self):
         pass;

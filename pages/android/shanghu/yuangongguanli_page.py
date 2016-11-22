@@ -224,15 +224,16 @@ class YuanGongGuanLiPage(SuperPage):
         API().screenShot(self.driver, "jieDong")
         logger.info("Click 解冻 end")
 
-    def getMemberInfo(self):
+    def getMemberInfo(self, number):
         '''
         usage: 获得员工信息
         '''
-        memberInfo = API().getTextByResourceId(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  YGGLPC.resource_id_name,
-                                  YGGLPC.verify_timeout)
+        xpath_member = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[%s]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]" % number
+        memberInfo = API().getTextByXpath(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          xpath_member,
+                                          YGGLPC.verify_timeout)
         return memberInfo
 
     def validFreezeMemberInfo(self, memerInfo = "defult"):
@@ -280,16 +281,17 @@ class YuanGongGuanLiPage(SuperPage):
                                               YGGLPC.verify_timeout)
         return data
 
-    def clickOnDelete(self):
+    def clickOnDelete(self, number):
         '''
         usage: 点击删除
         '''
         logger.info("Click 删除 begin")
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 YGGLPC.text_delete,
-                                 YGGLPC.verify_timeout)
+        xpath_delete = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[%s]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.LinearLayout[3]/android.widget.TextView[1]" % number
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  xpath_delete,
+                                  YGGLPC.verify_timeout)
         API().waitBySeconds(2)
         API().screenShot(self.driver, "shanChuYuanGong")
         API().clickElementByText(self.testcase,
@@ -305,10 +307,12 @@ class YuanGongGuanLiPage(SuperPage):
         usage : 验证删除员工信息是否已删除
         '''
         logger.info("Check 删除后的员工信息 begin")
+        API().waitBySeconds(5)
         deleteMember = API().validElementByText(self.driver,
                                                 self.logger,
                                                 memberInfo,
                                                 YGGLPC.verify_timeout)
+        print(deleteMember)
 
         if deleteMember:
             API().assertTrue(self.testcase, self.logger, False)
@@ -326,3 +330,20 @@ class YuanGongGuanLiPage(SuperPage):
                                       memberInfo,
                                       YGGLPC.verify_timeout)
         logger.info("Check 编辑后的员工信息 end")
+
+    def getMemberPhone(self):
+        '''
+        usage: 获得员工手机信息
+        '''
+        rtn = False
+        for i in range(2):
+            xpath_phone_num = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[%s]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.TextView[2]" % (i+1)
+            phoneNum = API().getTextByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      xpath_phone_num,
+                                      YGGLPC.verify_timeout)
+            if phoneNum == "13591822125":
+                rtn = i+1
+                break
+        return rtn

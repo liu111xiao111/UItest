@@ -28,8 +28,8 @@ class SquareFoodPageConfigs():
     verify_intelligent_queuing_resourceID = "com.wanda.app.wanhui:id/common_title_view_layout_title"
 
     # 验证帮你挑界面id
-    #verify_stochastic_resourceID = "com.wanda.app.wanhui:id/layout_middle"
-    verify_stochastic_resourceID = "com.wanda.app.wanhui:layout_middle"
+    verify_stochastic_resourceID = "com.wanda.app.wanhui:id/layout_middle"
+    #verify_stochastic_resourceID = "com.wanda.app.wanhui:layout_middle"
 
 
     verify_assert_timeout = 90

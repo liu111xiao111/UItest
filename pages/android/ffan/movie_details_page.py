@@ -3,6 +3,7 @@
 from api.api import API
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.movie_details_page_configs import MovieDetailsPageConfigs as MDPC
+from pages.logger import logger
 
 
 class MovieDetailsPage(SuperPage):
@@ -17,11 +18,13 @@ class MovieDetailsPage(SuperPage):
         '''
         usage: 验证电影细节页面
         '''
+        logger.info("Check 电影详细页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         MDPC.resource_id_movie_details_title,
                                         MDPC.assert_view_timeout)
+        logger.info("Check 电影详细页面 end")
 
     def clickOnTomorrowsDate(self):
         '''

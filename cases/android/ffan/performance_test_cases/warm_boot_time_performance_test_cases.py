@@ -24,7 +24,7 @@ class WarmBootTimePerformanceTestCases():
         file = os.path.join(reportPath, "boottime.txt")
         f1 = open(file, mode="a", encoding='utf-8')
         os.system('adb shell "am start -W "' + pkName + '/' + actiName )
-        for _ in range(0,2):
+        for _ in range(0,10):
             os.system(cmdBack)
             time.sleep(0.3)
             os.system(cmdBack)

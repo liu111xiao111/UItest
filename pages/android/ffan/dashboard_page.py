@@ -270,11 +270,13 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"电影"类目
         '''
+        logger.info("Click 电影 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_movie_button,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 电影 end")
 
     def clickOnShoppingCategory(self):
         '''
@@ -344,3 +346,27 @@ class DashboardPage(SuperPage):
                 API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
             else:
                 API().scroll(self.driver, self.logger, width / 2, hight / 3, width / 2, hight / 2)
+
+    def clickOnTwoBarCodeIcon(self):
+        '''
+        usage： 点击首页二维码图标
+        '''
+        logger.info("Click 首页二维码图标 begin")
+        API().clickElementByResourceId(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           DPC.resource_id_two_bar_code_icon,
+                                           DPC.click_on_button_timeout)
+        logger.info("Click 首页二维码图标 end")
+
+    def clickOnPayment(self):
+        '''
+        usage: 点击付款
+        '''
+        logger.info("Click 付款 begin")
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 DPC.text_payment_button,
+                                 DPC.click_on_button_timeout)
+        logger.info("Click 付款 end")

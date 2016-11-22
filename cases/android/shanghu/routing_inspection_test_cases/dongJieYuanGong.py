@@ -58,7 +58,7 @@ class DongJieYuanGongTestCase(TestCase):
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
-        memberInfo = yuanGongGuanLiPage.getMemberInfo()
+        memberInfo = yuanGongGuanLiPage.getMemberInfo(1)
         yuanGongGuanLiPage.clickOnFreeze()
         yuanGongGuanLiPage.waitBySeconds(2)
         yuanGongGuanLiPage.screenShot("dongJie")

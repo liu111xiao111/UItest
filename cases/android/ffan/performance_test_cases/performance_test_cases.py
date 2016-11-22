@@ -4,16 +4,11 @@ import sys,os
 
 import time
 import traceback
-import threading
 
 
 import HTMLTestRunner
 from unittest.suite import TestSuite
-from subprocess import Popen, PIPE
-from utility.mailProcess import sendTestResultMail
 from cases.android.ffan.common.performance import Performance
-from cases.android.ffan.common.reportProcess import ReportHandle
-from cases.android.ffan.common.performanceProcess import PerformanceHandle
 from cases.android.ffan.performance_test_cases.fps_performance_test_cases import FpsPerformanceTestCases
 from cases.android.ffan.performance_test_cases.cold_boot_time_performance_test_cases import ColdBootTimePerformanceTestCases
 from cases.android.ffan.performance_test_cases.warm_boot_time_performance_test_cases import WarmBootTimePerformanceTestCases
@@ -26,6 +21,10 @@ from cases.android.ffan.performance_test_cases.ffanMeiShiHui import FFanMeiShiHu
 from cases.android.ffan.performance_test_cases.ffanWoDeDengLu import FFanWoDeDengLuTestCase
 from cases.android.ffan.performance_test_cases.ffanWoDeDingDan import FFanWoDeDingDanTestCase
 from cases.android.ffan.performance_test_cases.mtuanWoDeDingDan import MTuanWoDeDingDanTestCase
+from cases.android.ffan.performance_test_cases.mtuanWoDeDengLu import MTuanWoDeDengLuTestCase
+from cases.android.ffan.performance_test_cases.mtuanMeiShi import MTuanMeiShiTestCase
+from cases.android.ffan.performance_test_cases.mtuanDianYing import MTuanDianYingTestCase
+from tools.performanceHandler import Handler
 
 
 if __name__ == "__main__":
@@ -61,11 +60,14 @@ if __name__ == "__main__":
 
     # 添加测试用例
     suite = TestSuite()
-#     suite.addTest(FFanDianYingTestCase("testFFanDianYing")) # 电影 No.06
-#     suite.addTest(FFanMeiShiHuiTestCase("testFFanMeiShiHui")) # 美食汇 NO.7
+    suite.addTest(FFanDianYingTestCase("testFFanDianYing")) # 电影 No.06
+    suite.addTest(MTuanDianYingTestCase("testMTuanDianYing")) # 电影 No.06
+    suite.addTest(FFanMeiShiHuiTestCase("testFFanMeiShiHui")) # 美食汇 NO.7
+    suite.addTest(MTuanMeiShiTestCase("testMTuanMeiShi")) # 美食汇 NO.7
     suite.addTest(FFanWoDeDingDanTestCase("testFFanWoDeDingDan")) # 我的订单 No.52
     suite.addTest(MTuanWoDeDingDanTestCase("testMTuanWoDeDingDan")) # 我的订单 No.52
-#     suite.addTest(FFanWoDeDengLuTestCase("testFFanWoDeDengLu")) # 我的登录 No.49
+    suite.addTest(FFanWoDeDengLuTestCase("testFFanWoDeDengLu")) # 我的登录 No.49
+    suite.addTest(MTuanWoDeDengLuTestCase("testMTuanWoDeDengLu")) # 我的登录 No.49
 
     # 用例执行
     now = time.strftime('%H_%M_%S')
@@ -77,11 +79,11 @@ if __name__ == "__main__":
     try:
         # 巡检用例执行
         runner.run(suite)
-
+ 
         # 流畅度用例执行
         FpsPerformanceTestCases().getFpsPerf()
         FpsPerformanceTestCases().getFpsPerfJingpin()
-
+  
         # 飞凡APP冷启动用例及流量统计执行
         perf = Performance(reportpath_ffan_coldboot)
         startTraffic, sTime = perf.getTraffic()
@@ -90,7 +92,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
-
+   
         # 飞凡APP热启动用例及流量统计执行
         perf = Performance(reportpath_ffan_warmboot)
         startTraffic, sTime = perf.getTraffic()
@@ -99,7 +101,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
-
+   
         # 美团APP冷启动用例及流量统计执行
         perf = Performance(reportpath_mtuan_coldboot)
         startTraffic, sTime = perf.getTraffic()
@@ -108,7 +110,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
-
+   
         # 美团APP热启动用例及流量统计执行
         perf = Performance(reportpath_mtuan_warmboot)
         startTraffic, sTime = perf.getTraffic()
@@ -117,6 +119,15 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
+
+        if os.path.exists(filename):
+            os.remove(filename)
+
+        handler = Handler()
+        resultsPath = "%s/report/perf/%s/%s" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if os.path.exists(resultsPath):
+            handler.handle(resultsPath)
+
     except:
         raise traceback.format_exc()
     finally:

@@ -24,7 +24,7 @@ class ColdBootTimePerformanceTestCases(TestCase):
         cmdKill = "adb shell \"%s\"" % kill
         file = os.path.join(reportPath, "boottime.txt")
         f1 = open(file, mode="a", encoding='utf-8')
-        for _ in range(0,2):
+        for _ in range(0,10):
             os.system(cmdKill)
             time.sleep(10)
             pipe = subprocess.Popen(cmdam, shell=True, stdout = f1)

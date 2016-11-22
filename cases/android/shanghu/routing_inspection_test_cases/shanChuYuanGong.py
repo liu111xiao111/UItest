@@ -58,10 +58,14 @@ class ShanChuYuanGongTestCase(TestCase):
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
-        memberInfo = yuanGongGuanLiPage.getMemberInfo()
-        yuanGongGuanLiPage.clickOnDelete()
-        yuanGongGuanLiPage.validDeleteMember(memberInfo)
-        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
+        phoneNum = yuanGongGuanLiPage.getMemberPhone()
+        print(phoneNum)
+        if phoneNum:
+            memberInfo = yuanGongGuanLiPage.getMemberInfo(phoneNum)
+            yuanGongGuanLiPage.clickOnDelete(phoneNum)
+            print(memberInfo)
+            yuanGongGuanLiPage.validDeleteMember(memberInfo)
+            yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@ class FpsPerformanceTestCases(TestCase):
                 os.makedirs(reportPath)
             dashboardPage = FFANDP(self, self.driver, self.logger)
             tab_dict = {'Mine'  : dashboardPage.clickOnMy,
-                        'LoveShopping': dashboardPage.clickLikeShopping,
+                        'Dashboard': dashboardPage.clickLikeShopping,
                         'BenefitsLife': dashboardPage.clickOnSmartLife,
                         'FfanWallet': dashboardPage.clickOnFeiFanCard,
                         }
