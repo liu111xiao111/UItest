@@ -4,8 +4,8 @@ import os
 import time
 import subprocess
 from unittest import TestCase
-from com.qa.automation.appium.configs.driver_configs import appPackage_ffan
-from com.qa.automation.appium.configs.driver_configs import appActivity_ffan
+from configs.driver_configs import appPackage_ffan
+from configs.driver_configs import appActivity_ffan
 
 
 now = time.strftime('%Y%m%d%H%M%S')
