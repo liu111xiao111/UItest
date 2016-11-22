@@ -312,7 +312,7 @@ class Handler(object):
             worksheet.write(1, 1, args[1], format_title)
             worksheet.write(2, 1, FFAN_APP, format_title)
             worksheet.write(3, 1, MTUAN_APP, format_title)
-            for row in range(0, 10):
+            for row in range(0, self.dataLength):
                 worksheet.write(1, row + 2, row+1, format_title)
                 worksheet.write(2, row + 2, float(self.dataList[FFAN][row-1]), format_ave)
                 worksheet.write(3, row + 2, float(self.dataList[MTUAN][row-1]), format_ave)
@@ -475,4 +475,4 @@ def parse_command():
 if __name__ == "__main__":
     rspath = parse_command()
     handler = Handler()
-    handler.handle('/Users/songbo/2')
+    handler.handle(rspath)
