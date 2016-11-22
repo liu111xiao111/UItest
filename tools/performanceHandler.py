@@ -313,6 +313,29 @@ class Handler(object):
                 worksheet.write(1, row + 2, row+1, format_title)
                 worksheet.write(2, row + 2, float(self.dataList[FFAN][row-1]), format_ave)
                 worksheet.write(3, row + 2, float(self.dataList[MTUAN][row-1]), format_ave)
+
+            dataFFanList = [float(data) for data in self.dataList[FFAN][:self.dataLength]]
+            dataMTuanList = [float(data) for data in self.dataList[MTUAN][:self.dataLength]]
+
+            maxFFanData = max(dataFFanList)
+            maxMTuanData = max(dataMTuanList)
+            minFFanData = min(dataFFanList)
+            minMTuanData = min(dataMTuanList)
+            averageFFanData = round(float(sum(dataFFanList) / self.dataLength), 2)
+            averageMTuanData = round(float(sum(dataMTuanList) / self.dataLength), 2)
+            worksheet.write(14, 1, u'统计', format_title)
+            worksheet.write(14, 2, FFAN_APP, format_title)
+            worksheet.write(14, 3, MTUAN_APP, format_title)
+            worksheet.write(15, 1, u'最大值', format_title)
+            worksheet.write(16, 1, u'最小值', format_title)
+            worksheet.write(17, 1, u'平均值', format_title)
+            worksheet.write(15, 2, maxFFanData, format_ave)
+            worksheet.write(16, 2, minFFanData, format_ave)
+            worksheet.write(17, 2, averageFFanData, format_ave)
+            worksheet.write(15, 3, maxMTuanData, format_ave)
+            worksheet.write(16, 3, minMTuanData, format_ave)
+            worksheet.write(17, 3, averageMTuanData, format_ave)
+
             chart = workbook.add_chart({'type': 'column'})
             chart.add_series({'categories': [title, 1, 2, 1, row+2],
                               'values': [title, 2, 2, 2, row+2],
@@ -331,6 +354,29 @@ class Handler(object):
                 worksheet.write(1, row + 1, row, format_title)
                 worksheet.write(2, row + 1, float(self.dataList[FFAN][row-1]), format_ave)
                 worksheet.write(3, row + 1, float(self.dataList[MTUAN][row-1]), format_ave)
+
+            dataFFanList = [float(data) for data in self.dataList[FFAN][:self.dataLength]]
+            dataMTuanList = [float(data) for data in self.dataList[MTUAN][:self.dataLength]]
+
+            maxFFanData = max(dataFFanList)
+            maxMTuanData = max(dataMTuanList)
+            minFFanData = min(dataFFanList)
+            minMTuanData = min(dataMTuanList)
+            averageFFanData = round(float(sum(dataFFanList) / self.dataLength), 2)
+            averageMTuanData = round(float(sum(dataMTuanList) / self.dataLength), 2)
+            worksheet.write(14, 1, u'统计', format_title)
+            worksheet.write(14, 2, FFAN_APP, format_title)
+            worksheet.write(14, 3, MTUAN_APP, format_title)
+            worksheet.write(15, 1, u'最大值', format_title)
+            worksheet.write(16, 1, u'最小值', format_title)
+            worksheet.write(17, 1, u'平均值', format_title)
+            worksheet.write(15, 2, maxFFanData, format_ave)
+            worksheet.write(16, 2, minFFanData, format_ave)
+            worksheet.write(17, 2, averageFFanData, format_ave)
+            worksheet.write(15, 3, maxMTuanData, format_ave)
+            worksheet.write(16, 3, minMTuanData, format_ave)
+            worksheet.write(17, 3, averageMTuanData, format_ave)
+
             chart = workbook.add_chart({'type': 'line'})
             chart.add_series({'categories': [title, 1, 2, 1, row + 1],
                               'values': [title, 2, 2, 2, row + 1],
@@ -412,7 +458,6 @@ class SendMail(object):
     def mail(self):
         pass
 
-
 def parse_command():
     '''
     解析日志路径命令行参数
@@ -427,4 +472,4 @@ def parse_command():
 if __name__ == "__main__":
     rspath = parse_command()
     handler = Handler()
-    handler.handle('/Users/songbo/20161121/1')
+    handler.handle('/Users/songbo/11')
