@@ -86,7 +86,9 @@ class Parser(object):
 
     def _getXmlData(self, node, type):
         data = node.find(type).text
-        return data if data else ''
+        if type == self.xmlTypeDict[TYPE_MEMORY]:
+            data = round(float(data) / 1024, 2)
+        return data if data else 0
 
 
 class DataHandler(object):
@@ -104,6 +106,8 @@ class DataHandler(object):
         return self._getPerfData()
 
     def _getPerfData(self):
+        ffanDate = []
+        mtuanDate = []
         if self.type == TYPE_TRAFFIC and (self.testCase == CASE_COLD_BOOT or self.testCase == CASE_WARM_BOOT):
             FFanTxtPath = os.path.join(os.path.join(os.path.join(self.rsPath, FFAN), CASE_FOLDER_LIST[self.testCase]),
                                        TRAFFIC_FILE)
@@ -113,7 +117,7 @@ class DataHandler(object):
                 ffanDate = self.parser.txtParser(FFanTxtPath, self.type)
                 mtuanDate = self.parser.txtParser(MTUANTxtPath, self.type)
             else:
-                raise FileExistsError('Can not find %s test performance results!!!' % self.testCase)
+                print('Can not find %s test performance results!!!' % self.testCase)
         else:
             if self.type == TYPE_COLD_BOOT or self.type == TYPE_WARM_BOOT:
                 FFanTxtPath = os.path.join(os.path.join(os.path.join(self.rsPath, FFAN), CASE_FOLDER_LIST[self.testCase]),
@@ -124,7 +128,7 @@ class DataHandler(object):
                     ffanDate = self.parser.txtParser(FFanTxtPath, self.type)
                     mtuanDate = self.parser.txtParser(MTUANTxtPath, self.type)
                 else:
-                    raise FileExistsError('Can not find %s test performance results!!!' % self.testCase)
+                    print('Can not find %s test performance results!!!' % self.testCase)
             elif self.type == TYPE_FPS:
                 FFanTxtPath = os.path.join(os.path.join(os.path.join(self.rsPath, FFAN), CASE_FOLDER_LIST[self.testCase]),
                                            FPS_FILE)
@@ -134,7 +138,7 @@ class DataHandler(object):
                     ffanDate = self.parser.txtParser(FFanTxtPath, self.type)
                     mtuanDate = self.parser.txtParser(MTuanTxtPath, self.type)
                 else:
-                    raise FileExistsError('Can not find %s test performance results!!!' % self.testCase)
+                    print('Can not find %s test performance results!!!' % self.testCase)
             else:
                 FFanXmlPath = os.path.join(os.path.join(os.path.join(self.rsPath, FFAN), CASE_FOLDER_LIST[self.testCase]), PERF_FILE)
                 MTuanXmlPath = os.path.join(os.path.join(os.path.join(self.rsPath, MTUAN), CASE_FOLDER_LIST[self.testCase]), PERF_FILE)
@@ -142,7 +146,7 @@ class DataHandler(object):
                     ffanDate = self.parser.xmlParser(FFanXmlPath, self.type)
                     mtuanDate = self.parser.xmlParser(MTuanXmlPath, self.type)
                 else:
-                    raise FileExistsError('Can not find %s test performance results!!!' % self.testCase)
+                    print('Can not find %s test performance results!!!' % self.testCase)
 
         return ffanDate, mtuanDate
 
@@ -156,10 +160,9 @@ def dataHandle(type):
             cls.dataList[FFAN], cls.dataList[MTUAN] = dataHandler.handle(rsPath=cls.rsPath,
                                                                          testCase=testCase,
                                                                          type=type)
-            # cls.dataSuite[type] = cls.dataList
-            # cls.dataCollection[testCase] = cls.dataSuite
-            cls.dataLength = cls._dataLength(cls.dataList[FFAN], cls.dataList[MTUAN])
-            func(cls, testCase)
+            if cls.dataList[FFAN] and cls.dataList[MTUAN]:
+                cls.dataLength = cls._dataLength(cls.dataList[FFAN], cls.dataList[MTUAN])
+                func(cls, testCase)
         return wrapper
     return handler
 
@@ -472,4 +475,4 @@ def parse_command():
 if __name__ == "__main__":
     rspath = parse_command()
     handler = Handler()
-    handler.handle('/Users/songbo/11')
+    handler.handle('/Users/songbo/2')
