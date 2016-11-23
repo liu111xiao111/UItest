@@ -395,11 +395,11 @@ class Handler(object):
                 worksheet.write(3, row + 2, float(self.dataList[MTUAN][row]), format_ave)
 
             chart = workbook.add_chart({'type': 'line'})
-            chart.add_series({'categories': [title, 1, 2, 1, row + 1],
-                              'values': [title, 2, 2, 2, row + 1],
+            chart.add_series({'categories': [title, 1, 2, 1, row + 2],
+                              'values': [title, 2, 2, 2, row + 2],
                               'name': [title, 2, 1]})
-            chart.add_series({'categories': [title, 1, 2, 1, row + 1],
-                              'values': [title, 3, 2, 3, row + 1],
+            chart.add_series({'categories': [title, 1, 2, 1, row + 2],
+                              'values': [title, 3, 2, 3, row + 2],
                               'name': [title, 3, 1]})
             chart.set_title({'name': title})
             chart.set_x_axis({'name' : args[0]})
@@ -412,7 +412,6 @@ class Handler(object):
             worksheet.write(1, 7, args[2], format_title)
             worksheet.write(2, 7, FFAN_APP, format_title)
             worksheet.write(3, 7, MTUAN_APP, format_title)
-            row = 1
             for data in self.dataList[FFAN]:
                 if data[0] == 'Mine':
                     worksheet.write(1, 2, data[0], format_title)
