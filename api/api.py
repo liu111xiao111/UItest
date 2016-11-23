@@ -75,6 +75,18 @@ class API(object):
         currentTime = time.strftime('%Y%m%d%H%M%S')
         driver.save_screenshot(currentTime + "_" + pictureName + ".png")
 
+    def screenShotForStability(self, driver, pictureName="myfeifan_auto_test", outsideLoop="1", insideLoop="1", step="1"):
+        '''
+        Usage: 截图方法(稳定行测试)
+        parameters:
+            driver: appium driver
+            pictureName: 截图名称
+            outsideLoop: 外层大循环数
+            insideLoop: 内层大循环数
+            step: 用例中执行的步骤
+        '''
+        driver.save_screenshot(pictureName + "_" + outsideLoop + "_" + insideLoop + "_" + step + ".png")
+
     def inputStringByXpath(self, testCase, driver, logger, xpath, string, timeout=10):
         '''
         usage : 页面输入方法
