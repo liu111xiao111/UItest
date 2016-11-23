@@ -47,3 +47,9 @@ class SuperPage(object):
         usage: 截图方法
         '''
         API().screenShot(self.driver, screen_shot_name)
+
+    def screenShotForStability(self, screen_shot_name="myfeifan_auto_test", outsideLoop="1", insideLoop="1", step="1"):
+        '''
+        usage: 截图方法(稳定行测试)
+        '''
+        API().screenShotForStability(self.driver, screen_shot_name, outsideLoop, insideLoop, step)
