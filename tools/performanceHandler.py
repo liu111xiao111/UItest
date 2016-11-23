@@ -74,10 +74,10 @@ class Parser(object):
             dataList_tx = []
             for child in nodes:
                 data_rx = self._getXmlData(child, self.xmlTypeDict[TYPE_RX])
-                data_tx = self._getXmlData(child, self.xmlTypeDict[TYPE_RX])
+                data_tx = self._getXmlData(child, self.xmlTypeDict[TYPE_TX])
                 dataList_rx.append(float(data_rx))
                 dataList_tx.append(float(data_tx))
-            dataList.append(sum(dataList_rx) + sum(dataList_tx))
+            dataList.append(round(sum(dataList_rx) + sum(dataList_tx), 2))
         else:
             for child in nodes:
                 data = self._getXmlData(child, self.xmlTypeDict[type])
@@ -250,12 +250,12 @@ class Handler(object):
     @dataHandle(TYPE_RX)
     def _rxHandle(self, testCase):
         # 生成rx perf sheet
-        self._createExcelReport(u'上行速率', self.workbook, TYPE_RX, u'次数', u'上行速率(KBps)')
+        self._createExcelReport(u'下行速率', self.workbook, TYPE_RX, u'次数', u'上行速率(KBps)')
 
     @dataHandle(TYPE_TX)
     def _txHandle(self, testCase):
         # 生成rx perf sheet
-        self._createExcelReport(u'下行速率', self.workbook, TYPE_TX, u'次数', u'下行速率(KBps)')
+        self._createExcelReport(u'上行速率', self.workbook, TYPE_TX, u'次数', u'下行速率(KBps)')
 
     @dataHandle(TYPE_TEMPERATURE)
     def _temperatureHandle(self, testCase):
