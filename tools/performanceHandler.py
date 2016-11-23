@@ -235,7 +235,7 @@ class Handler(object):
 
     @staticmethod
     def _dataLength(x, y):
-        return len(x) if len(x) < len(y) else len(y)
+        return len(x) if len(x) > len(y) else len(y)
 
     @dataHandle(TYPE_CPU)
     def _cpuHandle(self, testCase):
@@ -309,23 +309,14 @@ class Handler(object):
             chart.set_y_axis({'name': args[1]})
             worksheet.insert_chart('F15', chart, {'x_scale': 2, 'y_scale': 1})
         elif len(args) == 2 and (key == TYPE_COLD_BOOT or key == TYPE_WARM_BOOT):
-            worksheet.write(1, 1, args[1], format_title)
-            worksheet.write(2, 1, FFAN_APP, format_title)
-            worksheet.write(3, 1, MTUAN_APP, format_title)
-            for row in range(0, self.dataLength):
-                worksheet.write(1, row + 2, row+1, format_title)
-                worksheet.write(2, row + 2, float(self.dataList[FFAN][row-1]), format_ave)
-                worksheet.write(3, row + 2, float(self.dataList[MTUAN][row-1]), format_ave)
-
-            dataFFanList = [float(data) for data in self.dataList[FFAN][:self.dataLength]]
-            dataMTuanList = [float(data) for data in self.dataList[MTUAN][:self.dataLength]]
-
+            dataFFanList = [float(data) for data in self.dataList[FFAN]]
+            dataMTuanList = [float(data) for data in self.dataList[MTUAN]]
             maxFFanData = max(dataFFanList)
             maxMTuanData = max(dataMTuanList)
             minFFanData = min(dataFFanList)
             minMTuanData = min(dataMTuanList)
-            averageFFanData = round(float(sum(dataFFanList) / self.dataLength), 2)
-            averageMTuanData = round(float(sum(dataMTuanList) / self.dataLength), 2)
+            averageFFanData = round(float(sum(dataFFanList) / len(dataFFanList)), 2)
+            averageMTuanData = round(float(sum(dataMTuanList) / len(dataMTuanList)), 2)
             worksheet.write(14, 1, u'统计', format_title)
             worksheet.write(14, 2, FFAN_APP, format_title)
             worksheet.write(14, 3, MTUAN_APP, format_title)
@@ -338,6 +329,23 @@ class Handler(object):
             worksheet.write(15, 3, maxMTuanData, format_ave)
             worksheet.write(16, 3, minMTuanData, format_ave)
             worksheet.write(17, 3, averageMTuanData, format_ave)
+
+            if len(self.dataList[FFAN]) > len(self.dataList[MTUAN]):
+                for _ in range(0, len(self.dataList[FFAN]) - len(self.dataList[MTUAN])):
+                    self.dataList[MTUAN].append('0')
+            else:
+                for _ in range(0, len(self.dataList[MTUAN]) - len(self.dataList[FFAN])):
+                    self.dataList[FFAN].append('0')
+
+            worksheet.write(1, 1, args[1], format_title)
+            worksheet.write(2, 1, FFAN_APP, format_title)
+            worksheet.write(3, 1, MTUAN_APP, format_title)
+            for row in range(0, self.dataLength):
+                worksheet.write(1, row + 2, row+1, format_title)
+                worksheet.write(2, row + 2, float(self.dataList[FFAN][row-1]), format_ave)
+                worksheet.write(3, row + 2, float(self.dataList[MTUAN][row-1]), format_ave)
+
+
 
             chart = workbook.add_chart({'type': 'column'})
             chart.add_series({'categories': [title, 1, 2, 1, row+2],
@@ -350,23 +358,14 @@ class Handler(object):
             chart.set_y_axis({'name': args[1]})
             worksheet.insert_chart('F15', chart, {'x_scale': 2, 'y_scale': 1.5})
         elif len(args) == 2:
-            worksheet.write(1, 1, args[1], format_title)
-            worksheet.write(2, 1, FFAN_APP, format_title)
-            worksheet.write(3, 1, MTUAN_APP, format_title)
-            for row in range(1, self.dataLength):
-                worksheet.write(1, row + 1, row, format_title)
-                worksheet.write(2, row + 1, float(self.dataList[FFAN][row-1]), format_ave)
-                worksheet.write(3, row + 1, float(self.dataList[MTUAN][row-1]), format_ave)
-
-            dataFFanList = [float(data) for data in self.dataList[FFAN][:self.dataLength]]
-            dataMTuanList = [float(data) for data in self.dataList[MTUAN][:self.dataLength]]
-
+            dataFFanList = [float(data) for data in self.dataList[FFAN]]
+            dataMTuanList = [float(data) for data in self.dataList[MTUAN]]
             maxFFanData = max(dataFFanList)
             maxMTuanData = max(dataMTuanList)
             minFFanData = min(dataFFanList)
             minMTuanData = min(dataMTuanList)
-            averageFFanData = round(float(sum(dataFFanList) / self.dataLength), 2)
-            averageMTuanData = round(float(sum(dataMTuanList) / self.dataLength), 2)
+            averageFFanData = round(float(sum(dataFFanList) / len(dataFFanList)), 2)
+            averageMTuanData = round(float(sum(dataMTuanList) / len(dataMTuanList)), 2)
             worksheet.write(14, 1, u'统计', format_title)
             worksheet.write(14, 2, FFAN_APP, format_title)
             worksheet.write(14, 3, MTUAN_APP, format_title)
@@ -379,6 +378,21 @@ class Handler(object):
             worksheet.write(15, 3, maxMTuanData, format_ave)
             worksheet.write(16, 3, minMTuanData, format_ave)
             worksheet.write(17, 3, averageMTuanData, format_ave)
+
+            if len(self.dataList[FFAN]) > len(self.dataList[MTUAN]):
+                for _ in range(0, len(self.dataList[FFAN]) - len(self.dataList[MTUAN])):
+                    self.dataList[MTUAN].append('0')
+            else:
+                for _ in range(0, len(self.dataList[MTUAN]) - len(self.dataList[FFAN])):
+                    self.dataList[FFAN].append('0')
+
+            worksheet.write(1, 1, args[1], format_title)
+            worksheet.write(2, 1, FFAN_APP, format_title)
+            worksheet.write(3, 1, MTUAN_APP, format_title)
+            for row in range(1, self.dataLength):
+                worksheet.write(1, row + 1, row, format_title)
+                worksheet.write(2, row + 1, float(self.dataList[FFAN][row-1]), format_ave)
+                worksheet.write(3, row + 1, float(self.dataList[MTUAN][row-1]), format_ave)
 
             chart = workbook.add_chart({'type': 'line'})
             chart.add_series({'categories': [title, 1, 2, 1, row + 1],
