@@ -79,11 +79,11 @@ if __name__ == "__main__":
     try:
         # 巡检用例执行
         runner.run(suite)
-  
+
         # 流畅度用例执行
         FpsPerformanceTestCases().getFpsPerf()
         FpsPerformanceTestCases().getFpsPerfJingpin()
-  
+
         # 飞凡APP冷启动用例及流量统计执行
         perf = Performance(reportpath_ffan_coldboot)
         startTraffic, sTime = perf.getTraffic()
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
-  
+
         # 飞凡APP热启动用例及流量统计执行
         perf = Performance(reportpath_ffan_warmboot)
         startTraffic, sTime = perf.getTraffic()
@@ -101,7 +101,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
-  
+
         # 美团APP冷启动用例及流量统计执行
         perf = Performance(reportpath_mtuan_coldboot)
         startTraffic, sTime = perf.getTraffic()
@@ -110,7 +110,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime),'traffic.txt')
-  
+
         # 美团APP热启动用例及流量统计执行
         perf = Performance(reportpath_mtuan_warmboot)
         startTraffic, sTime = perf.getTraffic()
@@ -119,7 +119,7 @@ if __name__ == "__main__":
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         endTraffic, eTime = perf.getTraffic()
         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
-   
+
         if os.path.exists(filename):
             os.remove(filename)
 

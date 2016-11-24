@@ -232,6 +232,9 @@ class MyFfanPage(SuperPage):
                            self.driver,
                            self.logger,
                            MFPC.text_parking_payment)
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,

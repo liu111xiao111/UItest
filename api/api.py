@@ -75,7 +75,7 @@ class API(object):
         currentTime = time.strftime('%Y%m%d%H%M%S')
         driver.save_screenshot(currentTime + "_" + pictureName + ".png")
 
-    def screenShotForStability(self, driver, pictureName="myfeifan_auto_test", outsideLoop="1", insideLoop="1", step="1"):
+    def screenShotForStability(self, driver, pictureName="myfeifan_auto_test", outsideLoop="1", insideLoop="1", caseStep="1"):
         '''
         Usage: 截图方法(稳定行测试)
         parameters:
@@ -83,9 +83,9 @@ class API(object):
             pictureName: 截图名称
             outsideLoop: 外层大循环数
             insideLoop: 内层大循环数
-            step: 用例中执行的步骤
+            caseStep: 用例中执行的步骤
         '''
-        driver.save_screenshot(pictureName + "_" + outsideLoop + "_" + insideLoop + "_" + step + ".png")
+        driver.save_screenshot(pictureName + "_" + outsideLoop + "_" + insideLoop + "_" + caseStep + ".png")
 
     def inputStringByXpath(self, testCase, driver, logger, xpath, string, timeout=10):
         '''
