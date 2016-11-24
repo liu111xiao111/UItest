@@ -250,12 +250,12 @@ class Handler(object):
     @dataHandle(TYPE_RX)
     def _rxHandle(self, testCase):
         # 生成rx perf sheet
-        self._createExcelReport(u'下行速率', self.workbook, TYPE_RX, u'次数', u'上行速率(KBps)')
+        self._createExcelReport(u'下行速率', self.workbook, TYPE_RX, u'次数', u'下行速率(KBps)')
 
     @dataHandle(TYPE_TX)
     def _txHandle(self, testCase):
         # 生成rx perf sheet
-        self._createExcelReport(u'上行速率', self.workbook, TYPE_TX, u'次数', u'下行速率(KBps)')
+        self._createExcelReport(u'上行速率', self.workbook, TYPE_TX, u'次数', u'上行速率(KBps)')
 
     @dataHandle(TYPE_TEMPERATURE)
     def _temperatureHandle(self, testCase):
