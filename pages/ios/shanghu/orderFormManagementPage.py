@@ -45,7 +45,7 @@ class OrderFormManagementPage(SuperPage):
         API().screenShot(self.driver,'firstOrder')
 
 
-    def checkAllOrderDetail(self):
+    def checkAllOrderDetail(self,whichcase = "JiaoYiGuanBi"):
         '''
         检查全部订单信息
         :return:
@@ -75,14 +75,20 @@ class OrderFormManagementPage(SuperPage):
                                               self.driver,
                                               self.logger,
                                                "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
+        #全部订单和交易关闭订单,一个界面,但是phonnumber xpath 不同
+        if(whichcase=="QuanBuDingDan"):
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[32]"
+        else:
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
+
         #滑动显示电话号码,再获取value
         logger.info('Scroll to 电话号码 begin')
-        API().iosScrollToElement(self.driver,self.logger,"//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[35]",
+        API().iosScrollToElement(self.driver,self.logger,phoneNumberXpath,
                                  '18612819429')
         orderFormBuyerTemp = API().getTextByXpath(self.testcase,
                                                   self.driver,
                                                   self.logger,
-                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[35]")
+                                                  phoneNumberXpath)
         logger.info('Scroll to 电话号码 begin')
         print('debug order %s' % orderFormBuyerTemp)
 
@@ -99,6 +105,8 @@ class OrderFormManagementPage(SuperPage):
 
         for index in range(len(orderInfoArr)):
             logger.info('order info: ' + orderInfoArr[index].strip())
+            print("orderInfoArr %s : " + orderInfoArr[index].strip())
+            print("orderInfoArrTemp %s : " + orderInfoArrTemp[index].strip())
 
             API().assertTrue(self.testcase,self.logger,orderInfoArrTemp[index].strip() == orderInfoArr[index].strip())
         logger.info('check 订单信息 end')

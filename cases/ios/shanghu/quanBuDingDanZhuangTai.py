@@ -33,7 +33,7 @@ class QuanBuDingDanZhuangTai(TestCase):
         orderFormManagementPage.clickFirstItemOfOrderList()
 
         #检查全部订单信息
-        orderFormManagementPage.checkAllOrderDetail()
+        orderFormManagementPage.checkAllOrderDetail(whichcase = "QuanBuDingDan")
 
 
     def tearDown(self):
