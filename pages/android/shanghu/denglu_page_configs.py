@@ -20,7 +20,7 @@ class DengLuPageConfigs():
     member_phone = "13591822125"
     member_password = "Abc123456"
 
-    assert_timeout = 90
+    assert_timeout = 30
 
     def __init__(self):
         pass;

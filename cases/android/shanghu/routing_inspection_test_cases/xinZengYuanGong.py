@@ -77,7 +77,7 @@ class XinZengYuanGongTestCase(TestCase):
         xinZengYuanGongPage.screenShot("shuRuShouJiHao")
         xinZengYuanGongPage.clickOnSave()
 
-        yuanGongGuanLiPage.waitBySeconds(3)
+        yuanGongGuanLiPage.waitBySeconds(10)
         yuanGongGuanLiPage.validAddMember()
         yuanGongGuanLiPage.screenShot("renYuanGuanLi")
         yuanGongGuanLiPage.clickBackKey()

@@ -19,7 +19,7 @@ class YuanGongGuanLiPageConfigs():
     text_freeze_confirm = u"确定"
     resource_id_freeze_name = "com.feifan.bp:id/tv_status_name"
 
-    verify_timeout = 30
+    verify_timeout = 60
 
     def __init__(self):
         pass;

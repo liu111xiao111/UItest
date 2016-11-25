@@ -63,7 +63,7 @@ class DongJieYuanGongTestCase(TestCase):
         yuanGongGuanLiPage.waitBySeconds(2)
         yuanGongGuanLiPage.screenShot("dongJie")
         yuanGongGuanLiPage.clickOnFreezeStatus()
-        yuanGongGuanLiPage.waitBySeconds(2)
+        yuanGongGuanLiPage.waitBySeconds(5)
         yuanGongGuanLiPage.validFreezeMemberInfo(memberInfo)
         yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
 
