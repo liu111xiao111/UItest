@@ -38,7 +38,7 @@ class GuangChangTingCheTestCase(TestCase):
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         logger.info("Clear data completed")
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
