@@ -10,6 +10,7 @@ class ParkingCategoryPageConfigs():
     resource_id_tv_parking_tv = "com.wanda.app.wanhui:id/common_title_view_layout_title";
     #  停车交费
     resource_id_tv_parking_payment_tv = "com.wanda.app.wanhui:id/parking_image_pay";
+    text_add_license_plate = u"添加车牌"
 
     def __init__(self):
         pass;

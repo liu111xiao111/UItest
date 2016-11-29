@@ -11,7 +11,7 @@ from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.parking_category_page import ParkingCategoryPage
-from pages.android.ffan.my_ffan_my_parking_payment_page import MyFfanMyParkingPaymentPage
+from pages.android.ffan.parking_add_license_plate_page import ParkingAddLicensePlatePage
 # from pages.android.ffan.my_ffan_my_parking_payment_more_page import MyFfanMyParkingPaymentMorePage
 # from pages.android.ffan.my_ffan_my_parking_payment_unbunding_page import MyFfanMyParkingPaymentUnbundingPage
 # from pages.android.ffan.my_ffan_my_parking_payment_details_page import MyFfanMyParkingPaymentDetailsPage
@@ -56,7 +56,7 @@ class ShouYeTingCheTestCase(TestCase):
     def testShouYeTingChe(self):
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
         parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
-        parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
+        parkingAddLicensePlatePage = ParkingAddLicensePlatePage(testcase = self,driver = self.driver,logger = self.logger)
 #       parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(testcase = self,driver = self.driver,logger = self.logger)
 #       parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
 #       parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(testcase = self,driver = self.driver,logger = self.logger)
@@ -68,25 +68,41 @@ class ShouYeTingCheTestCase(TestCase):
         parkingPage.validSelf()
         parkingPage.screenShot("tingChe")
 
-        # Click "停车交费"， load parking payment.
-        '''parkingPage.clickOnParkingPayment()
-        parkingPaymentPage.validSelf()
+        vehiclePlate = parkingPage.validVehiclePlateExist()
+        if vehiclePlate:
+            # Click "停车交费"， load parking payment.
+            parkingPage.clickOnAddLicensePlate()
+            parkingAddLicensePlatePage.validSelf()
+            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
 
-        # Binding&Bunding VIN
-        parkingPaymentPage.inputVIN()
-        parkingPaymentPage.clickOnNextBtn()
-        parkingPaymentDetailsPage.validSelf()
-        parkingPaymentDetailsPage.clickOnMore()
-        parkingPaymentMorePage.clickOnUnbundingBtn()
-        parkingPaymentUnbundingPage.clickOnUnbundingBtn()
-        parkingPaymentPage.validSelf()'''
+            # Binding&Bunding VIN
+            parkingAddLicensePlatePage.inputVIN()
+            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
+            parkingAddLicensePlatePage.clickOnConfirmBtn()
+            parkingAddLicensePlatePage.validManager()
+            parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
+            parkingAddLicensePlatePage.clickBackKey()
+#         parkingPaymentDetailsPage.clickOnMore()
+#         parkingPaymentMorePage.clickOnUnbundingBtn()
+#         parkingPaymentUnbundingPage.clickOnUnbundingBtn()
+#         parkingPaymentPage.validSelf()
 
-        parkingPaymentPage.waitBySeconds(5);
+        parkingAddLicensePlatePage.waitBySeconds(3)
+        parkingPage.screenShot("tingChe")
         #检查入口项目
-        itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
-        titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
+        itemList = (u"车牌管理", u"停车记录", u"停车券", u"帮助")
+        titleList = (u"车牌管理", u"停车记录", u"停车优惠券", u"停车帮助")
         for i in range(len(titleList)):
-            parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
+            parkingAddLicensePlatePage.clickAndValidItems(itemList[i], titleList[i])
+
+        parkingAddLicensePlatePage.clickOnVehicleManager()
+        parkingAddLicensePlatePage.validManager()
+        parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
+        parkingAddLicensePlatePage.clickOnVehiclePlate()
+        parkingAddLicensePlatePage.screenShot("shanChuChePai")
+        parkingAddLicensePlatePage.clickOnDeleteVehiclePlate()
+        parkingAddLicensePlatePage.validManager()
+        parkingAddLicensePlatePage.screenShot("tianJiaChePai")
 
 
 if __name__ == "__main__":

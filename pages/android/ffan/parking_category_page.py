@@ -45,3 +45,27 @@ class ParkingCategoryPage(SuperPage):
                                        self.logger,
                                        PCPC.resource_id_tv_parking_payment_tv,
                                        10)
+
+    def validVehiclePlateExist(self):
+        '''
+        usage : 判断车牌是否已添加
+        '''
+        logger.info("Check 车牌是否已添加 begin")
+        vehiclePlate = API().validElementByText(self.driver,
+                                 self.logger,
+                                 PCPC.text_add_license_plate,
+                                 10)
+        return vehiclePlate
+        logger.info("Check 车牌是否已添加 end")
+
+    def clickOnAddLicensePlate(self):
+        '''
+        usage : 点击添加车牌
+        '''
+        logger.info("Click 添加车牌 begin")
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 PCPC.text_add_license_plate,
+                                 10)
+        logger.info("Click 添加车牌 end")
