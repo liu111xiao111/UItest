@@ -2,7 +2,7 @@
 
 from utility.device_info_util import DeviceInfoUtil
 
-appVersion = '4.9.2.0'
+appVersion = '4.10.0.1260'
 
 phoneVersion = DeviceInfoUtil().getIPhoneType()
 
