@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -11,11 +11,8 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from subprocess import Popen, PIPE
-from cases.android.ffan.common.monkey_process import MonkeyHandle
-from cases.android.ffan.common.clear_app_data import ClearAppData
-from cases.android.ffan.common.test_prepare import TestPrepare
-from pages.android.ffan.shopping_mall_page import ShoppingMallPage
 from pages.android.ffan.dashboard_page import DashboardPage
+from pages.android.ffan.food_category_page import FoodCategoryPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -24,15 +21,17 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.android.ffan.common.test_prepare import TestPrepare
+from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.logger import logger
 
 
-class GouWuZhongXinTestCase(TestCase):
+class MeiShiHuiTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检checklist No.: 05
-    自动化测试case No.: 05
-    爱逛街进入购物中心确认广场距离排序顺序以及广场信息
+    巡检 NO.7
+    用例名: 美食汇
+    首页进入美食正常进入找餐厅找优惠，数据显示正常可点击进入
+    备注：由于版本变化，页面元素缺失，case无法通过
     '''
 
     def tearDown(self):
@@ -52,9 +51,9 @@ class GouWuZhongXinTestCase(TestCase):
             self.loopNumer = loopNum
         else:
             self.loopNumer = "100"
-        self.logPath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "gouwuzhongxin/log/")
+        self.logPath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "meishihui/log/")
         os.makedirs(self.logPath)
-        self.picturePath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "gouwuzhongxin/screenshot/")
+        self.picturePath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "meishihui/screenshot/")
         os.makedirs(self.picturePath)
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
@@ -71,32 +70,25 @@ class GouWuZhongXinTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
-    def testGouWuZhongXin(self):
+    def testMeiShiHui(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
+        foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
         for i in range(2):
-            logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
             Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
-            # Verify Home Page
+
             dashboardPage.validSelf()
-            dashboardPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), "1")
-
-            # Enter Shopping Mall Page and Verify
-            dashboardPage.clickOnShoppingMall()
-            shoppingMallPage.validSelf()
-            shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), "2")
-
-            tabNumberList = (1,    # Total
-                             2,    # Mall
-                             3)    # Department
-            for tabNumber in tabNumberList:
-                shoppingMallPage.clickOnTab(tabNumber)
-                shoppingMallPage.validListView()
-                shoppingMallPage.validDistance()
-                shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), str(tabNumber+2))
-            shoppingMallPage.clickBackKey()
+            dashboardPage.screenShotForStability("meishihui", self.loopNumer, str(i+1), "1")
+    
+            dashboardPage.clickOnFood()
+            foodPage.validFoodHomePage()
+            foodPage.screenShotForStability("meishihui", self.loopNumer, str(i+1), "2")
+    
+            # 检查所有子界面入口
+            foodPage.validModulesForStability(self.loopNumer, str(i+1))
+            foodPage.clickBackKey()
 
             files = glob.glob('*.png')
             if files:
@@ -108,11 +100,10 @@ class GouWuZhongXinTestCase(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GouWuZhongXinTestCase)
+    suite = TestLoader().loadTestsFromTestCase(MeiShiHuiTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
-                                           description='Result for test')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report', description='Result for test')
     runner.run(suite)

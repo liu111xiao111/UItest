@@ -207,9 +207,6 @@ class MonkeyHandle:
         finally:
             dataFile.close()
 
-
-        print("MMMMMM")
-        print(monkeyData)
         return monkeyData
 
     def createHtmlReport(self, reportPath):
@@ -236,11 +233,7 @@ class MonkeyHandle:
         try:
             templateHtml = self.loadHtmlTemplateForStability()
             monkeyData = self.dataMonkey
-            print("OOOOO")
-            print(monkeyData)
             resultData = self.resultMonkey
-            print("PPPPP")
-            print(resultData)
             templateHtml = templateHtml % (
             self.startTime, self.endTime, resultData, monkeyData)
 

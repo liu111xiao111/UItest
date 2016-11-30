@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -11,11 +11,12 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from subprocess import Popen, PIPE
-from cases.android.ffan.common.monkey_process import MonkeyHandle
+from pages.android.ffan.parking_category_page import ParkingCategoryPage
+from pages.android.ffan.square_module_page import SquareModulePage
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
-from pages.android.ffan.shopping_mall_page import ShoppingMallPage
 from pages.android.ffan.dashboard_page import DashboardPage
+from pages.android.ffan.search_page import SearchPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -27,12 +28,11 @@ from utility.device_info_util import DeviceInfoUtil
 from cases.logger import logger
 
 
-class GouWuZhongXinTestCase(TestCase):
+class GuangChangTingCheTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检checklist No.: 05
-    自动化测试case No.: 05
-    爱逛街进入购物中心确认广场距离排序顺序以及广场信息
+    巡检 No.29
+    用例名: 广场停车
+    点击停车缴费，成功进入并显示正确数据
     '''
 
     def tearDown(self):
@@ -52,9 +52,9 @@ class GouWuZhongXinTestCase(TestCase):
             self.loopNumer = loopNum
         else:
             self.loopNumer = "100"
-        self.logPath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "gouwuzhongxin/log/")
+        self.logPath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "guangchangtingche/log/")
         os.makedirs(self.logPath)
-        self.picturePath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "gouwuzhongxin/screenshot/")
+        self.picturePath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "guangchangtingche/screenshot/")
         os.makedirs(self.picturePath)
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
@@ -69,34 +69,41 @@ class GouWuZhongXinTestCase(TestCase):
         self.reset.clearData()
         logger.info("Clear data completed")
 
-        TestPrepare(self, self.driver, self.logger).prepare(False)
+        TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testGouWuZhongXin(self):
+    def testGuangChangTingChe(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
 
         for i in range(2):
-            logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            logFile = "%sguangchangtingche_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
             Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
-            # Verify Home Page
+
             dashboardPage.validSelf()
-            dashboardPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), "1")
+            dashboardPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "1")
+            dashboardPage.clickOnSearchAll()
 
-            # Enter Shopping Mall Page and Verify
-            dashboardPage.clickOnShoppingMall()
-            shoppingMallPage.validSelf()
-            shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), "2")
+            searchPage = SearchPage(self, self.driver, self.logger)
+            searchPage.validSelf()
+            searchPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "2")
+            searchPage.inputKeywords(u"北京通州万达广场")
+            searchPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "3")
+            searchPage.clickOnSearch()
+            searchPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "4")
+            searchPage.clickOnSearchResultFirstItem()
 
-            tabNumberList = (1,    # Total
-                             2,    # Mall
-                             3)    # Department
-            for tabNumber in tabNumberList:
-                shoppingMallPage.clickOnTab(tabNumber)
-                shoppingMallPage.validListView()
-                shoppingMallPage.validDistance()
-                shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), str(tabNumber+2))
-            shoppingMallPage.clickBackKey()
+            squareModulePage = SquareModulePage(self, self.driver, self.logger)
+            squareModulePage.validSelf()
+            squareModulePage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "5")
+            squareModulePage.clickOnParking()
+
+            parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
+            parkingPage.waitBySeconds(2)
+            parkingPage.validSelf()
+            parkingPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "6")
+            parkingPage.clickBackKey()
+            squareModulePage.clickBackKey()
+            searchPage.clickBackKey()
 
             files = glob.glob('*.png')
             if files:
@@ -108,11 +115,11 @@ class GouWuZhongXinTestCase(TestCase):
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(GouWuZhongXinTestCase)
+    suite = TestLoader().loadTestsFromTestCase(GuangChangTingCheTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
-    filename = os.path.join(reportpath, 'Feifan_automation_test_report_' + now + '.html')
+    filename = os.path.join(reportpath, 'food-test_' + now + '.html')
     fp = open(filename, 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report',
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='food-test',
                                            description='Result for test')
     runner.run(suite)

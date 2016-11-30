@@ -59,11 +59,9 @@ class ShanChuYuanGongTestCase(TestCase):
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
         phoneNum = yuanGongGuanLiPage.getMemberPhone()
-        print(phoneNum)
         if phoneNum:
             memberInfo = yuanGongGuanLiPage.getMemberInfo(phoneNum)
             yuanGongGuanLiPage.clickOnDelete(phoneNum)
-            print(memberInfo)
             yuanGongGuanLiPage.validDeleteMember(memberInfo)
             yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
 

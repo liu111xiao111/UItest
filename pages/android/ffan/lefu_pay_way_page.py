@@ -32,3 +32,18 @@ class LefuPayWayPage(SuperPage):
                                                 LPWPC.resource_id_order_number,
                                                 10)
         return orderNumber
+
+    def clickOnConfirm(self):
+        '''
+        usage : 点击 "确认"
+        '''
+        logger.info("Click 确认 begin")
+        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
+                                       LPWPC.resource_id_payment_back,
+                                       10)
+        API().waitBySeconds(2)
+        API().clickElementByText(self.testcase, self.driver, self.logger,
+                                       LPWPC.text_confirm,
+                                       10)
+        logger.info("Click 确认 end")
+

@@ -90,6 +90,33 @@ class FoodCategoryPage(SuperPage):
             API().screenShot(self.driver, "meiShiHui")
             logger.info("Check 入口(%s) end" % restaurant)
 
+    def validModulesForStability(self, outsideLoop="1", insideLoop="1"):
+        '''
+        usage: 点击美食主界面的所有入口并验证
+        '''
+        '''restaurantList = API().getElementsByResourceId(self.testcase,
+                                                       self.driver,
+                                                       self.logger,
+                                                       FCPC.resource_id_bt_restaurant_bt,
+                                                       FCPC.verify_view_timeout)'''
+        restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
+                          u"韩国料理", u"江浙菜", u"日本料理", u"烧烤", u"面包甜点")
+        i = 3
+        for restaurant in restaurantList:
+            logger.info("Check 入口(%s) begin" % restaurant)
+            API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     restaurant,
+                                     FCPC.click_view_timeout)
+            API().waitBySeconds(3)
+            self.validRestaurant()
+            API().screenShotForStability(self.driver, "meishihui", outsideLoop, insideLoop, str(i))
+            self.clickBackKey()
+            API().screenShotForStability(self.driver, "meishihui", outsideLoop, insideLoop, str(i+1))
+            i = i + 2
+            logger.info("Check 入口(%s) end" % restaurant)
+
     def clickOnCoupon(self):
         '''
         usage : 点击优惠打折

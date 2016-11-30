@@ -36,6 +36,15 @@ class MyFeiFanPage(SuperPage):
                                         MFPC.resource_id_nickname_button,
                                         MFPC.assert_view_timeout)
 
+    def validLoginStatusForStability(self):
+        '''
+        usage: 验证登陆状态
+        '''
+        return API().validElementByResourceId(self.driver,
+                                              self.logger,
+                                              MFPC.resource_id_nickname_button,
+                                              MFPC.assert_view_timeout)
+
     def validLogoutStatus(self):
         '''
         usage: 验证退出登陆状态
@@ -125,3 +134,14 @@ class MyFeiFanPage(SuperPage):
                                  self.logger,
                                  MFPC.text_my_fei_fan_card,
                                  MFPC.click_on_button_timeout)
+
+    def clickOnDashboard(self):
+        '''
+        usage: 点击爱逛街
+        '''
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_dashboard,
+                                 MFPC.click_on_button_timeout)
+

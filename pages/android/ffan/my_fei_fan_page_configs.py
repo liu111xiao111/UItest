@@ -37,6 +37,7 @@ class MyFeiFanPageConfigs(object):
 
     # My fei fan card
     text_my_fei_fan_card = u"我的飞凡通"
+    text_dashboard = u"爱逛街"
 
     def __init__(self):
         pass

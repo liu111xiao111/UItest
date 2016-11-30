@@ -48,3 +48,45 @@ class DengLuXinXiPage(SuperPage):
                                         DLXXPC.assert_timeout)
         API().assertEqual(self.testcase, self.logger, businessman, DLXXPC.test_businessman)
         logger.info("Check 登录信息页面 end")
+
+    def validSelfNewMember(self):
+        '''
+        usage : 进入到登录信息页
+        '''
+        logger.info("Check 登录信息页面 begin")
+        user = API().getTextByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        DLXXPC.resource_id_user_new_member,
+                                        DLXXPC.assert_timeout)
+        API().assertEqual(self.testcase, self.logger, user, DLXXPC.text_user_new_member)
+
+        phone = API().getTextByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        DLXXPC.resource_id_phone_user_new_member,
+                                        DLXXPC.assert_timeout)
+        API().assertEqual(self.testcase, self.logger, phone, DLXXPC.test_phone_new_member)
+
+        identity = API().getTextByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        DLXXPC.resource_id_identity_new_member,
+                                        DLXXPC.assert_timeout)
+        API().assertEqual(self.testcase, self.logger, identity, DLXXPC.test_identity_new_member)
+
+        store = API().getTextByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        DLXXPC.resource_id_store_new_member,
+                                        DLXXPC.assert_timeout)
+        API().assertEqual(self.testcase, self.logger, store, DLXXPC.test_store_new_member)
+
+        square = API().getTextByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        DLXXPC.resource_id_square_new_member,
+                                        DLXXPC.assert_timeout)
+        API().assertEqual(self.testcase, self.logger, square, DLXXPC.test_square_new_member)
+        logger.info("Check 登录信息页面 end")
+

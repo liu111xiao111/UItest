@@ -15,7 +15,7 @@ class DengLuPageConfigs():
     resource_id_login_button = "com.feifan.bp:id/login_go";
 
     account_name = "15624958068"
-    account_passwd = "wanda123"
+    account_passwd = "neusoft123"
     default_passwd = ""
     member_phone = "13591822125"
     member_password = "Abc123456"

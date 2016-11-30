@@ -23,6 +23,7 @@ from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 from pages.android.shanghu.xinzengyuangong_page import XinZengYuanGongPage
 from pages.android.shanghu.shezhi_page import SheZhiPage
+from pages.android.shanghu.dengluxinxi_page import DengLuXinXiPage
 from cases.logger import logger
 
 
@@ -77,7 +78,7 @@ class XinZengYuanGongTestCase(TestCase):
         xinZengYuanGongPage.screenShot("shuRuShouJiHao")
         xinZengYuanGongPage.clickOnSave()
 
-        yuanGongGuanLiPage.waitBySeconds(10)
+        yuanGongGuanLiPage.waitBySeconds(5)
         yuanGongGuanLiPage.validAddMember()
         yuanGongGuanLiPage.screenShot("renYuanGuanLi")
         yuanGongGuanLiPage.clickBackKey()
@@ -99,6 +100,30 @@ class XinZengYuanGongTestCase(TestCase):
         xuanZeMenDianPage.waitBySeconds(2)
         xuanZeMenDianPage.validSelf()
         xuanZeMenDianPage.screenShot("xuanZeMenDian")
+        xuanZeMenDianPage.clickOnStore()
+        xuanZeMenDianPage.screenShot("xuanZeMenDian")
+        xuanZeMenDianPage.clickOnConfirmBtn()
+
+        shouYePage.validSelf()
+        shouYePage.screenShot("shouYe")
+        shouYePage.clickOnUser()
+
+        dengLuXinXiPage = DengLuXinXiPage(self , self.driver , self.logger)
+        dengLuXinXiPage.validSelfNewMember()
+        dengLuXinXiPage.screenShot("dengLuXinXi")
+
+        dengLuXinXiPage.clickBackKey()
+        shouYePage.screenShot("shouYe")
+        shouYePage.clickOnSetting()
+
+        sheZhiPage = SheZhiPage(self , self.driver , self.logger)
+        sheZhiPage.validSelf()
+        sheZhiPage.screenShot("sheZhi")
+        sheZhiPage.clickOnLogout()
+
+        dengLuPage.waitBySeconds(2)
+        dengLuPage.validPassword()
+        dengLuPage.screenShot("dengLu")
 
 
 if __name__ == "__main__":
