@@ -38,6 +38,10 @@ class GuangChangMaiDanTestCase(TestCase):
     '''
 
     def tearDown(self):
+        files = glob.glob('*.png')
+        if files:
+            for file in files:
+                shutil.move(file, self.picturePath)
         self.reset.clearData()
         self.driver.quit()
 
