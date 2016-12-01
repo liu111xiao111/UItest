@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
@@ -37,6 +36,10 @@ class WoDeDengLuTestCase(TestCase):
     启动app，能够正常登陆
     '''
     def tearDown(self):
+        files = glob.glob('*.png')
+        if files:
+            for file in files:
+                shutil.move(file, self.picturePath)
         self.reset.clearData()
         self.driver.quit()
 
@@ -76,10 +79,8 @@ class WoDeDengLuTestCase(TestCase):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%swodedenglu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             dashboardPage.clickOnMy()
             myFfanPage.screenShotForStability("wodedenglu", self.loopNumer, str(i+1), "1")
@@ -110,6 +111,10 @@ class WoDeDengLuTestCase(TestCase):
             myFfanPage.validSelf()
             myFfanPage.screenShotForStability("wodedenglu", self.loopNumer, str(i+1), "8")
             dashboardPage.waitBySeconds(seconds=2)
+
+            logFile = "%swodedenglu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:

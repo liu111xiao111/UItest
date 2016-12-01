@@ -49,16 +49,16 @@ if __name__ == "__main__":
             f.close()
             # 添加测试用例
             suite = unittest.TestSuite()
-#             suite.addTest(QuanChengSouSuoTestCase("testQuanChengSouSuo")) # 全城搜索 No.03
-#             suite.addTest(GouWuZhongXinTestCase("testGouWuZhongXin")) # 购物中心 No.05
-#             suite.addTest(MeiShiHuiTestCase("testMeiShiHui")) # 美食汇 No.07
-#             suite.addTest(GuangChangSouSuoTestCase("testGuangChangSouSuo")) # 广场搜索 No.22
-#             suite.addTest(GuangChangZhaoDianTestCase("testGuangChangZhaoDian")) # 广场找店 No.24
-#             suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队取号 No.27
+            suite.addTest(QuanChengSouSuoTestCase("testQuanChengSouSuo")) # 全城搜索 No.03 123
+            suite.addTest(GouWuZhongXinTestCase("testGouWuZhongXin")) # 购物中心 No.05 456
+            suite.addTest(MeiShiHuiTestCase("testMeiShiHui")) # 美食汇 No.07
+            suite.addTest(GuangChangSouSuoTestCase("testGuangChangSouSuo")) # 广场搜索 No.22
+            suite.addTest(GuangChangZhaoDianTestCase("testGuangChangZhaoDian")) # 广场找店 No.24
+            suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队取号 No.27
             suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.29
-#             suite.addTest(GuangChangMaiDanTestCase("testGuangChangMaiDan")) # 广场买单 No.30
-#             suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
-#             suite.addTest(WoDeTuiChuTestCase("testWoDeTuiChu")) # 我的退出 No.62
+            suite.addTest(GuangChangMaiDanTestCase("testGuangChangMaiDan")) # 广场买单 No.30
+            suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
+            suite.addTest(WoDeTuiChuTestCase("testWoDeTuiChu")) # 我的退出 No.62
 
             runner = unittest.TextTestRunner()
             runner.run(suite)

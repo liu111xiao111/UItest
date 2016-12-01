@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from cases.android.ffan.common.monkey_process import MonkeyHandle
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
@@ -36,6 +35,10 @@ class GouWuZhongXinTestCase(TestCase):
     '''
 
     def tearDown(self):
+        files = glob.glob('*.png')
+        if files:
+            for file in files:
+                shutil.move(file, self.picturePath)
         self.reset.clearData()
         self.driver.quit()
 
@@ -75,10 +78,9 @@ class GouWuZhongXinTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
+
             # Verify Home Page
             dashboardPage.validSelf()
             dashboardPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), "1")
@@ -97,6 +99,10 @@ class GouWuZhongXinTestCase(TestCase):
                 shoppingMallPage.validDistance()
                 shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), str(tabNumber+2))
             shoppingMallPage.clickBackKey()
+
+            logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:

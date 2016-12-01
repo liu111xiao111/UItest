@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from pages.android.ffan.dashboard_page import DashboardPage
@@ -36,6 +35,10 @@ class GuangChangSouSuoTestCase(TestCase):
     '''
 
     def tearDown(self):
+        files = glob.glob('*.png')
+        if files:
+            for file in files:
+                shutil.move(file, self.picturePath)
         self.reset.clearData()
         self.driver.quit()
 
@@ -76,10 +79,8 @@ class GuangChangSouSuoTestCase(TestCase):
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%sguangchangsousuo_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             dashboardPage.validSelf()
             dashboardPage.screenShotForStability("guangchangsousuo", self.loopNumer, str(i+1), "1")
@@ -118,6 +119,10 @@ class GuangChangSouSuoTestCase(TestCase):
             searchPage.clickBackKey()
             squareModulePage.clickBackKey()
             searchPage.clickBackKey()
+
+            logFile = "%sguangchangsousuo_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:

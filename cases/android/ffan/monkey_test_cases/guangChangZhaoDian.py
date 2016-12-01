@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.square_find_store_category_page import SquareFindStorePage
@@ -37,6 +36,10 @@ class GuangChangZhaoDianTestCase(TestCase):
     '''
 
     def tearDown(self):
+        files = glob.glob('*.png')
+        if files:
+            for file in files:
+                shutil.move(file, self.picturePath)
         self.reset.clearData()
         self.driver.quit()
 
@@ -79,10 +82,8 @@ class GuangChangZhaoDianTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%sguangchangzhaodian_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             # 绑定北京通州万达广场
             dashboardPage.validSelf()
@@ -112,6 +113,10 @@ class GuangChangZhaoDianTestCase(TestCase):
             squareFindStorePage.clickBackKey()
             squarePage.clickBackKey()
             searchPage.clickBackKey()
+
+            logFile = "%sguangchangzhaodian_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:
