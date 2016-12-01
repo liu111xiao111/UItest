@@ -79,7 +79,7 @@ class OrderFormManagementPage(SuperPage):
         if(whichcase=="QuanBuDingDan"):
             phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[32]"
         else:
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[32]"
 
         #滑动显示电话号码,再获取value
         logger.info('Scroll to 电话号码 begin')
