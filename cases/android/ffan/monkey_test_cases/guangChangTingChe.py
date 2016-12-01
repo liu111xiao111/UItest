@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from pages.android.ffan.parking_category_page import ParkingCategoryPage
 from pages.android.ffan.square_module_page import SquareModulePage
 from cases.android.ffan.common.clear_app_data import ClearAppData
@@ -78,10 +77,8 @@ class GuangChangTingCheTestCase(TestCase):
     def testGuangChangTingChe(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%sguangchangtingche_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             dashboardPage.validSelf()
             dashboardPage.screenShotForStability("guangchangtingche", self.loopNumer, str(i+1), "1")
@@ -108,6 +105,10 @@ class GuangChangTingCheTestCase(TestCase):
             parkingPage.clickBackKey()
             squareModulePage.clickBackKey()
             searchPage.clickBackKey()
+
+            logFile = "%sguangchangtingche_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:

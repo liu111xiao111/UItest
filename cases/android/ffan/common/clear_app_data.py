@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 
 class ClearAppData:
     '''
@@ -17,3 +19,11 @@ class ClearAppData:
         '''
 #         self.driver.reset()
         pass
+
+    def clearLogcat(self):
+        '''
+        清理logcat缓存
+        :return: None
+        '''
+        command = 'adb logcat -c'
+        os.system(command)

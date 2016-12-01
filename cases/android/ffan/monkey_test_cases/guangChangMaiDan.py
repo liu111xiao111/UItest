@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage;
@@ -85,10 +84,8 @@ class GuangChangMaiDanTestCase(TestCase):
         lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
         lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%sguangchangmaidan_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             # 绑定北京通州万达广场
             dashboardPage.validSelf()
@@ -136,6 +133,10 @@ class GuangChangMaiDanTestCase(TestCase):
             squarePage.clickBackKey()
             squarePage.waitBySeconds(2)
             searchPage.clickBackKey()
+
+            logFile = "%sguangchangmaidan_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:

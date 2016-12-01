@@ -10,7 +10,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from subprocess import Popen, PIPE
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.food_category_page import FoodCategoryPage
 from configs.driver_configs import platformName_andr
@@ -78,10 +77,8 @@ class MeiShiHuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
-        for i in range(2):
-            logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat > %s" % (logFile)
-            Popen(cmdLogcat, shell=True, stdout=PIPE, stderr=PIPE)
+        for i in range(3):
+            self.reset.clearLogcat()
 
             dashboardPage.validSelf()
             dashboardPage.screenShotForStability("meishihui", self.loopNumer, str(i+1), "1")
@@ -93,6 +90,10 @@ class MeiShiHuiTestCase(TestCase):
             # 检查所有子界面入口
             foodPage.validModulesForStability(self.loopNumer, str(i+1))
             foodPage.clickBackKey()
+
+            logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            os.system(cmdLogcat)
 
             files = glob.glob('*.png')
             if files:
