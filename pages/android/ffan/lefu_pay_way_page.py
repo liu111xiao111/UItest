@@ -38,8 +38,9 @@ class LefuPayWayPage(SuperPage):
         usage : 点击 "确认"
         '''
         logger.info("Click 确认 begin")
-        API().clickElementByResourceId(self.testcase, self.driver, self.logger,
-                                       LPWPC.resource_id_payment_back,
+#         API().clickBackKeyForAndroid(self.driver, self.logger)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                       LPWPC.xpath_back,
                                        10)
         API().waitBySeconds(2)
         API().clickElementByText(self.testcase, self.driver, self.logger,
