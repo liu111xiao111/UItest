@@ -71,17 +71,17 @@ class PinPaiJieTestCase(TestCase):
         brandPage.validSelfMenFasion();
         brandPage.clickBackKey()
         brandPage.clickOnCatering();
-        brandPage.validSelfCertering();
+        #brandPage.validSelfCertering();
         brandPage.clickBackKey()
         brandPage.clickOnLife();
-        brandPage.validSelfLife();
+        #brandPage.validSelfLife();
         brandPage.clickBackKey()
         brandPage.clickOnSports();
-        brandPage.validSelfSports();
+        #brandPage.validSelfSports();
         brandPage.clickBackKey()
         brandPage.clickOnCompetitiveProducts();
-        brandPage.validSelfCompetitiveProducts();
-        brandPage.clickBackKey()
+       #brandPage.validSelfCompetitiveProducts();
+        #brandPage.clickBackKey()
         
         #点击大牌入驻
         #brandPage.clickOnDapairuzhu()
