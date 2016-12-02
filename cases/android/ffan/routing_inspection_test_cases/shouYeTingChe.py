@@ -76,6 +76,7 @@ class ShouYeTingCheTestCase(TestCase):
             parkingAddLicensePlatePage.screenShot("tianJiaChePai")
 
             # Binding&Bunding VIN
+            parkingAddLicensePlatePage.waitBySeconds(2)
             parkingAddLicensePlatePage.inputVIN()
             parkingAddLicensePlatePage.screenShot("tianJiaChePai")
             parkingAddLicensePlatePage.clickOnConfirmBtn()
@@ -98,9 +99,12 @@ class ShouYeTingCheTestCase(TestCase):
         parkingAddLicensePlatePage.clickOnVehicleManager()
         parkingAddLicensePlatePage.validManager()
         parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
+        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.clickOnVehiclePlate()
         parkingAddLicensePlatePage.screenShot("shanChuChePai")
+        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.clickOnDeleteVehiclePlate()
+        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.validManager()
         parkingAddLicensePlatePage.screenShot("tianJiaChePai")
 

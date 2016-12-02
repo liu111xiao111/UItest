@@ -32,10 +32,15 @@ class MTuanDianYingTestCase(TestCase):
     '''
 
     def tearDown(self):
+        if not os.path.exists(self.logcatFile):
+            cmdLogcat = "adb logcat -d > %s" % (self.logcatFile)
+            os.system(cmdLogcat)
+
         self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
+        self.logcatFile = "logcat.log"
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_meituan,
                                    appActivity_meituan,
@@ -55,24 +60,27 @@ class MTuanDianYingTestCase(TestCase):
         if not os.path.exists(reportPath):
             os.makedirs(reportPath)
 
+        filename = "%s/logPortion.txt" % reportPath
+        self.logcatFile = filename
+        self.reset.clearLogcat()
+
+        # 广播开始收集数据
+        deviceID = DeviceInfoUtil().getDeviceID()
+        cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_meituan)
+        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
+
+        # 用例执行
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         moviePage = MoviePage(self , self.driver , self.logger)
         movieDetailsPage = MovieDetailsPage(self , self.driver , self.logger)
 
-        deviceID = DeviceInfoUtil().getDeviceID()
-        #cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
-        cmdBroadcastStart = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_meituan)
-        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
-
         dashboardPage.validSelf()
         dashboardPage.screenShot("shouYe")
-
-        filename = "%s/logPortion.txt" % reportPath
-        #logcat_file = open(filename, 'w')
-        logcmd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
-        #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
-        Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
-
+#         filename = "%s/logPortion.txt" % reportPath
+#         #logcat_file = open(filename, 'w')
+#         logcmd = "adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
+#         #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
+#         Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
         dashboardPage.clickOnMovie()
 
         moviePage.validSelf()
@@ -85,11 +93,16 @@ class MTuanDianYingTestCase(TestCase):
         movieDetailsPage.validSelf()
         movieDetailsPage.screenShot("dianYing")
 
-        cmdBroadcastEnd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_meituan
+        # 取得logcat log
+        cmdLogcat = "adb logcat -d > %s" % (filename)
+        os.system(cmdLogcat)
+
+        # 广播结束停止收集数据
+        cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_meituan
         Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
- 
+
         # 取得performance.xml文件
-        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        cmdPull = "adb pull /sdcard/YCY/performance.xml %s" % reportPath
         Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
 
 
