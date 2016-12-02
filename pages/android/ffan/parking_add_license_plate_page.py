@@ -38,7 +38,7 @@ class ParkingAddLicensePlatePage(SuperPage):
                                       self.logger,
                                       PALPPC.resource_id_tv_VIN_tv,
                                       PALPPC.input_VIN,
-                                      60)
+                                      90)
         logger.info("Input 车牌号 end")
 
     def clickOnConfirmBtn(self):
