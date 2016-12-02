@@ -7,7 +7,7 @@ class ParkingAddLicensePlatePageConfigs():
     resource_id_tv_parking_payment_tv = "com.wanda.app.wanhui:id/common_title_view_layout_title";
     resource_id_tv_VIN_tv = "com.wanda.app.wanhui:id/parkingLicenseInputView";
 
-    input_VIN = "XYZ123"
+    input_VIN = "QM9G29"
     text_confirm_btn = u"确定"
     xpath_notice = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
     text_know = u"知道了"

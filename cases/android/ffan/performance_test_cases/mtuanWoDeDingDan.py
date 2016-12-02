@@ -34,10 +34,15 @@ class MTuanWoDeDingDanTestCase(TestCase):
     '''
 
     def tearDown(self):
+        if not os.path.exists(self.logcatFile):
+            cmdLogcat = "adb logcat -d > %s" % (self.logcatFile)
+            os.system(cmdLogcat)
+
         self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
+        self.logcatFile = "logcat.log"
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_meituan,
                                    appActivity_meituan,
@@ -56,25 +61,25 @@ class MTuanWoDeDingDanTestCase(TestCase):
         reportPath = "%s/report/perf/%s/%s/mtuan/wodedingdan" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
         if not os.path.exists(reportPath):
             os.makedirs(reportPath)
-#         perf = Performance(reportPath)
-#         startTraffic, sTime = perf.getTraffic()
-
-        dashboardPage = DashboardPage(self , self.driver , self.logger)
-
-        deviceID = DeviceInfoUtil().getDeviceID()
-        #cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
-        cmdBroadcastStart = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_meituan)
-        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
-
-        dashboardPage.validSelf()
-        dashboardPage.screenShot("shouYe")
 
         filename = "%s/logPortion.txt" % reportPath
-        #logcat_file = open(filename, 'w')
-        logcmd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
-        #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
-        Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
+        self.logcatFile = filename
+        self.reset.clearLogcat()
 
+        # 广播开始收集数据
+        deviceID = DeviceInfoUtil().getDeviceID()
+        cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_meituan)
+        Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
+
+        # 用例执行
+        dashboardPage = DashboardPage(self , self.driver , self.logger)
+        dashboardPage.validSelf()
+        dashboardPage.screenShot("shouYe")
+#         filename = "%s/logPortion.txt" % reportPath
+#         #logcat_file = open(filename, 'w')
+#         logcmd = "adb logcat -v time -s ActivityManager:I | grep [AppLaunch] > %s" % filename
+#         #Poplog = Popen(logcmd,stdout=logcat_file,stderr=PIPE)
+#         Popen(logcmd, shell=True, stdout=PIPE, stderr=PIPE)
         dashboardPage.clickOnMy()
         myMeituanPage = MyMeituanPage(self , self.driver , self.logger)
         myMeituanPage.validSelf()
@@ -99,42 +104,18 @@ class MTuanWoDeDingDanTestCase(TestCase):
         myMeituanPage.validSelf()
         myMeituanPage.screenShot("woDe")
 
-        # 查看我的订单 -- 点击我的订单待付款
-        '''myMeituanPage.clickOnToBePaid()
-        myMeituanPage.validSelfToBePaid()
-        myMeituanPage.screenShot("woDeDaiFuKuan")
-        myMeituanPage.clickBackKey()
-        myMeituanPage.screenShot("woDe")
+        # 取得logcat log
+        cmdLogcat = "adb logcat -d > %s" % (filename)
+        os.system(cmdLogcat)
 
-        # 查看我的订单 -- 点击我的订单可使用
-        myMeituanPage.clickOnUse()
-        myMeituanPage.validSelfUse()
-        myMeituanPage.screenShot("woDeKeShiYong")
-        myMeituanPage.clickBackKey()
-        myMeituanPage.screenShot("woDe")
-
-        # 查看我的订单 -- 点击我的订单我的点评
-        myMeituanPage.clickOnComments()
-        myMeituanPage.validSelfCommets()
-        myMeituanPage.screenShot("woDeDianPing")
-        myMeituanPage.clickBackKey()
-        myMeituanPage.screenShot("woDe")
-
-        # 查看我的订单 -- 点击我的订单退货退款
-        myMeituanPage.clickOnReturnRefund()
-        myMeituanPage.validSelfReturnRefund()
-        myMeituanPage.screenShot("woDeTuiHuoTuiKuan")'''
-
-        #cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
-        cmdBroadcastEnd = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_meituan
+        # 广播结束停止收集数据
+        cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_meituan
         Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
 
         # 取得performance.xml文件
-        cmdPull = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        cmdPull = "adb pull /sdcard/YCY/performance.xml %s" % reportPath
         Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
 
-#         endTraffic, eTime = perf.getTraffic()
-#         perf.parseTrafficData(startTraffic, endTraffic, round(eTime-sTime), 'traffic.txt')
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MTuanWoDeDingDanTestCase)

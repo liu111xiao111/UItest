@@ -36,7 +36,7 @@ class GuangChangPaiDuiTestCase(TestCase):
 
     def tearDown(self):
         if not os.path.exists(self.logcatFile):
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (self.logcatFile)
+            cmdLogcat = "adb logcat -d > %s" % (self.logcatFile)
             os.system(cmdLogcat)
 
         files = glob.glob('*.png')
@@ -85,7 +85,7 @@ class GuangChangPaiDuiTestCase(TestCase):
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
 
-        for i in range(2):
+        for i in range(1):
             logFile = "%sguangchangpaidui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -122,7 +122,7 @@ class GuangChangPaiDuiTestCase(TestCase):
             squarePage.clickBackKey()
             searchPage.clickBackKey()
 
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            cmdLogcat = "adb logcat -d > %s" % (logFile)
             os.system(cmdLogcat)
 
             files = glob.glob('*.png')
