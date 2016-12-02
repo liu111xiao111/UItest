@@ -13,18 +13,18 @@ import unittest
 import HTMLTestRunner
 
 #from cases.ios.ffan.common.reportProcess import ReportHandle
-from cases.ios.ffan.routing_inspection_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
-from cases.ios.ffan.routing_inspection_test_cases.guangChangMaiDan import GuangChangMaiDanTestCase
-from cases.ios.ffan.routing_inspection_test_cases.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
-from cases.ios.ffan.routing_inspection_test_cases.guangChangSouSuo import GuangChangSouSuoTestCase
-from cases.ios.ffan.routing_inspection_test_cases.guangChangTingChe import GuangChangTingCheTestCase
-from cases.ios.ffan.routing_inspection_test_cases.guangChangZhaoDian import GuangChangZhaoDianTestCase
-from cases.ios.ffan.routing_inspection_test_cases.paiDuiQuHao import PaiDuiQuHaoTestCase
-from cases.ios.ffan.routing_inspection_test_cases.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
-from cases.ios.ffan.routing_inspection_test_cases.quanChengSouSuoPinPai import QuanChengSouSuoPinPaiTestCase
-from cases.ios.ffan.routing_inspection_test_cases.quanChengSouSuoShangPin import QuanChengSouSuoShangPinTestCase
-from cases.ios.ffan.routing_inspection_test_cases.woDeDengLu import WoDeDengLuTestCase
-from cases.ios.ffan.routing_inspection_test_cases.woDeTuiChu import WoDeTuiChuTestCase
+from cases.ios.ffan.stability_test.guangChangMaiDan import GuangChangMaiDanTestCase
+from cases.ios.ffan.stability_test.guangChangMeiShiHui import GuangChangMeiShiHuiTestCase
+from cases.ios.ffan.stability_test.guangChangSouSuo import GuangChangSouSuoTestCase
+from cases.ios.ffan.stability_test.guangChangTingChe import GuangChangTingCheTestCase
+from cases.ios.ffan.stability_test.guangChangZhaoDian import GuangChangZhaoDianTestCase
+from cases.ios.ffan.stability_test.paiDuiQuHao import PaiDuiQuHaoTestCase
+from cases.ios.ffan.stability_test.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
+from cases.ios.ffan.stability_test.quanChengSouSuoPinPai import QuanChengSouSuoPinPaiTestCase
+from cases.ios.ffan.stability_test.quanChengSouSuoShangPin import QuanChengSouSuoShangPinTestCase
+from cases.ios.ffan.stability_test.woDeDengLu import WoDeDengLuTestCase
+from cases.ios.ffan.stability_test.gouWuZhongXin import GouWuZhongXinTestCase
+from cases.ios.ffan.stability_test.woDeTuiChu import WoDeTuiChuTestCase
 
 from utility.mailProcess import sendTestResultMail
 
@@ -32,9 +32,9 @@ class Stability(object):
     pidList = []
 
     #总循环次数
-    ALLCASE_LOOP_TIMES = 2;
+    EXTERNAL_LOOP_TIMES = 1;
     #每个case循环次数
-    CASE_LOOP_TIMES = 10;
+    INTERNAL_LOOP_TIMES = 1;
 
     COMMAND = "idevicesyslog"
 
@@ -48,10 +48,10 @@ class Stability(object):
         保存log到回归测试目录
         :return:
         '''
-        logcatFile = "/Users/auto/Desktop/testlog.txt"
-        command = "%s > %s" % (self.COMMAND, logcatFile)
+        #logpath = "/Users/auto/Desktop/testlog.txt"
+        command = "%s > %s" % (self.COMMAND, "%s/log.txt" % logpath)
         os.system(command)
-        print('DEBUG GET LOE END!')
+        #print('DEBUG GET LOE END!')
 
 
     def _execCmd(self,cmd):
@@ -80,12 +80,31 @@ class Stability(object):
         self._getIdevicelogPid()
         for pid in self.pidList:
             self._execCmd('kill %s' % pid)
-            print(pid)
+            print("kill idevicelog pid %s" % pid)
 
+    def _startGetLog(self, logpath = ""):
+        '''
+        Thread for get log
+        :param logpath:
+        :return:
+        '''
+        t = threading.Thread(target=Stability()._saveLog(logpath))
+        t.start()
+
+    def _createPath(self,reportpath=""):
+        '''
+        Create path
+        :param reportpath:
+        :return:
+        '''
+        print("create path %s " % reportpath)
+        if not os.path.exists(reportpath):
+            os.makedirs(reportpath)
 
 if __name__ == "__main__":
     stability = Stability()
-    # Stability()._saveLog()
+    #stability._saveLog()
+
     #
     # t = threading.Thread(target=Stability()._saveLog)
     # t.start()
@@ -99,26 +118,23 @@ if __name__ == "__main__":
         sentMail = True
     build_num = sys.argv[1]
 
-    reportpath = "%s/stability/%s/%s/" % ("/Users/auto/workspace_pycharm/autotest", time.strftime("%Y%m%d"), build_num)
-
-    if not os.path.exists(reportpath):
-        os.makedirs(reportpath)
+    reportpath = "%s/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest/report", time.strftime("%Y%m%d"), build_num)
 
     suite = unittest.TestSuite()
-    runner = suite.TextTestRunner()
+    runner = unittest.TextTestRunner()
 
-    suite.addTest(QuanChengSouSuoPinPaiTestCase("test_case"))
-    # suite.addTest(QuanChengSouSuoShangPinTestCase("test_case"))
-    # suite.addTest(QuanChengSouSuoMenDianTestCase("test_case"))
-    # suite.addTest(GouWuZhongXinTestCase("test_case"))
-    # suite.addTest(GuangChangSouSuoTestCase("test_case"))
-    # suite.addTest(GuangChangZhaoDianTestCase("test_case"))
-    # suite.addTest(PaiDuiQuHaoTestCase("test_case"))
-    # suite.addTest(GuangChangTingCheTestCase("test_case"))
-    # suite.addTest(GuangChangMaiDanTestCase("test_case"))
-    # suite.addTest(GuangChangMeiShiHuiTestCase("test_case"))
-    # suite.addTest(WoDeDengLuTestCase("test_case"))
-    # suite.addTest(WoDeTuiChuTestCase("test_case"))
+
+    suite.addTest(QuanChengSouSuoShangPinTestCase("test_case"))
+    suite.addTest(QuanChengSouSuoMenDianTestCase("test_case"))
+    suite.addTest(GouWuZhongXinTestCase("test_case"))
+    suite.addTest(GuangChangSouSuoTestCase("test_case"))
+    suite.addTest(GuangChangZhaoDianTestCase("test_case"))
+    suite.addTest(PaiDuiQuHaoTestCase("test_case"))
+    suite.addTest(GuangChangTingCheTestCase("test_case"))
+    suite.addTest(GuangChangMaiDanTestCase("test_case"))
+    suite.addTest(GuangChangMeiShiHuiTestCase("test_case"))
+    suite.addTest(WoDeDengLuTestCase("test_case"))
+    suite.addTest(WoDeTuiChuTestCase("test_case"))
 
 
     # now = time.strftime('%H_%M_%S')
@@ -129,14 +145,30 @@ if __name__ == "__main__":
     #                                        description='Result for test')
 
     #循环次数计数
-    all_case_count = 0
+    external_case_count = 0
+    #内层case循环次数
+    internal_case_count = 0
 
-    while(all_case_count < stability.ALLCASE_LOOP_TIMES):
-        #print("all case 执行 %s 次 " % all_case_count)
+    while(external_case_count < stability.EXTERNAL_LOOP_TIMES):
+        print("external loop 执行 %s 次 " % external_case_count)
+        while(internal_case_count < stability.INTERNAL_LOOP_TIMES):
+            print("internal QuanChengSouSuoPinPaiTestCase loop 执行 %s 次 " % internal_case_count)
+            reportpath =  "%s/QuanChengSouSuoPinPaiTestCase" % reportpath
+            #创建路径
+            stability._createPath(reportpath)
+            #开始获取LOG
+            stability._startGetLog(reportpath)
 
-        runner.run(suite)
+            print("开始执行case...")
+            suite.addTest(QuanChengSouSuoPinPaiTestCase("test_case"))
+            runner.run(suite)
 
-        all_case_count = all_case_count + 1
+            #case执行完成后,kill idevicesyslog 进程
+            stability._killIdevicelogPid()
+            internal_case_count = internal_case_count + 1
+
+
+        external_case_count = external_case_count + 1
 
 
     # ReportHandle().handle(reportpath)
