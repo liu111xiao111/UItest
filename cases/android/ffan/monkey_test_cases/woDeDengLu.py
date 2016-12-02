@@ -36,6 +36,10 @@ class WoDeDengLuTestCase(TestCase):
     启动app，能够正常登陆
     '''
     def tearDown(self):
+        if not os.path.exists(self.logcatFile):
+            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (self.logcatFile)
+            os.system(cmdLogcat)
+
         files = glob.glob('*.png')
         if files:
             for file in files:
@@ -60,6 +64,7 @@ class WoDeDengLuTestCase(TestCase):
         os.makedirs(self.logPath)
         self.picturePath = os.path.join(reportPath + "/" + self.loopNumer + "/" + "wodedenglu/screenshot/")
         os.makedirs(self.picturePath)
+        self.logcatFile = "logcat.log"
         self.logger = Logger()
         self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
@@ -79,7 +84,10 @@ class WoDeDengLuTestCase(TestCase):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
-        for i in range(3):
+        for i in range(2):
+            logFile = "%swodedenglu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
+            self.logcatFile = logFile
+
             self.reset.clearLogcat()
 
             dashboardPage.clickOnMy()
@@ -87,13 +95,13 @@ class WoDeDengLuTestCase(TestCase):
             if myFfanPage.isLoginStatus():
                 myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
                 myFeiFanPage.clickOnSettings()
-    
+
                 settingPage = SettingsPage(testcase=self, driver=self.driver, logger=self.logger)
                 dashboardPage.waitBySeconds()
                 settingPage.validSelf()
                 settingPage.screenShotForStability("wodedenglu", self.loopNumer, str(i+1), "2")
                 settingPage.clickOnQuitAccountBtn()
-    
+
                 myFeiFanPage.waitBySeconds()
                 myFeiFanPage.validLogoutStatus()
                 myFeiFanPage.screenShotForStability("wodedenglu", self.loopNumer, str(i+1), "3")
@@ -112,7 +120,6 @@ class WoDeDengLuTestCase(TestCase):
             myFfanPage.screenShotForStability("wodedenglu", self.loopNumer, str(i+1), "8")
             dashboardPage.waitBySeconds(seconds=2)
 
-            logFile = "%swodedenglu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
             os.system(cmdLogcat)
 
