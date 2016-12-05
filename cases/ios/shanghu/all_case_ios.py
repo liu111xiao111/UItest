@@ -16,12 +16,12 @@ from cases.ios.shanghu.dongJieYuanGong import DongJieYuanGong
 from cases.ios.shanghu.jiaoYiGuanBiDingDan import JiaoYiGuanBiDingDan
 from cases.ios.shanghu.jieDongYuanGong import JieDongYuanGong
 from cases.ios.shanghu.jueSeLieBiao import JueSeLieBiao
-from cases.ios.shanghu.quanBuDingDanZhuangTai import QuanBuDingDanZhuangTai
-from cases.ios.shanghu.renYuanLiebiao import RenYuanLieBiao
+from cases.ios.shanghu.quanBuDingDan import QuanBuDingDanZhuangTai
+from cases.ios.shanghu.renYuanLieBiao import RenYuanLieBiao
 from cases.ios.shanghu.shanchuYuanGong import ShanChuYuanGong
-from cases.ios.shanghu.shangXueYuanRuKou import ShangXueYuanRuKou
+from cases.ios.shanghu.shangXueYuan import ShangXueYuanRuKou
 from cases.ios.shanghu.tuiChuDengLu import TuiChuDengLuCase
-from cases.ios.shanghu.xianShiQiangGouXiangXi import XianShiQiangGouXiangXi
+from cases.ios.shanghu.xianShiQiangGou import XianShiQiangGouXiangXi
 from cases.ios.shanghu.xinZengJueSe import XinZengJueSe
 from cases.ios.shanghu.xinZengYuanGong import XinZengYuanGongCase
 
