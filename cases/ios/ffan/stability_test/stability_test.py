@@ -32,9 +32,9 @@ class Stability(object):
     pidList = []
 
     #总循环次数
-    EXTERNAL_LOOP_TIMES = 1;
+    EXTERNAL_LOOP_TIMES = 2;
     #每个case循环次数
-    INTERNAL_LOOP_TIMES = 1;
+    INTERNAL_LOOP_TIMES = 2;
 
     COMMAND = "idevicesyslog"
 
@@ -88,7 +88,7 @@ class Stability(object):
         :param logpath:
         :return:
         '''
-        t = threading.Thread(target=Stability()._saveLog(logpath))
+        t = threading.Thread(target=Stability()._saveLog, args=(logpath,))
         t.start()
 
     def _createPath(self,reportpath=""):
@@ -100,6 +100,29 @@ class Stability(object):
         print("create path %s " % reportpath)
         if not os.path.exists(reportpath):
             os.makedirs(reportpath)
+
+
+    def _launchCase(self, case_name, class_name, external_case_count, internal_case_count,reportpath):
+        '''
+
+        :param reportpath:
+        :return:
+        '''
+        print("internal %s loop 执行 %s 次 " % (case_name,internal_case_count))
+        suite = unittest.TestSuite()
+        runner = unittest.TextTestRunner()
+        reportpath = "%s/%s/%s/%s" % (reportpath, case_name, external_case_count, internal_case_count)
+        # 创建路径
+        stability._createPath(reportpath)
+        # 开始获取LOG
+        stability._startGetLog(reportpath)
+
+        print("开始执行case...")
+        suite.addTest(class_name("test_case"))
+        runner.run(suite)
+
+        # case执行完成后,kill idevicesyslog 进程
+        stability._killIdevicelogPid()
 
 if __name__ == "__main__":
     stability = Stability()
@@ -120,21 +143,18 @@ if __name__ == "__main__":
 
     reportpath = "%s/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest/report", time.strftime("%Y%m%d"), build_num)
 
-    suite = unittest.TestSuite()
-    runner = unittest.TextTestRunner()
 
-
-    suite.addTest(QuanChengSouSuoShangPinTestCase("test_case"))
-    suite.addTest(QuanChengSouSuoMenDianTestCase("test_case"))
-    suite.addTest(GouWuZhongXinTestCase("test_case"))
-    suite.addTest(GuangChangSouSuoTestCase("test_case"))
-    suite.addTest(GuangChangZhaoDianTestCase("test_case"))
-    suite.addTest(PaiDuiQuHaoTestCase("test_case"))
-    suite.addTest(GuangChangTingCheTestCase("test_case"))
-    suite.addTest(GuangChangMaiDanTestCase("test_case"))
-    suite.addTest(GuangChangMeiShiHuiTestCase("test_case"))
-    suite.addTest(WoDeDengLuTestCase("test_case"))
-    suite.addTest(WoDeTuiChuTestCase("test_case"))
+    # suite.addTest(QuanChengSouSuoShangPinTestCase("test_case"))
+    # suite.addTest(QuanChengSouSuoMenDianTestCase("test_case"))
+    # suite.addTest(GouWuZhongXinTestCase("test_case"))
+    # suite.addTest(GuangChangSouSuoTestCase("test_case"))
+    # suite.addTest(GuangChangZhaoDianTestCase("test_case"))
+    # suite.addTest(PaiDuiQuHaoTestCase("test_case"))
+    # suite.addTest(GuangChangTingCheTestCase("test_case"))
+    # suite.addTest(GuangChangMaiDanTestCase("test_case"))
+    # suite.addTest(GuangChangMeiShiHuiTestCase("test_case"))
+    # suite.addTest(WoDeDengLuTestCase("test_case"))
+    # suite.addTest(WoDeTuiChuTestCase("test_case"))
 
 
     # now = time.strftime('%H_%M_%S')
@@ -145,26 +165,20 @@ if __name__ == "__main__":
     #                                        description='Result for test')
 
     #循环次数计数
-    external_case_count = 0
+    external_case_count = 1
     #内层case循环次数
-    internal_case_count = 0
+    internal_case_count = 1
 
-    while(external_case_count < stability.EXTERNAL_LOOP_TIMES):
+    while(external_case_count <= stability.EXTERNAL_LOOP_TIMES):
         print("external loop 执行 %s 次 " % external_case_count)
-        while(internal_case_count < stability.INTERNAL_LOOP_TIMES):
-            print("internal QuanChengSouSuoPinPaiTestCase loop 执行 %s 次 " % internal_case_count)
-            reportpath =  "%s/QuanChengSouSuoPinPaiTestCase" % reportpath
-            #创建路径
-            stability._createPath(reportpath)
-            #开始获取LOG
-            stability._startGetLog(reportpath)
+        while(internal_case_count <= stability.INTERNAL_LOOP_TIMES):
+            #开始运行case
+            stability._launchCase("QuanChengSouSuoShangPinTestCase",
+                                  QuanChengSouSuoShangPinTestCase,
+                                  external_case_count,
+                                  internal_case_count,
+                                  reportpath)
 
-            print("开始执行case...")
-            suite.addTest(QuanChengSouSuoPinPaiTestCase("test_case"))
-            runner.run(suite)
-
-            #case执行完成后,kill idevicesyslog 进程
-            stability._killIdevicelogPid()
             internal_case_count = internal_case_count + 1
 
 
