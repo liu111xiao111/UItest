@@ -31,6 +31,9 @@ class XianShiQiangGouXiangXi(TestCase):
         commodityManagement.clickCheckPendingButton()
         commodityManagement.checkCheckPendingItem()
 
+        #等待一段时间后,再点击已通过()
+        commodityManagement.waitBySeconds(20)
+
         #检查已经通过,商品详情
         commodityManagement.clickPassingButton()
         commodityManagement.checkCheckPassingItem()

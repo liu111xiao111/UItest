@@ -79,7 +79,7 @@ class Name:
     test_store_name = u"QA线上测试购物类门店1(快易花专用)_10011651"
     clearUserName = u"清除文本"
 
-    userName = u"商户下的员工"
+    userName = u"自动化测试"
     userIdentity = u"QA线上验证专用权限组"
     userStore = u"QA线上测试用普通商户"
     employeeManager = u"员工管理"
@@ -138,7 +138,7 @@ class Text:
     edit_employee_name_text = u"t"
 
     #新增加角色名字
-    new_role_name = "iOSRoleTest"
+    new_role_name = "iOSRole"
     #新增加角色说明
     new_role_explanation_context = "role explanation context"
 
