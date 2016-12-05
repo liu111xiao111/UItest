@@ -35,7 +35,7 @@ class MeiShiHuiTestCase(TestCase):
 
     def tearDown(self):
         if not os.path.exists(self.logcatFile):
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (self.logcatFile)
+            cmdLogcat = "adb logcat -d > %s" % (self.logcatFile)
             os.system(cmdLogcat)
 
         files = glob.glob('*.png')
@@ -82,7 +82,7 @@ class MeiShiHuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
-        for i in range(2):
+        for i in range(1):
             logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -99,7 +99,7 @@ class MeiShiHuiTestCase(TestCase):
             foodPage.validModulesForStability(self.loopNumer, str(i+1))
             foodPage.clickBackKey()
 
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            cmdLogcat = "adb logcat -d > %s" % (logFile)
             os.system(cmdLogcat)
 
             files = glob.glob('*.png')

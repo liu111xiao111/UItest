@@ -86,7 +86,7 @@ class LeFuZhangDanPage(SuperPage):
 
         startDate = date[0] +  '-' + date[1] + '-' + day
 
-        if day == '01':
+        if date[2] == '01':
             clickStartDate = day + " " + month + " " + date[0] + " selected"
         else:
             clickStartDate = day + " " + month + " " + date[0]
@@ -118,7 +118,7 @@ class LeFuZhangDanPage(SuperPage):
 
         searchEndDate = time.strftime('%Y-%m-%d')
 
-        if(startDate.split('-')[2] == "01"):
+        if(startDate.split('-')[2] == "01") and (searchEndDate.split('-')[2] == "01"):
             searchContent = u"查询时间 : " + startDate
         else:
             searchContent = u"查询时间 : " + startDate + u"至" + searchEndDate

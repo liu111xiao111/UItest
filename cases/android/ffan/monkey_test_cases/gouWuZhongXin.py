@@ -36,7 +36,7 @@ class GouWuZhongXinTestCase(TestCase):
 
     def tearDown(self):
         if not os.path.exists(self.logcatFile):
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (self.logcatFile)
+            cmdLogcat = "adb logcat -d > %s" % (self.logcatFile)
             os.system(cmdLogcat)
 
         files = glob.glob('*.png')
@@ -83,7 +83,7 @@ class GouWuZhongXinTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
 
-        for i in range(2):
+        for i in range(1):
             logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -108,7 +108,7 @@ class GouWuZhongXinTestCase(TestCase):
                 shoppingMallPage.screenShotForStability("gouwuzhongxin", self.loopNumer, str(i+1), str(tabNumber+2))
             shoppingMallPage.clickBackKey()
 
-            cmdLogcat = "/Users/uasd-qiaojx/Desktop/tools/android-sdk/platform-tools/adb logcat -d > %s" % (logFile)
+            cmdLogcat = "adb logcat -d > %s" % (logFile)
             os.system(cmdLogcat)
 
             files = glob.glob('*.png')
