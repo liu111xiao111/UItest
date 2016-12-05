@@ -22,7 +22,6 @@ class HuiYuanTestCase(TestCase):
     作者 宋波
     巡检checklist #26
     自动化测试 #26
-    广场详情页点击停车，正常进入停车模块
     '''
 
     def tearDown(self):
