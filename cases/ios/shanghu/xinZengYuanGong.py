@@ -38,6 +38,9 @@ class XinZengYuanGongCase(TestCase):
         #检查是否添加员工成功
         employeeModulePage.checkNewUserStatus()
 
+        #创建完成后,删除员工,以便下一次创建员工
+        employeeModulePage.deleteEmployee()
+
 
     def tearDown(self):
         self.driver.quit()

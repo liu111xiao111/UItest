@@ -64,7 +64,7 @@ class CommodityManagement(SuperPage):
         :return:
         '''
         logger.info("Click " + Name.commodity_management_passing + ' begin')
-        API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_passing)
+        API().clickElementByName(self.testcase, self.driver, self.logger, Name.commodity_management_passing,30)
         logger.info("Click " + Name.commodity_management_passing + ' end')
         API().screenShot(self.driver, 'pass')
 

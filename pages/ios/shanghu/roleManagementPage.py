@@ -60,4 +60,8 @@ class RoleManagementPage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger, name)
         logger.info('End 增加新角色')
         API().screenShot(self.driver,'createRoleSuccess')
+        #删除角色, 下一次才可以创建这个角色
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]")
+        API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
+
 
