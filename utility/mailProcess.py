@@ -10,6 +10,11 @@ from email import encoders
 
 from configs import constants
 
+TOTAL_TEST_CASES = '0'
+PASS_TEST_CASES = '0'
+FAIL_TEST_CASES = '0'
+ERROR_TEST_CASES = '0'
+
 
 class TestResultParser(html_parser.HTMLParser):
     def __init__(self):
@@ -182,6 +187,15 @@ class ReportHandle(object):
             self.resultStatus = "<tr id='result_row'><td class='totalClass'>%s</td><td class='passClass'>%s</td><td class='failClass'>%s</td><td class='errorClass'>%s</td></tr>"\
                                 % (int(reportSummary['Pass'])+int(reportSummary['Failure'])+int(reportSummary['Error']), reportSummary['Pass'], reportSummary['Failure'], reportSummary['Error'])
 
+            global TOTAL_TEST_CASES
+            TOTAL_TEST_CASES = str(int(reportSummary['Pass']) + int(reportSummary['Failure']) + int(reportSummary['Error']))
+            global PASS_TEST_CASES
+            PASS_TEST_CASES = reportSummary['Pass']
+            global FAIL_TEST_CASES
+            FAIL_TEST_CASES = reportSummary['Failure']
+            global ERROR_TEST_CASES
+            ERROR_TEST_CASES = reportSummary['Error']
+
             self.dataHandle()
 
             return self.generateReport()
@@ -303,5 +317,5 @@ def sendTestResultMail(reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/songbo/'
-    sendTestResultMail(reportPath, 'ios')
+    reportPath = '/Users/uasd-qiaojx/Desktop/report/shanghu/20161206/8'
+    sendTestResultMail(reportPath, 'android')

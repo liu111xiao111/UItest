@@ -41,6 +41,6 @@ class TestPrepare:
         xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
         xuanZeMenDianPage.waitBySeconds(2)
         xuanZeMenDianPage.validSelf()
-        xuanZeMenDianPage.waitBySeconds(2)
+        xuanZeMenDianPage.waitBySeconds(20)
         xuanZeMenDianPage.clickOnStore()
         xuanZeMenDianPage.clickOnConfirmBtn()

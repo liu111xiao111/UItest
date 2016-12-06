@@ -9,6 +9,7 @@ import time
 import HTMLTestRunner
 from unittest.suite import TestSuite
 from utility.mailProcess import sendTestResultMail
+from utility.messageProcess import sendTestResultMessage
 # from cases.android.ffan.common.performance import Performance
 from cases.android.ffan.common.reportProcess import ReportHandle
 # from cases.android.ffan.common.performanceProcess import PerformanceHandle
@@ -185,5 +186,6 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'android')
+        sendTestResultMessage('Android')
 #             from utility.performanceMailProcess import sendPerformanceMail
 #             sendPerformanceMail(startTime, endTime, reportpath, 'android')
