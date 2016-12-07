@@ -23,6 +23,7 @@ from cases.android.shanghu.routing_inspection_test_cases.shangXueYuan import Sha
 
 
 from utility.mailProcess import sendTestResultMail
+from utility.messageProcess import sendTestResultMessage
 
 
 if __name__ == "__main__":
@@ -61,3 +62,5 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'android')
+        sendTestResultMessage('Android')
+

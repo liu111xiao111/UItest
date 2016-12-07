@@ -10,6 +10,12 @@ from email import encoders
 
 from configs import constants
 
+
+DEVICE_TYPE = 'LGE LG-D802'
+SYSTEM_VERSION = '4.4.2'
+APP_VERSION = '4.10.1.0'
+START_TIME = '2016-12-07 01:06:01'
+DURATION_TIME = '0:59:43.798332'
 TOTAL_TEST_CASES = '0'
 PASS_TEST_CASES = '0'
 FAIL_TEST_CASES = '0'
@@ -187,6 +193,17 @@ class ReportHandle(object):
             self.resultStatus = "<tr id='result_row'><td class='totalClass'>%s</td><td class='passClass'>%s</td><td class='failClass'>%s</td><td class='errorClass'>%s</td></tr>"\
                                 % (int(reportSummary['Pass'])+int(reportSummary['Failure'])+int(reportSummary['Error']), reportSummary['Pass'], reportSummary['Failure'], reportSummary['Error'])
 
+
+            global DEVICE_TYPE
+            DEVICE_TYPE = self.phoneVersion
+            global SYSTEM_VERSION
+            SYSTEM_VERSION = self.buildVersion
+            global APP_VERSION
+            APP_VERSION = self.appVersion
+            global START_TIME
+            START_TIME = reportSummary['start_time']
+            global DURATION_TIME
+            DURATION_TIME = reportSummary['duration']
             global TOTAL_TEST_CASES
             TOTAL_TEST_CASES = str(int(reportSummary['Pass']) + int(reportSummary['Failure']) + int(reportSummary['Error']))
             global PASS_TEST_CASES
