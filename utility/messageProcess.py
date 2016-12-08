@@ -38,13 +38,27 @@ def sendMessage(phoneNumber, campaignMsg):
             print(str(e))
             return False
 
-def sendTestResultMessage(deviceType):
+def sendTestResultMessage(deviceType, appType):
     phonenums = constants.PhoneNumber.phoneNumberList
 #     ctxUser = 'v_qiaojiaxi'
 #     phoneCtx = ctx_phone_get(ctxUser)
 #     if phoneCtx:
 #         phonenums.append(phoneCtx)
-    msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+    #msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+    if deviceType == 'Android':
+        if appType == 'feifan':
+            msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+        elif appType == 'shanghu':
+            from configs.androidConfig import shanghuAppVersion
+            apkVersion = shanghuAppVersion
+            msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, apkVersion, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+        else:
+            msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+    elif deviceType == 'IOS':
+        msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+    else:
+        msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+
     for phonenum in phonenums:
         ret = sendMessage('[{0}]'.format(phonenum), '[["{0}","{0}","{1}"]]'.format('',msg))
         if ret== 1:
@@ -56,4 +70,4 @@ def sendTestResultMessage(deviceType):
 
 
 if __name__ == "__main__":
-    sendTestResultMessage('Android')
+    sendTestResultMessage('Android', 'feifan')

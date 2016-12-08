@@ -118,6 +118,19 @@ class DeviceInfoUtil:
         print(__type)
         return __type
 
+    def getShanghuAppVersion(self):
+        '''
+        获取安卓设备APP版本信息
+        '''
+        version = ''
+        versionCmd = 'adb shell dumpsys package com.feifan.bp | grep versionName'
+        ret = Popen(versionCmd, shell=True, stdout=PIPE, stderr=PIPE)
+        out, err = ret.communicate()
+        if out:
+            version = out.decode('utf-8').split('=')[1].split('\r\n')[0]
+
+        return version
+
 
 if __name__ == '__main__':
     deviceInfoUtil = DeviceInfoUtil()

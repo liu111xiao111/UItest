@@ -62,5 +62,5 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'android')
-        sendTestResultMessage('Android')
+        sendTestResultMessage('Android', 'shanghu')
 
