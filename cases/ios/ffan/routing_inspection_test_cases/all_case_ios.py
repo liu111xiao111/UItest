@@ -60,6 +60,7 @@ from cases.ios.ffan.routing_inspection_test_cases.woDeXiHuan import WoDeXiHuanTe
 from cases.ios.ffan.routing_inspection_test_cases.xianChangYao import XianChangYaoTestCase
 from cases.ios.ffan.routing_inspection_test_cases.yaoYiYao import YaoYiYaoTestCase
 from cases.ios.ffan.routing_inspection_test_cases.youHuiQuan import YouHuiQuanTestCase
+from utility.messageProcess import sendTestResultMessage
 
 
 from utility.mailProcess import sendTestResultMail
@@ -121,18 +122,11 @@ if __name__ == "__main__":
     suite.addTest(PiaoQuanTestCase("test_case"))
     suite.addTest(WoDeDingDanTestCase("test_case"))
     suite.addTest(WoDeHuiYuanKaBaoTestCase("test_case"))
-    # suite.addTest(FuKuanMaTestCase("test_case"))
     suite.addTest(LingHuaQianTestCase("test_case"))
-    # suite.addTest(WoDeFeiFanTongTestCase("test_case"))
-    # #suite.addTest(WoDeXiHuanTestCase("test_case"))
     suite.addTest(PaiDuiTestCase("test_case"))
     suite.addTest(WoDeTingCheJiaoFeiTestCase("test_case"))
-    # suite.addTest(WoDeSheZhiXiaoEMianMiTestCase("test_case"))
-    # suite.addTest(WoDeSheZhiMiMaTestCase("test_case"))
     suite.addTest(WoDeXiaoXiZhongXinTestCase("test_case"))
     suite.addTest(WoDeTuiChuTestCase("test_case"))
-    # suite.addTest(FeiFanTongShiminGongjiaokaTestCase("test_case"))
-    # suite.addTest(BanBenShengJiTestCase("test_case"))
 
     now = time.strftime('%H_%M_%S')
 
@@ -146,3 +140,4 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'ios')
+        sendTestResultMessage('ios')
