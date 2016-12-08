@@ -24,6 +24,7 @@ from cases.ios.shanghu.tuiChuDengLu import TuiChuDengLuCase
 from cases.ios.shanghu.xianShiQiangGou import XianShiQiangGouXiangXi
 from cases.ios.shanghu.xinZengJueSe import XinZengJueSe
 from cases.ios.shanghu.xinZengYuanGong import XinZengYuanGongCase
+from utility.messageProcess import sendTestResultMessage
 
 
 
@@ -77,3 +78,5 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'ios')
+        sendTestResultMessage('ios')
+
