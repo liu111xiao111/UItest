@@ -32,9 +32,9 @@ class Stability(object):
     pidList = []
 
     #总循环次数
-    EXTERNAL_LOOP_TIMES = 3;
+    EXTERNAL_LOOP_TIMES = 5;
     #每个case循环次数
-    INTERNAL_LOOP_TIMES = 3;
+    INTERNAL_LOOP_TIMES = 4;
 
     COMMAND = "idevicesyslog"
 
@@ -42,14 +42,14 @@ class Stability(object):
         pass
 
 
-    def _saveLog(self,logpath=""):
+    def _saveLog(self,logpath, case_name, external_case_count, internal_case_count):
         print('BEGIN get iOS log')
         '''
         保存log到回归测试目录
         :return:
         '''
         #logpath = "/Users/auto/Desktop/testlog.txt"
-        command = "%s > %s" % (self.COMMAND, "%s/log.txt" % logpath)
+        command = "%s > %s" % (self.COMMAND, "%s/%s_%s_%s" % (logpath, case_name, external_case_count, internal_case_count))
         os.system(command)
         #print('DEBUG GET LOE END!')
 
@@ -81,14 +81,15 @@ class Stability(object):
         for pid in self.pidList:
             self._execCmd('kill %s' % pid)
             print("kill idevicelog pid %s" % pid)
+        self.pidList = []
 
-    def _startGetLog(self, logpath = ""):
+    def _startGetLog(self, logpath , case_name, external_case_count, internal_case_count):
         '''
         Thread for get log
         :param logpath:
         :return:
         '''
-        t = threading.Thread(target=Stability()._saveLog, args=(logpath,))
+        t = threading.Thread(target=Stability()._saveLog, args=(logpath, case_name, external_case_count, internal_case_count))
         t.start()
 
     def _createPath(self,reportpath=""):
@@ -111,21 +112,37 @@ class Stability(object):
         print("internal %s loop 执行 %s 次 " % (case_name,internal_case_count))
         suite = unittest.TestSuite()
         runner = unittest.TextTestRunner()
-        reportpath = "%s/%s/%s/%s" % (reportpath, case_name, external_case_count, internal_case_count)
+        reportpath = "%s/%s" % (reportpath, case_name)
         # 创建路径
         stability._createPath(reportpath)
         # 开始获取LOG
-        stability._startGetLog(reportpath)
+        stability._startGetLog(reportpath, case_name, external_case_count, internal_case_count)
 
         print("开始执行case...")
         suite.addTest(class_name("test_case"))
         runner.run(suite)
 
         # case执行完成后,kill idevicesyslog 进程
+        time.sleep(5)
         stability._killIdevicelogPid()
+
+
+    def _writeCharInToSpecificFile(self, file ,context):
+        '''
+        Write char into specific file
+        :param file:
+        :param context:
+        :return:
+        '''
+        f = open(file, "a")
+        f.write(context + '\n')
+        f.close()
+
 
 if __name__ == "__main__":
     stability = Stability()
+    #Kill idevice log pi process before test
+    stability._killIdevicelogPid()
     #stability._saveLog()
 
     #
@@ -136,19 +153,15 @@ if __name__ == "__main__":
     #
     # Stability()._killIdevicelogPid()
 
-    sentMail = False
-    if len(sys.argv) > 2:
-        sentMail = True
     build_num = sys.argv[1]
 
     reportpath = "%s/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest/report", time.strftime("%Y%m%d"), build_num)
 
-    # now = time.strftime('%H_%M_%S')
+    #Cache file for saving data
+    cacheFile = "%s/%s" % (reportpath,'cache')
 
-    # filename = reportpath + 'feifan_automation_test_report_ios.html'
-    # fp = open(filename, 'wb')
-    # runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title='Feifan_automation_test_report_ios',
-    #                                        description='Result for test')
+    #开始时候时间
+    startTime = time.strftime('%H:%M:%S')
 
     #循环次数计数
     external_case_count = 1
@@ -196,9 +209,9 @@ if __name__ == "__main__":
             stability._launchCase("WoDeTuiChuTestCase", WoDeTuiChuTestCase, external_case_count,
                                   internal_case_count, reportpath)
 
-    # ReportHandle().handle(reportpath)
-    #
-    # if sentMail:
-    #     sendTestResultMail(reportpath, 'ios')
+    #结束时间
+    endTime = time.strftime('%H:%M:%S')
+    stability._writeCharInToSpecificFile(cacheFile, startTime)
+    stability._writeCharInToSpecificFile(cacheFile, endTime)
 
 
