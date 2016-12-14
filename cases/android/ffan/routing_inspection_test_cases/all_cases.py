@@ -186,6 +186,6 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'android')
-        sendTestResultMessage('Android')
+        sendTestResultMessage('Android', 'feifan')
 #             from utility.performanceMailProcess import sendPerformanceMail
 #             sendPerformanceMail(startTime, endTime, reportpath, 'android')

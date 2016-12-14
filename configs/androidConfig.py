@@ -10,6 +10,8 @@ buildVersion = DeviceInfoUtil().getBuildVersion()
 
 deviceID = DeviceInfoUtil().getDeviceID()
 
+shanghuAppVersion = DeviceInfoUtil().getShanghuAppVersion()
+
 caseList = {
     'ShanPingShouYeTestCase'                    : [u'闪屏首页', '1'],
     'ChengShiQieHuanTestCase'                   : [u'城市切换', '2'],
