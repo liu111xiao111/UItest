@@ -60,11 +60,21 @@ class SquareModulePage(SuperPage):
     '''
     def clickOnFood(self):
         logger.info("Click 美食汇 begin")
-        API().clickElementByName(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 SquareModulePageConfigs.text_food);
-        logger.info("Click 美食汇 end")
+        # API().clickElementByName(self.testcase,
+        #                          self.driver,
+        #                          self.logger,
+        #                          SquareModulePageConfigs.text_food);
+        logger.info("Scroll to 美食推荐 begin")
+
+        for _ in range(3):
+            self.scrollAsScreenPercent(0.5, 0.2, 0.5, 0.8)
+        logger.info("Scroll to 美食推荐 end")
+
+        logger.info("Click 更多 begin")
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[4]/UIAButton[1]")
+        logger.info("Click 更多 end")
+
+
 
     '''
         usage: 点击爱购物

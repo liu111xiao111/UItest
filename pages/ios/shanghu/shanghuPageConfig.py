@@ -63,7 +63,7 @@ class Xpath:
     add_new_role_button = "//UIAApplication[1]/UIAWindow[1]/UIAButton[1]"
 
     #商品管理,限时抢购,待审核
-    commodity_management_sale_check_pending = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[2]"
+    commodity_management_sale_check_pending = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
     #商品管理,限时抢购,已通过
     commodity_management_sale_passing = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[1]"
 
