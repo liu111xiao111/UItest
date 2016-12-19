@@ -7,23 +7,17 @@ Created on Nov 17, 2016
 import os
 import time
 import datetime
-import argparse
-import glob
 import shutil
-import xlrd
-import xlsxwriter
 import zipfile 
-from xlutils.copy import copy
-from tools.utility.constants import INSIDELOOPNUM,OUTLOOPNUM
 import openpyxl
-
-try:
-    import xml.etree.cElementTree as ET
-except ImportError:
-    import xml.etree.ElementTree as ET
-
 from tools.utility.constants import *
 
+
+ANR_ERROR = 0
+JNT_ERROR = 0
+JNT_CRASH = 0
+APP_DIED = 0
+SYSTEM_ERROR = 0
 
 class DataHandler(object):
     def __init__(self):
@@ -155,6 +149,29 @@ class Handler(object):
                 self.dataList[testCase]['ANR'] = caseErrorInfo['ANR']
                 self.dataList[testCase]['JRT'] = caseErrorInfo['JRT']
                 self.dataList[testCase]['NDK'] = caseErrorInfo['NDK']
+
+            global ANR_ERROR
+            ANR_ERROR = self.dataList['quanchengsousuo']['ANR'] + self.dataList['gouwuzhongxin']['ANR'] +\
+                        self.dataList['meishihui']['ANR'] + self.dataList['guangchangsousuo']['ANR'] + \
+                        self.dataList['guangchangzhaodian']['ANR'] + self.dataList['guangchangpaidui']['ANR'] +\
+                        self.dataList['guangchangtingche']['ANR'] + self.dataList['guangchangmaidan']['ANR'] +\
+                        self.dataList['wodedenglu']['ANR'] + self.dataList['wodetuichu']['ANR']
+            global JNT_ERROR
+            JNT_ERROR = self.dataList['quanchengsousuo']['JRT'] + self.dataList['gouwuzhongxin']['JRT'] +\
+                        self.dataList['meishihui']['JRT'] + self.dataList['guangchangsousuo']['JRT'] +\
+                        self.dataList['guangchangzhaodian']['JRT'] + self.dataList['guangchangpaidui']['JRT'] +\
+                        self.dataList['guangchangtingche']['JRT'] + self.dataList['guangchangmaidan']['JRT'] +\
+                        self.dataList['wodedenglu']['JRT'] + self.dataList['wodetuichu']['JRT']
+            global JNT_CRASH
+            JNT_CRASH = 0
+            global APP_DIED
+            APP_DIED = 0
+            global SYSTEM_ERROR
+            SYSTEM_ERROR = self.dataList['quanchengsousuo']['NDK'] + self.dataList['gouwuzhongxin']['NDK'] +\
+                           self.dataList['meishihui']['NDK'] + self.dataList['guangchangsousuo']['NDK'] + \
+                           self.dataList['guangchangzhaodian']['NDK'] + self.dataList['guangchangpaidui']['NDK'] +\
+                           self.dataList['guangchangtingche']['NDK'] + self.dataList['guangchangmaidan']['NDK'] +\
+                           self.dataList['wodedenglu']['NDK'] + self.dataList['wodetuichu']['NDK']
             xlsFile = os.path.join(self.reportPath, u'templateStability.xlsx')
         except Exception as e:
             print(e)

@@ -14,6 +14,8 @@ shanghuAppVersion = DeviceInfoUtil().getShanghuAppVersion()
 
 deviceNet = 'WIFI'
 
+stabilityTestCaseNumber = '10'
+
 caseList = {
     'ShanPingShouYeTestCase'                    : [u'闪屏首页', '1'],
     'ChengShiQieHuanTestCase'                   : [u'城市切换', '2'],
