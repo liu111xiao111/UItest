@@ -1,0 +1,27 @@
+2016-11-11 14:06:37 [INFO]::TestEngine: Start running dongJieYuanGong
+2016-11-11 14:06:37 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/dongJieYuanGong.py
+2016-11-11 14:06:37 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/dongJieYuanGong/dongJieYuanGong.log
+2016-11-11 14:06:37 [INFO]::TestEngine: setUp Begin
+2016-11-11 14:06:48 [INFO]::TestCase: Appium client init completed
+2016-11-11 14:06:48 [INFO]::TestCase: Clear data completed
+2016-11-11 14:06:49 [INFO]::TestEngine: setUp End
+2016-11-11 14:06:49 [INFO]::TestEngine: testDongJieYuanGong Begin
+2016-11-11 14:06:49 [INFO]::Page: Check 首页 begin
+2016-11-11 14:06:49 [INFO]::Page: Check 首页 end
+2016-11-11 14:06:50 [INFO]::Page: Click 员工管理 begin
+2016-11-11 14:06:52 [INFO]::Page: Click 员工管理 end
+2016-11-11 14:06:52 [INFO]::Page: Check 正常状态 begin
+2016-11-11 14:06:53 [INFO]::Page: Check 正常状态 end
+2016-11-11 14:06:54 [INFO]::Page: Click 冻结 begin
+2016-11-11 14:06:58 [INFO]::Page: Click 冻结 end
+2016-11-11 14:07:01 [INFO]::Page: Click 冻结状态 begin
+2016-11-11 14:07:01 [INFO]::Page: Click 冻结状态 end
+2016-11-11 14:07:03 [INFO]::Page: Check 冻结员工信息 begin
+2016-11-11 14:07:03 [INFO]::Page: Check 冻结员工信息 end
+2016-11-11 14:07:04 [INFO]::TestEngine: testDongJieYuanGong End
+2016-11-11 14:07:04 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/dongJieYuanGong.py
+2016-11-11 14:07:04 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 14:07:04 [INFO]::TestEngine: tearDown Begin
+2016-11-11 14:07:06 [INFO]::TestEngine: tearDown End
+2016-11-11 14:07:06 [INFO]::TestEngine: Stop running dongJieYuanGong
+2016-11-11 14:07:06 [INFO]::TestEngine: Time Elapsed: 0:00:27.216975

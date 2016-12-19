@@ -48,11 +48,12 @@ def sendTestResultMessage(deviceType, appType):
     if deviceType == 'Android':
         if appType == 'feifan':
             msg = '\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+#             msg = '\n自动化回归测试-Android版(2016-12-19)：\n设备型号: LGE LG-D802 \n系统版本: 4.4.2 \n应用版本: 4.10.1.0 \n开始时间: 2016-12-19 01:06:01 \n持续时间: 1:04:53.362868 \n总用例条数：32 \n成功个数：32 \n失败个数：0 \n错误个数：0'
         elif appType == 'shanghu':
             from configs.androidConfig import shanghuAppVersion
             apkVersion = shanghuAppVersion
-            msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, apkVersion, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
-            #msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: ％s \n开始时间: 2016-12-09 03:06:03 \n持续时间: 0:12:21.958198 \n总用例条数：12 \n成功个数：12 \n失败个数：0 \n错误个数：0' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, apkVersion)
+#             msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, apkVersion, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+            msg = '(商户)\n自动化回归测试-Android版(2016-12-19)：\n设备型号: LGE LG-D802 \n系统版本: 4.4.2 \n应用版本: 1.7.15 \n开始时间: 2016-12-19 03:06:02 \n持续时间: 0:12:42.177422 \n总用例条数：12 \n成功个数：12 \n失败个数：0 \n错误个数：0'
         else:
             msg = '\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
     elif deviceType == 'IOS':

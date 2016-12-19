@@ -7,19 +7,19 @@ from unittest.suite import TestSuite
 
 import HTMLTestRunner
 
-from cases.android.shanghu.common.reportProcess import ReportHandle
-from cases.android.shanghu.routing_inspection_test_cases.dengLu import DengLuTestCase
-from cases.android.shanghu.routing_inspection_test_cases.tuiChuDengLu import TuiChuDengLuTestCase
-from cases.android.shanghu.routing_inspection_test_cases.renYuanLieBiao import RenYuanLieBiaoTestCase
-from cases.android.shanghu.routing_inspection_test_cases.xinZengYuanGong import XinZengYuanGongTestCase
-from cases.android.shanghu.routing_inspection_test_cases.bianJiYuanGong import BianJiYuanGongTestCase
-from cases.android.shanghu.routing_inspection_test_cases.dongJieYuanGong import DongJieYuanGongTestCase
-from cases.android.shanghu.routing_inspection_test_cases.jieDongYuanGong import JieDongYuanGongTestCase
-from cases.android.shanghu.routing_inspection_test_cases.shanChuYuanGong import ShanChuYuanGongTestCase
-from cases.android.shanghu.routing_inspection_test_cases.jueSeLieBiao import JueSeLieBiaoTestCase
-from cases.android.shanghu.routing_inspection_test_cases.xinZengJueSe import XinZengJueSeTestCase
-from cases.android.shanghu.routing_inspection_test_cases.leFuZhangDan import LeFuZhangDanTestCase
-from cases.android.shanghu.routing_inspection_test_cases.shangXueYuan import ShangXueYuanTestCase
+from cases.android.bp.common.reportProcess import ReportHandle
+from cases.android.bp.routing_inspection_test_cases.dengLu import DengLuTestCase
+from cases.android.bp.routing_inspection_test_cases.tuiChuDengLu import TuiChuDengLuTestCase
+from cases.android.bp.routing_inspection_test_cases.renYuanLieBiao import RenYuanLieBiaoTestCase
+from cases.android.bp.routing_inspection_test_cases.xinZengYuanGong import XinZengYuanGongTestCase
+from cases.android.bp.routing_inspection_test_cases.bianJiYuanGong import BianJiYuanGongTestCase
+from cases.android.bp.routing_inspection_test_cases.dongJieYuanGong import DongJieYuanGongTestCase
+from cases.android.bp.routing_inspection_test_cases.jieDongYuanGong import JieDongYuanGongTestCase
+from cases.android.bp.routing_inspection_test_cases.shanChuYuanGong import ShanChuYuanGongTestCase
+from cases.android.bp.routing_inspection_test_cases.jueSeLieBiao import JueSeLieBiaoTestCase
+from cases.android.bp.routing_inspection_test_cases.xinZengJueSe import XinZengJueSeTestCase
+from cases.android.bp.routing_inspection_test_cases.leFuZhangDan import LeFuZhangDanTestCase
+from cases.android.bp.routing_inspection_test_cases.shangXueYuan import ShangXueYuanTestCase
 
 
 from utility.mailProcess import sendTestResultMail

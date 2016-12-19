@@ -87,3 +87,49 @@ CASE_FOLDER_LIST = {
 MAIL_LIST = ['lichunyan19@wanda.cn', 'sunkai31@wanda.cn', 'renyang5@wanda.cn', 'renhaitao@wanda.cn',
              'mulihui@wanda.cn', 'yindq@neusoft.com', 'chencheng@neusoft.com', 'tl@neusoft.com',
              'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn']
+
+
+OUTLOOPNUM = 1
+INSIDELOOPNUM = 1
+
+# 重点功能稳定性测试用例Name
+CASE_CESHI_HUANJING = u'测试环境'
+CASE_QUANCHENG_SOUSUO = u'全城搜索'
+CASE_GOUWU_ZHONGXIN = u'购物中心'
+CASE_MEISHUIHUI = u'美食汇'
+CASE_GUANGCHANG_SOUSUO = u'广场搜索'
+CASE_GUANGCHANG_ZHAODIAN = u'广场找店'
+CASE_GUANGCHANG_PAIDUI = u'广场排队'
+CASE_GUANGCHANG_TINGCHE = u'广场停车'
+CASE_GUANGCHANG_MAIDAN = u'广场买单'
+CASE_WODE_DENGLU = u'我的登录'
+CASE_WODE_TUICHU = u'我的退出'
+
+# 重点功能稳定性测试用例文件夹名
+STABILITY_CASE_FOLDER_LIST = {
+    CASE_QUANCHENG_SOUSUO     : 'quanchengsousuo',
+    CASE_GOUWU_ZHONGXIN       : 'gouwuzhongxin',
+    CASE_MEISHUIHUI           : 'meishihui',
+    CASE_GUANGCHANG_SOUSUO    : 'guangchangsousuo',
+    CASE_GUANGCHANG_ZHAODIAN  : 'guangchangzhaodian',
+    CASE_GUANGCHANG_PAIDUI    : 'guangchangpaidui',
+    CASE_GUANGCHANG_TINGCHE   : 'guangchangtingche',
+    CASE_GUANGCHANG_MAIDAN    : 'guangchangmaidan',
+    CASE_WODE_DENGLU          : 'wodedenglu',
+    CASE_WODE_TUICHU          : 'wodetuichu'
+}
+
+# 重点功能稳定性测试用例List
+STABILITY_REPORT_SHEET = [
+    CASE_CESHI_HUANJING,
+    CASE_QUANCHENG_SOUSUO,
+    CASE_GOUWU_ZHONGXIN,
+    CASE_MEISHUIHUI,
+    CASE_GUANGCHANG_SOUSUO,
+    CASE_GUANGCHANG_ZHAODIAN,
+    CASE_GUANGCHANG_PAIDUI,
+    CASE_GUANGCHANG_TINGCHE,
+    CASE_GUANGCHANG_MAIDAN,
+    CASE_WODE_DENGLU,
+    CASE_WODE_TUICHU
+]

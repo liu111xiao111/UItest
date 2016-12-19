@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from cases.android.ffan.common.monkey_process import MonkeyHandle
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
@@ -83,7 +84,7 @@ class GouWuZhongXinTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%sgouwuzhongxin_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 

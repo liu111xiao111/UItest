@@ -1,0 +1,52 @@
+2016-11-11 10:08:22 [INFO]::TestEngine: Start running xinZengYuanGong
+2016-11-11 10:08:22 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/xinZengYuanGong.py
+2016-11-11 10:08:22 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/xinZengYuanGong/xinZengYuanGong.log
+2016-11-11 10:08:22 [INFO]::TestEngine: setUp Begin
+2016-11-11 10:08:33 [INFO]::TestCase: Appium client init completed
+2016-11-11 10:08:33 [INFO]::TestCase: Clear data completed
+2016-11-11 10:08:35 [INFO]::TestEngine: setUp End
+2016-11-11 10:08:35 [INFO]::TestEngine: testXinZengYuanGong Begin
+2016-11-11 10:08:35 [INFO]::Page: Check 首页 begin
+2016-11-11 10:08:37 [INFO]::Page: Check 首页 end
+2016-11-11 10:08:38 [INFO]::Page: Click 员工管理 begin
+2016-11-11 10:08:38 [INFO]::Page: Click 员工管理 end
+2016-11-11 10:08:39 [INFO]::Page: Click 新增员工 begin
+2016-11-11 10:08:41 [INFO]::Page: Click 新增员工 end
+2016-11-11 10:08:41 [INFO]::Page: Click 选择角色 begin
+2016-11-11 10:08:49 [INFO]::Page: Click 选择角色 end
+2016-11-11 10:08:52 [INFO]::Page: Input 用户名 begin
+2016-11-11 10:09:00 [INFO]::Page: Input 用户名 end
+2016-11-11 10:09:01 [INFO]::Page: Input 手机号 begin
+2016-11-11 10:09:07 [INFO]::Page: Input 手机号 end
+2016-11-11 10:09:10 [INFO]::Page: Click 保存 begin
+2016-11-11 10:09:10 [INFO]::Page: Click 保存 end
+2016-11-11 10:09:10 [INFO]::Page: Check 新增员工 begin
+2016-11-11 10:09:13 [ERROR]::TestEngine: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/te-0.1.0-py3.5.egg/engine/runner/runner.py", line 93, in run
+    self._test()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/te-0.1.0-py3.5.egg/engine/runner/runner.py", line 55, in _test
+    test()
+  File "/Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/xinZengYuanGong.py", line 80, in testXinZengYuanGong
+    yuanGongGuanLiPage.validAddMember()
+  File "/Volumes/Disk/workspace/autotest/pages/android/shanghu/yuangongguanli_page.py", line 161, in validAddMember
+    API().assertEqual(self.testcase, self.logger, phone, XZYGPC.account_phone)
+  File "/Volumes/Disk/workspace/autotest/api/api.py", line 1003, in assertEqual
+    msg="Actual text : %s != Expected text : %s" % (actualText, expectText))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/case.py", line 820, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/case.py", line 1193, in assertMultiLineEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/unittest/case.py", line 665, in fail
+    raise self.failureException(msg)
+AssertionError: '测试1' != '15642668143'
+- 测试1
++ 15642668143
+ : Actual text : 测试1 != Expected text : 15642668143
+
+2016-11-11 10:09:13 [ERROR]::TestEngine: FAIL: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/xinZengYuanGong.py
+2016-11-11 10:09:13 [ERROR]::TestEngine: Get the screenshot of the failure.
+2016-11-11 10:09:14 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 10:09:14 [INFO]::TestEngine: tearDown Begin
+2016-11-11 10:09:16 [INFO]::TestEngine: tearDown End
+2016-11-11 10:09:16 [INFO]::TestEngine: Stop running xinZengYuanGong
+2016-11-11 10:09:16 [INFO]::TestEngine: Time Elapsed: 0:00:51.528566

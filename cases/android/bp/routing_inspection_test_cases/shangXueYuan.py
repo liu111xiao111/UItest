@@ -15,19 +15,18 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from cases.android.shanghu.common.test_prepare import TestPrepare
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
-from pages.android.shanghu.xinzengyuangong_page import XinZengYuanGongPage
+from pages.android.shanghu.shangxueyuan_page import ShangXueYuanPage
 from cases.logger import logger
 
 
-class BianJiYuanGongTestCase(TestCase):
+class ShangXueYuanTestCase(TestCase):
     '''
-    巡检 No.5
-    用例名 编辑员工
-    编辑员工检查
+    巡检 No.19
+    用例名 商学院
+    入口检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -49,35 +48,30 @@ class BianJiYuanGongTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testBianJiYuanGong(self):
+    def testShangXueYuan(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnMemberManager()
+        shouYePage.clickOnShangXueYuan()
 
-        yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
-        yuanGongGuanLiPage.validNormalStatus()
-        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
-        memberInfo = yuanGongGuanLiPage.getMemberInfo(1)
-        yuanGongGuanLiPage.clickOnEdit()
-
-        xinZengYuanGongPage = XinZengYuanGongPage(self , self.driver , self.logger)
-        xinZengYuanGongPage.screenShot("bianJiYuanGong")
-        xinZengYuanGongPage.clickOnChangeRole()
-        xinZengYuanGongPage.waitBySeconds(2)
-        xinZengYuanGongPage.screenShot("bianJiYuanGong")
-        xinZengYuanGongPage.inputEditName()
-        xinZengYuanGongPage.waitBySeconds(2)
-        xinZengYuanGongPage.screenShot("bianJiXingMing")
-        xinZengYuanGongPage.clickOnSave()
-
-        yuanGongGuanLiPage.validEditMember(memberInfo)
-        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
-
+        shangXueYuanPage = ShangXueYuanPage(self , self.driver , self.logger)
+        shangXueYuanPage.screenShot("shangXueYuan")
+        shangXueYuanPage.clickOnQuestion()
+        shangXueYuanPage.validQuestionDetails()
+        shangXueYuanPage.screenShot("changJianWenTi")
+        shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.screenShot("shangXueYuan")
+        shangXueYuanPage.clickOnGuide()
+        shangXueYuanPage.validGuideDetails()
+        shangXueYuanPage.screenShot("xinShouZhiNan")
+        shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.screenShot("shangXueYuan")
+        shangXueYuanPage.clickOnNotice()
+        shangXueYuanPage.validNoticeDetails()
+        shangXueYuanPage.screenShot("shangJiaXuZhi")
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(BianJiYuanGongTestCase)
+    suite = TestLoader().loadTestsFromTestCase(ShangXueYuanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

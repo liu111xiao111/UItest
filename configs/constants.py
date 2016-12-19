@@ -22,7 +22,7 @@ class Email():
                        'fengzc@neusoft.com', 'cui.yue@neusoft.com', 'zhao.xu_neu@neusoft.com',
                        'w.xin_neu@neusoft.com', 'wang-jinpeng@neusoft.com', 'jiangw-neu@neusoft.com',
                        'li_ys@neusoft.com', 'zhangshihao@neusoft.com', 'shang.jj@neusoft.com', 'huang.shuo@neusoft.com',
-                       'yang.hch@neusoft.com', 'zhaocj@neusoft.com', 'luxiangyang@neusoft.com', 'mulihui@wanda.cn',
+                       'zhaocj@neusoft.com', 'luxiangyang@neusoft.com', 'mulihui@wanda.cn',
                        'zhuying34@wanda.cn', 'zhangpeiying@wanda.cn', 'xiaoyongyong@chinasoftinfo.com', 'sun_r@neusoft.com',
                        'wuyingjie@neusoft.com', 'nian.h@neusoft.com', 'songjiaqi@neusoft.com','yin.shp@neusoft.com',
                        'pengjing@neusoft.com', 'wangyabin@chinasoftinfo.com', 'sun_r@neusoft.com', 'wuyingjie@neusoft.com',

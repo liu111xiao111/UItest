@@ -1,0 +1,25 @@
+2016-11-11 14:08:55 [INFO]::TestEngine: Start running shanChuYuanGong
+2016-11-11 14:08:55 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/shanChuYuanGong.py
+2016-11-11 14:08:55 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/shanChuYuanGong/shanChuYuanGong.log
+2016-11-11 14:08:55 [INFO]::TestEngine: setUp Begin
+2016-11-11 14:09:06 [INFO]::TestCase: Appium client init completed
+2016-11-11 14:09:06 [INFO]::TestCase: Clear data completed
+2016-11-11 14:09:10 [INFO]::TestEngine: setUp End
+2016-11-11 14:09:10 [INFO]::TestEngine: testShanChuYuanGong Begin
+2016-11-11 14:09:10 [INFO]::Page: Check 首页 begin
+2016-11-11 14:09:10 [INFO]::Page: Check 首页 end
+2016-11-11 14:09:11 [INFO]::Page: Click 员工管理 begin
+2016-11-11 14:09:12 [INFO]::Page: Click 员工管理 end
+2016-11-11 14:09:12 [INFO]::Page: Check 正常状态 begin
+2016-11-11 14:09:15 [INFO]::Page: Check 正常状态 end
+2016-11-11 14:09:16 [INFO]::Page: Click 删除 begin
+2016-11-11 14:09:20 [INFO]::Page: Click 删除 end
+2016-11-11 14:09:20 [INFO]::Page: Check 删除后的员工信息 begin
+2016-11-11 14:09:51 [INFO]::Page: Check 删除后的员工信息 end
+2016-11-11 14:09:51 [INFO]::TestEngine: testShanChuYuanGong End
+2016-11-11 14:09:51 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/shanChuYuanGong.py
+2016-11-11 14:09:51 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 14:09:51 [INFO]::TestEngine: tearDown Begin
+2016-11-11 14:09:53 [INFO]::TestEngine: tearDown End
+2016-11-11 14:09:53 [INFO]::TestEngine: Stop running shanChuYuanGong
+2016-11-11 14:09:53 [INFO]::TestEngine: Time Elapsed: 0:00:55.797803
