@@ -92,6 +92,22 @@ class SquareModulePage(SuperPage):
                                  SMPC.click_on_button_timeout)
         logger.info("Click 美食汇 end")
 
+    def clickOnFoodRecommend(self):
+        '''
+        usage: 点击美食推荐
+        '''
+        logger.info("Click 美食推荐 begin")
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(9):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 SMPC.text_food_recommend_more,
+                                 SMPC.click_on_button_timeout)
+        logger.info("Click 美食推荐 end")
+
     def clickOnShopping(self):
         '''
         usage: 点击爱购物

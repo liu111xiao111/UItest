@@ -65,6 +65,20 @@ class SearchPage(SuperPage):
         #API().screenShot(self.driver, "souSuo")
         logger.info("Input 门店名称 end")
 
+    def inputGuangChangStoreName(self):
+        '''
+        usage : 输入商家名(广场找店)
+        '''
+        logger.info("Input 门店名称 begin")
+        API().inputStringByResourceId(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      SPC.resource_et_search_input_et,
+                                      SPC.text_searching_square_store_name,
+                                      10)
+        #API().screenShot(self.driver, "souSuo")
+        logger.info("Input 门店名称 end")
+
     def inputBrandName(self):
         '''
         usage ： 输入品牌名称
@@ -108,15 +122,26 @@ class SearchPage(SuperPage):
         usage : 点击搜索出来的结果list1
         '''
         logger.info("Click 搜索列表第一项 begin")
-        API().getTextByResourceId(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  SPC.resource_id_specific_store_button,
-                                  90)
+#         API().getTextByResourceId(self.testcase,
+#                                   self.driver,
+#                                   self.logger,
+#                                   SPC.resource_id_specific_store_button,
+#                                   90)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SPC.xpath_search_result_first_item,
+                                  90)
+
+    def clickOnFindStoreFirstItem(self):
+        '''
+        usage : 点击搜索出来的结果list1
+        '''
+        logger.info("Click 找店搜索列表第一项 begin")
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  SPC.xpath_find_store_first_item,
                                   90)
 
         #return tempText

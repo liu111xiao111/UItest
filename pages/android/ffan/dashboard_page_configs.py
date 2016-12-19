@@ -107,6 +107,9 @@ class DashboardPageConfigs():
     #双十一
     resource_id_iv_double_eleven_iv = "com.wanda.app.wanhui:id/iv_nov11_page_bg"
 
+    # 圣诞抢福袋
+    resource_id_iv_lucky_bug_iv = "com.wanda.app.wanhui:id/iv_nov11_close"
+
     #双十一取消按钮
     resource_id_iv_double_eleven_cancle_iv = "com.wanda.app.wanhui:id/iv_nov11_close"
 

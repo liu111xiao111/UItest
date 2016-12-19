@@ -60,10 +60,10 @@ class FoodCategoryPage(SuperPage):
         usage: 进入抢券界面，根据餐饮的textview, 检查抢券界面是否加载出来.
         '''
         API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        FCPC.resource_id_tv_restaurant_tv,
-                                        FCPC.verify_view_timeout)
+                                         self.driver,
+                                         self.logger,
+                                         FCPC.resource_id_back,
+                                         FCPC.verify_view_timeout)
 
     def validModules(self):
         '''
@@ -74,8 +74,13 @@ class FoodCategoryPage(SuperPage):
                                                        self.logger,
                                                        FCPC.resource_id_bt_restaurant_bt,
                                                        FCPC.verify_view_timeout)'''
-        restaurantList = (u"火锅", u"自助餐", u"西餐", u"小吃快餐", u"川菜",
-                          u"韩国料理", u"江浙菜", u"日本料理", u"烧烤", u"面包甜点")
+        API().clickElementByText(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     FCPC.text_all_food,
+                                     FCPC.click_view_timeout)
+        restaurantList = (u"火锅", u"面包甜点", u"小吃快餐", u"韩国料理", u"西餐",
+                          u"作废", u"江浙菜")
         for restaurant in restaurantList:
             logger.info("Check 入口(%s) begin" % restaurant)
             API().clickElementByText(self.testcase,
@@ -86,8 +91,17 @@ class FoodCategoryPage(SuperPage):
             API().waitBySeconds(3)
             self.validRestaurant()
             API().screenShot(self.driver, "meiShiHuiRuKou")
-            self.clickBackKey()
+            self.clickOnStoreList()
+            self.validStoreList()
+            API().screenShot(self.driver, "menDianXiangQing")
+            API().clickBackKeyForAndroid(self.driver, self.logger)
             API().screenShot(self.driver, "meiShiHui")
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      FCPC.xpath_food_type,
+                                      FCPC.click_view_timeout)
+            API().screenShot(self.driver, "meiShiHuiRuKou")
             logger.info("Check 入口(%s) end" % restaurant)
 
     def validModulesForStability(self, outsideLoop="1", insideLoop="1"):
@@ -131,11 +145,41 @@ class FoodCategoryPage(SuperPage):
         '''
         usage : 点击抢券
         '''
+        logger.info("Click 抢券 begin")
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(5):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        FCPC.resource_id_bt_grab_bt,
                                        FCPC.click_view_timeout)
+        logger.info("Click 抢券 begin")
+
+    def clickOnStoreList(self):
+        '''
+        usage : 点击门店列表
+        '''
+        logger.info("Click 门店列表 begin")
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FCPC.xpath_store_list,
+                                  FCPC.click_view_timeout)
+        logger.info("Click 门店列表 end")
+
+    def validStoreList(self):
+        '''
+        usage: 进入抢券界面，根据餐饮的textview, 检查抢券界面是否加载出来.
+        '''
+        logger.info("Check 门店列表 begin")
+        API().assertElementByText(self.testcase,
+                                         self.driver,
+                                         self.logger,
+                                         FCPC.text_store_details,
+                                         FCPC.verify_view_timeout)
+        logger.info("Check 门店列表 end")
 
     def clickOnLePay(self):
         '''

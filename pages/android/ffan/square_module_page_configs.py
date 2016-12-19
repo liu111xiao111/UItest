@@ -19,6 +19,8 @@ class SquareModulePageConfigs():
     text_parking = u"停车";
     text_member = u"会员";
     text_food = u"美食汇";
+    text_food_recommend = u"美食推荐";
+    text_food_recommend_more = u"更多";
     text_shopping = u"爱购物";
     text_find_store = u"找店";
     text_indoor_map = u"室内地图";

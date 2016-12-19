@@ -58,7 +58,7 @@ class ReCiSouSuoTestCase(TestCase):
         dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
-        searchPage.waitBySeconds(10)
+        searchPage.waitBySeconds(5)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         '''searchPage.clickOnMovie()
@@ -74,7 +74,7 @@ class ReCiSouSuoTestCase(TestCase):
 
         # 点击热词“百货”
         searchPage.clickOnShoppingMall()
-        searchResultStorePage.waitBySeconds(10)
+        searchResultStorePage.waitBySeconds(5)
         # 获取检索热词的结果列表长度
         length = searchPage.getHotWordListLength()
         searchResultStorePage.validHotWords(length)
