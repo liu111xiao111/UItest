@@ -4,7 +4,7 @@ from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
-from cases.ios.shanghu.common.prepare import Prepare
+from cases.ios.bp.common.prepare import Prepare
 from pages.ios.shanghu.homePage import HomePage
 from pages.ios.shanghu.commodityManagementPage import CommodityManagement
 

@@ -279,4 +279,4 @@ class ReportHandle(object):
         return str(contents)
 
 if __name__ == "__main__":
-    ReportHandle().handle('/Users/auto/workspace_pycharm/autotest/report/shanghu/20161114/10/')
+    ReportHandle().handle('/Users/auto/workspace_pycharm/autotest/report/bp/20161114/10/')

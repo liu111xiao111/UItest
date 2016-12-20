@@ -4,15 +4,15 @@ from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
-from cases.ios.shanghu.common.prepare import Prepare
+from cases.ios.bp.common.prepare import Prepare
+from pages.ios.shanghu.dengLuPage import DengLuPage
 from pages.ios.shanghu.homePage import HomePage
-from pages.ios.shanghu.roleManagementPage import RoleManagementPage
 
+class TuiChuDengLuCase(TestCase):
+    '''
+    退出登录验证
+    '''
 
-class JueSeLieBiao(TestCase):
-    '''
-    角色列表检查
-    '''
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
@@ -21,18 +21,19 @@ class JueSeLieBiao(TestCase):
         prepare = Prepare(self, self.driver, self.logger)
         prepare.login()
 
-
     def test_case(self):
+        dengLuPage = DengLuPage(self, self.driver, self.logger)
         homePage = HomePage(self, self.driver, self.logger)
-        roleManagementPage = RoleManagementPage(self, self.driver, self.logger)
 
-        homePage.clickOnEmployeeModule()
+        dengLuPage.clickOnSettings()
+        dengLuPage.clickOnLogout()
 
-        #检查角色列表是否为空
-        roleManagementPage.checkRoleList()
-
+        dengLuPage.validPassWord()
 
 
 
     def tearDown(self):
         self.driver.quit()
+
+
+
