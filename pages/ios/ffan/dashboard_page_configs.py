@@ -123,7 +123,7 @@ class DashboardPageConfigs():
     name_sign_in_st = u"签到"
 
 
-    name_activities_deleate_icon = "pop delete"
+    name_activities_deleate_icon = "popUp delete"
 
 
     def __init__(self):

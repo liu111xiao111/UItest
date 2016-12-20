@@ -34,7 +34,7 @@ class Stability(object):
     #总循环次数
     EXTERNAL_LOOP_TIMES = 5;
     #每个case循环次数
-    INTERNAL_LOOP_TIMES = 4;
+    INTERNAL_LOOP_TIMES = 5;
 
     COMMAND = "idevicesyslog"
 
