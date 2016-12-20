@@ -31,13 +31,13 @@ class LoginPage(SuperPage):
         '''
         usage: 切换到正常登陆
         '''
-        logger.info("Click 普通登录 begin")
+        logger.info("Click 密码登录 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                 LPC.text_normal_login,
                                 10)
-        logger.info("Click 普通登录 end")
+        logger.info("Click 密码登录 end")
 
     def inputUserName(self):
         '''

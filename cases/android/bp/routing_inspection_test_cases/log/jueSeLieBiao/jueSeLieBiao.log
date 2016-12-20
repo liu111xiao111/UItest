@@ -1,0 +1,21 @@
+2016-11-11 14:10:18 [INFO]::TestEngine: Start running jueSeLieBiao
+2016-11-11 14:10:18 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/jueSeLieBiao.py
+2016-11-11 14:10:18 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/jueSeLieBiao/jueSeLieBiao.log
+2016-11-11 14:10:18 [INFO]::TestEngine: setUp Begin
+2016-11-11 14:10:29 [INFO]::TestCase: Appium client init completed
+2016-11-11 14:10:29 [INFO]::TestCase: Clear data completed
+2016-11-11 14:10:32 [INFO]::TestEngine: setUp End
+2016-11-11 14:10:32 [INFO]::TestEngine: testJueSeLieBiao Begin
+2016-11-11 14:10:32 [INFO]::Page: Check 首页 begin
+2016-11-11 14:10:33 [INFO]::Page: Check 首页 end
+2016-11-11 14:10:33 [INFO]::Page: Click 角色管理 begin
+2016-11-11 14:10:34 [INFO]::Page: Click 角色管理 end
+2016-11-11 14:10:34 [INFO]::Page: Check 角色管理页面 begin
+2016-11-11 14:10:37 [INFO]::Page: Check 角色管理页面 end
+2016-11-11 14:10:37 [INFO]::TestEngine: testJueSeLieBiao End
+2016-11-11 14:10:37 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/jueSeLieBiao.py
+2016-11-11 14:10:37 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 14:10:37 [INFO]::TestEngine: tearDown Begin
+2016-11-11 14:10:40 [INFO]::TestEngine: tearDown End
+2016-11-11 14:10:40 [INFO]::TestEngine: Stop running jueSeLieBiao
+2016-11-11 14:10:40 [INFO]::TestEngine: Time Elapsed: 0:00:19.784656

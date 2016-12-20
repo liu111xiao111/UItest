@@ -15,18 +15,18 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from cases.android.shanghu.common.test_prepare import TestPrepare
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.shangxueyuan_page import ShangXueYuanPage
+from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
 from cases.logger import logger
 
 
-class ShangXueYuanTestCase(TestCase):
+class JueSeLieBiaoTestCase(TestCase):
     '''
-    巡检 No.19
-    用例名 商学院
-    入口检查
+    巡检 No.9
+    用例名 角色列表
+    角色列表检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -48,30 +48,20 @@ class ShangXueYuanTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testShangXueYuan(self):
+    def testJueSeLieBiao(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
+
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnShangXueYuan()
+        shouYePage.clickOnRoleManager()
 
-        shangXueYuanPage = ShangXueYuanPage(self , self.driver , self.logger)
-        shangXueYuanPage.screenShot("shangXueYuan")
-        shangXueYuanPage.clickOnQuestion()
-        shangXueYuanPage.validQuestionDetails()
-        shangXueYuanPage.screenShot("changJianWenTi")
-        shangXueYuanPage.clickBackKey()
-        shangXueYuanPage.screenShot("shangXueYuan")
-        shangXueYuanPage.clickOnGuide()
-        shangXueYuanPage.validGuideDetails()
-        shangXueYuanPage.screenShot("xinShouZhiNan")
-        shangXueYuanPage.clickBackKey()
-        shangXueYuanPage.screenShot("shangXueYuan")
-        shangXueYuanPage.clickOnNotice()
-        shangXueYuanPage.validNoticeDetails()
-        shangXueYuanPage.screenShot("shangJiaXuZhi")
+        jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
+        jueSeGuanLiPage.validSelf()
+        jueSeGuanLiPage.screenShot("jueSeGuanLi")
+
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(ShangXueYuanTestCase)
+    suite = TestLoader().loadTestsFromTestCase(JueSeLieBiaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

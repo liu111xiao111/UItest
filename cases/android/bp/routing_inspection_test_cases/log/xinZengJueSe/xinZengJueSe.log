@@ -1,0 +1,33 @@
+2016-11-11 14:10:54 [INFO]::TestEngine: Start running xinZengJueSe
+2016-11-11 14:10:54 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/xinZengJueSe.py
+2016-11-11 14:10:54 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/xinZengJueSe/xinZengJueSe.log
+2016-11-11 14:10:54 [INFO]::TestEngine: setUp Begin
+2016-11-11 14:11:05 [INFO]::TestCase: Appium client init completed
+2016-11-11 14:11:05 [INFO]::TestCase: Clear data completed
+2016-11-11 14:11:08 [INFO]::TestEngine: setUp End
+2016-11-11 14:11:08 [INFO]::TestEngine: testXinZengJueSe Begin
+2016-11-11 14:11:08 [INFO]::Page: Check 首页 begin
+2016-11-11 14:11:09 [INFO]::Page: Check 首页 end
+2016-11-11 14:11:10 [INFO]::Page: Click 角色管理 begin
+2016-11-11 14:11:10 [INFO]::Page: Click 角色管理 end
+2016-11-11 14:11:11 [INFO]::Page: Click 新建角色 begin
+2016-11-11 14:11:12 [INFO]::Page: Click 新建角色 end
+2016-11-11 14:11:15 [INFO]::Api: Input 角色名 begin
+2016-11-11 14:11:23 [INFO]::Api: Input 角色名 end
+2016-11-11 14:11:24 [INFO]::Api: Click 角色权限 begin
+2016-11-11 14:11:36 [INFO]::Api: Click 角色权限 end
+2016-11-11 14:11:38 [INFO]::Api: Click 保存 begin
+2016-11-11 14:11:41 [INFO]::Api: Click 保存 end
+2016-11-11 14:11:41 [INFO]::Api: Check 功能权限 begin
+2016-11-11 14:11:41 [INFO]::Api: Check 功能权限 end
+2016-11-11 14:11:42 [INFO]::Api: Input 角色说明 begin
+2016-11-11 14:11:49 [INFO]::Api: Input 角色说明 end
+2016-11-11 14:11:50 [INFO]::Api: Click 保存 begin
+2016-11-11 14:11:53 [INFO]::Api: Click 保存 end
+2016-11-11 14:11:53 [INFO]::TestEngine: testXinZengJueSe End
+2016-11-11 14:11:53 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/xinZengJueSe.py
+2016-11-11 14:11:53 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 14:11:53 [INFO]::TestEngine: tearDown Begin
+2016-11-11 14:11:56 [INFO]::TestEngine: tearDown End
+2016-11-11 14:11:56 [INFO]::TestEngine: Stop running xinZengJueSe
+2016-11-11 14:11:56 [INFO]::TestEngine: Time Elapsed: 0:00:59.769473

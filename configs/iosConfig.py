@@ -10,6 +10,8 @@ buildVersion = DeviceInfoUtil().getIProductVersion()
 
 deviceID = DeviceInfoUtil().getUdid()
 
+deviceNet = 'WIFI'
+
 caseList = {
     # 'ShanPingShouYeTestCase'                        : [u'闪屏首页', '1'],
      'ChenShiQieHuanTestCase'                        : [u'城市切换', '2'],

@@ -316,6 +316,16 @@ class DashboardPage(SuperPage):
                                            self.logger,
                                            DPC.resource_id_iv_double_eleven_cancle_iv,
                                            DPC.click_on_button_timeout)
+    def ClickLuckBugCancleBtn(self):
+        '''
+        usage: 判断是否存圣诞抢福袋页面
+        '''
+        if (API().validElementByResourceId(self.driver, self.logger, DPC.resource_id_iv_lucky_bug_iv)):
+            API().clickElementByResourceId(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           DPC.resource_id_iv_lucky_bug_iv,
+                                           DPC.click_on_button_timeout)
 
     def getCityName(self):
         return API().getTextByXpath(self.testcase, self.driver, self.logger,

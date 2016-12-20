@@ -65,7 +65,13 @@ class MeiShiHuiTestCase(TestCase):
         foodPage.validFoodHomePage()
         foodPage.screenShot("meiShiHui")
 
-        # 检查所有子界面入口
+        # 检查抢券入口
+        foodPage.clickOnGrabCoupons()
+        foodPage.validGrabCoupons()
+        foodPage.screenShot("youHuiQuan")
+        foodPage.clickBackKey()
+
+        # 检查美食分类及门店列表
         foodPage.validModules()
 
         '''# 检查优惠打折

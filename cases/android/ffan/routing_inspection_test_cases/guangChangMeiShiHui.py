@@ -72,34 +72,34 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         #squarePage.waitBySeconds(20)
 
         #squarePage.scrollToFood()
-        squarePage.clickOnFood()
+        squarePage.clickOnFoodRecommend()
         squareFoodPage.validSelf()
         squareFoodPage.screenShot("meiShiHui")
 
-        squareFoodPage.clickOnFindRestaurant()
-        squareFoodPage.validFindRestaurant()
-        squareFoodPage.screenShot("zhaoCanTing")
-        squareFoodPage.clickBackKey()
-        squareFoodPage.screenShot("meiShiHui")
-
-        squareFoodPage.clickOnFindFavourable()
-        squareFoodPage.validFindFavourable()
-        squareFoodPage.screenShot("zhaoYouHui")
-        squareFoodPage.clickBackKey()
-        squareFoodPage.waitBySeconds(2)
-        squareFoodPage.screenShot("meiShiHui")
-
-        squareFoodPage.clickOnQueue()
-        squareFoodPage.validQueue()
-        squareFoodPage.screenShot("zhiNengPaiDui")
-        squareFoodPage.clickBackKey()
-        squareFoodPage.screenShot("meiShiHui")
-
-        squareFoodPage.clickOnStochastic()
-        squareFoodPage.validStochastic()
-        squareFoodPage.screenShot("bangNiTiao")
-        squareFoodPage.clickBackKey()
-        squareFoodPage.screenShot("meiShiHui")
+#         squareFoodPage.clickOnFindRestaurant()
+#         squareFoodPage.validFindRestaurant()
+#         squareFoodPage.screenShot("zhaoCanTing")
+#         squareFoodPage.clickBackKey()
+#         squareFoodPage.screenShot("meiShiHui")
+# 
+#         squareFoodPage.clickOnFindFavourable()
+#         squareFoodPage.validFindFavourable()
+#         squareFoodPage.screenShot("zhaoYouHui")
+#         squareFoodPage.clickBackKey()
+#         squareFoodPage.waitBySeconds(2)
+#         squareFoodPage.screenShot("meiShiHui")
+# 
+#         squareFoodPage.clickOnQueue()
+#         squareFoodPage.validQueue()
+#         squareFoodPage.screenShot("zhiNengPaiDui")
+#         squareFoodPage.clickBackKey()
+#         squareFoodPage.screenShot("meiShiHui")
+# 
+#         squareFoodPage.clickOnStochastic()
+#         squareFoodPage.validStochastic()
+#         squareFoodPage.screenShot("bangNiTiao")
+#         squareFoodPage.clickBackKey()
+#         squareFoodPage.screenShot("meiShiHui")
 
 
 if __name__ == "__main__":

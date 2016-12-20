@@ -1,0 +1,37 @@
+2016-11-11 09:48:22 [INFO]::TestEngine: Start running dengLu
+2016-11-11 09:48:22 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/dengLu.py
+2016-11-11 09:48:22 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/dengLu/dengLu.log
+2016-11-11 09:48:22 [INFO]::TestEngine: setUp Begin
+2016-11-11 09:48:34 [INFO]::TestCase: Appium client init completed
+2016-11-11 09:48:34 [INFO]::TestCase: Clear data completed
+2016-11-11 09:48:34 [INFO]::TestEngine: setUp End
+2016-11-11 09:48:34 [INFO]::TestEngine: testDengLu Begin
+2016-11-11 09:49:04 [INFO]::Page: Check 登录页面 begin
+2016-11-11 09:49:04 [INFO]::Api: Get element by resource id.
+2016-11-11 09:49:04 [INFO]::Page: Check 登录页面 end
+2016-11-11 09:49:05 [INFO]::Page: Input 用户名 begin
+2016-11-11 09:49:14 [INFO]::Page: Input 用户名 end
+2016-11-11 09:49:15 [INFO]::Page: Input 密码 begin
+2016-11-11 09:49:20 [INFO]::Page: Input 密码 end
+2016-11-11 09:49:21 [INFO]::Page: Click 登录 button begin
+2016-11-11 09:49:21 [INFO]::Page: Click 登录 button end
+2016-11-11 09:49:23 [INFO]::Page: Check 选择门店页面 begin
+2016-11-11 09:49:23 [INFO]::Api: Get element by resource id.
+2016-11-11 09:49:23 [INFO]::Page: Check 选择门店页面 end
+2016-11-11 09:49:26 [INFO]::Page: Click 门店 radio button begin
+2016-11-11 09:49:33 [INFO]::Page: Click 门店 radio button end
+2016-11-11 09:49:34 [INFO]::Page: Click 确认 button begin
+2016-11-11 09:49:34 [INFO]::Page: Click 确认 button end
+2016-11-11 09:49:34 [INFO]::Page: Check 首页 begin
+2016-11-11 09:49:36 [INFO]::Page: Check 首页 end
+2016-11-11 09:49:36 [INFO]::Page: Click 用户 icon begin
+2016-11-11 09:49:37 [INFO]::Page: Click 用户 icon end
+2016-11-11 09:49:37 [INFO]::Page: Check 登录信息页面 begin
+2016-11-11 09:49:39 [INFO]::Page: Check 登录信息页面 end
+2016-11-11 09:49:39 [INFO]::TestEngine: testDengLu End
+2016-11-11 09:49:39 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/dengLu.py
+2016-11-11 09:49:39 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 09:49:39 [INFO]::TestEngine: tearDown Begin
+2016-11-11 09:49:41 [INFO]::TestEngine: tearDown End
+2016-11-11 09:49:41 [INFO]::TestEngine: Stop running dengLu
+2016-11-11 09:49:41 [INFO]::TestEngine: Time Elapsed: 0:01:16.787294

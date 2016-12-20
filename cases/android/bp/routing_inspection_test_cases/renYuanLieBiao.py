@@ -15,19 +15,18 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from pages.android.shanghu.denglu_page import DengLuPage
-from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.dengluxinxi_page import DengLuXinXiPage
+from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 from cases.logger import logger
 
 
-class DengLuTestCase(TestCase):
+class RenYuanLieBiaoTestCase(TestCase):
     '''
-    巡检 No.1
-    用例名 登录
-    登录验证
+    巡检 No.3
+    用例名 人员列表
+    人员列表检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -47,41 +46,25 @@ class DengLuTestCase(TestCase):
         self.reset.clearData()
         logger.info("Clear data completed")
 
-    def testDengLu(self):
+        TestPrepare(self, self.driver, self.logger).prepare()
+
+    def testRenYuanLieBiao(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
-        login = shouYePage.validLogin()
-
-        if not login:
-            dengLuPage = DengLuPage(self , self.driver , self.logger)
-            dengLuPage.validSelf()
-            dengLuPage.screenShot("dengLu")
-
-            dengLuPage.inputUserName()
-            dengLuPage.screenShot("yongHuMing")
-            dengLuPage.inputPassWord()
-            dengLuPage.screenShot("miMa")
-            dengLuPage.clickOnLoginBtn()
-
-            xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
-            xuanZeMenDianPage.waitBySeconds(2)
-            xuanZeMenDianPage.validSelf()
-            xuanZeMenDianPage.waitBySeconds(2)
-            xuanZeMenDianPage.screenShot("xuanZeMenDian")
-            xuanZeMenDianPage.clickOnStore()
-            xuanZeMenDianPage.screenShot("xuanZeMenDian")
-            xuanZeMenDianPage.clickOnConfirmBtn()
 
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnUser()
+        shouYePage.clickOnMemberManager()
 
-        dengLuXinXiPage = DengLuXinXiPage(self , self.driver , self.logger)
-        dengLuXinXiPage.validSelf()
-        dengLuXinXiPage.screenShot("dengLuXinXi")
+        yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
+        yuanGongGuanLiPage.validNormalStatus()
+        yuanGongGuanLiPage.screenShot("zhengChangZhuangTai")
+        yuanGongGuanLiPage.clickOnFreezeStatus()
+        yuanGongGuanLiPage.validFreezeStatus()
+        yuanGongGuanLiPage.screenShot("dongJieZhuangTai")
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(DengLuTestCase)
+    suite = TestLoader().loadTestsFromTestCase(RenYuanLieBiaoTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

@@ -7,7 +7,7 @@ import time
 import unittest
 
 from cases.android.ffan.common.monkey_process import MonkeyHandle
-from utility.monkeyMailProcess import sendTestResultMail
+from utility.stabilityMailProcess import sendTestResultMail
 from cases.android.ffan.monkey_test_cases.quanChengSouSuo import QuanChengSouSuoTestCase
 from cases.android.ffan.monkey_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
 from cases.android.ffan.monkey_test_cases.meiShiHui import MeiShiHuiTestCase
@@ -18,6 +18,8 @@ from cases.android.ffan.monkey_test_cases.guangChangTingChe import GuangChangTin
 from cases.android.ffan.monkey_test_cases.guangChangMaiDan import GuangChangMaiDanTestCase
 from cases.android.ffan.monkey_test_cases.woDeDengLu import WoDeDengLuTestCase
 from cases.android.ffan.monkey_test_cases.woDeTuiChu import WoDeTuiChuTestCase
+from tools.stabilityHandler import Handler
+from tools.utility.constants import OUTLOOPNUM
 
 
 class CrashError(Exception):
@@ -43,7 +45,7 @@ if __name__ == "__main__":
 
     try:
         executeTimes = reportPath + "/executeTimes.txt"
-        for i in range(2):
+        for i in range(OUTLOOPNUM):
             f = open(executeTimes, "w")
             f.write(str(i+1))
             f.close()
@@ -63,6 +65,11 @@ if __name__ == "__main__":
             runner = unittest.TextTestRunner()
             runner.run(suite)
 
+        handler = Handler('Android')
+        resultsPath = "%s/report/stability/%s/%s" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if os.path.exists(resultsPath):
+            handler.handle(resultsPath)
+
         if os.path.exists(executeTimes):
             os.remove(executeTimes)
 
@@ -71,5 +78,5 @@ if __name__ == "__main__":
     finally:
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
         #MonkeyHandle().monkeyHandleForStability(startTime, endTime, reportPath)
-#         if sentMail:
-#             sendTestResultMail(startTime, endTime, reportPath, 'android')
+        if sentMail:
+            sendTestResultMail(startTime, endTime, reportPath, 'android')

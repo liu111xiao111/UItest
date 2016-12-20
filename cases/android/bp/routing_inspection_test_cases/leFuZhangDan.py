@@ -15,19 +15,18 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from cases.android.shanghu.common.test_prepare import TestPrepare
-from pages.android.shanghu.denglu_page import DengLuPage
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
-from pages.android.shanghu.shezhi_page import SheZhiPage
+from pages.android.shanghu.lefuzhangdan_page import LeFuZhangDanPage
 from cases.logger import logger
 
 
-class TuiChuDengLuTestCase(TestCase):
+class LeFuZhangDanTestCase(TestCase):
     '''
-    巡检 No.2
-    用例名 退出登录
-    退出登录验证
+    巡检 No.13
+    用例名 乐付账单
+    自定义日期查询账单检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -49,26 +48,25 @@ class TuiChuDengLuTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testTuiChuDengLu(self):
+    def testLeFuZhangDan(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
-        dengLuPage = DengLuPage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnSetting()
+        shouYePage.clickOnLefuBill()
 
-        sheZhiPage = SheZhiPage(self , self.driver , self.logger)
-        sheZhiPage.validSelf()
-        sheZhiPage.screenShot("sheZhi")
-        sheZhiPage.clickOnLogout()
-
-        dengLuPage.waitBySeconds(2)
-        dengLuPage.validPassword()
-        dengLuPage.screenShot("dengLu")
+        leFuZhangDanPage = LeFuZhangDanPage(self , self.driver , self.logger)
+        leFuZhangDanPage.screenShot("leFuZhangDan")
+        leFuZhangDanPage.clickOnUserDefined()
+        leFuZhangDanPage.validCalendar()
+        leFuZhangDanPage.screenShot("leFuZhangDan")
+        startDate = leFuZhangDanPage.clickOnStartDate()
+        leFuZhangDanPage.validSeachDate(startDate)
+        leFuZhangDanPage.validOrderInfo()
+        leFuZhangDanPage.screenShot("leFuZhangDan")
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(TuiChuDengLuTestCase)
+    suite = TestLoader().loadTestsFromTestCase(LeFuZhangDanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')

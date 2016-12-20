@@ -62,7 +62,7 @@ class ParkingAddLicensePlatePage(SuperPage):
                                  self.driver,
                                  self.logger,
                                  item,
-                                 60)
+                                 90)
         API().waitBySeconds(2)
         API().screenShot(self.driver, "tingCheRuKou")
         notice = API().validElementByXpath(self.driver, self.logger, PALPPC.xpath_notice, 10)

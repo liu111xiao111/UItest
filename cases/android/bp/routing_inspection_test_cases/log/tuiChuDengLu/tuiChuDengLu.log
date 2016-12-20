@@ -1,0 +1,25 @@
+2016-11-11 09:46:11 [INFO]::TestEngine: Start running tuiChuDengLu
+2016-11-11 09:46:11 [INFO]::TestEngine: Running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/tuiChuDengLu.py
+2016-11-11 09:46:11 [INFO]::TestEngine: Log file path is /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/log/tuiChuDengLu/tuiChuDengLu.log
+2016-11-11 09:46:11 [INFO]::TestEngine: setUp Begin
+2016-11-11 09:46:26 [INFO]::TestCase: Appium client init completed
+2016-11-11 09:46:26 [INFO]::TestCase: Clear data completed
+2016-11-11 09:46:28 [INFO]::TestEngine: setUp End
+2016-11-11 09:46:28 [INFO]::TestEngine: testTuiChuDengLu Begin
+2016-11-11 09:46:28 [INFO]::Page: Check 首页 begin
+2016-11-11 09:46:30 [INFO]::Page: Check 首页 end
+2016-11-11 09:46:31 [INFO]::Page: Click 设置 begin
+2016-11-11 09:46:31 [INFO]::Page: Click 设置 end
+2016-11-11 09:46:31 [INFO]::Page: Check 设置页面 begin
+2016-11-11 09:46:32 [INFO]::Page: Check 设置页面 end
+2016-11-11 09:46:33 [INFO]::Page: Click 退出登录 begin
+2016-11-11 09:46:38 [INFO]::Page: Click 退出登录 end
+2016-11-11 09:46:40 [INFO]::Page: Check 验证密码为空 begin
+2016-11-11 09:46:40 [INFO]::Page: Check 验证密码为空 end
+2016-11-11 09:46:41 [INFO]::TestEngine: testTuiChuDengLu End
+2016-11-11 09:46:41 [INFO]::TestEngine: PASS: running /Volumes/Disk/workspace/autotest/cases/android/shanghu/routing_inspection_test_cases/tuiChuDengLu.py
+2016-11-11 09:46:41 [INFO]::TestEngine: Process the screenshot files.
+2016-11-11 09:46:41 [INFO]::TestEngine: tearDown Begin
+2016-11-11 09:46:43 [INFO]::TestEngine: tearDown End
+2016-11-11 09:46:43 [INFO]::TestEngine: Stop running tuiChuDengLu
+2016-11-11 09:46:43 [INFO]::TestEngine: Time Elapsed: 0:00:29.322588

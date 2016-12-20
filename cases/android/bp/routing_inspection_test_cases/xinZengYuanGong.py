@@ -15,8 +15,8 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from cases.android.shanghu.common.test_prepare import TestPrepare
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
@@ -78,7 +78,7 @@ class XinZengYuanGongTestCase(TestCase):
         xinZengYuanGongPage.screenShot("shuRuShouJiHao")
         xinZengYuanGongPage.clickOnSave()
 
-        yuanGongGuanLiPage.waitBySeconds(5)
+        yuanGongGuanLiPage.waitBySeconds(10)
         yuanGongGuanLiPage.validAddMember()
         yuanGongGuanLiPage.screenShot("renYuanGuanLi")
         yuanGongGuanLiPage.clickBackKey()

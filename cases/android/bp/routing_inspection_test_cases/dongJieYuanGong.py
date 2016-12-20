@@ -15,18 +15,18 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.shanghu.common.clear_app_data import ClearAppData
-from cases.android.shanghu.common.test_prepare import TestPrepare
+from cases.android.bp.common.clear_app_data import ClearAppData
+from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
 from cases.logger import logger
 
 
-class RenYuanLieBiaoTestCase(TestCase):
+class DongJieYuanGongTestCase(TestCase):
     '''
-    巡检 No.3
-    用例名 人员列表
-    人员列表检查
+    巡检 No.6
+    用例名 冻结员工
+    冻结员工检查
     '''
     def tearDown(self):
         self.reset.clearData()
@@ -48,7 +48,7 @@ class RenYuanLieBiaoTestCase(TestCase):
 
         TestPrepare(self, self.driver, self.logger).prepare()
 
-    def testRenYuanLieBiao(self):
+    def testDongJieYuanGong(self):
         shouYePage = ShouYePage(self , self.driver , self.logger)
 
         shouYePage.validSelf()
@@ -57,14 +57,19 @@ class RenYuanLieBiaoTestCase(TestCase):
 
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
-        yuanGongGuanLiPage.screenShot("zhengChangZhuangTai")
+        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
+        memberInfo = yuanGongGuanLiPage.getMemberInfo(1)
+        yuanGongGuanLiPage.clickOnFreeze()
+        yuanGongGuanLiPage.waitBySeconds(2)
+        yuanGongGuanLiPage.screenShot("dongJie")
         yuanGongGuanLiPage.clickOnFreezeStatus()
-        yuanGongGuanLiPage.validFreezeStatus()
-        yuanGongGuanLiPage.screenShot("dongJieZhuangTai")
+        yuanGongGuanLiPage.waitBySeconds(5)
+        yuanGongGuanLiPage.validFreezeMemberInfo(memberInfo)
+        yuanGongGuanLiPage.screenShot("yuanGongGuanLi")
 
 
 if __name__ == "__main__":
-    suite = TestLoader().loadTestsFromTestCase(RenYuanLieBiaoTestCase)
+    suite = TestLoader().loadTestsFromTestCase(DongJieYuanGongTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = os.path.join(reportpath, 'Shanghu_automation_test_report_' + now + '.html')
