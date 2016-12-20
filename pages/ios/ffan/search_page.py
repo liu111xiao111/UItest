@@ -97,9 +97,10 @@ class SearchPage(SuperPage):
         usage: click on the movie button
         '''
         logger.info("Click 电影 begin")
-        API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SearchPageConfigs.text_movie_button,
-                                 SearchPageConfigs.click_on_button_timeout)
+        # API().clickElementByName(self.testcase, self.driver, self.logger,
+        #                          SearchPageConfigs.text_movie_button,
+        #                          SearchPageConfigs.click_on_button_timeout)
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAScrollView[1]/UIAButton[3]")
         API().screenShot(self.driver, "dianYing")
         logger.info("Click 电影 end")
 
@@ -121,6 +122,8 @@ class SearchPage(SuperPage):
         logger.info("Check 搜索结果页面 begin")
         tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
                                         xpath, SearchPageConfigs.get_timeout)
+        print("textContains:  %s  " % textContains)
+        print("tempText :  %s  " % tempText)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
         API().screenShot(self.driver,"souSuoJieGuo")
         logger.info("Check 搜索结果页面 end")
