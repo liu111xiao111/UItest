@@ -38,5 +38,7 @@ class SquareFoodPageConfigs():
     verify_assert_timeout = 10
     click_child_module_timeout = 10
 
+    text_food = u"美食汇"
+
     def __init__(self):
         pass;

@@ -29,6 +29,7 @@ class SquareModulePageConfigs():
     text_members_privilege = u"我的会员特权"
     # Click button time out
     click_on_button_timeout = 10
+    text_food_spotting = u"美食推荐"
 
     # Movie button
     text_movie_button = u"电影"
@@ -87,5 +88,6 @@ class SquareModulePageConfigs():
     xpath_privilege_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAStaticText[1]"
 #     xpath_ckeck_all_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAButton[1]"
     xpath_ckeck_all_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]/UIAStaticText[2]"
+
     def __init__(self):
         pass;

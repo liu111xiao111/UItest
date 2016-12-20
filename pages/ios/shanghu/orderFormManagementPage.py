@@ -77,9 +77,9 @@ class OrderFormManagementPage(SuperPage):
                                                "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
         #全部订单和交易关闭订单,一个界面,但是phonnumber xpath 不同
         if(whichcase=="QuanBuDingDan"):
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[27]"
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
         else:
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[27]"
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
 
         #滑动显示电话号码,再获取value
         logger.info('Scroll to 电话号码 begin')

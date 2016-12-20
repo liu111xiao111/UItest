@@ -73,15 +73,15 @@ class ShouYeTingCheTestCase(TestCase):
 
         parkingPage.validZhaoche()
         
-        parkingPage.clickOnFujintingche()
-        parkingPage.validFujintingche()
+        #parkingPage.clickOnFujintingche()
+        #parkingPage.validFujintingche()
         
-        parkingPage.clickBackKey()
+        #parkingPage.clickBackKey()
         
-        parkingPage.clickOnTingchequan()
-        parkingPage.validTingchequan()
+        #parkingPage.clickOnTingchequan()
+        #parkingPage.validTingchequan()
         
-        parkingPage.clickBackKey()
+        #parkingPage.clickBackKey()
         
         parkingPage.clickOnHelp()
         parkingPage.validHelp()

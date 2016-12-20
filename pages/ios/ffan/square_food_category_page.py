@@ -118,15 +118,17 @@ class SquareFoodPage(SuperPage):
         logger.info("Check 餐饮页面 end")
         API().screenShot(self.driver, "chanYin")
 
-    '''
-        usage : 进入广场模块，检查是否加载出来
-    '''
+
     def validSelf(self):
+        '''
+        验证美食汇
+        :return:
+        '''
         logger.info("Check 广场 begin")
         API().assertElementByName(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  SFPC.verify_food_home_page_title,
+                                  SFPC.text_food,
                                   SFPC.verify_assert_timeout);
         logger.info("Check 广场 end")
         API().screenShot(self.driver, "guangChang")
