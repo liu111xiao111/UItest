@@ -51,7 +51,7 @@ class OrderFormManagementPage(SuperPage):
         :return:
         '''
         logger.info('check 订单信息 begin')
-        orderInfoArr = (orderFormNumber, orderFormStatus, orderFormBuyer, orderFormDate )
+        orderInfoArr = (orderFormNumber, orderFormStatus, orderFormDate )
         # 获取订单详情页, 各个item内容
         orderFormNumberTemp = API().getTextByXpath(self.testcase,
                                                    self.driver,
@@ -75,9 +75,9 @@ class OrderFormManagementPage(SuperPage):
                                               self.driver,
                                               self.logger,
                                                "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
-        #全部订单和交易关闭订单,一个界面,但是phonnumber xpath 不同
+        #全部订单和交易关闭订单,一个界面,但是phonnumber xpath 不同(变化频繁,删除)
         if(whichcase=="QuanBuDingDan"):
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
+            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[32]"
         else:
             phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
 
@@ -101,7 +101,7 @@ class OrderFormManagementPage(SuperPage):
 
         amountPaidTemp = amountPaidTemp[1:]
 
-        orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormBuyerTemp, orderFormDateTemp)
+        orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormDateTemp)
 
         for index in range(len(orderInfoArr)):
             logger.info('order info: ' + orderInfoArr[index].strip())

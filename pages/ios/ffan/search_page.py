@@ -5,6 +5,7 @@ from pages.ios.common.superPage import SuperPage
 from pages.ios.ffan.search_page_configs import SearchPageConfigs
 from pages.logger import logger
 
+
 class SearchPage(SuperPage):
     '''
     作者 宋波
@@ -67,25 +68,33 @@ class SearchPage(SuperPage):
         API().screenShot(self.driver, "shuRuShangPin")
         logger.info("Input MU8600 end")
 
-    '''
-        usage ： 点击搜索
-    '''
 
     def clickOnSearch(self):
         '''
         usage: click on the search button.
         '''
-        logger.info("Click 搜索按钮 begin")
+        logger.info("Click 搜索 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  SearchPageConfigs.name_search_bt,
                                  SearchPageConfigs.click_on_button_timeout)
         logger.info("Click 搜索按钮 end")
 
-    '''
-        usage : 点击搜索出来的结果list1
-    '''
+
+    def clickPullDownListOfSearching(self):
+        '''
+        点击输入关键字,显示出的第一个下拉菜单
+        :return:
+        '''
+        logger.info("Click 搜索结果第一个 begin")
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]")
+        logger.info("Click 搜索按钮 end")
+
 
     def clickOnSearchResultFirstItem(self):
+        '''
+                usage : 点击搜索出来的结果list1
+        '''
         logger.info("Click 第一个搜索结果 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
                                   SearchPageConfigs.xpath_search_result_first_item_tv,
@@ -100,7 +109,8 @@ class SearchPage(SuperPage):
         # API().clickElementByName(self.testcase, self.driver, self.logger,
         #                          SearchPageConfigs.text_movie_button,
         #                          SearchPageConfigs.click_on_button_timeout)
-        API().clickElementByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAScrollView[1]/UIAButton[3]")
+        API().clickElementByXpath(self.testcase, self.driver, self.logger,
+                                  "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAScrollView[1]/UIAButton[3]")
         API().screenShot(self.driver, "dianYing")
         logger.info("Click 电影 end")
 
@@ -125,7 +135,7 @@ class SearchPage(SuperPage):
         print("textContains:  %s  " % textContains)
         print("tempText :  %s  " % tempText)
         API().assertTrue(self.testcase, self.logger, textContains in tempText)
-        API().screenShot(self.driver,"souSuoJieGuo")
+        API().screenShot(self.driver, "souSuoJieGuo")
         logger.info("Check 搜索结果页面 end")
 
     def inputKeywords(self, keywords):
@@ -148,6 +158,7 @@ class SearchPage(SuperPage):
                                   SearchPageConfigs.xpath_specific_square_st,
                                   SearchPageConfigs.click_on_button_timeout)
         logger.info("Click 特定广场 end")
+
 
 if __name__ == '__main__':
     pass;

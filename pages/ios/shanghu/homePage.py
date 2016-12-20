@@ -56,7 +56,7 @@ class HomePage(SuperPage):
        :return:
        '''
        logger.info('Click 员工管理 begin')
-       API().clickElementByName(self.testcase, self.driver, self.logger, Name.employeeManager)
+       API().clickElementByName(self.testcase, self.driver, self.logger, Name.employeeManager, 30)
        logger.info('Click 员工管理 begin')
        API().screenShot(self.driver, 'employeeModule')
 

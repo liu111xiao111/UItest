@@ -146,7 +146,7 @@ class EmployeeModulePage(SuperPage):
         :return:
         '''
         #取得被冻结员工名字
-        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_name)
+        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_name,30)
         logger.info('Begin 冻结员工 ' + name)
 
         logger.info('Click 冻结 begin')

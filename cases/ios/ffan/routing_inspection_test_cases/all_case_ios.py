@@ -140,4 +140,4 @@ if __name__ == "__main__":
 
     if sentMail:
         sendTestResultMail(reportpath, 'ios')
-        sendTestResultMessage('ios')
+        sendTestResultMessage('IOS', 'feifan')

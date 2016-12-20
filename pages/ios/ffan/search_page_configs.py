@@ -16,7 +16,7 @@ class SearchPageConfigs():
     xpath_search_result_first_item_tv = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]"
 
     # Click button time out
-    click_on_button_timeout = 10
+    click_on_button_timeout = 20
 
     # Input time out
     input_timeout = 10
