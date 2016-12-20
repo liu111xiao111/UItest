@@ -80,7 +80,7 @@ class FoodCategoryPage(SuperPage):
                                      FCPC.text_all_food,
                                      FCPC.click_view_timeout)
         restaurantList = (u"火锅", u"面包甜点", u"小吃快餐", u"韩国料理", u"西餐",
-                          u"作废", u"江浙菜")
+                          u"江浙菜", u"咖啡厅")
         for restaurant in restaurantList:
             logger.info("Check 入口(%s) begin" % restaurant)
             API().clickElementByText(self.testcase,

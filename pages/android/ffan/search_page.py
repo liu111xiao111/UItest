@@ -204,7 +204,7 @@ class SearchPage(SuperPage):
                              SPC.assert_view_timeout)
         API().assertTrue(self.testcase,
                          self.logger,
-                         textContains in text)
+                         textContains in text.lower())
         logger.info("Check 搜索结果 end")
 
     def inputKeywords(self, keywords):

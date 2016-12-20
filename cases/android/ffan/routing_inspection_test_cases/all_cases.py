@@ -89,7 +89,8 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         sentMail = True
     build_num = sys.argv[1]
-    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/songbo/workspace/autotest", time.strftime("%Y%m%d"), build_num)
+    #reportpath = "%s/report/ffan/%s/%s/" % ("/Users/songbo/workspace/autotest", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/ffan/%s/%s/" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
