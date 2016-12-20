@@ -44,11 +44,11 @@ class ReCiSousuoTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.clickOnMovie()
+        searchPage.waitBySeconds(15)
         searchPage.validSearchResult(u"电影", "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")
-        searchPage.clickOnSpecificMovie()
+        #searchPage.clickOnSpecificMovie()
 
-        searchPage.waitBySeconds(5)
-
+        searchPage.waitBySeconds(15)
         # storeInfoPage = StoreInfoPage(self, self.driver, self.logger)
         # storeInfoPage.validSelf()
 
