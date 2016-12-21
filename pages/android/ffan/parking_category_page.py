@@ -63,9 +63,14 @@ class ParkingCategoryPage(SuperPage):
         usage : 点击添加车牌
         '''
         logger.info("Click 添加车牌 begin")
-        API().clickElementByText(self.testcase,
-                                 self.driver,
-                                 self.logger,
-                                 PCPC.text_add_license_plate,
-                                 10)
+#         API().clickElementByText(self.testcase,
+#                                  self.driver,
+#                                  self.logger,
+#                                  PCPC.text_add_license_plate,
+#                                  10)
+        API().clickElementByXpath(self.testcase,
+                                self.driver,
+                                self.logger,
+                                PCPC.xpath_add_license_plate,
+                                20)
         logger.info("Click 添加车牌 end")

@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+#from tools.utility.constants import INSIDELOOPNUM
 from cases.android.ffan.common.test_prepare import TestPrepare
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage;

@@ -32,7 +32,7 @@ class LefuPayDetailPage(SuperPage):
         API().inputStringByResourceId(self.testcase, self.driver, self.logger,
                                       LPDPC.resource_id_total_money,
                                       LPDPC.total_money,
-                                      10)
+                                      60)
         logger.info("Input 输入金额 end")
 
     def clickOnPay(self):
@@ -42,5 +42,5 @@ class LefuPayDetailPage(SuperPage):
         logger.info("Click 确认购买 begin")
         API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        LPDPC.resource_id_pay,
-                                       10)
+                                       60)
         logger.info("Click 确认购买 end")

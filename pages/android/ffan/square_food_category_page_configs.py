@@ -17,6 +17,7 @@ class SquareFoodPageConfigs():
 
     # 验证美食主界面id
     verify_food_home_page_resourceID = "com.wanda.app.wanhui:id/common_title_view_layout_title"
+    verify_text_food = u"美食汇"
 
     # 验证找餐厅界面id
     verify_find_restaurant_resourceID = "com.wanda.app.wanhui:id/pic"

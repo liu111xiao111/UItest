@@ -11,7 +11,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from tools.utility.constants import INSIDELOOPNUM
-from cases.android.ffan.common.monkey_process import MonkeyHandle
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from pages.android.ffan.shopping_mall_page import ShoppingMallPage
@@ -116,9 +115,6 @@ class GouWuZhongXinTestCase(TestCase):
             if files:
                 for file in files:
                     shutil.move(file, self.picturePath)
-
-            # 生成HTML
-            #MonkeyHandle().HandleForStability(logFile)
 
 
 if __name__ == "__main__":

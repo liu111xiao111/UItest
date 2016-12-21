@@ -75,6 +75,8 @@ class WoDePiaoQuanTestCase(TestCase):
         salesPromotionPage.clickBackKey()'''
 
         # Click "我的票券"
+        dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")

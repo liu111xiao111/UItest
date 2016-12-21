@@ -56,6 +56,8 @@ class WoDeDengLuTestCase(TestCase):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
+        dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
         myFfanPage.screenShot("woDe")
         if myFfanPage.isLoginStatus():

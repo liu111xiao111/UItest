@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from pages.android.ffan.dashboard_page import DashboardPage
@@ -84,7 +85,7 @@ class GuangChangSouSuoTestCase(TestCase):
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%sguangchangsousuo_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -112,10 +113,10 @@ class GuangChangSouSuoTestCase(TestCase):
             searchPage.inputStoreName()
             searchPage.screenShotForStability("guangchangsousuo", self.loopNumer, str(i+1), "7")
             searchPage.clickOnSearch()
-            searchPage.validSearchResult(u"通州", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
+            searchPage.validSearchResult(u"帝娜朵拉", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
             #tempText = searchPage.clickOnSearchResultFirstItem()
             searchPage.screenShotForStability("guangchangsousuo", self.loopNumer, str(i+1), "8")
-            searchPage.clickOnSearchResultFirstItem()
+            searchPage.clickOnFindStoreFirstItem()
 
             searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
             #searchResultStorePage.validKeywords(tempText)

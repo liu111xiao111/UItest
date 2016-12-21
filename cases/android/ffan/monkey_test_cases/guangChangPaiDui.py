@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.square_queue_page import SquareQueuePage
 from pages.android.ffan.dashboard_page import DashboardPage
@@ -85,7 +86,7 @@ class GuangChangPaiDuiTestCase(TestCase):
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         searchPage = SearchPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%sguangchangpaidui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -129,9 +130,6 @@ class GuangChangPaiDuiTestCase(TestCase):
             if files:
                 for file in files:
                     shutil.move(file, self.picturePath)
-
-            # 生成HTML
-            #MonkeyHandle().HandleForStability(logFile)
 
 
 if __name__ == "__main__":
