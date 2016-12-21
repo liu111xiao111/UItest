@@ -8,22 +8,22 @@ from unittest.suite import TestSuite
 
 import HTMLTestRunner
 
-from cases.ios.shanghu.common.reportProcess import ReportHandle
+from cases.ios.bp.common.reportProcess import ReportHandle
 
-from cases.ios.shanghu.bianJiYuanGong import BianJiYuanGong
-from cases.ios.shanghu.dengLu import DenggLuCase
-from cases.ios.shanghu.dongJieYuanGong import DongJieYuanGong
-from cases.ios.shanghu.jiaoYiGuanBiDingDan import JiaoYiGuanBiDingDan
-from cases.ios.shanghu.jieDongYuanGong import JieDongYuanGong
-from cases.ios.shanghu.jueSeLieBiao import JueSeLieBiao
-from cases.ios.shanghu.quanBuDingDan import QuanBuDingDanZhuangTai
-from cases.ios.shanghu.renYuanLieBiao import RenYuanLieBiao
-from cases.ios.shanghu.shanchuYuanGong import ShanChuYuanGong
-from cases.ios.shanghu.shangXueYuan import ShangXueYuanRuKou
-from cases.ios.shanghu.tuiChuDengLu import TuiChuDengLuCase
-from cases.ios.shanghu.xianShiQiangGou import XianShiQiangGouXiangXi
-from cases.ios.shanghu.xinZengJueSe import XinZengJueSe
-from cases.ios.shanghu.xinZengYuanGong import XinZengYuanGongCase
+from cases.ios.bp.bianJiYuanGong import BianJiYuanGong
+from cases.ios.bp.dengLu import DenggLuCase
+from cases.ios.bp.dongJieYuanGong import DongJieYuanGong
+from cases.ios.bp.jiaoYiGuanBiDingDan import JiaoYiGuanBiDingDan
+from cases.ios.bp.jieDongYuanGong import JieDongYuanGong
+from cases.ios.bp.jueSeLieBiao import JueSeLieBiao
+from cases.ios.bp.quanBuDingDan import QuanBuDingDanZhuangTai
+from cases.ios.bp.renYuanLieBiao import RenYuanLieBiao
+from cases.ios.bp.shanchuYuanGong import ShanChuYuanGong
+from cases.ios.bp.shangXueYuan import ShangXueYuanRuKou
+from cases.ios.bp.tuiChuDengLu import TuiChuDengLuCase
+from cases.ios.bp.xianShiQiangGou import XianShiQiangGouXiangXi
+from cases.ios.bp.xinZengJueSe import XinZengJueSe
+from cases.ios.bp.xinZengYuanGong import XinZengYuanGongCase
 from utility.messageProcess import sendTestResultMessage
 
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     # root_dir = os.path.dirname(
     #    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
     # reportpath = "%s/report/ffan/%s/%s/" % ("/Users/ds/jenkins/workspace/android_allcaseauto/autotest/AutoFrameworkForAppiumPy", time.strftime("%Y%m%d"), build_num)
-    reportpath = "%s/report/shanghu/%s/%s/" % ("/Users/auto/workspace_pycharm/autotest", time.strftime("%Y%m%d"), build_num)
+    reportpath = "%s/report/bp/%s/%s/" % ("/Users/auto/workspace_pycharm/autotest", time.strftime("%Y%m%d"), build_num)
     if not os.path.exists(reportpath):
         os.makedirs(reportpath)
 
@@ -79,4 +79,4 @@ if __name__ == "__main__":
     if sentMail:
         sendTestResultMail(reportpath, 'ios')
         # sendTestResultMessage('ios')
-        sendTestResultMessage('IOS', 'shanghu')
+        sendTestResultMessage('IOS', 'bp')

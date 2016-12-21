@@ -4,14 +4,14 @@ from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
-from cases.ios.shanghu.common.prepare import Prepare
+from cases.ios.bp.common.prepare import Prepare
 from pages.ios.shanghu.homePage import HomePage
-from pages.ios.shanghu.roleManagementPage import RoleManagementPage
+from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
 
-class XinZengJueSe(TestCase):
+class JieDongYuanGong(TestCase):
     '''
-    角色列表检查
+    解冻员工检查
     '''
     def setUp(self):
         self.logger = Logger()
@@ -24,13 +24,12 @@ class XinZengJueSe(TestCase):
 
     def test_case(self):
         homePage = HomePage(self, self.driver, self.logger)
-        roleManagementPage = RoleManagementPage(self, self.driver, self.logger)
+        employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
-        homePage.clickOnRoleManagement()
+        homePage.clickOnEmployeeModule()
 
-        roleManagementPage.createNewRole()
+        employeeModulePage.jieDongEmployee()
 
-        roleManagementPage.waitBySeconds(10)
 
 
     def tearDown(self):

@@ -4,15 +4,16 @@ from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
-from cases.ios.shanghu.common.prepare import Prepare
+from cases.ios.bp.common.prepare import Prepare
 from pages.ios.shanghu.homePage import HomePage
 from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
 
 
-class JieDongYuanGong(TestCase):
+class XinZengYuanGongCase(TestCase):
     '''
-    解冻员工检查
+    新增员工检查
     '''
+
     def setUp(self):
         self.logger = Logger()
         self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
@@ -27,9 +28,18 @@ class JieDongYuanGong(TestCase):
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
         homePage.clickOnEmployeeModule()
+        #点击新增员工
+        employeeModulePage.clickAddEmployeeButton()
+        #选择角色
+        employeeModulePage.selectRole()
+        #输入姓名电话号,保存
+        employeeModulePage.inputUserNameAndPassword()
 
-        employeeModulePage.jieDongEmployee()
+        #检查是否添加员工成功
+        employeeModulePage.checkNewUserStatus()
 
+        #创建完成后,删除员工,以便下一次创建员工
+        employeeModulePage.deleteEmployee()
 
 
     def tearDown(self):

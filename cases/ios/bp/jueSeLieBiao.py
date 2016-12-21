@@ -4,13 +4,14 @@ from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
-from cases.ios.shanghu.common.prepare import Prepare
+from cases.ios.bp.common.prepare import Prepare
 from pages.ios.shanghu.homePage import HomePage
-from pages.ios.shanghu.employeeModulePage import EmployeeModulePage
+from pages.ios.shanghu.roleManagementPage import RoleManagementPage
 
-class DongJieYuanGong(TestCase):
+
+class JueSeLieBiao(TestCase):
     '''
-    冻结员工检查
+    角色列表检查
     '''
     def setUp(self):
         self.logger = Logger()
@@ -23,11 +24,13 @@ class DongJieYuanGong(TestCase):
 
     def test_case(self):
         homePage = HomePage(self, self.driver, self.logger)
-        employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
+        roleManagementPage = RoleManagementPage(self, self.driver, self.logger)
 
         homePage.clickOnEmployeeModule()
 
-        employeeModulePage.dongjieEmployee()
+        #检查角色列表是否为空
+        roleManagementPage.checkRoleList()
+
 
 
 
