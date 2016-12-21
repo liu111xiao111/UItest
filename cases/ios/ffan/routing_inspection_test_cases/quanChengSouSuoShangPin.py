@@ -47,6 +47,7 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputGoodsName()
         searchPage.clickPullDownListOfSearching()
+        searchPage.waitBySeconds(8)
         searchPage.validSearchResult(u"MU8600", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]")
 
 
