@@ -16,7 +16,7 @@ class ShouYePageConfigs():
     text_business_college = u"商学院"
     text_goods_manager = u"商品管理"
 
-    verify_timeout = 30
+    verify_timeout = 60
 
     def __init__(self):
         pass;

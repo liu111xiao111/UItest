@@ -116,9 +116,9 @@ class SquareFoodPage(SuperPage):
         usage : 进入美食汇页面，检查是否加载出来
         '''
         logger.info("Check 美食汇页面 begin")
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SFPC.verify_food_home_page_resourceID,
+                                        SFPC.verify_text_food,
                                         SFPC.verify_assert_timeout)
         logger.info("Check 美食汇页面 end")

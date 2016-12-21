@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.food_category_page import FoodCategoryPage
 from configs.driver_configs import platformName_andr
@@ -82,7 +83,7 @@ class MeiShiHuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -95,8 +96,14 @@ class MeiShiHuiTestCase(TestCase):
             foodPage.validFoodHomePage()
             foodPage.screenShotForStability("meishihui", self.loopNumer, str(i+1), "2")
 
-            # 检查所有子界面入口
-            foodPage.validModulesForStability(self.loopNumer, str(i+1))
+            # 检查抢券入口
+            foodPage.clickOnGrabCoupons()
+            foodPage.validGrabCoupons()
+            foodPage.screenShotForStability("meishihui", self.loopNumer, str(i+1), "3")
+            foodPage.clickBackKey()
+
+            # 检查美食分类及门店列表
+            foodPage.validModulesForStability()
             foodPage.clickBackKey()
 
             cmdLogcat = "adb logcat -d > %s" % (logFile)

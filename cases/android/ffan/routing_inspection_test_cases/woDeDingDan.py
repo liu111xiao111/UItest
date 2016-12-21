@@ -56,6 +56,8 @@ class WoDeDingDanTestCase(TestCase):
         myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
 
         # 查看我的订单状态
+        dashboardPage.validSelf()
+        dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")

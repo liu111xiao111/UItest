@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
@@ -84,7 +85,7 @@ class WoDeDengLuTestCase(TestCase):
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%swodedenglu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 

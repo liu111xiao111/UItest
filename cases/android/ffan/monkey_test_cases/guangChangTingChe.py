@@ -10,6 +10,7 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
+from tools.utility.constants import INSIDELOOPNUM
 from pages.android.ffan.parking_category_page import ParkingCategoryPage
 from pages.android.ffan.square_module_page import SquareModulePage
 from cases.android.ffan.common.clear_app_data import ClearAppData
@@ -82,7 +83,7 @@ class GuangChangTingCheTestCase(TestCase):
     def testGuangChangTingChe(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%sguangchangtingche_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -121,9 +122,6 @@ class GuangChangTingCheTestCase(TestCase):
             if files:
                 for file in files:
                     shutil.move(file, self.picturePath)
-
-            # 生成HTML
-            #MonkeyHandle().HandleForStability(logFile)
 
 
 if __name__ == "__main__":
