@@ -57,7 +57,16 @@ def sendTestResultMessage(deviceType, appType):
         else:
             msg = '\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
     elif deviceType == 'IOS':
-        msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+        if appType == 'feifan':
+            msg = '\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (
+            deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION,
+            mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES,
+            mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
+        else:
+            msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (
+            deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION,
+            mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES,
+            mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
     else:
         msg = '(商户)\n自动化回归测试-%s版(%s)：\n设备型号: %s \n系统版本: %s \n应用版本: %s \n开始时间: %s \n持续时间: %s \n总用例条数：%s \n成功个数：%s \n失败个数：%s \n错误个数：%s' % (deviceType, time.strftime('%Y-%m-%d'), mailProcess.DEVICE_TYPE, mailProcess.SYSTEM_VERSION, mailProcess.APP_VERSION, mailProcess.START_TIME, mailProcess.DURATION_TIME, mailProcess.TOTAL_TEST_CASES, mailProcess.PASS_TEST_CASES, mailProcess.FAIL_TEST_CASES, mailProcess.ERROR_TEST_CASES)
 
