@@ -59,8 +59,9 @@ if __name__ == "__main__":
             suite.addTest(GuangChangPaiDuiTestCase("testGuangChangPaiDui")) # 广场排队取号 No.27
             suite.addTest(GuangChangTingCheTestCase("testGuangChangTingChe")) # 广场停车 No.29
             suite.addTest(GuangChangMaiDanTestCase("testGuangChangMaiDan")) # 广场买单 No.30
-            suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
             suite.addTest(WoDeTuiChuTestCase("testWoDeTuiChu")) # 我的退出 No.62
+            suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
+
 
             runner = unittest.TextTestRunner()
             runner.run(suite)

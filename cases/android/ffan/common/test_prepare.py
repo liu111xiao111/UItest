@@ -79,7 +79,7 @@ class TestPrepare:
         '''
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
         tempTimes = 0
-        while switchCityPage.validSelf(False) and tempTimes < 3:
+        while switchCityPage.validSelf(False) and tempTimes < 8:
             switchCityPage.cancelSwitchCity()
             switchCityPage.waitBySeconds()
             tempTimes += 1

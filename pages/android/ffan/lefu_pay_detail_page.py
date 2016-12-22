@@ -21,7 +21,7 @@ class LefuPayDetailPage(SuperPage):
         logger.info("Check 买单付款页面 begin")
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         LPDPC.resource_id_store_title,
-                                        18)
+                                        60)
         logger.info("Check 买单消费输入页 end")
 
     def inputMoney(self):

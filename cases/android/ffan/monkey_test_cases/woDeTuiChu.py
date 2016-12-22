@@ -85,7 +85,7 @@ class WoDeTuiChuTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
-        for i in range(INSIDELOOPNUM):
+        for i in range(1):
             logFile = "%swodetuichu_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -124,7 +124,7 @@ class WoDeTuiChuTestCase(TestCase):
             settingPage.clickOnQuitAccountBtn()
 
             myFeiFanPage.waitBySeconds()
-            myFeiFanPage.validLogoutStatus()
+            myFeiFanPage.validLogoutStatusForStability()
             myFeiFanPage.screenShotForStability("wodetuichu", self.loopNumer, str(i+1), "9")
             myFeiFanPage.clickOnDashboard()
 

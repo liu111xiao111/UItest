@@ -21,7 +21,7 @@ class LefuPayWayPage(SuperPage):
         logger.info("Check 支付方式页面 begin")
         API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                         LPWPC.resource_id_pay_way,
-                                        18)
+                                        60)
         logger.info("Check 支付方式页面 end")
 
     def getOrderNumber(self):
