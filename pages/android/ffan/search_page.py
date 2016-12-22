@@ -35,7 +35,7 @@ class SearchPage(SuperPage):
                                         self.driver,
                                         self.logger,
                                         SPC.resource_tv_search_tv,
-                                        10)
+                                        90)
         logger.info("Check 搜索页面 end")
 
     def inputText(self, text):
@@ -48,7 +48,7 @@ class SearchPage(SuperPage):
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       text,
-                                      10)
+                                      90)
         logger.info("Input 文本 end")
 
     def inputStoreName(self):
@@ -61,7 +61,7 @@ class SearchPage(SuperPage):
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_store_name,
-                                      10)
+                                      90)
         #API().screenShot(self.driver, "souSuo")
         logger.info("Input 门店名称 end")
 
@@ -75,7 +75,7 @@ class SearchPage(SuperPage):
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_square_store_name,
-                                      10)
+                                      90)
         #API().screenShot(self.driver, "souSuo")
         logger.info("Input 门店名称 end")
 
@@ -89,7 +89,7 @@ class SearchPage(SuperPage):
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_brand_name,
-                                      10)
+                                      90)
         logger.info("Input 品牌名称 end")
 
     def inputGoodsName(self):
@@ -102,7 +102,7 @@ class SearchPage(SuperPage):
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       SPC.text_searching_goods_name,
-                                      10)
+                                      90)
         logger.info("Input 商品名称 end")
 
     def clickOnSearch(self):

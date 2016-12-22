@@ -83,7 +83,7 @@ class MeiShiHuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
-        for i in range(INSIDELOOPNUM):
+        for i in range(1):
             logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 

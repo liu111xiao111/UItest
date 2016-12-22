@@ -72,5 +72,5 @@ class ParkingCategoryPage(SuperPage):
                                 self.driver,
                                 self.logger,
                                 PCPC.xpath_add_license_plate,
-                                20)
+                                60)
         logger.info("Click 添加车牌 end")

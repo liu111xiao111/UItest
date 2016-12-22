@@ -59,6 +59,24 @@ class MyFeiFanPage(SuperPage):
                                         MFPC.resource_id_login_button,
                                         MFPC.assert_view_timeout)
 
+    def validLogoutStatusForStability(self):
+        '''
+        usage: 验证退出登陆状态
+        '''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(8):
+            API().scroll(self.driver, self.logger, width / 2, hight / 3, width / 2, hight / 2)
+        API().scrollToText(self.testcase,
+                           self.driver,
+                           self.logger,
+                           MFPC.text_login)
+        API().assertElementByResourceId(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        MFPC.resource_id_login_button,
+                                        MFPC.assert_view_timeout)
+
     def clickOnLogin(self):
         '''
         usage: 点击登陆

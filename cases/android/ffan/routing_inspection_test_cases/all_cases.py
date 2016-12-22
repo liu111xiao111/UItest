@@ -111,7 +111,6 @@ if __name__ == "__main__":
     #suite.addTest(QianDaoTestCase("testQiandao")) # 签到 No.10
     suite.addTest(ShangChaoTestCase("testShangChao")) # 商超 No.11
     #suite.addTest(MingDianYouPinTestCase("testMingDianYouPin")) # 名店优品 No.14
-    suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.16
     suite.addTest(MaiDanTestCase("testMaiDan")) # 买单 No.17
     suite.addTest(GuangChangXiangQingTestCase("testGuangChangXiangQing")) # 广场详情 No.21
     suite.addTest(GuangChangSouSuoTestCase("testGuangChangSouSuo")) # 广场搜索 No.22
@@ -148,8 +147,9 @@ if __name__ == "__main__":
     #suite.addTest(WoDeSheZhiXiuGaiZhiFuMiMaTestCase("testWoDeSheZhiXiuGaiZhiFuMiMa")) # 我的设置(修改支付密码) No.59-2
     #suite.addTest(WoDeSheZhiXiuGaiXiaoEMianMiZhiFuTestCase("testWoDeSheZhiXiuGaiXiaoEMianMiZhiFu")) # 我的设置(修改小额免密支付) No.59-3
     suite.addTest(WoDeXiaoXiZhongXinTestCase("testWoDeXiaoXiZhongXin")) # 我的消息中心 No.60
-    suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
+    suite.addTest(ShouYeTingCheTestCase("testShouYeTingChe")) # 首页停车 No.16
     suite.addTest(WoDeTuiChuTestCase("testWoDeTuiChu")) # 我的退出 No.61
+    suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
     #suite.addTest(WoDeFuKuanMaTestCase("testWoDeFuKuanMa")) # 我的付款码 No.0
 
 

@@ -90,7 +90,7 @@ class GuangChangMaiDanTestCase(TestCase):
 
         # Input money, click "确认买单".
         lefuPayDetailPage.inputMoney();
-        lefuPayDetailPage.waitBySeconds(seconds=5)
+        lefuPayDetailPage.waitBySeconds(seconds=10)
         lefuPayDetailPage.screenShot("maiDanXiangXi")
         lefuPayDetailPage.clickOnPay();
         lefuPayWayPage.validSelf();
