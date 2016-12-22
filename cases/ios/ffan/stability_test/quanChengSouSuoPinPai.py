@@ -47,9 +47,10 @@ class QuanChengSouSuoPinPaiTestCase(TestCase):
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.inputBrandName()
-        searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
-        searchPage.validSearchResult(u"adidas", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[2]")
+        searchPage.clickPullDownListOfSearching()
+        searchPage.validSearchResult(u"adidas", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")
+
+        searchPage.waitBySeconds(5)
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoPinPaiTestCase)
