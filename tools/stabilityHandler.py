@@ -239,7 +239,7 @@ class Handler(object):
                     ws['C7'] = self.dataList['gouwuzhongxin']['JRTERROR'] + self.dataList['gouwuzhongxin']['JRTCRASH']
                     ws['C8'] = self.dataList['gouwuzhongxin']['APPDIED'] + self.dataList['gouwuzhongxin']['SYSTEMERROR']
                 elif sheet_name == u'美食汇':
-                    ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
+                    ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['meishihui']['ANR'] + self.dataList['meishihui']['JRTERROR'] + self.dataList['meishihui']['JRTCRASH'] + self.dataList['meishihui']['APPDIED'] + self.dataList['meishihui']['SYSTEMERROR']
                     ws['C6'] = self.dataList['meishihui']['ANR']
                     ws['C7'] = self.dataList['meishihui']['JRTERROR'] + self.dataList['meishihui']['JRTCRASH']
@@ -275,13 +275,13 @@ class Handler(object):
                     ws['C7'] = self.dataList['guangchangmaidan']['JRTERROR'] + self.dataList['guangchangmaidan']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangmaidan']['APPDIED'] + self.dataList['guangchangmaidan']['SYSTEMERROR']
                 elif sheet_name == u'我的登录':
-                    ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
+                    ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['wodedenglu']['ANR'] + self.dataList['wodedenglu']['JRTERROR'] + self.dataList['wodedenglu']['JRTCRASH'] + self.dataList['wodedenglu']['APPDIED'] + self.dataList['wodedenglu']['SYSTEMERROR']
                     ws['C6'] = self.dataList['wodedenglu']['ANR']
                     ws['C7'] = self.dataList['wodedenglu']['JRTERROR'] + self.dataList['wodedenglu']['JRTCRASH']
                     ws['C8'] = self.dataList['wodedenglu']['APPDIED'] + self.dataList['wodedenglu']['SYSTEMERROR']
                 elif sheet_name == u'我的退出':
-                    ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
+                    ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['wodetuichu']['ANR'] + self.dataList['wodetuichu']['JRTERROR'] + self.dataList['wodetuichu']['JRTCRASH'] + self.dataList['wodetuichu']['APPDIED'] + self.dataList['wodetuichu']['SYSTEMERROR']
                     ws['C6'] = self.dataList['wodetuichu']['ANR']
                     ws['C7'] = self.dataList['wodetuichu']['JRTERROR'] + self.dataList['wodetuichu']['JRTCRASH']
