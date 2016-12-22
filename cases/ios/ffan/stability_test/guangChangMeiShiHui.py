@@ -70,26 +70,28 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         squarePage.clickOnFood()
         squareFoodPage.validSelf()
 
-        # 检查美食汇入口
-        squareFoodPage.waitBySeconds(5)
-        squareFoodPage.clickOnFindRestaurant()
-        squareFoodPage.validFindRestaurant()
-        squareFoodPage.clickBackKey()
         squareFoodPage.waitBySeconds(5)
 
-        squareFoodPage.clickOnFindFavourable()
-        squareFoodPage.validFindFavourable()
-        squareFoodPage.clickBackKey()
-        squareFoodPage.waitBySeconds(5)
-
-        squareFoodPage.clickOnQueue()
-        squareFoodPage.validQueue()
-        squareFoodPage.clickBackKey()
-        squareFoodPage.waitBySeconds(5)
-
-        squareFoodPage.clickOnStochastic()
-        squareFoodPage.validStochastic()
-        squareFoodPage.clickBackKey()
+        # # 检查美食汇入口
+        # squareFoodPage.waitBySeconds(5)
+        # squareFoodPage.clickOnFindRestaurant()
+        # squareFoodPage.validFindRestaurant()
+        # squareFoodPage.clickBackKey()
+        # squareFoodPage.waitBySeconds(5)
+        #
+        # squareFoodPage.clickOnFindFavourable()
+        # squareFoodPage.validFindFavourable()
+        # squareFoodPage.clickBackKey()
+        # squareFoodPage.waitBySeconds(5)
+        #
+        # squareFoodPage.clickOnQueue()
+        # squareFoodPage.validQueue()
+        # squareFoodPage.clickBackKey()
+        # squareFoodPage.waitBySeconds(5)
+        #
+        # squareFoodPage.clickOnStochastic()
+        # squareFoodPage.validStochastic()
+        # squareFoodPage.clickBackKey()
 
 
 if __name__ == "__main__":
