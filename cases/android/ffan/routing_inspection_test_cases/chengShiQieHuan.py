@@ -41,21 +41,21 @@ class ChengShiQieHuanTestCase(TestCase):
         logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
 
-    def testChengShiQieHuan_1(self):
-        switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-        for tempTimes in range(5):
-            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
-            if switchCityPage.validSelf(False):
-                return
-            switchCityPage.waitBySeconds(2)
-
-        loveShoppingPage = LoveShoppingPage(self, self.driver, self.logger)
-        loveShoppingPage.validSelf()
-        tempCityName = loveShoppingPage.getCurrentCityName()
-        loveShoppingPage.clickOnCityName()
-        loveShoppingPage.waitBySeconds()
-        loveShoppingPage.switchCity(tempCityName)
-        loveShoppingPage.validSelf()
+#     def testChengShiQieHuan_1(self):
+#         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
+#         for tempTimes in range(5):
+#             logging.info("ATTEMPTS: %d" % (tempTimes + 1))
+#             if switchCityPage.validSelf(False):
+#                 return
+#             switchCityPage.waitBySeconds(2)
+# 
+#         loveShoppingPage = LoveShoppingPage(self, self.driver, self.logger)
+#         loveShoppingPage.validSelf()
+#         tempCityName = loveShoppingPage.getCurrentCityName()
+#         loveShoppingPage.clickOnCityName()
+#         loveShoppingPage.waitBySeconds()
+#         loveShoppingPage.switchCity(tempCityName)
+#         loveShoppingPage.validSelf()
 
     def testChengShiQieHuan_2(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
