@@ -68,8 +68,8 @@ class Stability(object):
 
         list = self._execCmd("ps -A | grep idevicesyslog")
         for item in list:
-            self.pidList.append(item.split(' ')[0])
-            #print(item.split(' '))
+            print("idevicesyslog pid : " + item.split(' ')[1])
+            self.pidList.append(item.split(' ')[1])
 
 
     def _killIdevicelogPid(self):
@@ -79,8 +79,9 @@ class Stability(object):
         '''
         self._getIdevicelogPid()
         for pid in self.pidList:
-            self._execCmd('kill %s' % pid)
-            print("kill idevicelog pid %s" % pid)
+            if(pid != " "):
+                self._execCmd('kill %s' % pid)
+            #print("kill idevicelog pid %s" % pid)
         self.pidList = []
 
     def _startGetLog(self, logpath , case_name, external_case_count, internal_case_count):
