@@ -89,8 +89,8 @@ MAIL_LIST = ['lichunyan19@wanda.cn', 'sunkai31@wanda.cn', 'renyang5@wanda.cn', '
              'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn']
 
 
-OUTLOOPNUM = 1
-INSIDELOOPNUM = 1
+OUTLOOPNUM = 2
+INSIDELOOPNUM = 2
 
 # 重点功能稳定性测试用例Name
 CASE_CESHI_HUANJING = u'测试环境'
