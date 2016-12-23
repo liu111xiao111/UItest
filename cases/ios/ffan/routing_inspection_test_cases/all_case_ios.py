@@ -33,7 +33,7 @@ from cases.ios.ffan.routing_inspection_test_cases.maiDan import MaiDanTestCase
 from cases.ios.ffan.routing_inspection_test_cases.meiShiHui import MeiShiHuiTestCase
 from cases.ios.ffan.routing_inspection_test_cases.mingDianYouPin import MingPinYouDianTestCase
 from cases.ios.ffan.routing_inspection_test_cases.woDePaiDui import PaiDuiTestCase
-from cases.ios.ffan.routing_inspection_test_cases.paiDuiQuHao import PaiDuiQuHaoTestCase
+from cases.ios.ffan.routing_inspection_test_cases.guangChangPaiDui import PaiDuiQuHaoTestCase
 from cases.ios.ffan.routing_inspection_test_cases.woDePiaoQuan import PiaoQuanTestCase
 from cases.ios.ffan.routing_inspection_test_cases.pinPaiJie import PinPaiJieTestCase
 from cases.ios.ffan.routing_inspection_test_cases.qianDao import QianDaoTestCase

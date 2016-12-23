@@ -77,6 +77,7 @@ class DengLuPage(SuperPage):
         API().screenShot(self.driver, 'testStore')
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.button_select_store_submit)
         logger.info("Click " + Name.test_store_name + ' end')
+        API().clickElementByName(self.testcase, self.driver, self.logger,Name.confirm_button)
         API().screenShot(self.driver, 'enterStore')
 
 
