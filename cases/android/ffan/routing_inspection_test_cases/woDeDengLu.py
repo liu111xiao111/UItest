@@ -71,7 +71,7 @@ class WoDeDengLuTestCase(TestCase):
             settingPage.clickOnQuitAccountBtn()
 
             myFeiFanPage.waitBySeconds()
-            myFeiFanPage.validLogoutStatus()
+            myFeiFanPage.validLogoutStatusForStability()
             myFeiFanPage.screenShot("woDe")
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self, self.driver, self.logger)

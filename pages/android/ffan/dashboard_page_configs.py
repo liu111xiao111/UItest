@@ -70,7 +70,7 @@ class DashboardPageConfigs():
     text_city_beijing = "北京市"
 
     # Click button time out
-    click_on_button_timeout = 90
+    click_on_button_timeout = 60
     get_view_timeout = 90
 
     # Flash sales more button
