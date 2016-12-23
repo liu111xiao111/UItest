@@ -26,7 +26,7 @@ class ShouYePage(SuperPage):
                                         SYPC.resource_id_title,
                                         SYPC.verify_timeout)
 
-        API().assertEqual(self.testcase, self.logger, title, SYPC.text_store)
+        API().assertGreaterEqual(self.testcase, self.logger, title, SYPC.text_store)
         logger.info("Check 首页 end")
 
     def clickOnUser(self):
