@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import time
 from api.api import API
+from utility.device_info_util import DeviceInfoUtil
 from pages.android.common.super_page import SuperPage
 from pages.android.ffan.food_category_page_configs import FoodCategoryPageConfigs as FCPC
 from pages.logger import logger
@@ -91,15 +91,22 @@ class FoodCategoryPage(SuperPage):
             API().waitBySeconds(3)
             self.validRestaurant()
             API().screenShot(self.driver, "meiShiHuiRuKou")
-            self.clickOnStoreList()
+            self.clickOnStoreList(restaurant)
             self.validStoreList()
             API().screenShot(self.driver, "menDianXiangQing")
             API().clickBackKeyForAndroid(self.driver, self.logger)
             API().screenShot(self.driver, "meiShiHui")
-            API().clickElementByXpath(self.testcase,
+            if restaurant == u"火锅":
+                API().clickElementByXpath(self.testcase,
                                       self.driver,
                                       self.logger,
                                       FCPC.xpath_food_type,
+                                      FCPC.click_view_timeout)
+            else:
+                API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      FCPC.xpath_food_type_v5,
                                       FCPC.click_view_timeout)
             API().screenShot(self.driver, "meiShiHuiRuKou")
             logger.info("Check 入口(%s) end" % restaurant)
@@ -155,27 +162,42 @@ class FoodCategoryPage(SuperPage):
         usage : 点击抢券
         '''
         logger.info("Click 抢券 begin")
-        width = API().getWidthOfDevice(self.driver, self.logger)
-        hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(5):
-            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
-        API().clickElementByResourceId(self.testcase,
-                                       self.driver,
-                                       self.logger,
-                                       FCPC.resource_id_bt_grab_bt,
-                                       FCPC.click_view_timeout)
+        version = DeviceInfoUtil().getBuildVersion()
+        if int(version.split(".")[0]) < 5:
+            width = API().getWidthOfDevice(self.driver, self.logger)
+            hight = API().getHeightOfDevice(self.driver, self.logger)
+            for _ in range(5):
+                API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+            API().clickElementByResourceId(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           FCPC.resource_id_bt_grab_bt,
+                                           FCPC.click_view_timeout)
+        else:
+            API().clickElementByText(self.testcase,
+                                           self.driver,
+                                           self.logger,
+                                           FCPC.text_grab_bt,
+                                           FCPC.click_view_timeout)
         logger.info("Click 抢券 begin")
 
-    def clickOnStoreList(self):
+    def clickOnStoreList(self, restaurant):
         '''
         usage : 点击门店列表
         '''
         logger.info("Click 门店列表 begin")
-        API().clickElementByXpath(self.testcase,
-                                  self.driver,
-                                  self.logger,
-                                  FCPC.xpath_store_list,
-                                  FCPC.click_view_timeout)
+        if restaurant == u"火锅":
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      FCPC.xpath_store_list,
+                                      FCPC.click_view_timeout)
+        else:
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      FCPC.xpath_store_list_v5,
+                                      FCPC.click_view_timeout)
         logger.info("Click 门店列表 end")
 
     def validStoreList(self):

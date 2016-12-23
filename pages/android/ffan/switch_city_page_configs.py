@@ -10,7 +10,7 @@ class SwitchCityPageConfigs(object):
     assert_view_timeout = 10
 
     # Verify view time out
-    verify_view_timeout = 10
+    verify_view_timeout = 90
 
     # Assert invalid view time out
     assert_invalid_view_time = 3

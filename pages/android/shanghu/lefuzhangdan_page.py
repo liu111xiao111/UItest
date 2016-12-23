@@ -2,6 +2,7 @@
 import time
 import datetime
 from api.api import API
+from utility.device_info_util import DeviceInfoUtil
 from pages.android.common.super_page import SuperPage
 from pages.android.shanghu.lefuzhangdan_page_configs import LeFuZhangDanPageConfigs as LFZDPC
 from pages.logger import logger
@@ -50,6 +51,7 @@ class LeFuZhangDanPage(SuperPage):
         usage: 选择当前日期的前一天
         '''
         logger.info("Click 当前日期的前一天 begin")
+        version = DeviceInfoUtil().getBuildVersion()
         date = time.strftime('%Y-%m-%d').split('-')
         yesDate = datetime.datetime.now() - datetime.timedelta(days = 1)
         beforeDate = yesDate.strftime('%Y-%m-%d').split('-')
@@ -59,30 +61,56 @@ class LeFuZhangDanPage(SuperPage):
         else:
             day = beforeDate[2]
 
-        if date[1] == '01':
-            month = u"一月"
-        elif date[1] == '02':
-            month = u"二月"
-        elif date[1] == '03':
-            month = u"三月"
-        elif date[1] == '04':
-            month = u"四月"
-        elif date[1] == '05':
-            month = u"五月"
-        elif date[1] == '06':
-            month = u"六月"
-        elif date[1] == '07':
-            month = u"七月"
-        elif date[1] == '08':
-            month = u"八月"
-        elif date[1] == '09':
-            month = u"九月"
-        elif date[1] == '10':
-            month = u"十月"
-        elif date[1] == '11':
-            month = u"十一月"
-        elif date[1] == '12':
-            month = u"十二月"
+        if int(version.split(".")[0]) < 5:
+            if date[1] == '01':
+                month = u"一月"
+            elif date[1] == '02':
+                month = u"二月"
+            elif date[1] == '03':
+                month = u"三月"
+            elif date[1] == '04':
+                month = u"四月"
+            elif date[1] == '05':
+                month = u"五月"
+            elif date[1] == '06':
+                month = u"六月"
+            elif date[1] == '07':
+                month = u"七月"
+            elif date[1] == '08':
+                month = u"八月"
+            elif date[1] == '09':
+                month = u"九月"
+            elif date[1] == '10':
+                month = u"十月"
+            elif date[1] == '11':
+                month = u"十一月"
+            elif date[1] == '12':
+                month = u"十二月"
+        else:
+            if date[1] == '01':
+                month = u"January"
+            elif date[1] == '02':
+                month = u"February"
+            elif date[1] == '03':
+                month = u"March"
+            elif date[1] == '04':
+                month = u"April"
+            elif date[1] == '05':
+                month = u"May"
+            elif date[1] == '06':
+                month = u"June"
+            elif date[1] == '07':
+                month = u"July"
+            elif date[1] == '08':
+                month = u"August"
+            elif date[1] == '09':
+                month = u"September"
+            elif date[1] == '10':
+                month = u"October"
+            elif date[1] == '11':
+                month = u"November"
+            elif date[1] == '12':
+                month = u"December"
 
         startDate = date[0] +  '-' + date[1] + '-' + day
 
@@ -96,11 +124,18 @@ class LeFuZhangDanPage(SuperPage):
                                         clickStartDate,
                                         LFZDPC.verify_timeout)
 
-        API().clickElementByText(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        LFZDPC.text_confirm,
-                                        LFZDPC.verify_timeout)
+        if int(version.split(".")[0]) < 5:
+            API().clickElementByText(self.testcase,
+                                            self.driver,
+                                            self.logger,
+                                            LFZDPC.text_confirm,
+                                            LFZDPC.verify_timeout)
+        else:
+            API().clickElementByText(self.testcase,
+                                            self.driver,
+                                            self.logger,
+                                            LFZDPC.text_confirm_ok,
+                                            LFZDPC.verify_timeout)
         logger.info("Click 当前日期的前一天 end")
 
         return startDate

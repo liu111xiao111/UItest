@@ -71,7 +71,7 @@ class WoDeTuiChuTestCase(TestCase):
         settingPage.clickOnQuitAccountBtn()
 
         myFeiFanPage.waitBySeconds()
-        myFeiFanPage.validLogoutStatus()
+        myFeiFanPage.validLogoutStatusForStability()
         myFeiFanPage.screenShot("woDe")
 
 

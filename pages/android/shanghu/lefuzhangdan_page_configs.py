@@ -8,6 +8,7 @@ class LeFuZhangDanPageConfigs():
     text_calendar_end = u"结束日期"
     text_user_defined = u"自定义"
     text_confirm = u"确定"
+    text_confirm_ok = "OK"
     text_pay_type = u"交易方式"
     resource_id_type = "com.feifan.bp:id/receipts_pay_type"
     resouce_id_search_date = "com.feifan.bp:id/query_time"
