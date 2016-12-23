@@ -35,7 +35,7 @@ class TestPrepare:
 
         if needLogin == True:
             self.login()
-        
+
         self.backToDashBoard()
 
     def login(self):
@@ -79,11 +79,11 @@ class TestPrepare:
         '''
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
         tempTimes = 0
-        while switchCityPage.validSelf(False) and tempTimes < 8:
+        while tempTimes < 1 and switchCityPage.validSelf(False):
             switchCityPage.cancelSwitchCity()
             switchCityPage.waitBySeconds()
             tempTimes += 1
-    
+
     def backToDashBoard(self):
         '''
         usage: 返回主界面方法
