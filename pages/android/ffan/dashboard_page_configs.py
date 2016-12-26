@@ -72,6 +72,7 @@ class DashboardPageConfigs():
     # Click button time out
     click_on_button_timeout = 60
     get_view_timeout = 90
+    get_popup_timeout = 40
 
     # Flash sales more button
     resource_id_flash_sales_more_button = "com.wanda.app.wanhui:id/tv_more"

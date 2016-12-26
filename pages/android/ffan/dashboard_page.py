@@ -320,7 +320,7 @@ class DashboardPage(SuperPage):
         '''
         usage: 判断是否存圣诞抢福袋页面
         '''
-        if (API().validElementByResourceId(self.driver, self.logger, DPC.resource_id_iv_lucky_bug_iv)):
+        if (API().validElementByResourceId(self.driver, self.logger, DPC.resource_id_iv_lucky_bug_iv, DPC.get_popup_timeout)):
             API().clickElementByResourceId(self.testcase,
                                            self.driver,
                                            self.logger,
