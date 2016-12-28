@@ -32,9 +32,9 @@ class Stability(object):
     pidList = []
 
     #总循环次数
-    EXTERNAL_LOOP_TIMES = 5;
+    EXTERNAL_LOOP_TIMES = 4;
     #每个case循环次数
-    INTERNAL_LOOP_TIMES = 5;
+    INTERNAL_LOOP_TIMES = 4;
 
     COMMAND = "idevicesyslog"
 
@@ -50,6 +50,7 @@ class Stability(object):
         '''
         #logpath = "/Users/auto/Desktop/testlog.txt"
         command = "%s > %s" % (self.COMMAND, "%s/%s_%s_%s" % (logpath, case_name, external_case_count, internal_case_count))
+        print("Save log : " + command)
         os.system(command)
         #print('DEBUG GET LOE END!')
 
@@ -68,8 +69,8 @@ class Stability(object):
 
         list = self._execCmd("ps -A | grep idevicesyslog")
         for item in list:
-            print("idevicesyslog pid : " + item.split(' ')[1])
-            self.pidList.append(item.split(' ')[1])
+            print("idevicesyslog pid : " + item.split(' ')[0])
+            self.pidList.append(item.split(' ')[0])
 
 
     def _killIdevicelogPid(self):
@@ -99,8 +100,8 @@ class Stability(object):
         :param reportpath:
         :return:
         '''
-        print("create path %s " % reportpath)
         if not os.path.exists(reportpath):
+            print("create path %s " % reportpath)
             os.makedirs(reportpath)
 
 
@@ -110,11 +111,13 @@ class Stability(object):
         :param reportpath:
         :return:
         '''
+        print("external %s loop 执行 %s 次 " % (case_name, external_case_count))
         print("internal %s loop 执行 %s 次 " % (case_name,internal_case_count))
         suite = unittest.TestSuite()
         runner = unittest.TextTestRunner()
         reportpath = "%s/%s" % (reportpath, case_name)
         # 创建路径
+        print("reportpath : " + reportpath)
         stability._createPath(reportpath)
         # 开始获取LOG
         stability._startGetLog(reportpath, case_name, external_case_count, internal_case_count)
