@@ -13,6 +13,7 @@ deviceID = DeviceInfoUtil().getDeviceID()
 shanghuAppVersion = DeviceInfoUtil().getShanghuAppVersion()
 
 deviceNet = 'WIFI'
+mtuanAPPVersion = '7.5.1'
 
 stabilityTestCaseNumber = '10'
 
