@@ -69,7 +69,7 @@ class FFanDianYingTestCase(TestCase):
 
         # 广播开始收集数据
         deviceID = DeviceInfoUtil().getDeviceID()
-        cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
+        cmdBroadcastStart = "adb -s %s shell am broadcast -a com.neusoft.perfdaemon.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle true" % (deviceID, appPackage_ffan)
         Popen(cmdBroadcastStart, shell=True, stdout=PIPE, stderr=PIPE)
 
         # 用例执行
@@ -95,11 +95,11 @@ class FFanDianYingTestCase(TestCase):
         os.system(cmdLogcat)
 
         # 广播结束停止收集数据
-        cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.ycy.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
+        cmdBroadcastEnd = "adb shell am broadcast -a com.neusoft.perfdaemon.PERFORMANCE_TEST --es packageName %s --ez launchServiceToogle false" % appPackage_ffan
         Popen(cmdBroadcastEnd, shell=True, stdout=PIPE, stderr=PIPE)
 
         # 取得performance.xml文件
-        cmdPull = "adb pull /sdcard/YCY/performance.xml %s" % reportPath
+        cmdPull = "adb pull /sdcard/Perf/perf.xml %s" % reportPath
         Popen(cmdPull, shell=True, stdout=PIPE, stderr=PIPE)
 
 

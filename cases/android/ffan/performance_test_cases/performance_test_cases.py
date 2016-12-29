@@ -24,7 +24,7 @@ from cases.android.ffan.performance_test_cases.mtuanWoDeDingDan import MTuanWoDe
 from cases.android.ffan.performance_test_cases.mtuanWoDeDengLu import MTuanWoDeDengLuTestCase
 from cases.android.ffan.performance_test_cases.mtuanMeiShi import MTuanMeiShiTestCase
 from cases.android.ffan.performance_test_cases.mtuanDianYing import MTuanDianYingTestCase
-from tools.performanceHandler import Handler
+from tools.performanceHandler import Handler, PerformanceSummary
 
 
 if __name__ == "__main__":
@@ -127,6 +127,11 @@ if __name__ == "__main__":
         resultsPath = "%s/report/perf/%s/%s" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
         if os.path.exists(resultsPath):
             handler.handle(resultsPath)
+
+        performanceSummary = PerformanceSummary()
+        resultsPath = "%s/report/perf/%s/%s" % ("/Users/uasd-qiaojx/Desktop", time.strftime("%Y%m%d"), build_num)
+        if os.path.exists(resultsPath):
+            performanceSummary.performanceSummary(resultsPath)
 
     except:
         raise traceback.format_exc()

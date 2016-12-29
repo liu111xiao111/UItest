@@ -581,36 +581,288 @@ class PerformanceSummary(object):
                 excelList = {'dianying':dianYingFile, 'meishi':meiShiHuiFile, 'dingdan':dingDanFile, 'denglu':dengLuFile, 'fps':fpsFile, 'coldboot':coldBootFile, 'warmboot':warmBootFile}
                 for (case,excelFile) in excelList.items():
                     if os.path.exists(excelFile):
+                        print(excelFile)
                         data = xlrd.open_workbook(excelFile)
                         if excelFile in (dianYingFile, meiShiHuiFile, dingDanFile, dengLuFile):
                             sheetList = [u'CPU 性能', u'内存性能', u'上行速率', u'下行速率', u'电池温度']
+                            caseTime = 0
                             for sheetTemp in sheetList:
                                 table = data.sheet_by_name(sheetTemp)
-                                caseTempData = table.row_values(2)
-                                self.caseData[sheetTemp].append(caseTempData)
                                 if sheetTemp == u'CPU 性能':
+                                    print("XX")
                                     self.cpuData[case]['max'] = table.cell(15,2).value
                                     self.cpuData[case]['min'] = table.cell(16,2).value
                                     self.cpuData[case]['anv'] = table.cell(17,2).value
+                                    cpuOver40 = 0
+                                    cpuOver60 = 0
+                                    cpuOver80 = 0
+                                    cpuOver100 = 0
+                                    cpuTop = []
+                                    cpuTempData = table.row_values(2)
+                                    for q in range(2, len(cpuTempData)):
+                                        if (40 < cpuTempData[q] and cpuTempData[q] < 60) or (cpuTempData[q] == 60):
+                                            cpuOver40 += 1
+                                        elif (60 < cpuTempData[q] and cpuTempData[q] < 80) or (cpuTempData[q] == 80):
+                                            cpuOver60 += 1
+                                        elif (80 < cpuTempData[q] and cpuTempData[q] < 100) or (cpuTempData[q] == 100):
+                                            cpuOver80 += 1
+                                        elif 100 < cpuTempData[q]:
+                                            cpuOver100 += 1
+                                        if cpuTempData[q] == self.cpuData[case]['max']:
+                                            cpuTop.append(q-1)
+                                    self.cpuData[case]['40%'] = str(cpuOver40) + 's'
+                                    self.cpuData[case]['60%'] = str(cpuOver60) + 's'
+                                    self.cpuData[case]['80%'] = str(cpuOver80) + 's'
+                                    self.cpuData[case]['100%'] = str(cpuOver100) + 's'
+                                    if len(cpuTop) > 1:
+                                        cpuTopTotal = ''
+                                        for r in range(len(cpuTop)):
+                                            if r == 0:
+                                                cpuTopTotal = str(cpuTop[r])
+                                            else:
+                                                cpuTopTotal = cpuTopTotal + '、' + str(cpuTop[r])
+                                            self.cpuData[case]['top'] = u'第' + cpuTopTotal + 's'
+                                    else:
+                                        self.cpuData[case]['top'] = u'第' + str(cpuTop[0]) + 's'
+                                    cpuTotalTime = len(cpuTempData) - 2
+                                    for dd in range(len(cpuTempData), 2, -1):
+                                        if cpuTempData[dd-1] == 0:
+                                            cpuTotalTime -= 1
+                                    if (cpuOver60 > cpuTotalTime * 0.4) and ((cpuOver60 < cpuTotalTime * 0.6) or (cpuOver60 == cpuTotalTime * 0.6)):
+                                        self.cpuData[case]['rst'] = u'偏高'
+                                    elif cpuOver60 > cpuTotalTime * 0.6:
+                                        self.cpuData[case]['rst'] = u'高'
+                                    else:
+                                        self.cpuData[case]['rst'] = u'正常'
+                                    caseTime = cpuTotalTime
                                 elif sheetTemp == u'内存性能':
+                                    print("XX")
                                     self.memoryData[case]['max'] = table.cell(15,2).value
                                     self.memoryData[case]['min'] = table.cell(16,2).value
                                     self.memoryData[case]['anv'] = table.cell(17,2).value
+                                    memoryOver60 = 0
+                                    memoryOver80 = 0
+                                    memoryOver100 = 0
+                                    memoryOver120 = 0
+                                    memoryTop = []
+                                    memoryTempData = table.row_values(2)
+                                    for t in range(2, len(memoryTempData)):
+                                        if (60 < memoryTempData[t] and memoryTempData[t] < 80) or (memoryTempData[t] == 80):
+                                            memoryOver60 += 1
+                                        elif (80 < memoryTempData[t] and memoryTempData[t] < 100) or (memoryTempData[t] == 100):
+                                            memoryOver60 += 1
+                                            memoryOver80 += 1
+                                        elif (100 < memoryTempData[t] and memoryTempData[t] < 100) or (memoryTempData[t] == 120):
+                                            memoryOver60 += 1
+                                            memoryOver80 += 1
+                                            memoryOver100 += 1
+                                        elif 120 < memoryTempData[t]:
+                                            memoryOver60 += 1
+                                            memoryOver80 += 1
+                                            memoryOver100 += 1
+                                            memoryOver120 += 1
+                                        if memoryTempData[t] == self.memoryData[case]['max']:
+                                            memoryTop.append(t-1)
+                                    self.memoryData[case]['60M'] = str(memoryOver60) + 's'
+                                    self.memoryData[case]['80M'] = str(memoryOver80) + 's'
+                                    self.memoryData[case]['100M'] = str(memoryOver100) + 's'
+                                    if len(memoryTop) > 1:
+                                        memoryTopTotal = ''
+                                        for u in range(len(memoryTop)):
+                                            if u == 0:
+                                                memoryTopTotal = str(memoryTop[u])
+                                            else:
+                                                memoryTopTotal = memoryTopTotal + '、' + str(memoryTop[u])
+                                            self.memoryData[case]['top'] = u'第' + memoryTopTotal + u's'
+                                    else:
+                                        self.memoryData[case]['top'] = u'第' + str(memoryTop[0]) + u's'
+                                    memoryTotalTime = len(memoryTempData) - 2
+                                    for cc in range(len(memoryTempData), 2, -1):
+                                        if memoryTempData[cc-1] == 0:
+                                            memoryTotalTime -= 1
+                                    if (memoryOver80 > memoryTotalTime * 0.5) and ((memoryOver120 < memoryTotalTime * 0.5) or (memoryOver120 == memoryTotalTime * 0.5)):
+                                        self.memoryData[case]['rst'] = u'偏高'
+                                    elif memoryOver120 > memoryTotalTime * 0.5:
+                                        self.memoryData[case]['rst'] = u'高'
+                                    else:
+                                        self.memoryData[case]['rst'] = u'正常'
                                 elif sheetTemp == u'上行速率':
                                     self.txData[case]['max'] = table.cell(15,2).value
                                     self.txData[case]['min'] = table.cell(16,2).value
                                     self.txData[case]['anv'] = table.cell(17,2).value
+                                    txOver10 = 0
+                                    txOver20 = 0
+                                    txOver40 = 0
+                                    txOver60 = 0
+                                    txOver80 = 0
+                                    txOver100 = 0
+                                    txTop = []
+                                    txTempData = table.row_values(2)
+                                    for v in range(2, len(txTempData)):
+                                        if (10 < txTempData[v] and txTempData[v] < 20) or (txTempData[v] == 20):
+                                            txOver10 += 1
+                                        elif (20 < txTempData[v] and txTempData[v] < 40) or (txTempData[v] == 40):
+                                            txOver10 += 1
+                                            txOver20 += 1
+                                        elif (40 < txTempData[v] and txTempData[v] < 60) or (txTempData[v] == 60):
+                                            txOver10 += 1
+                                            txOver20 += 1
+                                            txOver40 += 1
+                                        elif (60 < txTempData[v] and txTempData[v] < 80) or (txTempData[v] == 80):
+                                            txOver10 += 1
+                                            txOver20 += 1
+                                            txOver40 += 1
+                                            txOver60 += 1
+                                        elif (80 < txTempData[v] and txTempData[v] < 100) or (txTempData[v] == 100):
+                                            txOver10 += 1
+                                            txOver20 += 1
+                                            txOver40 += 1
+                                            txOver60 += 1
+                                            txOver80 += 1
+                                        elif 100 < txTempData[v]:
+                                            txOver10 += 1
+                                            txOver20 += 1
+                                            txOver40 += 1
+                                            txOver60 += 1
+                                            txOver80 += 1
+                                            txOver100 += 1
+                                        if txTempData[v] == self.txData[case]['max']:
+                                            txTop.append(v-1)
+                                    self.txData[case]['10K'] = str(txOver10) + 's'
+                                    self.txData[case]['20K'] = str(txOver20) + 's'
+                                    self.txData[case]['40K'] = str(txOver40) + 's'
+                                    self.txData[case]['60K'] = str(txOver60) + 's'
+                                    self.txData[case]['80K'] = str(txOver80) + 's'
+                                    self.txData[case]['100K'] = str(txOver100) + 's'
+                                    if len(txTop) > 1:
+                                        txTopTotal = ''
+                                        for w in range(len(txTop)):
+                                            if w == 0:
+                                                txTopTotal = str(txTop[w])
+                                            else:
+                                                txTopTotal = txTopTotal + '、' + str(txTop[w])
+                                            self.txData[case]['top'] = u'第' + txTopTotal + u's'
+                                    else:
+                                        self.txData[case]['top'] = u'第' + str(txTop[0]) + u's'
+                                    if (txOver40 > caseTime * 0.5) and ((txOver60 < caseTime * 0.5) or (txOver60 == caseTime * 0.5)):
+                                        self.txData[case]['rst'] = u'偏高'
+                                    elif txOver60 > caseTime * 0.5:
+                                        self.txData[case]['rst'] = u'高'
+                                    else:
+                                        self.txData[case]['rst'] = u'正常'
                                 elif sheetTemp == u'下行速率':
                                     self.rxData[case]['max'] = table.cell(15,2).value
                                     self.rxData[case]['min'] = table.cell(16,2).value
                                     self.rxData[case]['anv'] = table.cell(17,2).value
+                                    rxOver20 = 0
+                                    rxOver30 = 0
+                                    rxOver40 = 0
+                                    rxOver60 = 0
+                                    rxOver80 = 0
+                                    rxOver100 = 0
+                                    rxTop = []
+                                    rxTempData = table.row_values(2)
+                                    for x in range(2, len(rxTempData)):
+                                        if (20 < rxTempData[x] and rxTempData[x] < 30) or (rxTempData[x] == 30):
+                                            rxOver20 += 1
+                                        elif (30 < rxTempData[x] and rxTempData[x] < 40) or (rxTempData[x] == 40):
+                                            rxOver20 += 1
+                                            rxOver30 += 1
+                                        elif (40 < rxTempData[x] and rxTempData[x] < 60) or (rxTempData[x] == 60):
+                                            rxOver20 += 1
+                                            rxOver40 += 1
+                                        elif (60 < rxTempData[x] and rxTempData[x] < 80) or (rxTempData[x] == 80):
+                                            rxOver20 += 1
+                                            rxOver40 += 1
+                                            rxOver60 += 1
+                                        elif (80 < rxTempData[x] and rxTempData[x] < 100) or (rxTempData[x] == 100):
+                                            rxOver20 += 1
+                                            rxOver40 += 1
+                                            rxOver60 += 1
+                                            rxOver80 += 1
+                                        elif 100 < rxTempData[x]:
+                                            rxOver20 += 1
+                                            rxOver40 += 1
+                                            rxOver60 += 1
+                                            rxOver80 += 1
+                                            rxOver100 += 1
+                                        if rxTempData[x] == self.rxData[case]['max']:
+                                            rxTop.append(x-1)
+                                    self.rxData[case]['20K'] = str(rxOver20) + 's'
+                                    self.rxData[case]['40K'] = str(rxOver40) + 's'
+                                    self.rxData[case]['60K'] = str(rxOver60) + 's'
+                                    self.rxData[case]['80K'] = str(rxOver80) + 's'
+                                    self.rxData[case]['100K'] = str(rxOver100) + 's'
+                                    if len(rxTop) > 1:
+                                        rxTopTotal = ''
+                                        for y in range(len(rxTop)):
+                                            if y == 0:
+                                                rxTopTotal = str(rxTop[y])
+                                            else:
+                                                rxTopTotal = rxTopTotal + '、' + str(rxTop[y])
+                                            self.rxData[case]['top'] = u'第' + rxTopTotal + u's'
+                                    else:
+                                        self.rxData[case]['top'] = u'第' + str(rxTop[0]) + u's'
+                                    if (rxOver20 > caseTime * 0.4) and ((rxOver30 < caseTime * 0.4) or (rxOver30 == caseTime * 0.4)):
+                                        self.rxData[case]['rst'] = u'偏高'
+                                    elif rxOver30 > caseTime * 0.4:
+                                        self.rxData[case]['rst'] = u'高'
+                                    else:
+                                        self.rxData[case]['rst'] = u'正常'
                                 elif sheetTemp == u'电池温度':
                                     self.batteryTemperatureData[case]['max'] = table.cell(15,2).value
                                     self.batteryTemperatureData[case]['min'] = table.cell(16,2).value
                                     self.batteryTemperatureData[case]['anv'] = table.cell(17,2).value
+                                    batteryTemperatureOver37 = 0
+                                    batteryTemperatureOver38 = 0
+                                    batteryTemperatureOver60 = 0
+                                    batteryTemperatureOver80 = 0
+                                    batteryTemperatureTop = []
+                                    batteryTemperatureTempData = table.row_values(2)
+                                    for aa in range(2, len(batteryTemperatureTempData)):
+                                        if (60 < batteryTemperatureTempData[aa] and batteryTemperatureTempData[aa] < 80) or (batteryTemperatureTempData[aa] == 80):
+                                            batteryTemperatureOver37 += 1
+                                            batteryTemperatureOver38 += 1
+                                            batteryTemperatureOver60 += 1
+                                        elif 80 < batteryTemperatureTempData[aa]:
+                                            batteryTemperatureOver37 += 1
+                                            batteryTemperatureOver38 += 1
+                                            batteryTemperatureOver60 += 1
+                                            batteryTemperatureOver80 += 1
+                                        if batteryTemperatureTempData[aa] == self.batteryTemperatureData[case]['max']:
+                                            batteryTemperatureTop.append(aa-1)
+                                    self.batteryTemperatureData[case]['60℃'] = str(batteryTemperatureOver60) + 's'
+                                    self.batteryTemperatureData[case]['80℃'] = str(batteryTemperatureOver80) + 's'
+                                    if len(batteryTemperatureTop) > 1:
+                                        batteryTemperatureTopTotal = ''
+                                        for bb in range(len(batteryTemperatureTop)):
+                                            if bb == 0:
+                                                batteryTemperatureTopTotal = str(batteryTemperatureTop[bb])
+                                            elif len(batteryTemperatureTop) > 3:
+                                                batteryTemperatureTopTotal = str(batteryTemperatureTop[0]) + '、' + str(batteryTemperatureTop[1]) + '...'
+                                            else:
+                                                batteryTemperatureTopTotal = batteryTemperatureTopTotal + '、' + str(batteryTemperatureTop[bb])
+                                            self.batteryTemperatureData[case]['top'] = u'第' + batteryTemperatureTopTotal + u's'
+                                    else:
+                                        self.batteryTemperatureData[case]['top'] = u'第' + str(batteryTemperatureTop[0]) + u's'
+                                    batteryTemperatureTotalTime = len(batteryTemperatureTempData) - 2
+                                    for ee in range(len(batteryTemperatureTempData), 2, -1):
+                                        if batteryTemperatureTempData[ee-1] == 0:
+                                            batteryTemperatureTotalTime -= 1
+                                    if (batteryTemperatureOver37 > batteryTemperatureTotalTime * 0.5) and ((batteryTemperatureOver38 < batteryTemperatureTotalTime * 0.5) or (batteryTemperatureOver38 == batteryTemperatureTotalTime * 0.5)):
+                                        self.batteryTemperatureData[case]['rst'] = u'偏高'
+                                    elif batteryTemperatureOver38 > batteryTemperatureTotalTime * 0.5:
+                                        self.batteryTemperatureData[case]['rst'] = u'高'
+                                    else:
+                                        self.batteryTemperatureData[case]['rst'] = u'正常'
                         elif excelFile == fpsFile:
+                            print("cc")
                             table = data.sheet_by_name(u'OverDraw和FPS 性能')
                             tempFpsDate = []
+                            over16 = u'否'
+                            over20 = u'否'
+                            temp16 = {0: u'否', 1:u'是'}
+                            temp20 = {0: u'否', 1:u'是'}
                             mine = table.cell(2,8).value
                             tempFpsDate.append(mine)
                             dashboard = table.cell(2,9).value
@@ -619,21 +871,96 @@ class PerformanceSummary(object):
                             tempFpsDate.append(huilife)
                             ffantong = table.cell(2,11).value
                             tempFpsDate.append(ffantong)
+                            for i in range(len(tempFpsDate)):
+                                if tempFpsDate[i] > 20:
+                                    over16 = temp16[1]
+                                    over20 = temp20[1]
+                                elif (16 < tempFpsDate[i] < 20) or tempFpsDate[i] == 20:
+                                    over16 = temp16[1]
+                                    over20 = temp20[0]
+                                elif over16 == temp16[1]:
+                                    over16 = temp16[1]
+                                elif over20 == temp20[1]:
+                                    over20 = temp20[1]
                             self.fpsData['max'] = max(tempFpsDate)
                             self.fpsData['min'] = min(tempFpsDate)
                             self.fpsData['anv'] = round(float(sum(tempFpsDate) / len(tempFpsDate)), 2)
+                            self.fpsData['16ms'] = over16
+                            self.fpsData['20ms'] = over20
+                            if over16 == u'是' and over20 == u'是':
+                                self.fpsData['rst'] = u'高'
+                            elif over16 == u'是' and over20 == u'否':
+                                self.fpsData['rst'] = u'偏高'
+                            else:
+                                self.fpsData['rst'] = u'正常'
                         elif excelFile == coldBootFile:
-                            table = data.sheet_by_name(u'冷启动性能')
-                            self.coldBootData['num'] = 10
-                            self.coldBootData['max'] = table.cell(15,2).value
-                            self.coldBootData['min'] = table.cell(16,2).value
-                            self.coldBootData['anv'] = table.cell(17,2).value
+                            if data.sheets()[1] == u'冷启动性能':
+                                print("bb")
+                                table = data.sheet_by_name(u'冷启动性能')
+                                self.coldBootData['num'] = 10
+                                self.coldBootData['max'] = table.cell(15,2).value
+                                self.coldBootData['min'] = table.cell(16,2).value
+                                self.coldBootData['anv'] = table.cell(17,2).value
+                                coldTop = []
+                                coldTempData = table.row_values(2)
+                                coldMid = 0
+                                coldBig = 0
+                                for j in range(2, len(coldTempData)):
+                                    if (coldTempData[j] > 4000 and coldTempData[j] < 6000) or (coldTempData[j] == 6000):
+                                        coldMid += 1
+                                    elif coldTempData[j] > 6000:
+                                        coldBig += 1
+                                    if coldTempData[j] == self.coldBootData['max']:
+                                        coldTop.append(j-1)
+                                if len(coldTop) > 1:
+                                    for s in range(len(coldTop)):
+                                        if s == 0:
+                                            coldTopTotal = str(coldTop[s])
+                                        else:
+                                            coldTopTotal = coldTopTotal + '、' + str(coldTop[s])
+                                        self.coldBootData['top'] = u'第' + coldTopTotal + u'次'
+                                else:
+                                    self.coldBootData['top'] = u'第' + str(coldTop[0]) + u'次'
+                                if self.coldBootData['max'] > 4000 and coldMid > 3:
+                                    self.coldBootData['rst'] = u'偏高'
+                                elif self.coldBootData['max'] > 6000 and coldBig > 3:
+                                    self.coldBootData['rst'] = u'高'
+                                else:
+                                    self.coldBootData['rst'] = u'正常'
                         elif excelFile == warmBootFile:
-                            table = data.sheet_by_name(u'热启动性能')
-                            self.warmBootData['num'] = 10
-                            self.warmBootData['max'] = table.cell(15,2).value
-                            self.warmBootData['min'] = table.cell(16,2).value
-                            self.warmBootData['anv'] = table.cell(17,2).value
+                            if data.sheets()[1] == u'热启动性能':
+                                print("aa")
+                                table = data.sheet_by_name(u'热启动性能')
+                                self.warmBootData['num'] = 10
+                                self.warmBootData['max'] = table.cell(15,2).value
+                                self.warmBootData['min'] = table.cell(16,2).value
+                                self.warmBootData['anv'] = table.cell(17,2).value
+                                warmTop = []
+                                warmTempData = table.row_values(2)
+                                warmMid = 0
+                                warmBig = 0
+                                for k in range(2, len(warmTempData)):
+                                    if (warmTempData[k] > 2000 and warmTempData[k] < 4000) or (warmTempData[k] == 4000):
+                                        warmMid += 1
+                                    elif warmTempData[k] > 4000:
+                                        warmBig += 1
+                                    if warmTempData[k] == self.warmBootData['max']:
+                                        warmTop.append(k-1)
+                                if len(warmTop) > 1:
+                                    for n in range(len(warmTop)):
+                                        if n == 0:
+                                            warmTopTotal = str(warmTop[n])
+                                        else:
+                                            warmTopTotal = warmTopTotal + '、' + str(warmTop[n])
+                                        self.warmBootData['top'] = u'第' + warmTopTotal + u'次'
+                                else:
+                                    self.warmBootData['top'] = u'第' + str(warmTop[0]) + u'次'
+                                if self.warmBootData['max'] > 2000 and warmMid > 3:
+                                    self.warmBootData['rst'] = u'偏高'
+                                elif self.warmBootData['max'] > 4000 and warmBig > 3:
+                                    self.warmBootData['rst'] = u'高'
+                                else:
+                                    self.warmBootData['rst'] = u'正常'
             xlsFile = os.path.join(self.attachmentPath, 'templatePerformance.xlsx')
         except Exception as e:
             print(e)
