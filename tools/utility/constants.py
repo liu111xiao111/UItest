@@ -31,7 +31,7 @@ CASE_WARM_BOOT = u'热启动'
 CASE_FPS       = u'FPS'
 
 # 测试数据文件
-PERF_FILE         = 'performance.xml'
+PERF_FILE         = 'perf.xml'
 TRAFFIC_FILE      = 'traffic.txt'
 BOOTTIME_FILE     = 'boottime.txt'
 FPS_FILE          = 'fps.txt'
