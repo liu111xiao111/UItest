@@ -581,7 +581,6 @@ class PerformanceSummary(object):
                 excelList = {'dianying':dianYingFile, 'meishi':meiShiHuiFile, 'dingdan':dingDanFile, 'denglu':dengLuFile, 'fps':fpsFile, 'coldboot':coldBootFile, 'warmboot':warmBootFile}
                 for (case,excelFile) in excelList.items():
                     if os.path.exists(excelFile):
-                        print(excelFile)
                         data = xlrd.open_workbook(excelFile)
                         if excelFile in (dianYingFile, meiShiHuiFile, dingDanFile, dengLuFile):
                             sheetList = [u'CPU 性能', u'内存性能', u'上行速率', u'下行速率', u'电池温度']
@@ -589,7 +588,6 @@ class PerformanceSummary(object):
                             for sheetTemp in sheetList:
                                 table = data.sheet_by_name(sheetTemp)
                                 if sheetTemp == u'CPU 性能':
-                                    print("XX")
                                     self.cpuData[case]['max'] = table.cell(15,2).value
                                     self.cpuData[case]['min'] = table.cell(16,2).value
                                     self.cpuData[case]['anv'] = table.cell(17,2).value
@@ -636,7 +634,6 @@ class PerformanceSummary(object):
                                         self.cpuData[case]['rst'] = u'正常'
                                     caseTime = cpuTotalTime
                                 elif sheetTemp == u'内存性能':
-                                    print("XX")
                                     self.memoryData[case]['max'] = table.cell(15,2).value
                                     self.memoryData[case]['min'] = table.cell(16,2).value
                                     self.memoryData[case]['anv'] = table.cell(17,2).value
@@ -856,7 +853,6 @@ class PerformanceSummary(object):
                                     else:
                                         self.batteryTemperatureData[case]['rst'] = u'正常'
                         elif excelFile == fpsFile:
-                            print("cc")
                             table = data.sheet_by_name(u'OverDraw和FPS 性能')
                             tempFpsDate = []
                             over16 = u'否'
@@ -894,8 +890,7 @@ class PerformanceSummary(object):
                             else:
                                 self.fpsData['rst'] = u'正常'
                         elif excelFile == coldBootFile:
-                            if data.sheets()[1] == u'冷启动性能':
-                                print("bb")
+                            if len(data.sheets()) > 1:
                                 table = data.sheet_by_name(u'冷启动性能')
                                 self.coldBootData['num'] = 10
                                 self.coldBootData['max'] = table.cell(15,2).value
@@ -928,8 +923,7 @@ class PerformanceSummary(object):
                                 else:
                                     self.coldBootData['rst'] = u'正常'
                         elif excelFile == warmBootFile:
-                            if data.sheets()[1] == u'热启动性能':
-                                print("aa")
+                            if len(data.sheets()) > 1:
                                 table = data.sheet_by_name(u'热启动性能')
                                 self.warmBootData['num'] = 10
                                 self.warmBootData['max'] = table.cell(15,2).value
