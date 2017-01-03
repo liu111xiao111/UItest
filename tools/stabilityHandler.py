@@ -1,9 +1,3 @@
-'''
-Created on Nov 17, 2016
-
-@author: qiaojx
-'''
-
 import os
 import time
 import datetime
@@ -286,7 +280,7 @@ class Handler(object):
                     ws['C6'] = self.dataList['wodetuichu']['ANR']
                     ws['C7'] = self.dataList['wodetuichu']['JRTERROR'] + self.dataList['wodetuichu']['JRTCRASH']
                     ws['C8'] = self.dataList['wodetuichu']['APPDIED'] + self.dataList['wodetuichu']['SYSTEMERROR']
-            xlsFile = os.path.join(self.reportPath, u'飞凡稳定性评测报告%s.xlsx' % time.strftime("%Y%m%d"))
+            xlsFile = os.path.join(self.reportPath, u'飞凡APP重点功能压力测试报告(%s).xlsx' % time.strftime("%Y%m%d"))
             wb.save(xlsFile)
             if os.path.exists(file):
                 os.remove(file)
@@ -296,6 +290,6 @@ class Handler(object):
 
 if __name__ == "__main__":
     handler = Handler('Android')
-    resultsPath = "%s/report/stability/%s/%s" % ("/Users/uasd-qiaojx/Desktop", '2016/12/12', '1')
+    resultsPath = "%s/report/stability/%s/%s" % ("/Users/uasd-qiaojx/Desktop", '2016/12/29', '10')
     if os.path.exists(resultsPath):
         handler.handle(resultsPath)

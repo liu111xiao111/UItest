@@ -6,7 +6,6 @@ import sys
 import time
 import unittest
 
-from cases.android.ffan.common.monkey_process import MonkeyHandle
 from utility.stabilityMailProcess import sendTestResultMail
 from cases.android.ffan.monkey_test_cases.quanChengSouSuo import QuanChengSouSuoTestCase
 from cases.android.ffan.monkey_test_cases.gouWuZhongXin import GouWuZhongXinTestCase
@@ -62,7 +61,6 @@ if __name__ == "__main__":
             suite.addTest(WoDeTuiChuTestCase("testWoDeTuiChu")) # 我的退出 No.62
             suite.addTest(WoDeDengLuTestCase("testWoDeDengLu")) # 我的登录 No.49
 
-
             runner = unittest.TextTestRunner()
             runner.run(suite)
 
@@ -78,6 +76,7 @@ if __name__ == "__main__":
         raise CrashError(e)
     finally:
         endTime = time.strftime('%Y/%m/%d %H:%M:%S')
-        #MonkeyHandle().monkeyHandleForStability(startTime, endTime, reportPath)
+#         startTime = '2016/12/29 16:54:36'
+#         endTime = '2016/12/29 18:13:08'
         if sentMail:
             sendTestResultMail(startTime, endTime, reportPath, 'android')

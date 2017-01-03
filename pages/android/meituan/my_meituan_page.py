@@ -22,7 +22,7 @@ class MyMeituanPage(SuperPage):
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  MMPC.text_my_order,
+                                  MMPC.text_my_comment,
                                   MMPC.verify_view_timeout)
         logger.info("Check 我的页面 end")
 
@@ -100,6 +100,17 @@ class MyMeituanPage(SuperPage):
                                  MMPC.click_view_timeout)
         logger.info("Check 我的订单 end")
 
+    def clickOnMyComment(self):
+        '''
+        usage: 点击我的评价
+        '''
+        logger.info("Click 我的评价 begin")
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MMPC.text_my_comment,
+                                 MMPC.click_view_timeout)
+        logger.info("Check 我的评价 end")
 
     def clickOnToBePaid(self):
         '''

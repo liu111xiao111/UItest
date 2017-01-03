@@ -5,6 +5,7 @@ class MyMTuanMyOrderPageConfigs():
     resource_id_tv_my_order_tv = "com.wanda.app.wanhui:id/title_settings";
     resource_id_tv_order_number_tv = "com.wanda.app.wanhui:id/tv_where";
     text_title = u"我的订单"
+    text_comment_title = u"美团评价"
     text_order_all = u"全部";
     text_order_no_pay = u"待付款";
     text_order_paid = u"已付款";
