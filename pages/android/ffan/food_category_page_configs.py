@@ -8,7 +8,8 @@ class FoodCategoryPageConfigs():
     # 优惠打折
     resource_id_bt_coupon_bt = "com.wanda.app.wanhui:id/coupon_campaign_container"
     # 抢券
-    resource_id_bt_grab_bt = "com.wanda.app.wanhui:id/price_container"
+    resource_id_bt_grab_bt = "com.wanda.app.wanhui:id/name"
+    xpath_sales = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.RelativeLayout[1]/android.widget.HorizontalScrollView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[2]"
     text_grab_bt = u"立即抢"
     # 乐付
     resource_id_bt_pay_bt = "com.wanda.app.wanhui:id/pic"

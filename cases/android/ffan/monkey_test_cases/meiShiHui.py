@@ -83,7 +83,7 @@ class MeiShiHuiTestCase(TestCase):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         foodPage = FoodCategoryPage(self, self.driver, self.logger)
 
-        for i in range(1):
+        for i in range(INSIDELOOPNUM):
             logFile = "%smeishihui_%s_%s.log" % (self.logPath , self.loopNumer, str(i+1))
             self.logcatFile = logFile
 
@@ -103,7 +103,7 @@ class MeiShiHuiTestCase(TestCase):
             foodPage.clickBackKey()
 
             # 检查美食分类及门店列表
-            foodPage.validModulesForStability()
+            foodPage.validModulesForStability(self.loopNumer, str(i+1))
             foodPage.clickBackKey()
 
             cmdLogcat = "adb logcat -d > %s" % (logFile)

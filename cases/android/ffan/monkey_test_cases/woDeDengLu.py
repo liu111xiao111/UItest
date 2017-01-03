@@ -129,9 +129,6 @@ class WoDeDengLuTestCase(TestCase):
                 for file in files:
                     shutil.move(file, self.picturePath)
 
-            # 生成HTML
-            #MonkeyHandle().HandleForStability(logFile)
-
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeDengLuTestCase)

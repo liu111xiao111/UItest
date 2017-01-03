@@ -20,6 +20,6 @@ class MyMTuanMyOrderPage(SuperPage):
         '''
         logger.info("Check 我的订单页面 begin")
         API().assertElementByText(self.testcase, self.driver, self.logger,
-                                        MTMOPC.text_title,
-                                        30)
+                                        MTMOPC.text_comment_title,
+                                        60)
         logger.info("Check 我的订单页面 end")

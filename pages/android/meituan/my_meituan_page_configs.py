@@ -5,6 +5,7 @@ class MyMeituanPageConfigs():
     # text指明类型为text label
     text_click_login = u"请点击登录";
     text_my_order = u"我的订单";
+    text_my_comment = u"我的评价";
     text_logout = u"退出账户";
     text_exit = u"退出";
     resource_id_setting = "com.sankuai.meituan:id/settings"

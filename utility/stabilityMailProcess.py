@@ -1,4 +1,3 @@
-
 import os
 import time
 import datetime
@@ -88,7 +87,7 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
 
     if deviceType == 'android':
         logcatFile = 'log.zip'
-        reportFile = u'飞凡稳定性评测报告%s.xlsx' % time.strftime("%Y%m%d")
+        reportFile = u'飞凡APP重点功能压力测试报告(%s).xlsx' % time.strftime("%Y%m%d")
         attachmentFiles.append(reportFile)
         attachmentFiles.append(logcatFile)
     elif deviceType == 'ios':
@@ -111,9 +110,9 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
             msg.attach(attach)
 
     if deviceType == 'android':
-        msg['Subject'] = Header(constants.MONKEY_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y-%m-%d')), "utf-8")
+        msg['Subject'] = Header(constants.STABILITY_HEADR_NAME % (deviceType.capitalize(), time.strftime('%Y%m%d')), "utf-8")
     elif deviceType == 'ios':
-        msg['Subject'] = Header(constants.MONKEY_HEADR_NAME % ('IOS', time.strftime('%Y-%m-%d')), "utf-8")
+        msg['Subject'] = Header(constants.STABILITY_HEADR_NAME % ('IOS', time.strftime('%Y%m%d')), "utf-8")
     else:
         raise
     msg['From'] = (r"%s <" + fromAddress + ">") % Header(constants.SYSTEM_NAME, "utf-8")
@@ -128,5 +127,5 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
 
 
 if __name__ == "__main__":
-    reportPath = '/Users/uasd-qiaojx/Desktop/report/stability/20161216/9'
-    sendTestResultMail('2016/09/01 12:23', '2016/09/01 13:11', reportPath, 'android')
+    reportPath = '/Users/uasd-qiaojx/Desktop/report/stability/20161229/10'
+    sendTestResultMail('2016/12/29 16:54:36', '2016/12/29 18:13:08', reportPath, 'android')

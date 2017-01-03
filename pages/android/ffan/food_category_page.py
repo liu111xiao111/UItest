@@ -111,10 +111,14 @@ class FoodCategoryPage(SuperPage):
             API().screenShot(self.driver, "meiShiHuiRuKou")
             logger.info("Check 入口(%s) end" % restaurant)
 
-    def validModulesForStability(self, outsideLoop="1", insideLoop="1"):
+    def validModulesForStability(self, outsideLoop=1, insideLoop=1):
         '''
         usage: 点击美食主界面的所有入口并验证
         '''
+#         width = API().getWidthOfDevice(self.driver, self.logger)
+#         hight = API().getHeightOfDevice(self.driver, self.logger)
+#         for _ in range(2):
+#             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByText(self.testcase,
                                      self.driver,
                                      self.logger,
@@ -133,7 +137,7 @@ class FoodCategoryPage(SuperPage):
             API().waitBySeconds(3)
             self.validRestaurant()
             API().screenShotForStability(self.driver, "meishihui", outsideLoop, insideLoop, str(i))
-            self.clickOnStoreList()
+            self.clickOnStoreList(restaurant)
             self.validStoreList()
             API().screenShotForStability(self.driver, "meishihui", outsideLoop, insideLoop, str(i+1))
             API().clickBackKeyForAndroid(self.driver, self.logger)
@@ -141,7 +145,7 @@ class FoodCategoryPage(SuperPage):
             API().clickElementByXpath(self.testcase,
                                       self.driver,
                                       self.logger,
-                                      FCPC.xpath_food_type,
+                                      FCPC.xpath_food_type_v5,
                                       FCPC.click_view_timeout)
             API().screenShotForStability(self.driver, "meishihui", outsideLoop, insideLoop, str(i+3))
             i = i + 4
@@ -164,9 +168,38 @@ class FoodCategoryPage(SuperPage):
         logger.info("Click 抢券 begin")
 #         version = DeviceInfoUtil().getBuildVersion()
 #         if int(version.split(".")[0]) < 5:
+#         width = API().getWidthOfDevice(self.driver, self.logger)
+#         hight = API().getHeightOfDevice(self.driver, self.logger)
+#         for _ in range(3):
+#             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+#         API().clickElementByResourceId(self.testcase,
+#                                        self.driver,
+#                                        self.logger,
+#                                        FCPC.resource_id_bt_grab_bt,
+#                                        FCPC.click_view_timeout)
+#         else:
+#             API().clickElementByText(self.testcase,
+#                                            self.driver,
+#                                            self.logger,
+#                                            FCPC.text_grab_bt,
+#                                            FCPC.click_view_timeout)
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  FCPC.xpath_sales,
+                                  FCPC.click_view_timeout)
+        logger.info("Click 抢券 begin")
+
+    def clickOnGrabCouponsForStability(self):
+        '''
+        usage : 点击抢券
+        '''
+        logger.info("Click 抢券 begin")
+#         version = DeviceInfoUtil().getBuildVersion()
+#         if int(version.split(".")[0]) < 5:
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(3):
+        for _ in range(6):
             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByResourceId(self.testcase,
                                        self.driver,

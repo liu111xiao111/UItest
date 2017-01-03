@@ -96,7 +96,7 @@ class MTuanWoDeDingDanTestCase(TestCase):
             loginPage.clickOnLoginBtn()
             loginPage.screenShot("dengLu")
 
-        myMeituanPage.clickOnMyOrder()
+        myMeituanPage.clickOnMyComment()
         myOrderPage = MyMTuanMyOrderPage(self, self.driver, self.logger)
         myOrderPage.validSelf()
         myOrderPage.screenShot("woDeDingDan")
