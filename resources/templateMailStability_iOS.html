@@ -94,7 +94,7 @@
        </tr>
        
        <tr id='header_row'>
-           <td><strong>Android手机型号</strong></td>
+           <td><strong>iOS手机型号</strong></td>
            <td bgcolor=B8CCE4 style="color:black">%s</td>
        </tr>
        
@@ -132,6 +132,10 @@
            <td><strong>Crash（个）</strong></td>
            <td bgcolor=DBE5F1 style="color:black">%s</td>
        </tr>
+       <tr id='header_row'>
+           <td><strong>Error（个）</strong></td>
+           <td bgcolor=DBE5F1 style="color:black">%s</td>
+       </tr>
        
    </table>
    
@@ -144,38 +148,40 @@
        </tr>
        
        <tr bgcolor=white>
-           <td><font color="1F4E78"><strong>ANR</strong></font></td>
-           <td><font color="1F4E78"><strong>Application not Responding</strong></font></td>
+           <td rowspan="3"><font color="1F4E78"><strong>内存管理错误(Crash)</strong></font></td>
+           <td><font color="1F4E78"><strong>内存泄漏</strong></font></td>
            <td style="color:red;text-align:right">%s</td>
-           <td>1.应用主线程锁死，对其他请求响应超时</br>2.CPU负载过重</br>3.设备本身性能较差</td>
+           <td>未释放不会再使用对象</td>
        </tr>
-       
-       <tr bgcolor=D0CECE>
-           <td rowspan="2"><font color="1F4E78"><strong>JAVA Runtime Error</strong></font></td>
-           <td><font color="1F4E78"><strong>程序内部异常</strong></font></td>
-           <td style="color:red;text-align:right">%s</td>
-           <td rowspan="2">1.NullPointerException</br>2.IndexOutOfBoundsException</br>
-               3.IllegalArgumentException</br>4.IllegalStateException</td>
-       </tr>
-       
-       <tr bgcolor=D0CECE>
-           <td><font color="1F4E78"><strong>Crashed(内部)</strong></font></td>
-           <td style="color:red;text-align:right">%s</td>
-       </tr>
-       
+
        <tr bgcolor=white>
-           <td rowspan="2"><font color="1F4E78"><strong>NDK Error</strong></font></td>
-           <td><font color="1F4E78"><strong>App died</strong></font></td>
+           <td><font color="1F4E78"><strong>引用出错</strong></font></td>
            <td style="color:red;text-align:right">%s</td>
-           <td rowspan="2">1.初始化错误</br>2.访问错误</br>3.内存泄露</br>4.参数错误
-               </br>5.堆栈溢出</br>6.类型转换错误</br>7.数字除0错误</td>
+           <td>引用已经被释放的对象指针</td>
        </tr>
-       
+
        <tr bgcolor=white>
-           <td><font color="1F4E78"><strong>System Error</strong></font></td>
+           <td><font color="1F4E78"><strong>内存警告</strong></font></td>
            <td style="color:red;text-align:right">%s</td>
+           <td>App使用的内存超出设备的限制</td>
        </tr>
-       
+
+       <tr bgcolor=white>
+           <td rowspan="1"><font color="1F4E78"><strong>程序逻辑错误(Crash)</strong></font></td>
+           <td rowspan="1"><font color="1F4E78"><strong>数组越界</strong></font></td>
+           <td style="color:red;text-align:right">%s</td>
+           <td> </td>
+       </tr>
+
+       <tr bgcolor=white>
+           <td rowspan="1"><font color="1F4E78"><strong>Error</strong></font></td>
+           <td rowspan="1"><font color="1F4E78"><strong>内部错误</strong></font></td>
+           <td style="color:red;text-align:right">%s</td>
+           <td> </td>
+       </tr>
+
+
+
    </table>
    
    <p style="FONT-SIZE: 13px"><strong>合计：</strong><strong> %s</strong><strong>个</strong></p>

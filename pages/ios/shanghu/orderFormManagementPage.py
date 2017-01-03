@@ -84,7 +84,7 @@ class OrderFormManagementPage(SuperPage):
         #滑动显示电话号码,再获取value
         logger.info('Scroll to 电话号码 begin')
         API().iosScrollToElement(self.driver,self.logger,phoneNumberXpath,
-                                 '18612819429')
+                                 u'18612819429')
         orderFormBuyerTemp = API().getTextByXpath(self.testcase,
                                                   self.driver,
                                                   self.logger,
