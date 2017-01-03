@@ -77,7 +77,7 @@ class EmployeeModulePage(SuperPage):
         :return:
         '''
         logger.info('Check 添加新员工 begin')
-        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_name)
+        name = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_name, 20)
 
         API().assertTrue(self.testcase, self.logger, name==Text.new_employee_name)
         logger.info('Check 添加新员工 end')
