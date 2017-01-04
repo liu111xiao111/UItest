@@ -108,10 +108,10 @@ class MyFfanPage(SuperPage):
         usage : 点击我的订单待付款
         '''
         logger.info("Click 待付款 begin")
-        width = API().getWidthOfDevice(self.driver, self.logger)
-        hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(3):
-            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+#         width = API().getWidthOfDevice(self.driver, self.logger)
+#         hight = API().getHeightOfDevice(self.driver, self.logger)
+#         for _ in range(3):
+#             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
 
         API().clickElementByXpath(self.testcase,
                                  self.driver,

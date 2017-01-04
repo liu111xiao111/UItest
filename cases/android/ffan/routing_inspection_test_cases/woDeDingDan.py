@@ -90,9 +90,9 @@ class WoDeDingDanTestCase(TestCase):
         myFfanPage.screenShot("woDe")
 
         # 查看我的订单 -- 点击我的订单退货退款
-        myFfanPage.clickOnReturnRefund()
-        myFfanPage.validSelfReturnRefund()
-        myFfanPage.screenShot("woDeTuiHuoTuiKuan")
+#         myFfanPage.clickOnReturnRefund()
+#         myFfanPage.validSelfReturnRefund()
+#         myFfanPage.screenShot("woDeTuiHuoTuiKuan")
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeDingDanTestCase)
