@@ -31,11 +31,13 @@ class Email():
 
     performanceMaillAddress =['lichunyan19@wanda.cn', 'sunkai31@wanda.cn', 'renyang5@wanda.cn', 'renhaitao@wanda.cn',
                               'mulihui@wanda.cn', 'yindq@neusoft.com', 'chencheng@neusoft.com', 'tl@neusoft.com',
-                              'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn']
+                              'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn',
+                              'chuyanyan3@wanda.cn', 'huangguangan@wanda.cn', 'zhangjinping@wanda.cn', 'sundongfeng@wanda.cn']
 
     monkeyMaillAddress =['lichunyan19@wanda.cn', 'sunkai31@wanda.cn', 'renyang5@wanda.cn', 'renhaitao@wanda.cn',
                          'mulihui@wanda.cn', 'yindq@neusoft.com', 'chencheng@neusoft.com', 'tl@neusoft.com',
-                         'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn']
+                         'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn',
+                         'chuyanyan3@wanda.cn', 'huangguangan@wanda.cn', 'zhangjinping@wanda.cn', 'sundongfeng@wanda.cn']
 
 
 class PhoneNumber():
