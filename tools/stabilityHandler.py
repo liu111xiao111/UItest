@@ -66,7 +66,7 @@ class DataHandler(object):
 
     def _parserLogData(self):
         i = 0
-        caseErrorInfo = {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0}
+        caseErrorInfo = {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]}
         tmpFile = os.path.join(self.logPath, '%s.txt') % self.testCase
         cmdFind = 'find %s -name "%s*.log" > %s' % (self.logPath, self.testCase, tmpFile)
         os.system(cmdFind)
@@ -77,29 +77,45 @@ class DataHandler(object):
             if logPaths != []:
                 for logPath in logPaths:
                     caseLogFile = logPath[:-1]
+                    errorFilePath = caseLogFile.find('log')
                     if os.path.exists(caseLogFile):
                         logInfo = open(caseLogFile, 'r')
                         logLines = logInfo.readlines()
                         logInfo.close()
                         for logLine in logLines:
+                            i += 1
                             if logLine.find("anr") != -1:
                                 caseErrorInfo['ANR'] += 1
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
                             elif logLine.find("crash") != -1:
                                 caseErrorInfo['JRTCRASH'] += 1
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
                             elif logLine.find("Reading a NULL string not supported here.") != -1:
-                                i += 1
                                 caseErrorInfo['JRTERROR'] += 1
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
                             elif logLine.find("Got null root node from accessibility - Retrying...") != -1:
                                 caseErrorInfo['JRTERROR'] += 1
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
                             elif logLine.find("died") != -1:
                                 caseErrorInfo['APPDIED'] += 1
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
                             elif logLine.find("system error") != -1:
                                 caseErrorInfo['SYSTEMERROR'] += 1
-                caseErrorInfo['JRTERROR'] = caseErrorInfo['JRTERROR'] - (i-1)
-
+                                caseErrorInfo['ERRORLOG'].append(logLine)
+                                caseErrorInfo['ERRORNUM'].append(i)
+                                caseErrorInfo['ERRORFILE'].append(caseLogFile[errorFilePath:])
         if os.path.exists(tmpFile):
             os.remove(tmpFile)
-
         return caseErrorInfo
 
 
@@ -109,16 +125,16 @@ class Handler(object):
         self.reportPath = ''
         self.workbook = ''
         self.dataLength = 0
-        self.dataList = {u'quanchengsousuo': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0}, 
-                         u'gouwuzhongxin': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'meishihui': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'guangchangsousuo': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'guangchangzhaodian': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'guangchangpaidui': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'guangchangtingche': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'guangchangmaidan': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'wodedenglu': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0},
-                         u'wodetuichu': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0}}
+        self.dataList = {u'quanchengsousuo': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]}, 
+                         u'gouwuzhongxin': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'meishihui': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'guangchangsousuo': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'guangchangzhaodian': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'guangchangpaidui': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'guangchangtingche': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'guangchangmaidan': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'wodedenglu': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]},
+                         u'wodetuichu': {'ANR': 0, 'JRTERROR': 0, 'JRTCRASH': 0, 'APPDIED': 0, 'SYSTEMERROR': 0, 'ERRORLOG':[], 'ERRORNUM':[], 'ERRORFILE':[]}}
         if deviceType == 'Android':
             from configs.androidConfig import appVersion, phoneVersion, buildVersion, deviceID, deviceNet
         elif deviceType == 'IOS':
@@ -149,6 +165,9 @@ class Handler(object):
                 self.dataList[testCase]['JRTCRASH'] = caseErrorInfo['JRTCRASH']
                 self.dataList[testCase]['APPDIED'] = caseErrorInfo['APPDIED']
                 self.dataList[testCase]['SYSTEMERROR'] = caseErrorInfo['SYSTEMERROR']
+                self.dataList[testCase]['ERRORLOG'] = caseErrorInfo['ERRORLOG']
+                self.dataList[testCase]['ERRORNUM'] = caseErrorInfo['ERRORNUM']
+                self.dataList[testCase]['ERRORFILE'] = caseErrorInfo['ERRORFILE']
 
             global ANR_ERROR
             ANR_ERROR = self.dataList['quanchengsousuo']['ANR'] + self.dataList['gouwuzhongxin']['ANR'] +\
@@ -210,7 +229,6 @@ class Handler(object):
                           '%s' % (self.reportPath, e))
 
     def _writeExcel(self, file='file.xls'):
-
         try:
             wb = openpyxl.load_workbook(file)
             for sheet_name in STABILITY_REPORT_SHEET:
@@ -226,66 +244,186 @@ class Handler(object):
                     ws['C6'] = self.dataList['quanchengsousuo']['ANR']
                     ws['C7'] = self.dataList['quanchengsousuo']['JRTERROR'] + self.dataList['quanchengsousuo']['JRTCRASH']
                     ws['C8'] = self.dataList['quanchengsousuo']['APPDIED'] + self.dataList['quanchengsousuo']['SYSTEMERROR']
+                    if len(self.dataList['quanchengsousuo']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['quanchengsousuo']['ERRORLOG'])):
+                            log_quanchengsousuo = 'A' + str(i + 11)
+                            line_quanchengsousuo = 'E' + str(i + 11)
+                            message_quanchengsousuo = 'F' + str(i + 11)
+                            ws[line_quanchengsousuo] = self.dataList['quanchengsousuo']['ERRORNUM'][i]
+                            ws[message_quanchengsousuo] = self.dataList['quanchengsousuo']['ERRORLOG'][i]
+                            ws[log_quanchengsousuo] = self.dataList['quanchengsousuo']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'购物中心':
                     ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
                     ws['C5'] = self.dataList['gouwuzhongxin']['ANR'] + self.dataList['gouwuzhongxin']['JRTERROR'] + self.dataList['gouwuzhongxin']['JRTCRASH'] + self.dataList['gouwuzhongxin']['APPDIED'] + self.dataList['gouwuzhongxin']['SYSTEMERROR']
                     ws['C6'] = self.dataList['gouwuzhongxin']['ANR']
                     ws['C7'] = self.dataList['gouwuzhongxin']['JRTERROR'] + self.dataList['gouwuzhongxin']['JRTCRASH']
                     ws['C8'] = self.dataList['gouwuzhongxin']['APPDIED'] + self.dataList['gouwuzhongxin']['SYSTEMERROR']
+                    if len(self.dataList['gouwuzhongxin']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['gouwuzhongxin']['ERRORLOG'])):
+                            log_gouwuzhongxin = 'A' + str(i + 11)
+                            line_gouwuzhongxin = 'E' + str(i + 11)
+                            message_gouwuzhongxin = 'F' + str(i + 11)
+                            ws[line_gouwuzhongxin] = self.dataList['gouwuzhongxin']['ERRORNUM'][i]
+                            ws[message_gouwuzhongxin] = self.dataList['gouwuzhongxin']['ERRORLOG'][i]
+                            ws[log_gouwuzhongxin] = self.dataList['gouwuzhongxin']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'美食汇':
                     ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['meishihui']['ANR'] + self.dataList['meishihui']['JRTERROR'] + self.dataList['meishihui']['JRTCRASH'] + self.dataList['meishihui']['APPDIED'] + self.dataList['meishihui']['SYSTEMERROR']
                     ws['C6'] = self.dataList['meishihui']['ANR']
                     ws['C7'] = self.dataList['meishihui']['JRTERROR'] + self.dataList['meishihui']['JRTCRASH']
                     ws['C8'] = self.dataList['meishihui']['APPDIED'] + self.dataList['meishihui']['SYSTEMERROR']
+                    if len(self.dataList['meishihui']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['meishihui']['ERRORLOG'])):
+                            log_meishihui = 'A' + str(i + 11)
+                            line_meishihui = 'E' + str(i + 11)
+                            message_meishihui = 'F' + str(i + 11)
+                            ws[line_meishihui] = self.dataList['meishihui']['ERRORNUM'][i]
+                            ws[message_meishihui] = self.dataList['meishihui']['ERRORLOG'][i]
+                            ws[log_meishihui] = self.dataList['meishihui']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'广场搜索':
                     ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
                     ws['C5'] = self.dataList['guangchangsousuo']['ANR'] + self.dataList['guangchangsousuo']['JRTERROR'] + self.dataList['guangchangsousuo']['JRTCRASH'] + self.dataList['guangchangsousuo']['APPDIED'] + self.dataList['guangchangsousuo']['SYSTEMERROR']
                     ws['C6'] = self.dataList['guangchangsousuo']['ANR']
                     ws['C7'] = self.dataList['guangchangsousuo']['JRTERROR'] + self.dataList['guangchangsousuo']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangsousuo']['APPDIED'] + self.dataList['guangchangsousuo']['SYSTEMERROR']
+                    if len(self.dataList['guangchangsousuo']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['guangchangsousuo']['ERRORLOG'])):
+                            log_guangchangsousuo = 'A' + str(i + 11)
+                            line_guangchangsousuo = 'E' + str(i + 11)
+                            message_guangchangsousuo = 'F' + str(i + 11)
+                            ws[line_guangchangsousuo] = self.dataList['guangchangsousuo']['ERRORNUM'][i]
+                            ws[message_guangchangsousuo] = self.dataList['guangchangsousuo']['ERRORLOG'][i]
+                            ws[log_guangchangsousuo] = self.dataList['guangchangsousuo']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'广场找店':
                     ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
                     ws['C5'] = self.dataList['guangchangzhaodian']['ANR'] + self.dataList['guangchangzhaodian']['JRTERROR'] + self.dataList['guangchangzhaodian']['JRTCRASH'] + self.dataList['guangchangzhaodian']['APPDIED'] + self.dataList['guangchangzhaodian']['SYSTEMERROR']
                     ws['C6'] = self.dataList['guangchangzhaodian']['ANR']
                     ws['C7'] = self.dataList['guangchangzhaodian']['JRTERROR'] + self.dataList['guangchangzhaodian']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangzhaodian']['APPDIED'] + self.dataList['guangchangzhaodian']['SYSTEMERROR']
+                    if len(self.dataList['guangchangzhaodian']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['guangchangzhaodian']['ERRORLOG'])):
+                            log_guangchangzhaodian = 'A' + str(i + 11)
+                            line_guangchangzhaodian = 'E' + str(i + 11)
+                            message_guangchangzhaodian = 'F' + str(i + 11)
+                            ws[line_guangchangzhaodian] = self.dataList['guangchangzhaodian']['ERRORNUM'][i]
+                            ws[message_guangchangzhaodian] = self.dataList['guangchangzhaodian']['ERRORLOG'][i]
+                            ws[log_guangchangzhaodian] = self.dataList['guangchangzhaodian']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'广场排队':
                     ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
                     ws['C5'] = self.dataList['guangchangpaidui']['ANR'] + self.dataList['guangchangpaidui']['JRTERROR'] + self.dataList['guangchangpaidui']['JRTCRASH'] + self.dataList['guangchangpaidui']['APPDIED'] + self.dataList['guangchangpaidui']['SYSTEMERROR']
                     ws['C6'] = self.dataList['guangchangpaidui']['ANR']
                     ws['C7'] = self.dataList['guangchangpaidui']['JRTERROR'] + self.dataList['guangchangpaidui']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangpaidui']['APPDIED'] + self.dataList['guangchangpaidui']['SYSTEMERROR']
+                    if len(self.dataList['guangchangpaidui']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['guangchangpaidui']['ERRORLOG'])):
+                            log_guangchangpaidui = 'A' + str(i + 11)
+                            line_guangchangpaidui = 'E' + str(i + 11)
+                            message_guangchangpaidui = 'F' + str(i + 11)
+                            ws[line_guangchangpaidui] = self.dataList['guangchangpaidui']['ERRORNUM'][i]
+                            ws[message_guangchangpaidui] = self.dataList['guangchangpaidui']['ERRORLOG'][i]
+                            ws[log_guangchangpaidui] = self.dataList['guangchangpaidui']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'广场停车':
                     ws['C4'] = INSIDELOOPNUM * OUTLOOPNUM
                     ws['C5'] = self.dataList['guangchangtingche']['ANR'] + self.dataList['guangchangtingche']['JRTERROR'] + self.dataList['guangchangtingche']['JRTCRASH'] + self.dataList['guangchangtingche']['APPDIED'] + self.dataList['guangchangtingche']['SYSTEMERROR']
                     ws['C6'] = self.dataList['guangchangtingche']['ANR']
                     ws['C7'] = self.dataList['guangchangtingche']['JRTERROR'] + self.dataList['guangchangtingche']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangtingche']['APPDIED'] + self.dataList['guangchangtingche']['SYSTEMERROR']
+                    if len(self.dataList['guangchangtingche']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['guangchangtingche']['ERRORLOG'])):
+                            log_guangchangtingche = 'A' + str(i + 11)
+                            line_guangchangtingche = 'E' + str(i + 11)
+                            message_guangchangtingche = 'F' + str(i + 11)
+                            ws[line_guangchangtingche] = self.dataList['guangchangtingche']['ERRORNUM'][i]
+                            ws[message_guangchangtingche] = self.dataList['guangchangtingche']['ERRORLOG'][i]
+                            ws[log_guangchangtingche] = self.dataList['guangchangtingche']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'广场买单':
                     ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['guangchangmaidan']['ANR'] + self.dataList['guangchangmaidan']['JRTERROR'] + self.dataList['guangchangmaidan']['JRTCRASH'] + self.dataList['guangchangmaidan']['APPDIED'] + self.dataList['guangchangmaidan']['SYSTEMERROR']
                     ws['C6'] = self.dataList['guangchangmaidan']['ANR']
                     ws['C7'] = self.dataList['guangchangmaidan']['JRTERROR'] + self.dataList['guangchangmaidan']['JRTCRASH']
                     ws['C8'] = self.dataList['guangchangmaidan']['APPDIED'] + self.dataList['guangchangmaidan']['SYSTEMERROR']
+                    if len(self.dataList['guangchangmaidan']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['guangchangmaidan']['ERRORLOG'])):
+                            log_guangchangmaidan = 'A' + str(i + 11)
+                            line_guangchangmaidan = 'E' + str(i + 11)
+                            message_guangchangmaidan = 'F' + str(i + 11)
+                            ws[line_guangchangmaidan] = self.dataList['guangchangmaidan']['ERRORNUM'][i]
+                            ws[message_guangchangmaidan] = self.dataList['guangchangmaidan']['ERRORLOG'][i]
+                            ws[log_guangchangmaidan] = self.dataList['guangchangmaidan']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'我的登录':
                     ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['wodedenglu']['ANR'] + self.dataList['wodedenglu']['JRTERROR'] + self.dataList['wodedenglu']['JRTCRASH'] + self.dataList['wodedenglu']['APPDIED'] + self.dataList['wodedenglu']['SYSTEMERROR']
                     ws['C6'] = self.dataList['wodedenglu']['ANR']
                     ws['C7'] = self.dataList['wodedenglu']['JRTERROR'] + self.dataList['wodedenglu']['JRTCRASH']
                     ws['C8'] = self.dataList['wodedenglu']['APPDIED'] + self.dataList['wodedenglu']['SYSTEMERROR']
+                    if len(self.dataList['wodedenglu']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['wodedenglu']['ERRORLOG'])):
+                            log_wodedenglu = 'A' + str(i + 11)
+                            line_wodedenglu = 'E' + str(i + 11)
+                            message_wodedenglu = 'F' + str(i + 11)
+                            ws[line_wodedenglu] = self.dataList['wodedenglu']['ERRORNUM'][i]
+                            ws[message_wodedenglu] = self.dataList['wodedenglu']['ERRORLOG'][i]
+                            ws[log_wodedenglu] = self.dataList['wodedenglu']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
                 elif sheet_name == u'我的退出':
                     ws['C4'] = OUTLOOPNUM
                     ws['C5'] = self.dataList['wodetuichu']['ANR'] + self.dataList['wodetuichu']['JRTERROR'] + self.dataList['wodetuichu']['JRTCRASH'] + self.dataList['wodetuichu']['APPDIED'] + self.dataList['wodetuichu']['SYSTEMERROR']
                     ws['C6'] = self.dataList['wodetuichu']['ANR']
                     ws['C7'] = self.dataList['wodetuichu']['JRTERROR'] + self.dataList['wodetuichu']['JRTCRASH']
                     ws['C8'] = self.dataList['wodetuichu']['APPDIED'] + self.dataList['wodetuichu']['SYSTEMERROR']
+                    if len(self.dataList['wodetuichu']['ERRORLOG']) != 0:
+                        for i in range(len(self.dataList['wodetuichu']['ERRORLOG'])):
+                            log_wodetuichu = 'A' + str(i + 11)
+                            line_wodetuichu = 'E' + str(i + 11)
+                            message_wodetuichu = 'F' + str(i + 11)
+                            ws[line_wodetuichu] = self.dataList['wodetuichu']['ERRORNUM'][i]
+                            ws[message_wodetuichu] = self.dataList['wodetuichu']['ERRORLOG'][i]
+                            ws[log_wodetuichu] = self.dataList['wodetuichu']['ERRORFILE'][i]
+                    else:
+                        ws['A11'] = '-'
+                        ws['C11'] = '-'
+                        ws['D11'] = '-'
             xlsFile = os.path.join(self.reportPath, u'飞凡APP重点功能压力测试报告(%s).xlsx' % time.strftime("%Y%m%d"))
             wb.save(xlsFile)
             if os.path.exists(file):
                 os.remove(file)
         except:
-            print("no sheet in %s named %s" % file,sheet_name)
+            print("no sheet in %s named %s" % file, sheet_name)
 
 
 if __name__ == "__main__":
