@@ -39,6 +39,7 @@ class ParkingAddLicensePlatePage(SuperPage):
                                       PALPPC.resource_id_tv_VIN_tv,
                                       PALPPC.input_VIN,
                                       90)
+        logger.debug(PALPPC.input_VIN)
         logger.info("Input 车牌号 end")
 
     def clickOnConfirmBtn(self):
@@ -57,7 +58,7 @@ class ParkingAddLicensePlatePage(SuperPage):
         '''
         usage: 点击各入口项目
         '''
-        logger.info("Check 入口项目 begin")
+        logger.info("Check 入口项目(%s) begin" % item)
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
@@ -80,7 +81,7 @@ class ParkingAddLicensePlatePage(SuperPage):
                                      self.logger,
                                      PALPPC.text_know,
                                      60)
-        logger.info("Check 入口项目 end")
+        logger.info("Check 入口项目(%s)  end" % item)
 
     def validManager(self):
         '''
