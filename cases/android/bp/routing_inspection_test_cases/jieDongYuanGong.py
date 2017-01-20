@@ -28,24 +28,24 @@ class JieDongYuanGongTestCase(TestCase):
     用例名 解冻员工检查
     解冻员工检查
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_bp,
+                                  appActivity_bp,
+                                  platformName_andr,
+                                  DeviceInfoUtil().getBuildVersion(),
+                                  deviceName_andr,
+                                  driver_url).getDriver()
+        logger.info("Appium client init completed")
+
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_bp,
-                                   appActivity_bp,
-                                   platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr,
-                                   driver_url).getDriver()
-        logger.info("Appium client init completed")
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testJieDongYuanGong(self):

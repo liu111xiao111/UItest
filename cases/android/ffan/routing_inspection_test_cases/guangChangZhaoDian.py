@@ -20,7 +20,6 @@ from configs.driver_configs import appPackage_ffan
 from configs.driver_configs import deviceName_andr
 from configs.driver_configs import driver_url
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from utility.device_info_util import DeviceInfoUtil
 from cases.logger import logger
 
@@ -31,14 +30,12 @@ class GuangChangZhaoDianTestCase(TestCase):
     自动化测试case No.: 21
     广场详情页点击找店，成功进入找店页面，并成功完成一次搜索，数据显示正常，点击门店可进入门店详情页，数据显示正常
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -46,10 +43,11 @@ class GuangChangZhaoDianTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangZhaoDian(self):

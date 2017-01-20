@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_module_page import SquareModulePage
@@ -30,14 +29,12 @@ class GuangChangSouSuoTestCase(TestCase):
     用例名 广场搜索
     首页进入广场详情页， 广场详情页点击搜索进入搜索，搜索服务和门店，有正常结果显示（广场维度）
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -45,10 +42,11 @@ class GuangChangSouSuoTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangSouSuo(self):

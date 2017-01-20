@@ -30,14 +30,12 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
     用例名 我的消息中心
     在我的飞凡页面点击进入消息中心，查看各类消息数据显示正确，并可以在设置中设置
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -45,10 +43,11 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeXiaoXiZhongXin(self):

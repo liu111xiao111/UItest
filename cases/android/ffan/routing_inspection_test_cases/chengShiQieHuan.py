@@ -8,14 +8,12 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
 from configs.driver_configs import deviceName_andr
 from configs.driver_configs import driver_url
 from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
-from pages.android.ffan.love_shopping_page import LoveShoppingPage
 from pages.android.ffan.switch_city_page import SwitchCityPage
 from utility.device_info_util import DeviceInfoUtil
 from utility.logger import Logger
@@ -28,34 +26,24 @@ class ChengShiQieHuanTestCase(TestCase):
     用例名: 城市切换
     启动APP，城市切换正常
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+        logger.info("Appium client init completed")
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
-                                   driver_url).getDriver()
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-
-#     def testChengShiQieHuan_1(self):
-#         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-#         for tempTimes in range(5):
-#             logging.info("ATTEMPTS: %d" % (tempTimes + 1))
-#             if switchCityPage.validSelf(False):
-#                 return
-#             switchCityPage.waitBySeconds(2)
-# 
-#         loveShoppingPage = LoveShoppingPage(self, self.driver, self.logger)
-#         loveShoppingPage.validSelf()
-#         tempCityName = loveShoppingPage.getCurrentCityName()
-#         loveShoppingPage.clickOnCityName()
-#         loveShoppingPage.waitBySeconds()
-#         loveShoppingPage.switchCity(tempCityName)
-#         loveShoppingPage.validSelf()
 
     def testChengShiQieHuan_2(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)

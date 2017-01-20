@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
@@ -28,24 +27,24 @@ class RenYuanLieBiaoTestCase(TestCase):
     用例名 人员列表
     人员列表检查
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_bp,
+                                  appActivity_bp,
+                                  platformName_andr,
+                                  DeviceInfoUtil().getBuildVersion(),
+                                  deviceName_andr,
+                                  driver_url).getDriver()
+        logger.info("Appium client init completed")
+
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_bp,
-                                   appActivity_bp,
-                                   platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(),
-                                   deviceName_andr,
-                                   driver_url).getDriver()
-        logger.info("Appium client init completed")
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testRenYuanLieBiao(self):

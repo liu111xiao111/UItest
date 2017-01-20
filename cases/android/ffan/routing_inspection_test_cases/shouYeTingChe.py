@@ -8,13 +8,9 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.parking_category_page import ParkingCategoryPage
 from pages.android.ffan.parking_add_license_plate_page import ParkingAddLicensePlatePage
-# from pages.android.ffan.my_ffan_my_parking_payment_more_page import MyFfanMyParkingPaymentMorePage
-# from pages.android.ffan.my_ffan_my_parking_payment_unbunding_page import MyFfanMyParkingPaymentUnbundingPage
-# from pages.android.ffan.my_ffan_my_parking_payment_details_page import MyFfanMyParkingPaymentDetailsPage
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
 from configs.driver_configs import deviceName_andr
@@ -28,18 +24,15 @@ from cases.logger import logger
 
 class ShouYeTingCheTestCase(TestCase):
     '''
-    巡检 No.16
     用例名: 首页停车
-    首页进入停车，查看停车交费，绑定车牌
+    首页进入停车，点击查看车牌管理，附近停车场，停车券，停车记录，帮助，绑定车牌（a:输入新车牌并绑定）
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -47,48 +40,25 @@ class ShouYeTingCheTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testShouYeTingChe(self):
+        # 爱逛街首页点击停车，进入停车页面，查看页面展示
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
-        parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
-        parkingAddLicensePlatePage = ParkingAddLicensePlatePage(testcase = self,driver = self.driver,logger = self.logger)
-#       parkingPaymentDetailsPage = MyFfanMyParkingPaymentDetailsPage(testcase = self,driver = self.driver,logger = self.logger)
-#       parkingPaymentMorePage = MyFfanMyParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
-#       parkingPaymentUnbundingPage = MyFfanMyParkingPaymentUnbundingPage(testcase = self,driver = self.driver,logger = self.logger)
-
-        # Load parking page
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
         dashboardPage.clickOnParkingCategory()
+        parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPage.validSelf()
         parkingPage.screenShot("tingChe")
 
-        vehiclePlate = parkingPage.validVehiclePlateExist()
-        if vehiclePlate:
-            # Click "停车交费"， load parking payment.
-            parkingPage.clickOnAddLicensePlate()
-            parkingAddLicensePlatePage.validSelf()
-            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
-
-            # Binding&Bunding VIN
-            parkingAddLicensePlatePage.waitBySeconds(3)
-            parkingAddLicensePlatePage.inputVIN()
-            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
-            parkingAddLicensePlatePage.clickOnConfirmBtn()
-            parkingAddLicensePlatePage.validManager()
-            parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
-#             parkingAddLicensePlatePage.clickBackKey()
-#         parkingPaymentDetailsPage.clickOnMore()
-#         parkingPaymentMorePage.clickOnUnbundingBtn()
-#         parkingPaymentUnbundingPage.clickOnUnbundingBtn()
-#         parkingPaymentPage.validSelf()
-
-        parkingAddLicensePlatePage.waitBySeconds(3)
+        # 在停车页面点击查看车牌管理，停车记录，停车券，帮助查看跳转页面
+        parkingAddLicensePlatePage = ParkingAddLicensePlatePage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPage.screenShot("tingChe")
         #检查入口项目
         itemList = (u"车牌管理", u"停车记录", u"停车券", u"帮助")
@@ -96,15 +66,28 @@ class ShouYeTingCheTestCase(TestCase):
         for i in range(len(titleList)):
             parkingAddLicensePlatePage.clickAndValidItems(itemList[i], titleList[i])
 
+        # 在停车页面点击添加车牌-输入车牌号-点击确定
+        vehiclePlate = parkingPage.validVehiclePlateExist()
+        if vehiclePlate:
+            # 点击 "添加车牌"
+            parkingPage.clickOnAddLicensePlate()
+            parkingAddLicensePlatePage.validSelf()
+            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
+
+            # 输入车牌号
+            parkingAddLicensePlatePage.inputVIN()
+            parkingAddLicensePlatePage.screenShot("tianJiaChePai")
+            parkingAddLicensePlatePage.clickOnConfirmBtn()
+            parkingAddLicensePlatePage.validManager()
+            parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
+
+        # 解绑车牌
         parkingAddLicensePlatePage.clickOnVehicleManager()
         parkingAddLicensePlatePage.validManager()
         parkingAddLicensePlatePage.screenShot("cheLiangGuanLi")
-        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.clickOnVehiclePlate()
         parkingAddLicensePlatePage.screenShot("shanChuChePai")
-        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.clickOnDeleteVehiclePlate()
-        parkingAddLicensePlatePage.waitBySeconds(2)
         parkingAddLicensePlatePage.validManager()
         parkingAddLicensePlatePage.screenShot("tianJiaChePai")
 
