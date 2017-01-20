@@ -25,15 +25,24 @@ class GuangChangXiangQingTestCase(TestCase):
     首页=>广场详情页
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         logger.info("Clear data completed")
         self.reset.clearData()
@@ -52,6 +61,9 @@ class GuangChangXiangQingTestCase(TestCase):
         searchPage.clickOnSpecificSquare()
         squareModulePage.validSelf()
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQingTestCase)

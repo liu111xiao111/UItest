@@ -21,6 +21,7 @@ from pages.ios.ffan.sales_promotion_page import SalesPromotionPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from utility.logger import Logger
 from pages.ios.ffan.search_page import SearchPage
+from cases.logger import logger
 
 
 class YouHuiQuanTestCase(TestCase):
@@ -31,14 +32,25 @@ class YouHuiQuanTestCase(TestCase):
     广场详情页点击优惠可以进入优惠券并可以成功领取优惠券在我的票券中显示
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -48,6 +60,7 @@ class YouHuiQuanTestCase(TestCase):
         dashboardPage.validSelf()
         searchPage = SearchPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
+
         # dashboardPage.clickOnSquareModule()
         dashboardPage.clickOnSearchAll()
         searchPage.inputKeywords(u"北京通州万达广场")
@@ -58,7 +71,7 @@ class YouHuiQuanTestCase(TestCase):
         squareModulePage.validSelf()
         squareModulePage.clickOnPrivilege()
 
-        squareModulePage.waitBySeconds(8)
+        #squareModulePage.waitBySeconds(8)
         # salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
         # salesPromotionPage.validSelf()
         # salesPromotionPage.clickOnCouponTab()
@@ -102,6 +115,9 @@ class YouHuiQuanTestCase(TestCase):
         #
         # myFfanPage.validSelf()
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(YouHuiQuanTestCase)

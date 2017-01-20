@@ -25,21 +25,26 @@ class ShiNeiDiTuTestCase(TestCase):
     广场详情页点击室内地图，正常进入室内地图模块
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-        logger.info("Appium client init completed")
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         logger.info("Clear data completed")
@@ -69,6 +74,10 @@ class ShiNeiDiTuTestCase(TestCase):
         squarePage.clicOnIndoorMap()
         squarePage.waitBySeconds(10)
         indoormapPage.validSelf()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

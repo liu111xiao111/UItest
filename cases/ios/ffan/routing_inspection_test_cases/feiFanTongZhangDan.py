@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from pages.ios.ffan.feifan_card_page import FeiFanCardPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class FeiFanTongZhangDanTestCase(TestCase):
@@ -25,14 +25,24 @@ class FeiFanTongZhangDanTestCase(TestCase):
     首页-飞凡卡查看账单，确认显示零花钱账单页面
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -55,6 +65,10 @@ class FeiFanTongZhangDanTestCase(TestCase):
         feifanCardBillPage.clickBackKey()
 
         feifanCardPage.validSelf()'''
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanTongZhangDanTestCase)

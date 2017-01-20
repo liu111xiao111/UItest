@@ -13,8 +13,7 @@ from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.child_category_page import ChildCategoryPage
-from utility.logger import Logger
-
+from cases.logger import logger
 
 class QinZiTestCase(TestCase):
     '''
@@ -24,20 +23,24 @@ class QinZiTestCase(TestCase):
     首页进入亲子模块，显示该城市下所有亲子门店，点击可以进入门店详情页
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
+        self.logger = logger
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -71,6 +74,10 @@ class QinZiTestCase(TestCase):
             childPage.clickBackKey()
             childPage.clickBackKey()
             childPage.clickBackKey()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QinZiTestCase)

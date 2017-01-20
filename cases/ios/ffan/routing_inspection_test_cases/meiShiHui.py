@@ -13,7 +13,7 @@ from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.food_category_page import FoodCategoryPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class MeiShiHuiTestCase(TestCase):
@@ -25,21 +25,24 @@ class MeiShiHuiTestCase(TestCase):
     备注：由于版本变化，页面元素缺失，case无法通过
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
@@ -71,6 +74,10 @@ class MeiShiHuiTestCase(TestCase):
         # 检查乐付
         foodPage.clickOnLePay();
         foodPage.validLePay();'''
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

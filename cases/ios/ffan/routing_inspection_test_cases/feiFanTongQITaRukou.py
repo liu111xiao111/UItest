@@ -13,22 +13,32 @@ from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.feifan_card_page import FeiFanCardPage
-from utility.logger import Logger
-
+from cases.logger import logger
 
 class FeiFanTongQitaRukouTestCase(TestCase):
     '''
     飞凡通其它入口
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger()
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -50,6 +60,9 @@ class FeiFanTongQitaRukouTestCase(TestCase):
             feifanCardPage.validFeiFanTongOtherEntrance(otherEntrancePageName[count], otherEntranceName[count])
             count = count + 1
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

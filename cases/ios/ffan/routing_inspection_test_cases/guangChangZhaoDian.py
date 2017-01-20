@@ -26,21 +26,25 @@ class GuangChangZhaoDianTestCase(TestCase):
     广场详情页点击找店，成功进入找店页面，并成功完成一次搜索，数据显示正常，点击门店可进入门店详情页，数据显示正常
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -71,7 +75,12 @@ class GuangChangZhaoDianTestCase(TestCase):
 
         squareFindStorePage.clickFirstItem()
         squareFindStorePage.validStorePage()
-        squareFindStorePage.waitBySeconds(8)
+        #squareFindStorePage.waitBySeconds(8)
+
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.splash_screen_home_page import SplashScreenHomePage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class ShanPingShouYeTestCase(TestCase):
@@ -19,18 +19,32 @@ class ShanPingShouYeTestCase(TestCase):
     闪屏首页
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
 
     def test_case(self):
         SplashScreenHomePage(self, self.driver, self.logger).validSelf()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(ShanPingShouYeTestCase)

@@ -24,15 +24,24 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
     全城搜索商品
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         logger.info("Clear data completed")
@@ -50,6 +59,9 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
         searchPage.waitBySeconds(8)
         searchPage.validSearchResult(u"MU8600", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]")
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoShangPinTestCase)

@@ -19,7 +19,7 @@ from pages.ios.ffan.popup_page import PopupPage
 from pages.ios.ffan.popup_page import VerifyActivityKeywordsType
 from pages.ios.ffan.seat_picking_page import SeatPickingPage
 from pages.ios.ffan.square_module_page import SquareModulePage
-from utility.logger import Logger
+from cases.logger import logger
 from pages.ios.ffan.search_page import SearchPage
 
 
@@ -31,14 +31,24 @@ class GuangChangDianYingGuangTestCase(TestCase):
     广场详情页点击进入电影模块，检查数据正常并可以成功选座下单，取消订单
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare(False)
@@ -72,6 +82,11 @@ class GuangChangDianYingGuangTestCase(TestCase):
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
         seatPickingPage.waitBySeconds(3)
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangDianYingGuangTestCase)

@@ -14,6 +14,7 @@ from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.my_ffan_page import MyFfanPage
 from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
 from pages.ios.ffan.dashboard_page import DashboardPage
+from cases.logger import logger
 
 
 class FuKuanMaTestCase(TestCase):
@@ -22,23 +23,25 @@ class FuKuanMaTestCase(TestCase):
     我的付款码
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -61,6 +64,9 @@ class FuKuanMaTestCase(TestCase):
         myFfanPage.validFukuaima()
         myFfanPage.waitBySeconds(8)
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 

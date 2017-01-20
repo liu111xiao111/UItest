@@ -29,21 +29,24 @@ class PiaoQuanTestCase(TestCase):
     查看我的票券里数据显示正常
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-        logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         logger.info("Clear data completed")
@@ -95,15 +98,19 @@ class PiaoQuanTestCase(TestCase):
         #myTicketPage.validSelf(couponNo[3:], myOrderNo);
         myFfanPage.validMyTicketsPage()
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
+
 
 if __name__ == "__main__":
-    log = Logger()
+
     caseName = 'myfeifan_my_queue_cases'
     suite = TestLoader().loadTestsFromTestCase(PiaoQuanTestCase)
     now = time.strftime('%Y_%m_%d_%H_%M_%S')
     reportpath = os.getcwd()
     filename = reportpath + caseName + now + '.html'
-    log.d("report file name ==== %s", filename)
+
     fp = open(filename, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=caseName,
                                            description='Result for test')

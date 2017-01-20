@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_fei_fan_card_page import MyFeiFanCardPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeFeiFanTongTestCase(TestCase):
@@ -22,14 +22,25 @@ class WoDeFeiFanTongTestCase(TestCase):
     我的飞凡通
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -82,6 +93,10 @@ class WoDeFeiFanTongTestCase(TestCase):
             paymentsSettingsPage.clickBackKey()
             myFeiFanCardPage.clickBackKey()
         '''
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeFeiFanTongTestCase)

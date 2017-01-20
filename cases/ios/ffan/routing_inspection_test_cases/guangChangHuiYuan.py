@@ -24,14 +24,24 @@ class HuiYuanTestCase(TestCase):
     自动化测试 #26
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
         logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -54,6 +64,10 @@ class HuiYuanTestCase(TestCase):
 
         squareModulePage.clickOnSquareMembers()
         squareModulePage.validMembers()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":
