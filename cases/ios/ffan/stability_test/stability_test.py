@@ -32,9 +32,9 @@ class Stability(object):
     pidList = []
 
     #总循环次数
-    EXTERNAL_LOOP_TIMES = 4;
+    EXTERNAL_LOOP_TIMES = 3;
     #每个case循环次数
-    INTERNAL_LOOP_TIMES = 4;
+    INTERNAL_LOOP_TIMES = 3;
 
     COMMAND = "idevicesyslog"
 
@@ -49,7 +49,7 @@ class Stability(object):
         :return:
         '''
         #logpath = "/Users/auto/Desktop/testlog.txt"
-        command = "%s > %s" % (self.COMMAND, "%s/%s_%s_%s" % (logpath, case_name, external_case_count, internal_case_count))
+        command = "%s > %s" % (self.COMMAND, "%s/%s_%s_%s.%s" % (logpath, case_name, external_case_count, internal_case_count,'log'))
         print("Save log : " + command)
         os.system(command)
         #print('DEBUG GET LOE END!')
@@ -70,7 +70,10 @@ class Stability(object):
         list = self._execCmd("ps -A | grep idevicesyslog")
         for item in list:
             print("idevicesyslog pid : " + item.split(' ')[0])
-            self.pidList.append(item.split(' ')[0])
+            pid = item.split(' ')[0]
+            if(pid==" "):
+                pid = item.split(' ')[1]
+            self.pidList.append(pid)
 
 
     def _killIdevicelogPid(self):
@@ -115,7 +118,7 @@ class Stability(object):
         print("internal %s loop 执行 %s 次 " % (case_name,internal_case_count))
         suite = unittest.TestSuite()
         runner = unittest.TextTestRunner()
-        reportpath = "%s/%s" % (reportpath, case_name)
+        reportpath = "%s/%s/%s" % (reportpath, case_name,'log')
         # 创建路径
         print("reportpath : " + reportpath)
         stability._createPath(reportpath)
@@ -168,49 +171,53 @@ if __name__ == "__main__":
     startTime = time.strftime('%H:%M:%S')
 
     #循环次数计数
-    external_case_count = 1
+    external_case_count = 0
     #内层case循环次数
-    internal_case_count = 1
+    internal_case_count = 0
 
     for external_case_count in range(1,stability.EXTERNAL_LOOP_TIMES):
+        reportpath = "%s/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest/report", time.strftime("%Y%m%d"), build_num)
         print("external loop 执行 %s 次 " % external_case_count)
+        reportpath = "%s/%s" % (reportpath,external_case_count)
+        print("debug reportpath %s " % reportpath)
         for internal_case_count in range(1, stability.INTERNAL_LOOP_TIMES):
             #开始运行case
-            #全城搜索商品
-            stability._launchCase("QuanChengSouSuoShangPinTestCase", QuanChengSouSuoShangPinTestCase, external_case_count,
-                                  internal_case_count, reportpath)
+            # # 全城搜索品牌
+            # stability._launchCase("QuanChengSouSuoPinPaiTestCase", QuanChengSouSuoPinPaiTestCase, external_case_count,
+            #                       internal_case_count, reportpath)
+            # #全城搜索商品
+            # stability._launchCase("QuanChengSouSuoShangPinTestCase", QuanChengSouSuoShangPinTestCase, external_case_count,
+            #                       internal_case_count, reportpath)
             #全城搜索门店
-            stability._launchCase("QuanChengSouSuoMenDianTestCase", QuanChengSouSuoMenDianTestCase, external_case_count,
+            stability._launchCase("quanchengsousuo", QuanChengSouSuoMenDianTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #广场搜索
-            stability._launchCase("GuangChangSouSuoTestCase", GuangChangSouSuoTestCase, external_case_count,
+            stability._launchCase("guangchangsousuo", GuangChangSouSuoTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #购物中心
-            stability._launchCase("GouWuZhongXinTestCase", GouWuZhongXinTestCase, external_case_count,
+            stability._launchCase("gouwuzhongxin", GouWuZhongXinTestCase, external_case_count,
                                   internal_case_count, reportpath)
-            #全城搜索品牌
-            stability._launchCase("QuanChengSouSuoPinPaiTestCase", QuanChengSouSuoPinPaiTestCase, external_case_count,
-                                  internal_case_count, reportpath)
+
             #广场找店
-            stability._launchCase("GuangChangZhaoDianTestCase", GuangChangZhaoDianTestCase, external_case_count,
+            stability._launchCase("guangchangzhaodian", GuangChangZhaoDianTestCase, external_case_count,
                                   internal_case_count,reportpath)
             #广场排队取号
-            stability._launchCase("PaiDuiQuHaoTestCase", PaiDuiQuHaoTestCase, external_case_count,
+            stability._launchCase("guangchangpaidui", PaiDuiQuHaoTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #广场停车
-            stability._launchCase("GuangChangTingCheTestCase", GuangChangTingCheTestCase, external_case_count,
+            stability._launchCase("guangchangtingche", GuangChangTingCheTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #广场买单
-            stability._launchCase("GuangChangMaiDanTestCase", GuangChangMaiDanTestCase, external_case_count,
+            stability._launchCase("guangchangmaidan", GuangChangMaiDanTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #美食汇
-            stability._launchCase("GuangChangMeiShiHuiTestCase", GuangChangMeiShiHuiTestCase, external_case_count,
+            stability._launchCase("meishihui", GuangChangMeiShiHuiTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #我的登录
-            stability._launchCase("WoDeDengLuTestCase", WoDeDengLuTestCase, external_case_count,
+            stability._launchCase("wodedenglu", WoDeDengLuTestCase, external_case_count,
                                   internal_case_count, reportpath)
             #我的退出
-            stability._launchCase("WoDeTuiChuTestCase", WoDeTuiChuTestCase, external_case_count,
+            stability._launchCase("wodetuichu", WoDeTuiChuTestCase, external_case_count,
                                   internal_case_count, reportpath)
 
     #结束时间
