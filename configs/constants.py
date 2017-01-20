@@ -7,6 +7,8 @@ PATROL_SHANGHU_HEADR_NAME = u'商户APP自动化回归测试-%s版(%s)'
 
 MONKEY_HEADR_NAME = u'%s稳定性自动化测试报告(%s)'
 
+STABILITY_HEADR_NAME = u'飞凡APP重点功能压力测试-%s版(%s)'
+
 PERFORMANCE_HEADR_NAME = u'%s性能自动化测试报告(%s)'
 
 

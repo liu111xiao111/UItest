@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
 from pages.android.ffan.lefu_pay_detail_page import LefuPayDetailPage
@@ -30,14 +29,12 @@ class MaiDanTestCase(TestCase):
     用例名 买单
     首页进入乐付买单（城市维度），并下单，取消订单，支付（虚拟城市），并查看相应订单状态
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -45,10 +42,11 @@ class MaiDanTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testMaiDan(self):
