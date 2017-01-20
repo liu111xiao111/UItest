@@ -3,7 +3,7 @@
 from unittest import TestCase
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
-from utility.logger import Logger
+from cases.logger import logger
 from pages.ios.shanghu.dengLuPage import DengLuPage
 from pages.ios.shanghu.homePage import HomePage
 
@@ -13,10 +13,24 @@ class DenggLuCase(TestCase):
     登录验证
     '''
 
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId_sh,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
+
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId_sh, IDC.udid).getDriver()
+        self.logger = logger
+
 
     def test_case(self):
         dengLuPage = DengLuPage(self,self.driver,self.logger)
