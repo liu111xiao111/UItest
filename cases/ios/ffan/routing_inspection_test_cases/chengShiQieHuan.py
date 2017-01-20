@@ -27,14 +27,25 @@ class ChenShiQieHuanTestCase(TestCase):
     启动APP，城市切换正常
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+
         logger.info("Appium client init completed")
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -60,6 +71,9 @@ class ChenShiQieHuanTestCase(TestCase):
 
         dashboardPage.validCityData()
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
     '''
     def test_case_step_1(self):

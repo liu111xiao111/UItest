@@ -13,7 +13,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.yaoyiyao_page import YaoyiyaoPage
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
-
+from cases.logger import logger
 
 class YaoYiYaoTestCase(TestCase):
     '''
@@ -21,21 +21,24 @@ class YaoYiYaoTestCase(TestCase):
     摇一摇
     '''
 
-    def tearDown(self):
-        #self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
 
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
+        self.logger = logger
 
         self.reset = ClearAppData(self.driver)
        #self.reset.clearData()
@@ -53,8 +56,9 @@ class YaoYiYaoTestCase(TestCase):
         dashboardPage.waitBySeconds(5)
         yaoyiyaoPage.validSelf()
 
-
-
+    def tearDown(self):
+        # self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

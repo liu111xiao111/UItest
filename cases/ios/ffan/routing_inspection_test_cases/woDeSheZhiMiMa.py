@@ -16,7 +16,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.ios.ffan.settings_page import SettingsPage
 from pages.ios.ffan.update_login_password_page import UpdateLoginPasswordPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeSheZhiMiMaTestCase(TestCase):
@@ -24,14 +24,25 @@ class WoDeSheZhiMiMaTestCase(TestCase):
     我的设置
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -76,6 +87,10 @@ class WoDeSheZhiMiMaTestCase(TestCase):
 
         myFeiFanPage.waitBySeconds()
         myFeiFanPage.validSelf()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":

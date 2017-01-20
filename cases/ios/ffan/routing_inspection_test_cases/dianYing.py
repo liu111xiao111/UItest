@@ -19,7 +19,7 @@ from pages.ios.ffan.popup_page import ClickActivityKeywordsType
 from pages.ios.ffan.popup_page import PopupPage
 from pages.ios.ffan.popup_page import VerifyActivityKeywordsType
 from pages.ios.ffan.seat_picking_page import SeatPickingPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class DianYingTestCase(TestCase):
@@ -30,14 +30,24 @@ class DianYingTestCase(TestCase):
     首页进入电影模块，检查数据正常并可以成功选座下单，支付并退票
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -81,6 +91,10 @@ class DianYingTestCase(TestCase):
 
         moviePage.validSelf()
         moviePage.clickBackKey()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(DianYingTestCase)

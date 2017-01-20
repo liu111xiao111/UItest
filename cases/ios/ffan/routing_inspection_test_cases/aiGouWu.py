@@ -15,7 +15,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.goods_details_page import GoodsDetailsPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_shopping_category_page import SquareShoppingPage
-from utility.logger import Logger
+from cases.logger import logger
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.search_result_store_page import SearchResultStorePage
 
@@ -30,10 +30,25 @@ class AiGouWuTestCase(TestCase):
         self.reset.clearData()
         self.driver.quit()
 
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare(False)

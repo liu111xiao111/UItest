@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_ffan_my_like_page import MyFfanMyLikePage
 from pages.ios.ffan.my_ffan_page import MyFfanPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeXiHuanTestCase(TestCase):
@@ -25,20 +25,24 @@ class WoDeXiHuanTestCase(TestCase):
     查看我的喜欢信息及状态是否正确
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
+        self.logger = logger
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -64,6 +68,9 @@ class WoDeXiHuanTestCase(TestCase):
         myLikePage.clickOnLikeBrand()
         myLikePage.validSelf()
 
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     log = Logger()

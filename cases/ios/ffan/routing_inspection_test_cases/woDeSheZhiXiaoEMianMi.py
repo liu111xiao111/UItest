@@ -11,12 +11,11 @@ from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
-from pages.ios.ffan.account_management_page import AccountManagementPage
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.ios.ffan.settings_page import SettingsPage
 from pages.ios.ffan.small_amount_password_less_payments_page import SmallAmountPasswordLessPaymentsPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class WoDeSheZhiXiaoEMianMiTestCase(TestCase):
@@ -27,14 +26,24 @@ class WoDeSheZhiXiaoEMianMiTestCase(TestCase):
     点击设置，在账号管理中可以成功修改登录密码，支付密码，小额免密设置
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
@@ -77,6 +86,11 @@ class WoDeSheZhiXiaoEMianMiTestCase(TestCase):
         settingPage.clickBackKey()
 
         myFeiFanPage.validSelf()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeSheZhiXiaoEMianMiTestCase)

@@ -25,21 +25,24 @@ class MingPinYouDianTestCase(TestCase):
     首页进入购物模块，数据显示正常，点击进入详情页可以激活商品的提醒
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-        logger.info("Appium client init completed")
 
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
@@ -66,6 +69,10 @@ class MingPinYouDianTestCase(TestCase):
 #         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
 #         goodsDetailsPage.validSelf()
 #         goodsDetailsPage.clickOnShoppingTrolley()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MingPinYouDianTestCase)

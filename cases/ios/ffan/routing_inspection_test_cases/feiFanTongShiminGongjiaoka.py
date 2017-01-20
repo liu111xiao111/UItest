@@ -14,7 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.feifan_card_page import FeiFanCardPage
 from pages.ios.ffan.open_card_page import OpenCardPage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class FeiFanTongShiminGongjiaokaTestCase(TestCase):
@@ -22,21 +22,24 @@ class FeiFanTongShiminGongjiaokaTestCase(TestCase):
     飞凡通市民公交卡
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
+        self.logger = logger
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
 
@@ -59,6 +62,10 @@ class FeiFanTongShiminGongjiaokaTestCase(TestCase):
 
         openCardPage.validJointCard()
         openCardPage.validBusCard()
+
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanTongShiminGongjiaokaTestCase)

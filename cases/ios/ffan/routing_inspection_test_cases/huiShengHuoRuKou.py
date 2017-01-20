@@ -13,7 +13,7 @@ from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.hui_life_page import HuiLifePage
-from utility.logger import Logger
+from cases.logger import logger
 
 
 class HuiShengHuoRuKouTestCase(TestCase):
@@ -23,14 +23,25 @@ class HuiShengHuoRuKouTestCase(TestCase):
     首页-慧生活，惠生活截图，基本入口检查
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
+        self.logger = logger
+
         self.reset = ClearAppData(self.driver)
         self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare(False)
@@ -48,7 +59,9 @@ class HuiShengHuoRuKouTestCase(TestCase):
         for tempNum in range(15):
             huiLifePage.clickOnAndValidByXpathAndName("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[%d]" % (tempNum + 1), tempTuple[tempNum])
 
-
+    def tearDown(self):
+        self.reset.clearData()
+        self.driver.quit()
 
 
 if __name__ == "__main__":
