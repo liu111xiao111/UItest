@@ -49,14 +49,6 @@ class DashboardPage(SuperPage):
         '''
             usage: 验证切换城市后的数据是否为北京市的
         '''
-        # textContains = DashboardPageConfigs.text_valid_beijing
-        # xpath = DashboardPageConfigs.xpath_guangchang
-        #
-        # tempText = API().getTextByXpath(self.testcase, self.driver, self.logger,
-        #                                 xpath, DashboardPageConfigs.get_timeout)
-        # print(tempText)
-        # print(textContains)
-        # API().assertTrue(self.testcase, self.logger, textContains in tempText)
         logger.info("Check 城市切换数据 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,DashboardPageConfigs.name_beijing)
         logger.info("Check 城市切换数据 end")
