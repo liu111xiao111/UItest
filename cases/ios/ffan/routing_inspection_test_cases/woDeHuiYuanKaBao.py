@@ -44,9 +44,6 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -64,12 +61,8 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
 
         feiFanMembershipPage = FeiFanMembershipPage(self, self.driver, self.logger)
         feiFanMembershipPage.validSelf()
-        feiFanMembershipPage.clickBackKey()
-
-        myMembershipCardPackagePage.clickBackKey()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

@@ -67,7 +67,7 @@ class GuangChangZhaoDianTestCase(TestCase):
         searchPage.clickOnSpecificSquare()
         squareModulePage.validSelf()
 
-        squareModulePage.clicOnFindStore()
+        squareModulePage.clicOnFindingStore()
 
         squareFindStorePage.clickFirstItem()
         squareFindStorePage.validStorePage()

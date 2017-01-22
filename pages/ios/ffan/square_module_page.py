@@ -90,7 +90,7 @@ class SquareModulePage(SuperPage):
     '''
         usage: 点击找店
     '''
-    def clicOnFindStore(self):
+    def clicOnFindingStore(self):
         logger.info("Click 找店 begin")
         API().clickElementByName(self.testcase,
                                  self.driver,
@@ -134,7 +134,7 @@ class SquareModulePage(SuperPage):
     '''
         usage: Click "室内地图"
     '''
-    def clicOnIndoorMap(self):
+    def clicOnShiNeiDitu(self):
         logger.info("Click 室内地图 begin")
         API().clickElementByName(self.testcase,
                                  self.driver,
@@ -156,7 +156,7 @@ class SquareModulePage(SuperPage):
     '''
         usage: Click "排队取号"
     '''
-    def clicOnQueue(self):
+    def clicOnPaiDui(self):
         logger.info("Click 排队取号 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
                                  SquareModulePageConfigs.text_queue,

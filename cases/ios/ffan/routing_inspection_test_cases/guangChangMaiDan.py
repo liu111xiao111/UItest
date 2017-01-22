@@ -44,8 +44,6 @@ class GuangChangMaiDanTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
 
         testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
@@ -75,7 +73,6 @@ class GuangChangMaiDanTestCase(TestCase):
         lePayPage.clickOnConfirmCancel()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":
