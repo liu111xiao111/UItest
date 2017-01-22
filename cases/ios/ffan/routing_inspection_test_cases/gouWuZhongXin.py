@@ -42,12 +42,7 @@ class GouWuZhongXinTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
         logger.info("Clear data completed")
-        
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -64,20 +59,16 @@ class GouWuZhongXinTestCase(TestCase):
         # 点击 “全部” tab
         shoppingMallPage.clickOnTotalTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
 
         # 点击 “购物中心” tab
         shoppingMallPage.clickOnShoppingTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
 
         # 点击 “百货” tab
         shoppingMallPage.clickOnGoodsTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

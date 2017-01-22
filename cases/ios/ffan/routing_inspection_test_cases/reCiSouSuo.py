@@ -7,14 +7,13 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
-from pages.ios.ffan.store_info_page import StoreInfoPage
 from cases.logger import logger
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
 class ReCiSousuoTestCase(TestCase):
@@ -27,7 +26,6 @@ class ReCiSousuoTestCase(TestCase):
         '''
         初始化Appium driver
         '''
-
         cls.driver = AppiumDriver(None,
                                   None,
                                   IDC.platformName,
@@ -40,9 +38,6 @@ class ReCiSousuoTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -54,17 +49,10 @@ class ReCiSousuoTestCase(TestCase):
         searchPage.validSelf()
         searchPage.clickOnMovie()
         searchPage.waitBySeconds(15)
-        searchPage.validSearchResult(u"电影", "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")
-        #searchPage.clickOnSpecificMovie()
-
-        searchPage.waitBySeconds(15)
-        # storeInfoPage = StoreInfoPage(self, self.driver, self.logger)
-        # storeInfoPage.validSelf()
-
-        # storeInfoPage.waitBySeconds(5)
+        searchPage.validSearchResult(SearchPageConfigs.text_movie_button,
+                                     SearchPageConfigs.xpath_movie_text)
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 
