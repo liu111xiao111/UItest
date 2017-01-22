@@ -8,17 +8,12 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.le_pay_details_page import LePayDetailsPage
 from pages.ios.ffan.le_pay_way_page import LePayWayPage
 from pages.ios.ffan.le_pay_page import LePayPage
-from pages.ios.ffan.le_pay_cancel_order_page import LePayCancelOrderPage
-from pages.ios.ffan.my_ffan_page import MyFfanPage
-from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
-from pages.ios.ffan.my_ffan_my_order_details_page import MyFfanMyOrderDetailsPage
 from cases.logger import logger
 
 
@@ -49,13 +44,6 @@ class MaiDanTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
 
@@ -64,10 +52,6 @@ class MaiDanTestCase(TestCase):
         lePayPage = LePayPage(testcase=self,driver=self.driver,logger=self.logger)
         lePayDetailPage = LePayDetailsPage(self, self.driver, self.logger)
         lePayWayPage = LePayWayPage(self, self.driver, self.logger)
-        lePayCancelOrderPage = LePayCancelOrderPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
-        myOrderDetailsPage = MyFfanMyOrderDetailsPage(self, self.driver, self.logger)
 
         # 首页点击乐付
         dashboardPage.validSelf()
@@ -85,7 +69,6 @@ class MaiDanTestCase(TestCase):
         lePayWayPage.validSelf()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

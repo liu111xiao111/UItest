@@ -45,21 +45,11 @@ class ShangChaoTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
-        #dashboardPage.clickOnCity()
-
-        #switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-        #switchCityPage.inputCities(u"厦门市")
-        #switchCityPage.clickOnCityListFirst()
-
-        #dashboardPage.validCities(u"厦门市")
         dashboardPage.clickOnStores()
 
         storesAndSupermarketsPage = StoresAndSupermarketsPage(self, self.driver, self.logger)
@@ -73,16 +63,8 @@ class ShangChaoTestCase(TestCase):
         storesAndSupermarketsPage.validSelf()
         storesAndSupermarketsPage.clickBackKey()
 
-        #dashboardPage.validSelf()
-        #dashboardPage.clickOnCity()
-
-        #switchCityPage.inputCities(u"北京市")
-        #switchCityPage.clickOnCityListFirst()
-
-        #dashboardPage.validCities(u"北京市")
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

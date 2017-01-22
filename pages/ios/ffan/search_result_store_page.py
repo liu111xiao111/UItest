@@ -22,7 +22,7 @@ class SearchResultStorePage(SuperPage):
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   SearchResultStorePageConfigs.text_tongzhou,
                                   SearchResultStorePageConfigs.assert_view_timeout)
-        logger.info("Check 搜索结果 begin")
+        logger.info("Check 搜索结果 end")
         API().screenShot(self.driver, "souSuoJieGuo")
 
     def validKeywords(self, keywords):
