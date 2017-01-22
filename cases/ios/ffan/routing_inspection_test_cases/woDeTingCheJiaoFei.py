@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
@@ -45,18 +44,12 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
 
     def test_case(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
-        parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentMorePage = ParkingPaymentMorePage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
 
@@ -70,25 +63,8 @@ class WoDeTingCheJiaoFeiTestCase(TestCase):
         # 点击停车交费
         myFfanPage.clickOnParkingPayment()
         parkingPaymentInputPlateNumberPage.validSelf()
-        parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        #parkingPaymentInputPlateNumberPage.validLunbogundongtiao()
-
-        # 输入要绑定的车牌号
-        #parkingPaymentInputPlateNumberPage.inputPlateNumber()
-        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        #parkingPaymentInputPlateNumberPage.clickOnNextStep()
-        #parkingPaymentPage.validSelf()
-
-        # 解除绑定
-        #parkingPaymentPage.clickOnMore()
-        #parkingPaymentMorePage.validSelf()
-        #parkingPaymentMorePage.clickOnUnbundLicensePlate()
-        #parkingPaymentUnboundConfirmPage.validSelf()
-        #parkingPaymentUnboundConfirmPage.clickOnConfirm()
-        #parkingPaymentInputPlateNumberPage.validSelf()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

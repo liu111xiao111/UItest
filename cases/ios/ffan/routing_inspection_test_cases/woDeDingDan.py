@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 from cases.logger import logger
 from driver.appium_driver import AppiumDriver
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.my_ffan_page import MyFfanPage
@@ -27,7 +26,6 @@ class WoDeDingDanTestCase(TestCase):
         '''
         初始化Appium driver
         '''
-
         cls.driver = AppiumDriver(None,
                                   None,
                                   IDC.platformName,
@@ -40,10 +38,6 @@ class WoDeDingDanTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
 
@@ -52,19 +46,15 @@ class WoDeDingDanTestCase(TestCase):
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myOrderPage = MyFfanMyOrderPage(self, self.driver, self.logger)
 
-
         #点击我的
         dashboardPage.clickOnMy()
         myFfanPage.validSelf()
         #点击我的订单
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()
-        myOrderPage.clickBackKey()
 
-        #myOrderPage.clickOnDaifukuan()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -44,9 +43,6 @@ class WoDeGeRenXinXiTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        logger.info("Clear data completed")
-        self.reset.clearData()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -60,10 +56,8 @@ class WoDeGeRenXinXiTestCase(TestCase):
 
         personalInformationPage = PersonalInformationPage(self, self.driver, self.logger)
         personalInformationPage.validSelf()
-        personalInformationPage.clickBackKey()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

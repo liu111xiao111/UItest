@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
@@ -45,8 +44,6 @@ class GuangChangMeiShiHuiTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
 
         testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
@@ -73,31 +70,7 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         squarePage.clickOnFood()
         squareFoodPage.validSelf()
 
-        #squareFoodPage.waitBySeconds(5)
-
-        # # 检查美食汇入口
-        # squareFoodPage.waitBySeconds(5)
-        # squareFoodPage.clickOnFindRestaurant()
-        # squareFoodPage.validFindRestaurant()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnFindFavourable()
-        # squareFoodPage.validFindFavourable()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnQueue()
-        # squareFoodPage.validQueue()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnStochastic()
-        # squareFoodPage.validStochastic()
-        # squareFoodPage.clickBackKey()
-
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -15,6 +14,7 @@ from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from cases.logger import logger
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
 class HuiYuanTestCase(TestCase):
@@ -42,10 +42,6 @@ class HuiYuanTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -55,7 +51,7 @@ class HuiYuanTestCase(TestCase):
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
-        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.inputKeywords(SearchPageConfigs.text_searching_store_name)
         searchPage.clickOnSearch()
         searchPage.clickOnSpecificSquare()
 
@@ -66,7 +62,6 @@ class HuiYuanTestCase(TestCase):
         squareModulePage.validMembers()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

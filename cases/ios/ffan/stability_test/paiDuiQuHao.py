@@ -67,7 +67,7 @@ class PaiDuiQuHaoTestCase(TestCase):
 
         squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.validSelf()
-        squarePage.clicOnQueue()
+        squarePage.clicOnPaiDui()
 
         queuePage = SquareQueuePage(self, self.driver, self.logger)
         queuePage.validSelf()

@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -45,9 +44,6 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -60,33 +56,6 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
         myFeiFanPage.clickOnMessageCentre()
 
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
-#         messageCentrePage.validSelf()
-#         messageCentrePage.clickOnFeiFanActivity()
-#
-#         feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
-#         feiFanActivityPage.validSelf()
-#         feiFanActivityPage.clickBackKey()
-#
-#         messageCentrePage.validSelf()
-#         messageCentrePage.clickOnSquareDynamic()
-#
-#         squareDynamicPage = SquareDynamicPage(self, self.driver, self.logger)
-#         squareDynamicPage.validSelf()
-#         squareDynamicPage.clickBackKey()
-#
-#         messageCentrePage.validSelf()
-#         messageCentrePage.clickOnBrandActivity()
-#
-#         brandActivityPage = BrandActivityPage(self, self.driver, self.logger)
-#         brandActivityPage.validSelf()
-#         brandActivityPage.clickBackKey()
-#
-#         messageCentrePage.validSelf()
-#         messageCentrePage.clickOnStoreMessage()
-#
-#         storeMessagePage = StoreMessagePage(self, self.driver, self.logger)
-#         storeMessagePage.validSelf()
-#         storeMessagePage.clickBackKey()
 
         messageCentrePage.validSelf()
         messageCentrePage.clickOnSettings()
@@ -97,10 +66,8 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
         messageSettingsPage.clickBackKey()
 
         messageCentrePage.validSelf()
-        messageCentrePage.clickBackKey()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
@@ -16,7 +15,7 @@ from pages.ios.ffan.square_module_page import SquareModulePage
 from pages.ios.ffan.square_find_store_category_page import SquareFindStorePage
 from pages.ios.ffan.search_page import SearchPage;
 from cases.logger import logger
-
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 class GuangChangZhaoDianTestCase(TestCase):
     '''
@@ -46,10 +45,6 @@ class GuangChangZhaoDianTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare(False)
 
@@ -66,20 +61,18 @@ class GuangChangZhaoDianTestCase(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
         searchPage.validSelf()
-        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.inputKeywords(SearchPageConfigs.text_searching_store_name)
         searchPage.clickOnSearch()
         searchPage.clickOnSpecificSquare()
         squareModulePage.validSelf()
 
-        squareModulePage.clicOnFindStore()
+        squareModulePage.clicOnFindingStore()
 
         squareFindStorePage.clickFirstItem()
         squareFindStorePage.validStorePage()
-        #squareFindStorePage.waitBySeconds(8)
 
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

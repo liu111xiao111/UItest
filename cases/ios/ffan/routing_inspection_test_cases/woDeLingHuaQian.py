@@ -7,11 +7,9 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 from driver.appium_driver import AppiumDriver
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from pages.ios.ffan.my_ffan_page import MyFfanPage
-from pages.ios.ffan.my_ffan_my_order_page import MyFfanMyOrderPage
 from pages.ios.ffan.dashboard_page import DashboardPage
 from cases.logger import logger
 
@@ -40,11 +38,6 @@ class LingHuaQianTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
 
@@ -63,11 +56,7 @@ class LingHuaQianTestCase(TestCase):
         myFfanPage.validLinghuaqian()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
-
-
-
 
 
 

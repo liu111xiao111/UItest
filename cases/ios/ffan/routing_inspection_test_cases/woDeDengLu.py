@@ -44,9 +44,6 @@ class WoDeDengLuTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -75,15 +72,10 @@ class WoDeDengLuTestCase(TestCase):
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
 
-        #verificationPage = VerificationPage(self, self.driver, self.logger)
-        #verificationPage.validSelf()
-        #verificationPage.clickOnSkip()
-
         myFeiFanPage.waitBySeconds(5)
         myFeiFanPage.validLoginStatus()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

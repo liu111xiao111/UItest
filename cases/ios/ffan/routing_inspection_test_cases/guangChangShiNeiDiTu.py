@@ -16,6 +16,7 @@ from pages.ios.ffan.square_indoor_map_page import SquareIndoorMapPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from cases.logger import logger
 from pages.ios.ffan.search_page import SearchPage
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 class ShiNeiDiTuTestCase(TestCase):
     '''
@@ -45,10 +46,6 @@ class ShiNeiDiTuTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
 
@@ -65,18 +62,17 @@ class ShiNeiDiTuTestCase(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
         searchPage.validSelf()
-        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.inputKeywords(SearchPageConfigs.text_searching_store_name)
         searchPage.clickOnSearch()
         searchPage.clickOnSpecificSquare()
         squareModulePage.validSelf()
 
         # 点击室内地图
-        squarePage.clicOnIndoorMap()
+        squarePage.clicOnShiNeiDitu()
         squarePage.waitBySeconds(10)
         indoormapPage.validSelf()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 
