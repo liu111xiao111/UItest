@@ -42,9 +42,14 @@ class SearchPageConfigs():
 
     text_searching_store_name = u"北京通州万达广场"
 
-    text_searching_brand_name = "adidas"
+    text_searching_brand_name = u"adidas"
+
+    text_city = u"北京通州"
+
+    xpath_brand_name = u"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]"
 
     text_searching_goods_name = "MU8600"
+    xpath_goods_name = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]"
 
     # Specific store button
     resource_id_specific_store_button = "com.wanda.app.wanhui:id/title"
@@ -52,6 +57,14 @@ class SearchPageConfigs():
 
     # Assert view time out
     assert_view_timeout = 10
+
+    xpath_moview = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAScrollView[1]/UIAButton[3]"
+
+    xpath_first_result = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]"
+
+    xpaht_city = u"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[3]"
+
+    xpath_movie_text = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"
 
     def __init__(self):
         pass;
