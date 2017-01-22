@@ -14,6 +14,7 @@ from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
 from cases.logger import logger
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
 class QuanChengSouSuoShangPinTestCase(TestCase):
@@ -42,9 +43,6 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -57,10 +55,10 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
         searchPage.inputGoodsName()
         searchPage.clickPullDownListOfSearching()
         searchPage.waitBySeconds(8)
-        searchPage.validSearchResult(u"MU8600", "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[2]")
+        searchPage.validSearchResult(SearchPageConfigs.text_searching_goods_name,
+                                     SearchPageConfigs.xpath_goods_name)
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":
