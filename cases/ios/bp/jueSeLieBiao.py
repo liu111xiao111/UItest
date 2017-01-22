@@ -38,7 +38,7 @@ class JueSeLieBiao(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         roleManagementPage = RoleManagementPage(self, self.driver, self.logger)
 
-        homePage.clickOnEmployeeModule()
+        homePage.clickOnRoleManagement()
 
         #检查角色列表是否为空
         roleManagementPage.checkRoleList()
