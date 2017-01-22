@@ -19,14 +19,14 @@ class SwitchCityPage(SuperPage):
         '''
         usage: 验证切换城市
         '''
-        logger.info("Check 切换城市 begin")
+        logger.info("Check 切换城市Popup begin")
         if assertable:
             API().assertElementByResourceId(self.testcase, self.driver, self.logger,
                                             SCPC.resource_id_switch_city_cancel_button,
                                             SCPC.assert_view_timeout)
-            logger.info("Check 切换城市 end")
+            logger.info("Check 切换城市Popup end")
         else:
-            logger.info("Check 切换城市 end")
+            logger.info("Check 切换城市Popup end")
             return API().validElementByResourceId(self.driver, self.logger,
                                                   SCPC.resource_id_switch_city_cancel_button,
                                                   SCPC.verify_view_timeout)
@@ -35,11 +35,11 @@ class SwitchCityPage(SuperPage):
         '''
         usage: 取消切换城市
         '''
-        logger.info("Click 取消 button begin")
+        logger.info("Click 切换城市Popup 取消 button begin")
         API().clickElementByResourceId(self.testcase, self.driver, self.logger,
                                        SCPC.resource_id_switch_city_cancel_button,
                                        SCPC.verify_view_timeout)
-        logger.info("Click 取消 button end")
+        logger.info("Click 切换城市Popup 取消 button end")
 
     def confirmSwitchCity(self):
         '''

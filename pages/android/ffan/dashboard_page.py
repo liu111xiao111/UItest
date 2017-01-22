@@ -18,13 +18,13 @@ class DashboardPage(SuperPage):
         '''
         usage : 进入到应用首页,检查ffan logo
         '''
-        logger.info("Check 爱逛街页面 begin")
+        logger.info("Check 首页爱逛街页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
                                         90)
-        logger.info("Check 爱逛街页面 end")
+        logger.info("Check 首页爱逛街页面 end")
 
     def clickOnMy(self):
         '''

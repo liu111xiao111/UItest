@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.search_page import SearchPage
@@ -28,14 +27,12 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
         自动化测试case No.: 5
         全城搜索商品
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -43,10 +40,11 @@ class QuanChengSouSuoShangPinTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testQuanChengSouSuoShangPin(self):

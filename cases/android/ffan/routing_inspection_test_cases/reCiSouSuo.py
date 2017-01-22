@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -21,6 +20,7 @@ from pages.android.ffan.search_page import SearchPage
 from pages.android.ffan.search_result_store_page import SearchResultStorePage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
+from cases.logger import logger
 
 
 class ReCiSouSuoTestCase(TestCase):
@@ -29,24 +29,24 @@ class ReCiSouSuoTestCase(TestCase):
     用例名: 热词搜索
     查看搜索中的热词并点击，热词显示正常点击进入内容无误
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+        logger.info("Appium client init completed")
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.platVersion = DeviceInfoUtil().getBuildVersion()
-        self.driver = AppiumDriver(appPackage_ffan,
-                                   appActivity_ffan,
-                                   platformName_andr,
-                                   self.platVersion, 
-                                   deviceName_andr,
-                                   driver_url).getDriver()
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testReCiSouSuo(self):

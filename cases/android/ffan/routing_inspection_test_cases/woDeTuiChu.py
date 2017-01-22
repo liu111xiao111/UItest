@@ -29,14 +29,12 @@ class WoDeTuiChuTestCase(TestCase):
     用例名 我的退出
     退出登录，正常退出APP
     '''
-
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan,
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
@@ -44,10 +42,11 @@ class WoDeTuiChuTestCase(TestCase):
                                    driver_url).getDriver()
         logger.info("Appium client init completed")
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
+    def tearDown(self):
+        self.driver.quit()
 
+    def setUp(self):
+        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeTuiChu(self):

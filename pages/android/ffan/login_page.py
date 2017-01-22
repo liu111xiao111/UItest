@@ -50,6 +50,7 @@ class LoginPage(SuperPage):
                                       LPC.resource_id_user_name,
                                       LPC.account_name,
                                       10)
+        logger.debug(LPC.account_name)
         logger.info("Input 用户名 end")
 
     def inputPassWord(self):
@@ -63,6 +64,7 @@ class LoginPage(SuperPage):
                                       LPC.resource_id_pass_word,
                                       LPC.account_passwd,
                                       10)
+        logger.debug(LPC.account_passwd)
         logger.info("Input 密码 end")
 
     def clickOnLoginBtn(self):

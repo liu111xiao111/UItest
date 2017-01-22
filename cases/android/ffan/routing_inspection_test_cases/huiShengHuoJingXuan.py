@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -28,22 +27,24 @@ class HuiShengHuoJingXuanTestCase(TestCase):
     用例名 惠生活精选/荐店
     首页-慧生活查看精选/荐店，点击可进入详情页，可以点赞
     '''
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+        cls.driver = AppiumDriver(appPackage_ffan,
+                                   appActivity_ffan,
+                                   platformName_andr,
+                                   DeviceInfoUtil().getBuildVersion(),
+                                   deviceName_andr,
+                                   driver_url).getDriver()
+        logger.info("Appium client init completed")
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
     def setUp(self):
         self.logger = Logger()
-        self.driver = AppiumDriver(appPackage_ffan, appActivity_ffan, platformName_andr,
-                                   DeviceInfoUtil().getBuildVersion(), deviceName_andr,
-                                   driver_url).getDriver()
-        logger.info("Appium client init completed")
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testHuiShengHuoJingXuan(self):

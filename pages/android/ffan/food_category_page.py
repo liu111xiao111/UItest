@@ -74,13 +74,17 @@ class FoodCategoryPage(SuperPage):
                                                        self.logger,
                                                        FCPC.resource_id_bt_restaurant_bt,
                                                        FCPC.verify_view_timeout)'''
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(3):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByText(self.testcase,
                                      self.driver,
                                      self.logger,
                                      FCPC.text_all_food,
                                      FCPC.click_view_timeout)
         restaurantList = (u"火锅", u"面包甜点", u"小吃快餐", u"韩国料理", u"西餐",
-                          u"江浙菜", u"咖啡厅")
+                          u"江浙菜", u"川菜")
         for restaurant in restaurantList:
             logger.info("Check 入口(%s) begin" % restaurant)
             API().clickElementByText(self.testcase,
@@ -125,7 +129,7 @@ class FoodCategoryPage(SuperPage):
                                      FCPC.text_all_food,
                                      FCPC.click_view_timeout)
         restaurantList = (u"火锅", u"面包甜点", u"小吃快餐", u"韩国料理", u"西餐",
-                          u"江浙菜", u"咖啡厅")
+                          u"江浙菜", u"川菜")
         i = 4
         for restaurant in restaurantList:
             logger.info("Check 入口(%s) begin" % restaurant)

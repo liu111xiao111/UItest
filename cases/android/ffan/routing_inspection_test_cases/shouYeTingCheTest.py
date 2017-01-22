@@ -27,24 +27,21 @@ class ShouYeTingCheTestCase(TestCase):
     用例名: 首页停车
     首页进入停车，点击查看车牌管理，附近停车场，停车券，停车记录，帮助，绑定车牌（a:输入新车牌并绑定）
     '''
-    @classmethod
-    def setUpClass(cls):
-        '''
-        初始化Appium driver
-        '''
-        cls.driver = AppiumDriver(appPackage_ffan,
+
+    def tearDown(self):
+        logger.info("Driver quit")
+        self.driver.quit()
+
+    def setUp(self):
+        self.logger = Logger()
+        self.driver = AppiumDriver(appPackage_ffan,
                                    appActivity_ffan,
                                    platformName_andr,
                                    DeviceInfoUtil().getBuildVersion(),
                                    deviceName_andr,
                                    driver_url).getDriver()
-        logger.info("Appium client init completed")
+        logger.info("Appium client initialize completed")
 
-    def tearDown(self):
-        self.driver.quit()
-
-    def setUp(self):
-        self.logger = Logger()
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testShouYeTingChe(self):
