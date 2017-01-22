@@ -87,7 +87,7 @@ class SearchPage(SuperPage):
         '''
         logger.info("Click 搜索结果第一个 begin")
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]")
+                                  SearchPageConfigs.xpath_first_result)
         logger.info("Click 搜索按钮 end")
 
 
@@ -106,11 +106,8 @@ class SearchPage(SuperPage):
         usage: click on the movie button
         '''
         logger.info("Click 电影 begin")
-        # API().clickElementByName(self.testcase, self.driver, self.logger,
-        #                          SearchPageConfigs.text_movie_button,
-        #                          SearchPageConfigs.click_on_button_timeout)
         API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAScrollView[1]/UIAButton[3]")
+                                  SearchPageConfigs.xpath_moview)
         API().screenShot(self.driver, "dianYing")
         logger.info("Click 电影 end")
 
