@@ -7,14 +7,12 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.search_result_store_page import SearchResultStorePage
-from pages.ios.ffan.square_module_page import SquareModulePage
 from cases.logger import logger
 
 
@@ -45,9 +43,6 @@ class GuangChangSouSuoTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -59,17 +54,12 @@ class GuangChangSouSuoTestCase(TestCase):
         searchPage.validSelf()
         searchPage.inputStoreName()
         searchPage.clickOnSearch()
-        #searchPage.validSearchResult(u"通州", "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
         searchPage.clickOnSearchResultFirstItem()
 
         searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
         searchResultStorePage.validSelf()
-        searchResultStorePage.clickBackKey()
-
-        searchPage.clickBackKey()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

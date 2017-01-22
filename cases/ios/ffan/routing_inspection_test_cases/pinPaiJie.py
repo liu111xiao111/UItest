@@ -43,9 +43,6 @@ class PinPaiJieTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
 
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare(True)
@@ -60,13 +57,6 @@ class PinPaiJieTestCase(TestCase):
         dashboardPage.clickOnBrand()
         brandPage.validSelf();
 
-        #点击 "大牌"
-        #brandPage.clickOnBrand();
-        #brandPage.clickOnBrandDetails();
-        #famousDetailsPage.validSelf();
-
-        # 点击 "男装“、”餐饮“、”生活“、”运动“及”精品“ tab
-        #famousDetailsPage.clickBackKey();
         brandPage.clickOnWomenFasion();
         brandPage.validSelfWomenFasion();
         brandPage.clickBackKey()
@@ -74,24 +64,18 @@ class PinPaiJieTestCase(TestCase):
         brandPage.validSelfMenFasion();
         brandPage.clickBackKey()
         brandPage.clickOnCatering();
-        #brandPage.validSelfCertering();
+
         brandPage.clickBackKey()
         brandPage.clickOnLife();
-        #brandPage.validSelfLife();
+
         brandPage.clickBackKey()
         brandPage.clickOnSports();
-        #brandPage.validSelfSports();
+
         brandPage.clickBackKey()
         brandPage.clickOnCompetitiveProducts();
-       #brandPage.validSelfCompetitiveProducts();
-        #brandPage.clickBackKey()
-        
-        #点击大牌入驻
-        #brandPage.clickOnDapairuzhu()
-        #brandPage.validDapairuzhu()
+
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 

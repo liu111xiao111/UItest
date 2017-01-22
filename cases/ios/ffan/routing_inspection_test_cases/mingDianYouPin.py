@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -44,10 +43,6 @@ class MingPinYouDianTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase=self , driver=self.driver , logger=self.logger)
         testPrepare.prepare(False)
 
@@ -62,16 +57,8 @@ class MingPinYouDianTestCase(TestCase):
 
         shoppingDetailsCategoryPage = ShoppingDetailsCategoryPage(self, self.driver, self.logger)
         shoppingDetailsCategoryPage.validSelf()
-#         shoppingDetailsCategoryPage.waitBySeconds(3)
-#         shoppingDetailsCategoryPage.clickOnMyFavorite()
-#         shoppingDetailsCategoryPage.clickOnShop()
-#
-#         goodsDetailsPage = GoodsDetailsPage(self, self.driver, self.logger)
-#         goodsDetailsPage.validSelf()
-#         goodsDetailsPage.clickOnShoppingTrolley()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 if __name__ == "__main__":

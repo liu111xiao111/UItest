@@ -47,22 +47,12 @@ class ShouYeTingCheTestCase(TestCase):
     def setUp(self):
         self.logger = logger
 
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-
-        logger.info("Clear data completed")
-
         testPrepare = TestPrepare(testcase = self , driver = self.driver , logger = self.logger)
         testPrepare.prepare()
 
     def test_case(self):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
-        parkingPaymentInputPlateNumberPage = ParkingPaymentInputPlateNumberPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentPage = ParkingPaymentPage(testcase = self,driver = self.driver,logger = self.logger)
-        parkingPaymentMorePage = ParkingPaymentMorePage(testcase=self, driver=self.driver, logger=self.logger)
-        parkingPaymentUnboundConfirmPage = ParkingPaymentUnboundConfirmPage(testcase=self, driver=self.driver,
-                                                                            logger=self.logger)
 
         # 首页点击停车
         dashboard.waitBySeconds(seconds=1)
@@ -72,43 +62,12 @@ class ShouYeTingCheTestCase(TestCase):
         parkingPage.validSelf()
         
         parkingPage.clickOnZhaoche()
-
-
         parkingPage.validZhaoche()
-        
-        #parkingPage.clickOnFujintingche()
-        #parkingPage.validFujintingche()
-        
-        #parkingPage.clickBackKey()
-        
-        #parkingPage.clickOnTingchequan()
-        #parkingPage.validTingchequan()
-        
-        #parkingPage.clickBackKey()
-        
+
         parkingPage.clickOnHelp()
         parkingPage.validHelp()
-        # 点击停车交费
-        #parkingPage.clickOnParkingPayment()
-        #parkingPaymentInputPlateNumberPage.validSelf()
-        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-
-        # 输入要绑定的车牌号
-        #parkingPaymentInputPlateNumberPage.inputPlateNumber()
-        #parkingPaymentInputPlateNumberPage.waitBySeconds(seconds=5)
-        #parkingPaymentInputPlateNumberPage.clickOnNextStep()
-        #parkingPaymentPage.validSelf()
-
-        # 点击解除绑定
-        #parkingPaymentPage.clickOnMore()
-        #parkingPaymentMorePage.validSelf()
-        #parkingPaymentMorePage.clickOnUnbundLicensePlate()
-        #parkingPaymentUnboundConfirmPage.validSelf()
-        #parkingPaymentUnboundConfirmPage.clickOnConfirm()
-        #parkingPaymentInputPlateNumberPage.validSelf()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 
