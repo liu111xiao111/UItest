@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
@@ -56,22 +55,35 @@ class PinPaiJieTestCase(TestCase):
         dashboardPage.validSelf();
         dashboardPage.clickOnBrand()
         brandPage.validSelf();
-
+        #点击女装
         brandPage.clickOnWomenFasion();
+        #验证
         brandPage.validSelfWomenFasion();
         brandPage.clickBackKey()
+        #返回验证
+        brandPage.validSelf();
+        #点击男装
         brandPage.clickOnMenFasion();
         brandPage.validSelfMenFasion();
         brandPage.clickBackKey()
+        # 返回验证
+        brandPage.validSelf();
+        #点击餐饮
         brandPage.clickOnCatering();
-
         brandPage.clickBackKey()
+        # 返回验证
+        brandPage.validSelf();
+
         brandPage.clickOnLife();
-
         brandPage.clickBackKey()
+        # 返回验证
+        brandPage.validSelf();
+
         brandPage.clickOnSports();
-
         brandPage.clickBackKey()
+        # 返回验证
+        brandPage.validSelf();
+
         brandPage.clickOnCompetitiveProducts();
 
 

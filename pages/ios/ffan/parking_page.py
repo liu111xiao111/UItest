@@ -30,42 +30,40 @@ class ParkingPage(SuperPage):
                                  logger = self.logger,
                                  name = ParkingPageConfigs.name_parking_payment)
         
-    def clickOnZhaoche(self):
+    def clickParkingManagement(self):
         '''
-        usage: 点击"找车".
+        usage: 点击"车牌管理".
         '''
-        logger.info("Click 找车 begin")
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  ParkingPageConfigs.xpath_tingchezhaoche,
-                                  ParkingPageConfigs.click_on_button_timeout)
-        logger.info("Click 找车 end")
+        logger.info("Click 车牌管理 begin")
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_plate_nmuber_management)
+        logger.info("Click 车牌管理 end")
     
-    def validZhaoche(self):
-        logger.info("Check 找车 begin")
-        notFindGpsSquare = API().validElementByName(self.driver, self.logger, ParkingPageConfigs.name_not_gps_square)
-        if notFindGpsSquare == False:
-            API().assertElementByIosUiautomation(self.testcase,self.driver,self.logger
-                 ,uiaString=".navigationBars()[0]")
-            self.clickBackKey()
-        else:
-            API().clickElementByName(self.testcase, self.driver, self.logger, ParkingPageConfigs.name_know_text)
-        logger.info("Check 找车 end")
-        API().screenShot(self.driver, "zhaoChe")
+    def validParkingManagement(self):
+        logger.info("Check 车牌管理 begin")
+
+        API().assertElementByName(self.testcase, self.driver, self.logger, name=ParkingPageConfigs.name_plate_nmuber_management_ch)
+
+        logger.info("Check 车牌管理 end")
+        API().screenShot(self.driver, "chePaiGuanLi")
         
     def clickOnFujintingche(self):
         '''
         usage: 点击"附近停车场".
         '''
         logger.info("Click 附近停车场 begin")
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  ParkingPageConfigs.xpath_fujintingchechang,
-                                  ParkingPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_nearby_parking)
         logger.info("Click 附近停车场 end")
     
     def validFujintingche(self):
         logger.info("Check 附近停车场 begin")
-        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
-                                             , uiaString=".navigationBars()[0]")
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_nearby_parking_cn)
         logger.info("Click 附近停车场 end")
         API().screenShot(self.driver, "fuJinTingChe")
 
@@ -74,15 +72,18 @@ class ParkingPage(SuperPage):
         usage: 点击"停车券".
         '''
         logger.info("Click 停车券 begin")
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  ParkingPageConfigs.xpath_tingchequan,
-                                  ParkingPageConfigs.click_on_button_timeout)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_parking_coupon)
         logger.info("Click 停车券 end")
 
     def validTingchequan(self):
         logger.info("Check 停车券 begin")
-        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
-                                             , uiaString=".navigationBars()[0]")
+        #暂保留, 用name方式,有时候可以验证成功,有时候无法抓取出页面信息
+        # API().assertElementByName(self.testcase, self.driver, self.logger,
+        #                           name=ParkingPageConfigs.name_parking_coupon_cn)
+
+        API().assertElementByXpath(self.testcase, self.driver, self.logger, ParkingPageConfigs.xpath_parking_coupon)
+
         logger.info("Check 停车券 ends")
         API().screenShot(self.driver, "tingCheQuan")
         
@@ -91,15 +92,16 @@ class ParkingPage(SuperPage):
         usage: 点击"停车记录".
         '''
         logger.info("Click 停车记录 begin")
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  ParkingPageConfigs.xpath_tingchejilu,
-                                  ParkingPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_parking_record)
         logger.info("Click 停车记录 end")
 
     def validTingchejilu(self):
         logger.info("Check 停车记录 begin")
-        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
-                                             , uiaString=".navigationBars()[0]")
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_parking_record_cn)
         logger.info("Check 停车记录 end")
         API().screenShot(self.driver, "tingCheJilu")
     
@@ -108,15 +110,16 @@ class ParkingPage(SuperPage):
         usage: 点击"帮助".
         '''
         logger.info("Click 帮助 begin")
-        API().clickElementByXpath(self.testcase, self.driver, self.logger,
-                                  ParkingPageConfigs.xpath_bangzhu,
-                                  ParkingPageConfigs.click_on_button_timeout)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_parking_help)
         logger.info("Click 帮助 end")
 
     def validHelp(self):
         logger.info("Check 帮助 begin")
-        API().assertElementByIosUiautomation(self.testcase, self.driver, self.logger
-                                             , uiaString=".navigationBars()[0]")
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_parking_help_ch)
         logger.info("Check 帮助 end")
         API().screenShot(self.driver, "bangZhu")
 

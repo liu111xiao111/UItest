@@ -255,10 +255,13 @@ class DashboardPage(SuperPage):
 
 
     def dealAcitivities(self):
-        hasActivities = API().validElementByName(self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
-        if hasActivities:
-            API().clickElementByName(self.testcase,self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
+        # hasActivities = API().validElementByName(self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
+        # if hasActivities:
+        #     API().clickElementByName(self.testcase,self.driver,self.logger,DashboardPageConfigs.name_activities_deleate_icon)
 
+        hasActivities = API().validElementByXpath(self.driver,self.logger, DashboardPageConfigs.xpath_activities_delete_icon)
+        if hasActivities:
+            API().clickElementByXpath(self.testcase, self.driver, self.logger, DashboardPageConfigs.xpath_activities_delete_icon)
 
 if __name__ == '__main__':
     pass

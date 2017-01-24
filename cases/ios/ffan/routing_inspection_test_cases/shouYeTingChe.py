@@ -54,16 +54,46 @@ class ShouYeTingCheTestCase(TestCase):
         dashboard = DashboardPage(testcase=self,driver=self.driver,logger=self.logger)
         parkingPage = ParkingPage(testcase = self, driver = self.driver, logger = self.logger)
 
-        # 首页点击停车
         dashboard.waitBySeconds(seconds=1)
         dashboard.validSelf()
-        
+
+        # 首页点击停车
         dashboard.clickOnParking()
         parkingPage.validSelf()
-        
-        parkingPage.clickOnZhaoche()
-        parkingPage.validZhaoche()
 
+
+        #点击车牌管理
+        parkingPage.clickParkingManagement()
+        parkingPage.validParkingManagement()
+
+        #返回,验证
+        parkingPage.clickBackKey()
+        parkingPage.validSelf()
+
+        parkingPage.clickOnTingchejilu()
+        parkingPage.validTingchejilu()
+
+        #返回,验证
+        parkingPage.clickBackKey()
+        parkingPage.validSelf()
+
+        #点击停车券
+        parkingPage.clickOnTingchequan()
+        parkingPage.validTingchequan()
+
+        # 返回,验证
+        parkingPage.clickBackKey()
+        parkingPage.validSelf()
+
+        #点击附近停车场
+        parkingPage.clickOnFujintingche()
+        parkingPage.validFujintingche()
+
+        # 返回,验证
+        parkingPage.clickBackKey()
+        parkingPage.validSelf()
+
+        #点击帮助
         parkingPage.clickOnHelp()
         parkingPage.validHelp()
 

@@ -124,6 +124,7 @@ class DashboardPageConfigs():
 
 
     name_activities_deleate_icon = "popUp delete"
+    xpath_activities_delete_icon = "//UIAApplication[1]/UIAWindow[5]/UIAImage[2]/UIAButton[1]"
 
 
     def __init__(self):

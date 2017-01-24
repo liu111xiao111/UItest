@@ -51,7 +51,7 @@ class MyFeiFanPage(SuperPage):
         usage: Verify whether the current status is logout.
         '''
         logger.info("Check 退出登录 begin")
-        for _ in range(3):
+        for _ in range(1):
             self.scrollAsScreenPercent(0.5, 0.4, 0.5, 0.6)
         API().assertElementByName(self.testcase, self.driver, self.logger,
                                   MyFeiFanPageConfigs.resource_id_login_bt,
