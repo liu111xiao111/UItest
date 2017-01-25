@@ -21,7 +21,7 @@ class TestPrepare:
         '''
         usage: 测试前准备方法，移除更新和选择城市弹出框，并且根据选择判断是否需要登录
         '''
-        shouYePage = ShouYePage(self , self.driver , self.logger)
+        shouYePage = ShouYePage(self.testcase , self.driver , self.logger)
         login = shouYePage.validLogin()
 
         if not login:
@@ -31,14 +31,14 @@ class TestPrepare:
         '''
         usage: 登录方法
         '''
-        dengLuPage = DengLuPage(self , self.driver , self.logger)
+        dengLuPage = DengLuPage(self.testcase , self.driver , self.logger)
         dengLuPage.validSelf()
 
         dengLuPage.inputUserName()
         dengLuPage.inputPassWord()
         dengLuPage.clickOnLoginBtn()
 
-        xuanZeMenDianPage = XuanZeMenDianPage(self , self.driver , self.logger)
+        xuanZeMenDianPage = XuanZeMenDianPage(self.testcase , self.driver , self.logger)
         xuanZeMenDianPage.waitBySeconds(2)
         xuanZeMenDianPage.validSelf()
         xuanZeMenDianPage.waitBySeconds(30)
