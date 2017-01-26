@@ -49,14 +49,13 @@ class PiaoQuanTestCase(TestCase):
         myFfanPage = MyFfanPage(testcase=self, driver=self.driver, logger=self.logger)
 
 
-        dashboardPage.clickOnMy();
-        myFfanPage.validSelf();
-        myFfanPage.clickOnMyTicket();
+        dashboardPage.clickOnMy()
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyTicket()
 
         myFfanPage.validMyTicketsPage()
 
     def tearDown(self):
-        self.reset.clearData()
         self.driver.quit()
 
 
