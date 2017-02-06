@@ -19,7 +19,7 @@ class SquareShoppingPage(SuperPage):
     '''
     def validSelf(self):
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SquareShoppingPageConfigs.resource_id_commodity_title_st,
+                                  SquareShoppingPageConfigs.name_commodity_title_st,
                                   SquareShoppingPageConfigs.click_on_button_timeout)
 
     def clickOnSubCommodity(self):

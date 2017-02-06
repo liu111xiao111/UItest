@@ -24,7 +24,7 @@ class MyFeiFanCardPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MyFeiFanCardPageConfigs.resource_id_my_fei_fan_card_title_st,
+                                  MyFeiFanCardPageConfigs.name_my_fei_fan_card_title_st,
                                   MyFeiFanCardPageConfigs.assert_view_timeout)
 
     def clickOnTransactionRecord(self):
@@ -33,7 +33,7 @@ class MyFeiFanCardPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanCardPageConfigs.resource_id_transaction_record_st,
+                                 MyFeiFanCardPageConfigs.name_transaction_record_st,
                                  MyFeiFanCardPageConfigs.click_on_button_timeout)
     
     def clickOnLinghuaqian(self):
@@ -42,7 +42,7 @@ class MyFeiFanCardPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanCardPageConfigs.resource_id_linghuaqian_st,
+                                 MyFeiFanCardPageConfigs.name_linghuaqian_st,
                                  MyFeiFanCardPageConfigs.click_on_button_timeout)  
         
     def validLinghuaqian(self):
@@ -51,7 +51,7 @@ class MyFeiFanCardPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MyFeiFanCardPageConfigs.resource_id_linghuaqian_st,
+                                  MyFeiFanCardPageConfigs.name_linghuaqian_st,
                                   MyFeiFanCardPageConfigs.assert_view_timeout)      
 
     def clickOnPayemntsSettings(self):
@@ -60,7 +60,7 @@ class MyFeiFanCardPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanCardPageConfigs.resource_id_payments_settings_st,
+                                 MyFeiFanCardPageConfigs.name_payments_settings_st,
                                  MyFeiFanCardPageConfigs.click_on_button_timeout)
 
 

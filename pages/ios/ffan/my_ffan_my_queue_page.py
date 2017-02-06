@@ -26,7 +26,7 @@ class MyFfanMyQueuePage(SuperPage):
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=MQPC.resource_id_tv_registration_tv)
+                                  name=MQPC.name_tv_registration_tv)
         logger.info("Check 我的排队 end")
 
         API().screenShot(self.driver, "woDePaidui")

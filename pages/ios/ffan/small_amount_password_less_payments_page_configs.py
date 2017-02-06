@@ -21,7 +21,7 @@ class SmallAmountPasswordLessPaymentsPageConfigs(object):
     find_view_timeout = 10
 
     # Small amount password-less payments title
-    resource_id_small_amount_password_less_payments_title_st = u"小额免密支付"
+    name_small_amount_password_less_payments_title_st = u"小额免密支付"
 
     # Small amount password-less payments switch
     resource_id_small_amount_password_less_payment_switch = "com.wanda.app.wanhui:id/sb_free_password_switch"
@@ -29,7 +29,7 @@ class SmallAmountPasswordLessPaymentsPageConfigs(object):
 
     # Choose small amount password-less quota
     text_choose_small_amount_password_less_quota = u"选择支付免密限额（元/日）"
-    resource_id_choose_small_amount_password_less_quota_st = u"选择支付免密限额（元/日）"
+    name_choose_small_amount_password_less_quota_st = u"选择支付免密限额（元/日）"
 
     def __init__(self):
         pass

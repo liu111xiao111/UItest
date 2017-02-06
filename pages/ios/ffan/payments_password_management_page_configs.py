@@ -16,7 +16,7 @@ class PaymentsPasswordManagementPageConfigs(object):
     click_on_button_timeout = 10
 
     # Update payments password title
-    resource_id_update_payments_password_title_st = u"验证支付密码"
+    name_update_payments_password_title_st = u"验证支付密码"
 
     def __init__(self):
         pass

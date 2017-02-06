@@ -18,7 +18,7 @@ class MessageSettingsPageConfigs(object):
     click_on_button_timeout = 10
 
     # Message settings title
-    resource_id_message_settings_title_st = u"设置"
+    name_message_settings_title_st = u"设置"
 
     xpath_activity_push_compound_sc = "//UIAApplication[1]/UIAWindow[1]/UIASwitch[1]"
 

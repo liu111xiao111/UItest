@@ -6,13 +6,13 @@ class ChildCategoryPageConfigs():
     # 亲子儿童
     name_child_title = u"亲子儿童"
     # 亲自游乐
-    resource_id_ll_child_play_ll = u"亲子游乐"
+    name_ll_child_play_ll = u"亲子游乐"
     # 儿童教育
-    resource_id_ll_child_education_ll = u"儿童教育"
+    name_ll_child_education_ll = u"儿童教育"
     # 亲子购物
-    resource_id_ll_child_shopping_ll = u"亲子购物"
+    name_ll_child_shopping_ll = u"亲子购物"
     # 更多门店
-    resource_id_ll_other_store_ll = u"更多门店"
+    name_ll_other_store_ll = u"更多门店"
 
     #xpath
     # 亲自游乐 儿童教育 亲子购物 其他门店 点击进去后的listview 的第一个的xpath

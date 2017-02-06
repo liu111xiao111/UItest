@@ -16,7 +16,7 @@ class TransactionRecordPageConfigs(object):
     click_on_button_timeout = 10
 
     # Transaction record title
-    resource_id_transaction_record_title_st = u"交易记录"
+    name_transaction_record_title_st = u"交易记录"
 
     def __init__(self):
         pass

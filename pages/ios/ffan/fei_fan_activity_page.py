@@ -24,7 +24,7 @@ class FeiFanActivityPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  FeiFanActivityPageConfigs.resource_id_fei_fan_activity_title_st,
+                                  FeiFanActivityPageConfigs.name_fei_fan_activity_title_st,
                                   FeiFanActivityPageConfigs.assert_view_timeout)
 
 

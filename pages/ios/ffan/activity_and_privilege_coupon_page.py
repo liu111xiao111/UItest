@@ -24,7 +24,7 @@ class ActivityAndPrivilegeCouponPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  ActivityAndPrivilegeCouponPageConfigs.resource_id_activity_title_bt,
+                                  ActivityAndPrivilegeCouponPageConfigs.name_activity_title_bt,
                                   ActivityAndPrivilegeCouponPageConfigs.assert_view_timeout)
 
     def clickOnActivity(self):
@@ -33,7 +33,7 @@ class ActivityAndPrivilegeCouponPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 ActivityAndPrivilegeCouponPageConfigs.resource_id_activity_title_bt,
+                                 ActivityAndPrivilegeCouponPageConfigs.name_activity_title_bt,
                                  ActivityAndPrivilegeCouponPageConfigs.click_on_button_timeout)
 
     def clickOnSpecificActivity(self):

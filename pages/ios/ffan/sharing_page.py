@@ -25,7 +25,7 @@ class SharingPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SharingPageConfigs.resource_id_cancel_bt,
+                                  SharingPageConfigs.name_cancel_bt,
                                   SharingPageConfigs.assert_view_timeout)
 
     def validKeywords(self, keywords):
@@ -44,7 +44,7 @@ class SharingPage(SuperPage):
         '''
         logging.info('Click on cancel button.')
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SharingPageConfigs.resource_id_cancel_bt,
+                                 SharingPageConfigs.name_cancel_bt,
                                  SharingPageConfigs.click_on_button_timeout)
 
 if __name__ == '__main__':

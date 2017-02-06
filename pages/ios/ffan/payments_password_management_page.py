@@ -24,7 +24,7 @@ class PaymentsPasswordManagementPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  PaymentsPasswordManagementPageConfigs.resource_id_update_payments_password_title_st,
+                                  PaymentsPasswordManagementPageConfigs.name_update_payments_password_title_st,
                                   PaymentsPasswordManagementPageConfigs.assert_view_timeout)
 
 

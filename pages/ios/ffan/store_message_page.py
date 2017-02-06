@@ -23,7 +23,7 @@ class StoreMessagePage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  StoreMessagePageConfigs.resource_id_store_message_title_st,
+                                  StoreMessagePageConfigs.name_store_message_title_st,
                                   StoreMessagePageConfigs.assert_view_timeout)
 
 

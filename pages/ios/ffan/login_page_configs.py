@@ -37,7 +37,7 @@ class LoginPageConfigs():
 
     # Login title
     text_login = "登录"
-    resource_id_login_title_st = u"登录"
+    name_login_title_st = u"登录"
     name_forget_password = u"忘记密码？"
 
     # Mobile number

@@ -17,7 +17,7 @@ class SharingPageConfigs(object):
     click_on_button_timeout = 10
 
     # Cancel
-    resource_id_cancel_bt = "取消"
+    name_cancel_bt = "取消"
 
     def __init__(self):
         pass

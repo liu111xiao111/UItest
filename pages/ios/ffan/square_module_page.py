@@ -29,7 +29,7 @@ class SquareModulePage(SuperPage):
             self.scrollAsScreenPercent(0.5, 0.2, 0.5, 0.8)
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SquareModulePageConfigs.resource_id_find_store_st,
+                                  SquareModulePageConfigs.name_find_store_st,
                                   SquareModulePageConfigs.assert_view_timeout)
         logger.info("Check 广场 end")
         API().screenShot(self.driver, "guangChang")
@@ -40,8 +40,8 @@ class SquareModulePage(SuperPage):
     def clickOnSignOn(self):
         logger.info("Click 签到 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                       SquareModulePageConfigs.resource_id_sign_in_st,
-                                       SquareModulePageConfigs.assert_view_timeout)
+                                 SquareModulePageConfigs.name_sign_in_st,
+                                 SquareModulePageConfigs.assert_view_timeout)
         logger.info("Click 签到 end")
         API().screenShot(self.driver, "qianDao")
 
@@ -51,7 +51,7 @@ class SquareModulePage(SuperPage):
         '''
         logger.info("Click 停车 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SquareModulePageConfigs.resource_id_parking_cc,
+                                 SquareModulePageConfigs.name_parking_cc,
                                  SquareModulePageConfigs.click_on_button_timeout)
         logger.info("Click 停车 end")
 
@@ -105,7 +105,7 @@ class SquareModulePage(SuperPage):
     def clickOnSearch(self):
         logger.info("Click 搜索 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SquareModulePageConfigs.resource_id_search_bt,
+                                 SquareModulePageConfigs.name_search_bt,
                                  SquareModulePageConfigs.click_on_button_timeout)
         logger.info("Click 搜索 end")
         API().screenShot(self.driver, "zhaoDian")
@@ -169,7 +169,7 @@ class SquareModulePage(SuperPage):
         '''
         logger.info("Click 优惠券 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SquareModulePageConfigs.resource_id_privilege_coupon_st,
+                                 SquareModulePageConfigs.name_privilege_coupon_st,
                                  SquareModulePageConfigs.click_on_button_timeout)
         logger.info("Click 优惠券 end")
 
@@ -239,7 +239,7 @@ class SquareModulePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SquareModulePageConfigs.resource_id_born_to_shop_st,
+                                 SquareModulePageConfigs.name_born_to_shop_st,
                                  SquareModulePageConfigs.click_on_button_timeout)
 
     def clickOnGeneralCoupon(self):

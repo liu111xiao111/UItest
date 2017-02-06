@@ -24,7 +24,7 @@ class FeiFanMembershipPage(SuperPage):
         '''
         logger.info("Check 我的会员卡包,飞凡会员 bengin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  FeiFanMembershipPageConfigs.resource_id_fei_fan_membership_title_st,
+                                  FeiFanMembershipPageConfigs.name_fei_fan_membership_title_st,
                                   FeiFanMembershipPageConfigs.assert_view_timeout)
         logger.info("Check 我的会员卡包,飞凡会员 end")
         API().screenShot(self.driver, "feiFanHuiYuan")

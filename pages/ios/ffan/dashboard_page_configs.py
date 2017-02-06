@@ -92,13 +92,13 @@ class DashboardPageConfigs():
     get_timeout = 10
 
     # Movie button
-    resource_id_movie_st = "电影"
+    name_movie_st = "电影"
 
     # Stores button
-    name_movie_st = "商超"
+    name_shang_chao_st = "商超"
 
     # Privilege button
-    resource_id_movieprivilege_st = u"优惠"
+    name_movieprivilege_st = u"优惠"
 
     # Square module
     xpath_square_module_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[3]/UIACollectionView[1]/UIACollectionCell[1]"
@@ -117,7 +117,7 @@ class DashboardPageConfigs():
     xpath_yaoyiyao = "//UIAApplication[1]/UIAWindow[1]/UIATabBar[1]/UIAButton[1]"
 
     # Search all
-    resource_id_search_all_tv = "全城搜索"
+    name_search_all_tv = "全城搜索"
 
     # Sign in
     name_sign_in_st = u"签到"

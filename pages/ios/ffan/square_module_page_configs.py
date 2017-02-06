@@ -47,7 +47,7 @@ class SquareModulePageConfigs():
     xpath_sub_staff_picks_button = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.GridView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
 
     # Born to shop
-    resource_id_born_to_shop_st = u"爱购物"
+    name_born_to_shop_st = u"爱购物"
 
     # Get view time out
     get_view_timeout = 10
@@ -69,19 +69,19 @@ class SquareModulePageConfigs():
     click_on_button_timeout = 10
 
     # Find store
-    resource_id_find_store_st = u"找店"
+    name_find_store_st = u"找店"
 
     # Search
-    resource_id_search_bt = "home nav search"
+    name_search_bt = "home nav search"
 
     # Parking
-    resource_id_parking_cc = u"停车"
+    name_parking_cc = u"停车"
 
     # Sign in
-    resource_id_sign_in_st = u"签到"
+    name_sign_in_st = u"签到"
 
     # Privilege coupon
-    resource_id_privilege_coupon_st = u"优惠券"
+    name_privilege_coupon_st = u"优惠券"
 
     name_privilege_st = u"优惠"
     name_check_all_st = u"查看全部"

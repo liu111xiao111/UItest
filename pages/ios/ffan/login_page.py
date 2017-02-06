@@ -25,7 +25,7 @@ class LoginPage(SuperPage):
         '''
         logger.info("Check 登录页面 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  LoginPageConfigs.resource_id_login_title_st,
+                                  LoginPageConfigs.name_login_title_st,
                                   LoginPageConfigs.assert_view_timeout)
         logger.info("Check 登录页面 end")
         API().screenShot(self.driver, "login")

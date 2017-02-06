@@ -19,7 +19,7 @@ class MyFeiFanPageConfigs(object):
 
     # Login button
     resource_id_login_button = "com.wanda.app.wanhui:id/tv_login"
-    resource_id_login_bt = "登录"
+    name_login_bt = "登录"
 
     # Message centre button
     resource_id_message_centre_button = "com.wanda.app.wanhui:id/image_icon_message_entry"
@@ -31,17 +31,17 @@ class MyFeiFanPageConfigs(object):
 
     # Nickname
     resource_id_nickname_button = "com.wanda.app.wanhui:id/txt_user_nick_name"
-    resource_id_nickname_st = "ffan5905"
+    name_nickname_st = "ffan5905"
 
     # Settings button
-    resource_id_settings_st = u"设置"
+    name_settings_st = u"设置"
 
     # Login button
     text_login = u"登录"
 
     # My fei fan card
     text_my_fei_fan_card = u"我的飞凡通"
-    resource_id_my_fei_fan_card_st = u"我的飞凡通"
+    name_my_fei_fan_card_st = u"我的飞凡通"
 
     def __init__(self):
         pass

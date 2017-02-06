@@ -17,7 +17,7 @@ class GoodsDetailsPageConfigs(object):
     click_on_button_timeout = 10
 
     # Flash Sales Square title
-    resource_id_reource_goods_details_title_st = u"商品详情"
+    name_reource_goods_details_title_st = u"商品详情"
 
     # Commodity name
     xpath_commodity_name_st = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAStaticText[5]"

@@ -24,7 +24,7 @@ class BrandActivityPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  BrandActivityPageConfigs.resource_id_square_dynamic_title_st,
+                                  BrandActivityPageConfigs.name_square_dynamic_title_st,
                                   BrandActivityPageConfigs.assert_view_timeout)
 
 

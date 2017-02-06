@@ -18,7 +18,7 @@ class BrandActivityPageConfigs(object):
     click_on_button_timeout = 10
 
     # Square dynamic title
-    resource_id_square_dynamic_title_st = u"品牌活动"
+    name_square_dynamic_title_st = u"品牌活动"
 
     def __init__(self):
         pass

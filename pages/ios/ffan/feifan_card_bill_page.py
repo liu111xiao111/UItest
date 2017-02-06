@@ -20,7 +20,7 @@ class FeiFanCardBillPage(SuperPage):
 
     def validSelf(self):
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  FeiFanCardBillPageConfigs.resource_id_pocket_money_bill_st,
+                                  FeiFanCardBillPageConfigs.name_pocket_money_bill_st,
                                   FeiFanCardBillPageConfigs.assert_view_timeout)
 
     def validSubFilterByText(self, text=u"全部"):

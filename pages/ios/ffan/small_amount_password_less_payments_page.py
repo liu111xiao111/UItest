@@ -26,7 +26,7 @@ class SmallAmountPasswordLessPaymentsPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SmallAmountPasswordLessPaymentsPageConfigs.resource_id_small_amount_password_less_payments_title_st,
+                                  SmallAmountPasswordLessPaymentsPageConfigs.name_small_amount_password_less_payments_title_st,
                                   SmallAmountPasswordLessPaymentsPageConfigs.assert_view_timeout)
 
     def clickOnSmallAmountPasswordLessPaymentsSwitch(self):
@@ -44,7 +44,7 @@ class SmallAmountPasswordLessPaymentsPage(SuperPage):
         '''
 
         return API().validElementByName(self.driver, self.logger,
-                                        SmallAmountPasswordLessPaymentsPageConfigs.resource_id_choose_small_amount_password_less_quota_st,
+                                        SmallAmountPasswordLessPaymentsPageConfigs.name_choose_small_amount_password_less_quota_st,
                                         SmallAmountPasswordLessPaymentsPageConfigs.find_view_timeout)
 
 

@@ -18,7 +18,7 @@ class SquareShoppingPageConfigs():
     xpath_sub_commodity_st = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]"
 
     # Commodity title
-    resource_id_commodity_title_st = u"爱购物"
+    name_commodity_title_st = u"爱购物"
 
     def __init__(self):
         pass;

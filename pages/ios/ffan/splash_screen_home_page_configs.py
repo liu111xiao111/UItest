@@ -17,7 +17,7 @@ class SplashScreenHomePageConfigs(object):
     assert_invalid_view_time = 3
 
     # Skip button
-    resource_id_skip_st = u"跳过"
+    name_skip_st = u"跳过"
 
     def __init__(self):
         pass

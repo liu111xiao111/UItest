@@ -99,7 +99,7 @@ class DashboardPage(SuperPage):
         '''
         logger.info("Click 全城搜索 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 DashboardPageConfigs.resource_id_search_all_tv,
+                                 DashboardPageConfigs.name_search_all_tv,
                                  DashboardPageConfigs.click_on_button_timeout)
         logger.info("Click 全城搜索 end")
 
@@ -109,7 +109,7 @@ class DashboardPage(SuperPage):
         '''
         logger.info("Click 电影 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 DashboardPageConfigs.resource_id_movie_st,
+                                 DashboardPageConfigs.name_movie_st,
                                  DashboardPageConfigs.click_on_button_timeout)
         logger.info("Click 电影 end")
 
@@ -119,7 +119,7 @@ class DashboardPage(SuperPage):
         '''
         logger.info("Click 商超 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 DashboardPageConfigs.name_movie_st,
+                                 DashboardPageConfigs.name_shang_chao_st,
                                  DashboardPageConfigs.click_on_button_timeout)
         logger.info("Click 商超 end")
 
@@ -129,7 +129,7 @@ class DashboardPage(SuperPage):
         '''
         logger.info("Click 优惠 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 DashboardPageConfigs.resource_id_movieprivilege_st,
+                                 DashboardPageConfigs.name_movieprivilege_st,
                                  DashboardPageConfigs.click_on_button_timeout)
         logger.info("Click 优惠 end")
 

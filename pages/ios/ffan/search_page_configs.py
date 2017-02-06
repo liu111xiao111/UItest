@@ -5,7 +5,6 @@ class SearchPageConfigs():
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
 
     # 搜索 id
-    resource_id_search_bt = "Search"
     name_search_bt = u"Search"
 
     # 搜索 输入框
@@ -36,7 +35,7 @@ class SearchPageConfigs():
     xpath_specific_square_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]"
 
     text_store_detail = u"门店详情"
-    resource_id_store_details_st = u"门店详情"
+    name_store_details_st = u"门店详情"
 
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 

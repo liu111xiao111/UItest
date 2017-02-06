@@ -24,7 +24,7 @@ class MessageSettingsPage(SuperPage):
         '''
         logger.info("Check 消息中心,设置 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MessageSettingsPageConfigs.resource_id_message_settings_title_st,
+                                  MessageSettingsPageConfigs.name_message_settings_title_st,
                                   MessageSettingsPageConfigs.assert_view_timeout)
         logger.info("Check 消息中心,设置 end")
         API().screenShot(self.driver, "messageSetting")

@@ -24,7 +24,7 @@ class MessageCentrePage(SuperPage):
         '''
         logger.info("Check 消息中心 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MessageCentrePageConfigs.resource_id_message_centre_title_st,
+                                  MessageCentrePageConfigs.name_message_centre_title_st,
                                   MessageCentrePageConfigs.assert_view_timeout)
         logger.info("Check 消息中心 end")
         API().screenShot(self.driver, "message")
@@ -35,7 +35,7 @@ class MessageCentrePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MessageCentrePageConfigs.resource_id_settings_st,
+                                 MessageCentrePageConfigs.name_settings_st,
                                  MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnFeiFanActivity(self):
@@ -44,7 +44,7 @@ class MessageCentrePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MessageCentrePageConfigs.resource_id_fei_fan_activity_st,
+                                 MessageCentrePageConfigs.name_fei_fan_activity_st,
                                  MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnSquareDynamic(self):
@@ -53,7 +53,7 @@ class MessageCentrePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MessageCentrePageConfigs.resource_id_square_dynamic_st,
+                                 MessageCentrePageConfigs.name_square_dynamic_st,
                                  MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnBrandActivity(self):
@@ -62,7 +62,7 @@ class MessageCentrePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MessageCentrePageConfigs.resource_id_brand_activity_st,
+                                 MessageCentrePageConfigs.name_brand_activity_st,
                                  MessageCentrePageConfigs.click_on_button_timeout)
 
     def clickOnStoreMessage(self):
@@ -71,7 +71,7 @@ class MessageCentrePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MessageCentrePageConfigs.resource_id_store_message_st,
+                                 MessageCentrePageConfigs.name_store_message_st,
                                  MessageCentrePageConfigs.click_on_button_timeout)
 
 

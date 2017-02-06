@@ -18,7 +18,7 @@ class SettingsPage(SuperPage):
     def validSelf(self):
         logger.info("Check 我的设置 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SettingsPageConfigs.resource_id_title_st,
+                                  SettingsPageConfigs.name_title_st,
                                   SettingsPageConfigs.assert_view_timeout)
         logger.info("Check 我的设置 end")
         API().screenShot(self.driver, "setting")
@@ -26,15 +26,15 @@ class SettingsPage(SuperPage):
     def clickOnQuitAccountBtn(self, confirmQuit=True):
         logger.info("Click 退出登录 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SettingsPageConfigs.resource_id_exit_from_current_account_st,
+                                 SettingsPageConfigs.name_exit_from_current_account_st,
                                  SettingsPageConfigs.click_on_button_timeout)
         if confirmQuit:
             API().clickElementByName(self.testcase, self.driver, self.logger,
-                                     SettingsPageConfigs.resource_id_confirm_bt,
+                                     SettingsPageConfigs.name_confirm_bt,
                                      SettingsPageConfigs.click_on_button_timeout)
         else:
             API().clickElementByName(self.testcase, self.driver, self.logger,
-                                     SettingsPageConfigs.resource_id_cancel_bt,
+                                     SettingsPageConfigs.name_cancel_bt,
                                      SettingsPageConfigs.click_on_button_timeout)
         logger.info("Click 退出登录 end")
 
@@ -44,7 +44,7 @@ class SettingsPage(SuperPage):
         '''
         logger.info("Click 账户管理 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 SettingsPageConfigs.resource_id_account_management_st,
+                                 SettingsPageConfigs.name_account_management_st,
                                  SettingsPageConfigs.assert_view_timeout)
         logger.info("Click 账户管理 end")
 

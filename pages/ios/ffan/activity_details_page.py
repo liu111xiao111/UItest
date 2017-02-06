@@ -24,7 +24,7 @@ class ActivityDetailsPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  ActivityDetailsPageConfigs.resource_id_activity_details_title_st,
+                                  ActivityDetailsPageConfigs.name_activity_details_title_st,
                                   ActivityDetailsPageConfigs.assert_view_timeout)
 
     def clickOnSharing(self):

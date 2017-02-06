@@ -24,7 +24,7 @@ class AccountManagementPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  AccountManagementPageConfigs.resource_id_account_management_title_st,
+                                  AccountManagementPageConfigs.name_account_management_title_st,
                                   AccountManagementPageConfigs.assert_view_timeout)
 
     def clickOnUpdatePassword(self):
@@ -33,7 +33,7 @@ class AccountManagementPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 AccountManagementPageConfigs.resource_id_update_login_password_st,
+                                 AccountManagementPageConfigs.name_update_login_password_st,
                                  AccountManagementPageConfigs.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
@@ -42,7 +42,7 @@ class AccountManagementPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 AccountManagementPageConfigs.resource_id_small_amount_password_less_payments,
+                                 AccountManagementPageConfigs.name_small_amount_password_less_payments,
                                  AccountManagementPageConfigs.click_on_button_timeout)
 
 

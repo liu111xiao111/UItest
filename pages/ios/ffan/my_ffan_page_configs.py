@@ -10,15 +10,15 @@ class MyFfanPageConfigs():
 
     # 常量命名规则 resource_id指明资源类型是resource id;iv_center_tab view id name;iv指明view类型image view
     # 注册 textview
-    resource_id_tv_registration_tv = "tv_registration";
+    name_tv_registration_tv = "tv_registration";
     # 登录 textview
-    resource_id_tv_login_tv = "tv_login";
+    name_tv_login_tv = "tv_login";
 
     # 设置relativelayout
-    resource_id_my_settings_rl = "my_settings";
+    name_my_settings_rl = "my_settings";
 
     # 个人中心 头像旁昵称的ID
-    resource_id_txt_user_nick_name_tv = "txt_user_nick_name";
+    name_txt_user_nick_name_tv = "txt_user_nick_name";
 
     # text指明类型为text label
     text_my_ffan = u"我的飞凡";

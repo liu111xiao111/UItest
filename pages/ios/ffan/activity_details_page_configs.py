@@ -17,7 +17,7 @@ class ActivityDetailsPageConfigs(object):
     click_on_button_timeout = 10
 
     # Activity details title
-    resource_id_activity_details_title_st = u"活动详情"
+    name_activity_details_title_st = u"活动详情"
 
     # Sharing button
     xpath_sharing_bt = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]"

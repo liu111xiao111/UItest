@@ -16,15 +16,15 @@ class MyFeiFanCardPageConfigs(object):
     click_on_button_timeout = 10
 
     # My Fei fan card title
-    resource_id_my_fei_fan_card_title_st = u"我的飞凡通"
+    name_my_fei_fan_card_title_st = u"我的飞凡通"
 
     # Transaction record button
-    resource_id_transaction_record_st = u"交易记录"
+    name_transaction_record_st = u"交易记录"
     
-    resource_id_linghuaqian_st = u"我的零花钱"
+    name_linghuaqian_st = u"我的零花钱"
 
     # Payments settings button
-    resource_id_payments_settings_st = u"支付设置"
+    name_payments_settings_st = u"支付设置"
 
     def __init__(self):
         pass

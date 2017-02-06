@@ -24,7 +24,7 @@ class UpdateLoginPasswordPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  UpdateLoginPasswordPageConfigs.resource_id_update_login_password_title_st,
+                                  UpdateLoginPasswordPageConfigs.name_update_login_password_title_st,
                                   UpdateLoginPasswordPageConfigs.assert_view_timeout)
 
     def inputOldLoginPassword(self, oldPassword):

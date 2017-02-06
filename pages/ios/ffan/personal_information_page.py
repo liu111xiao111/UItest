@@ -24,7 +24,7 @@ class PersonalInformationPage(SuperPage):
         '''
         logger.info("Check 个人信息 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  PersonalInformationPageConfigs.resource_id_nickname_st,
+                                  PersonalInformationPageConfigs.name_nickname_st,
                                   PersonalInformationPageConfigs.assert_view_timeout)
         logger.info("Check 个人信息 end")
         API().screenShot(self.driver, "myInfo")

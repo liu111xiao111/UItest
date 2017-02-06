@@ -18,7 +18,7 @@ class SquareDynamicPageConfigs(object):
     click_on_button_timeout = 10
 
     # Square dyname title
-    resource_id_square_dynamic_title_st = u"广场动态"
+    name_square_dynamic_title_st = u"广场动态"
 
     def __init__(self):
         pass

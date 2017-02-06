@@ -24,7 +24,7 @@ class SquareDynamicPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SquareDynamicPageConfigs.resource_id_square_dynamic_title_st,
+                                  SquareDynamicPageConfigs.name_square_dynamic_title_st,
                                   SquareDynamicPageConfigs.assert_view_timeout)
 
 

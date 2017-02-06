@@ -20,7 +20,7 @@ class ParkingPaymentPage(SuperPage):
         '''
         logger.info("Check 广场停车 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  ParkingPaymentPageConfigs.resource_id_parking_and_payment_st,
+                                  ParkingPaymentPageConfigs.name_parking_and_payment_st,
                                   ParkingPaymentPageConfigs.assert_view_timeout)
         logger.info("Check 广场停车 end")
         API().screenShot(self.driver, "guangChangTingChe")
