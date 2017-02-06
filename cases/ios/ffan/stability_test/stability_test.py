@@ -73,6 +73,9 @@ class Stability(object):
             pid = item.split(' ')[0]
             if(pid==" "):
                 pid = item.split(' ')[1]
+            else:
+                pid = item.split(' ')[0]
+
             self.pidList.append(pid)
 
 

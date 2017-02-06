@@ -43,7 +43,6 @@ class WoDeTuiChuTestCase(TestCase):
 
     def setUp(self):
         self.logger = logger
-
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
