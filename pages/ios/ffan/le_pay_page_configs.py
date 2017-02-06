@@ -8,6 +8,8 @@ class LePayPageConfigs():
     """
     # 标题"乐付买单"
     name_le_pay_navigation_bar = u"买单"
+    name_total_pay = u"消费总额"
+    name_feifan_shouyintai = u"飞凡收银台"
     # 商品活动详情"乐付买单"
     # xpath_le_pay = "//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAButton[1]"
     xpath_le_pay = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"

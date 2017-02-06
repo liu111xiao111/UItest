@@ -52,7 +52,10 @@ class WoDeDingDanTestCase(TestCase):
         #点击我的订单
         myFfanPage.clickOnMyOrder()
         myOrderPage.validSelf()
-
+        #进入订单详情页面
+        myOrderPage.clickOnOrderDetails()
+        #验证订单详情
+        myOrderPage.validOrderDetailsPage()
 
     def tearDown(self):
         self.driver.quit()

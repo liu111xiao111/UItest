@@ -38,6 +38,16 @@ class LoginPage(SuperPage):
         logger.info("Switch 普通登录 end")
         API().screenShot(self.driver, "puTongDengLu")
 
+    def validNormalLogin(self):
+        '''
+        验证普通登录,以"忘记密码?"文字,作为验证
+        '''
+        logger.info("Check 普通登录 begin")
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  LoginPageConfigs.name_forget_password,
+                                  LoginPageConfigs.assert_view_timeout)
+        logger.info("Check 普通登录 end")
+
     def inputUserName(self):
         logger.info("Input 用户名 begin")
         API().inputStringByXpath(self.testcase, self.driver, self.logger,

@@ -61,7 +61,6 @@ class ShouYeTingCheTestCase(TestCase):
         dashboard.clickOnParking()
         parkingPage.validSelf()
 
-
         #点击车牌管理
         parkingPage.clickParkingManagement()
         parkingPage.validParkingManagement()

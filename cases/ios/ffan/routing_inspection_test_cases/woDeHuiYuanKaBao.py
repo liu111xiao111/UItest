@@ -53,14 +53,18 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
 
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
+        #点击会员卡包
         myFeiFanPage.clickOnMembershipCardPackage()
 
         myMembershipCardPackagePage = MyMembershipCardPackagePage(self, self.driver, self.logger)
         myMembershipCardPackagePage.validSelf()
+        #点击进入飞凡会员
         myMembershipCardPackagePage.clickOnLeHuoKa()
 
         feiFanMembershipPage = FeiFanMembershipPage(self, self.driver, self.logger)
+        #验证会员卡包
         feiFanMembershipPage.validSelf()
+        feiFanMembershipPage.waitBySeconds(10)
 
     def tearDown(self):
         self.driver.quit()

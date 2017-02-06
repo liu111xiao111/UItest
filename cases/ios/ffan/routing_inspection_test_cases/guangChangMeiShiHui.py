@@ -54,7 +54,7 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         squareFoodPage = SquareFoodPage(self, self.driver, self.logger)
 
         # 首页进入广场页
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)

@@ -72,17 +72,17 @@ class ParkingPage(SuperPage):
         usage: 点击"停车券".
         '''
         logger.info("Click 停车券 begin")
-        API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  name=ParkingPageConfigs.name_parking_coupon)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_parking_coupon)
         logger.info("Click 停车券 end")
 
     def validTingchequan(self):
         logger.info("Check 停车券 begin")
         #暂保留, 用name方式,有时候可以验证成功,有时候无法抓取出页面信息
-        # API().assertElementByName(self.testcase, self.driver, self.logger,
-        #                           name=ParkingPageConfigs.name_parking_coupon_cn)
-
-        API().assertElementByXpath(self.testcase, self.driver, self.logger, ParkingPageConfigs.xpath_parking_coupon)
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_parking_coupon_cn)
 
         logger.info("Check 停车券 ends")
         API().screenShot(self.driver, "tingCheQuan")
