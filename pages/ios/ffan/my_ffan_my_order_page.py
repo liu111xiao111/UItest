@@ -35,6 +35,18 @@ class MyFfanMyOrderPage(SuperPage):
                                   logger = self.logger,
                                   xpath = MyFfanMyOrderPageConfigs.xpath_order_details)
 
+    def validOrderDetailsPage(self):
+        '''
+        验证订单详情页面
+        '''
+        logger.info("Check 订单详情 begin")
+        API().assertElementByName(testCase=self.testcase,
+                                  driver=self.driver,
+                                  logger=self.logger,
+                                  name=MyFfanMyOrderPageConfigs.name_order_details)
+        logger.info("Check 订单详情 end")
+        API().screenShot(self.driver, "myOrderDetaisPage")
+
     def clickOnOrderList(self):
         '''
         usage : 点击我的订单中的第一条订单，进入详情页

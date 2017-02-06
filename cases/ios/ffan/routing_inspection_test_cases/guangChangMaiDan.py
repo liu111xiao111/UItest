@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -16,6 +15,7 @@ from pages.ios.ffan.le_pay_page import LePayPage
 from pages.ios.ffan.search_page import SearchPage
 from pages.ios.ffan.square_module_page import SquareModulePage
 from cases.logger import logger
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
 class GuangChangMaiDanTestCase(TestCase):
@@ -58,19 +58,30 @@ class GuangChangMaiDanTestCase(TestCase):
         dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
         searchPage.validSelf()
-        searchPage.inputKeywords(u"北京通州万达广场")
+        searchPage.inputKeywords(SearchPageConfigs.text_searching_store_name)
         searchPage.clickOnSearch()
         searchPage.clickOnSpecificSquare()
         squareModulePage.validSelf()
 
         # 点击 "乐付买单"
-        squareModulePage.clicOnLefuPay();
+        squareModulePage.clicOnLefuPay()
         lePayPage.validSelf()
         lePayPage.clickOnDetailsLePay()
+        #验证买单详情页面
+        lePayPage.validMaiDanPage()
+        #输入金额
         lePayPage.inputSumOfConsumption()
+        #点击确认购买
         lePayPage.clickOnConfirmPurchase()
+        #验证飞凡收银台
+        lePayPage.validFeiFanShouYinTai()
+
         lePayPage.clickBackKey()
+        #点击返回弹出对话框
         lePayPage.clickOnConfirmCancel()
+
+        # 返回验证买单页面
+        lePayPage.validMaiDanPage()
 
     def tearDown(self):
         self.driver.quit()

@@ -97,6 +97,7 @@ class MyFfanPage(SuperPage):
                                   name = MFPC.text_my_order)
         logger.info("Click 我的订单 end")
 
+
     def clickOnMyLike(self):
         '''
         usage : Load "我的喜欢" page， according to textview in "我的喜欢", check "我的喜欢" page whether load correctly.
@@ -147,7 +148,11 @@ class MyFfanPage(SuperPage):
         usage: 验证我的票券页面是否加载出来
         '''
         logger.info("Check 我的票券 begin")
-        API.validElementByXpath(self.driver,self.logger, MFPC.xpath_my_ticket_first_item,MFPC.valid_page_timeout)
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 MFPC.text_my_ticket,
+                                 MFPC.click_on_button_timeout)
         logger.info("Check 我的票券 end")
         API().screenShot(self.driver, "myTicket")
 

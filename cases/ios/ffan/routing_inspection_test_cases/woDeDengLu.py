@@ -67,7 +67,11 @@ class WoDeDengLuTestCase(TestCase):
 
         loginPage = LoginPage(self, self.driver, self.logger)
         loginPage.validSelf()
+        #切换到普通登录
         loginPage.switchToNormalLogin()
+        #验证是否切换到普通登录(密码登录)
+        loginPage.validNormalLogin()
+
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()

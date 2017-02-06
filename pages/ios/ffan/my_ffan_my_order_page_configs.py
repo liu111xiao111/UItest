@@ -12,6 +12,7 @@ class MyFfanMyOrderPageConfigs():
     name_daifukuan = u"待付款"
     name_wodedianping = u"我的点评"
     name_keshiyong = u"可使用"
+    name_order_details = u"订单详情"
 
 
 
