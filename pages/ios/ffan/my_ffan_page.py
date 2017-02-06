@@ -39,7 +39,7 @@ class MyFfanPage(SuperPage):
         API().assert_view_by_resourceID_Until(self.testcase,
                                               self.logger,
                                               self.driver,
-                                              MFPC.resource_id_txt_user_nick_name_tv,
+                                              MFPC.name_txt_user_nick_name_tv,
                                               seconds=90)
         logger.info("Check 注册 begin")
         API().screenShot(self.driver, "login")
@@ -113,7 +113,7 @@ class MyFfanPage(SuperPage):
         try:
             API().find_view_by_resourceID_Until_android(self.driver,
                                                         self.logger,
-                                                        MFPC.resource_id_txt_user_nick_name_tv)
+                                                        MFPC.name_txt_user_nick_name_tv)
             logger.info("Check login status, 已经注册")
             return True
         except TimeoutError:

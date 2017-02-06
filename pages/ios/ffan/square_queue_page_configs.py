@@ -2,8 +2,8 @@
 
 class SquareQueuePageConfigs():
     # "排队取号"
-    resource_id_queue = u"排队取号"
-    resource_id_cancel_queue = "cancel_queue"
+    name_queue = u"排队取号"
+    name_cancel_queue = "cancel_queue"
 
     xpath_number_of_meals = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIATextField[1]"
     xpath_get_queue_number = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIALink[2]"

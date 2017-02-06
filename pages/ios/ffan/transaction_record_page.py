@@ -24,7 +24,7 @@ class TransactionRecordPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  TransactionRecordPageConfigs.resource_id_transaction_record_title_st,
+                                  TransactionRecordPageConfigs.name_transaction_record_title_st,
                                   TransactionRecordPageConfigs.assert_view_timeout)
 
 

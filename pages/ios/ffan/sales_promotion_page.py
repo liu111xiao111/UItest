@@ -21,7 +21,7 @@ class SalesPromotionPage(SuperPage):
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=SalesPromotionPageConfigs.resource_id_tv_active_tv);
+                                  name=SalesPromotionPageConfigs.name_tv_active_tv);
 
     def clickOnCouponTab(self):
         '''
@@ -30,7 +30,7 @@ class SalesPromotionPage(SuperPage):
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 SalesPromotionPageConfigs.resource_id_tv_coupon_tv)
+                                 SalesPromotionPageConfigs.name_tv_coupon_tv)
 
     def clickOnActiveDetails(self):
         '''

@@ -22,12 +22,12 @@ class SquareQueuePage(SuperPage):
         '''
         usage : Click "排队取号" in square page, and load "排队取号" correctly.
         '''
-        logger.info("Check " + SQPC.resource_id_queue + " begin")
+        logger.info("Check " + SQPC.name_queue + " begin")
         API().assertElementByName(testCase=self.testcase,
                                   driver=self.driver,
                                   logger=self.logger,
-                                  name=SQPC.resource_id_queue)
-        logger.info("Check " + SQPC.resource_id_queue + " end")
+                                  name=SQPC.name_queue)
+        logger.info("Check " + SQPC.name_queue + " end")
         API().screenShot(self.driver, "paiDuiQuHao")
 
     def validKeyword(self, keyword):

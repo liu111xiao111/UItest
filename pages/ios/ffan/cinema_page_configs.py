@@ -31,7 +31,7 @@ class CinemaPageConfigs(object):
     xpath_movie_name_st = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]"
 
     # Buy ticket button
-    resource_id_buy_ticket_bt = u"选座"
+    name_buy_ticket_bt = u"选座"
 
     # tomorrow's date button
     xpath_tomorrows_date_bt = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[5]/UIAButton[2]"

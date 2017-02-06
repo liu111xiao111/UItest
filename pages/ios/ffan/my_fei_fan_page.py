@@ -36,12 +36,12 @@ class MyFeiFanPage(SuperPage):
         logger.info("Check 登录状态 begin")
         if assertable:
             API().assertElementByName(self.testcase, self.driver, self.logger,
-                                      MyFeiFanPageConfigs.resource_id_nickname_st,
+                                      MyFeiFanPageConfigs.name_nickname_st,
                                       MyFeiFanPageConfigs.assert_view_timeout)
             return True
         else:
             return API().validElementByName(self.driver, self.logger,
-                                            MyFeiFanPageConfigs.resource_id_nickname_st,
+                                            MyFeiFanPageConfigs.name_nickname_st,
                                             MyFeiFanPageConfigs.assert_view_timeout)
         logger.info("Check 登录状态 end")
         API().screenShot(self.driver, "dengLuZhuangTai")
@@ -54,7 +54,7 @@ class MyFeiFanPage(SuperPage):
         for _ in range(1):
             self.scrollAsScreenPercent(0.5, 0.4, 0.5, 0.6)
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MyFeiFanPageConfigs.resource_id_login_bt,
+                                  MyFeiFanPageConfigs.name_login_bt,
                                   MyFeiFanPageConfigs.assert_view_timeout)
         logger.info("Check 退出登录 end")
         API().screenShot(self.driver, "tuiChuDengLu")
@@ -65,7 +65,7 @@ class MyFeiFanPage(SuperPage):
         '''
         logger.info("Click 登录 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanPageConfigs.resource_id_login_bt,
+                                 MyFeiFanPageConfigs.name_login_bt,
                                  MyFeiFanPageConfigs.assert_view_timeout)
         logger.info("Click 登录 end")
 
@@ -77,7 +77,7 @@ class MyFeiFanPage(SuperPage):
         for _ in range(3):
             self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanPageConfigs.resource_id_settings_st,
+                                 MyFeiFanPageConfigs.name_settings_st,
                                  MyFeiFanPageConfigs.click_on_button_timeout)
         logger.info("Click 设置 end")
 
@@ -107,7 +107,7 @@ class MyFeiFanPage(SuperPage):
         '''
         logger.info("Click 会员名 begin")
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanPageConfigs.resource_id_nickname_st,
+                                 MyFeiFanPageConfigs.name_nickname_st,
                                  MyFeiFanPageConfigs.click_on_button_timeout)
         logger.info("Click 会员名 begin")
 
@@ -119,7 +119,7 @@ class MyFeiFanPage(SuperPage):
         for _ in range(3):
             self.scrollAsScreenPercent(0.5, 0.8, 0.5, 0.2)
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyFeiFanPageConfigs.resource_id_my_fei_fan_card_st,
+                                 MyFeiFanPageConfigs.name_my_fei_fan_card_st,
                                  MyFeiFanPageConfigs.click_on_button_timeout)
         logger.info("Click 我的飞凡通 end")
 

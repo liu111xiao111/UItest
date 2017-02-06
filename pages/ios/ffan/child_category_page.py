@@ -58,7 +58,7 @@ class ChildCategoryPage(SuperPage):
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 CCPC.resource_id_ll_child_play_ll)
+                                 CCPC.name_ll_child_play_ll)
 
     '''
         usage : 点击儿童教育
@@ -67,7 +67,7 @@ class ChildCategoryPage(SuperPage):
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 CCPC.resource_id_ll_child_education_ll)
+                                 CCPC.name_ll_child_education_ll)
 
     '''
         usage : 点击亲子购物
@@ -76,7 +76,7 @@ class ChildCategoryPage(SuperPage):
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 CCPC.resource_id_ll_child_shopping_ll)
+                                 CCPC.name_ll_child_shopping_ll)
 
     '''
         usage : 点击亲子购物
@@ -85,7 +85,7 @@ class ChildCategoryPage(SuperPage):
         API().clickElementByName(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 CCPC.resource_id_ll_other_store_ll)
+                                 CCPC.name_ll_other_store_ll)
 
         '''
         usage: 获取项目名称

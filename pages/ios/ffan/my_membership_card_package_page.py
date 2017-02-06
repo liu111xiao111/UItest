@@ -24,7 +24,7 @@ class MyMembershipCardPackagePage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  MyMembershipCardPackagePageConfigs.resource_id_my_membership_card_package_title_st,
+                                  MyMembershipCardPackagePageConfigs.name_my_membership_card_package_title_st,
                                   MyMembershipCardPackagePageConfigs.assert_view_timeout)
 
     def clickOnLeHuoKa(self):
@@ -33,7 +33,7 @@ class MyMembershipCardPackagePage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 MyMembershipCardPackagePageConfigs.resource_id_le_huo_ka_st,
+                                 MyMembershipCardPackagePageConfigs.name_le_huo_ka_st,
                                  MyMembershipCardPackagePageConfigs.click_on_button_timeout)
 
 

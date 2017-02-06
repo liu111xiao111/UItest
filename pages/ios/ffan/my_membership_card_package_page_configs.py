@@ -17,10 +17,10 @@ class MyMembershipCardPackagePageConfigs(object):
     click_on_button_timeout = 10
 
     # My membership card package title
-    resource_id_my_membership_card_package_title_st = u"我的会员卡包"
+    name_my_membership_card_package_title_st = u"我的会员卡包"
 
     # LeHuoKa button
-    resource_id_le_huo_ka_st = u"乐活卡 V1"
+    name_le_huo_ka_st = u"乐活卡 V1"
 
     def __init__(self):
         pass

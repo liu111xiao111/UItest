@@ -7,10 +7,7 @@ class ShoppingCategoryPageConfigs():
 
     # "购物"页
     name_shopping = u"名店优品";
-#     xpath_goods_details = "//UIAApplication[1]/UIAWindow[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[3]"
     xpath_goods_details = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIACollectionView[1]/UIACollectionCell[1]"
-# //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[1]
-# //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIACollectionView[1]/UIACollectionCell[1]/UIAStaticText[2]
 
     def __init__(self):
         pass;

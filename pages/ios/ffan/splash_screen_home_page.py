@@ -24,7 +24,7 @@ class SplashScreenHomePage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SplashScreenHomePageConfigs.resource_id_skip_st,
+                                  SplashScreenHomePageConfigs.name_skip_st,
                                   SplashScreenHomePageConfigs.assert_view_timeout)
 
 if __name__ == '__main__':

@@ -16,15 +16,15 @@ class AccountManagementPageConfigs(object):
     click_on_button_timeout = 10
 
     # Account management title
-    resource_id_account_management_title_st = u"账号管理"
+    name_account_management_title_st = u"账号管理"
 
     # Change login password button
     text_update_login_password_button = u"修改登录密码"
-    resource_id_update_login_password_st = u"修改登录密码"
+    name_update_login_password_st = u"修改登录密码"
 
     # Small amount password less payment
     text_small_amount_password_less_payments = u"小额免密支付"
-    resource_id_small_amount_password_less_payments = u"小额免密支付"
+    name_small_amount_password_less_payments = u"小额免密支付"
 
     def __init__(self):
         pass

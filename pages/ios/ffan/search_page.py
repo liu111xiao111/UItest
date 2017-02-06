@@ -22,7 +22,7 @@ class SearchPage(SuperPage):
     def validSelf(self):
         logger.info("Check 搜索界面 begin")
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  SearchPageConfigs.resource_id_search_bt,
+                                  SearchPageConfigs.name_search_bt,
                                   SearchPageConfigs.assert_view_timeout)
         logger.info("Check 搜索界面 end")
         API().screenShot(self.driver, "sousuojiemian")

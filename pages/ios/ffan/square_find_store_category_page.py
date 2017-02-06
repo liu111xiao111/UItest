@@ -17,13 +17,13 @@ class SquareFindStorePage(SuperPage):
         super(SquareFindStorePage, self).__init__(testcase=testcase, driver=driver, logger=logger);
 
     def validSelf(self):
-        logger.info("Check " + SFSC.resource_id_tv_category_tv + " begin")
+        logger.info("Check " + SFSC.name_tv_category_tv + " begin")
         API().assertElementByName(self.testcase,
                                   self.driver,
                                   self.logger,
-                                  SFSC.resource_id_tv_category_tv,
+                                  SFSC.name_tv_category_tv,
                                   SFSC.verify_view_timeout)
-        logger.info("Check " + SFSC.resource_id_tv_category_tv + " end")
+        logger.info("Check " + SFSC.name_tv_category_tv + " end")
         API().screenShot(self.driver, "zhaoDian")
 
     def validStorePage(self):

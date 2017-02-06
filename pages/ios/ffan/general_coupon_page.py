@@ -24,7 +24,7 @@ class GeneralCouponPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  GeneralCouponPageConfigs.resource_id_general_coupon_title,
+                                  GeneralCouponPageConfigs.name_general_coupon_title,
                                   GeneralCouponPageConfigs.assert_view_timeout)
 
     def clickOnImmediatelyToReceive(self):

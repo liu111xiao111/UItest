@@ -24,7 +24,7 @@ class PaymentsSettingsPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  PaymentsSettingsPageConfigs.resource_id_payments_settings_title_st,
+                                  PaymentsSettingsPageConfigs.name_payments_settings_title_st,
                                   PaymentsSettingsPageConfigs.assert_view_timeout)
 
     def clickOnPaymentsPasswordManagement(self):
@@ -33,7 +33,7 @@ class PaymentsSettingsPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 PaymentsSettingsPageConfigs.resource_id_update_payments_password_st,
+                                 PaymentsSettingsPageConfigs.name_update_payments_password_st,
                                  PaymentsSettingsPageConfigs.click_on_button_timeout)
 
     def clickOnSmallAmountPasswordLessPayments(self):
@@ -42,7 +42,7 @@ class PaymentsSettingsPage(SuperPage):
         '''
 
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 PaymentsSettingsPageConfigs.resource_id_small_amount_password_less_payments_st,
+                                 PaymentsSettingsPageConfigs.name_small_amount_password_less_payments_st,
                                  PaymentsSettingsPageConfigs.click_on_button_timeout)
 
 

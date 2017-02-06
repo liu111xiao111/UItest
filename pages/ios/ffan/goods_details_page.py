@@ -26,7 +26,7 @@ class GoodsDetailsPage(SuperPage):
         '''
 
         API().assertElementByName(self.testcase, self.driver, self.logger,
-                                  GoodsDetailsPageConfigs.resource_id_reource_goods_details_title_st,
+                                  GoodsDetailsPageConfigs.name_reource_goods_details_title_st,
                                   GoodsDetailsPageConfigs.assert_view_timeout)
 
     def validKeywords(self, keywords):

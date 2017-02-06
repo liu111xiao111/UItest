@@ -2,7 +2,7 @@
 
 class MyFfanMyQueuePageConfigs():
     # "我的排队"
-    resource_id_tv_registration_tv = u"我的排队"
+    name_tv_registration_tv = u"我的排队"
 
     name_more_restauran = u"更多餐厅"
 

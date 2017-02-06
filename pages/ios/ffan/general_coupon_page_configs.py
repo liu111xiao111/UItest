@@ -18,7 +18,7 @@ class GeneralCouponPageConfigs(object):
     click_on_button_timeout = 10
 
     # General coupon title
-    resource_id_general_coupon_title = u"通用券"
+    name_general_coupon_title = u"通用券"
 
     # Immediately to receive
     text_immediately_to_receive = u"马上领取"

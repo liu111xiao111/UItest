@@ -17,7 +17,7 @@ class FeiFanMembershipPageConfigs(object):
     click_on_button_timeout = 10
 
     # fei fan membership title
-    resource_id_fei_fan_membership_title_st = u"飞凡会员"
+    name_fei_fan_membership_title_st = u"飞凡会员"
 
     def __init__(self):
         pass

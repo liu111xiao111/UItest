@@ -13,7 +13,7 @@ class ParkingPaymentPageConfigs():
     click_on_button_timeout = 10
 
     # Parking and payment
-    resource_id_parking_and_payment_st = u"停车"
+    name_parking_and_payment_st = u"停车"
 
     def __init__(self):
         pass;

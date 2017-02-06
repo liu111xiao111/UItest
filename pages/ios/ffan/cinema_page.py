@@ -40,7 +40,7 @@ class CinemaPage(SuperPage):
                                         CinemaPageConfigs.get_timeout)
         
         API().clickElementByName(self.testcase, self.driver, self.logger,
-                                 CinemaPageConfigs.resource_id_buy_ticket_bt,
+                                 CinemaPageConfigs.name_buy_ticket_bt,
                                  CinemaPageConfigs.click_on_button_timeout)
         '''
         if API().validElementByXpath(self.driver, self.logger, CinemaPageConfigs.xpath_tomorrows_date_bt,

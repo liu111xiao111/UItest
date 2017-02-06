@@ -18,7 +18,7 @@ class StoreMessagePageConfigs(object):
     click_on_button_timeout = 10
 
     # Store message title
-    resource_id_store_message_title_st = u"门店消息"
+    name_store_message_title_st = u"门店消息"
 
     def __init__(self):
         pass

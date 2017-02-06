@@ -17,7 +17,7 @@ class ActivityAndPrivilegeCouponPageConfigs(object):
     click_on_button_timeout = 10
 
     # Activity title
-    resource_id_activity_title_bt = u"活动"
+    name_activity_title_bt = u"活动"
 
     # Specific activity button
     resource_id_specific_activity_button = "com.wanda.app.wanhui:id/iv_image"

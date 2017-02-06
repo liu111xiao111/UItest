@@ -20,7 +20,7 @@ class UpdateLoginPasswordPageConfigs(object):
     input_timeout = 10
 
     # Update login password title
-    resource_id_update_login_password_title_st = u"修改登录密码"
+    name_update_login_password_title_st = u"修改登录密码"
 
     # Input the old password
     resource_id_input_old_password = "com.wanda.app.wanhui:id/et_input_old_pwd"
