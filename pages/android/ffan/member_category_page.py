@@ -19,6 +19,6 @@ class MemberPage(SuperPage):
         usage : 检查会员类目是否加载出来
         '''
         logger.info("Check 会员页面 begin")
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        MPC.resource_id_title_tv_member_tv);
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                        MPC.text_member_title);
         logger.info("Check 会员页面 end")

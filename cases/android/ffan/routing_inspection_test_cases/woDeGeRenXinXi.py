@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -25,8 +24,8 @@ from cases.logger import logger
 
 class WoDeGeRenXinXiTestCase(TestCase):
     '''
-    巡检 No.50
-    用例名 我的个人信息
+    回归用例： No.22
+    用例名: 我的个人信息
     进入我的查看个人信息是否显示正确
     '''
     @classmethod
@@ -50,21 +49,20 @@ class WoDeGeRenXinXiTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeGeRenXinXi(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnMy()
 
+        # 点击我的，查看个人信息
+        dashboardPage.clickOnMy()
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
         myFeiFanPage.screenShot("woDe")
         myFeiFanPage.clickOnNickname()
-
         personalInformationPage = PersonalInformationPage(self, self.driver, self.logger)
         personalInformationPage.validSelf()
         personalInformationPage.screenShot("geRenZhiLiao")
-        personalInformationPage.clickBackKey()
-        myFeiFanPage.screenShot("woDe")
 
 
 if __name__ == "__main__":

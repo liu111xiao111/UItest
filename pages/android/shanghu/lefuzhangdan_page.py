@@ -16,6 +16,18 @@ class LeFuZhangDanPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(LeFuZhangDanPage, self).__init__(testcase, driver, logger)
 
+    def validSelf(self):
+        '''
+        usage: 验证乐付账单
+        '''
+        logger.info("Check 乐付账单 begin")
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  LFZDPC.text_user_defined,
+                                  LFZDPC.verify_timeout)
+        logger.info("Check 乐付账单 end")
+
     def clickOnUserDefined(self):
         '''
         usage: 点击自定义
@@ -50,7 +62,8 @@ class LeFuZhangDanPage(SuperPage):
         '''
         usage: 选择当前日期的前一天
         '''
-        logger.info("Click 当前日期的前一天 begin")
+        logger.info("Click 自定义 begin")
+        logger.info("Click 自定义查询时间 begin")
         version = DeviceInfoUtil().getBuildVersion()
         date = time.strftime('%Y-%m-%d').split('-')
         yesDate = datetime.datetime.now() - datetime.timedelta(days = 1)
@@ -118,25 +131,31 @@ class LeFuZhangDanPage(SuperPage):
             clickStartDate = day + " " + month + " " + date[0] + " selected"
         else:
             clickStartDate = day + " " + month + " " + date[0]
+
         API().clickElementByContentDesc(self.testcase,
                                         self.driver,
                                         self.logger,
                                         clickStartDate,
                                         LFZDPC.verify_timeout)
+        logger.info("Click 自定义查询时间 end")
 
         if int(version.split(".")[0]) < 5:
+            logger.info("Click 确定 Button begin")
             API().clickElementByText(self.testcase,
                                             self.driver,
                                             self.logger,
                                             LFZDPC.text_confirm,
                                             LFZDPC.verify_timeout)
+            logger.info("Click 确定 Button end")
         else:
+            logger.info("Click 确定 Button begin")
             API().clickElementByText(self.testcase,
                                             self.driver,
                                             self.logger,
                                             LFZDPC.text_confirm_ok,
                                             LFZDPC.verify_timeout)
-        logger.info("Click 当前日期的前一天 end")
+            logger.info("Click 确定 Button end")
+        logger.info("Click 自定义 end")
 
         return startDate
 

@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.shouye_page import ShouYePage
@@ -50,18 +49,19 @@ class TuiChuDengLuTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testTuiChuDengLu(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
-        dengLuPage = DengLuPage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnSetting()
 
+        # 点击设置，退出登录
+        shouYePage.clickOnSetting()
         sheZhiPage = SheZhiPage(self , self.driver , self.logger)
         sheZhiPage.validSelf()
         sheZhiPage.screenShot("sheZhi")
         sheZhiPage.clickOnLogout()
 
+        dengLuPage = DengLuPage(self , self.driver , self.logger)
         dengLuPage.waitBySeconds(2)
         dengLuPage.validPassword()
         dengLuPage.screenShot("dengLu")

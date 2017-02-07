@@ -17,7 +17,6 @@ from driver.appium_driver import AppiumDriver
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.feifan_card_charge_page import FeiFanCardChargePage
 from pages.android.ffan.feifan_card_page import FeiFanCardPage
-from pages.android.ffan.feifan_card_bill_page import FeiFanCardBillPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.logger import logger
@@ -25,9 +24,8 @@ from cases.logger import logger
 
 class FeiFanTongLingHuaQianTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检checklist No.: 44
-    自动化测试case No.: 44
+    回归用例： No.19
+    用例名: 飞凡通零花钱
     首页-飞凡通查看零花钱，确认零花钱页面显示正确，进行充值和提现，确认功能正常
     '''
     @classmethod
@@ -51,11 +49,13 @@ class FeiFanTongLingHuaQianTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testFeiFanTongLingHuaQian(self):
+        # 验证首页
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnFeiFanCard()
 
+        # 点击飞凡通
+        dashboardPage.clickOnFeiFanCard()
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.validSelf()
         feifanCardPage.screenShot("feiFanTong")
@@ -63,10 +63,7 @@ class FeiFanTongLingHuaQianTestCase(TestCase):
         feifanCardChargePage = FeiFanCardChargePage(self , self.driver , self.logger)
         feifanCardChargePage.validSelf()
         feifanCardChargePage.screenShot("lingHuaQian")
-        feifanCardChargePage.clickOnBill()
-        feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
-        feifanCardBillPage.validSelf()
-        feifanCardBillPage.screenShot("zhangDan")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanTongLingHuaQianTestCase)

@@ -9,8 +9,6 @@ from unittest import TestLoader
 
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.food_category_page import FoodCategoryPage
-#from pages.android.ffan.sales_promotion_page import SalesPromotionPage
-#from pages.android.ffan.square_lefu_pay_page import SquareLefuPayPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -25,10 +23,9 @@ from cases.logger import logger
 
 class MeiShiHuiTestCase(TestCase):
     '''
-    巡检 NO.7
+    回归用例： No.5
     用例名: 美食汇
-    首页进入美食正常进入找餐厅找优惠，数据显示正常可点击进入
-    备注：由于版本变化，页面元素缺失，case无法通过
+    首页进入美食汇，正常美食分类、抢券及门店列表，数据显示正常可点击进入
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,15 +48,14 @@ class MeiShiHuiTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testMeiShiHui(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        foodPage = FoodCategoryPage(self, self.driver, self.logger)
-        #salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        #lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
-
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
 
+        # 首页(爱逛街页面)点击美食汇
         dashboardPage.clickOnFood()
+        foodPage = FoodCategoryPage(self, self.driver, self.logger)
         foodPage.validFoodHomePage()
         foodPage.screenShot("meiShiHui")
 
@@ -67,24 +63,11 @@ class MeiShiHuiTestCase(TestCase):
         foodPage.clickOnGrabCoupons()
         foodPage.validGrabCoupons()
         foodPage.screenShot("youHuiQuan")
-        foodPage.clickBackKey()
 
         # 检查美食分类及门店列表
+        foodPage.clickBackKey()
         foodPage.validModules()
 
-        '''# 检查优惠打折
-        foodPage.clickOnCoupon()
-        salesPromotionPage.validSelf()
-        salesPromotionPage.clickBackKey()
-
-        # 检查抢券
-        oodPage.clickOnGrabCoupons()
-        salesPromotionPage.validSelfCoupon()
-        salesPromotionPage.clickBackKey()
-
-        # 检查乐付
-        foodPage.clickOnLePay()
-        lefuPage.validSelf()'''
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(MeiShiHuiTestCase)

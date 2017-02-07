@@ -24,9 +24,9 @@ from cases.logger import logger
 
 class FeiFanTongZhangDanTestCase(TestCase):
     '''
-    巡检checklist No.: 43
-    自动化测试case No.: 43
-    首页-飞凡卡查看账单，确认显示零花钱账单页面
+    回归用例： No.20
+    用例名: 飞凡通账单
+    首页-飞凡通查看账单，确认显示飞凡通账单页面
     '''
     @classmethod
     def setUpClass(cls):
@@ -49,26 +49,22 @@ class FeiFanTongZhangDanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testFeiFanTongZhangDan(self):
+        # 验证首页
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnFeiFanCard()
 
+        # 飞凡通查看账单
+        dashboardPage.clickOnFeiFanCard()
         feifanCardPage = FeiFanCardPage(self , self.driver , self.logger)
         feifanCardPage.waitBySeconds(5)
         feifanCardPage.validSelf()
         feifanCardPage.screenShot("feiFanTong")
         feifanCardPage.clickOnBill()
-
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
         feifanCardBillPage.screenShot("zhangDan")
-        '''if int(self.platVersion.split(".")[0]) >= 5:
-            for tempText in (u"全部", u"购物金赚取", u"购物金清零", u"现金充值", u"现金提现", u"消费", u"退款"):
-                feifanCardBillPage.clickOnFilter()
-                feifanCardBillPage.clickOnSubFilterByText(tempText)
-                feifanCardBillPage.validSubFilterByText(tempText)
-            feifanCardBillPage.clickBackKey()'''
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(FeiFanTongZhangDanTestCase)

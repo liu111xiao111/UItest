@@ -48,12 +48,13 @@ class RenYuanLieBiaoTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testRenYuanLieBiao(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnMemberManager()
 
+        # 【首页】点击【员工管理】， 进入【员工管理】页面,验证【正常状态】和【冻结状态】员工列表信息不为空
+        shouYePage.clickOnMemberManager()
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("zhengChangZhuangTai")

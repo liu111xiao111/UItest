@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from configs.driver_configs import appActivity_ffan
@@ -25,10 +24,9 @@ from cases.logger import logger
 
 class WoDeLingHuaQianTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检checklist #55
-    自动化测试 #55
-    点击付款码，显示付款码，点击零花钱，进入零花钱页面
+    回归用例： No.26
+    用例名: 我的零花钱
+    点击零花钱，进入零花钱页面
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,19 +49,21 @@ class WoDeLingHuaQianTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeLingHuaQian(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-
-        # 查看我的订单状态
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 查看零花钱
         dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
         myFfanPage.clickOnMyBill()
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
         feifanCardBillPage.validSelf()
         feifanCardBillPage.screenShot("woDeLingHuaQian")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeLingHuaQianTestCase)

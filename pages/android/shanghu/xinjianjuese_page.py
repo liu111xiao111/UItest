@@ -14,6 +14,18 @@ class XinJianJueSePage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(XinJianJueSePage, self).__init__(testcase, driver, logger)
 
+    def validSelf(self):
+        '''
+        usage: 验证新建角色页面
+        '''
+        logger.info("Check 新建角色页面 begin")
+        API().assertElementByText(self.testcase,
+                                               self.driver,
+                                               self.logger,
+                                               XJJSPC.text_new_role_title,
+                                               XJJSPC.verify_timeout)
+        logger.info("Check 新建角色页面 end")
+
     def clickOnFunctionalAutority(self):
         '''
         usage: 选择角色权限
@@ -51,7 +63,7 @@ class XinJianJueSePage(SuperPage):
         API().assertEqual(self.testcase, self.logger, roleStatus, XJJSPC.account_role)
         logger.info("Check 功能权限 end")
 
-    def inputUserName(self):
+    def inputRoleName(self):
         '''
         usage: 输入角色名
         '''

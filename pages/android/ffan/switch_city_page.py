@@ -15,21 +15,16 @@ class SwitchCityPage(SuperPage):
     def __init__(self, testcase, driver, logger):
         super(SwitchCityPage, self).__init__(testcase, driver, logger)
 
-    def validSelf(self, assertable=True):
+    def validSelf(self):
         '''
         usage: 验证切换城市
         '''
         logger.info("Check 切换城市Popup begin")
-        if assertable:
-            API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                            SCPC.resource_id_switch_city_cancel_button,
-                                            SCPC.assert_view_timeout)
-            logger.info("Check 切换城市Popup end")
-        else:
-            logger.info("Check 切换城市Popup end")
-            return API().validElementByResourceId(self.driver, self.logger,
+        rtn = API().validElementByResourceId(self.driver, self.logger,
                                                   SCPC.resource_id_switch_city_cancel_button,
                                                   SCPC.verify_view_timeout)
+        logger.info("Check 切换城市Popup end")
+        return rtn
 
     def cancelSwitchCity(self):
         '''
@@ -67,3 +62,13 @@ class SwitchCityPage(SuperPage):
 
         return API().getTextByXpath(self.testcase, self.driver, self.logger,
                                     SCPC.xpath_hint_content_st, SCPC.get_view_timeout).split()[1]
+
+    def validSelfCity(self):
+        '''
+        usage: 验证当前页面不是切换城市页面
+        '''
+        logger.info("Check 当前城市为北京市 begin")
+        cityName = API().getTextByXpath(self.testcase, self.driver, self.logger,
+                                    SCPC.xpath_city_name, SCPC.get_view_timeout)
+        API().assertEqual(self.testcase, self.logger, cityName, SCPC.text_city_name)
+        logger.info("Check 当前城市为北京市 end")

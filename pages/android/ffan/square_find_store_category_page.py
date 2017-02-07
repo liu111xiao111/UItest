@@ -18,11 +18,13 @@ class SquareFindStorePage(SuperPage):
         '''
         usage : 验证找店页面
         '''
-        API().assertElementByResourceId(self.testcase,
+        logger.info("Check 找店页面 begin")
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SFSC.resource_id_tv_category_tv,
+                                        SFSC.text_find_store,
                                         SFSC.verify_view_timeout)
+        logger.info("Check 找店页面 end")
 
     def clickOnSearch(self):
         '''

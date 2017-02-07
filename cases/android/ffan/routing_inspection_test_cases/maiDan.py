@@ -25,9 +25,11 @@ from cases.logger import logger
 
 class MaiDanTestCase(TestCase):
     '''
-    巡检 No.17
-    用例名 买单
-    首页进入乐付买单（城市维度），并下单，取消订单，支付（虚拟城市），并查看相应订单状态
+    回归用例： No.8
+    用例名: 买单
+    首页进入买单（城市维度），验证乐付列表，按距离排序，并下单，取消订单，支付（虚拟城市，
+    iOS执行此条请使用蒲公英版本切换到测试城市，使用零花钱支付，使用商户APP进行退款），
+    并查看相应订单状态
     '''
     @classmethod
     def setUpClass(cls):
@@ -50,30 +52,37 @@ class MaiDanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testMaiDan(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
-        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
-        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
-
-        # Load square page
         dashboardPage.validSelf();
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击买单，验证买单列表，按距离排序
         dashboardPage.clickOnLefuCategory()
+        lefuPage = SquareLefuPayPage(self, self.driver, self.logger)
         lefuPage.validSelf();
         lefuPage.screenShot("maiDan")
 
-        # Click "乐付买单"， load detail pay page.
+        # 下单
         lefuPage.clickOnLefuPay();
+        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
         lefuPayDetailPage.validSelf();
         lefuPayDetailPage.screenShot("maiDanFuKuan")
-
-        # Input money, click "确认买单".
         lefuPayDetailPage.inputMoney();
         lefuPayDetailPage.screenShot("maiDanFuKuan")
         lefuPayDetailPage.waitBySeconds(seconds=5)
         lefuPayDetailPage.clickOnPay();
+        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
         lefuPayWayPage.validSelf();
         lefuPayWayPage.screenShot("maiDanFuKuanFangShi")
+
+        # 取消订单
+        lefuPayWayPage.clickOnBackFromPay()
+        lefuPayWayPage.validSelfCanclePopup()
+        lefuPayWayPage.screenShot("quXiaoDingDanPopUp")
+        lefuPayWayPage.clickOnConfirmFromCancel()
+        lefuPayWayPage.validSelfAllOrders()
+        lefuPayWayPage.screenShot("quXiaoDingDan")
 
 
 if __name__ == "__main__":

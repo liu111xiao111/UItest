@@ -19,18 +19,16 @@ from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from pages.android.ffan.login_page import LoginPage
-#from pages.android.ffan.login_verify_page import LoginVerifyPage
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.settings_page import SettingsPage
 from cases.logger import logger
 
 
 class WoDeDengLuTestCase(TestCase):
     '''
-    巡检 No.49
-    用例名 我的登录
-    启动app，能够正常登陆
+    回归用例： No.21
+    用例名: 我的登录
+    返回首页点击首页个人中心并进行登录(普通，快捷、第三方联合登录都需要测试)，可登录成功
     '''
     @classmethod
     def setUpClass(cls):
@@ -53,12 +51,15 @@ class WoDeDengLuTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testWoDeDengLu(self):
+        # 验证首页
         dashboardPage = DashboardPage(self , self.driver , self.logger)
         myFfanPage = MyFfanPage(self, self.driver, self.logger)
-
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 点击我的, 进行登录
         dashboardPage.clickOnMy()
+        myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
         if myFfanPage.isLoginStatus():
             myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
@@ -78,18 +79,15 @@ class WoDeDengLuTestCase(TestCase):
         loginPage.validSelf()
         loginPage.screenShot("dengLu")
         loginPage.switchToNormalLogin()
+        loginPage.validNormalLogin()
         loginPage.screenShot("puTongDengLu")
         loginPage.inputUserName()
         loginPage.screenShot("shuRuYongHuMing")
         loginPage.inputPassWord()
         loginPage.screenShot("shuRuMiMa")
         loginPage.clickOnLoginBtn()
-        # loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
-        # loginVerifyPage.validSelf()
-        # loginVerifyPage.clickOnSkip()
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
-        dashboardPage.waitBySeconds(seconds=2)
 
 
 if __name__ == "__main__":

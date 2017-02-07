@@ -19,11 +19,11 @@ class ParkingCategoryPage(SuperPage):
         usage : 验证停车页面
         '''
         logger.info("Check 停车页面 begin")
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        PCPC.resource_id_tv_parking_tv,
-                                        30)
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  PCPC.text_parking,
+                                  PCPC.valid_timeout)
         logger.info("Check 停车页面 end")
 
     def clickOnParkingLot(self):
@@ -54,9 +54,13 @@ class ParkingCategoryPage(SuperPage):
         vehiclePlate = API().validElementByText(self.driver,
                                  self.logger,
                                  PCPC.text_add_license_plate,
-                                 10)
-        return vehiclePlate
+                                 30)
+        if vehiclePlate != False:
+            logger.info("Check 车牌未添加 end")
+        else:
+            logger.info("Check 车牌已添加 end")
         logger.info("Check 车牌是否已添加 end")
+        return vehiclePlate
 
     def clickOnAddLicensePlate(self):
         '''

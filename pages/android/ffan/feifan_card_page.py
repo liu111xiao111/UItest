@@ -19,13 +19,13 @@ class FeiFanCardPage(SuperPage):
         '''
         usage : 检查飞凡卡界面
         '''
-        logger.info("Check 飞凡通 begin")
-        API().assertElementByResourceId(self.testcase,
+        logger.info("Check 飞凡通页面 begin")
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        FCPC.resource_id_tv_bill_tv,
+                                        FCPC.text_feifantong_title,
                                         FCPC.verify_view_timeout)
-        logger.info("Check 飞凡通 end")
+        logger.info("Check 飞凡通页面 end")
 
     def clickOnOpenCard(self):
         '''

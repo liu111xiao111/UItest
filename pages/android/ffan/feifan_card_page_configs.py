@@ -18,6 +18,7 @@ class FeiFanCardPageConfigs():
     resource_id_tv_code_icon_tv = "com.wanda.app.wanhui:id/iv_right_icon"
     # 飞凡卡 付款码
     text_tv_payment_code_tv = u"付    款"
+    text_feifantong_title = u"零花钱"
 
     # 零花钱
     resource_id_tv_pocket_money_tv = "com.wanda.app.wanhui:id/tv_feifan_change"

@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -26,9 +25,9 @@ from cases.logger import logger
 
 class WoDeHuiYuanKaBaoTestCase(TestCase):
     '''
-    巡检 No.53
-    用例名 我的会员卡包
-    点击进入我的会员卡包，查看数据是否显示正常并可进入会员页
+    回归用例： No.25
+    用例名: 我的会员卡包
+    点击进入我的会员卡包，查看数据是否显示正常并可进入会员页 
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,30 +50,25 @@ class WoDeHuiYuanKaBaoTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeHuiYuanKaBao(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnMy()
 
+        # 点击我的，验证会员卡包
+        dashboardPage.clickOnMy()
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.validSelf()
         myFeiFanPage.screenShot("woDe")
         myFeiFanPage.clickOnMembershipCardPackage()
-
         myMembershipCardPackagePage = MyMembershipCardPackagePage(self, self.driver, self.logger)
         myMembershipCardPackagePage.waitBySeconds(2)
         myMembershipCardPackagePage.validSelf()
         myMembershipCardPackagePage.screenShot("huiYuanKaBao")
         myMembershipCardPackagePage.clickOnLeHuoKa()
-
         feiFanMembershipPage = FeiFanMembershipPage(self, self.driver, self.logger)
         feiFanMembershipPage.validSelf()
         feiFanMembershipPage.screenShot("leHuoKa")
-        feiFanMembershipPage.clickBackKey()
-        myMembershipCardPackagePage.screenShot("huiYuanKaBao")
-
-        myMembershipCardPackagePage.clickBackKey()
-        myFeiFanPage.screenShot("woDe")
 
 
 if __name__ == "__main__":

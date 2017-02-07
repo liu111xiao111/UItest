@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.lefuzhangdan_page import LeFuZhangDanPage
@@ -49,12 +48,15 @@ class LeFuZhangDanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testLeFuZhangDan(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnLefuBill()
 
+        # 乐付账单
+        shouYePage.clickOnLefuBill()
         leFuZhangDanPage = LeFuZhangDanPage(self , self.driver , self.logger)
+        leFuZhangDanPage.validSelf()
         leFuZhangDanPage.screenShot("leFuZhangDan")
         leFuZhangDanPage.clickOnUserDefined()
         leFuZhangDanPage.validCalendar()

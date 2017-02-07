@@ -24,6 +24,7 @@ from cases.logger import logger
 
 class ShouYeTingCheTestCase(TestCase):
     '''
+    回归用例： No.7
     用例名: 首页停车
     首页进入停车，点击查看车牌管理，附近停车场，停车券，停车记录，帮助，绑定车牌（a:输入新车牌并绑定）
     '''
@@ -48,10 +49,12 @@ class ShouYeTingCheTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testShouYeTingChe(self):
-        # 爱逛街首页点击停车，进入停车页面，查看页面展示
+        # 验证首页
         dashboardPage = DashboardPage(testcase = self , driver = self.driver , logger = self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击停车
         dashboardPage.clickOnParkingCategory()
         parkingPage = ParkingCategoryPage(testcase = self, driver = self.driver, logger = self.logger)
         parkingPage.validSelf()
@@ -60,7 +63,7 @@ class ShouYeTingCheTestCase(TestCase):
         # 在停车页面点击查看车牌管理，停车记录，停车券，帮助查看跳转页面
         parkingAddLicensePlatePage = ParkingAddLicensePlatePage(testcase = self,driver = self.driver,logger = self.logger)
         parkingPage.screenShot("tingChe")
-        #检查入口项目
+        # 检查入口项目
         itemList = (u"车牌管理", u"停车记录", u"停车券", u"帮助")
         titleList = (u"车牌管理", u"停车记录", u"停车优惠券", u"停车帮助")
         for i in range(len(titleList)):

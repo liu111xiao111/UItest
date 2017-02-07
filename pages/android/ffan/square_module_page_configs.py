@@ -30,6 +30,7 @@ class SquareModulePageConfigs():
     text_coupon = u"优惠券"
     text_sales = u"优惠"
     text_flash_sales = u"限时抢购"
+    text_square_title = u"广场"
 
     # Click button time out
     click_on_button_timeout = 90

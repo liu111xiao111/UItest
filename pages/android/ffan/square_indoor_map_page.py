@@ -19,10 +19,10 @@ class SquareIndoorMapPage(SuperPage):
         usage : 验证室内地图页面
         '''
         logger.info("Check 室内地图页面 begin")
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByXpath(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        SIMPC.resource_id_map,
+                                        SIMPC.xpath_indoor_map,
                                         18)
         logger.info("Check 室内地图页面 end")
 

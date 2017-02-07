@@ -18,23 +18,13 @@ class SquareModulePage(SuperPage):
         '''
         usage : 进入广场模块，检查是否加载出来
         '''
-        # tempWidth = API().getWidthOfDevice(self.driver, self.logger)
-        # tempHight = API().getHeightOfDevice(self.driver, self.logger)
-        # for _ in range(10):
-        #     API().scroll(self.driver, self.logger,
-        #                  tempWidth / 2, tempHight / 5, tempWidth / 2, tempHight * 4 / 5)
-        #
-        # API().scrollToText(self.testcase,
-        #                    self.driver,
-        #                    self.logger,
-        #                    SMPC.text_find_store)
-        logger.info("Check 广场页面 begin")
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        SMPC.resource_id_square_title,
-                                        SMPC.get_view_timeout)
-        logger.info("Check 广场页面 end")
+        logger.info("Check 广场详情页面 begin")
+        API().assertElementByContainsText(self.testcase,
+                                          self.driver,
+                                          self.logger,
+                                          SMPC.text_square_title,
+                                          SMPC.get_view_timeout)
+        logger.info("Check 广场详情页面 end")
 
     def validSelfDetails(self):
         '''
@@ -118,7 +108,7 @@ class SquareModulePage(SuperPage):
                                  SMPC.text_shopping,
                                  SMPC.click_on_button_timeout)
 
-    def clicOnFindStore(self):
+    def clickOnFindStore(self):
         '''
         usage: 点击找店
         '''
@@ -161,7 +151,7 @@ class SquareModulePage(SuperPage):
                            self.logger,
                            SMPC.text_food)
 
-    def clicOnIndoorMap(self):
+    def clickOnIndoorMap(self):
         '''
         usage: 点击"室内地图"
         '''
@@ -195,7 +185,7 @@ class SquareModulePage(SuperPage):
                                  SMPC.text_shake,
                                  SMPC.click_on_button_timeout)
 
-    def clicOnQueue(self):
+    def clickOnQueue(self):
         '''
         usage: 点击 "排队取号"
         '''

@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -26,9 +25,9 @@ from cases.logger import logger
 
 class WoDeXiaoXiZhongXinTestCase(TestCase):
     '''
-    巡检 No.61
-    用例名 我的消息中心
-    在我的飞凡页面点击进入消息中心，查看各类消息数据显示正确，并可以在设置中设置
+    回归用例： No.29
+    用例名: 我的排队
+    在我的飞凡页面点击进入消息中心，查看各类消息数据显示正确，并可以在设置中进行开关设置，可成功设置
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,58 +50,29 @@ class WoDeXiaoXiZhongXinTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeXiaoXiZhongXin(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnMy()
 
+        # 点击我的，进入消息中心
+        dashboardPage.clickOnMy()
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
         myFeiFanPage.screenShot("woDe")
         myFeiFanPage.validSelf()
         myFeiFanPage.clickOnMessageCentre()
-
         messageCentrePage = MessageCentrePage(self, self.driver, self.logger)
         messageCentrePage.validSelf()
         messageCentrePage.screenShot("xiaoXiZhongXin")
-        '''
-        messageCentrePage.clickOnFeiFanActivity()
 
-        feiFanActivityPage = FeiFanActivityPage(self, self.driver, self.logger)
-        feiFanActivityPage.validSelf()
-        feiFanActivityPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnSquareDynamic()
-
-        squareDynamicPage = SquareDynamicPage(self, self.driver, self.logger)
-        squareDynamicPage.validSelf()
-        squareDynamicPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnBrandActivity()
-
-        brandActivityPage = BrandActivityPage(self, self.driver, self.logger)
-        brandActivityPage.validSelf()
-        brandActivityPage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        messageCentrePage.clickOnStoreMessage()
-
-        storeMessagePage = StoreMessagePage(self, self.driver, self.logger)
-        storeMessagePage.validSelf()
-        storeMessagePage.clickBackKey()
-
-        messageCentrePage.validSelf()
-        '''
-
-
+        # 设置开关操作
         messageCentrePage.clickOnSettings()
-
         messageSettingsPage = MessageSettingsPage(self, self.driver, self.logger)
         messageSettingsPage.validSelf()
         messageSettingsPage.clickOnActivityPush()
-        messageSettingsPage.clickBackKey()
-        messageCentrePage.clickBackKey()
+        messageSettingsPage.validSelf()
+        messageSettingsPage.screenShot("xiaoXiZhongXinSheZhi")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeXiaoXiZhongXinTestCase)

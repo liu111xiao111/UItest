@@ -2,7 +2,6 @@
 
 import os
 import time
-import logging
 from unittest import TestCase
 from unittest import TestLoader
 
@@ -22,9 +21,9 @@ from cases.logger import logger
 
 class ChengShiQieHuanTestCase(TestCase):
     '''
-    巡检 No.02
+    回归用例： No.1
     用例名: 城市切换
-    启动APP，城市切换正常
+    定位到当前城市，确认弹出切换城市对话框，切换完，首页显示当前城市下的数据
     '''
     @classmethod
     def setUpClass(cls):
@@ -45,16 +44,15 @@ class ChengShiQieHuanTestCase(TestCase):
     def setUp(self):
         self.logger = Logger()
 
-    def testChengShiQieHuan_2(self):
+    def testChengShiQieHuan(self):
         switchCityPage = SwitchCityPage(self, self.driver, self.logger)
-        for tempTimes in range(5):
-            logging.info("ATTEMPTS: %d" % (tempTimes + 1))
-            if switchCityPage.validSelf(False):
-                switchCityPage.screenShot("chengShiQieHuan")
-                switchCityPage.cancelSwitchCity()
-                break
-            switchCityPage.waitBySeconds(2)
-        switchCityPage.invalidSelf()
+        # 如果弹出切换城市Popup，点击取消按钮
+        if switchCityPage.validSelf():
+            switchCityPage.screenShot("chengShiQieHuan")
+            switchCityPage.cancelSwitchCity()
+        switchCityPage.waitBySeconds(2)
+        # 验证当前城市为北京
+        switchCityPage.validSelfCity()
         switchCityPage.screenShot("chengShiQieHuan")
 
 

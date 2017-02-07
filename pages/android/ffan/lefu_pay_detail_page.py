@@ -19,8 +19,8 @@ class LefuPayDetailPage(SuperPage):
         usage : 验证乐付消费输入页
         '''
         logger.info("Check 买单付款页面 begin")
-        API().assertElementByResourceId(self.testcase, self.driver, self.logger,
-                                        LPDPC.resource_id_store_title,
+        API().assertElementByText(self.testcase, self.driver, self.logger,
+                                        LPDPC.text_pay,
                                         60)
         logger.info("Check 买单消费输入页 end")
 
