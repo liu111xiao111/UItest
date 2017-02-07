@@ -42,14 +42,14 @@ class SearchPage(SuperPage):
         '''
         usage : 输入文本值
         '''
-        logger.info("Input 文本 begin")
+        logger.info("Input %s begin" % text)
         API().inputStringByResourceId(self.testcase,
                                       self.driver,
                                       self.logger,
                                       SPC.resource_et_search_input_et,
                                       text,
                                       90)
-        logger.info("Input 文本 end")
+        logger.info("Input %s end" % text)
 
     def inputStoreName(self):
         '''
@@ -122,16 +122,12 @@ class SearchPage(SuperPage):
         usage : 点击搜索出来的结果list1
         '''
         logger.info("Click 搜索列表第一项 begin")
-#         API().getTextByResourceId(self.testcase,
-#                                   self.driver,
-#                                   self.logger,
-#                                   SPC.resource_id_specific_store_button,
-#                                   90)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SPC.xpath_search_result_first_item,
                                   90)
+        logger.info("Click 搜索列表第一项 end")
 
     def clickOnFindStoreFirstItem(self):
         '''

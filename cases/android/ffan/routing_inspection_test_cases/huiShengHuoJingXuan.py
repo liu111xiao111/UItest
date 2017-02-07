@@ -23,8 +23,8 @@ from cases.logger import logger
 
 class HuiShengHuoJingXuanTestCase(TestCase):
     '''
-    巡检 No.41
-    用例名 惠生活精选/荐店
+    回归用例： No.18
+    用例名: 慧生活精选/荐店
     首页-慧生活查看精选/荐店，点击可进入详情页，可以点赞
     '''
     @classmethod
@@ -48,11 +48,13 @@ class HuiShengHuoJingXuanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testHuiShengHuoJingXuan(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnSmartLife()
 
+        # 点击慧生活
+        dashboardPage.clickOnSmartLife()
         huiLifePage = HuiLifePage(self, self.driver, self.logger)
         huiLifePage.validSelf()
         huiLifePage.screenShot("huiShengHuo")
@@ -64,6 +66,7 @@ class HuiShengHuoJingXuanTestCase(TestCase):
         huiLifePage.validSelfSelectDetails()
         huiLifePage.screenShot("jingXuanXiangXi")
         huiLifePage.clickBackKey()
+        huiLifePage.validSelf()
         huiLifePage.screenShot("jingXuan")
 
         # 荐店
@@ -73,6 +76,7 @@ class HuiShengHuoJingXuanTestCase(TestCase):
         huiLifePage.clickOnShopDetails()
         huiLifePage.validSelfShopDetails()
         huiLifePage.screenShot("jianDianXiangXi")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(HuiShengHuoJingXuanTestCase)

@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.yuangongguanli_page import YuanGongGuanLiPage
@@ -49,12 +48,13 @@ class DongJieYuanGongTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testDongJieYuanGong(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnMemberManager()
 
+        # 员工管理，冻结员工
+        shouYePage.clickOnMemberManager()
         yuanGongGuanLiPage = YuanGongGuanLiPage(self , self.driver , self.logger)
         yuanGongGuanLiPage.validNormalStatus()
         yuanGongGuanLiPage.screenShot("yuanGongGuanLi")

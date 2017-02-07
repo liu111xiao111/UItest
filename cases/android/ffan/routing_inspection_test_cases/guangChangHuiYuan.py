@@ -25,7 +25,9 @@ from cases.logger import logger
 
 class GuangChangHuiYuanTestCase(TestCase):
     '''
-       usage:  No.28 广场详情页点击会员，成功进入会员页面，检查数据正常显示
+    回归用例： No.16
+    用例名: 广场会员
+    广场详情页点击会员，成功进入会员页面，检查数据正常显示 
     '''
     @classmethod
     def setUpClass(cls):
@@ -48,14 +50,14 @@ class GuangChangHuiYuanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testGuangChangHuiYuan(self):
-        dashboardPage = DashboardPage(self, self.driver, self.logger);
-        squarePage = SquareModulePage(self, self.driver, self.logger);
-        memberPage = MemberPage(self, self.driver, self.logger);
-        searchPage = SearchPage(self, self.driver, self.logger)
-
+        # 验证首页
+        dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
@@ -64,11 +66,14 @@ class GuangChangHuiYuanTestCase(TestCase):
         searchPage.waitBySeconds(5)
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
+        squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.waitBySeconds(5)
         squarePage.validSelf()
         squarePage.screenShot("guangChang")
 
+        # 点击会员
         squarePage.clickOnMember()
+        memberPage = MemberPage(self, self.driver, self.logger)
         memberPage.validSelf()
         memberPage.screenShot("huiYuan")
 

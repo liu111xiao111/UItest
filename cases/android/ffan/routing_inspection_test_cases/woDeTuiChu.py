@@ -7,7 +7,6 @@ import HTMLTestRunner
 from unittest import TestCase
 from unittest import TestLoader
 
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from cases.android.ffan.common.test_prepare import TestPrepare
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -16,8 +15,10 @@ from configs.driver_configs import driver_url
 from configs.driver_configs import platformName_andr
 from driver.appium_driver import AppiumDriver
 from pages.android.ffan.dashboard_page import DashboardPage
+from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.my_fei_fan_page import MyFeiFanPage
 from pages.android.ffan.settings_page import SettingsPage
+from pages.android.ffan.login_page import LoginPage
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
 from cases.logger import logger
@@ -25,9 +26,9 @@ from cases.logger import logger
 
 class WoDeTuiChuTestCase(TestCase):
     '''
-    巡检 No.62
-    用例名 我的退出
-    退出登录，正常退出APP
+    回归用例： No.30
+    用例名: 我的退出
+    退出登录，正常退出APP 
     '''
     @classmethod
     def setUpClass(cls):
@@ -50,26 +51,38 @@ class WoDeTuiChuTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDeTuiChu(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.waitBySeconds()
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnMy()
 
+        # 点击我的，退出App
+        dashboardPage.clickOnMy()
         myFeiFanPage = MyFeiFanPage(self, self.driver, self.logger)
-        myFeiFanPage.waitBySeconds()
         myFeiFanPage.validSelf()
         myFeiFanPage.screenShot("woDe")
-        myFeiFanPage.validLoginStatus()
+        if not myFeiFanPage.validLoginStatusForExit():
+            myFfanPage = MyFfanPage(self, self.driver, self.logger)
+            myFfanPage.clickOnLogin()
+            loginPage = LoginPage(self, self.driver, self.logger)
+            loginPage.validSelf()
+            loginPage.screenShot("dengLu")
+            loginPage.switchToNormalLogin()
+            loginPage.validNormalLogin()
+            loginPage.screenShot("puTongDengLu")
+            loginPage.inputUserName()
+            loginPage.screenShot("shuRuYongHuMing")
+            loginPage.inputPassWord()
+            loginPage.screenShot("shuRuMiMa")
+            loginPage.clickOnLoginBtn()
+            myFfanPage.validSelf()
+            myFfanPage.screenShot("woDe")
         myFeiFanPage.clickOnSettings()
-
         settingPage = SettingsPage(testcase=self, driver=self.driver, logger=self.logger)
-        dashboardPage.waitBySeconds()
         settingPage.validSelf()
         settingPage.screenShot("sheZhi")
         settingPage.clickOnQuitAccountBtn()
-
-        myFeiFanPage.waitBySeconds()
         myFeiFanPage.validLogoutStatusForStability()
         myFeiFanPage.screenShot("woDe")
 

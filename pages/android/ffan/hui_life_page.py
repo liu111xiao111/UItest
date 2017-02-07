@@ -394,7 +394,7 @@ class HuiLifePage(SuperPage):
         '''
         usage: 验证精选
         '''
-        logger.info("Check 精选 begin")
+        logger.info("Check 精选 tab begin")
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
         for _ in range(2):
@@ -404,7 +404,7 @@ class HuiLifePage(SuperPage):
                                         self.logger,
                                         HLPC.resource_id_select,
                                         HLPC.assert_view_timeout)
-        logger.info("Check 精选 end")
+        logger.info("Check 精选 tab end")
 
     def clickOnSelectDetails(self):
         '''
@@ -423,7 +423,7 @@ class HuiLifePage(SuperPage):
         usage: 验证精选详细页
         '''
         logger.info("Check 精选详细内容 begin")
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
                                         HLPC.resource_id_select_details,

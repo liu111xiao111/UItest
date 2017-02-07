@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from pages.android.shanghu.denglu_page import DengLuPage
 from pages.android.shanghu.xuanzemendian_page import XuanZeMenDianPage
 from pages.android.shanghu.shouye_page import ShouYePage
@@ -49,6 +48,7 @@ class DengLuTestCase(TestCase):
         self.logger = Logger()
 
     def testDengLu(self):
+        # 检查是否登录，如果没有登录，进行登录操作
         shouYePage = ShouYePage(self , self.driver , self.logger)
         login = shouYePage.validLogin()
 
@@ -72,6 +72,7 @@ class DengLuTestCase(TestCase):
             xuanZeMenDianPage.screenShot("xuanZeMenDian")
             xuanZeMenDianPage.clickOnConfirmBtn()
 
+        # 进入【登录信息】页面后， 验证【姓名】、【手机号】、【登录身份】、【所属商户】信息
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
         shouYePage.clickOnUser()

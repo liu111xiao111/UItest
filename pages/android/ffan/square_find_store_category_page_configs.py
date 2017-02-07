@@ -11,6 +11,7 @@ class SquareFindStoreConfigs():
     resource_id_iv_item_iv = "com.wanda.app.wanhui:id/search_detail_title_view"
 
     verify_view_timeout = 10
+    text_find_store = u"找店"
 
 
     def __init__(self):

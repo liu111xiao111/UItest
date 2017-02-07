@@ -36,13 +36,13 @@ class SearchPageConfigs():
 
     text_shop_name_description = u"木槿生活店（北京南苑路店）"
 
-    text_searching_store_name = u"北京通州店"
+    text_searching_store_name = u"汉拿山"
 
     text_searching_square_store_name = u"帝娜朵拉"
 
     text_searching_brand_name = "adidas"
 
-    text_searching_goods_name = "MU8600"
+    text_searching_goods_name = u"面膜"
 
     # Specific store button
     resource_id_specific_store_button = "com.wanda.app.wanhui:id/title"

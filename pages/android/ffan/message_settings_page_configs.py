@@ -19,6 +19,7 @@ class MessageSettingsPageConfigs(object):
 
     # Message settings title
     resource_id_message_settings_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
+    text_notic_title = u"通知栏"
 
     resource_id_activity_push_compound_button = "com.wanda.app.wanhui:id/push_switch"
 

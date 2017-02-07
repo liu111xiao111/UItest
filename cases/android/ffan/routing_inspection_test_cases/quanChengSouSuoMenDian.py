@@ -23,9 +23,9 @@ from cases.logger import logger
 
 class QuanChengSouSuoMenDianTestCase(TestCase):
     '''
-        巡检checklist No.: 3
-        自动化测试case No.: 5
-        全城搜索商品
+    回归用例： No.2
+    用例名: 全城搜索（门店）
+    首页全城搜索，搜索相关品牌，商品，门店信息，有正常结果显示（城市维度）
     '''
     @classmethod
     def setUpClass(cls):
@@ -48,20 +48,24 @@ class QuanChengSouSuoMenDianTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testQuanChengSouSuoMenDian(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnSearchView()
 
+        # 首页(爱逛街页面)点击全城搜索
+        dashboardPage.clickOnSearchView()
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
+        # 全城搜索栏中输入门店名称（汉拿山）
         searchPage.inputStoreName()
         searchPage.screenShot("souSuo")
+        # 点击搜索，验证搜索结果显示是否正确
         searchPage.clickOnSearch()
-        searchPage.validSearchResult(u"通州", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
+        searchPage.validSearchResult(u"汉拿山", "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/com.wanda.sliding.SlidingLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
         searchPage.screenShot("souSuoJieGuo")
-        searchPage.clickBackKey()
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoMenDianTestCase)

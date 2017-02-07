@@ -13,6 +13,7 @@ class XinJianJueSePageConfigs():
     resource_id_option = "com.feifan.bp:id/role_operation_des"
     text_instruction = u"测试"
     resource_id_add_role = "com.feifan.bp:id/role_manual_name"
+    text_new_role_title = u"新建角色"
 
     verify_timeout = 30
 

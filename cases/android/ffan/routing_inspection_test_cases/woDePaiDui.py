@@ -9,9 +9,7 @@ from unittest import TestLoader
 
 from pages.android.ffan.my_ffan_my_queue_page import MyFfanMyQueuePage
 from pages.android.ffan.dashboard_page import DashboardPage
-from pages.android.ffan.square_queue_page import SquareQueuePage
-from pages.android.ffan.square_module_page import SquareModulePage
-from pages.android.ffan.search_page import SearchPage
+from pages.android.ffan.food_category_page import FoodCategoryPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from configs.driver_configs import platformName_andr
 from configs.driver_configs import appActivity_ffan
@@ -27,9 +25,9 @@ from cases.logger import logger
 
 class WoDePaiDuiTestCase(TestCase):
     '''
-    巡检 No.58
-    用例名 我的排队
-    点击我的排队，成功进入并显示正确数据
+    回归用例： No.27
+    用例名: 我的排队
+    点击我的排队，成功进入并显示正确数据，点击更多餐厅，进入美食汇
     '''
     @classmethod
     def setUpClass(cls):
@@ -52,49 +50,22 @@ class WoDePaiDuiTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDePaiDui(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
-        queuePage = SquareQueuePage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-
-        # Load square page
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnSearchView()
-        searchPage.validSelf()
-        searchPage.screenShot("souSuo")
-        searchPage.inputText("北京通州万达广场")
-        searchPage.screenShot("souSuo")
-        searchPage.clickOnSearch()
-        searchPage.waitBySeconds(5)
-        searchPage.screenShot("souSuoJieGuo")
-        searchPage.clickOnSearchResultFirstItem()
-        squarePage.validSelf()
-        squarePage.screenShot("guangChang")
 
-        # Click "排队取号"， load "排队取号" page.
-        squarePage.clicOnQueue()
-        queuePage.validSelf()
-        queuePage.screenShot("paiDuiQuHao")
-
-        # Click "取号"
-        if (queuePage.validGetQueue()):
-            queuePage.clicOnQueueNumber()
-            queuePage.waitBySeconds(10)
-            queuePage.inputNumberOfMeals()
-            queuePage.clicOnGetQueueNumber()
-            queuePage.validQueueSuccess()
-
-            for _ in range(3):
-                queuePage.clickBackKey()
-
-            dashboardPage.clickOnMy()
-            myFfanPage.validSelf()
-            myFfanPage.clickOnMyQueue()
-            myQueuePage.validSelf()
-            myQueuePage.clickOnCancelQueue()
+        # 点击我的，进入我的排队
+        dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
+        myFfanPage.validSelf()
+        myFfanPage.clickOnMyQueue()
+        myQueuePage = MyFfanMyQueuePage(self, self.driver, self.logger)
+        myQueuePage.validSelf()
+        myQueuePage.clickOnMoreRestaurant()
+        foodPage = FoodCategoryPage(self, self.driver, self.logger)
+        foodPage.validFoodHomePage()
+        foodPage.screenShot("meiShiHui")
 
 
 if __name__ == "__main__":

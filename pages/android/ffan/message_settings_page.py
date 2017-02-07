@@ -17,10 +17,10 @@ class MessageSettingsPage(SuperPage):
         '''
         usage: 验证设置页面
         '''
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        MSPC.resource_id_message_settings_title,
+                                        MSPC.text_notic_title,
                                         MSPC.assert_view_timeout)
 
     def clickOnActivityPush(self):

@@ -18,13 +18,13 @@ class DashboardPage(SuperPage):
         '''
         usage : 进入到应用首页,检查ffan logo
         '''
-        logger.info("Check 首页爱逛街页面 begin")
+        logger.info("Check 首页(爱逛街页面) begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         DPC.resource_id__iv_logo__iv,
                                         90)
-        logger.info("Check 首页爱逛街页面 end")
+        logger.info("Check 首页(爱逛街页面) end")
 
     def clickOnMy(self):
         '''
@@ -138,11 +138,13 @@ class DashboardPage(SuperPage):
         '''
         usage: 点击"停车"类目
         '''
+        logger.info("Click 停车 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  DPC.text_parking,
                                  DPC.click_on_button_timeout)
+        logger.info("Click 停车 end")
 
     def clickOnPrivilege(self):
         '''

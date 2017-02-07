@@ -20,10 +20,10 @@ class MessageCentrePage(SuperPage):
         usage: 验证消息中心
         '''
         logger.info("Check 消息中心页面 begin")
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        MCPC.resource_id_message_centre_title,
+                                        MCPC.text_message_center,
                                         MCPC.assert_view_timeout)
         logger.info("Check 消息中心页面 end")
 

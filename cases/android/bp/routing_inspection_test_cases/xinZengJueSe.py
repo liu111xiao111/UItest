@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.jueseguanli_page import JueSeGuanLiPage
@@ -50,20 +49,22 @@ class XinZengJueSeTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testXinZengJueSe(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
-
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnRoleManager()
 
+        # 角色管理，新增角色
+        shouYePage.clickOnRoleManager()
         jueSeGuanLiPage = JueSeGuanLiPage(self , self.driver , self.logger)
+        jueSeGuanLiPage.validSelf()
         jueSeGuanLiPage.screenShot("jueSeGuanLi")
         jueSeGuanLiPage.clickOnAddRole()
-
         xinJianJueSePage = XinJianJueSePage(self , self.driver , self.logger)
         xinJianJueSePage.waitBySeconds(2)
+        xinJianJueSePage.validSelf()
         xinJianJueSePage.screenShot("xinJianJueSe")
-        xinJianJueSePage.inputUserName()
+        xinJianJueSePage.inputRoleName()
         xinJianJueSePage.screenShot("jueSeMingCheng")
         xinJianJueSePage.clickOnFunctionalAutority()
         xinJianJueSePage.waitBySeconds(2)

@@ -110,7 +110,7 @@ class GuangChangZhaoDianTestCase(TestCase):
             squarePage.screenShotForStability("guangchangzhaodian", self.loopNumer, str(i+1), "5")
 
             # 点击找店
-            squarePage.clicOnFindStore()
+            squarePage.clickOnFindStore()
             squareFindStorePage.validSelf()
             squareFindStorePage.screenShotForStability("guangchangzhaodian", self.loopNumer, str(i+1), "6")
 

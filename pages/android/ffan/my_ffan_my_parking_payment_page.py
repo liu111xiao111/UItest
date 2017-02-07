@@ -21,10 +21,10 @@ class MyFfanMyParkingPaymentPage(SuperPage):
         usage : 判断“付停车费”是否正确显示
         '''
         logger.info("Check 停车页面 begin")
-        API().assertElementByResourceId(self.testcase,
+        API().assertElementByText(self.testcase,
                                         self.driver,
                                         self.logger,
-                                        PPPC.resource_id_tv_parking_payment_tv,
+                                        PPPC.text_parking_title,
                                         90)
         logger.info("Check 停车页面 end")
 
