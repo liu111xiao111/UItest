@@ -65,6 +65,19 @@ class ShouYeTingCheTestCase(TestCase):
         parkingPage.clickParkingManagement()
         parkingPage.validParkingManagement()
 
+        #添加车牌
+        parkingPage.addPlateNumber()
+        parkingPage.validPlateNumberPage()
+
+        #到车牌页面输入车牌号
+        parkingPage.inputPlateNumber()
+
+        #点击确定
+        parkingPage.clickOnEnsureButton()
+
+        #点击确定,页面跳到上一页面,验证
+        parkingPage.validParkingManagement()
+
         #返回,验证
         parkingPage.clickBackKey()
         parkingPage.validSelf()

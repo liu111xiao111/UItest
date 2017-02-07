@@ -48,7 +48,86 @@ class ParkingPage(SuperPage):
 
         logger.info("Check 车牌管理 end")
         API().screenShot(self.driver, "chePaiGuanLi")
-        
+
+    def addPlateNumber(self):
+        '''
+        添加车牌
+        :return:
+        '''
+        logger.info("Click 添加车牌 begin")
+
+        #如果已经添加了,删除这个车牌
+        isAlreadyAddPlateNumber = API().validElementByName(self.driver, self.logger, ParkingPageConfigs.text_plate_number)
+
+        #print(isAlreadyAddPlateNumber)
+
+        if not isAlreadyAddPlateNumber:
+            pass
+
+        else:
+
+            #删除车牌,点击车牌号,显示出删除按钮
+            API().clickElementByName(self.testcase,
+                                     self.driver,
+                                     self.logger,
+                                     ParkingPageConfigs.text_plate_number)
+            #点击删除按钮
+            API().clickElementByXpath(self.testcase,
+                                      self.driver,
+                                      self.logger,
+                                      ParkingPageConfigs.xpath_delete_plate_number)
+
+
+        API().clickElementByXpath(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  ParkingPageConfigs.xpath_delete_plate_number)
+        logger.info("Click 添加车牌 end")
+
+
+    def validPlateNumberPage(self):
+        '''
+        验证车牌管理页面
+        :return:
+        '''
+        logger.info("Check 添加车牌 begin")
+        API().assertElementByName(self.testcase, self.driver, self.logger,
+                                  name=ParkingPageConfigs.name_add_plate_number)
+        logger.info("Check 添加车牌 end")
+        API().screenShot(self.driver, "tianJiaChePai")
+
+
+    def inputPlateNumber(self):
+        '''
+        输入车牌号,自定义输入框,input方法无法输入,点击键盘输入
+        :return:
+        '''
+        plateNumberArr = ["B","more, numbers","6","7","8","9","1"]
+
+
+        logger.info("Input 车牌号 begin")
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, ParkingPageConfigs.xpaht_plate_number_edit_text)
+
+        #点击键盘输入
+        for number in plateNumberArr:
+            API().clickElementByName(self.testcase, self.driver, self.logger, number)
+
+
+        logger.info("Input 车牌号 end")
+        API().screenShot(self.driver, "chePaiHao")
+
+    def clickOnEnsureButton(self):
+        logger.info("Click 确定 begin")
+
+        API().clickElementByName(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                 ParkingPageConfigs.name_enture_button)
+
+        logger.info("Click 确定 end")
+
+
+
     def clickOnFujintingche(self):
         '''
         usage: 点击"附近停车场".

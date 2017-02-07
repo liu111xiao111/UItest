@@ -35,6 +35,8 @@ class ParkingPageConfigs():
     name_nearby_parking = "park right arrow"
     name_nearby_parking_cn = "停车场列表"
 
+    name_enture_button = u"确定"
+
     click_on_button_timeout = 10
 
     name_find_car = "park find car button"
@@ -51,9 +53,13 @@ class ParkingPageConfigs():
     #停车优惠券
     xpath_parking_coupon = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAButton[4]"
 
-    """
-        *********************************iOS 控件 class name*****************************
-    """
+    #添加车牌数据框
+    xpaht_plate_number_edit_text = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[1]"
+
+    #删除车牌
+    xpath_delete_plate_number = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAButton[1]"
+
+    text_plate_number = "京B · 67891"
 
     def __init__(self):
         pass;
