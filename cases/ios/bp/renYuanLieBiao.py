@@ -40,11 +40,11 @@ class RenYuanLieBiao(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnEmployeeModule()
         #检查员工管理模块中数据
         employeeModulePage.checkEmployeeList()
-
-        homePage.waitBySeconds(10)
 
 
 

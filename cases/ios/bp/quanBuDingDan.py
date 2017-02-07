@@ -38,11 +38,19 @@ class QuanBuDingDanZhuangTai(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         orderFormManagementPage = OrderFormManagementPage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnOrderFormManagement()
+
+        #验证订单管理页面
+        orderFormManagementPage.validSelf()
 
         #获取订单信息
         orderFormManagementPage.getOrderInfo()
         orderFormManagementPage.clickFirstItemOfOrderList()
+
+        #验证订单详情页面
+        orderFormManagementPage.checkAllOrderDetail()
 
         #检查全部订单信息
         orderFormManagementPage.checkAllOrderDetail(whichcase = "QuanBuDingDan")

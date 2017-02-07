@@ -37,9 +37,14 @@ class DongJieYuanGong(TestCase):
 
     def test_case(self):
         homePage = HomePage(self, self.driver, self.logger)
+
+        homePage.validSelf()
+
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
         homePage.clickOnEmployeeModule()
+
+        employeeModulePage.validSelf()
 
         employeeModulePage.dongjieEmployee()
 

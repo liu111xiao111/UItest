@@ -9,6 +9,18 @@ from pages.logger import logger
 
 class BussinessSchoolPage(SuperPage):
 
+    def validSelf(self):
+        '''
+        验证商学院
+        :return:
+        '''
+        logger.info('Check 商学院 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.bussinessSchool)
+        logger.info('Check 商学院 end')
+
     def back(self):
         '''
         返回动作

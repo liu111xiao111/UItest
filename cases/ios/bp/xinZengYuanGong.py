@@ -38,13 +38,32 @@ class XinZengYuanGongCase(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnEmployeeModule()
+
+        employeeModulePage.validSelf()
         #点击新增员工
         employeeModulePage.clickAddEmployeeButton()
+
+        #验证新增员工页面
+        employeeModulePage.validNewEmployeePage()
+
         #选择角色
         employeeModulePage.selectRole()
+
+        # 验证选择角色页面
+        employeeModulePage.validSelectRolePage()
+
+        # 点击保存
+        employeeModulePage.clickOnSaveButton()
+
+
         #输入姓名电话号,保存
         employeeModulePage.inputUserNameAndPassword()
+
+        #点击保存
+        employeeModulePage.clickOnSaveButton()
 
         #检查是否添加员工成功
         employeeModulePage.checkNewUserStatus()

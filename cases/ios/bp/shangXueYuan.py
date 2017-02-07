@@ -38,23 +38,32 @@ class ShangXueYuanRuKou(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         bussinessSchoolPage = BussinessSchoolPage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnBusinessSchool()
+
+        bussinessSchoolPage.validSelf()
 
         #进入常见问题
         bussinessSchoolPage.enterCommonQuestions()
         bussinessSchoolPage.checkCommonQuestionsItems()
         bussinessSchoolPage.back()
 
+        bussinessSchoolPage.validSelf()
+
         #进入新手指南
         bussinessSchoolPage.enterNewerGuide()
         bussinessSchoolPage.checkNewergudieItems()
         bussinessSchoolPage.back()
 
+        bussinessSchoolPage.validSelf()
+
         bussinessSchoolPage.enterSellerNotices()
         bussinessSchoolPage.checkSellerNoticesItems()
         bussinessSchoolPage.back()
 
-        homePage.waitBySeconds(10)
+        bussinessSchoolPage.validSelf()
+
 
     def tearDown(self):
         self.driver.quit()

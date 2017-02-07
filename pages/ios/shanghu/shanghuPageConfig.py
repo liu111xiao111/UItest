@@ -70,6 +70,18 @@ class Xpath:
     #全部订单查询,List中第一个item
     order_management_first_item = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAElement[1]"
 
+    #删除角色
+    delete_role = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]"
+
+    #订单号
+    order_number = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]"
+
+    #订单状态
+    order_status = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[2]"
+
+    #订单信息
+    order_date = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[6]"
+
 class Name:
     back_icon = "back icon"
 
@@ -87,7 +99,9 @@ class Name:
 
     role_management = u"角色管理"
     add_new_role_button = u"新增角色"
+    new_role = u"新建角色"
     order_form_management = u"订单管理"
+    order_detail = u"订单详情"
     commodity_management_text = u"商品管理"
 
     save_button = u"保存"
@@ -121,6 +135,7 @@ class Name:
 
     all_order_status = "全部状态"
     trading_closed_status = "交易关闭"
+    select_role = u"选择角色"
 
 
 class Text:

@@ -39,7 +39,11 @@ class JieDongYuanGong(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnEmployeeModule()
+
+        employeeModulePage.validSelf()
 
         employeeModulePage.jieDongEmployee()
 

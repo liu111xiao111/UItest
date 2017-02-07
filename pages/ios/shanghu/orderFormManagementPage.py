@@ -9,11 +9,21 @@ from pages.logger import logger
 
 class OrderFormManagementPage(SuperPage):
 
+    def validSelf(self):
+
+        logger.info('Check 订单管理 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.order_form_management)
+        logger.info('Check 订单管理 end')
+
     def getOrderInfo(self):
         '''
         获取订单信息
         :return:
         '''
+        logger.info('Get 订单信息 begin')
         itemContext = API().getTextByXpath(self.testcase,self.driver,self.logger,Xpath.order_management_first_item)
 
         global orderFormNumber
@@ -23,16 +33,23 @@ class OrderFormManagementPage(SuperPage):
         global orderFormTotal
         global amountPaid
 
+        logger.info('Get 订单号')
         orderFormNumber = itemContext[10:24].strip()
+        logger.info('Get 订单状态')
         orderFormStatus = itemContext[34:38].strip()
+        logger.info('Get 电话号')
         orderFormBuyer = itemContext[46:57].strip()
         # 截取得电话号后四位
         orderFormBuyer = orderFormBuyer[7:11]
+        logger.info('Get 订单日期')
         orderFormDate = itemContext[67:86].strip()
+        logger.info('Get 订单总额')
         orderFormTotal = itemContext[110:116].strip()
         orderFormTotal = orderFormTotal[1:]
+        logger.info('Get 支付总额')
         amountPaid = itemContext[125:131].strip()
         amountPaid = amountPaid[1:]
+        logger.info('Get 订单信息 end')
 
     def clickFirstItemOfOrderList(self):
         '''
@@ -45,6 +62,18 @@ class OrderFormManagementPage(SuperPage):
         API().screenShot(self.driver,'firstOrder')
 
 
+    def validOrderDetail(self):
+        '''
+        验证订单详情
+        :return:
+        '''
+        logger.info('Check 订单详情 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.order_detail)
+        logger.info('Check 订单详情 end')
+
     def checkAllOrderDetail(self,whichcase = "JiaoYiGuanBi"):
         '''
         检查全部订单信息
@@ -56,50 +85,17 @@ class OrderFormManagementPage(SuperPage):
         orderFormNumberTemp = API().getTextByXpath(self.testcase,
                                                    self.driver,
                                                    self.logger,
-                                                   "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[4]",
+                                                   Xpath.order_number,
                                                    20)
         orderFormStatusTemp = API().getTextByXpath(self.testcase,
                                                    self.driver,
                                                    self.logger,
-                                                   "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[2]")
+                                                   Xpath.order_status)
 
         orderFormDateTemp = API().getTextByXpath(self.testcase,
                                                   self.driver,
                                                   self.logger,
-                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[6]")
-        orderFormTotalTemp = API().getTextByXpath(self.testcase,
-                                                  self.driver,
-                                                  self.logger,
-                                                  "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[8]")
-        amountPaidTemp = API().getTextByXpath(self.testcase,
-                                              self.driver,
-                                              self.logger,
-                                               "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[10]")
-        #全部订单和交易关闭订单,一个界面,但是phonnumber xpath 不同(变化频繁,删除)
-        if(whichcase=="QuanBuDingDan"):
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[32]"
-        else:
-            phoneNumberXpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAStaticText[31]"
-
-        #滑动显示电话号码,再获取value
-        logger.info('Scroll to 电话号码 begin')
-        #API().iosScrollToElement(self.driver,self.logger,phoneNumberXpath,
-        #                         u'18612819429')
-        # orderFormBuyerTemp = API().getTextByXpath(self.testcase,
-        #                                           self.driver,
-        #                                           self.logger,
-        #                                           phoneNumberXpath)
-        logger.info('Scroll to 电话号码 begin')
-        #print('debug order %s' % orderFormBuyerTemp)
-
-        # 截取得电话号后四位
-        #orderFormBuyerTemp = orderFormBuyerTemp[7:11]
-
-        #orderFormTotalTemp = orderFormTotalTemp[1:]
-        # print(orderFormTotalTemp)
-        # print(orderFormTotal)
-
-        amountPaidTemp = amountPaidTemp[1:]
+                                                  Xpath.order_date)
 
         orderInfoArrTemp= (orderFormNumberTemp, orderFormStatusTemp, orderFormDateTemp)
 

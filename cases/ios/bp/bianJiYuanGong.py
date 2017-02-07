@@ -40,12 +40,13 @@ class BianJiYuanGong(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         employeeModulePage = EmployeeModulePage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnEmployeeModule()
 
+        employeeModulePage.validSelf()
+
         employeeModulePage.editEmployee()
-
-        employeeModulePage.waitBySeconds(10)
-
 
 
     def tearDown(self):
