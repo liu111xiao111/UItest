@@ -6,6 +6,7 @@ class FeiFanCardBillPageConfigs():
     # 账号列表
     resource_id_tv_bill_list_tv = "com.wanda.app.wanhui:id/common_title_view_layout_title"
     text_linghuaqian_title = u"我的零花钱"
+    text_zhangdan_title = u"飞凡通账单"
     text_chongzhi_button = u"充值"
 
     # Click button time out

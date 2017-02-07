@@ -395,10 +395,10 @@ class HuiLifePage(SuperPage):
         usage: 验证精选
         '''
         logger.info("Check 精选 tab begin")
-        width = API().getWidthOfDevice(self.driver, self.logger)
-        hight = API().getHeightOfDevice(self.driver, self.logger)
-        for _ in range(2):
-            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
+#         width = API().getWidthOfDevice(self.driver, self.logger)
+#         hight = API().getHeightOfDevice(self.driver, self.logger)
+#         for _ in range(2):
+#             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
@@ -423,7 +423,7 @@ class HuiLifePage(SuperPage):
         usage: 验证精选详细页
         '''
         logger.info("Check 精选详细内容 begin")
-        API().assertElementByText(self.testcase,
+        API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         HLPC.resource_id_select_details,

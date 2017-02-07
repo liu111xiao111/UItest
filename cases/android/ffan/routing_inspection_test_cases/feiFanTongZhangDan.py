@@ -62,7 +62,7 @@ class FeiFanTongZhangDanTestCase(TestCase):
         feifanCardPage.screenShot("feiFanTong")
         feifanCardPage.clickOnBill()
         feifanCardBillPage = FeiFanCardBillPage(self , self.driver , self.logger)
-        feifanCardBillPage.validSelf()
+        feifanCardBillPage.validSelfBill()
         feifanCardBillPage.screenShot("zhangDan")
 
 
