@@ -6,9 +6,9 @@ from driver.appium_driver import AppiumDriver
 from cases.logger import logger
 from pages.ios.shanghu.dengLuPage import DengLuPage
 from pages.ios.shanghu.homePage import HomePage
+from pages.ios.shanghu.settingsPage import SettingsPage
 
-
-class DenggLuCase(TestCase):
+class DenggLu(TestCase):
     '''
     登录验证
     '''
@@ -35,11 +35,15 @@ class DenggLuCase(TestCase):
     def test_case(self):
         dengLuPage = DengLuPage(self,self.driver,self.logger)
         homePage = HomePage(self,self.driver,self.logger)
+        settingsPage = SettingsPage(self,self.driver,self.logger)
 
         #检查是否登录,如果已经登录,点击退出登录
         loginStatus = dengLuPage.validLoginStatus()
         if not loginStatus:
             dengLuPage.clickOnSettings()
+            #验证设置页面
+            settingsPage.validSelf()
+            #点击退出登录
             dengLuPage.clickOnLogout()
 
 
@@ -49,6 +53,8 @@ class DenggLuCase(TestCase):
         dengLuPage.clickOnLoginButton()
 
         dengLuPage.clickOnTestStoreItem()
+        #验证进入首页
+        homePage.validSelf()
 
         homePage.clickOnPersonalInfo()
         homePage.validPersonalInfo()

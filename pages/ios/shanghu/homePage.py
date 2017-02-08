@@ -18,10 +18,10 @@ class HomePage(SuperPage):
 
    def validSelf(self):
        '''
-        验证主页
+        验证主页,取'角色管理'文字,作为验证
        '''
        logger.info('Check 主页 begin')
-       API.assertElementByName(self.testcase,self.driver,self.logger, Name.test_store_name)
+       API().assertElementByName(self.testcase,self.driver,self.logger, Name.role_management)
        logger.info('Check 主页 end')
        API().screenShot(self.driver, 'homePage')
 

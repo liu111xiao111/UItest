@@ -8,6 +8,7 @@ from cases.ios.bp.common.prepare import Prepare
 from pages.ios.shanghu.dengLuPage import DengLuPage
 from pages.ios.shanghu.homePage import HomePage
 from cases.logger import logger
+from pages.ios.shanghu.settingsPage import SettingsPage
 
 class TuiChuDengLuCase(TestCase):
     '''
@@ -37,8 +38,14 @@ class TuiChuDengLuCase(TestCase):
     def test_case(self):
         dengLuPage = DengLuPage(self, self.driver, self.logger)
         homePage = HomePage(self, self.driver, self.logger)
+        settingsPage = SettingsPage(self, self.driver, self.logger)
+
+        homePage.validSelf()
 
         dengLuPage.clickOnSettings()
+        #设置页面验证
+        settingsPage.validSelf()
+
         dengLuPage.clickOnLogout()
 
         dengLuPage.validPassWord()

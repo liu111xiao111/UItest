@@ -11,7 +11,7 @@ import HTMLTestRunner
 from cases.ios.bp.common.reportProcess import ReportHandle
 
 from cases.ios.bp.bianJiYuanGong import BianJiYuanGong
-from cases.ios.bp.dengLu import DenggLuCase
+from cases.ios.bp.dengLu import DenggLu
 from cases.ios.bp.dongJieYuanGong import DongJieYuanGong
 from cases.ios.bp.jiaoYiGuanBiDingDan import JiaoYiGuanBiDingDan
 from cases.ios.bp.jieDongYuanGong import JieDongYuanGong
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     suite = TestSuite()
 
     suite.addTest(BianJiYuanGong("test_case"))
-    suite.addTest(DenggLuCase("test_case"))
+    suite.addTest(DenggLu("test_case"))
     suite.addTest(DongJieYuanGong("test_case"))
     suite.addTest(JiaoYiGuanBiDingDan("test_case"))
     suite.addTest(JieDongYuanGong("test_case"))

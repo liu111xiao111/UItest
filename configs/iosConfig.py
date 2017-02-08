@@ -70,7 +70,7 @@ caseList = {
 
      # 商户 case
      'BianJiYuanGong'    :    [u'编辑员工','1'],
-     'DenggLuCase'    :    [u'登录','2'],
+     'DenggLu'    :    [u'登录','2'],
      'DongJieYuanGong'    :    [u'冻结员工','3'],
      'JiaoYiGuanBiDingDan'    :    [u'交易关闭订单','4'],
      'JieDongYuanGong'    :    [u'解冻员工','5'],
