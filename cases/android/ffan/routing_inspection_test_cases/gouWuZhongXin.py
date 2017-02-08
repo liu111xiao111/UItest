@@ -23,9 +23,8 @@ from cases.logger import logger
 
 class GouWuZhongXinTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检checklist No.: 05
-    自动化测试case No.: 05
+    回归用例： No.4
+    用例名: 购物中心
     爱逛街进入购物中心确认广场距离排序顺序以及广场信息
     '''
     @classmethod
@@ -49,26 +48,25 @@ class GouWuZhongXinTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGouWuZhongXin(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
-
-        # Verify Home Page
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
 
-        # Enter Shopping Mall Page and Verify
+        # 首页(爱逛街页面)进入购物中心，查看广场距离排序及广场信息
         dashboardPage.clickOnShoppingMall()
+        shoppingMallPage = ShoppingMallPage(self, self.driver, self.logger)
         shoppingMallPage.validSelf()
         shoppingMallPage.screenShot("gouWuZhongXin")
-
-        tabNumberList = (1,    # Total
-                         2,    # Mall
-                         3)    # Department
+        tabNumberList = (1,    # 全部tab
+                         2,    # 购物中心tab
+                         3)    # 百货tab
         for tabNumber in tabNumberList:
             shoppingMallPage.clickOnTab(tabNumber)
-            shoppingMallPage.validListView()
             shoppingMallPage.validDistance()
+            shoppingMallPage.validSquareInfo(tabNumber)
             shoppingMallPage.screenShot("gouWuZhongXinXiangXi")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GouWuZhongXinTestCase)

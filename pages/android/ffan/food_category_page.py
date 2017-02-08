@@ -100,13 +100,6 @@ class FoodCategoryPage(SuperPage):
             API().screenShot(self.driver, "menDianXiangQing")
             API().clickBackKeyForAndroid(self.driver, self.logger)
             API().screenShot(self.driver, "meiShiHui")
-#             if restaurant == u"火锅":
-#                 API().clickElementByXpath(self.testcase,
-#                                       self.driver,
-#                                       self.logger,
-#                                       FCPC.xpath_food_type_v5,
-#                                       FCPC.click_view_timeout)
-#             else:
             API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,
@@ -170,23 +163,6 @@ class FoodCategoryPage(SuperPage):
         usage : 点击抢券
         '''
         logger.info("Click 抢券 begin")
-#         version = DeviceInfoUtil().getBuildVersion()
-#         if int(version.split(".")[0]) < 5:
-#         width = API().getWidthOfDevice(self.driver, self.logger)
-#         hight = API().getHeightOfDevice(self.driver, self.logger)
-#         for _ in range(3):
-#             API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
-#         API().clickElementByResourceId(self.testcase,
-#                                        self.driver,
-#                                        self.logger,
-#                                        FCPC.resource_id_bt_grab_bt,
-#                                        FCPC.click_view_timeout)
-#         else:
-#             API().clickElementByText(self.testcase,
-#                                            self.driver,
-#                                            self.logger,
-#                                            FCPC.text_grab_bt,
-#                                            FCPC.click_view_timeout)
         API().clickElementByXpath(self.testcase,
                                   self.driver,
                                   self.logger,

@@ -24,8 +24,8 @@ from cases.logger import logger
 
 class GuangChangXiangQingTestCase(TestCase):
     '''
-    巡检 No.21
-    用例名 广场详情
+    回归用例： No.9
+    用例名: 广场详情
     首页进入广场详情页
     '''
     @classmethod
@@ -49,20 +49,14 @@ class GuangChangXiangQingTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangXiangQing(self):
-        '''dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-
-        # 爱逛街首页在附近那点击任意广场，进入广场详情页，查看页面显示
-        dashboardPage.validSelf()
-        dashboardPage.clickOnSquareModule()
-        squarePage.validSelfDetails()'''
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-        squareModulePage = SquareModulePage(self, self.driver, self.logger)
-
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
@@ -70,8 +64,10 @@ class GuangChangXiangQingTestCase(TestCase):
         searchPage.clickOnSearch()
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
+        squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
         squareModulePage.screenShot("guangChang")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangXiangQingTestCase)

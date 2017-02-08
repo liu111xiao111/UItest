@@ -21,14 +21,11 @@ from utility.logger import Logger
 from cases.logger import logger
 
 
-TESTCITY = u"厦门市"
-DESCITY = u"北京市"
-
 class ShangChaoTestCase(TestCase):
     '''
-    巡检 No.11
+    回归用例： No.6
     用例名: 商超
-    有便利店的城市显示商超,点击进入商超列表
+    首页进入签到可以正常签到，如城市沈阳（有便利店的城市显示商超，点击进入商超列表，如城市北京）
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,24 +48,16 @@ class ShangChaoTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testShangChao(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        supermarketPage = SupermarketPage(self, self.driver, self.logger)
-
-        # 切换到测试城市（厦门市）
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        '''tempCityName = dashboardPage.getCityName()
-        if tempCityName != TESTCITY:
-            dashboardPage.clickOnSwithCith()
-            dashboardPage.switchCity(TESTCITY)'''
 
-        # 点击商超，进入商店超市页面
+        # 首页(爱逛街页面)点击商超，进入商店超市页面
         dashboardPage.clickOnSupermarket()
+        supermarketPage = SupermarketPage(self, self.driver, self.logger)
         supermarketPage.validSelf()
         supermarketPage.screenShot("shangChao")
-        '''supermarketPage.clickBackKey()
-        dashboardPage.clickOnSwithCith()
-        dashboardPage.switchCity(DESCITY)'''
 
 
 if __name__ == "__main__":

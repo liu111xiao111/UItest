@@ -107,16 +107,16 @@ class GuangChangPaiDuiTestCase(TestCase):
             squarePage.screenShotForStability("guangchangpaidui", self.loopNumer, str(i+1), "5")
     
             # Click "排队取号"， load "排队取号" page.
-            squarePage.clicOnQueue()
+            squarePage.clickOnQueue()
             queuePage.validSelf()
             queuePage.screenShotForStability("guangchangpaidui", self.loopNumer, str(i+1), "6")
     
             # Click "取号"
             if (queuePage.validGetQueue()):
-                queuePage.clicOnQueueNumber()
+                queuePage.clickOnQueueNumber()
                 queuePage.waitBySeconds(2)
                 queuePage.inputNumberOfMeals()
-                queuePage.clicOnGetQueueNumber()
+                queuePage.clickOnGetQueueNumber()
                 queuePage.validQueueSuccess()
 
             queuePage.clickBackKey()

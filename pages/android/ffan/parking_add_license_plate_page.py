@@ -88,11 +88,11 @@ class ParkingAddLicensePlatePage(SuperPage):
         usage : 判断“车牌管理”是否正确显示
         '''
         logger.info("Check 车牌管理页面 begin")
-        API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        PALPPC.resource_id_tv_parking_manager_tv,
-                                        90)
+        API().assertElementByText(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  PALPPC.text_vehicle_manager,
+                                  90)
         logger.info("Check 车牌管理页面 end")
 
     def clickOnVehicleManager(self):
@@ -111,13 +111,13 @@ class ParkingAddLicensePlatePage(SuperPage):
         '''
         usage : 点击车牌
         '''
-        logger.info("Click 车辆 begin")
+        logger.info("Click 车牌号码 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
                                        self.logger,
                                        PALPPC.resource_id_tv_vehicle_plate,
                                        90)
-        logger.info("Click 车辆 end")
+        logger.info("Click 车牌号码 end")
 
     def clickOnDeleteVehiclePlate(self):
         '''

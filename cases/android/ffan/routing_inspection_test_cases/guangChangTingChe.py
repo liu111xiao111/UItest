@@ -26,9 +26,9 @@ from cases.logger import logger
 
 class GuangChangTingCheTestCase(TestCase):
     '''
-    巡检 No.29
+    回归用例： No.14
     用例名: 广场停车
-    点击停车缴费，成功进入并显示正确数据
+    广场详情页点击停车，正常进入停车模块 
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,11 +51,13 @@ class GuangChangTingCheTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testGuangChangTingChe(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
-        dashboardPage.clickOnSearchAll()
 
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
+        dashboardPage.clickOnSearchAll()
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
@@ -64,23 +66,16 @@ class GuangChangTingCheTestCase(TestCase):
         searchPage.clickOnSearch()
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
-
         squareModulePage = SquareModulePage(self, self.driver, self.logger)
         squareModulePage.validSelf()
         squareModulePage.screenShot("guangChang")
-        squareModulePage.clickOnParking()
 
+        # 点击停车 
+        squareModulePage.clickOnParking()
         parkingPage = ParkingCategoryPage(self, self.driver, self.logger)
-#         parkingPaymentPage = MyFfanMyParkingPaymentPage(testcase=self, driver=self.driver, logger=self.logger)
         parkingPage.waitBySeconds(5)
         parkingPage.validSelf()
-        '''parkingPage.screenShot("tingChe")
-        # 检查入口项目
-        itemList = (u"停车找车", u"附近停车场", u"停车券", u"停车记录", u"帮助")
-        titleList = (u"停车找车", u"停车场列表", u"停车优惠券", u"停车记录", u"停车帮助")
-        for i in range(len(titleList)):
-            parkingPaymentPage.clickAndValidItems(itemList[i], titleList[i])
-            parkingPaymentPage.waitBySeconds(10)'''
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangTingCheTestCase)

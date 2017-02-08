@@ -27,9 +27,9 @@ from cases.logger import logger
 
 class GuangChangMaiDanTestCase(TestCase):
     '''
-    巡检checklist #27
-    自动化测试 #27
-    广场详情页点击进入乐付买单
+    回归用例： No.15
+    用例名: 广场买单
+    广场详情页点击进入买单（广场维度），点击买单，输入金额，提交订单，返回取消订单
     '''
     @classmethod
     def setUpClass(cls):
@@ -52,17 +52,14 @@ class GuangChangMaiDanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testGuangChangMaiDan(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-        lefuPayPage = SquareLefuPayPage(self, self.driver, self.logger)
-        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
-        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
-
-        # 绑定北京通州万达广场
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
@@ -71,28 +68,38 @@ class GuangChangMaiDanTestCase(TestCase):
         searchPage.waitBySeconds(5)
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
+        squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.validSelf()
         squarePage.waitBySeconds(5)
         squarePage.screenShot("guangChang")
 
-        # Click "乐付买单"， load "乐付买单" page.
+        # 点击 "乐付买单"
         squarePage.clicOnLefuPay()
-        lefuPayPage.waitBySeconds(5)
+        lefuPayPage = SquareLefuPayPage(self, self.driver, self.logger)
         lefuPayPage.validSelf()
-        lefuPayPage.waitBySeconds(5)
         lefuPayPage.screenShot("maiDan")
-        # Click "乐付买单"， load detail pay page.
-        lefuPayPage.clickOnLefuPay();
-        lefuPayDetailPage.validSelf();
-        lefuPayDetailPage.screenShot("maiDanXiangXi")
 
-        # Input money, click "确认买单".
-        lefuPayDetailPage.inputMoney();
+        # 下单
+        lefuPayPage.clickOnLefuPay();
+        lefuPayDetailPage = LefuPayDetailPage(self, self.driver, self.logger)
+        lefuPayDetailPage.validSelf()
+        lefuPayDetailPage.screenShot("maiDanXiangXi")
+        lefuPayDetailPage.inputMoney()
         lefuPayDetailPage.waitBySeconds(seconds=10)
         lefuPayDetailPage.screenShot("maiDanXiangXi")
-        lefuPayDetailPage.clickOnPay();
-        lefuPayWayPage.validSelf();
+        lefuPayDetailPage.clickOnPay()
+        lefuPayWayPage = LefuPayWayPage(self, self.driver, self.logger)
+        lefuPayWayPage.validSelf()
         lefuPayWayPage.screenShot("maiDanFangShi")
+
+        # 取消订单
+        lefuPayWayPage.clickOnBackFromPay()
+        lefuPayWayPage.validSelfCanclePopup()
+        lefuPayWayPage.screenShot("quXiaoDingDanPopUp")
+        lefuPayWayPage.clickOnConfirmFromCancel()
+        lefuPayWayPage.validSelfAllOrders()
+        lefuPayWayPage.screenShot("quXiaoDingDan")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangMaiDanTestCase)

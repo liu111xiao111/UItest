@@ -25,9 +25,9 @@ from cases.logger import logger
 
 class GuangChangMeiShiHuiTestCase(TestCase):
     '''
-    巡检 No.33
-    用例名: 广场美食汇
-    广场详情页点击美食汇正常进入餐饮模块，数据显示正常可点击进入
+    回归用例： No.17
+    用例名: 广场美食推荐
+    广场详情页点击美食推荐>更多正常进入餐饮模块，数据显示正常可点击进入 
     '''
     @classmethod
     def setUpClass(cls):
@@ -50,14 +50,14 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangMeiShiHui(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        squareFoodPage = SquareFoodPage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
@@ -65,39 +65,15 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         searchPage.clickOnSearch()
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
+        squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.validSelf()
         squarePage.screenShot("guangChang")
-        #squarePage.waitBySeconds(20)
 
-        #squarePage.scrollToFood()
+        # 点击美食推荐＝>更多
         squarePage.clickOnFoodRecommend()
+        squareFoodPage = SquareFoodPage(self, self.driver, self.logger)
         squareFoodPage.validSelf()
         squareFoodPage.screenShot("meiShiHui")
-
-#         squareFoodPage.clickOnFindRestaurant()
-#         squareFoodPage.validFindRestaurant()
-#         squareFoodPage.screenShot("zhaoCanTing")
-#         squareFoodPage.clickBackKey()
-#         squareFoodPage.screenShot("meiShiHui")
-# 
-#         squareFoodPage.clickOnFindFavourable()
-#         squareFoodPage.validFindFavourable()
-#         squareFoodPage.screenShot("zhaoYouHui")
-#         squareFoodPage.clickBackKey()
-#         squareFoodPage.waitBySeconds(2)
-#         squareFoodPage.screenShot("meiShiHui")
-# 
-#         squareFoodPage.clickOnQueue()
-#         squareFoodPage.validQueue()
-#         squareFoodPage.screenShot("zhiNengPaiDui")
-#         squareFoodPage.clickBackKey()
-#         squareFoodPage.screenShot("meiShiHui")
-# 
-#         squareFoodPage.clickOnStochastic()
-#         squareFoodPage.validStochastic()
-#         squareFoodPage.screenShot("bangNiTiao")
-#         squareFoodPage.clickBackKey()
-#         squareFoodPage.screenShot("meiShiHui")
 
 
 if __name__ == "__main__":

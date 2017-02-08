@@ -14,7 +14,7 @@ class ParkingAddLicensePlatePageConfigs():
     resource_id_tv_parking_manager_tv = "com.wanda.app.wanhui:id/common_title_view_layout_title"
     text_vehicle_manager = u"车牌管理"
     text_delete_vehicle_plate = u"删除车牌"
-    resource_id_tv_vehicle_plate = "com.wanda.app.wanhui:id/park_license_tv"
+    resource_id_tv_vehicle_plate = "com.wanda.app.wanhui:id/tv_licence_park_pay"
 
     def __init__(self):
         pass;

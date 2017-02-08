@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.android.ffan.common.test_prepare import TestPrepare
-from cases.android.ffan.common.clear_app_data import ClearAppData
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.my_ffan_my_ticket_page import MyFfanMyTicketPage
@@ -25,10 +24,9 @@ from cases.logger import logger
 
 class WoDePiaoQuanTestCase(TestCase):
     '''
-    作者 乔佳溪
-    巡检 No.51
-    用例名 我的票券
-    查看我的票券里数据显示正常
+    回归用例： No.23
+    用例名: 我的票券
+    查看我的票券里数据显示正常 
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,39 +49,23 @@ class WoDePiaoQuanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testWoDePiaoQuan(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        #salesPromotionPage = SalesPromotionPage(self, self.driver, self.logger)
-        #salesPromotionCouponDetailsPage = SalesPromotionCouponDetailsPage(self, self.driver, self.logger)
-        myFfanPage = MyFfanPage(self, self.driver, self.logger)
-        myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
-        #salesPromotionCouponSuccessPage = SalesPromotionCouponSuccessPage(self, self.driver, self.logger)
-
-        # Click "优惠" and get ticket.
-        '''dashboardPage.validSelf()
-        dashboardPage.clickOnSales()
-        salesPromotionPage.validSelf()
-        salesPromotionPage.clickOnCouponTab()
-        salesPromotionPage.waitBySeconds(5)
-        salesPromotionPage.clickOnCouponDetails()
-        salesPromotionCouponDetailsPage.waitBySeconds(10)
-        salesPromotionCouponDetailsPage.clickOnFreeOfChargeBtn()
-        salesPromotionCouponSuccessPage.validSelf()
-        couponName = salesPromotionCouponSuccessPage.getCouponDetails()
-        salesPromotionCouponSuccessPage.clickBackKey()
-        salesPromotionCouponDetailsPage.clickBackKey()
-        salesPromotionPage.clickBackKey()'''
-
-        # Click "我的票券"
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 点击我的，查看票券
         dashboardPage.clickOnMy()
+        myFfanPage = MyFfanPage(self, self.driver, self.logger)
         myFfanPage.validSelf()
         myFfanPage.screenShot("woDe")
         ticketNumber = myFfanPage.getTicketNumber()
         myFfanPage.clickOnMyTicket()
+        myTicketPage = MyFfanMyTicketPage(self, self.driver, self.logger)
         myTicketPage.validSelf()
         myTicketPage.validTicketNumber(ticketNumber)
         myTicketPage.screenShot("woDePiaoQuan")
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDePiaoQuanTestCase)

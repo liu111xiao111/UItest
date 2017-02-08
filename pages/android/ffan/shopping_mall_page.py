@@ -89,6 +89,25 @@ class ShoppingMallPage(SuperPage):
                     API().assertTrue(self.testcase, self.logger, False)
         logger.info("Check 距离 end")
 
+    def validSquareInfo(self, tabNumber=1):
+        '''
+        usage: 验证广场信息
+        '''
+        titleText = u"全部"
+        if tabNumber == 1:
+            titleText = u"全部"
+        elif tabNumber == 2:
+            titleText = u"购物中心"
+        elif tabNumber == 3:
+            titleText = u"百货"
+        logger.info("Check (%s)广场信息 begin" % titleText)
+        API().assertElementByText(self.testcase,
+                                self.driver,
+                                self.logger,
+                                titleText,
+                                SMPC.assert_view_timeout)
+        logger.info("Check (%s)广场信息 end" % titleText)
+
     def clickOnBeijinTongzouMall(self):
         '''
         usage: 点击 "北京通州万达广场"

@@ -39,6 +39,18 @@ class LoginPage(SuperPage):
                                 10)
         logger.info("Click 密码登录 end")
 
+    def validNormalLogin(self):
+        '''
+        usage: 验证密码登录
+        '''
+        logger.info("Check 密码登录页面 begin")
+        API().clickElementByText(self.testcase,
+                                 self.driver,
+                                 self.logger,
+                                LPC.text_normal_login,
+                                10)
+        logger.info("Check 密码登录页面 end")
+
     def inputUserName(self):
         '''
         usage: 输入用户名

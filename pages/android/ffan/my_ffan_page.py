@@ -71,6 +71,7 @@ class MyFfanPage(SuperPage):
         '''
         usage : 点击我的排队
         '''
+        logger.info("Click 我的排队 begin")
         API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
@@ -80,6 +81,7 @@ class MyFfanPage(SuperPage):
                                  self.logger,
                                  MFPC.text_my_queue,
                                  MFPC.verify_view_timeout)
+        logger.info("Click 我的排队 end")
 
     def clickOnMyTicket(self):
         '''

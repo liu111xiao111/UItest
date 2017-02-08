@@ -18,6 +18,7 @@ class XinZengYuanGongPage(SuperPage):
         '''
         usage: 选择角色
         '''
+        logger.info("Click 选择角色操作 begin")
         logger.info("Click 选择角色 begin")
         API().clickElementByResourceId(self.testcase,
                                        self.driver,
@@ -26,18 +27,23 @@ class XinZengYuanGongPage(SuperPage):
                                        XZYGPC.verify_timeout)
         API().waitBySeconds(2)
         API().screenShot(self.driver, "xuanZeJueSe")
+        logger.info("Click 选择角色 end")
+        logger.info("Click 游客角色 begin")
         API().clickElementByText(self.testcase,
                                        self.driver,
                                        self.logger,
                                        XZYGPC.text_role,
                                        XZYGPC.verify_timeout)
         API().screenShot(self.driver, "xuanZeJueSe")
+        logger.info("Click 游客角色 end")
+        logger.info("Click 确定 begin")
         API().clickElementByText(self.testcase,
                                  self.driver,
                                  self.logger,
                                  XZYGPC.text_confirm,
                                  XZYGPC.verify_timeout)
-        logger.info("Click 选择角色 end")
+        logger.info("Click 确定 end")
+        logger.info("Click 选择角色操作 end")
 
     def inputUserName(self):
         '''

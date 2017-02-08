@@ -10,7 +10,6 @@ from unittest import TestLoader
 from pages.android.ffan.dashboard_page import DashboardPage
 from pages.android.ffan.square_module_page import SquareModulePage
 from pages.android.ffan.square_indoor_map_page import SquareIndoorMapPage
-from pages.android.ffan.location_bluetooth_page import LocationBluetoothPage
 from pages.android.ffan.search_page import SearchPage
 from configs.driver_configs import appActivity_ffan
 from configs.driver_configs import appPackage_ffan
@@ -26,9 +25,9 @@ from cases.logger import logger
 
 class GuangChangShiNeiDiTuTestCase(TestCase):
     '''
-	巡检 No.28
-	用例名: 广场室内地图
-	广场详情页点击室内地图，正常进入室内地图模块
+    回归用例： No.13
+    用例名: 广场室内地图
+    广场详情页点击室内地图，正常进入室内地图模块
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,36 +50,34 @@ class GuangChangShiNeiDiTuTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangShiNeiDiTu(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        locationBluetoothPage = LocationBluetoothPage(self, self.driver, self.logger)
-        indoormapPage = SquareIndoorMapPage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-
-        # Load square page
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
         searchPage.screenShot("souSuo")
         searchPage.clickOnSearch()
-        searchPage.waitBySeconds(10)
+        searchPage.waitBySeconds(5)
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
-        squarePage.waitBySeconds(10)
+        squarePage = SquareModulePage(self, self.driver, self.logger)
+        squarePage.waitBySeconds(5)
         squarePage.validSelf()
         squarePage.screenShot("guangChang")
         squarePage.waitBySeconds(5)
 
-        # Click "室内地图", cancle bluetooth setting, load "室内地图" page.
-        squarePage.clicOnIndoorMap();
-        locationBluetoothPage.clickOnCancleBtn()
-        indoormapPage.validSelf();
+        # 点击"室内地图"
+        squarePage.clickOnIndoorMap()
+        indoormapPage = SquareIndoorMapPage(self, self.driver, self.logger)
+        indoormapPage.validSelf()
         indoormapPage.screenShot("shiNeiDiTu")
-        '''indoormapPage.clickOnFoodMap();
-        indoormapPage.validSelfFood();'''
+
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangShiNeiDiTuTestCase)

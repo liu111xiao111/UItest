@@ -18,11 +18,13 @@ class ShangXueYuanPage(SuperPage):
         '''
         usage : 进入到商学院页,检查登录标题
         '''
+        logger.info("Check 商学院页面 begin")
         API().assertElementByText(self.testcase,
                                   self.driver,
                                   self.logger,
                                   SXYPC.text_title,
                                   SXYPC.assert_timeout)
+        logger.info("Check 商学院页面 end")
 
     def clickOnQuestion(self):
         '''
@@ -69,27 +71,34 @@ class ShangXueYuanPage(SuperPage):
 
         for i in range(5):
             xpath_problem = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[%s]/android.widget.TextView[1]" % (i+1)
-
+            logger.info("Get 问题列表标题 begin")
             titleInfo = API().getTextByXpath(self.testcase,
                                              self.driver,
                                              self.logger,
                                              xpath_problem,
                                              SXYPC.assert_timeout)
             title.append(titleInfo)
+            logger.info("Get 问题列表标题 end")
 
+            logger.info("Click 进入第%s个问题 begin" % (i+1))
             API().clickElementByXpath(self.testcase,
                                       self.driver,
                                       self.logger,
                                       xpath_problem,
                                       SXYPC.assert_timeout)
+            logger.info("Click 进入第%s个问题 end" % (i+1))
 
+            logger.info("Check 第%s个问题标题 begin" % (i+1))
             API().getElementsByText(self.testcase,
                                       self.driver,
                                       self.logger,
                                       title[i],
                                       SXYPC.assert_timeout)
+            logger.info("Check 第%s个问题标题 end" % (i+1))
 
+            logger.info("Click 返回 begin")
             API().clickBackKeyForAndroid(self.driver, self.logger)
+            logger.info("Click 返回 end")
         logger.info("Check 常见问题 end")
 
     def validGuideDetails(self):

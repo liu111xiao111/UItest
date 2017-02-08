@@ -26,9 +26,9 @@ from cases.logger import logger
 
 class GuangChangZhaoDianTestCase(TestCase):
     '''
-    巡检checklist No.: 21
-    自动化测试case No.: 21
-    广场详情页点击找店，成功进入找店页面，并成功完成一次搜索，数据显示正常，点击门店可进入门店详情页，数据显示正常
+    回归用例： No.11
+    用例名: 广场找店
+    广场详情页点击找店，成功进入找店页面，数据显示正常，点击门店可进入门店详情页，数据显示正常 
     '''
     @classmethod
     def setUpClass(cls):
@@ -51,16 +51,14 @@ class GuangChangZhaoDianTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def testGuangChangZhaoDian(self):
+        # 验证首页
         dashboardPage = DashboardPage(self, self.driver, self.logger)
-        squarePage = SquareModulePage(self, self.driver, self.logger)
-        squareFindStorePage = SquareFindStorePage(self, self.driver, self.logger)
-        searchPage = SearchPage(self, self.driver, self.logger)
-        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
-
-        # 绑定北京通州万达广场
         dashboardPage.validSelf()
         dashboardPage.screenShot("aiGuangJie")
+
+        # 首页(爱逛街页面)点击搜索,通过搜索进入“北京通州万达广场”
         dashboardPage.clickOnSearchView()
+        searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
         searchPage.screenShot("souSuo")
         searchPage.inputText("北京通州万达广场")
@@ -68,21 +66,20 @@ class GuangChangZhaoDianTestCase(TestCase):
         searchPage.clickOnSearch()
         searchPage.screenShot("souSuoJieGuo")
         searchPage.clickOnSearchResultFirstItem()
+        squarePage = SquareModulePage(self, self.driver, self.logger)
         squarePage.waitBySeconds(10)
         squarePage.validSelf()
         squarePage.screenShot("guangChang")
 
         # 点击找店
-        squarePage.clicOnFindStore()
+        squarePage.clickOnFindStore()
+        squareFindStorePage = SquareFindStorePage(self, self.driver, self.logger)
         squareFindStorePage.validSelf()
         squareFindStorePage.screenShot("zhaoDian")
 
-        # 检索门店
-        '''squareFindStorePage.clickOnSearch()
-        searchPage.validSelf()
-        searchPage.inputText("adidas")
-        searchPage.clickOnSearch()'''
+        # 点击门店进入门店详情页
         squareFindStorePage.clickOnFirstItem()
+        searchResultStorePage = SearchResultStorePage(self, self.driver, self.logger)
         searchResultStorePage.validSelf()
         searchResultStorePage.screenShot("zhaoDianJieGuo")
 

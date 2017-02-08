@@ -15,7 +15,6 @@ from configs.driver_configs import driver_url
 from driver.appium_driver import AppiumDriver
 from utility.logger import Logger
 from utility.device_info_util import DeviceInfoUtil
-from cases.android.bp.common.clear_app_data import ClearAppData
 from cases.android.bp.common.test_prepare import TestPrepare
 from pages.android.shanghu.shouye_page import ShouYePage
 from pages.android.shanghu.shangxueyuan_page import ShangXueYuanPage
@@ -49,22 +48,27 @@ class ShangXueYuanTestCase(TestCase):
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def testShangXueYuan(self):
+        # 验证首页
         shouYePage = ShouYePage(self , self.driver , self.logger)
         shouYePage.validSelf()
         shouYePage.screenShot("shouYe")
-        shouYePage.clickOnShangXueYuan()
 
+        # 商学院
+        shouYePage.clickOnShangXueYuan()
         shangXueYuanPage = ShangXueYuanPage(self , self.driver , self.logger)
+        shangXueYuanPage.validSelf()
         shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnQuestion()
         shangXueYuanPage.validQuestionDetails()
         shangXueYuanPage.screenShot("changJianWenTi")
         shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.validSelf()
         shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnGuide()
         shangXueYuanPage.validGuideDetails()
         shangXueYuanPage.screenShot("xinShouZhiNan")
         shangXueYuanPage.clickBackKey()
+        shangXueYuanPage.validSelf()
         shangXueYuanPage.screenShot("shangXueYuan")
         shangXueYuanPage.clickOnNotice()
         shangXueYuanPage.validNoticeDetails()

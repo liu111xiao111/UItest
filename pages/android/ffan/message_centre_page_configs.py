@@ -18,6 +18,7 @@ class MessageCentrePageConfigs(object):
 
     # Message centre title
     resource_id_message_centre_title = "com.wanda.app.wanhui:id/common_title_view_layout_title"
+    text_message_center = u"消息中心"
 
     # Fei fan Activity
     text_fei_fan_activity = u"飞凡活动"

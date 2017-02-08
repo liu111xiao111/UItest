@@ -18,13 +18,35 @@ class FeiFanCardBillPage(SuperPage):
         '''
         usage : 检查是否加载出来
         '''
-        logger.info("Check 账单页面 begin")
+        logger.info("Check 零花钱页面 begin")
         API().assertElementByResourceId(self.testcase,
                                         self.driver,
                                         self.logger,
                                         FCBPC.resource_id_tv_bill_list_tv,
                                         30)
-        logger.info("Check 账单页面 end")
+        API().assertElementByText(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCBPC.text_linghuaqian_title,
+                                        30)
+        API().assertElementByText(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCBPC.text_chongzhi_button,
+                                        30)
+        logger.info("Check 零花钱页面 end")
+
+    def validSelfBill(self):
+        '''
+        usage : 检查是否加载出来
+        '''
+        logger.info("Check 飞凡通账单页面 begin")
+        API().assertElementByText(self.testcase,
+                                        self.driver,
+                                        self.logger,
+                                        FCBPC.text_zhangdan_title,
+                                        30)
+        logger.info("Check 飞凡通账单页面 end")
 
     def validSubFilterByText(self, text=u"全部"):
         '''

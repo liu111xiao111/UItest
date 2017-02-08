@@ -31,10 +31,18 @@ class MyFeiFanPage(SuperPage):
         usage: 验证登陆状态
         '''
         API().assertElementByResourceId(self.testcase,
-                                        self.driver,
-                                        self.logger,
-                                        MFPC.resource_id_nickname_button,
-                                        MFPC.assert_view_timeout)
+                                              self.logger,
+                                              MFPC.resource_id_nickname_button,
+                                              MFPC.assert_view_timeout)
+
+    def validLoginStatusForExit(self):
+        '''
+        usage: 验证登陆状态
+        '''
+        return API().validElementByResourceId(self.driver,
+                                              self.logger,
+                                              MFPC.resource_id_nickname_button,
+                                              MFPC.assert_view_timeout)
 
     def validLoginStatusForStability(self):
         '''
@@ -47,8 +55,9 @@ class MyFeiFanPage(SuperPage):
 
     def validLogoutStatus(self):
         '''
-        usage: 验证退出登陆状态
+        usage: 验证退出登录状态
         '''
+        logger.info("Check 退出登录状态 begin")
         API().scrollToText(self.testcase,
                            self.driver,
                            self.logger,
@@ -58,11 +67,13 @@ class MyFeiFanPage(SuperPage):
                                         self.logger,
                                         MFPC.resource_id_login_button,
                                         MFPC.assert_view_timeout)
+        logger.info("Check 退出登录状态 end")
 
     def validLogoutStatusForStability(self):
         '''
         usage: 验证退出登陆状态
         '''
+        logger.info("Check 退出登录状态 begin")
         width = API().getWidthOfDevice(self.driver, self.logger)
         hight = API().getHeightOfDevice(self.driver, self.logger)
         for _ in range(8):
@@ -76,6 +87,7 @@ class MyFeiFanPage(SuperPage):
                                         self.logger,
                                         MFPC.resource_id_login_button,
                                         MFPC.assert_view_timeout)
+        logger.info("Check 退出登录状态 end")
 
     def clickOnLogin(self):
         '''

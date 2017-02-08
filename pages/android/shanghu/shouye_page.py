@@ -45,6 +45,7 @@ class ShouYePage(SuperPage):
         '''
         usage : 验证首页是否登录
         '''
+        logger.info("Check 是否登录 begin")
         rtn = API().validElementByResourceId(self.driver,
                                              self.logger,
                                              SYPC.resource_id_title,
@@ -55,11 +56,11 @@ class ShouYePage(SuperPage):
                                               self.logger,
                                               SYPC.resource_id_title,
                                               SYPC.verify_timeout)
-            print(title)
             if title != SYPC.text_store:
                 self.clickOnSetting()
                 SheZhiPage.clickOnLogout(self)
                 rtn = False
+        logger.info("Check 是否登录 end")
         return rtn
 
     def clickOnSetting(self):

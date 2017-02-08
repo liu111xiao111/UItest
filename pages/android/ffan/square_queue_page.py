@@ -37,7 +37,7 @@ class SquareQueuePage(SuperPage):
                                            text_list,
                                            SQPC.verify_view_timeout)
 
-    def clicOnQueueNumber(self):
+    def clickOnQueueNumber(self):
         '''
         usage: 点击 "取号"
         '''
@@ -62,7 +62,7 @@ class SquareQueuePage(SuperPage):
                                      SQPC.number_of_meals,
                                      SQPC.verify_input_timeout)
 
-    def clicOnGetQueueNumber(self):
+    def clickOnGetQueueNumber(self):
         '''
         usage: 点击 "一键取号"
         '''

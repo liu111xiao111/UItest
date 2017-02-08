@@ -7,6 +7,7 @@ from pages.android.ffan.my_ffan_page import MyFfanPage
 from pages.android.ffan.login_page import LoginPage
 from pages.android.ffan.login_verify_page import LoginVerifyPage
 from pages.android.ffan.settings_page import SettingsPage
+from api.logger import logger
 
 
 class TestPrepare:
@@ -46,8 +47,11 @@ class TestPrepare:
         myFfanPage = MyFfanPage(self.testcase, self.driver, self.logger)
 
         dashboardPage.clickOnMy()
+        logger.info("查看是否已经登录")
         if myFfanPage.isLoginStatus():
+            logger.info("已经登录")
             return
+        logger.info("未登录")
         myFfanPage.clickOnLogin()
         loginPage = LoginPage(self.testcase, self.driver, self.logger)
         loginPage.validSelf()
@@ -78,11 +82,12 @@ class TestPrepare:
         usage: 选择城市方法
         '''
         switchCityPage = SwitchCityPage(self.testcase, self.driver, self.logger)
-        tempTimes = 0
-        while tempTimes < 1 and switchCityPage.validSelf(False):
+        # 如果弹出切换城市Popup，点击取消按钮
+        if switchCityPage.validSelf():
             switchCityPage.cancelSwitchCity()
-            switchCityPage.waitBySeconds()
-            tempTimes += 1
+        switchCityPage.waitBySeconds(2)
+        # 验证当前城市为北京
+        switchCityPage.validSelfCity()
 
     def backToDashBoard(self):
         '''
