@@ -39,10 +39,15 @@ class JiaoYiGuanBiDingDan(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         orderFormManagementPage = OrderFormManagementPage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnOrderFormManagement()
+
+        orderFormManagementPage.validSelf()
 
         #切换到交易关闭订单
         orderFormManagementPage.clickAllOrderStatusButton()
+
         orderFormManagementPage.clickTradingClosedButton()
 
         #获取订单信息

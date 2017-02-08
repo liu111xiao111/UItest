@@ -39,11 +39,20 @@ class XinZengJueSe(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         roleManagementPage = RoleManagementPage(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
         homePage.clickOnRoleManagement()
+
+        roleManagementPage.validSelf()
+
+        #点击新增角色按钮
+        roleManagementPage.clickOnNewRoleButton()
+
+        #进入新增角色页面,验证
+        roleManagementPage.validNewRolePage()
 
         roleManagementPage.createNewRole()
 
-        roleManagementPage.waitBySeconds(10)
 
 
     def tearDown(self):

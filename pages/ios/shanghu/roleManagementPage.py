@@ -9,6 +9,20 @@ from pages.logger import logger
 
 class RoleManagementPage(SuperPage):
 
+
+    def validSelf(self):
+        '''
+        验证角色列表页面
+        :return:
+        '''
+        logger.info('Check 角色管理 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.role_management)
+        logger.info('Check 角色管理 end')
+
+
     def checkRoleList(self):
         '''
         检查角色列表是否为空
@@ -27,13 +41,34 @@ class RoleManagementPage(SuperPage):
         API().screenShot(self.driver,'roleList')
 
 
+    def clickOnNewRoleButton(self):
+        '''
+        点击新建角色按钮
+        :return:
+        '''
+        logger.info('Click 新增角色 begin')
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.add_new_role_button)
+        logger.info('Click 新增角色 end')
+
+    def validNewRolePage(self):
+        '''
+        验证新增角色页面
+        :return:
+        '''
+        logger.info('Check 新增角色 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.new_role)
+        logger.info('Check 新增角色 end')
+
+
     def createNewRole(self):
         '''
         新增加角色
         :return:
         '''
         logger.info('Begin 增加新角色')
-        API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.add_new_role_button)
 
         #输入名字,角色说明
         logger.info('Input 角色 begin')
@@ -62,7 +97,7 @@ class RoleManagementPage(SuperPage):
         logger.info('End 增加新角色')
         API().screenShot(self.driver,'createRoleSuccess')
         #删除角色, 下一次才可以创建这个角色
-        API().clickElementByXpath(self.testcase, self.driver, self.logger, "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]")
+        API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.delete_role)
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.confirm_button)
 
 

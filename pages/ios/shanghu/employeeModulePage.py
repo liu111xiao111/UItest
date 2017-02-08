@@ -10,6 +10,31 @@ from pages.logger import logger
 class EmployeeModulePage(SuperPage):
 
 
+    def validSelf(self):
+        '''
+        验证员工管理
+        :return:
+        '''
+        logger.info('Check 员工管理 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.employeeManager)
+        logger.info('Check 员工管理 end')
+
+    def validNewEmployeePage(self):
+        '''
+        验证新增员工
+        :return:
+        '''
+        logger.info('Check 新增员工 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.add_new_employee)
+        logger.info('Check 新增员工 end')
+        API().screenShot(self.driver, 'newEmployee')
+
     def checkEmployeeList(self):
         '''
         检查员工列表,员工姓名,手机号等是否为空
@@ -23,11 +48,17 @@ class EmployeeModulePage(SuperPage):
         chuangjianren = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_chuangjianren)
         date = API().getTextByXpath(self.testcase, self.driver, self.logger, Xpath.employee_module_normal_date)
 
+        logger.info('Check 人员名')
         API().assertTrue(self.testcase, self.logger, not name is None)
+        logger.info('Check 商户名')
         API().assertTrue(self.testcase, self.logger, not sotreName is None)
+        logger.info('Check 角色名')
         API().assertTrue(self.testcase, self.logger, not role is None)
+        logger.info('Check 电话')
         API().assertTrue(self.testcase, self.logger, not phone is None)
+        logger.info('Check 创建人')
         API().assertTrue(self.testcase, self.logger, not chuangjianren is None)
+        logger.info('Check 日期')
         API().assertTrue(self.testcase, self.logger, not date is None)
         logger.info('Check 工列表,员工姓名,手机号 end')
         API().screenShot(self.driver, 'employeeList')
@@ -52,8 +83,21 @@ class EmployeeModulePage(SuperPage):
         #选择店长角色
         API().clickElementByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_select_role_radio_button)
         API().screenShot(self.driver, 'selectStoreManagerRole')
-        API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
+        #API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
         logger.info('Select 角色 end')
+        API().screenShot(self.driver, 'selectRole')
+
+    def validSelectRolePage(self):
+        '''
+        验证选择角色页面
+        :return:
+        '''
+        logger.info('Check 选择角色 begin')
+        API().assertElementByName(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  Name.select_role)
+        logger.info('Check 选择角色 end')
         API().screenShot(self.driver, 'selectRole')
 
     def inputUserNameAndPassword(self):
@@ -66,10 +110,13 @@ class EmployeeModulePage(SuperPage):
         API().inputStringByXpath(self.testcase, self.driver, self.logger, Xpath.new_employee_input_phone_name,Text.new_employee_phone)
         logger.info('Input 姓名,电话号 end')
         API().screenShot(self.driver,'inputUser&password')
+
+    def clickOnSaveButton(self):
         logger.info('Click 保存 begin')
-        #保存
+        # 保存
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
         logger.info('Click 保存 end')
+
 
     def checkNewUserStatus(self):
         '''

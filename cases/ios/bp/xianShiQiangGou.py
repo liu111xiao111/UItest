@@ -39,13 +39,13 @@ class XianShiQiangGouXiangXi(TestCase):
         homePage = HomePage(self, self.driver, self.logger)
         commodityManagement = CommodityManagement(self, self.driver, self.logger)
 
+        homePage.validSelf()
+
+        #进入商品管理
         commodityManagement.enterCommodityManagementModule()
         #检查待审核,商品详情
         commodityManagement.clickCheckPendingButton()
         commodityManagement.checkCheckPendingItem()
-
-        #等待一段时间后,再点击已通过()
-        commodityManagement.waitBySeconds(20)
 
         #检查已经通过,商品详情
         commodityManagement.clickPassingButton()
