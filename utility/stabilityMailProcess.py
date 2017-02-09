@@ -119,8 +119,9 @@ def sendTestResultMail(startTime, endTime, reportPath, deviceType):
     msg['To'] = ';'.join(toAddress)
 
     s = smtplib.SMTP(smtpServer, smtpPort)
-    s.ehlo()
-    s.starttls()
+#     s.ehlo()
+#     s.starttls()
+    s.connect(smtpServer, 25)
     s.login(smtpUser, smtpPassword)
     s.sendmail(fromAddress, toAddress, msg.as_string())
     s.quit()

@@ -13,11 +13,11 @@ PERFORMANCE_HEADR_NAME = u'%s性能自动化测试报告(%s)'
 
 
 class Email():
-    mailAddress = 'yiceyun@neusoft.com'
-    smtpServer = 'smtp.neusoft.com'
-    username = 'yiceyun'
-    password = '1qaz!QAZ'
-    smtpPort = '587'
+    mailAddress = 'ee-report@wanda.com.cn'
+    smtpServer = 'mail.wanda.com.cn'
+    username = 'ee-report'
+    password = 'y8ab6mrt'
+    smtpPort = '25'
 
     patrolMailAddress = ['sunkai31@wanda.cn', 'chencheng@neusoft.com', 'song_b@neusoft.com', 'tl@neusoft.com',
                        'qiaojx@neusoft.com', 'lichunyan19@wanda.cn', 'liudan71@wanda.cn', '1284387741@qq.com',
@@ -39,7 +39,7 @@ class Email():
     monkeyMaillAddress =['lichunyan19@wanda.cn', 'sunkai31@wanda.cn', 'renyang5@wanda.cn', 'renhaitao@wanda.cn',
                          'mulihui@wanda.cn', 'yindq@neusoft.com', 'chencheng@neusoft.com', 'tl@neusoft.com',
                          'song_b@neusoft.com', 'qiaojx@neusoft.com', 'zhiyuchao@wanda.cn', 'xukai36@wanda.cn',
-                         'chuyanyan3@wanda.cn', 'huangguangan@wanda.cn', 'zhangjinping@wanda.cn', 'sundongfeng@wanda.cn']
+                         'chuyanyan3@wanda.cn', 'huangguangan@wanda.cn', 'zhangjinping@wanda.cn', 'sundongfeng@wanda.cn', 'yaoming5@wanda.cn']
 
 
 class PhoneNumber():
