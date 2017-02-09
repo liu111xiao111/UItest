@@ -127,6 +127,15 @@ class ParkingPage(SuperPage):
         logger.info("Click 确定 end")
 
 
+    def scrollToFujintingche(self):
+        '''
+        滑动到附近停车场
+        :return:
+        '''
+        API().iosScrollToElement(self.driver,
+                                 self.logger,
+                                 "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[4]/UIAButton[1]",
+                                 ParkingPageConfigs.name_nearby_parking)
 
     def clickOnFujintingche(self):
         '''
