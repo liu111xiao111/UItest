@@ -7,7 +7,6 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
@@ -25,18 +24,25 @@ class WoDeTuiChuTestCase(TestCase):
     退出登录，正常退出APP
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
+
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare()
 
     def test_case(self):
@@ -58,6 +64,9 @@ class WoDeTuiChuTestCase(TestCase):
 
         myFeiFanPage.waitBySeconds()
         myFeiFanPage.validLogoutStatus()
+
+    def tearDown(self):
+        self.driver.quit()
 
 
 if __name__ == "__main__":

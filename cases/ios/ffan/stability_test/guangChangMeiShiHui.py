@@ -8,7 +8,6 @@ from unittest import TestCase
 from unittest import TestLoader
 
 from cases.ios.ffan.common.testPrepare import TestPrepare
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
@@ -27,23 +26,24 @@ class GuangChangMeiShiHuiTestCase(TestCase):
     广场详情页点击美食汇正常进入餐饮模块，数据显示正常可点击进入
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
 
         testPrepare = TestPrepare(testcase=self, driver=self.driver, logger=self.logger)
         testPrepare.prepare(False)
@@ -54,7 +54,7 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         squareFoodPage = SquareFoodPage(self, self.driver, self.logger)
 
         # 首页进入广场页
-        dashboardPage.validSelf();
+        dashboardPage.validSelf()
         dashboardPage.clickOnSearchAll()
 
         searchPage = SearchPage(self, self.driver, self.logger)
@@ -70,29 +70,8 @@ class GuangChangMeiShiHuiTestCase(TestCase):
         squarePage.clickOnFood()
         squareFoodPage.validSelf()
 
-        squareFoodPage.waitBySeconds(5)
-
-        # # 检查美食汇入口
-        # squareFoodPage.waitBySeconds(5)
-        # squareFoodPage.clickOnFindRestaurant()
-        # squareFoodPage.validFindRestaurant()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnFindFavourable()
-        # squareFoodPage.validFindFavourable()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnQueue()
-        # squareFoodPage.validQueue()
-        # squareFoodPage.clickBackKey()
-        # squareFoodPage.waitBySeconds(5)
-        #
-        # squareFoodPage.clickOnStochastic()
-        # squareFoodPage.validStochastic()
-        # squareFoodPage.clickBackKey()
-
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GuangChangMeiShiHuiTestCase)

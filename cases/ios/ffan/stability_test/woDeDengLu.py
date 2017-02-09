@@ -26,18 +26,24 @@ class WoDeDengLuTestCase(TestCase):
     启动app，能够正常登陆
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
-        logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -61,17 +67,20 @@ class WoDeDengLuTestCase(TestCase):
 
         loginPage = LoginPage(self, self.driver, self.logger)
         loginPage.validSelf()
+        #切换到普通登录
         loginPage.switchToNormalLogin()
+        #验证是否切换到普通登录(密码登录)
+        loginPage.validNormalLogin()
+
         loginPage.inputUserName()
         loginPage.inputPassWord()
         loginPage.clickOnLoginBtn()
 
-        #verificationPage = VerificationPage(self, self.driver, self.logger)
-        #verificationPage.validSelf()
-        #verificationPage.clickOnSkip()
-
         myFeiFanPage.waitBySeconds(5)
         myFeiFanPage.validLoginStatus()
+
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(WoDeDengLuTestCase)

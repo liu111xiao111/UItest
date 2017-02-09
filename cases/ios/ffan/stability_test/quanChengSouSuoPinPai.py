@@ -7,13 +7,13 @@ from unittest import TestLoader
 
 import HTMLTestRunner
 
-from cases.ios.ffan.common.clearAppData import ClearAppData
 from cases.ios.ffan.common.testPrepare import TestPrepare
 from configs.iosDriverConfig import IosDriverConfigs as IDC
 from driver.appium_driver import AppiumDriver
 from pages.ios.ffan.dashboard_page import DashboardPage
 from pages.ios.ffan.search_page import SearchPage
 from cases.logger import logger
+from pages.ios.ffan.search_page_configs import SearchPageConfigs
 
 
 class QuanChengSouSuoPinPaiTestCase(TestCase):
@@ -24,17 +24,24 @@ class QuanChengSouSuoPinPaiTestCase(TestCase):
     全城搜索品牌
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None, None, IDC.platformName, IDC.platformVersion,
-                                   IDC.deviceName, IDC.driverUrl, IDC.bundleId, IDC.udid).getDriver()
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
         logger.info("Clear data completed")
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
@@ -46,11 +53,16 @@ class QuanChengSouSuoPinPaiTestCase(TestCase):
 
         searchPage = SearchPage(self, self.driver, self.logger)
         searchPage.validSelf()
+        #输入品牌名
         searchPage.inputBrandName()
+        #点击搜索出来的结果
         searchPage.clickPullDownListOfSearching()
-        searchPage.validSearchResult(u"adidas", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")
+        #验证adidas
+        searchPage.validSearchResult(SearchPageConfigs.text_searching_brand_name,
+                                     SearchPageConfigs.xpath_brand_name)
 
-        searchPage.waitBySeconds(5)
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(QuanChengSouSuoPinPaiTestCase)
