@@ -152,8 +152,8 @@ class Handler(object):
         self.rsPath = rsPath
         self._mkReportDir()
         try:
-            resourcesDirectory = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/stability_test/"
-            xlsFileTemplate = os.path.join(resourcesDirectory, u'templateStability.xlsx')
+            resourcesDirectory = os.path.join(os.path.dirname(os.path.abspath(__file__)),os.path.pardir) + "/../../../resources/"
+            xlsFileTemplate = os.path.join(resourcesDirectory, u'templateStabilityForIos.xlsx')
             shutil.copy(xlsFileTemplate,self.reportPath)
             dataHandler = DataHandler()
             dataHandler.handle(rsPath=self.rsPath)
@@ -180,7 +180,7 @@ class Handler(object):
                         self.dataList['guangchangtingche']['CRASH'] + self.dataList['guangchangmaidan']['CRASH'] +\
                         self.dataList['wodedenglu']['CRASH'] + self.dataList['wodetuichu']['CRASH']
 
-            xlsFile = os.path.join(self.reportPath, u'templateStability.xlsx')
+            xlsFile = os.path.join(self.reportPath, u'templateStabilityForIos.xlsx')
         except Exception as e:
             print(e)
         finally:
