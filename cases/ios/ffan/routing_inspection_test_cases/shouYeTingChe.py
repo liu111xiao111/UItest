@@ -97,17 +97,20 @@ class ShouYeTingCheTestCase(TestCase):
         parkingPage.clickBackKey()
         parkingPage.validSelf()
 
-        #点击附近停车场
-        parkingPage.clickOnFujintingche()
-        parkingPage.validFujintingche()
+        # 点击帮助
+        parkingPage.clickOnHelp()
+        parkingPage.validHelp()
 
         # 返回,验证
         parkingPage.clickBackKey()
         parkingPage.validSelf()
 
-        #点击帮助
-        parkingPage.clickOnHelp()
-        parkingPage.validHelp()
+        # 点击附近停车场
+        parkingPage.scrollToFujintingche()
+        parkingPage.clickOnFujintingche()
+        parkingPage.validFujintingche()
+
+
 
     def tearDown(self):
         self.driver.quit()
