@@ -24,25 +24,25 @@ class GouWuZhongXinTestCase(TestCase):
     爱逛街进入购物中心确认广场距离排序顺序以及广场信息
     '''
 
-    def tearDown(self):
-        self.reset.clearData()
-        self.driver.quit()
+    @classmethod
+    def setUpClass(cls):
+        '''
+        初始化Appium driver
+        '''
+
+        cls.driver = AppiumDriver(None,
+                                  None,
+                                  IDC.platformName,
+                                  IDC.platformVersion,
+                                  IDC.deviceName,
+                                  IDC.driverUrl,
+                                  IDC.bundleId,
+                                  IDC.udid).getDriver()
+        logger.info("Appium client init completed")
 
     def setUp(self):
         self.logger = logger
-        self.driver = AppiumDriver(None,
-                                   None,
-                                   IDC.platformName,
-                                   IDC.platformVersion,
-                                   IDC.deviceName,
-                                   IDC.driverUrl,
-                                   IDC.bundleId,
-                                   IDC.udid).getDriver()
-        logger.info("Appium client init completed")
-        self.reset = ClearAppData(self.driver)
-        self.reset.clearData()
         logger.info("Clear data completed")
-        
         TestPrepare(self, self.driver, self.logger).prepare(False)
 
     def test_case(self):
@@ -59,17 +59,17 @@ class GouWuZhongXinTestCase(TestCase):
         # 点击 “全部” tab
         shoppingMallPage.clickOnTotalTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
 
         # 点击 “购物中心” tab
         shoppingMallPage.clickOnShoppingTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
 
         # 点击 “百货” tab
         shoppingMallPage.clickOnGoodsTab()
         shoppingMallPage.validListView()
-        #shoppingMallPage.validDistance()
+
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     suite = TestLoader().loadTestsFromTestCase(GouWuZhongXinTestCase)

@@ -18,7 +18,7 @@ from cases.ios.ffan.stability_test.guangChangMeiShiHui import GuangChangMeiShiHu
 from cases.ios.ffan.stability_test.guangChangSouSuo import GuangChangSouSuoTestCase
 from cases.ios.ffan.stability_test.guangChangTingChe import GuangChangTingCheTestCase
 from cases.ios.ffan.stability_test.guangChangZhaoDian import GuangChangZhaoDianTestCase
-from cases.ios.ffan.stability_test.paiDuiQuHao import PaiDuiQuHaoTestCase
+from cases.ios.ffan.stability_test.guangChangPaiDui import PaiDuiQuHaoTestCase
 from cases.ios.ffan.stability_test.quanChengSouSuoMenDian import QuanChengSouSuoMenDianTestCase
 from cases.ios.ffan.stability_test.quanChengSouSuoPinPai import QuanChengSouSuoPinPaiTestCase
 from cases.ios.ffan.stability_test.quanChengSouSuoShangPin import QuanChengSouSuoShangPinTestCase

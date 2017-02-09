@@ -405,6 +405,6 @@ class Handler(object):
 
 if __name__ == "__main__":
     handler = Handler('IOS')
-    resultsPath = "%s/report/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest", '20170123', '1')
+    resultsPath = "%s/report/stability/%s/%s" % ("/Users/auto/workspace_pycharm/autotest", '20170209', '1')
     if os.path.exists(resultsPath):
         handler.handle(resultsPath)
