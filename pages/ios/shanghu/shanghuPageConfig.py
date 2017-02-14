@@ -111,7 +111,7 @@ class Name:
 
     dongjie_button = u"冻结"
     jiedong_button = u"解冻"
-    delete_button = u"删除"
+    delete_button = u"作废"
 
     store_manager = u"商户店长角色"
 
@@ -136,6 +136,7 @@ class Name:
     all_order_status = "全部状态"
     trading_closed_status = "交易关闭"
     select_role = u"选择角色"
+    personalInfo = u"gerendenglu"
 
 
 class Text:
