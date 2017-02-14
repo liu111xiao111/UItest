@@ -7,7 +7,7 @@ class SquareIndoorMapPageConfigs():
     # "美食地图"
     name_food_map = u"美食地图";
 
-    name_verify_indoor = "ffmap btn position"
+    name_verify_indoor = "north5"
 
     def __init__(self):
         pass;
