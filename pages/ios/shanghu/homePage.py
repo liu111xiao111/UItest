@@ -32,7 +32,8 @@ class HomePage(SuperPage):
        :return:
        '''
        logger.info('Click 登录信息 begin')
-       API().clickElementByXpath(self.testcase,self.driver,self.driver,Xpath.personalInfo)
+       #API().clickElementByXpath(self.testcase,self.driver,self.driver,Xpath.personalInfo)
+       API().clickElementByName(self.testcase, self.driver, self.logger,Name.personalInfo)
        logger.info('Click 登录信息 end')
        API().screenShot(self.driver,'loginInfo')
 
