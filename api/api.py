@@ -226,7 +226,7 @@ class API(object):
         for _ in range(4):
             try:
                 driver.execute_script("mobile: scroll", {"direction": direction, 'element': el})
-                driver.execute_script("mobile: scroll", {"direction": direction, 'element': el})
+                #driver.execute_script("mobile: scroll", {"direction": direction, 'element': el})
                 if self._findElementByResourceId(driver, logger, elementName):
                     break
             except NoSuchElementException:
