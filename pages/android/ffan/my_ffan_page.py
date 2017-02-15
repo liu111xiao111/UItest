@@ -187,10 +187,14 @@ class MyFfanPage(SuperPage):
         usage : 点击我的订单退货退款
         '''
         logger.info("Click 退货退款 begin")
+        width = API().getWidthOfDevice(self.driver, self.logger)
+        hight = API().getHeightOfDevice(self.driver, self.logger)
+        for _ in range(2):
+            API().scroll(self.driver, self.logger, width / 2, hight / 2, width / 2, hight / 3)
         API().clickElementByXpath(self.testcase,
                                  self.driver,
                                  self.logger,
-                                 MFPC.xpath_return_refund,
+                                 MFPC.xpath_return_refund_scroll,
                                  MFPC.click_view_timeout)
         logger.info("Click 退货退款 end")
 
