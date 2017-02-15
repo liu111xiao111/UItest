@@ -93,7 +93,8 @@ class RoleManagementPage(SuperPage):
         #新建角色页面点击保存
         API().clickElementByName(self.testcase, self.driver, self.logger, Name.save_button)
         #检查是否添加角色成功
-        API().assertElementByName(self.testcase, self.driver, self.logger, name)
+        print('Role name %s ' % name)
+        API().assertElementByName(self.testcase, self.driver, self.logger, Text.new_role_name)
         logger.info('End 增加新角色')
         API().screenShot(self.driver,'createRoleSuccess')
         #删除角色, 下一次才可以创建这个角色
