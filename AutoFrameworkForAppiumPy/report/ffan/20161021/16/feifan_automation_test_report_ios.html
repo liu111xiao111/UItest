@@ -1,0 +1,2209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Feifan_automation_test_report_ios</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    /*width: 500px; */
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Feifan_automation_test_report_ios</h1>
+<p class='attribute'><strong>Start Time:</strong> 2016-10-21 10:37:34</p>
+<p class='attribute'><strong>Duration:</strong> 0:58:21.696036</p>
+<p class='attribute'><strong>Status:</strong> Pass 30 Failure 19 Error 2</p>
+
+<p class='description'>Result for test</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.brand_famous_category_cases.BrandFamousCatergoryCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/brand_famous_category_cases.py", line 86, in test_case
+    brandPage.clickOnDapairuzhu()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/brand_category_page.py", line 118, in clickOnDapairuzhu
+    xpath = BrandCategoryPageConfigs.xpath_dapairuzhu)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAButton[1]] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/brand_famous_category_cases.py", line 86, in test_case
+    brandPage.clickOnDapairuzhu()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/brand_category_page.py", line 118, in clickOnDapairuzhu
+    xpath = BrandCategoryPageConfigs.xpath_dapairuzhu)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAButton[1]] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.child_category_cases.ChildCatergoryCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/child_category_cases.py", line 54, in test_case
+    dashboardPage.clickOnChildCategory()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/dashboard_page.py", line 209, in clickOnChildCategory
+    DashboardPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 723, in clickElementByName
+    testCase.assertTrue(False, "Click element by name [%s] timeout" % (name))
+AssertionError: False is not true : Click element by name [亲子] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/child_category_cases.py", line 54, in test_case
+    dashboardPage.clickOnChildCategory()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/dashboard_page.py", line 209, in clickOnChildCategory
+    DashboardPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 723, in clickElementByName
+    testCase.assertTrue(False, "Click element by name [%s] timeout" % (name))
+AssertionError: False is not true : Click element by name [亲子] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.feifan_card_bill_cases.FeiFanCardBillCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        fail</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 755, in clickElementByIosUiautomation
+    self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1565, in _findElementByIosUiautomation
+    EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uiaString)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/feifan_card_bill_cases.py", line 47, in test_case
+    feifanCardPage.clickOnBill()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/feifan_card_page.py", line 47, in clickOnBill
+    FeiFanCardPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 757, in clickElementByIosUiautomation
+    testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
+AssertionError: False is not true : Click element by uia string [.buttons()[3]] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 755, in clickElementByIosUiautomation
+    self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1565, in _findElementByIosUiautomation
+    EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uiaString)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/feifan_card_bill_cases.py", line 47, in test_case
+    feifanCardPage.clickOnBill()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/feifan_card_page.py", line 47, in clickOnBill
+    FeiFanCardPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 757, in clickElementByIosUiautomation
+    testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
+AssertionError: False is not true : Click element by uia string [.buttons()[3]] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.feifan_card_integral_cases.FeiFanCardIntegralCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.feifan_card_open_cases.FeiFanCardOpenCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.food_category_cases.FoodCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.hot_word_search_cases.HotWordSearchCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.hui_life_resource_niche_cases.HuiLifeResourceNicheCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='ft8.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.1')" >
+        fail</a>
+
+    <div id='div_ft8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/hui_life_resource_niche_cases.py", line 44, in test_case
+    huiLifePage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/hui_life_page.py", line 28, in validSelf
+    HuiLifePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [打车] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/hui_life_resource_niche_cases.py", line 44, in test_case
+    huiLifePage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/hui_life_page.py", line 28, in validSelf
+    HuiLifePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [打车] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.lefu_cancel_category_cases.LefuCancelCatergoryCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='ft9.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft9.1')" >
+        fail</a>
+
+    <div id='div_ft9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft9.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/lefu_cancel_category_cases.py", line 112, in test_case
+    myOrderPage.clickOnOrderDetails()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_order_page.py", line 33, in clickOnOrderDetails
+    xpath = MyFfanMyOrderPageConfigs.xpath_order_details)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/lefu_cancel_category_cases.py", line 112, in test_case
+    myOrderPage.clickOnOrderDetails()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_order_page.py", line 33, in clickOnOrderDetails
+    xpath = MyFfanMyOrderPageConfigs.xpath_order_details)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.login_cases.LoginCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.logout_cases.LogoutCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',1)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.membership_card_package_cases.MembershipCardPackageCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',1)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.message_settings_cases.MessageSettingsCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',1)">Detail</a></td>
+</tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.movie_ticket_cases.MovieTicketCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',1)">Detail</a></td>
+</tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        pass</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_like_cases.MyfeifanMyLikeCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c15',1)">Detail</a></td>
+</tr>
+
+<tr id='ft15.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft15.1')" >
+        fail</a>
+
+    <div id='div_ft15.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft15.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft15.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 755, in clickElementByIosUiautomation
+    self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1565, in _findElementByIosUiautomation
+    EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uiaString)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/myfeifan_my_like_cases.py", line 61, in test_case
+    myLikePage.clickOnLikeDissertation()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_like_page.py", line 48, in clickOnLikeDissertation
+    MLPC.uia_string_like_dissertation)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 757, in clickElementByIosUiautomation
+    testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
+AssertionError: False is not true : Click element by uia string [.segmentedControls()[0].buttons()['专题']] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 755, in clickElementByIosUiautomation
+    self._findElementByIosUiautomation(driver, logger, uiaString, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1565, in _findElementByIosUiautomation
+    EC.presence_of_element_located((MobileBy.IOS_UIAUTOMATION, uiaString)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/myfeifan_my_like_cases.py", line 61, in test_case
+    myLikePage.clickOnLikeDissertation()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_like_page.py", line 48, in clickOnLikeDissertation
+    MLPC.uia_string_like_dissertation)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 757, in clickElementByIosUiautomation
+    testCase.assertTrue(False, "Click element by uia string [%s] timeout" % (uiaString))
+AssertionError: False is not true : Click element by uia string [.segmentedControls()[0].buttons()['专题']] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.one_card_cases.OneCardCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c16',1)">Detail</a></td>
+</tr>
+
+<tr id='pt16.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.parking_payment_bindings_cases.ParkingPaymentBindingsCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c17',1)">Detail</a></td>
+</tr>
+
+<tr id='ft17.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft17.1')" >
+        fail</a>
+
+    <div id='div_ft17.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft17.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft17.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/parking_payment_bindings_cases.py", line 84, in test_case
+    parkingPage.validHelp()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/parking_page.py", line 109, in validHelp
+    expectText=ParkingPageConfigs.name_help)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 999, in assertEqual
+    msg="Actual text : %s != Expected text : %s" % (actualText, expectText))
+AssertionError: 'FFWebBrowserView' != '停车帮助'
+- FFWebBrowserView
++ 停车帮助
+ : Actual text : FFWebBrowserView != Expected text : 停车帮助
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/parking_payment_bindings_cases.py", line 84, in test_case
+    parkingPage.validHelp()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/parking_page.py", line 109, in validHelp
+    expectText=ParkingPageConfigs.name_help)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 999, in assertEqual
+    msg="Actual text : %s != Expected text : %s" % (actualText, expectText))
+AssertionError: 'FFWebBrowserView' != '停车帮助'
+- FFWebBrowserView
++ 停车帮助
+ : Actual text : FFWebBrowserView != Expected text : 停车帮助
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.parking_payment_cases.ParkingPaymentCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c18',1)">Detail</a></td>
+</tr>
+
+<tr id='ft18.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft18.1')" >
+        fail</a>
+
+    <div id='div_ft18.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft18.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft18.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 950, in assertElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 68, in until
+    end_time = time.time() + self._timeout
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/parking_payment_cases.py", line 70, in test_case
+    parkingPaymentInputPlateNumberPage.validLunbogundongtiao()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/parking_payment_input_plate_number_page.py", line 33, in validLunbogundongtiao
+    ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 954, in assertElementByXpath
+    testCase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
+AssertionError: False is not true : Can not get element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAPageIndicator[1]/UIAButton[8]]
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 950, in assertElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 68, in until
+    end_time = time.time() + self._timeout
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/parking_payment_cases.py", line 70, in test_case
+    parkingPaymentInputPlateNumberPage.validLunbogundongtiao()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/parking_payment_input_plate_number_page.py", line 33, in validLunbogundongtiao
+    ParkingPaymentInputPlateNumberPageConfigs.xpath_lunbogundongtiao)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 954, in assertElementByXpath
+    testCase.assertTrue(False, "Can not get element by xpath [%s]" % (xpath))
+AssertionError: False is not true : Can not get element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAPageIndicator[1]/UIAButton[8]]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.personal_information_cases.PersonalInformationCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c19',1)">Detail</a></td>
+</tr>
+
+<tr id='ft19.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft19.1')" >
+        fail</a>
+
+    <div id='div_ft19.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft19.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft19.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/personal_information_cases.py", line 50, in test_case
+    personalInformationPage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/personal_information_page.py", line 28, in validSelf
+    PersonalInformationPageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [ffan6140] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/personal_information_cases.py", line 50, in test_case
+    personalInformationPage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/personal_information_page.py", line 28, in validSelf
+    PersonalInformationPageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [ffan6140] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.shopping_category_cases.ShoppingCatergoryCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c20',1)">Detail</a></td>
+</tr>
+
+<tr id='pt20.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.shopping_mall_cases.ShoppingMallCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c21',1)">Detail</a></td>
+</tr>
+
+<tr id='pt21.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testCase</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.small_amount_password_less_payments_cases.SmallAmountPasswordLessPaymentCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c22',1)">Detail</a></td>
+</tr>
+
+<tr id='ft22.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft22.1')" >
+        fail</a>
+
+    <div id='div_ft22.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft22.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft22.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/small_amount_password_less_payments_cases.py", line 58, in test_case
+    accountManagementPage.clickOnSmallAmountPasswordLessPayments()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/account_management_page.py", line 46, in clickOnSmallAmountPasswordLessPayments
+    AccountManagementPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 723, in clickElementByName
+    testCase.assertTrue(False, "Click element by name [%s] timeout" % (name))
+AssertionError: False is not true : Click element by name [小额免密支付] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/small_amount_password_less_payments_cases.py", line 58, in test_case
+    accountManagementPage.clickOnSmallAmountPasswordLessPayments()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/account_management_page.py", line 46, in clickOnSmallAmountPasswordLessPayments
+    AccountManagementPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 723, in clickElementByName
+    testCase.assertTrue(False, "Click element by name [%s] timeout" % (name))
+AssertionError: False is not true : Click element by name [小额免密支付] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.splash_screen_home_page_cases.SplashScreenHomePageCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c23',1)">Detail</a></td>
+</tr>
+
+<tr id='ft23.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft23.1')" >
+        fail</a>
+
+    <div id='div_ft23.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft23.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft23.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/splash_screen_home_page_cases.py", line 33, in test_case
+    SplashScreenHomePage(self, self.driver, self.logger).validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/splash_screen_home_page.py", line 28, in validSelf
+    SplashScreenHomePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [跳过] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/splash_screen_home_page_cases.py", line 33, in test_case
+    SplashScreenHomePage(self, self.driver, self.logger).validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/splash_screen_home_page.py", line 28, in validSelf
+    SplashScreenHomePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [跳过] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_find_store_search_cases.SquareFindStoreSearchCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c24',1)">Detail</a></td>
+</tr>
+
+<tr id='ft24.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft24.1')" >
+        fail</a>
+
+    <div id='div_ft24.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft24.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft24.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_find_store_search_cases.py", line 73, in test_case
+    searchResultStorePage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_result_store_page.py", line 23, in validSelf
+    SearchResultStorePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [北京通州万达广场] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_find_store_search_cases.py", line 73, in test_case
+    searchResultStorePage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_result_store_page.py", line 23, in validSelf
+    SearchResultStorePageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [北京通州万达广场] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_food_cases.SquareFoodCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c25',1)">Detail</a></td>
+</tr>
+
+<tr id='pt25.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_indoor_map_cases.SquareIndoorMapCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c26',1)">Detail</a></td>
+</tr>
+
+<tr id='pt26.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_lefu_pay_cases.SquareLefuPayCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c27',1)">Detail</a></td>
+</tr>
+
+<tr id='ft27.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft27.1')" >
+        fail</a>
+
+    <div id='div_ft27.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft27.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft27.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 10 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_lefu_pay_cases.py", line 66, in test_case
+    squareModulePage.clicOnLefuPay();
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 120, in clicOnLefuPay
+    SquareModulePageConfigs.text_lefu_pay)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [买单]
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 10 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_lefu_pay_cases.py", line 66, in test_case
+    squareModulePage.clicOnLefuPay();
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 120, in clicOnLefuPay
+    SquareModulePageConfigs.text_lefu_pay)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [买单]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_movie_cases.SquareMovieCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c28',1)">Detail</a></td>
+</tr>
+
+<tr id='pt28.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt28.1')" >
+        pass</a>
+
+    <div id='div_pt28.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt28.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt28.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_parking_payment_cases.SquareParkingPaymentCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c29',1)">Detail</a></td>
+</tr>
+
+<tr id='ft29.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft29.1')" >
+        fail</a>
+
+    <div id='div_ft29.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft29.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft29.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 10 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_parking_payment_cases.py", line 54, in test_case
+    squareModulePage.clickOnParking()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 49, in clickOnParking
+    SquareModulePageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [停车]
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 10 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_parking_payment_cases.py", line 54, in test_case
+    squareModulePage.clickOnParking()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 49, in clickOnParking
+    SquareModulePageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [停车]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_resource_niche_cases.SquareResourceNicheCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c30',1)">Detail</a></td>
+</tr>
+
+<tr id='pt30.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_search_cases.SquareSearchCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c31',1)">Detail</a></td>
+</tr>
+
+<tr id='pt31.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_shopping_cases.SquareShoppingCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c32',1)">Detail</a></td>
+</tr>
+
+<tr id='pt32.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_sign_on_cases.SquareSignOnCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c33',1)">Detail</a></td>
+</tr>
+
+<tr id='ft33.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft33.1')" >
+        fail</a>
+
+    <div id='div_ft33.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft33.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft33.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_sign_on_cases.py", line 57, in test_case
+    ClickActivityKeywordsType.XPATH)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/popup_page.py", line 99, in clickOnButton
+    self._clickOperator.get(keywordsType)(keywords)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/popup_page.py", line 92, in _clickOnButtonByXpath
+    keywords, PopupPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_sign_on_cases.py", line 57, in test_case
+    ClickActivityKeywordsType.XPATH)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/popup_page.py", line 99, in clickOnButton
+    self._clickOperator.get(keywordsType)(keywords)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/popup_page.py", line 92, in _clickOnButtonByXpath
+    keywords, PopupPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 592, in clickElementByXpath
+    testCase.assertTrue(False, "Click element by xpath [%s] timeout" % (xpath))
+AssertionError: False is not true : Click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAWebView[1]/UIAImage[13]] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.update_login_password_cases.UpdateLoginPasswordCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c34',1)">Detail</a></td>
+</tr>
+
+<tr id='ft34.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft34.1')" >
+        fail</a>
+
+    <div id='div_ft34.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft34.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft34.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/update_login_password_cases.py", line 73, in test_case
+    accountManagementPage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/account_management_page.py", line 28, in validSelf
+    AccountManagementPageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [账号管理] timeout
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1314, in assertElementByName
+    self._findElementByResourceId(driver, logger, name, timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1447, in _findElementByResourceId
+    return wdw.until(EC.presence_of_element_located((By.ID, resourceId)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/update_login_password_cases.py", line 73, in test_case
+    accountManagementPage.validSelf()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/account_management_page.py", line 28, in validSelf
+    AccountManagementPageConfigs.assert_view_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1316, in assertElementByName
+    testCase.assertTrue(False, "Get element by name [%s] timeout" % (name))
+AssertionError: False is not true : Get element by name [账号管理] timeout
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.version_upgrade_cases.VersionUpgradeCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c35',1)">Detail</a></td>
+</tr>
+
+<tr id='pt35.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.yao_yi_yao_cases.YaoyiyaoCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c36',1)">Detail</a></td>
+</tr>
+
+<tr id='pt36.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_xianchangyao_cases.SquareXianchangyaoCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c37',1)">Detail</a></td>
+</tr>
+
+<tr id='pt37.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.my_order_cases.MyOrderCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c38',1)">Detail</a></td>
+</tr>
+
+<tr id='ft38.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft38.1')" >
+        fail</a>
+
+    <div id='div_ft38.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft38.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft38.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 68, in until
+    end_time = time.time() + self._timeout
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/my_order_cases.py", line 63, in test_case
+    myOrderPage.clickOnDaifukuan()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_order_page.py", line 97, in clickOnDaifukuan
+    MyFfanMyOrderPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 594, in clickElementByXpath
+    testCase.assertTrue(False, "Can not click element by xpath [%s]" % (xpath))
+AssertionError: False is not true : Can not click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]/UIAButton[1]]
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 590, in clickElementByXpath
+    self._findElementByXpath(driver, logger, xpath, timeout).click()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1463, in _findElementByXpath
+    return wdw.until(EC.presence_of_element_located((By.XPATH, xpath)))
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/support/wait.py", line 68, in until
+    end_time = time.time() + self._timeout
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/my_order_cases.py", line 63, in test_case
+    myOrderPage.clickOnDaifukuan()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/my_ffan_my_order_page.py", line 97, in clickOnDaifukuan
+    MyFfanMyOrderPageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 594, in clickElementByXpath
+    testCase.assertTrue(False, "Can not click element by xpath [%s]" % (xpath))
+AssertionError: False is not true : Can not click element by xpath [//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]/UIAButton[1]]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_members_cases.SquareMembersCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c39',1)">Detail</a></td>
+</tr>
+
+<tr id='pt39.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_queue_cases.MyfeifanMyQueueCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c40',1)">Detail</a></td>
+</tr>
+
+<tr id='pt40.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_my_ticket_cases.MyfeifanMyTicketCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c41',1)">Detail</a></td>
+</tr>
+
+<tr id='pt41.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.stores_and_supermarkets_cases.StoresAndSupermarketsCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c42',1)">Detail</a></td>
+</tr>
+
+<tr id='pt42.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.1')" >
+        pass</a>
+
+    <div id='div_pt42.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_details_cases.SquareDetailsCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c43',1)">Detail</a></td>
+</tr>
+
+<tr id='pt43.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_privilege_coupon_cases.SquarePrivilegeCouponCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c44',1)">Detail</a></td>
+</tr>
+
+<tr id='pt44.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.square_queue_cases.SquareQueueCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c45',1)">Detail</a></td>
+</tr>
+
+<tr id='ft45.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft45.1')" >
+        fail</a>
+
+    <div id='div_ft45.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft45.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft45.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 6 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_queue_cases.py", line 56, in test_case
+    squarePage.clicOnQueue()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 128, in clicOnQueue
+    SquareModulePageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [排队取号]
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 721, in clickElementByName
+    self._findElementByResourceId(driver, logger, name, timeout).click()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 72, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+selenium.common.exceptions.WebDriverException: Message: An unknown server-side error occurred while processing the command. Original error: elementId 6 could not be tapped
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/square_queue_cases.py", line 56, in test_case
+    squarePage.clicOnQueue()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/square_module_page.py", line 128, in clicOnQueue
+    SquareModulePageConfigs.click_on_button_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 725, in clickElementByName
+    testCase.assertTrue(False, "Can not click element by name [%s]" % (name))
+AssertionError: False is not true : Can not click element by name [排队取号]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_fukuaima_cases.MyFukuanmaCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c46',1)">Detail</a></td>
+</tr>
+
+<tr id='pt46.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.myfeifan_linghuaqian_cases.MyLinghuaqianCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c47',1)">Detail</a></td>
+</tr>
+
+<tr id='pt47.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.dashboard_search_brand_cases.DashboardSearchBrandCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c48',1)">Detail</a></td>
+</tr>
+
+<tr id='ft48.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft48.1')" >
+        error</a>
+
+    <div id='div_ft48.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft48.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft48.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_brand_cases.py", line 46, in test_case
+    searchPage.inputBrandName()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 51, in inputBrandName
+    SearchPageConfigs.input_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 95, in inputStringByXpath
+    inputField.send_keys(string)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 320, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 29, in check_response
+    raise wde
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target.frontMostApp().keyboard() failed to locate key 'a'
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_brand_cases.py", line 46, in test_case
+    searchPage.inputBrandName()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 51, in inputBrandName
+    SearchPageConfigs.input_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 95, in inputStringByXpath
+    inputField.send_keys(string)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 320, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 29, in check_response
+    raise wde
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target.frontMostApp().keyboard() failed to locate key 'a'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.dashboard_search_goods_cases.DashboardSearchGoodsCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c49',1)">Detail</a></td>
+</tr>
+
+<tr id='ft49.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft49.1')" >
+        error</a>
+
+    <div id='div_ft49.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft49.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft49.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_goods_cases.py", line 46, in test_case
+    searchPage.inputGoodsName()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 61, in inputGoodsName
+    SearchPageConfigs.input_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 95, in inputStringByXpath
+    inputField.send_keys(string)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 320, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 29, in check_response
+    raise wde
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target.frontMostApp().keyboard() failed to locate key 'M'
+
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_goods_cases.py", line 46, in test_case
+    searchPage.inputGoodsName()
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 61, in inputGoodsName
+    SearchPageConfigs.input_timeout)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 95, in inputStringByXpath
+    inputField.send_keys(string)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 320, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webelement.py", line 461, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 29, in check_response
+    raise wde
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/Appium_Python_Client-0.22-py3.5.egg/appium/webdriver/errorhandler.py", line 24, in check_response
+    super(MobileErrorHandler, self).check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target.frontMostApp().keyboard() failed to locate key 'M'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.dashboard_search_store_cases.DashboardSearchStoreCases</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c50',1)">Detail</a></td>
+</tr>
+
+<tr id='ft50.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft50.1')" >
+        fail</a>
+
+    <div id='div_ft50.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft50.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft50.1: Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_store_cases.py", line 49, in test_case
+    searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 111, in validSearchResult
+    API().assertTrue(self.testcase, self.logger, textContains in tempText)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1034, in assertTrue
+    msg="Actual result : %s != Expected result : %s" % (result, True))
+AssertionError: False is not true : Actual result : False != Expected result : True
+Traceback (most recent call last):
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/cases/ios/ffan/routing_inspection_test_cases/dashboard_search_store_cases.py", line 49, in test_case
+    searchPage.validSearchResult(u"北京通州", u"//UIAApplication[1]/UIAWindow[1]/UIATableView[2]/UIATableCell[1]/UIAStaticText[1]")
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/pages/ios/ffan/search_page.py", line 111, in validSearchResult
+    API().assertTrue(self.testcase, self.logger, textContains in tempText)
+  File "/Users/auto/workspace_pycharm/autotest/AutoFrameworkForAppiumPy/com/qa/automation/appium/api/api_new.py", line 1034, in assertTrue
+    msg="Actual result : %s != Expected result : %s" % (result, True))
+AssertionError: False is not true : Actual result : False != Expected result : True
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>com.qa.automation.appium.cases.ios.ffan.routing_inspection_test_cases.switch_city_cases.SwitchCityCases</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c51',1)">Detail</a></td>
+</tr>
+
+<tr id='pt51.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_case</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>51</td>
+    <td>30</td>
+    <td>19</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

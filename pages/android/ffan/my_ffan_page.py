@@ -31,6 +31,24 @@ class MyFfanPage(SuperPage):
                                         MFPC.verify_view_timeout)
         logger.info("Check 我的页面 end")
 
+    def validSelfOK(self):
+        '''
+        usage : 进入到应用首页,检查ffan logo
+        '''
+
+        a = API().assertElementByTextOK(self.testcase,
+                                  self.driver,
+                                  self.logger,
+                                  MFPC.text_member_card_bag,
+                                  MFPC.verify_view_timeout)
+        if a == "会员卡包":
+            return True
+            print('haha')
+            print(a)
+        else:
+            return False
+
+
     def clickOnLogin(self):
         '''
         usage: 点击登录按钮

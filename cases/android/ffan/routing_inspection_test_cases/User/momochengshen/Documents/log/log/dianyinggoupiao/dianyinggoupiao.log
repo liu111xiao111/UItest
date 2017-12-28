@@ -1,0 +1,7 @@
+2017-02-22 14:58:36 [INFO]::TestEngine: Start running dianyinggoupiao
+2017-02-22 14:58:36 [INFO]::TestEngine: Running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/dianyinggoupiao.py
+2017-02-22 14:58:36 [INFO]::TestEngine: Log file path is /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/User/momochengshen/Documents/log/log/dianyinggoupiao/dianyinggoupiao.log
+2017-02-22 14:58:43 [INFO]::TestEngine: Cleanup the existing log information.
+2017-02-22 14:58:43 [INFO]::TestEngine: Start performance deamon process.
+2017-02-22 14:58:43 [INFO]::TestEngine: setUp Begin
+2017-02-22 14:59:24 [INFO]::Page: Check 切换城市Popup begin

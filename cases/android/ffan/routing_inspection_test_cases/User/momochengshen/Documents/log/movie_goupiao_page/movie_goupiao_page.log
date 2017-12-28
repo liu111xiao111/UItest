@@ -1,0 +1,11 @@
+2017-02-22 14:50:01 [ERROR]::TestEngine: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/testEngine.py", line 49, in init
+    cls = TestCaseLoader().load()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestLoader/loader.py", line 66, in load
+    obj, clsname = self._parseTestCase()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestLoader/loader.py", line 53, in _parseTestCase
+    clsname = self._getClassName()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestLoader/loader.py", line 43, in _getClassName
+    fp = open(self.casePath, mode='r', encoding='utf-8')
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/movie_goupiao_page.py'
+

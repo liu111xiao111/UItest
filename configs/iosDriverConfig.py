@@ -10,16 +10,18 @@ class IosDriverConfigs(object):
 
     platformName = "iOS"
 
-    platformVersion = DeviceInfoUtil().getIProductVersion()
+  #  platformVersion = DeviceInfoUtil().getIProductVersion()
+    platformVersion = 'iPhone5s'
 
-    deviceName = "iPhone6s"
+    deviceName = "iPhone5s"
 
     bundleId = "com.dianshang.wanhui"
 
     #商户
     bundleId_sh = "com.dianshang.feifanbp"
 
-    udid = DeviceInfoUtil().getUdid()
+   # udid = DeviceInfoUtil().getUdid()
+    udid = 'af8b9ab2f006968724115ea516fa19b268e94a3d'
 
     driverUrl = "http://localhost:4723/wd/hub"
 

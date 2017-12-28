@@ -60,11 +60,16 @@ class TestPrepare:
         loginPage.inputPassWord()
         loginPage.waitBySeconds(3)
         loginPage.clickOnLoginBtn()
-        '''loginVerifyPage = LoginVerifyPage(self, self.driver, self.logger)
-        loginVerifyPage.validSelf()
-        loginVerifyPage.clickOnSkip()'''
         myFfanPage.validSelf()
         dashboardPage.waitBySeconds(seconds=2)
+
+#        if myFfanPage.validSelfOK() == True:
+
+ ##          dashboardPage.waitBySeconds(seconds=2)
+   #     else:
+    #        loginPage.inputUserName()
+     ##      loginPage.waitBySeconds(3)
+       #     loginPage.clickOnLoginBtn()
 
     def updateVersion(self):
         '''

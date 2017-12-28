@@ -1,0 +1,78 @@
+2017-02-22 13:54:09 [INFO]::TestEngine: Start running shouYeTingChe
+2017-02-22 13:54:09 [INFO]::TestEngine: Running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/shouYeTingChe.py
+2017-02-22 13:54:09 [INFO]::TestEngine: Log file path is /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/log/shouYeTingChe/shouYeTingChe.log
+2017-02-22 13:54:17 [INFO]::TestEngine: Cleanup the existing log information.
+2017-02-22 13:54:17 [INFO]::TestEngine: Start performance deamon process.
+2017-02-22 13:54:17 [INFO]::TestEngine: setUp Begin
+2017-02-22 13:54:58 [INFO]::Page: Check 切换城市Popup begin
+2017-02-22 13:56:28 [INFO]::Page: Check 切换城市Popup end
+2017-02-22 13:56:30 [INFO]::Page: Check 当前城市为北京市 begin
+2017-02-22 13:56:31 [INFO]::Page: Check 当前城市为北京市 end
+2017-02-22 13:56:31 [INFO]::Page: Click 我的 begin
+2017-02-22 13:56:31 [INFO]::Page: Click 我的 end
+2017-02-22 13:56:31 [INFO]::Api: 查看是否已经登录
+2017-02-22 13:57:32 [INFO]::Api: 未登录
+2017-02-22 13:57:32 [INFO]::Page: Click 登录 begin
+2017-02-22 13:57:34 [INFO]::Page: Check 登录 end
+2017-02-22 13:57:34 [INFO]::Page: Check 登录页面 begin
+2017-02-22 13:57:34 [INFO]::Api: Get element by resource id.
+2017-02-22 13:57:34 [INFO]::Page: Check 登录页面 end
+2017-02-22 13:57:34 [INFO]::Page: Click 密码登录 begin
+2017-02-22 13:57:36 [INFO]::Page: Click 密码登录 end
+2017-02-22 13:57:36 [INFO]::Page: Input 用户名 begin
+2017-02-22 13:57:46 [INFO]::Page: Input 用户名 end
+2017-02-22 13:57:46 [INFO]::Page: Input 密码 begin
+2017-02-22 13:57:53 [INFO]::Page: Input 密码 end
+2017-02-22 13:57:56 [INFO]::Page: Click 登录 button begin
+2017-02-22 13:57:56 [INFO]::Page: Click 登录 button end
+2017-02-22 13:57:56 [INFO]::Page: Check 我的页面 begin
+2017-02-22 13:57:59 [INFO]::Api: Get element by resource id.
+2017-02-22 13:57:59 [INFO]::Page: Check 我的页面 end
+2017-02-22 13:58:02 [INFO]::TestEngine: setUp End
+2017-02-22 13:58:02 [INFO]::TestEngine: testShouYeTingChe Begin
+2017-02-22 13:58:02 [INFO]::Page: Check 首页(爱逛街页面) begin
+2017-02-22 13:58:02 [INFO]::Api: Get element by resource id.
+2017-02-22 13:58:03 [INFO]::Page: Check 首页(爱逛街页面) end
+2017-02-22 13:58:03 [INFO]::Page: Click 停车 begin
+2017-02-22 13:58:04 [INFO]::Page: Click 停车 end
+2017-02-22 13:58:04 [INFO]::Page: Check 停车页面 begin
+2017-02-22 13:58:06 [INFO]::Page: Check 停车页面 end
+2017-02-22 13:58:06 [INFO]::Api: Check 入口项目(车牌管理) begin
+2017-02-22 13:58:21 [INFO]::Api: Check 入口项目(车牌管理)  end
+2017-02-22 13:58:21 [INFO]::Api: Check 入口项目(停车记录) begin
+2017-02-22 13:58:36 [INFO]::Api: Check 入口项目(停车记录)  end
+2017-02-22 13:58:36 [INFO]::Api: Check 入口项目(停车券) begin
+2017-02-22 13:58:51 [INFO]::Api: Check 入口项目(停车券)  end
+2017-02-22 13:58:51 [INFO]::Api: Check 入口项目(帮助) begin
+2017-02-22 13:59:06 [INFO]::Api: Check 入口项目(帮助)  end
+2017-02-22 13:59:06 [INFO]::Page: Check 车牌是否已添加 begin
+2017-02-22 13:59:36 [INFO]::Page: Check 车牌已添加 end
+2017-02-22 13:59:36 [INFO]::Page: Check 车牌是否已添加 end
+2017-02-22 13:59:36 [INFO]::Api: Click 车牌管理 begin
+2017-02-22 13:59:37 [INFO]::Api: Click 车牌管理 end
+2017-02-22 13:59:37 [INFO]::Api: Check 车牌管理页面 begin
+2017-02-22 13:59:39 [INFO]::Api: Check 车牌管理页面 end
+2017-02-22 13:59:39 [INFO]::Api: Click 车牌号码 begin
+2017-02-22 13:59:39 [INFO]::Api: Click 车牌号码 end
+2017-02-22 13:59:39 [INFO]::Api: Click 删除车牌 begin
+2017-02-22 13:59:40 [INFO]::Api: Click 删除车牌 end
+2017-02-22 13:59:40 [INFO]::Api: Check 车牌管理页面 begin
+2017-02-22 13:59:43 [INFO]::Api: Check 车牌管理页面 end
+2017-02-22 13:59:43 [INFO]::TestEngine: testShouYeTingChe End
+2017-02-22 13:59:43 [INFO]::TestEngine: TestResult: PASS running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/shouYeTingChe.py
+2017-02-22 13:59:43 [INFO]::TestEngine: Process the screenshot files.
+2017-02-22 13:59:43 [INFO]::TestEngine: Stop performance deamon process.
+2017-02-22 13:59:46 [INFO]::TestEngine: Get performance data.
+2017-02-22 13:59:46 [INFO]::TestEngine: Get the android device logcat.
+2017-02-22 13:59:46 [INFO]::TestEngine: tearDown Begin
+2017-02-22 13:59:49 [INFO]::TestEngine: tearDown End
+2017-02-22 13:59:49 [INFO]::TestEngine: Stop running shouYeTingChe
+2017-02-22 13:59:49 [INFO]::TestEngine: Test start time : 2017/02/22 13:54:09
+2017-02-22 13:59:49 [INFO]::TestEngine: Test end time   : 2017/02/22 13:59:43
+2017-02-22 13:59:49 [INFO]::TestEngine: Time Elapsed    : 0:05:33.928960
+2017-02-22 13:59:49 [INFO]::TestEngine: ===Device Infomation===========
+2017-02-22 13:59:49 [INFO]::TestEngine: Device Type : android
+2017-02-22 13:59:49 [INFO]::TestEngine: Device Name : XIAOMI REDMI 3
+2017-02-22 13:59:49 [INFO]::TestEngine: Device   ID : 81ea94ec7ce3
+2017-02-22 13:59:49 [INFO]::TestEngine: OS  Version : 5.1.1
+2017-02-22 13:59:49 [INFO]::TestEngine: ===============================

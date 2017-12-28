@@ -65,15 +65,16 @@ class API(object):
         '''
         time.sleep(timeout)
 
-    def screenShot(self, driver, pictureName="myfeifan_auto_test"):
+    def screenShot(self, driver, pictureName="myfeifan_auto_test", isShot=1):
         '''
         Usage: 截图方法
         parameters:
             driver: appium driver
             pictureName: 截图名称
         '''
-        currentTime = time.strftime('%Y%m%d%H%M%S')
-        driver.save_screenshot(currentTime + "_" + pictureName + ".png")
+        if isShot==2:
+            currentTime = time.strftime('%Y%m%d%H%M%S')
+            driver.save_screenshot(currentTime + "_" + pictureName + ".png")
 
     def screenShotForStability(self, driver, pictureName="myfeifan_auto_test", outsideLoop="1", insideLoop="1", caseStep="1"):
         '''
@@ -1198,6 +1199,20 @@ class API(object):
         except:
             driver.save_screenshot("FailedTestCase.png")
             testCase.assertTrue(False, "Can not get element by text [%s]" % (text))
+
+    def assertElementByTextOK(self, testCase, driver, logger, text="default", timeout=10):
+        '''
+        usage : 页面element验证方法 (适用Android平台)
+        parameters:
+            testCase: unit test case
+            driver: appium driver
+            logger: logging
+            text : 断言element的 text
+            timeout : 超时时间,单位秒,默认十秒。
+        '''
+
+        self._findElementByText(driver, logger, text, timeout)
+
 
     def assertElementByContentDesc(self, testCase, driver, logger, contentDesc="default", timeout=10):
         '''

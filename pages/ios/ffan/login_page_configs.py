@@ -42,12 +42,13 @@ class LoginPageConfigs():
 
     # Mobile number
     xpath_mobile_number_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]"
-    text_mobile_number = u"15840985905"
+#    text_mobile_number = u"15840985905"
+    text_mobile_number = u'18217310992'
 
     # Password
     xpath_password_tf = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIASecureTextField[1]"
-    text_password = "liutao-123qwe"
-
+#    text_password = "liutao-123qwe"
+    text_password = u'aaaAAA111'
     # Login
     xpath_login_bt = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]"
 

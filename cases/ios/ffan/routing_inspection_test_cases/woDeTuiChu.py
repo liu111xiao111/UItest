@@ -66,7 +66,8 @@ class WoDeTuiChuTestCase(TestCase):
         myFeiFanPage.validLogoutStatus()
 
     def tearDown(self):
-        self.driver.quit()
+        pass
+#    self.driver.quit()
 
 
 if __name__ == "__main__":

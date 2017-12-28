@@ -1,0 +1,43 @@
+2017-02-22 15:01:03 [INFO]::TestEngine: Start running dianyinggoupiao
+2017-02-22 15:01:03 [INFO]::TestEngine: Running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/dianyinggoupiao.py
+2017-02-22 15:01:03 [INFO]::TestEngine: Log file path is /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/User/momochengshen/Desktop/log/dianyinggoupiao/dianyinggoupiao.log
+2017-02-22 15:01:03 [ERROR]::TestEngine: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestRunner/runner.py", line 164, in run
+    self._prepare()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestRunner/runner.py", line 57, in _prepare
+    self._createAppiumDriver()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/TestRunner/runner.py", line 74, in _createAppiumDriver
+    udid=deviceId).getDriver()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/TestEngine/AppiumDriver/driver.py", line 47, in getDriver
+    return webdriver.Remote(self.driver_url, desired_caps)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/appium/webdriver/webdriver.py", line 36, in __init__
+    super(WebDriver, self).__init__(command_executor, desired_capabilities, browser_profile, proxy, keep_alive)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 92, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 179, in start_session
+    response = self.execute(Command.NEW_SESSION, capabilities)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/selenium/webdriver/remote/errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: A new session could not be created. Details: Problem getting session data for driver type AndroidDriver; does it implement 'get driverData'?
+
+
+2017-02-22 15:01:03 [ERROR]::TestEngine: TestResult: FAIL running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/dianyinggoupiao.py
+2017-02-22 15:01:03 [ERROR]::TestEngine: Get the screenshot of the failure.
+2017-02-22 15:01:03 [INFO]::TestEngine: Process the screenshot files.
+2017-02-22 15:01:03 [INFO]::TestEngine: Stop performance deamon process.
+2017-02-22 15:01:06 [INFO]::TestEngine: Get performance data.
+2017-02-22 15:01:06 [INFO]::TestEngine: Get the android device logcat.
+2017-02-22 15:01:06 [INFO]::TestEngine: tearDown Begin
+2017-02-22 15:01:06 [ERROR]::TestEngine: 'DianYingGouPiaoTestCase' object has no attribute 'driver'
+2017-02-22 15:01:06 [INFO]::TestEngine: Stop running dianyinggoupiao
+2017-02-22 15:01:06 [INFO]::TestEngine: Test start time : 2017/02/22 15:01:03
+2017-02-22 15:01:06 [INFO]::TestEngine: Test end time   : 2017/02/22 15:01:03
+2017-02-22 15:01:06 [INFO]::TestEngine: Time Elapsed    : 0:00:00.105297
+2017-02-22 15:01:06 [INFO]::TestEngine: ===Device Infomation===========
+2017-02-22 15:01:06 [INFO]::TestEngine: Device Type : android
+2017-02-22 15:01:06 [INFO]::TestEngine: Device Name : XIAOMI REDMI 3
+2017-02-22 15:01:06 [INFO]::TestEngine: Device   ID : 81ea94ec7ce3
+2017-02-22 15:01:06 [INFO]::TestEngine: OS  Version : 5.1.1
+2017-02-22 15:01:06 [INFO]::TestEngine: ===============================

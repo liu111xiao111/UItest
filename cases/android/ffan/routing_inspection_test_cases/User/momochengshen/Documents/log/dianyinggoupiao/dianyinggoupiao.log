@@ -1,0 +1,58 @@
+2017-02-22 14:51:22 [INFO]::TestEngine: Start running dianyinggoupiao
+2017-02-22 14:51:22 [INFO]::TestEngine: Running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/dianyinggoupiao.py
+2017-02-22 14:51:22 [INFO]::TestEngine: Log file path is /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/User/momochengshen/Documents/log/dianyinggoupiao/dianyinggoupiao.log
+2017-02-22 14:51:29 [INFO]::TestEngine: Cleanup the existing log information.
+2017-02-22 14:51:29 [INFO]::TestEngine: Start performance deamon process.
+2017-02-22 14:51:29 [INFO]::TestEngine: setUp Begin
+2017-02-22 14:52:10 [INFO]::Page: Check 切换城市Popup begin
+2017-02-22 14:53:40 [INFO]::Page: Check 切换城市Popup end
+2017-02-22 14:53:42 [INFO]::Page: Check 当前城市为北京市 begin
+2017-02-22 14:53:42 [INFO]::Page: Check 当前城市为北京市 end
+2017-02-22 14:53:42 [INFO]::Page: Click 我的 begin
+2017-02-22 14:53:43 [INFO]::Page: Click 我的 end
+2017-02-22 14:53:43 [INFO]::Api: 查看是否已经登录
+2017-02-22 14:53:45 [INFO]::Api: 已经登录
+2017-02-22 14:53:46 [INFO]::TestEngine: setUp End
+2017-02-22 14:53:46 [INFO]::TestEngine: testDianYinggoupiao Begin
+2017-02-22 14:53:46 [INFO]::Page: Check 首页(爱逛街页面) begin
+2017-02-22 14:53:46 [INFO]::Api: Get element by resource id.
+2017-02-22 14:53:46 [INFO]::Page: Check 首页(爱逛街页面) end
+2017-02-22 14:53:46 [INFO]::Page: Check 切换城市 begin
+2017-02-22 14:53:47 [INFO]::Page: Check 切换城市 end
+2017-02-22 14:53:52 [INFO]::Page: Check 选择安阳市 begin
+2017-02-22 14:53:52 [INFO]::Page: Check 选择安阳市 end
+2017-02-22 14:53:57 [INFO]::Page: Click 电影 begin
+2017-02-22 14:53:59 [INFO]::Page: Click 电影 end
+2017-02-22 14:54:04 [INFO]::Page: Check 点击‘选座’按钮 begin
+2017-02-22 14:54:04 [INFO]::Page: Check 点击‘选座’按钮 end
+2017-02-22 14:54:09 [INFO]::Page: Check 点击‘影院’列表 begin
+2017-02-22 14:54:10 [INFO]::Page: Check 点击‘影院’列表 end
+2017-02-22 14:54:15 [INFO]::Page: Check 点击选座按钮 begin
+2017-02-22 14:54:15 [INFO]::Page: Check 点击选座按钮 end
+2017-02-22 14:54:20 [INFO]::Page: Check 选择座位 begin
+2017-02-22 14:54:20 [INFO]::Page: Check 选择座位 end
+2017-02-22 14:54:25 [INFO]::Page: Check 点击选好了按钮 begin
+2017-02-22 14:54:26 [INFO]::Page: Check 点击选好了按钮 end
+2017-02-22 14:54:31 [INFO]::Page: Check 点击提交订单按钮 begin
+2017-02-22 14:54:31 [INFO]::Page: Check 点击提交订单按钮 end
+2017-02-22 14:54:36 [INFO]::Page: Check 订单提交页面检测 begin
+2017-02-22 14:54:36 [INFO]::Api: Get element by resource id.
+2017-02-22 14:54:37 [INFO]::Page: Check 订单提交页面检测 end
+2017-02-22 14:54:42 [INFO]::TestEngine: testDianYinggoupiao End
+2017-02-22 14:54:42 [INFO]::TestEngine: TestResult: PASS running /Users/momochengshen/Documents/autotest/cases/android/ffan/routing_inspection_test_cases/dianyinggoupiao.py
+2017-02-22 14:54:42 [INFO]::TestEngine: Process the screenshot files.
+2017-02-22 14:54:42 [INFO]::TestEngine: Stop performance deamon process.
+2017-02-22 14:54:45 [INFO]::TestEngine: Get performance data.
+2017-02-22 14:54:45 [INFO]::TestEngine: Get the android device logcat.
+2017-02-22 14:54:45 [INFO]::TestEngine: tearDown Begin
+2017-02-22 14:54:47 [INFO]::TestEngine: tearDown End
+2017-02-22 14:54:47 [INFO]::TestEngine: Stop running dianyinggoupiao
+2017-02-22 14:54:47 [INFO]::TestEngine: Test start time : 2017/02/22 14:51:22
+2017-02-22 14:54:47 [INFO]::TestEngine: Test end time   : 2017/02/22 14:54:42
+2017-02-22 14:54:47 [INFO]::TestEngine: Time Elapsed    : 0:03:19.342725
+2017-02-22 14:54:47 [INFO]::TestEngine: ===Device Infomation===========
+2017-02-22 14:54:47 [INFO]::TestEngine: Device Type : android
+2017-02-22 14:54:47 [INFO]::TestEngine: Device Name : XIAOMI REDMI 3
+2017-02-22 14:54:47 [INFO]::TestEngine: Device   ID : 81ea94ec7ce3
+2017-02-22 14:54:48 [INFO]::TestEngine: OS  Version : 5.1.1
+2017-02-22 14:54:48 [INFO]::TestEngine: ===============================

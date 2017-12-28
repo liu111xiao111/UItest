@@ -16,6 +16,8 @@ class MyFfanPageConfigs():
     # 我的票券数量
     resource_id_txt_ticket_number_tv = "com.wanda.app.wanhui:id/unpay_count"
 
+
+
     # text指明类型为text label
     text_my_ffan = u"我的飞凡";
     text_register = "注册";

@@ -81,11 +81,9 @@ class DianYingTestCase(TestCase):
         seatPickingPage.validSelf()
         seatPickingPage.validKeywords(tempText)
         seatPickingPage.clickBackKey()
-
         cinemaPage.waitBySeconds()
         cinemaPage.validSelf()
         cinemaPage.clickBackKey()
-
         movieDetailsPage.validSelf()
         movieDetailsPage.clickBackKey()
 
